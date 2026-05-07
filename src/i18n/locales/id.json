@@ -1,0 +1,275 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "cost": "Perbandingan Biaya",
+    "report": "Laporan Demo",
+    "hospitals": "Rumah Sakit",
+    "cases": "Kasus Pasien",
+    "visa": "Panduan Visa",
+    "steps": "Langkah Medis",
+    "about": "Tentang Kami",
+    "consult": "Konsultasi Sekarang",
+    "language": "Bahasa",
+    "free": "Coba Gratis"
+  },
+  "footer": {
+    "about": "Tentang Kami",
+    "links": "Tautan Cepat",
+    "contact": "Kontak",
+    "follow": "Ikuti Kami",
+    "desc": "Huanyu Cloud Medical adalah platform navigasi medis lintas batas pertama yang didorong oleh AI, yang didedikasikan untuk menjadikan sumber daya medis China yang terbaik dapat diakses oleh pasien global.",
+    "copyright": "© 2025 Huanyu Cloud Medical. Seluruh hak cipta dilindungi.",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat Layanan",
+    "help": "Pusat Bantuan"
+  },
+  "hero": {
+    "title": "Temukan Perawatan Terbaik dalam 3 Menit",
+    "subtitle": "Masukkan kondisi Anda dan dapatkan laporan analisis kelayakan medis 8-negara — biaya, teknologi, rumah sakit, dan timeline pemulihan dalam satu perbandingan.",
+    "btn1": "Laporan Gratis",
+    "btn2": "Pelajari Lebih Lanjut"
+  },
+  "stat": {
+    "save": "Hemat hingga",
+    "saveUnit": "%",
+    "wait": "Waktu tunggu",
+    "waitUnit": "hari",
+    "proton": "Terapi Proton",
+    "protonPrice": "$38K-$55K",
+    "hospitals": "Rumah Sakit Bersertifikat",
+    "hospitalsCount": "2000+"
+  },
+  "feature": {
+    "ai": {
+      "title": "Pencocokan AI Cerdas",
+      "desc": "Berdasarkan kondisi Anda, cocokkan 3 rumah sakit paling sesuai dari 2000+ institusi bersertifikat."
+    },
+    "cost": {
+      "title": "Perbandingan Biaya Multi-negara",
+      "desc": "Meliputi 8 negara: AS, Inggris, Jerman, Singapura, Thailand, Malaysia, Jepang, dan China."
+    },
+    "full": {
+      "title": "Manajemen Perawatan Penuh",
+      "desc": "Dari surat undangan visa hingga tindak lanjut jarak jauh pasca-perawatan, layanan komprehensif satu atap."
+    }
+  },
+  "cases": {
+    "title": "Kisah Penghematan Nyata Pasien",
+    "subtitle": "Perjalanan medis lintas batas yang otentik dari pasien di seluruh dunia",
+    "pageTitle": "Kasus Pasien Nyata",
+    "pageSubtitle": "Perjalanan medis lintas batas dari pasien berbagai negara dan kondisi",
+    "patient": "Pasien",
+    "country": "Kebangsaan",
+    "condition": "Kondisi",
+    "decision": "Perjalanan Keputusan",
+    "treatment": "Rencana Perawatan",
+    "cost": "Perbandingan Biaya",
+    "result": "Hasil",
+    "back": "Kembali ke Beranda"
+  },
+  "case": {
+    "readMore": "Baca Selengkapnya"
+  },
+  "costTable": {
+    "title": "Perbandingan Biaya Perawatan Kanker Global",
+    "subtitle": "Matriks biaya lengkap 8 negara × 7 metode perawatan",
+    "treatment": "Perawatan",
+    "viewFull": "Lihat Perbandingan Lengkap"
+  },
+  "compare": {
+    "title": "Gratis vs Versi Pro",
+    "free": "Gratis",
+    "pro": "Pro",
+    "monthly": "Bulanan",
+    "yearly": "Tahunan",
+    "perMonth": "/bulan",
+    "perYear": "/tahun",
+    "upgrade": "Tingkatkan ke Pro"
+  },
+  "trust": {
+    "title": "Mengapa Memilih Huanyu Cloud Medical",
+    "ai": "Pencocokan AI + Tinjauan Ahli",
+    "transparent": "Transparansi Penuh, Tagihan Terperinci",
+    "followup": "Manajemen Pasca-rawatan Penuh",
+    "compliance": "Jaminan Kepatuhan, Akurasi Terjemahan 98.5%"
+  },
+  "cta": {
+    "title": "Mulai Pengalaman Gratis Anda",
+    "subtitle": "Dapatkan laporan kelayakan medis personal Anda dalam 3 menit",
+    "btn": "Laporan Gratis"
+  },
+  "cost": {
+    "pageTitle": "Perbandingan Biaya Perawatan Kanker Global",
+    "pageSubtitle": "Matriks biaya siklus penuh untuk 7 perawatan di 8 negara, berdasarkan Indeks Biaya Medis Internasional 2025-2026",
+    "savings": "Kasus Penghematan",
+    "disclaimer": "Catatan: Biaya adalah estimasi rentang siklus penuh (termasuk operasi, obat, rawat inap, dan pemeriksaan). Biaya aktual bervariasi menurut stadium penyakit dan kondisi individu."
+  },
+  "report": {
+    "pageTitle": "Hasilkan Laporan Kelayakan Medis Anda dalam 3 Menit",
+    "pageSubtitle": "Masukkan kondisi Anda, AI secara otomatis menganalisis rencana perawatan 8-negara dan menghasilkan laporan perbandingan profesional",
+    "step1": "Pilih Penyakit",
+    "step2": "Pilih Wilayah",
+    "step3": "Tetapkan Anggaran",
+    "step4": "Hasilkan Laporan",
+    "selectDisease": "Silakan pilih jenis penyakit Anda",
+    "selectRegion": "Silakan pilih negara/wilayah untuk perbandingan",
+    "budget": "Silakan pilih rentang anggaran Anda",
+    "generate": "Hasilkan Laporan",
+    "generating": "AI Menganalisis",
+    "reportTitle": "Laporan Pra-penilaian Kelayakan Pengobatan di China",
+    "reportId": "ID Laporan",
+    "date": "Tanggal",
+    "patient": "Pasien",
+    "diagnosis": "Diagnosis",
+    "section1": "I. Informasi Dasar Pasien",
+    "section2": "II. Perbandingan Rencana Perawatan Global",
+    "recommended": "Direkomendasikan",
+    "totalCost": "Perkiraan Total Biaya",
+    "waitTime": "Waktu Tunggu",
+    "tech": "Teknologi Medis",
+    "service": "Layanan Pasien Internasional",
+    "visa": "Kemudahan Visa & Perjalanan",
+    "followup": "Tindak Lanjut Pasca-rawatan",
+    "section3": "III. Penilaian Kelayakan",
+    "score": "Skor Kelayakan Keseluruhan",
+    "high": "Kelayakan Tinggi",
+    "advantage": "Keunggulan",
+    "concern": "Kekhawatiran & Solusi",
+    "language": "Hambatan Bahasa",
+    "languageSol": "Penerjemah medis profesional disediakan sepanjang perawatan",
+    "process": "Proses yang Tidak Familiar",
+    "processSol": "Koordinator pasien internasional khusus menangani segalanya",
+    "insurance": "Penggantian Asuransi",
+    "insuranceSol": "Kerja sama penagihan langsung dengan perusahaan asuransi internasional utama",
+    "aftercare": "Tindak Lanjut Pasca-rawatan",
+    "aftercareSol": "Konsultasi jarak jauh dan panduan rehabilitasi disediakan",
+    "section4": "IV. Rumah Sakit yang Direkomendasikan di China",
+    "note": "Daftar umum berdasarkan preferensi regional. Departemen spesifik dan ahli memerlukan versi Pro.",
+    "section5": "V. Rencana Perawatan Awal",
+    "direction": "Perawatan yang Direkomendasikan",
+    "duration": "Perkiraan Durasi",
+    "costDetail": "Perkiraan Biaya (Rentang)",
+    "surgery": "Perawatan/Operasi",
+    "exam": "Pemeriksaan",
+    "medicine": "Obat-obatan",
+    "hospital": "Rawat Inap",
+    "serviceFee": "Biaya Layanan",
+    "total": "Total",
+    "preparation": "Persiapan",
+    "section6": "VI. Rekomendasi Peningkatan",
+    "upgradeTitle": "Mengapa Anda Memerlukan Edisi Terverifikasi Ahli",
+    "upgradeDesc": "Laporan gratis menunjukkan arah, tetapi validasi medis profesional memastikan kepercayaan diri yang sempurna.",
+    "freeVersion": "Pratinjau Gratis",
+    "proVersion": "Versi Pro",
+    "freeFeature1": "Data umum yang dihasilkan AI",
+    "freeFeature2": "Rentang biaya perkiraan",
+    "freeFeature3": "Daftar rumah sakit yang direkomendasikan",
+    "freeFeature4": "Deskripsi proses standar",
+    "proFeature1": "Ditinjau oleh Dokter Ahli Madya+",
+    "proFeature2": "Biaya terperinci hingga ribuan terdekat",
+    "proFeature3": "Kunci ahli spesifik + Janji temu VIP",
+    "proFeature4": "Rencana proses penuh yang dipersonalisasi",
+    "proFeature5": "Surat undangan visa medis (48 jam)",
+    "proFeature6": "Akurasi terjemahan kasus 98.5%",
+    "next": "Langkah Berikutnya",
+    "nextStep1": "Tingkatkan untuk mendapatkan Laporan Terverifikasi Ahli",
+    "nextStep2": "Kunci janji temu ahli Anda dengan laporan Pro",
+    "nextStep3": "Kami membantu dengan penerbangan dan akomodasi untuk perjalanan perawatan Anda",
+    "contact": "Hubungi Kami"
+  },
+  "pkg": {
+    "written": {
+      "title": "Paket Tinjauan Tertulis",
+      "price": "¥399",
+      "desc": "Tinjauan rekam medis + Pencocokan ahli + Penilaian awal tertulis PDF",
+      "delivery": "Dikirim dalam 5-7 hari kerja"
+    },
+    "video": {
+      "title": "Paket Konsultasi Video",
+      "price": "¥1,299",
+      "desc": "Konsultasi video ahli 15-30 menit + Ringkasan tertulis + 1 tindak lanjut dalam 7 hari"
+    },
+    "dual": {
+      "title": "Paket Dua Ahli",
+      "price": "¥2,399",
+      "desc": "2 konsultasi ahli + Laporan terintegrasi + 2 tindak lanjut dalam 14 hari"
+    },
+    "btn": "Tingkatkan Sekarang"
+  },
+  "hospitals": {
+    "title": "Rumah Sakit Internasional Terbaik di China",
+    "subtitle": "42 rumah sakit internasional bersertifikat di Beijing, Shanghai, Guangzhou, Shenzhen & Boao, mencakup semua kategori penyakit",
+    "all": "Semua",
+    "beijing": "Beijing",
+    "shanghai": "Shanghai",
+    "guangzhou": "Guangzhou",
+    "shenzhen": "Shenzhen",
+    "boao": "Boao",
+    "jci": "Bersertifikat JCI",
+    "detail": "Detail",
+    "consult": "Konsultasi Sekarang",
+    "intro": "Ikhtisar Rumah Sakit",
+    "dept": "Departemen",
+    "diseases": "Spesialisasi"
+  },
+  "about": {
+    "title": "Tentang Huanyu Cloud Medical",
+    "subtitle": "Mendefinisikan Ulang Keamanan dan Transparansi dalam Perawatan Medis Lintas Batas",
+    "mission": "Misi Kami",
+    "missionText": "Huanyu Cloud Medical adalah mesin intelijen medis lintas batas pertama yang didorong oleh PLG. Kami melakukan satu hal: menjadikan perawatan kesehatan kelas dunia benar-benar dapat diakses.",
+    "values": "Lima Janji Nilai Inti",
+    "v1": {
+      "title": "01 Transparansi Penuh",
+      "desc": "Dasbor perawatan real-time membuat setiap langkah terlihat; tagihan terperinci menghilangkan biaya tersembunyi; sinkronisasi keluarga menjaga orang yang Anda cintai tetap terinformasi."
+    },
+    "v2": {
+      "title": "02 Pencocokan AI + Tinjauan Ahli",
+      "desc": "Teknologi NLP secara objektif menganalisis kondisi Anda dari 2000+ rumah sakit bersertifikat. Setiap rencana ditinjau ulang oleh Dokter Ahli Madya atau lebih tinggi."
+    },
+    "v3": {
+      "title": "03 Perawatan Pasca-rawatan Penuh",
+      "desc": "Tindak lanjut bulanan oleh penasihat medis khusus; konsultasi cloud jarak jauh lintas batas; catatan rehabilitasi lengkap yang diarsipkan."
+    },
+    "v4": {
+      "title": "04 Perjalanan Keputusan Tanpa Risiko",
+      "desc": "Penilaian kelayakan gratis tanpa pembayaran diperlukan. Hanya lanjutkan ketika Anda sepenuhnya puas — pilihan selalu menjadi milik Anda."
+    },
+    "v5": {
+      "title": "05 Kepatuhan & Respons Darurat",
+      "desc": "Akurasi terjemahan medis 98.5%; sistem peringatan anomali memicu segera; pemantauan kepatuhan intelijen sepanjang perjalanan Anda."
+    },
+    "compareTitle": "Huanyu Cloud Medical vs Agen Medis Tradisional",
+    "compare": {
+      "transparency": "Transparansi",
+      "objectivity": "Objektivitas",
+      "followup": "Tindak Lanjut",
+      "aftercare": "Perawatan Pasca",
+      "decision": "Risiko Keputusan",
+      "compliance": "Kepatuhan",
+      "trust": "Basis Kepercayaan"
+    },
+    "traditional": "Agen Tradisional",
+    "huanyu": "Huanyu Cloud Medical",
+    "team": "Tim Inti",
+    "contact": "Hubungi Kami",
+    "contactDesc": "Untuk pertanyaan atau permintaan kemitraan, silakan hubungi kami",
+    "promise": "Janji Kami",
+    "promiseText": "Kami tidak hanya membantu Anda menemukan dokter — kami membantu Anda mengelola seluruh masa depan pemulihan Anda. Setiap pasien yang memilih kami menerima tim khusus sistem AI, penasihat medis senior, dan ahli klinis."
+  },
+  "common": {
+    "loading": "Memuat...",
+    "submit": "Kirim",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "close": "Tutup",
+    "yes": "Ya",
+    "no": "Tidak",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "prev": "Sebelumnya",
+    "detail": "Detail",
+    "more": "Pelajari Lebih Lanjut",
+    "start": "Mulai Pengalaman",
+    "savePercent": "Hemat"
+  }
+}

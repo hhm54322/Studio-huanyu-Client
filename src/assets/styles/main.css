@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ─── 双端色彩体系 CSS 变量 ─── */
+:root {
+  /* 患者端色系 (橙色) */
+  --patient-primary: #C05621;
+  --patient-secondary: #DD6B20;
+  --patient-accent: #ED8936;
+  --patient-light: #FFF5EB;
+  --patient-lighter: #FFFAF5;
+
+  /* 医院端色系 (深蓝+青绿) */
+  --hospital-primary: #1A365D;
+  --hospital-secondary: #319795;
+  --hospital-accent: #D69E2E;
+  --hospital-light: #F7FAFC;
+
+  /* 通用 */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #a0aec0;
+  --border-color: #e2e8f0;
+  --bg-page: #f7fafc;
+}
+
+/* ─── 全局基础样式 ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── 安全区域适配 ─── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ─── 自定义滚动条 ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* ─── 横向滚动表格容器 ─── */
+.table-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── 页面切换过渡 ─── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}

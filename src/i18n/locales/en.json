@@ -1,0 +1,275 @@
+{
+  "nav": {
+    "home": "Home",
+    "cost": "Cost Comparison",
+    "report": "Report Demo",
+    "hospitals": "Hospitals",
+    "cases": "Patient Cases",
+    "visa": "Visa Guide",
+    "steps": "Medical Steps",
+    "about": "About Us",
+    "consult": "Consult Now",
+    "language": "Language",
+    "free": "Free Trial"
+  },
+  "footer": {
+    "about": "About Us",
+    "links": "Quick Links",
+    "contact": "Contact",
+    "follow": "Follow Us",
+    "desc": "Huanyu Cloud Medical is the world\\",
+    "copyright": "© 2025 Huanyu Cloud Medical. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "help": "Help Center"
+  },
+  "hero": {
+    "title": "Find Your Best Treatment in 3 Minutes",
+    "subtitle": "Enter your condition and get an 8-country medical feasibility analysis report — costs, technology, hospitals, and recovery timeline all in one comparison.",
+    "btn1": "Free Report",
+    "btn2": "Learn More"
+  },
+  "stat": {
+    "save": "Save up to",
+    "saveUnit": "%",
+    "wait": "Wait time",
+    "waitUnit": "days",
+    "proton": "Proton Therapy",
+    "protonPrice": "$38K-$55K",
+    "hospitals": "Accredited Hospitals",
+    "hospitalsCount": "2000+"
+  },
+  "feature": {
+    "ai": {
+      "title": "AI Smart Matching",
+      "desc": "Based on your condition, precisely match the top 3 most suitable hospitals from 2000+ accredited institutions."
+    },
+    "cost": {
+      "title": "Multi-country Cost Comparison",
+      "desc": "Covers 8 countries: USA, UK, Germany, Singapore, Thailand, Malaysia, Japan, and China."
+    },
+    "full": {
+      "title": "Full-cycle Care Management",
+      "desc": "From visa invitation letters to post-treatment remote follow-up, one-stop comprehensive service."
+    }
+  },
+  "cases": {
+    "title": "Real Patient Savings Stories",
+    "subtitle": "Authentic cross-border medical journeys from patients worldwide",
+    "pageTitle": "Real Patient Cases",
+    "pageSubtitle": "Cross-border medical journeys from patients of different countries and conditions",
+    "patient": "Patient",
+    "country": "Nationality",
+    "condition": "Condition",
+    "decision": "Decision Journey",
+    "treatment": "Treatment Plan",
+    "cost": "Cost Comparison",
+    "result": "Outcome",
+    "back": "Back to Home"
+  },
+  "case": {
+    "readMore": "Read More"
+  },
+  "costTable": {
+    "title": "Global Cancer Treatment Cost Comparison",
+    "subtitle": "8 countries × 7 treatment methods complete cost matrix",
+    "treatment": "Treatment",
+    "viewFull": "View Full Comparison"
+  },
+  "compare": {
+    "title": "Free vs Pro Version",
+    "free": "Free",
+    "pro": "Pro",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "upgrade": "Upgrade to Pro"
+  },
+  "trust": {
+    "title": "Why Choose Huanyu Cloud Medical",
+    "ai": "AI Matching + Expert Review",
+    "transparent": "Full Transparency, Itemized Billing",
+    "followup": "Full-cycle Post-treatment Management",
+    "compliance": "Compliance Assurance, 98.5% Translation Accuracy"
+  },
+  "cta": {
+    "title": "Start Your Free Experience",
+    "subtitle": "Get your personalized medical feasibility report in 3 minutes",
+    "btn": "Free Report"
+  },
+  "cost": {
+    "pageTitle": "Global Cancer Treatment Cost Comparison",
+    "pageSubtitle": "Full-cycle cost matrix for 7 treatments across 8 countries, based on 2025-2026 International Medical Cost Index",
+    "savings": "Savings Cases",
+    "disclaimer": "Note: Costs are estimated full-cycle ranges (including surgery, medication, hospitalization, and examinations). Actual costs vary by disease stage and individual condition."
+  },
+  "report": {
+    "pageTitle": "Generate Your Medical Feasibility Report in 3 Minutes",
+    "pageSubtitle": "Enter your condition, AI automatically analyzes 8-country treatment plans and generates a professional comparison report",
+    "step1": "Select Disease",
+    "step2": "Select Region",
+    "step3": "Set Budget",
+    "step4": "Generate Report",
+    "selectDisease": "Please select your disease type",
+    "selectRegion": "Please select countries/regions for comparison",
+    "budget": "Please select your budget range",
+    "generate": "Generate Report",
+    "generating": "AI Analyzing",
+    "reportTitle": "China Medical Treatment Feasibility Pre-assessment Report",
+    "reportId": "Report ID",
+    "date": "Date",
+    "patient": "Patient",
+    "diagnosis": "Diagnosis",
+    "section1": "I. Patient Basic Information",
+    "section2": "II. Global Treatment Plan Comparison",
+    "recommended": "Recommended",
+    "totalCost": "Estimated Total Cost",
+    "waitTime": "Waiting Time",
+    "tech": "Medical Technology",
+    "service": "International Patient Service",
+    "visa": "Visa & Travel Convenience",
+    "followup": "Post-treatment Follow-up",
+    "section3": "III. Feasibility Assessment",
+    "score": "Overall Feasibility Score",
+    "high": "High Feasibility",
+    "advantage": "Advantages",
+    "concern": "Concerns & Solutions",
+    "language": "Language Barrier",
+    "languageSol": "Professional medical translators provided throughout",
+    "process": "Unfamiliar Process",
+    "processSol": "Dedicated international patient coordinator handles everything",
+    "insurance": "Insurance Reimbursement",
+    "insuranceSol": "Direct billing partnerships with major international insurers",
+    "aftercare": "Post-treatment Follow-up",
+    "aftercareSol": "Remote consultations and rehabilitation guidance provided",
+    "section4": "IV. Recommended Hospitals in China",
+    "note": "General list based on regional preferences. Specific departments and experts require Pro version.",
+    "section5": "V. Preliminary Treatment Plan",
+    "direction": "Recommended Treatment",
+    "duration": "Estimated Duration",
+    "costDetail": "Cost Estimate (Range)",
+    "surgery": "Treatment/Surgery",
+    "exam": "Examinations",
+    "medicine": "Medication",
+    "hospital": "Hospitalization",
+    "serviceFee": "Service Fee",
+    "total": "Total",
+    "preparation": "Preparation",
+    "section6": "VI. Upgrade Recommendation",
+    "upgradeTitle": "Why You Need the Expert Verified Edition",
+    "upgradeDesc": "The free report points the way, but professional medical validation ensures complete confidence.",
+    "freeVersion": "Free Preview",
+    "proVersion": "Pro Version",
+    "freeFeature1": "AI-generated general data",
+    "freeFeature2": "Approximate cost ranges",
+    "freeFeature3": "Recommended hospital list",
+    "freeFeature4": "Standard process description",
+    "proFeature1": "Reviewed by Associate Chief Physician+",
+    "proFeature2": "Itemized cost to the nearest thousand",
+    "proFeature3": "Lock specific expert + VIP appointment",
+    "proFeature4": "Personalized full-process plan",
+    "proFeature5": "Medical visa invitation letter (48h)",
+    "proFeature6": "Case translation accuracy 98.5%",
+    "next": "Next Steps",
+    "nextStep1": "Upgrade to get the Expert Verified Report",
+    "nextStep2": "Lock your expert appointment with the Pro report",
+    "nextStep3": "We assist with flights and accommodation for your treatment journey",
+    "contact": "Contact Us"
+  },
+  "pkg": {
+    "written": {
+      "title": "Written Review Package",
+      "price": "¥399",
+      "desc": "Record review + Expert matching + Written preliminary assessment PDF",
+      "delivery": "Delivered within 5-7 business days"
+    },
+    "video": {
+      "title": "Video Consultation Package",
+      "price": "¥1,299",
+      "desc": "15-30 min expert video consultation + Written summary + 1 follow-up within 7 days"
+    },
+    "dual": {
+      "title": "Dual-Specialist Package",
+      "price": "¥2,399",
+      "desc": "2 expert consultations + Integrated report + 2 follow-ups within 14 days"
+    },
+    "btn": "Upgrade Now"
+  },
+  "hospitals": {
+    "title": "Top International Hospitals in China",
+    "subtitle": "42 accredited international hospitals in Beijing, Shanghai, Guangzhou, Shenzhen & Boao, covering all disease categories",
+    "all": "All",
+    "beijing": "Beijing",
+    "shanghai": "Shanghai",
+    "guangzhou": "Guangzhou",
+    "shenzhen": "Shenzhen",
+    "boao": "Boao",
+    "jci": "JCI Accredited",
+    "detail": "Details",
+    "consult": "Consult Now",
+    "intro": "Hospital Overview",
+    "dept": "Departments",
+    "diseases": "Specialties"
+  },
+  "about": {
+    "title": "About Huanyu Cloud Medical",
+    "subtitle": "Redefining Safety and Transparency in Cross-border Medical Care",
+    "mission": "Our Mission",
+    "missionText": "Huanyu Cloud Medical is the world\\",
+    "values": "Five Core Value Promises",
+    "v1": {
+      "title": "01 Full Transparency",
+      "desc": "Real-time treatment dashboard makes every step visible; itemized billing eliminates hidden costs; family sync keeps loved ones informed."
+    },
+    "v2": {
+      "title": "02 AI Matching + Expert Review",
+      "desc": "NLP technology objectively analyzes your condition from 2000+ accredited hospitals. Each plan is double-reviewed by Associate Chief Physicians or above."
+    },
+    "v3": {
+      "title": "03 Full-cycle Post-treatment Care",
+      "desc": "Monthly follow-ups by dedicated medical advisors; remote cloud consultations across borders; complete rehabilitation records archived."
+    },
+    "v4": {
+      "title": "04 Zero-risk Decision Journey",
+      "desc": "Free feasibility pre-assessment with no payment required. Only proceed when you are fully satisfied — the choice is always yours."
+    },
+    "v5": {
+      "title": "05 Compliance & Emergency Response",
+      "desc": "98.5% medical translation accuracy; anomaly alert system triggers immediately; intelligent compliance monitoring throughout your journey."
+    },
+    "compareTitle": "Huanyu Cloud Medical vs Traditional Medical Agents",
+    "compare": {
+      "transparency": "Transparency",
+      "objectivity": "Objectivity",
+      "followup": "Follow-up",
+      "aftercare": "Aftercare",
+      "decision": "Decision Risk",
+      "compliance": "Compliance",
+      "trust": "Trust Basis"
+    },
+    "traditional": "Traditional Agent",
+    "huanyu": "Huanyu Cloud Medical",
+    "team": "Core Team",
+    "contact": "Contact Us",
+    "contactDesc": "For any questions or partnership inquiries, please feel free to contact us",
+    "promise": "Our Promise",
+    "promiseText": "We don\\"
+  },
+  "common": {
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "next": "Next",
+    "prev": "Previous",
+    "detail": "Details",
+    "more": "Learn More",
+    "start": "Start Experience",
+    "savePercent": "Save"
+  }
+}

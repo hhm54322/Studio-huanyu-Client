@@ -1,0 +1,275 @@
+{
+  "nav": {
+    "home": "首页",
+    "cost": "费用对比",
+    "report": "报告体验",
+    "hospitals": "中国医院",
+    "cases": "患者案例",
+    "visa": "签证办理",
+    "steps": "就医步骤",
+    "about": "关于我们",
+    "consult": "立即咨询",
+    "language": "语言",
+    "free": "免费体验"
+  },
+  "footer": {
+    "about": "关于我们",
+    "links": "快速链接",
+    "contact": "联系我们",
+    "follow": "关注我们",
+    "desc": "寰宇云医是全球首个AI驱动的跨境医疗智能导航平台，致力于让全球患者零门槛触达中国优质医疗资源。",
+    "copyright": "© 2025 寰宇云医 Global MediNav. All rights reserved.",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "help": "帮助中心"
+  },
+  "hero": {
+    "title": "3分钟找到最适合你的治疗方案",
+    "subtitle": "输入病情，获取全球8国医疗可行性分析报告 — 费用、技术、医院、康复周期一站式对比",
+    "btn1": "免费生成报告",
+    "btn2": "了解详情"
+  },
+  "stat": {
+    "save": "节省高达",
+    "saveUnit": "",
+    "wait": "等待",
+    "waitUnit": "天",
+    "proton": "质子治疗",
+    "protonPrice": "$38K-$55K",
+    "hospitals": "认证医院",
+    "hospitalsCount": "2000+"
+  },
+  "feature": {
+    "ai": {
+      "title": "AI智能匹配",
+      "desc": "基于病情描述，从2000+认证医院中精准匹配最适合的3家医院"
+    },
+    "cost": {
+      "title": "多国费用对比",
+      "desc": "覆盖美国、英国、德国、新加坡、泰国、马来西亚、日本、中国8国费用数据"
+    },
+    "full": {
+      "title": "全程就医管理",
+      "desc": "从签证邀请函到术后远程随访，一站式全周期服务"
+    }
+  },
+  "cases": {
+    "title": "真实患者节省案例",
+    "subtitle": "来自全球患者的真实跨境就医经历",
+    "pageTitle": "患者真实案例",
+    "pageSubtitle": "来自不同国家、不同病种患者的跨境就医故事",
+    "patient": "患者",
+    "country": "国籍",
+    "condition": "病情",
+    "decision": "决策对比",
+    "treatment": "治疗方案",
+    "cost": "费用对比",
+    "result": "治疗结果",
+    "back": "返回首页"
+  },
+  "case": {
+    "readMore": "查看详情"
+  },
+  "costTable": {
+    "title": "全球肿瘤治疗费用对比",
+    "subtitle": "8国7种治疗方式完整费用矩阵",
+    "treatment": "治疗方式",
+    "viewFull": "查看完整对比"
+  },
+  "compare": {
+    "title": "免费版 vs 专业版",
+    "free": "免费版",
+    "pro": "专业版",
+    "monthly": "月度订阅",
+    "yearly": "年度订阅",
+    "perMonth": "月",
+    "perYear": "年",
+    "upgrade": "升级到专业版"
+  },
+  "trust": {
+    "title": "为什么选择寰宇云医",
+    "ai": "AI精准匹配 × 专家人工复核",
+    "transparent": "全程透明可视，逐条费用清单",
+    "followup": "全周期术后管理，跨境云病房",
+    "compliance": "合规保障，病历翻译准确率98.5%"
+  },
+  "cta": {
+    "title": "立即免费体验",
+    "subtitle": "3分钟获取你的专属医疗可行性分析报告",
+    "btn": "免费生成报告"
+  },
+  "cost": {
+    "pageTitle": "全球肿瘤治疗费用对比",
+    "pageSubtitle": "8国7种治疗方式全周期费用矩阵，数据基于2025-2026年国际医疗成本指数",
+    "savings": "节省案例",
+    "disclaimer": "注：以上费用为全周期治疗预估区间（含手术/药物/住院/检查），实际费用因病情分期和个体情况而异。"
+  },
+  "report": {
+    "pageTitle": "3分钟生成你的医疗可行性报告",
+    "pageSubtitle": "输入病情，AI自动分析全球8国治疗方案，生成专业对比报告",
+    "step1": "选择病种",
+    "step2": "选择地区",
+    "step3": "确认预算",
+    "step4": "生成报告",
+    "selectDisease": "请选择您的病种",
+    "selectRegion": "请选择期望对比的国家/地区",
+    "budget": "请选择您的预算范围",
+    "generate": "生成报告",
+    "generating": "AI分析中",
+    "reportTitle": "来华就医可行性预审报告",
+    "reportId": "报告编号",
+    "date": "生成日期",
+    "patient": "患者",
+    "diagnosis": "确诊疾病",
+    "section1": "一、患者基础病情信息",
+    "section2": "二、全球就医方案综合对比",
+    "recommended": "推荐",
+    "totalCost": "预估总费用",
+    "waitTime": "就医等待时长",
+    "tech": "医疗技术实力",
+    "service": "国际患者服务",
+    "visa": "签证出行便利度",
+    "followup": "术后康复随访",
+    "section3": "三、来华就医可行性评估",
+    "score": "整体可行性评分",
+    "high": "高度可行",
+    "advantage": "优势",
+    "concern": "潜在顾虑及解决方案",
+    "language": "语言沟通障碍",
+    "languageSol": "全程配备专业中英文医学翻译",
+    "process": "不熟悉国内就医流程",
+    "processSol": "国际患者专员一站式代办",
+    "insurance": "跨境保险报销难",
+    "insuranceSol": "平台对接多家国际保险公司，提供直付服务",
+    "aftercare": "术后回国复查不便",
+    "aftercareSol": "远程复诊、康复指导，协助对接当地医院",
+    "section4": "四、国内对口医院推荐",
+    "note": "以下为AI根据您的地区偏好推荐的通用名单。具体科室及专家需付费版解锁。",
+    "section5": "五、初步来华就医方案",
+    "direction": "推荐诊疗方向",
+    "duration": "预估总时长",
+    "costDetail": "费用明细预估（区间）",
+    "surgery": "治疗/手术费",
+    "exam": "检查费",
+    "medicine": "药品费",
+    "hospital": "住院费",
+    "serviceFee": "服务费",
+    "total": "总计",
+    "preparation": "前期准备",
+    "section6": "六、升级建议",
+    "upgradeTitle": "为什么您需要《专业精修版》？",
+    "upgradeDesc": "免费报告为您指明了方向，但要确保万无一失，您需要医生的专业背书。",
+    "freeVersion": "免费预览版",
+    "proVersion": "专业付费版",
+    "freeFeature1": "AI生成的通用数据",
+    "freeFeature2": "模糊的费用区间",
+    "freeFeature3": "推荐医院名单",
+    "freeFeature4": "标准流程说明",
+    "proFeature1": "副主任医师及以上人工审核",
+    "proFeature2": "精准到千位的费用清单",
+    "proFeature3": "锁定具体专家 + 预留VIP号源",
+    "proFeature4": "个性化定制全流程方案书",
+    "proFeature5": "医疗签证邀请函（48小时）",
+    "proFeature6": "病例翻译准确率98.5%",
+    "next": "下一步行动",
+    "nextStep1": "立即升级获取《专业付费版评估报告》",
+    "nextStep2": "凭付费版报告锁定专家号源",
+    "nextStep3": "协助预订机票与住宿，开启治疗之旅",
+    "contact": "联系我们"
+  },
+  "pkg": {
+    "written": {
+      "title": "书面评估基础包",
+      "price": "¥399",
+      "desc": "病历整理 + 专家匹配 + 书面初步评估PDF",
+      "delivery": "5-7个工作日内交付"
+    },
+    "video": {
+      "title": "单次视频面诊标准包",
+      "price": "¥1,299",
+      "desc": "15-30分钟专家视频面诊 + 书面总结 + 7天内1次跟进"
+    },
+    "dual": {
+      "title": "双专家视频面诊深度包",
+      "price": "¥2,399",
+      "desc": "2位专家会诊 + 综合报告 + 14天内2次跟进"
+    },
+    "btn": "立即升级"
+  },
+  "hospitals": {
+    "title": "中国顶尖国际医疗资源",
+    "subtitle": "北上广深+博鳌 42家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种",
+    "all": "全部",
+    "beijing": "北京",
+    "shanghai": "上海",
+    "guangzhou": "广州",
+    "shenzhen": "深圳",
+    "boao": "博鳌",
+    "jci": "JCI认证",
+    "detail": "查看详情",
+    "consult": "立即咨询",
+    "intro": "医院介绍",
+    "dept": "科室介绍",
+    "diseases": "擅长病种"
+  },
+  "about": {
+    "title": "关于寰宇云医",
+    "subtitle": "重新定义跨境就医的安全感与透明度",
+    "mission": "我们的使命",
+    "missionText": "寰宇云医是全球首个由PLG理念驱动的跨境医疗智能引擎。我们只做一件事：让世界上最优质的医疗资源，真正触手可及。",
+    "values": "五大核心价值承诺",
+    "v1": {
+      "title": "01 全程透明可视",
+      "desc": "实时就医看板让每一步进展清晰可见；逐条费用清单杜绝隐形消费；家属同步权限让关心您的人随时掌握动态。"
+    },
+    "v2": {
+      "title": "02 AI精准匹配 × 专家人工复核",
+      "desc": "基于NLP技术客观解析病情，从2000+认证医院多维度评估。每份方案经副主任医师及以上专家二次审核。"
+    },
+    "v3": {
+      "title": "03 全周期术后管理",
+      "desc": "治疗完成后专属医疗顾问按月随访，跨境云病房支持远程复诊，康复档案全程归档管理。"
+    },
+    "v4": {
+      "title": "04 零门槛决策体验",
+      "desc": "免费可行性预评估，无需支付任何费用即可获得来华就医预审报告。认可后再付费，选择权归患者。"
+    },
+    "v5": {
+      "title": "05 合规保障 × 应急响应",
+      "desc": "病历翻译准确率98.5%；异常预警系统第一时间触发；智能合规系统全程监控就医流程。"
+    },
+    "compareTitle": "寰宇云医 vs 传统医疗中介",
+    "compare": {
+      "transparency": "信息透明度",
+      "objectivity": "方案客观性",
+      "followup": "治疗跟进",
+      "aftercare": "术后管理",
+      "decision": "决策门槛",
+      "compliance": "合规保障",
+      "trust": "信任基础"
+    },
+    "traditional": "传统中介",
+    "huanyu": "寰宇云医",
+    "team": "核心团队",
+    "contact": "联系我们",
+    "contactDesc": "如有任何问题或合作意向，欢迎随时与我们联系",
+    "promise": "我们的承诺",
+    "promiseText": "我们不只帮您找到医生，更帮您管理整个康复的未来。每一位选择我们的患者，都将获得AI系统 + 资深医疗顾问 + 临床专家组成的护航团队。"
+  },
+  "common": {
+    "loading": "加载中...",
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "close": "关闭",
+    "yes": "是",
+    "no": "否",
+    "back": "返回",
+    "next": "下一步",
+    "prev": "上一步",
+    "detail": "详情",
+    "more": "了解更多",
+    "start": "开始体验",
+    "savePercent": "节省"
+  }
+}
