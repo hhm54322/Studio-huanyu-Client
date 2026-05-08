@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
-import { useAppStore } from '@/stores/app'
+import { onMounted, onUnmounted } from "vue";
+import { useAppStore } from "@/stores/app";
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 
 onMounted(() => {
-  appStore.initResponsive()
-})
-
+  appStore.initResponsive();
+});
+//
 onUnmounted(() => {
-  appStore.destroyResponsive()
-})
+  appStore.destroyResponsive();
+});
 </script>
 
 <template>
