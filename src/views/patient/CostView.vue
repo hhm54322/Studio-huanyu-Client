@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { use } from 'echarts/core'
 import { BarChart } from 'echarts/charts'
 import {
@@ -91,13 +91,7 @@ const savingsCases = [
 
 // ECharts 完整 8 国柱状图
 const isMobileChart = ref(false)
-
-onMounted(() => {
-  isMobileChart.value = window.innerWidth < 768
-  window.addEventListener('resize', () => {
-    isMobileChart.value = window.innerWidth < 768
-  })
-})
+const checkMobileChart = () => { isMobileChart.value = window.innerWidth < 768 }
 
 const barOption = computed(() => {
   const mobile = isMobileChart.value
@@ -116,6 +110,15 @@ const barOption = computed(() => {
       { name: '日本', type: 'bar', data: fullBarData.map((d) => d.japan), itemStyle: { color: '#F6AD55', borderRadius: [4, 4, 0, 0] } },
     ],
   }
+})
+
+onMounted(() => {
+  checkMobileChart()
+  window.addEventListener('resize', checkMobileChart)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobileChart)
 })
 
 function countryClass(index: number) {

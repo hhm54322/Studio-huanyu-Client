@@ -101,12 +101,10 @@ const radarOption = computed(() => {
   return {
     tooltip: { confine: true },
     legend: { data: ['中国', '欧美新平均'], bottom: 0, textStyle: { fontSize: 12 }, itemWidth: mobile ? 14 : 25 },
-    animationDuration: 800,
-    animationDurationUpdate: 0,
     radar: {
       indicator: radarData.map((d) => ({ name: d.subject, max: 100 })),
       radius: mobile ? '55%' : '65%',
-      name: { textStyle: { fontSize: mobile ? 11 : 12 } },
+      axisName: { fontSize: mobile ? 11 : 12 },
     },
     series: [
       {
@@ -141,8 +139,6 @@ const barOption = computed(() => {
     grid: { left: mobile ? '2%' : '3%', right: mobile ? '2%' : '4%', bottom: mobile ? '14%' : '12%', containLabel: true },
     xAxis: { type: 'category', data: barData.map((d) => d.name), axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 25 : 0 } },
     yAxis: { type: 'value', axisLabel: { fontSize: mobile ? 11 : 12 } },
-    animationDuration: 800,
-    animationDurationUpdate: 0,
     series: [
       { name: '中国', type: 'bar', data: barData.map((d) => d.china), itemStyle: { color: '#C05621', borderRadius: [4, 4, 0, 0] } },
       { name: '美国', type: 'bar', data: barData.map((d) => d.usa), itemStyle: { color: '#94a3b8', borderRadius: [4, 4, 0, 0] } },

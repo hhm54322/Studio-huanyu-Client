@@ -115,15 +115,15 @@ body.scroll-locked {
   z-index: 1;
 }
 
-/* ─── 移动端图表容器 ─── */
+/* ─── 图表容器（固定高度，防止 autoresize 与 grid 布局产生无限增长循环） ─── */
 .chart-container-mobile {
   width: 100%;
-  min-height: 260px;
+  height: 260px;
 }
 
 @media (min-width: 768px) {
   .chart-container-mobile {
-    min-height: 400px;
+    height: 400px;
   }
 }
 
