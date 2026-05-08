@@ -180,17 +180,17 @@ const stepLabels = [t('report.step1'), t('report.step2'), t('report.step3'), t('
               <div class="text-sm text-gray-600 mt-1">{{ a.label }}</div>
             </div>
           </div>
-          <div class="rounded-xl border border-gray-200 overflow-hidden overflow-x-auto">
-            <table class="min-w-full text-sm" style="min-width: 480px">
+          <div class="rounded-xl border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">{{ t('report.concern') }}</th>
-                  <th class="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">{{ t('report.languageSol') }}</th>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-700 w-[30%]">{{ t('report.concern') }}</th>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-700">{{ t('report.languageSol') }}</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-100">
                 <tr v-for="c in reportData.concerns" :key="c.concern">
-                  <td class="px-4 py-3 text-gray-800 font-medium whitespace-nowrap">{{ c.concern }}</td>
+                  <td class="px-4 py-3 text-gray-800 font-medium">{{ c.concern }}</td>
                   <td class="px-4 py-3 text-gray-700">{{ c.solution }}</td>
                 </tr>
               </tbody>
@@ -224,8 +224,8 @@ const stepLabels = [t('report.step1'), t('report.step2'), t('report.step3'), t('
               <div class="text-sm text-gray-500 mb-1">{{ t('report.duration') }}</div>
               <div class="font-medium text-gray-900">{{ reportData.plan.duration }}</div>
             </div>
-            <div class="rounded-xl border border-gray-200 overflow-hidden overflow-x-auto">
-              <table class="min-w-full text-sm" style="min-width: 360px">
+            <div class="rounded-xl border border-gray-200 overflow-hidden">
+              <table class="w-full text-sm">
                 <thead class="bg-gray-50">
                   <tr>
                     <th class="px-4 py-3 text-left font-semibold text-gray-700">费用项目</th>
@@ -235,11 +235,11 @@ const stepLabels = [t('report.step1'), t('report.step2'), t('report.step3'), t('
                 <tbody class="divide-y divide-gray-100">
                   <tr v-for="b in reportData.plan.breakdown" :key="b.item">
                     <td class="px-4 py-3 text-gray-800">{{ b.item }}</td>
-                    <td class="px-4 py-3 text-right text-[#C05621] font-semibold">{{ b.cost }}</td>
+                    <td class="px-4 py-3 text-right text-[#C05621] font-semibold whitespace-nowrap">{{ b.cost }}</td>
                   </tr>
                   <tr class="bg-orange-50">
                     <td class="px-4 py-3 font-bold text-gray-900">{{ t('report.total') }}</td>
-                    <td class="px-4 py-3 text-right font-bold text-[#C05621]">$14,300 - $25,500</td>
+                    <td class="px-4 py-3 text-right font-bold text-[#C05621] whitespace-nowrap">$14,300 - $25,500</td>
                   </tr>
                 </tbody>
               </table>
