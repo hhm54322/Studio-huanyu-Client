@@ -152,6 +152,11 @@ body.scroll-locked {
   -webkit-overflow-scrolling: touch;
 }
 
+/* ─── Select 当前值居中（Safari/部分浏览器需要 text-align-last） ─── */
+.text-center-last {
+  text-align-last: center;
+}
+
 /* ─── 页面切换过渡 ─── */
 .page-enter-active,
 .page-leave-active {
