@@ -109,7 +109,7 @@
     "pageSubtitle": "输入病情，AI自动分析全球8国治疗方案，生成专业对比报告",
     "step1": "基础信息",
     "step2": "选择地区",
-    "step3": "确认生成",
+    "step3": "生成报告",
     "selectRegion": "请选择期望对比的国家/地区",
     "basicInfo": "请填写基础信息",
     "basicInfoHint": "带 * 为必填项",
