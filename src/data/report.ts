@@ -77,21 +77,21 @@ export const reportData = {
 export const packages = [
   {
     name: '书面评估基础包',
-    price: '¥399',
+    price: '60💲',
     features: ['病历整理与归档', '专家智能匹配', '书面初步评估PDF'],
     highlight: false,
     icon: 'FileText',
   },
   {
     name: '单次视频面诊标准包',
-    price: '¥1,299',
+    price: '235💲',
     features: ['专家视频面诊15-30分钟', '书面诊疗总结', '7天内1次跟进答疑'],
     highlight: true,
     icon: 'Video',
   },
   {
     name: '双专家视频面诊深度包',
-    price: '¥2,399',
+    price: '450💲',
     features: ['2位相关科室专家会诊', '综合诊疗报告', '14天内2次跟进答疑'],
     highlight: false,
     icon: 'MessageSquare',

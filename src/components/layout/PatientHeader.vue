@@ -22,6 +22,7 @@ const navItems = computed(() => [
   { name: t('nav.report'), path: '/report' },
   { name: t('nav.hospitals'), path: '/hospitals' },
   { name: t('nav.cases'), path: '/cases' },
+  { name: t('nav.diseaseTech'), path: '/diseases-technologies' },
   { name: t('nav.visa'), path: '/visa' },
   { name: t('nav.steps'), path: '/steps' },
   { name: t('nav.about'), path: '/about' },
@@ -69,14 +70,13 @@ function onClickOutsideLang(e: Event) {
       <div class="flex h-16 items-center justify-between">
         <!-- Logo -->
         <router-link to="/" class="flex items-center gap-2">
-          <div
-            class="h-8 w-8 rounded-lg flex items-center justify-center text-white font-bold text-sm"
-            style="background: linear-gradient(to bottom right, #C05621, #ED8936)"
-          >
-            寰
-          </div>
+          <img
+            src="/images/logo.jpg"
+            alt="寰宇云医"
+            class="h-9 w-9 rounded-xl object-cover"
+          />
           <span
-            class="text-lg font-bold"
+            class="text-lg font-bold tracking-wide"
             style="background: linear-gradient(to right, #C05621, #DD6B20); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text"
           >
             寰宇云医

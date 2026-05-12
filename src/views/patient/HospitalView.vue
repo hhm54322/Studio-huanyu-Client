@@ -103,7 +103,7 @@ const radarOption = computed(() => {
       <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-3xl md:text-4xl font-bold mb-4">中国顶尖国际医疗资源</h1>
         <p class="text-lg text-white/90 max-w-3xl mx-auto">
-          北上广深+博鳌 51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种
+          北上广深+博鳌51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/牙科/慢性病等全病种
         </p>
         <div class="flex flex-wrap justify-center gap-4 mt-8 text-sm">
           <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full">15家 北京</span>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import {
   ArrowLeft,
@@ -29,6 +29,7 @@ import {
   CreditCard,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
+import { createReportSubmission } from '@/services/reportSubmissions'
 
 const { t, locale } = useI18n()
 
@@ -37,6 +38,8 @@ const selectedRegions = ref<string[]>([])
 const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
+const submissionError = ref('')
+const submissionNo = ref('')
 
 // 基础信息表单
 const form = reactive({
@@ -102,6 +105,13 @@ const localText = {
   choosePackage: { zh: '选择此套餐', en: 'Choose Package', id: 'Pilih Paket Ini', ru: 'Выбрать пакет', mn: 'Энэ багцыг сонгох' },
   highlights: { zh: '专业版核心亮点', en: 'Pro Edition Highlights', id: 'Keunggulan Edisi Pro', ru: 'Ключевые преимущества Pro', mn: 'Pro хувилбарын онцлох зүйлс' },
   contactHint: { zh: '对报告有疑问？我们的医学顾问随时为您解答', en: 'Questions about the report? Our medical advisors are ready to help.', id: 'Ada pertanyaan tentang laporan? Konsultan medis kami siap membantu.', ru: 'Есть вопросы по отчету? Наши медицинские консультанты готовы помочь.', mn: 'Тайлангийн талаар асуулт байна уу? Манай эмнэлгийн зөвлөхүүд туслахад бэлэн.' },
+  submitFailed: {
+    zh: '信息提交失败，请稍后重试。',
+    en: 'Failed to submit your information. Please try again later.',
+    id: 'Gagal mengirim informasi. Silakan coba lagi nanti.',
+    ru: 'Не удалось отправить информацию. Попробуйте позже.',
+    mn: 'Мэдээлэл илгээхэд алдаа гарлаа. Дараа дахин оролдоно уу.',
+  },
   validation: {
     passport: { zh: '护照号码通常为6-18位字母或数字', en: 'Passport number is usually 6-18 letters or digits', id: 'Nomor paspor biasanya 6-18 huruf atau angka', ru: 'Номер паспорта обычно содержит 6-18 букв или цифр', mn: 'Паспортын дугаар ихэвчлэн 6-18 үсэг эсвэл тооноос бүрдэнэ' },
     idCard: { zh: '请输入18位有效身份证号码', en: 'Enter a valid 18-digit national ID number', id: 'Masukkan nomor identitas nasional 18 digit yang valid', ru: 'Введите действительный 18-значный номер удостоверения личности', mn: '18 оронтой хүчинтэй иргэний үнэмлэхийн дугаар оруулна уу' },
@@ -291,17 +301,17 @@ const localizedReport = computed(() => {
       { item: { zh: '住宿与生活', en: 'Accommodation and daily living', id: 'Akomodasi dan kebutuhan harian', ru: 'Проживание и бытовые расходы', mn: 'Байр болон өдөр тутмын зардал' }, cost: '$2,000-$4,000' },
     ],
     packages: [
-      { name: { zh: '书面评估基础包', en: 'Written Review Basic Package', id: 'Paket Dasar Tinjauan Tertulis', ru: 'Базовый пакет письменной оценки', mn: 'Бичгийн үнэлгээний үндсэн багц' }, price: '¥399', icon: 'FileText', highlight: false, features: [
+      { name: { zh: '书面评估基础包', en: 'Written Review Basic Package', id: 'Paket Dasar Tinjauan Tertulis', ru: 'Базовый пакет письменной оценки', mn: 'Бичгийн үнэлгээний үндсэн багц' }, price: '60💲', icon: 'FileText', highlight: false, features: [
         { zh: '病历整理与归档', en: 'Medical record sorting and archiving', id: 'Penyusunan dan arsip rekam medis', ru: 'Систематизация и архивирование меддокументов', mn: 'Эмнэлгийн баримт цэгцлэх ба архивлах' },
         { zh: '专家智能匹配', en: 'Smart expert matching', id: 'Pencocokan ahli cerdas', ru: 'Интеллектуальный подбор эксперта', mn: 'Ухаалаг мэргэжилтэн тааруулах' },
         { zh: '书面初步评估PDF', en: 'Written preliminary assessment PDF', id: 'PDF asesmen awal tertulis', ru: 'PDF предварительной письменной оценки', mn: 'Бичгийн урьдчилсан үнэлгээ PDF' },
       ] },
-      { name: { zh: '单次视频面诊标准包', en: 'Single Video Consultation Standard Package', id: 'Paket Standar Konsultasi Video Tunggal', ru: 'Стандартный пакет одной видеоконсультации', mn: 'Нэг удаагийн видео зөвлөгөөний стандарт багц' }, price: '¥1,299', icon: 'Video', highlight: true, features: [
+      { name: { zh: '单次视频面诊标准包', en: 'Single Video Consultation Standard Package', id: 'Paket Standar Konsultasi Video Tunggal', ru: 'Стандартный пакет одной видеоконсультации', mn: 'Нэг удаагийн видео зөвлөгөөний стандарт багц' }, price: '235💲', icon: 'Video', highlight: true, features: [
         { zh: '专家视频面诊15-30分钟', en: '15-30 min expert video consultation', id: 'Konsultasi video ahli 15-30 menit', ru: 'Видеоконсультация эксперта 15-30 минут', mn: '15-30 минутын мэргэжилтний видео зөвлөгөө' },
         { zh: '书面诊疗总结', en: 'Written consultation summary', id: 'Ringkasan konsultasi tertulis', ru: 'Письменное резюме консультации', mn: 'Бичгийн зөвлөгөөний хураангуй' },
         { zh: '7天内1次跟进答疑', en: 'One follow-up Q&A within 7 days', id: '1 sesi tanya jawab lanjutan dalam 7 hari', ru: 'Один последующий Q&A в течение 7 дней', mn: '7 хоногийн дотор нэг удаагийн асуулт хариулт' },
       ] },
-      { name: { zh: '双专家视频面诊深度包', en: 'Dual-Specialist Video Consultation Package', id: 'Paket Mendalam Konsultasi Video Dua Ahli', ru: 'Расширенный пакет видеоконсультации двух экспертов', mn: 'Хоёр мэргэжилтний видео зөвлөгөөний гүнзгий багц' }, price: '¥2,399', icon: 'MessageSquare', highlight: false, features: [
+      { name: { zh: '双专家视频面诊深度包', en: 'Dual-Specialist Video Consultation Package', id: 'Paket Mendalam Konsultasi Video Dua Ahli', ru: 'Расширенный пакет видеоконсультации двух экспертов', mn: 'Хоёр мэргэжилтний видео зөвлөгөөний гүнзгий багц' }, price: '450💲', icon: 'MessageSquare', highlight: false, features: [
         { zh: '2位相关科室专家会诊', en: 'Consultation by two relevant specialists', id: 'Konsultasi oleh 2 ahli terkait', ru: 'Консилиум двух профильных специалистов', mn: 'Холбогдох хоёр мэргэжилтний зөвлөгөө' },
         { zh: '综合诊疗报告', en: 'Integrated treatment report', id: 'Laporan perawatan terpadu', ru: 'Комплексный лечебный отчет', mn: 'Нэгдсэн эмчилгээний тайлан' },
         { zh: '14天内2次跟进答疑', en: 'Two follow-up Q&A sessions within 14 days', id: '2 sesi tanya jawab lanjutan dalam 14 hari', ru: 'Два последующих Q&A в течение 14 дней', mn: '14 хоногийн дотор хоёр удаагийн асуулт хариулт' },
@@ -504,8 +514,31 @@ const selectedRegionLabels = computed(() => {
 })
 const regionJoiner = computed(() => activeLocale.value === 'zh' ? '、' : ', ')
 const selectedRegionText = computed(() => selectedRegionLabels.value.length ? selectedRegionLabels.value.join(regionJoiner.value) : lt(localText.globalDestinations))
+const reportSubmissionPayload = computed(() => ({
+  locale: activeLocale.value,
+  basicInfo: {
+    fullName: form.fullName.trim(),
+    gender: form.gender,
+    dateOfBirth: form.dateOfBirth,
+    nationality: form.nationality,
+    idType: form.idType,
+    idNumber: form.idNumber.trim(),
+    phone: form.phone.trim(),
+    email: form.email.trim(),
+    city: form.city.trim(),
+    preferredLanguage: form.preferredLanguage,
+    visitPurpose: form.visitPurpose,
+    chiefComplaint: form.chiefComplaint.trim(),
+  },
+  selectedRegions: selectedRegions.value,
+}))
 
-const nextStep = () => {
+const scrollToPageTop = async () => {
+  await nextTick()
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const nextStep = async () => {
   if (step.value === 0) {
     submitAttempted.value = true
     markAllTouched()
@@ -518,17 +551,30 @@ const nextStep = () => {
   }
 
   if (step.value === 2) {
+    if (generating.value) return
+    submissionError.value = ''
     generating.value = true
-    setTimeout(() => {
+    try {
+      const response = await createReportSubmission(reportSubmissionPayload.value)
+      submissionNo.value = response.submissionNo
       generating.value = false
       showReport.value = true
-    }, 2000)
+      await scrollToPageTop()
+    } catch (error) {
+      console.error(error)
+      submissionError.value = lt(localText.submitFailed)
+      generating.value = false
+    }
   } else {
     step.value++
+    await scrollToPageTop()
   }
 }
 
-const prevStep = () => step.value--
+const prevStep = async () => {
+  step.value--
+  await scrollToPageTop()
+}
 
 const toggleRegion = (r: string) => {
   const idx = selectedRegions.value.indexOf(r)
@@ -539,6 +585,8 @@ const toggleRegion = (r: string) => {
 
 const resetWizard = () => {
   showReport.value = false
+  submissionError.value = ''
+  submissionNo.value = ''
   step.value = 0
   selectedRegions.value = []
   submitAttempted.value = false
@@ -577,7 +625,7 @@ const resetWizard = () => {
           </div>
           <div class="text-right">
             <div class="text-sm text-orange-100">{{ t('report.reportId') }}</div>
-            <div class="font-mono font-bold text-base md:text-lg">{{ reportData.id }}</div>
+            <div class="font-mono font-bold text-base md:text-lg">{{ submissionNo || reportData.id }}</div>
             <div class="text-sm text-orange-100 mt-1">{{ reportData.date }}</div>
           </div>
         </div>
@@ -1198,6 +1246,7 @@ const resetWizard = () => {
           <Loader2 class="h-10 w-10 text-[#DD6B20] animate-spin" />
           <p class="text-sm text-gray-500">{{ t('report.generating') }}</p>
         </div>
+        <p v-if="submissionError" class="mb-4 text-sm text-red-500">{{ submissionError }}</p>
         <button
           v-else
           class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C05621] to-[#DD6B20] px-8 py-4 text-white font-bold shadow-lg hover:shadow-xl transition-all"

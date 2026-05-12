@@ -21,6 +21,7 @@ const iconMap: Record<string, any> = {
   Plane,
   Stethoscope,
   Heart,
+  Banknote,
   Globe,
 }
 </script>

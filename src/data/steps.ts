@@ -19,7 +19,7 @@ export const stepsData: StepData[] = [
     content:
       '提交病历资料（中英文翻译）→ AI智能匹配推荐医院 → 预约专家视频面诊（15-30分钟）→ 获取专业治疗方案建议',
     time: '1-3天',
-    cost: '免费初筛 / ¥399书面评估 / ¥1,299视频面诊',
+    cost: '免费初筛 / 60💲书面评估 / 235💲视频面诊',
     actions: ['提交病历', 'AI匹配', '视频面诊', '获取方案'],
   },
   {
@@ -68,6 +68,17 @@ export const stepsData: StepData[] = [
   },
   {
     number: '06',
+    title: '保险与结算',
+    subtitle: 'Insurance & Settlement',
+    icon: 'Banknote',
+    content:
+      '协助整理完整医疗账单 → 对接国际保险理赔 → 提交申请并跟进进度 → 完成费用结算与发票开具',
+    time: '3-7个工作日内启动理赔',
+    cost: '免费协助办理，无额外服务费',
+    actions: ['账单整理', '保险对接', '理赔协助', '费用结算'],
+  },
+  {
+    number: '07',
     title: '回国后随访',
     subtitle: 'Post-Return Follow-up',
     icon: 'Globe',

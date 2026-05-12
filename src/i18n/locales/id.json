@@ -5,12 +5,19 @@
     "report": "Laporan Demo",
     "hospitals": "Rumah Sakit",
     "cases": "Kasus Pasien",
+    "diseaseTech": "Penyakit & Teknologi",
     "visa": "Panduan Visa",
     "steps": "Langkah Medis",
     "about": "Tentang Kami",
     "consult": "Konsultasi Sekarang",
     "language": "Bahasa",
     "free": "Coba Gratis"
+  },
+  "diseaseTech": {
+    "title": "Penyakit & Teknologi",
+    "subtitle": "Jelajahi pusat spesialis utama dan teknologi medis canggih yang tersedia bagi pasien internasional di China.",
+    "servicesTitle": "Layanan Medis",
+    "servicesSubtitle": "Telusuri berdasarkan pusat spesialis, dengan pengembangan berikutnya ke pencocokan rumah sakit, perangkat, dan dokter ahli."
   },
   "footer": {
     "about": "Tentang Kami",
@@ -209,25 +216,25 @@
   "pkg": {
     "written": {
       "title": "Paket Tinjauan Tertulis",
-      "price": "¥399",
+      "price": "60💲",
       "desc": "Tinjauan rekam medis + Pencocokan ahli + Penilaian awal tertulis PDF",
       "delivery": "Dikirim dalam 5-7 hari kerja"
     },
     "video": {
       "title": "Paket Konsultasi Video",
-      "price": "¥1,299",
+      "price": "235💲",
       "desc": "Konsultasi video ahli 15-30 menit + Ringkasan tertulis + 1 tindak lanjut dalam 7 hari"
     },
     "dual": {
       "title": "Paket Dua Ahli",
-      "price": "¥2,399",
+      "price": "450💲",
       "desc": "2 konsultasi ahli + Laporan terintegrasi + 2 tindak lanjut dalam 14 hari"
     },
     "btn": "Tingkatkan Sekarang"
   },
   "hospitals": {
     "title": "Rumah Sakit Internasional Terbaik di China",
-    "subtitle": "42 rumah sakit internasional bersertifikat di Beijing, Shanghai, Guangzhou, Shenzhen & Boao, mencakup semua kategori penyakit",
+    "subtitle": "51 rumah sakit internasional bersertifikat di Beijing, Shanghai, Guangzhou, Shenzhen & Boao, mencakup onkologi, kardiovaskular, neurologi, ortopedi, gigi, penyakit kronis, dan lainnya",
     "all": "Semua",
     "beijing": "Beijing",
     "shanghai": "Shanghai",

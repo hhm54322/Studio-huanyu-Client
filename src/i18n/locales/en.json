@@ -5,12 +5,19 @@
     "report": "Report Demo",
     "hospitals": "Hospitals",
     "cases": "Patient Cases",
+    "diseaseTech": "Diseases & Technologies",
     "visa": "Visa Guide",
     "steps": "Medical Steps",
     "about": "About Us",
     "consult": "Consult Now",
     "language": "Language",
     "free": "Free Trial"
+  },
+  "diseaseTech": {
+    "title": "Diseases & Technologies",
+    "subtitle": "Explore priority specialty centers and advanced medical technologies available for international patients in China.",
+    "servicesTitle": "Medical Services",
+    "servicesSubtitle": "Browse by specialty center, with future expansion into hospital, device, and expert matching."
   },
   "footer": {
     "about": "About Us",
@@ -209,25 +216,25 @@
   "pkg": {
     "written": {
       "title": "Written Review Package",
-      "price": "¥399",
+      "price": "60💲",
       "desc": "Record review + Expert matching + Written preliminary assessment PDF",
       "delivery": "Delivered within 5-7 business days"
     },
     "video": {
       "title": "Video Consultation Package",
-      "price": "¥1,299",
+      "price": "235💲",
       "desc": "15-30 min expert video consultation + Written summary + 1 follow-up within 7 days"
     },
     "dual": {
       "title": "Dual-Specialist Package",
-      "price": "¥2,399",
+      "price": "450💲",
       "desc": "2 expert consultations + Integrated report + 2 follow-ups within 14 days"
     },
     "btn": "Upgrade Now"
   },
   "hospitals": {
     "title": "Top International Hospitals in China",
-    "subtitle": "42 accredited international hospitals in Beijing, Shanghai, Guangzhou, Shenzhen & Boao, covering all disease categories",
+    "subtitle": "51 accredited international hospitals in Beijing, Shanghai, Guangzhou, Shenzhen & Boao, covering oncology, cardiovascular, neurology, orthopedics, dental, chronic diseases and more",
     "all": "All",
     "beijing": "Beijing",
     "shanghai": "Shanghai",
