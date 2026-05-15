@@ -2,7 +2,7 @@
 
 > **重要约定**：每完成一个 Phase 或发生重大决策变更后，必须更新本文档对应章节。这是跨会话协作的唯一上下文来源。
 
-> **最后更新**：2026-05-07 | Phase 5 完成，移动端深度适配已实施
+> **最后更新**：2026-05-14 | 新增「设备详情」页（EquipmentView），完整覆盖《中国高端肿瘤治疗设备名单》文档
 
 ---
 
@@ -351,5 +351,6 @@ npm run dev
 | 2026-05-07 | Claude (Opus) | Phase 5 完成：移动端深度适配。main.css 全局工具类 + 10 个页面逐一优化（ECharts 响应式、表格横向滚动+sticky、弹窗滚动锁定、安全区域、触摸优化、代码块/表单响应式） |
 | 2026-05-07 | Claude (Opus) | 紧急修复：禁用 postcss-px-to-viewport-8-plugin。该插件将 Tailwind 生成的 px 值转为 vw 导致移动端布局崩坏（padding/margin 全部被错误缩放，内容贴边）。Kimi 原版未使用此插件，Tailwind 自身响应式类已足够 |
 | 2026-05-07 | Claude (Opus) | 细节修复：1) en.json `about.promiseText` 反斜杠截断修复；2) About 页承诺区块 padding p-6→p-10 对齐 Kimi；3) Cases 页 header 图标 Activity→Heart 对齐 Kimi；4) en.json `footer.desc`/`about.missionText` 截断修复（此前已完成） |
+| 2026-05-14 | Claude (Opus) | 新增「设备详情」页（EquipmentView.vue, 822 行）：基于《中国高端肿瘤治疗设备名单》docx 严格 1:1 还原，10 个 Section（Hero / 核心优势 / 设备硬件对比 / 设备分类筛选+卡片 / 价格对比 / 伽马刀 vs 射波刀 / 重点技术路线 / 患者案例 / 合作医院 / CTA）。`src/data/equipment.ts` 重写为 LocalizedText 结构（5 语言对象），所有用户可见文案均可翻译；en/id/ru/mn 暂用中文兜底待回填。i18n JSON 新增 `equipment.*` 命名空间约 50 个骨架 key。路由 `/equipment`，Header 导航插在「疾病类型」之后。vue-tsc 类型检查通过 |
 
 <!-- 后续每次会话结束前，在此追加一行更新记录 -->

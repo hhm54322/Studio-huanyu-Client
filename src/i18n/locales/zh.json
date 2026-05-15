@@ -5,7 +5,8 @@
     "report": "报告体验",
     "hospitals": "中国医院",
     "cases": "患者案例",
-    "diseaseTech": "疾病和设备",
+    "diseaseTech": "疾病类型",
+    "equipment": "设备详情",
     "visa": "签证办理",
     "steps": "就医步骤",
     "about": "关于我们",
@@ -14,10 +15,100 @@
     "free": "免费体验"
   },
   "diseaseTech": {
-    "title": "疾病和设备",
+    "title": "疾病类型",
     "subtitle": "覆盖重点专科中心与先进诊疗技术，帮助国际患者快速理解可匹配的医疗资源。",
     "servicesTitle": "重点疾病与诊疗技术",
     "servicesSubtitle": "按专科中心浏览，后续可继续扩展为医院、设备和专家的精准匹配入口。"
+  },
+  "equipment": {
+    "hero": {
+      "tag": "中国高端肿瘤治疗设备",
+      "title": "国际一流设备 · 一半价格 · 极速就医",
+      "subtitle": "覆盖精准放疗、粒子线、微创消融、影像诊断、机器人手术五大类高端设备。",
+      "stat1": "8 类高端设备",
+      "stat2": "价格仅欧美 1/3~1/2",
+      "stat3": "1-2 周即可启动治疗"
+    },
+    "advantageSection": {
+      "title": "核心优势速览",
+      "subtitle": "中国肿瘤治疗的三大核心优势",
+      "colDim": "对比维度",
+      "colChina": "中国",
+      "colOverseas": "欧美",
+      "colSea": "东南亚",
+      "highlightPrice": "价格优势：同等治疗，价格仅为欧美一半",
+      "highlightWait": "时间优势：从确诊到治疗仅需 1-2 周",
+      "highlightTech": "技术优势：设备全面，部分技术全球首创"
+    },
+    "comparisonSection": {
+      "title": "中国 vs 欧美 vs 东南亚",
+      "subtitle": "高端设备硬件水平对比",
+      "deviceCol": "设备类型"
+    },
+    "categorySection": {
+      "title": "高端治疗设备全景",
+      "subtitle": "按设备类别筛选，了解每台设备的技术、适用病症与代表医院",
+      "all": "全部设备",
+      "expand": "展开详情",
+      "collapse": "收起详情",
+      "techPoints": "技术特点",
+      "techAdvantages": "技术优势",
+      "diseases": "适用病症",
+      "diseaseCategories": "适用病症（按类别）",
+      "hospitals": "中国代表医院",
+      "benefits": "患者获益",
+      "benefitDetails": "患者获益详情",
+      "priceLabel": "中国 / 海外参考价",
+      "noPrice": "—"
+    },
+    "priceSection": {
+      "title": "价格对比",
+      "subtitle": "单位：万人民币",
+      "colTreatment": "治疗项目",
+      "colChina": "中国",
+      "colUsa": "欧美",
+      "colSingapore": "新加坡",
+      "colThailand": "泰国"
+    },
+    "vsSection": {
+      "title": "伽马刀 vs 射波刀",
+      "subtitle": "两大顶尖放疗设备的关键差异",
+      "colDim": "对比维度",
+      "colGamma": "伽马刀",
+      "colCyber": "射波刀"
+    },
+    "routeSection": {
+      "title": "重点技术路线",
+      "subtitle": "三条主流治疗路径，覆盖不同患者需求",
+      "target": "适合人群",
+      "techs": "核心技术",
+      "advantages": "治疗优势"
+    },
+    "caseSection": {
+      "title": "患者成功案例",
+      "subtitle": "来自东南亚的真实国际患者治疗案例",
+      "diagnosis": "诊断",
+      "before": "治疗前",
+      "equipment": "治疗设备",
+      "plan": "治疗方案",
+      "hospital": "治疗医院",
+      "process": "治疗过程",
+      "result": "治疗效果",
+      "feedback": "患者反馈"
+    },
+    "partnerSection": {
+      "title": "合作医院展示",
+      "subtitle": "多家医院深度合作，覆盖国际患者绿色通道",
+      "intro": "医院定位",
+      "equipment": "设备配置",
+      "advantage": "优势特色",
+      "suit": "适合人群"
+    },
+    "cta": {
+      "title": "想了解适合自己的高端设备方案？",
+      "subtitle": "提供病情资料，我们将为您匹配最优中国治疗设备与医院",
+      "button": "免费获取治疗方案"
+    }
   },
   "footer": {
     "about": "关于我们",

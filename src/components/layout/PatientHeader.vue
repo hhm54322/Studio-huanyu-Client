@@ -23,6 +23,7 @@ const navItems = computed(() => [
   { name: t('nav.hospitals'), path: '/hospitals' },
   { name: t('nav.cases'), path: '/cases' },
   { name: t('nav.diseaseTech'), path: '/diseases-technologies' },
+  { name: t('nav.equipment'), path: '/equipment' },
   { name: t('nav.visa'), path: '/visa' },
   { name: t('nav.steps'), path: '/steps' },
   { name: t('nav.about'), path: '/about' },

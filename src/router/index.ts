@@ -46,7 +46,13 @@ const router = createRouter({
           path: 'diseases-technologies',
           name: 'patient-diseases-technologies',
           component: () => import('@/views/patient/DiseaseTechnologyView.vue'),
-          meta: { title: '疾病和设备' },
+          meta: { title: '疾病类型' },
+        },
+        {
+          path: 'equipment',
+          name: 'patient-equipment',
+          component: () => import('@/views/patient/EquipmentView.vue'),
+          meta: { title: '设备详情' },
         },
         {
           path: 'visa',
