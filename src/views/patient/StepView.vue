@@ -29,24 +29,29 @@ const iconMap: Record<string, any> = {
 <template>
   <div class="min-h-screen bg-gradient-to-b from-orange-50 via-white to-orange-50">
     <!-- Hero Section -->
-    <div class="relative overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600 text-white">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/20" />
-        <div class="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-white/20" />
-        <div class="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-white/10 -translate-x-1/2 -translate-y-1/2" />
+    <section class="steps-hero">
+      <picture class="steps-hero__media" aria-hidden="true">
+        <source
+          media="(max-width: 767px)"
+          srcset="/images/page-banners/steps-mobile.png"
+          width="750"
+          height="444"
+        />
+        <img
+          src="/images/page-banners/steps-pc.png"
+          alt=""
+          class="block w-full"
+          width="2880"
+          height="666"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="steps-hero__copy">
+        <p class="steps-hero__tag">Complete Medical Journey to China</p>
+        <h1 class="steps-hero__title">来华就医全流程</h1>
+        <p class="steps-hero__desc">从首次咨询到康复回国，寰宇云医陪伴您的每一步</p>
       </div>
-      <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">来华就医全流程</h1>
-        <p class="text-lg md:text-xl text-orange-100 font-medium">
-          Complete Medical Journey to China
-        </p>
-        <div class="mt-6 flex items-center justify-center gap-2 text-orange-100 text-sm md:text-base">
-          <span class="inline-block w-8 h-0.5 bg-orange-300 rounded" />
-          从首次咨询到康复回国，寰宇云医陪伴您的每一步
-          <span class="inline-block w-8 h-0.5 bg-orange-300 rounded" />
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- Timeline Section -->
     <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
@@ -194,37 +199,262 @@ const iconMap: Record<string, any> = {
       </div>
 
       <!-- CTA Section -->
-      <div class="mt-20 md:mt-32 text-center">
-        <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl p-8 md:p-12 shadow-xl shadow-orange-200">
-          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
-            准备好开始您的健康之旅了吗？
-          </h2>
-          <p class="text-orange-100 mb-8 text-sm md:text-base">
-            我们的医疗顾问团队将在24小时内与您取得联系，为您提供免费的初筛评估
-          </p>
-          <router-link
-            to="/report"
-            class="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-          >
-            开始您的就医之旅
-            <ArrowRight class="w-5 h-5" />
-          </router-link>
-          <div class="mt-6 flex items-center justify-center gap-6 text-orange-100 text-xs md:text-sm">
-            <span class="flex items-center gap-1">
-              <Calendar class="w-4 h-4" />
-              24小时响应
-            </span>
-            <span class="flex items-center gap-1">
-              <Globe class="w-4 h-4" />
-              多语言支持
-            </span>
-            <span class="flex items-center gap-1">
-              <Building2 class="w-4 h-4" />
-              100+合作医院
-            </span>
+      <section class="mt-20 md:mt-32">
+        <div class="journey-cta">
+          <picture class="journey-cta__media">
+            <source
+              media="(max-width: 767px)"
+              srcset="/images/page-banners/journey-mobile.png"
+              width="694"
+              height="538"
+            />
+            <img
+              src="/images/page-banners/journey-pc.png"
+              alt=""
+              width="2240"
+              height="608"
+            />
+          </picture>
+          <div class="journey-cta__content">
+            <h2 class="journey-cta__title">
+              准备好开始您的健康之旅了吗？
+            </h2>
+            <p class="journey-cta__desc">
+              我们的医疗顾问团队将在24小时内与您取得联系，为您提供免费的初筛评估
+            </p>
+            <router-link to="/report" class="journey-cta__button">
+              开始您的就医之旅
+              <ArrowRight class="w-5 h-5" />
+            </router-link>
+            <div class="journey-cta__meta">
+              <span class="journey-cta__meta-item">
+                <Calendar class="w-4 h-4 md:w-5 md:h-5" />
+                24小时响应
+              </span>
+              <span class="journey-cta__meta-item">
+                <Globe class="w-4 h-4 md:w-5 md:h-5" />
+                多语言支持
+              </span>
+              <span class="journey-cta__meta-item">
+                <Building2 class="w-4 h-4 md:w-5 md:h-5" />
+                100+合作医院
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
+
+<style scoped>
+.steps-hero {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.steps-hero__media,
+.steps-hero__media img {
+  display: block;
+  width: 100%;
+}
+
+.steps-hero__copy {
+  position: absolute;
+  z-index: 1;
+  top: 23.8%;
+  left: clamp(96px, 7.64vw, 220px);
+  max-width: 980px;
+}
+
+.steps-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: clamp(36px, 2.6vw, 75px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e66a1c 0%, #f8b86e 100%);
+  padding: 0 clamp(26px, 1.84vw, 53px);
+  color: #fff;
+  font-size: clamp(16px, 1.25vw, 36px);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.steps-hero__title {
+  margin: clamp(46px, 3.33vw, 96px) 0 0;
+  color: #e2661b;
+  font-size: clamp(50px, 3.75vw, 108px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.steps-hero__desc {
+  margin: clamp(36px, 2.43vw, 70px) 0 0;
+  color: #4f4a46;
+  font-size: clamp(18px, 1.32vw, 38px);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+@media (max-width: 767px) {
+  .steps-hero__copy {
+    top: 24.5%;
+    left: 4.27vw;
+    max-width: 53%;
+  }
+
+  .steps-hero__tag {
+    min-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .steps-hero__title {
+    margin-top: 30px;
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .steps-hero__desc {
+    margin-top: 17px;
+    max-width: 90%;
+    color: #4b4540;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+}
+
+.journey-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 694 / 538;
+  min-height: 282px;
+  box-shadow: 0 24px 52px rgba(221, 107, 32, 0.16);
+}
+
+.journey-cta__media,
+.journey-cta__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.journey-cta__media img {
+  object-fit: cover;
+}
+
+.journey-cta__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px 28px;
+  text-align: center;
+  color: #fff;
+}
+
+.journey-cta__title {
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.journey-cta__desc {
+  margin-top: 18px;
+  max-width: 18rem;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.journey-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  min-height: 48px;
+  border-radius: 999px;
+  background: #fff;
+  padding: 0 32px;
+  color: #dd4f1c;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 16px 30px rgba(123, 52, 30, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.journey-cta__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 36px rgba(123, 52, 30, 0.2);
+}
+
+.journey-cta__meta {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.journey-cta__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .journey-cta {
+    border-radius: 18px;
+    aspect-ratio: 2240 / 608;
+    min-height: 0;
+  }
+
+  .journey-cta__content {
+    padding: 56px 48px 50px;
+  }
+
+  .journey-cta__title {
+    font-size: 32px;
+  }
+
+  .journey-cta__desc {
+    margin-top: 22px;
+    max-width: 760px;
+    font-size: 17px;
+  }
+
+  .journey-cta__button {
+    margin-top: 40px;
+    min-height: 62px;
+    padding: 0 54px;
+    font-size: 20px;
+  }
+
+  .journey-cta__meta {
+    flex-wrap: nowrap;
+    gap: 38px;
+    margin-top: 36px;
+    font-size: 16px;
+  }
+
+  .journey-cta__meta-item {
+    gap: 8px;
+  }
+}
+</style>

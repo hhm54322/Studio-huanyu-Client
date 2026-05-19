@@ -88,12 +88,26 @@ const team = [
 <template>
   <div>
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-[#C05621] to-[#ED8936] text-white">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold">{{ t('about.title') }}</h1>
-        <p class="mt-6 text-lg text-orange-50 max-w-3xl mx-auto leading-relaxed">
-          {{ t('about.subtitle') }}
-        </p>
+    <section class="design-hero design-hero--about">
+      <picture class="design-hero__media" aria-hidden="true">
+        <source
+          media="(max-width: 767px)"
+          srcset="/images/page-banners/about-mobile.png"
+          width="750"
+          height="444"
+        />
+        <img
+          src="/images/page-banners/about-pc.png"
+          alt=""
+          class="block w-full"
+          width="2880"
+          height="664"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="design-hero__copy design-hero__copy--about">
+        <h1 class="design-hero__title">{{ t('about.title') }}</h1>
+        <p class="design-hero__pill">{{ t('about.subtitle') }}</p>
       </div>
     </section>
 
@@ -225,3 +239,74 @@ const team = [
     </section>
   </div>
 </template>
+
+<style scoped>
+.design-hero {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.design-hero__media,
+.design-hero__media img {
+  display: block;
+  width: 100%;
+}
+
+.design-hero__copy {
+  position: absolute;
+  z-index: 1;
+  left: clamp(96px, 7.64vw, 220px);
+}
+
+.design-hero__copy--about {
+  top: 29%;
+}
+
+.design-hero__title {
+  margin: 0;
+  color: #e2661b;
+  font-size: clamp(42px, 3.33vw, 96px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.design-hero__pill {
+  display: inline-flex;
+  align-items: center;
+  margin-top: clamp(20px, 1.45vw, 42px);
+  min-height: clamp(42px, 2.6vw, 75px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e96d22 0%, #f7b66c 100%);
+  padding: 0 clamp(28px, 2.28vw, 66px);
+  color: #fff;
+  font-size: clamp(16px, 1.25vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .design-hero__copy {
+    left: 4vw;
+  }
+
+  .design-hero__copy--about {
+    top: 34.5%;
+  }
+
+  .design-hero__title {
+    font-size: 28px;
+    line-height: 1.12;
+  }
+
+  .design-hero__pill {
+    margin-top: 18px;
+    min-height: 28px;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 1;
+  }
+}
+</style>

@@ -58,22 +58,33 @@ const mVisaDiffs = [
 <template>
   <div style="background-color: #FFFAF5; min-height: 100vh">
     <!-- Hero Section -->
-    <section class="relative overflow-hidden" style="background-color: #C05621">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        <div class="text-center">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium mb-6">
-            <Globe class="w-4 h-4" />
-            <span>全球医疗签证服务</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            签证办理流程
-          </h1>
-          <p class="text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
-            寰宇云医协助您快速获得中国医疗签证，从邀请函到签证获批，全程无忧
-          </p>
+    <section class="visa-hero">
+      <picture class="visa-hero__media" aria-hidden="true">
+        <source
+          media="(max-width: 767px)"
+          srcset="/images/page-banners/visa-mobile.png"
+          width="750"
+          height="444"
+        />
+        <img
+          src="/images/page-banners/visa-pc.png"
+          alt=""
+          class="block w-full"
+          width="2880"
+          height="706"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="visa-hero__copy">
+        <div class="visa-hero__tag">
+          <Globe class="visa-hero__tag-icon" />
+          <span>全球医疗签证服务</span>
         </div>
+        <h1 class="visa-hero__title">签证办理流程</h1>
+        <p class="visa-hero__desc">
+          寰宇云医协助您快速获得中国医疗签证，从邀请函到签证获批，全程无忧
+        </p>
       </div>
-      <div class="absolute bottom-0 left-0 right-0 h-16" style="background: linear-gradient(to top, #FFFAF5, transparent)" />
     </section>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
@@ -431,3 +442,99 @@ const mVisaDiffs = [
     </div>
   </div>
 </template>
+
+<style scoped>
+.visa-hero {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.visa-hero__media,
+.visa-hero__media img {
+  display: block;
+  width: 100%;
+}
+
+.visa-hero__copy {
+  position: absolute;
+  z-index: 1;
+  top: 26%;
+  left: clamp(96px, 7.64vw, 220px);
+  max-width: 900px;
+}
+
+.visa-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 0.56vw, 16px);
+  min-height: clamp(36px, 2.64vw, 76px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e66a1c 0%, #f8b86e 100%);
+  padding: 0 clamp(22px, 1.74vw, 50px);
+  color: #fff;
+  font-size: clamp(15px, 1.11vw, 32px);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.visa-hero__tag-icon {
+  width: clamp(18px, 1.18vw, 34px);
+  height: clamp(18px, 1.18vw, 34px);
+}
+
+.visa-hero__title {
+  margin: clamp(32px, 2.43vw, 70px) 0 0;
+  color: #e2661b;
+  font-size: clamp(48px, 3.75vw, 108px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.visa-hero__desc {
+  margin: clamp(34px, 2.43vw, 70px) 0 0;
+  max-width: 1250px;
+  color: #4f4a46;
+  font-size: clamp(18px, 1.32vw, 38px);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+@media (max-width: 767px) {
+  .visa-hero__copy {
+    top: 20%;
+    left: 4.27vw;
+    max-width: 48%;
+  }
+
+  .visa-hero__tag {
+    min-height: 28px;
+    gap: 5px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .visa-hero__tag-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .visa-hero__title {
+    margin-top: 30px;
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .visa-hero__desc {
+    margin-top: 16px;
+    max-width: 100%;
+    color: #4b4540;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+}
+</style>
