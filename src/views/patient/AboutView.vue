@@ -92,9 +92,22 @@ const team = [
       <picture class="design-hero__media" aria-hidden="true">
         <source
           media="(max-width: 767px)"
+          srcset="/images/page-banners/about-mobile.jpg"
+          type="image/jpeg"
+          width="750"
+          height="444"
+        />
+        <source
+          media="(max-width: 767px)"
           srcset="/images/page-banners/about-mobile.png"
           width="750"
           height="444"
+        />
+        <source
+          srcset="/images/page-banners/about-pc.jpg"
+          type="image/jpeg"
+          width="2880"
+          height="664"
         />
         <img
           src="/images/page-banners/about-pc.png"

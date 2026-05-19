@@ -33,9 +33,22 @@ const iconMap: Record<string, any> = {
       <picture class="steps-hero__media" aria-hidden="true">
         <source
           media="(max-width: 767px)"
+          srcset="/images/page-banners/steps-mobile.jpg"
+          type="image/jpeg"
+          width="750"
+          height="444"
+        />
+        <source
+          media="(max-width: 767px)"
           srcset="/images/page-banners/steps-mobile.png"
           width="750"
           height="444"
+        />
+        <source
+          srcset="/images/page-banners/steps-pc.jpg"
+          type="image/jpeg"
+          width="2880"
+          height="666"
         />
         <img
           src="/images/page-banners/steps-pc.png"
@@ -204,9 +217,22 @@ const iconMap: Record<string, any> = {
           <picture class="journey-cta__media">
             <source
               media="(max-width: 767px)"
+              srcset="/images/page-banners/journey-mobile.jpg"
+              type="image/jpeg"
+              width="694"
+              height="538"
+            />
+            <source
+              media="(max-width: 767px)"
               srcset="/images/page-banners/journey-mobile.png"
               width="694"
               height="538"
+            />
+            <source
+              srcset="/images/page-banners/journey-pc.jpg"
+              type="image/jpeg"
+              width="2240"
+              height="608"
             />
             <img
               src="/images/page-banners/journey-pc.png"
