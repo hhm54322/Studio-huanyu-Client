@@ -97,20 +97,8 @@ const team = [
           width="750"
           height="444"
         />
-        <source
-          media="(max-width: 767px)"
-          srcset="/images/page-banners/about-mobile.png"
-          width="750"
-          height="444"
-        />
-        <source
-          srcset="/images/page-banners/about-pc.jpg"
-          type="image/jpeg"
-          width="2880"
-          height="664"
-        />
         <img
-          src="/images/page-banners/about-pc.png"
+          src="/images/page-banners/about-pc.jpg"
           alt=""
           class="block w-full"
           width="2880"

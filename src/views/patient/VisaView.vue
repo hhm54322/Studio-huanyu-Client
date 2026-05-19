@@ -67,20 +67,8 @@ const mVisaDiffs = [
           width="750"
           height="444"
         />
-        <source
-          media="(max-width: 767px)"
-          srcset="/images/page-banners/visa-mobile.png"
-          width="750"
-          height="444"
-        />
-        <source
-          srcset="/images/page-banners/visa-pc.jpg"
-          type="image/jpeg"
-          width="2880"
-          height="706"
-        />
         <img
-          src="/images/page-banners/visa-pc.png"
+          src="/images/page-banners/visa-pc.jpg"
           alt=""
           class="block w-full"
           width="2880"
