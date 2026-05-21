@@ -402,6 +402,8 @@ const formatUsdRange = (min: number, max: number) => {
   return min === max ? `$${formatter.format(min)}` : `$${formatter.format(min)} - $${formatter.format(max)}`
 }
 
+const cleanFeeDisplay = (fee: string) => fee.replace(/（同口径[^）]*）/g, '').trim()
+
 const getBreakdownTotalCost = (breakdown: GeneratedReport['plan']['breakdown']) => {
   const ranges = breakdown.map((item) => parseUsdRange(item.cost))
   if (!ranges.length || ranges.some((range) => !range)) return null
@@ -430,7 +432,7 @@ const renderedReport = computed<RenderedReport>(() => {
       disease: report.disease,
       treatment: report.treatment,
       need: report.need,
-      countries: report.countries,
+      countries: report.countries.map((country) => ({ ...country, fee: cleanFeeDisplay(country.fee) })),
       score: report.score,
       advantages: report.advantages,
       concerns: report.concerns,
