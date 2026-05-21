@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, reactive, computed, nextTick } from 'vue'
+import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { onBeforeRouteLeave } from 'vue-router'
 import {
   ArrowLeft,
   ArrowRight,
@@ -29,7 +30,7 @@ import {
   CreditCard,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
-import { createReportSubmission } from '@/services/reportSubmissions'
+import { createReportSubmission, type GeneratedReport } from '@/services/reportSubmissions'
 
 const { t, locale } = useI18n()
 
@@ -40,6 +41,28 @@ const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
 const submissionError = ref('')
 const submissionNo = ref('')
+const generatedReport = ref<GeneratedReport | null>(null)
+
+const generatingLeaveMessage = '报告正在生成中，离开页面可能导致本次生成中断，确定要离开吗？'
+
+const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+  if (!generating.value) return
+  event.preventDefault()
+  event.returnValue = ''
+}
+
+onMounted(() => {
+  window.addEventListener('beforeunload', handleBeforeUnload)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload)
+})
+
+onBeforeRouteLeave(() => {
+  if (!generating.value) return true
+  return window.confirm(generatingLeaveMessage)
+})
 
 // 基础信息表单
 const form = reactive({
@@ -60,6 +83,12 @@ const form = reactive({
 type FormField = keyof typeof form
 type SupportedLocale = 'zh' | 'en' | 'id' | 'ru' | 'mn'
 type LocalizedText = Record<SupportedLocale, string>
+type RenderedReport = Omit<GeneratedReport, 'plan'> & {
+  direction: string
+  duration: string
+  totalCost: string
+  breakdown: GeneratedReport['plan']['breakdown']
+}
 
 const supportedLocales: SupportedLocale[] = ['zh', 'en', 'id', 'ru', 'mn']
 const activeLocale = computed<SupportedLocale>(() => {
@@ -353,6 +382,56 @@ const localizedReport = computed(() => {
   }
 })
 
+const renderedReport = computed<RenderedReport>(() => {
+  const report = generatedReport.value
+
+  if (report) {
+    return {
+      id: report.id,
+      date: report.date,
+      subtitle: report.subtitle,
+      disease: report.disease,
+      treatment: report.treatment,
+      need: report.need,
+      countries: report.countries,
+      score: report.score,
+      advantages: report.advantages,
+      concerns: report.concerns,
+      hospitals: report.hospitals,
+      direction: report.plan.direction,
+      duration: report.plan.duration,
+      totalCost: report.plan.totalCost,
+      breakdown: report.plan.breakdown,
+      packages: report.packages,
+      highlights: report.highlights,
+      disclaimer: report.disclaimer,
+      generatedBy: report.generatedBy,
+    }
+  }
+
+  return {
+    id: submissionNo.value || reportData.id,
+    date: reportData.date,
+    subtitle: localizedReport.value.subtitle,
+    disease: visitPurposeLabel.value ? lt(visitPurposeLabel.value) : reportData.disease,
+    treatment: localizedReport.value.treatment,
+    need: form.chiefComplaint || localizedReport.value.need,
+    countries: localizedReport.value.countries,
+    score: reportData.score,
+    advantages: localizedReport.value.advantages,
+    concerns: localizedReport.value.concerns,
+    hospitals: localizedReport.value.hospitals,
+    direction: localizedReport.value.direction,
+    duration: localizedReport.value.duration,
+    totalCost: '$14,300 - $25,500',
+    breakdown: localizedReport.value.breakdown,
+    packages: localizedReport.value.packages,
+    highlights: localizedReport.value.highlights,
+    disclaimer: '本报告为来华就医可行性预审，不构成诊断、处方或最终治疗建议。',
+    generatedBy: 'rules' as const,
+  }
+})
+
 const displayNames = computed(() => new Intl.DisplayNames([intlLocale.value], { type: 'region' }))
 const languageDisplayNames = computed(() => new Intl.DisplayNames([intlLocale.value], { type: 'language' }))
 const nationalityLabel = computed(() => {
@@ -557,6 +636,7 @@ const nextStep = async () => {
     try {
       const response = await createReportSubmission(reportSubmissionPayload.value)
       submissionNo.value = response.submissionNo
+      generatedReport.value = response.report
       generating.value = false
       showReport.value = true
       await scrollToPageTop()
@@ -587,6 +667,7 @@ const resetWizard = () => {
   showReport.value = false
   submissionError.value = ''
   submissionNo.value = ''
+  generatedReport.value = null
   step.value = 0
   selectedRegions.value = []
   submitAttempted.value = false
@@ -621,12 +702,12 @@ const resetWizard = () => {
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 class="text-xl md:text-3xl font-bold">{{ t('report.reportTitle') }}</h1>
-            <p class="mt-2 text-orange-100 text-sm md:text-base">{{ localizedReport.subtitle }}</p>
+            <p class="mt-2 text-orange-100 text-sm md:text-base">{{ renderedReport.subtitle }}</p>
           </div>
           <div class="text-right">
             <div class="text-sm text-orange-100">{{ t('report.reportId') }}</div>
-            <div class="font-mono font-bold text-base md:text-lg">{{ submissionNo || reportData.id }}</div>
-            <div class="text-sm text-orange-100 mt-1">{{ reportData.date }}</div>
+            <div class="font-mono font-bold text-base md:text-lg">{{ renderedReport.id }}</div>
+            <div class="text-sm text-orange-100 mt-1">{{ renderedReport.date }}</div>
           </div>
         </div>
       </div>
@@ -638,11 +719,11 @@ const resetWizard = () => {
           <div class="grid md:grid-cols-3 gap-4 text-sm">
             <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
               <div class="text-gray-500 mb-1">{{ t('report.diagnosis') }}</div>
-              <div class="font-semibold text-gray-900">{{ visitPurposeLabel ? lt(visitPurposeLabel) : reportData.disease }}</div>
+              <div class="font-semibold text-gray-900">{{ renderedReport.disease }}</div>
             </div>
             <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
               <div class="text-gray-500 mb-1">{{ lt(localText.coreNeed) }}</div>
-              <div class="font-semibold text-gray-900 line-clamp-2">{{ form.chiefComplaint || localizedReport.need }}</div>
+              <div class="font-semibold text-gray-900 line-clamp-2">{{ renderedReport.need }}</div>
             </div>
             <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
               <div class="text-gray-500 mb-1">{{ lt(localText.compareRegions) }}</div>
@@ -674,7 +755,7 @@ const resetWizard = () => {
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section2') }}</h2>
           <div class="space-y-3">
             <div
-              v-for="c in localizedReport.countries"
+              v-for="c in renderedReport.countries"
               :key="c.name"
               :class="[
                 'rounded-xl border transition-all',
@@ -728,10 +809,10 @@ const resetWizard = () => {
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section3') }}</h2>
           <div class="grid md:grid-cols-3 gap-4 mb-6">
             <div class="rounded-xl bg-gradient-to-br from-[#C05621] to-[#DD6B20] p-6 text-white text-center">
-              <div class="text-4xl font-extrabold">{{ reportData.score }}</div>
+              <div class="text-4xl font-extrabold">{{ renderedReport.score }}</div>
               <div class="text-sm text-orange-100 mt-1">{{ t('report.score') }} / 100</div>
             </div>
-            <div v-for="a in localizedReport.advantages" :key="a.label" class="rounded-xl bg-orange-50 border border-orange-100 p-6 text-center">
+            <div v-for="a in renderedReport.advantages" :key="a.label" class="rounded-xl bg-orange-50 border border-orange-100 p-6 text-center">
               <div class="text-lg font-bold text-[#C05621]">{{ a.value }}</div>
               <div class="text-sm text-gray-600 mt-1">{{ a.label }}</div>
             </div>
@@ -745,7 +826,7 @@ const resetWizard = () => {
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-100">
-                <tr v-for="c in localizedReport.concerns" :key="c.concern">
+                <tr v-for="c in renderedReport.concerns" :key="c.concern">
                   <td class="px-4 py-3 text-gray-800 font-medium">{{ c.concern }}</td>
                   <td class="px-4 py-3 text-gray-700">{{ c.solution }}</td>
                 </tr>
@@ -758,7 +839,7 @@ const resetWizard = () => {
         <section>
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section4') }}</h2>
           <div class="grid md:grid-cols-2 gap-4">
-            <div v-for="h in localizedReport.hospitals" :key="h.name" class="rounded-xl border border-orange-100 bg-orange-50/30 p-5">
+            <div v-for="h in renderedReport.hospitals" :key="h.name" class="rounded-xl border border-orange-100 bg-orange-50/30 p-5">
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-semibold text-[#C05621]">{{ h.city }}</span>
               </div>
@@ -774,11 +855,11 @@ const resetWizard = () => {
           <div class="space-y-4">
             <div class="rounded-xl bg-gray-50 p-4">
               <div class="text-sm text-gray-500 mb-1">{{ t('report.direction') }}</div>
-              <div class="font-medium text-gray-900">{{ localizedReport.direction }}</div>
+              <div class="font-medium text-gray-900">{{ renderedReport.direction }}</div>
             </div>
             <div class="rounded-xl bg-gray-50 p-4">
               <div class="text-sm text-gray-500 mb-1">{{ t('report.duration') }}</div>
-              <div class="font-medium text-gray-900">{{ localizedReport.duration }}</div>
+              <div class="font-medium text-gray-900">{{ renderedReport.duration }}</div>
             </div>
             <div class="rounded-xl border border-gray-200 overflow-hidden">
               <table class="w-full text-sm">
@@ -789,13 +870,13 @@ const resetWizard = () => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
-                  <tr v-for="b in localizedReport.breakdown" :key="b.item">
+                  <tr v-for="b in renderedReport.breakdown" :key="b.item">
                     <td class="px-4 py-3 text-gray-800">{{ b.item }}</td>
                     <td class="px-4 py-3 text-right text-[#C05621] font-semibold whitespace-nowrap">{{ b.cost }}</td>
                   </tr>
                   <tr class="bg-orange-50">
                     <td class="px-4 py-3 font-bold text-gray-900">{{ t('report.total') }}</td>
-                    <td class="px-4 py-3 text-right font-bold text-[#C05621] whitespace-nowrap">$14,300 - $25,500</td>
+                    <td class="px-4 py-3 text-right font-bold text-[#C05621] whitespace-nowrap">{{ renderedReport.totalCost }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -809,7 +890,7 @@ const resetWizard = () => {
           <div class="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-4 md:p-8">
             <div class="grid md:grid-cols-3 gap-6 mb-8">
               <div
-                v-for="pkg in localizedReport.packages"
+                v-for="pkg in renderedReport.packages"
                 :key="pkg.name"
                 :class="[
                   'rounded-2xl border p-6 flex flex-col',
@@ -853,7 +934,7 @@ const resetWizard = () => {
             <div class="rounded-xl bg-white border border-orange-100 p-5">
               <h4 class="font-bold text-gray-900 mb-3">{{ lt(localText.highlights) }}</h4>
               <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                <div v-for="h in localizedReport.highlights" :key="h" class="flex items-center gap-2 text-sm text-gray-700">
+                <div v-for="h in renderedReport.highlights" :key="h" class="flex items-center gap-2 text-sm text-gray-700">
                   <Star class="h-4 w-4 text-[#ED8936] shrink-0" />
                   {{ h }}
                 </div>
@@ -1242,19 +1323,28 @@ const resetWizard = () => {
           {{ selectedRegionLabels.length ? selectedRegionLabels.join(regionJoiner) : lt(localText.selectedRegionsFallback) }}
           {{ lt(localText.confirmSuffix) }}
         </p>
-        <div v-if="generating" class="flex flex-col items-center gap-3">
-          <Loader2 class="h-10 w-10 text-[#DD6B20] animate-spin" />
-          <p class="text-sm text-gray-500">{{ t('report.generating') }}</p>
-        </div>
         <p v-if="submissionError" class="mb-4 text-sm text-red-500">{{ submissionError }}</p>
         <button
-          v-else
+          v-if="!generating && !submissionError"
           class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C05621] to-[#DD6B20] px-8 py-4 text-white font-bold shadow-lg hover:shadow-xl transition-all"
           @click="nextStep"
         >
           {{ t('report.generate') }}
           <ArrowRight class="h-5 w-5" />
         </button>
+      </div>
+    </div>
+
+    <div
+      v-if="generating"
+      class="fixed inset-0 z-[9999] flex items-center justify-center bg-gray-950/45 px-4 backdrop-blur-sm"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      <div class="flex w-full max-w-xs flex-col items-center gap-4 rounded-2xl bg-white/95 px-8 py-7 text-center shadow-2xl ring-1 ring-white/60">
+        <Loader2 class="h-11 w-11 animate-spin text-[#DD6B20]" />
+        <p class="text-base font-semibold text-gray-900">{{ t('report.generating') }}</p>
       </div>
     </div>
 
