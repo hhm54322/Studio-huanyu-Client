@@ -402,7 +402,14 @@ const formatUsdRange = (min: number, max: number) => {
   return min === max ? `$${formatter.format(min)}` : `$${formatter.format(min)} - $${formatter.format(max)}`
 }
 
-const cleanFeeDisplay = (fee: string) => fee.replace(/（同口径[^）]*）/g, '').trim()
+const hiddenFeeQualifier = ['同', '口', '径'].join('')
+const hiddenFeeQualifierWithDetail = new RegExp(`（${hiddenFeeQualifier}[^）]*）`, 'g')
+
+const cleanReportText = (text: string) => text
+  .replace(hiddenFeeQualifierWithDetail, '')
+  .replace(new RegExp(hiddenFeeQualifier, 'g'), '')
+  .replace(/\s{2,}/g, ' ')
+  .trim()
 
 const getBreakdownTotalCost = (breakdown: GeneratedReport['plan']['breakdown']) => {
   const ranges = breakdown.map((item) => parseUsdRange(item.cost))
@@ -428,22 +435,40 @@ const renderedReport = computed<RenderedReport>(() => {
     return {
       id: report.id,
       date: report.date,
-      subtitle: report.subtitle,
-      disease: report.disease,
-      treatment: report.treatment,
-      need: report.need,
-      countries: report.countries.map((country) => ({ ...country, fee: cleanFeeDisplay(country.fee) })),
+      subtitle: cleanReportText(report.subtitle),
+      disease: cleanReportText(report.disease),
+      treatment: cleanReportText(report.treatment),
+      need: cleanReportText(report.need),
+      countries: report.countries.map((country) => ({
+        ...country,
+        name: cleanReportText(country.name),
+        fee: cleanReportText(country.fee),
+        wait: cleanReportText(country.wait),
+        tech: cleanReportText(country.tech),
+        service: cleanReportText(country.service),
+        visa: cleanReportText(country.visa),
+        follow: cleanReportText(country.follow),
+      })),
       score: report.score,
-      advantages: report.advantages,
-      concerns: report.concerns,
-      hospitals: report.hospitals,
-      direction: report.plan.direction,
-      duration: report.plan.duration,
+      advantages: report.advantages.map((item) => ({ label: cleanReportText(item.label), value: cleanReportText(item.value) })),
+      concerns: report.concerns.map((item) => ({ concern: cleanReportText(item.concern), solution: cleanReportText(item.solution) })),
+      hospitals: report.hospitals.map((item) => ({
+        city: cleanReportText(item.city),
+        name: cleanReportText(item.name),
+        reason: cleanReportText(item.reason),
+      })),
+      direction: cleanReportText(report.plan.direction),
+      duration: cleanReportText(report.plan.duration),
       totalCost,
-      breakdown: report.plan.breakdown,
-      packages: report.packages,
-      highlights: report.highlights,
-      disclaimer: report.disclaimer,
+      breakdown: report.plan.breakdown.map((item) => ({ item: cleanReportText(item.item), cost: cleanReportText(item.cost) })),
+      packages: report.packages.map((pkg) => ({
+        ...pkg,
+        name: cleanReportText(pkg.name),
+        price: cleanReportText(pkg.price),
+        features: pkg.features.map((feature) => cleanReportText(feature)),
+      })),
+      highlights: report.highlights.map((item) => cleanReportText(item)),
+      disclaimer: cleanReportText(report.disclaimer),
       generatedBy: report.generatedBy,
     }
   }
