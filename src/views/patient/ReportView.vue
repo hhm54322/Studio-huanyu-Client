@@ -382,10 +382,47 @@ const localizedReport = computed(() => {
   }
 })
 
+const parseUsdRange = (cost: string) => {
+  const values = [...cost.replace(/,/g, '').matchAll(/\$?\s*(\d+(?:\.\d+)?)(?:\s*(k|K|千|万))?/g)]
+    .map((match) => {
+      const value = Number(match[1])
+      const unit = match[2]
+      if (unit === 'k' || unit === 'K' || unit === '千') return value * 1000
+      if (unit === '万') return value * 10000
+      return value
+    })
+    .filter((value) => Number.isFinite(value) && value > 0)
+
+  if (!values.length) return null
+  return { min: Math.min(...values), max: Math.max(...values) }
+}
+
+const formatUsdRange = (min: number, max: number) => {
+  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 })
+  return min === max ? `$${formatter.format(min)}` : `$${formatter.format(min)} - $${formatter.format(max)}`
+}
+
+const getBreakdownTotalCost = (breakdown: GeneratedReport['plan']['breakdown']) => {
+  const ranges = breakdown.map((item) => parseUsdRange(item.cost))
+  if (!ranges.length || ranges.some((range) => !range)) return null
+
+  let min = 0
+  let max = 0
+  for (const range of ranges) {
+    if (!range) return null
+    min += range.min
+    max += range.max
+  }
+
+  return formatUsdRange(min, max)
+}
+
 const renderedReport = computed<RenderedReport>(() => {
   const report = generatedReport.value
 
   if (report) {
+    const totalCost = getBreakdownTotalCost(report.plan.breakdown) || report.plan.totalCost
+
     return {
       id: report.id,
       date: report.date,
@@ -400,7 +437,7 @@ const renderedReport = computed<RenderedReport>(() => {
       hospitals: report.hospitals,
       direction: report.plan.direction,
       duration: report.plan.duration,
-      totalCost: report.plan.totalCost,
+      totalCost,
       breakdown: report.plan.breakdown,
       packages: report.packages,
       highlights: report.highlights,
@@ -423,7 +460,7 @@ const renderedReport = computed<RenderedReport>(() => {
     hospitals: localizedReport.value.hospitals,
     direction: localizedReport.value.direction,
     duration: localizedReport.value.duration,
-    totalCost: '$14,300 - $25,500',
+    totalCost: getBreakdownTotalCost(localizedReport.value.breakdown) || '$14,300 - $25,500',
     breakdown: localizedReport.value.breakdown,
     packages: localizedReport.value.packages,
     highlights: localizedReport.value.highlights,
