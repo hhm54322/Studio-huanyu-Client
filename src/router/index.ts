@@ -37,6 +37,12 @@ const router = createRouter({
           meta: { title: '报告体验' },
         },
         {
+          path: 'professional-report',
+          name: 'patient-professional-report',
+          component: () => import('@/views/patient/ProfessionalReportView.vue'),
+          meta: { title: '专业报告' },
+        },
+        {
           path: 'cases',
           name: 'patient-cases',
           component: () => import('@/views/patient/CaseView.vue'),

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteLeave } from 'vue-router'
+import { onBeforeRouteLeave, useRoute } from 'vue-router'
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,6 +9,10 @@ import {
   Loader2,
   ChevronDown,
   ChevronUp,
+  AlertTriangle,
+  Search,
+  CheckCircle,
+  XCircle,
   Star,
   Shield,
   Clock,
@@ -23,25 +27,32 @@ import {
   Mail,
   Phone,
   Globe,
-  MapPin,
-  Languages,
   HeartPulse,
-  CalendarDays,
-  CreditCard,
+  Building2,
+  BookOpen,
+  BarChart3,
+  Lock,
+  Sparkles,
+  Trash2,
+  Upload,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
-import { createReportSubmission, type GeneratedReport } from '@/services/reportSubmissions'
+import { createReportSubmission, getReportSubmission, type GeneratedReport, type ReportLayoutBlock } from '@/services/reportSubmissions'
 
 const { t, locale } = useI18n()
+const route = useRoute()
 
-const step = ref(0)
-const selectedRegions = ref<string[]>([])
+const defaultSelectedRegions = ['north_america', 'europe', 'southeast_asia', 'japan_korea']
+const selectedRegions = ref<string[]>([...defaultSelectedRegions])
+const selectedInsurance = ref<number | null>(null)
+const reportFiles = ref<Array<{ id: string; file: File }>>([])
 const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
 const submissionError = ref('')
 const submissionNo = ref('')
 const generatedReport = ref<GeneratedReport | null>(null)
+const activeFreeLayoutKey = ref('cost')
 
 const generatingLeaveMessage = '报告正在生成中，离开页面可能导致本次生成中断，确定要离开吗？'
 
@@ -70,7 +81,7 @@ const form = reactive({
   gender: '',
   dateOfBirth: '',
   nationality: '',
-  idType: 'passport',
+  idType: '',
   idNumber: '',
   phone: '',
   email: '',
@@ -175,60 +186,28 @@ const touched = reactive<Record<FormField, boolean>>({
   chiefComplaint: false,
 })
 const submitAttempted = ref(false)
-const regionAttempted = ref(false)
 
-// 国籍选项：用 ISO 代码存值，展示文案随当前语言自动切换
-const nationalityGroups = [
-  {
-    label: { zh: '亚洲', en: 'Asia', id: 'Asia', ru: 'Азия', mn: 'Ази' },
-    options: [
-      'CN', 'HK', 'MO', 'TW', 'MN', 'JP', 'KR', 'SG', 'MY', 'ID', 'TH', 'PH',
-      'VN', 'KH', 'LA', 'MM', 'IN', 'PK', 'BD', 'LK', 'NP', 'KZ', 'UZ', 'KG', 'TJ',
-    ],
-  },
-  {
-    label: { zh: '欧洲', en: 'Europe', id: 'Eropa', ru: 'Европа', mn: 'Европ' },
-    options: [
-      'GB', 'IE', 'DE', 'FR', 'IT', 'ES', 'PT', 'NL', 'BE', 'CH', 'AT', 'SE',
-      'NO', 'DK', 'FI', 'PL', 'CZ', 'HU', 'GR', 'RU', 'UA', 'BY', 'TR',
-    ],
-  },
-  {
-    label: { zh: '美洲', en: 'Americas', id: 'Amerika', ru: 'Америка', mn: 'Америк' },
-    options: ['US', 'CA', 'MX', 'BR', 'AR', 'CL', 'PE', 'CO'],
-  },
-  {
-    label: { zh: '中东与非洲', en: 'Middle East & Africa', id: 'Timur Tengah & Afrika', ru: 'Ближний Восток и Африка', mn: 'Ойрх Дорнод ба Африк' },
-    options: [
-      'AE', 'SA', 'QA', 'KW', 'OM', 'BH', 'JO', 'IL', 'IR', 'IQ', 'EG', 'ZA',
-      'NG', 'KE', 'ET', 'MA',
-    ],
-  },
-  {
-    label: { zh: '大洋洲', en: 'Oceania', id: 'Oseania', ru: 'Океания', mn: 'Далайн орнууд' },
-    options: ['AU', 'NZ'],
-  },
-  {
-    label: localText.other,
-    options: ['其他'],
-  },
-]
-
-const languageCodes = ['zh', 'en', 'id', 'ru', 'mn', 'ja', 'ko', 'other']
+const languageCodes = ['english', 'chinese', 'japanese', 'korean', 'russian']
 const purposeOptions = [
-  { value: 'breast_cancer', label: { zh: '乳腺癌', en: 'Breast cancer', id: 'Kanker payudara', ru: 'Рак молочной железы', mn: 'Хөхний хорт хавдар' } },
-  { value: 'lung_cancer', label: { zh: '肺癌', en: 'Lung cancer', id: 'Kanker paru-paru', ru: 'Рак легкого', mn: 'Уушгины хорт хавдар' } },
-  { value: 'nasopharyngeal_cancer', label: { zh: '鼻咽癌', en: 'Nasopharyngeal cancer', id: 'Kanker nasofaring', ru: 'Рак носоглотки', mn: 'Хамар залгиурын хорт хавдар' } },
-  { value: 'liver_cancer', label: { zh: '肝癌', en: 'Liver cancer', id: 'Kanker hati', ru: 'Рак печени', mn: 'Элэгний хорт хавдар' } },
-  { value: 'cardiovascular_tumor', label: { zh: '心血管肿瘤', en: 'Cardiovascular tumors', id: 'Tumor kardiovaskular', ru: 'Сердечно-сосудистые опухоли', mn: 'Зүрх судасны хавдар' } },
-  { value: 'neurosurgery', label: { zh: '神经外科', en: 'Neurosurgery', id: 'Bedah saraf', ru: 'Нейрохирургия', mn: 'Мэдрэлийн мэс засал' } },
-  { value: 'spine_surgery', label: { zh: '脊柱外科', en: 'Spine surgery', id: 'Bedah tulang belakang', ru: 'Хирургия позвоночника', mn: 'Нурууны мэс засал' } },
-  { value: 'premium_checkup', label: { zh: '高端体检', en: 'Premium health checkup', id: 'Pemeriksaan kesehatan premium', ru: 'Премиальный медосмотр', mn: 'Дээд зэрэглэлийн эрүүл мэндийн үзлэг' } },
-  { value: 'dental', label: { zh: '牙科', en: 'Dental care', id: 'Perawatan gigi', ru: 'Стоматология', mn: 'Шүдний эмчилгээ' } },
-  { value: 'cardiology_cardiothoracic', label: { zh: '心内科与心胸外科', en: 'Cardiology & cardiothoracic surgery', id: 'Kardiologi & bedah kardiotoraks', ru: 'Кардиология и кардиоторакальная хирургия', mn: 'Зүрх судлал ба цээжний хөндийн мэс засал' } },
-  { value: 'endocrinology_metabolism', label: { zh: '内分泌与代谢科', en: 'Endocrinology & metabolism', id: 'Endokrinologi & metabolisme', ru: 'Эндокринология и метаболизм', mn: 'Дотоод шүүрэл ба бодисын солилцоо' } },
-  { value: 'other', label: localText.other },
+  { value: 'breast_cancer', display: 'Breast Cancer / 乳腺癌', label: { zh: '乳腺癌', en: 'Breast Cancer', id: 'Breast Cancer', ru: 'Breast Cancer', mn: 'Breast Cancer' } },
+  { value: 'lung_cancer', display: 'Lung Cancer / 肺癌', label: { zh: '肺癌', en: 'Lung Cancer', id: 'Lung Cancer', ru: 'Lung Cancer', mn: 'Lung Cancer' } },
+  { value: 'nasopharyngeal_cancer', display: 'Nasopharyngeal Cancer / 鼻咽癌', label: { zh: '鼻咽癌', en: 'Nasopharyngeal Cancer', id: 'Nasopharyngeal Cancer', ru: 'Nasopharyngeal Cancer', mn: 'Nasopharyngeal Cancer' } },
+  { value: 'liver_cancer', display: 'Liver Cancer / 肝癌', label: { zh: '肝癌', en: 'Liver Cancer', id: 'Liver Cancer', ru: 'Liver Cancer', mn: 'Liver Cancer' } },
+  { value: 'cardiovascular_tumor', display: 'Cardiovascular Tumor / 心血管肿瘤', label: { zh: '心血管肿瘤', en: 'Cardiovascular Tumor', id: 'Cardiovascular Tumor', ru: 'Cardiovascular Tumor', mn: 'Cardiovascular Tumor' } },
+  { value: 'neurosurgery', display: 'Neurosurgery / 神经外科', label: { zh: '神经外科', en: 'Neurosurgery', id: 'Neurosurgery', ru: 'Neurosurgery', mn: 'Neurosurgery' } },
+  { value: 'spine_surgery', display: 'Spine Surgery / 脊柱外科', label: { zh: '脊柱外科', en: 'Spine Surgery', id: 'Spine Surgery', ru: 'Spine Surgery', mn: 'Spine Surgery' } },
+  { value: 'cardiology_cardiothoracic', display: 'Cardiology & Cardiothoracic / 心内科与心胸外科', label: { zh: '心内科与心胸外科', en: 'Cardiology & Cardiothoracic', id: 'Cardiology & Cardiothoracic', ru: 'Cardiology & Cardiothoracic', mn: 'Cardiology & Cardiothoracic' } },
+  { value: 'endocrinology_metabolism', display: 'Endocrinology & Metabolism / 内分泌与代谢科', label: { zh: '内分泌与代谢科', en: 'Endocrinology & Metabolism', id: 'Endocrinology & Metabolism', ru: 'Endocrinology & Metabolism', mn: 'Endocrinology & Metabolism' } },
+  { value: 'dental', display: 'Dental / 口腔牙科', label: { zh: '口腔牙科', en: 'Dental', id: 'Dental', ru: 'Dental', mn: 'Dental' } },
+  { value: 'checkup', display: 'Health Checkup / 健康体检', label: { zh: '健康体检', en: 'Health Checkup', id: 'Health Checkup', ru: 'Health Checkup', mn: 'Health Checkup' } },
+  { value: 'other', display: 'Other / Diagnosis Unclear / 其他/诊断未明', label: { zh: '其他/诊断未明', en: 'Other / Diagnosis Unclear', id: 'Other / Diagnosis Unclear', ru: 'Other / Diagnosis Unclear', mn: 'Other / Diagnosis Unclear' } },
 ]
+
+const visitPurposeAliases: Record<string, string> = {
+  heart_surgery: 'cardiology_cardiothoracic',
+  orthopedic: 'spine_surgery',
+  checkup: 'premium_checkup',
+}
 
 const regionOptions = [
   { value: 'north_america', label: { zh: '北美（美国/加拿大）', en: 'North America (US/Canada)', id: 'Amerika Utara (AS/Kanada)', ru: 'Северная Америка (США/Канада)', mn: 'Хойд Америк (АНУ/Канад)' } },
@@ -283,7 +262,7 @@ const localizedReport = computed(() => {
         name: { zh: '中国（推荐）', en: 'China (Recommended)', id: 'China (Direkomendasikan)', ru: 'Китай (рекомендуется)', mn: 'Хятад (санал болгож байна)' },
         fee: '$15,000 - $25,000',
         wait: { zh: '7-14天', en: '7-14 days', id: '7-14 hari', ru: '7-14 дней', mn: '7-14 хоног' },
-        tech: { zh: '保乳技术成熟，5年生存率接近发达国家', en: 'Mature breast-conserving techniques with 5-year survival approaching developed markets', id: 'Teknik konservasi payudara matang; survival 5 tahun mendekati negara maju', ru: 'Отработанные органосохраняющие методики; 5-летняя выживаемость близка к развитым странам', mn: 'Хөх хадгалах арга成熟 бөгөөд 5 жилийн амьдрах үзүүлэлт хөгжингүй орнуудтай ойролцоо' },
+        tech: { zh: '保乳及综合治疗路径成熟，预后需结合分期、病理和治疗反应评估', en: 'Mature breast-conserving and integrated treatment pathways; prognosis depends on stage, pathology, and treatment response', id: 'Jalur konservasi payudara dan terapi terpadu matang; prognosis bergantung pada stadium, patologi, dan respons terapi', ru: 'Отработанные органосохраняющие и комплексные маршруты; прогноз зависит от стадии, патологии и ответа на лечение', mn: 'Хөх хадгалах болон хавсарсан эмчилгээний замнал тогтсон; тавилан нь үе шат, эмгэг судлал, эмчилгээний хариугаас хамаарна' },
         service: { zh: '国际医疗部全流程英文服务', en: 'Full-process English support through international medical departments', id: 'Layanan bahasa Inggris penuh melalui departemen internasional', ru: 'Полное сопровождение на английском через международные отделения', mn: 'Олон улсын эмнэлгийн тасгаар англи хэлний бүрэн үйлчилгээ' },
         visa: { zh: '医疗签证快速通道，48小时邀请函', en: 'Fast-track medical visa support, invitation letter within 48 hours', id: 'Dukungan visa medis cepat, surat undangan dalam 48 jam', ru: 'Ускоренная поддержка медицинской визы, приглашение за 48 часов', mn: 'Эмнэлгийн визийн шуурхай дэмжлэг, 48 цагийн дотор урилга' },
         follow: { zh: '术后1/3/6/12月随访，远程云病房', en: 'Follow-ups at 1/3/6/12 months plus remote cloud ward', id: 'Kontrol 1/3/6/12 bulan dan bangsal cloud jarak jauh', ru: 'Контроль через 1/3/6/12 месяцев и дистанционная палата', mn: '1/3/6/12 сарын хяналт ба зайнаас үүлэн тасаг' },
@@ -321,7 +300,7 @@ const localizedReport = computed(() => {
     ],
     hospitals: [
       { city: { zh: '北京', en: 'Beijing', id: 'Beijing', ru: 'Пекин', mn: 'Бээжин' }, name: { zh: '北京协和医院', en: 'Peking Union Medical College Hospital', id: 'Peking Union Medical College Hospital', ru: 'Пекинская больница PUMCH', mn: 'Бээжингийн PUMCH эмнэлэг' }, reason: { zh: '乳腺疾病全国顶尖，国际医疗部经验丰富', en: 'Nationally leading breast disease care with an experienced international department', id: 'Unggul nasional untuk penyakit payudara dengan departemen internasional berpengalaman', ru: 'Лидер по заболеваниям молочной железы с опытным международным отделением', mn: 'Хөхний өвчний чиглэлээр тэргүүлэх, олон улсын тасаг туршлагатай' } },
-      { city: { zh: '上海', en: 'Shanghai', id: 'Shanghai', ru: 'Шанхай', mn: 'Шанхай' }, name: { zh: '复旦大学附属肿瘤医院', en: 'Fudan University Shanghai Cancer Center', id: 'Fudan University Shanghai Cancer Center', ru: 'Онкоцентр Фуданьского университета', mn: 'Фудань их сургуулийн Шанхайн хавдрын төв' }, reason: { zh: '肿瘤专科全国第一，精准治疗领先', en: 'Top oncology specialty with leading precision treatment capability', id: 'Spesialis onkologi terdepan dengan kemampuan terapi presisi kuat', ru: 'Ведущий онкоцентр с сильной прецизионной терапией', mn: 'Хавдрын чиглэлээр тэргүүлэх, нарийвчилсан эмчилгээ хүчтэй' } },
+      { city: { zh: '上海', en: 'Shanghai', id: 'Shanghai', ru: 'Шанхай', mn: 'Шанхай' }, name: { zh: '复旦大学附属肿瘤医院', en: 'Fudan University Shanghai Cancer Center', id: 'Fudan University Shanghai Cancer Center', ru: 'Онкоцентр Фуданьского университета', mn: 'Фудань их сургуулийн Шанхайн хавдрын төв' }, reason: { zh: '肿瘤专科经验丰富，适合进行病理复核与综合治疗评估', en: 'Experienced oncology specialty center suitable for pathology review and integrated treatment assessment', id: 'Pusat onkologi berpengalaman untuk tinjauan patologi dan asesmen terapi terpadu', ru: 'Опытный онкоцентр для пересмотра патологии и комплексной оценки лечения', mn: 'Эмгэг судлалын давтан үнэлгээ болон хавсарсан эмчилгээний үнэлгээнд тохиромжтой туршлагатай хавдрын төв' } },
     ],
     breakdown: [
       { item: { zh: '术前检查与评估', en: 'Preoperative tests and assessment', id: 'Pemeriksaan dan asesmen praoperasi', ru: 'Предоперационные обследования и оценка', mn: 'Мэс заслын өмнөх шинжилгээ ба үнэлгээ' }, cost: '$800-$1,500' },
@@ -382,19 +361,92 @@ const localizedReport = computed(() => {
   }
 })
 
-const parseUsdRange = (cost: string) => {
-  const values = [...cost.replace(/,/g, '').matchAll(/\$?\s*(\d+(?:\.\d+)?)(?:\s*(k|K|千|万))?/g)]
+const insuranceOptions = [
+  { name: 'Aetna (美国)', inpatient: 80, outpatient: 60, surgery: 80, proton: '需审批', cart: '覆盖', preAuth: '14天', directPay: '部分' },
+  { name: 'Cigna Global (美国)', inpatient: 90, outpatient: 70, surgery: 90, proton: '覆盖', cart: '覆盖', preAuth: '7天', directPay: '部分' },
+  { name: 'Bupa (英国)', inpatient: 100, outpatient: 80, surgery: 100, proton: '覆盖', cart: '覆盖', preAuth: '无需', directPay: '大部分' },
+  { name: 'Allianz Care (德国)', inpatient: 80, outpatient: 50, surgery: 80, proton: '需审批', cart: '需审批', preAuth: '14天', directPay: '部分' },
+  { name: 'AXA PPP (法国)', inpatient: 75, outpatient: 60, surgery: 75, proton: '需审批', cart: '需审批', preAuth: '14天', directPay: '部分' },
+  { name: 'AIA (亚太)', inpatient: 80, outpatient: 60, surgery: 80, proton: '需审批', cart: '需审批', preAuth: '21天', directPay: '部分' },
+  { name: 'Prudential (英国)', inpatient: 85, outpatient: 65, surgery: 85, proton: '需审批', cart: '覆盖', preAuth: '14天', directPay: '部分' },
+  { name: '新加坡MediShield', inpatient: 60, outpatient: 40, surgery: 60, proton: '不覆盖', cart: '不覆盖', preAuth: '需申请', directPay: '无' },
+  { name: '澳大利亚Medicare', inpatient: 0, outpatient: 0, surgery: 0, proton: '不覆盖', cart: '不覆盖', preAuth: 'N/A', directPay: '无', note: '不覆盖海外就医' },
+  { name: '无保险/自费', inpatient: 0, outpatient: 0, surgery: 0, proton: '自费', cart: '自费', preAuth: '无需', directPay: '直接结算', note: '国际信用卡直接结算' },
+]
+
+const selectedInsuranceOption = computed(() => (
+  selectedInsurance.value === null ? null : insuranceOptions[selectedInsurance.value]
+))
+
+const addReportFiles = (fileList: FileList | null) => {
+  if (!fileList) return
+  const nextFiles = Array.from(fileList).map((file) => ({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    file,
+  }))
+  reportFiles.value = [...reportFiles.value, ...nextFiles].slice(0, 20)
+}
+
+const removeReportFile = (id: string) => {
+  reportFiles.value = reportFiles.value.filter((item) => item.id !== id)
+}
+
+const formatReportFileSize = (size: number) => {
+  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`
+  return `${(size / 1024 / 1024).toFixed(1)} MB`
+}
+
+const insuranceCoverageItems = computed(() => {
+  const insurance = selectedInsuranceOption.value
+  if (!insurance) return []
+
+  return [
+    { label: '住院治疗 Inpatient', value: `${insurance.inpatient}%`, icon: Building2, covered: insurance.inpatient > 0 },
+    { label: '门诊治疗 Outpatient', value: `${insurance.outpatient}%`, icon: Stethoscope, covered: insurance.outpatient > 0 },
+    { label: '手术费用 Surgery', value: `${insurance.surgery}%`, icon: HeartPulse, covered: insurance.surgery > 0 },
+    { label: '质子治疗 Proton', value: insurance.proton, icon: Shield, covered: insurance.proton === '覆盖' },
+    { label: 'CAR-T治疗', value: insurance.cart, icon: Star, covered: insurance.cart === '覆盖' },
+    { label: '预授权要求', value: insurance.preAuth, icon: Clock, covered: insurance.preAuth !== 'N/A' },
+  ]
+})
+
+const reportPreviewItems = [
+  { title: '全球该疾病费用对比 / Global Cost Comparison', desc: '8 个国家的多维成本比较', icon: Globe },
+  { title: '技术对比 / Technology Comparison', desc: '先进医疗设备与技术可及性', icon: Stethoscope },
+  { title: '治疗效果对比 / Outcome Reference', desc: '按病情阶段和资料完整度进行风险参考', icon: Star },
+  { title: '来华就医可行性评估 / Feasibility Assessment', desc: '医疗旅行可行性及需求评估', icon: FileText },
+  { title: '医院推荐详情 / Hospital Ranking Details', desc: '医院资料、专科方向及初步适配情况', icon: Building2 },
+  { title: '医院专家推荐 / Hospital Recommendations', desc: '针对具体病情的推荐医院与专家方向', icon: Shield },
+  { title: '下一步行动建议 / Next Steps', desc: '行动计划及升级专业版建议', icon: ArrowRight },
+  { title: '专业版升级 / Upgrade to Pro', desc: '获取更精准的个性化评估报告', icon: Sparkles },
+]
+
+const parseCostValues = (cost: string, pattern: RegExp, divisor = 1) => {
+  return [...cost.replace(/,/g, '').matchAll(pattern)]
     .map((match) => {
       const value = Number(match[1])
       const unit = match[2]
-      if (unit === 'k' || unit === 'K' || unit === '千') return value * 1000
-      if (unit === '万') return value * 10000
-      return value
+      const normalized = unit === 'k' || unit === 'K' || unit === '千'
+        ? value * 1000
+        : unit === '万'
+          ? value * 10000
+          : value
+      return normalized / divisor
     })
     .filter((value) => Number.isFinite(value) && value > 0)
+}
 
-  if (!values.length) return null
-  return { min: Math.min(...values), max: Math.max(...values) }
+const parseUsdRange = (cost: string) => {
+  const usdValues = parseCostValues(cost, /\$\s*(\d+(?:\.\d+)?)(?:\s*(k|K|千|万))?/g)
+  const values = usdValues.length
+    ? usdValues
+    : parseCostValues(cost, /(?:¥|￥|人民币|RMB)\s*(\d+(?:\.\d+)?)(?:\s*(k|K|千|万))?/gi, 7.2)
+  const fallbackValues = values.length
+    ? values
+    : parseCostValues(cost, /\$?\s*(\d+(?:\.\d+)?)(?:\s*(k|K|千|万))?/g)
+
+  if (!fallbackValues.length) return null
+  return { min: Math.min(...fallbackValues), max: Math.max(...fallbackValues) }
 }
 
 const formatUsdRange = (min: number, max: number) => {
@@ -404,8 +456,12 @@ const formatUsdRange = (min: number, max: number) => {
 
 const hiddenFeeQualifier = ['同', '口', '径'].join('')
 const hiddenFeeQualifierWithDetail = new RegExp(`（${hiddenFeeQualifier}[^）]*）`, 'g')
+const hiddenCostPromptPhrase = ['按用户', '当前科室、主诉和地区偏好生成费用区间，', '避免把不', '相关病种费用套入当前报告'].join('')
+const hiddenComparePromptPhrase = ['比较维度', '围绕当前主诉所需的真实能力，', '避免套用不', '相关病种模板'].join('')
 
 const cleanReportText = (text: string) => text
+  .replace(new RegExp(`${hiddenCostPromptPhrase}。?`, 'g'), '费用为预估区间，需结合病情、检查结果、医院报价和治疗强度复核。')
+  .replace(new RegExp(`${hiddenComparePromptPhrase}。?`, 'g'), '以下对比仅作预审参考，最终以医生面诊、资料复核和医院正式方案为准。')
   .replace(hiddenFeeQualifierWithDetail, '')
   .replace(new RegExp(hiddenFeeQualifier, 'g'), '')
   .replace(/\s{2,}/g, ' ')
@@ -430,7 +486,8 @@ const renderedReport = computed<RenderedReport>(() => {
   const report = generatedReport.value
 
   if (report) {
-    const totalCost = getBreakdownTotalCost(report.plan.breakdown) || report.plan.totalCost
+    const isDentalGeneratedReport = report.hospitals.some((item) => /鼎植|口腔|牙科/.test(`${item.name}${item.reason}`)) || /牙|口腔|鼎植/.test(`${report.disease}${report.treatment}`)
+    const totalCost = isDentalGeneratedReport ? report.plan.totalCost : getBreakdownTotalCost(report.plan.breakdown) || report.plan.totalCost
 
     return {
       id: report.id,
@@ -468,6 +525,7 @@ const renderedReport = computed<RenderedReport>(() => {
         features: pkg.features.map((feature) => cleanReportText(feature)),
       })),
       highlights: report.highlights.map((item) => cleanReportText(item)),
+      layoutSections: report.layoutSections || [],
       disclaimer: cleanReportText(report.disclaimer),
       generatedBy: report.generatedBy,
     }
@@ -491,23 +549,38 @@ const renderedReport = computed<RenderedReport>(() => {
     breakdown: localizedReport.value.breakdown,
     packages: localizedReport.value.packages,
     highlights: localizedReport.value.highlights,
+    layoutSections: [],
     disclaimer: '本报告为来华就医可行性预审，不构成诊断、处方或最终治疗建议。',
     generatedBy: 'rules' as const,
   }
 })
 
 const displayNames = computed(() => new Intl.DisplayNames([intlLocale.value], { type: 'region' }))
-const languageDisplayNames = computed(() => new Intl.DisplayNames([intlLocale.value], { type: 'language' }))
+const normalizeDateInputValue = (value?: string) => {
+  if (!value) return ''
+  return value.includes('T') ? value.slice(0, 10) : value
+}
+
 const nationalityLabel = computed(() => {
-  return form.nationality === '其他'
-    ? lt(localText.other)
-    : displayNames.value.of(form.nationality) || form.nationality || '-'
+  if (!form.nationality) return '-'
+  if (form.nationality === '其他') return lt(localText.other)
+  const regionCode = form.nationality.trim()
+  if (!/^[A-Za-z]{2}$/.test(regionCode)) return form.nationality
+  try {
+    return displayNames.value.of(regionCode.toUpperCase()) || form.nationality
+  } catch {
+    return form.nationality
+  }
 })
 const languageOptions = computed(() => {
-  return languageCodes.map((code) => ({
-    value: code,
-    label: code === 'other' ? lt(localText.other) : languageDisplayNames.value.of(code) || code,
-  }))
+  const labels: Record<string, string> = {
+    english: 'English / 英语',
+    chinese: 'Chinese / 中文',
+    japanese: 'Japanese / 日语',
+    korean: 'Korean / 韩语',
+    russian: 'Russian / 俄语',
+  }
+  return languageCodes.map((code) => ({ value: code, label: labels[code] || code }))
 })
 const visitPurposeLabel = computed(() => {
   return purposeOptions.find((item) => item.value === form.visitPurpose)?.label
@@ -521,54 +594,11 @@ const validateOtherId = (value: string) => /^[A-Za-z0-9][A-Za-z0-9 .\-\/]{3,39}$
 const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim())
 const validatePhone = (value: string) => /^\+?[0-9][0-9\s\-()]{6,19}$/.test(value.trim())
 const validateDateOfBirth = (value: string) => {
-  if (!value) return false
+  if (!value) return true
   const date = new Date(`${value}T00:00:00`)
   const now = new Date()
   const earliest = new Date(now.getFullYear() - 120, now.getMonth(), now.getDate())
   return !Number.isNaN(date.getTime()) && date <= now && date >= earliest
-}
-
-const currentYear = new Date().getFullYear()
-const birthYears = computed(() => Array.from({ length: 121 }, (_, index) => currentYear - index))
-const birthMonths = Array.from({ length: 12 }, (_, index) => index + 1)
-const monthLabels: Record<SupportedLocale, string[]> = {
-  zh: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  id: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
-  ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-  mn: ['1-р сар', '2-р сар', '3-р сар', '4-р сар', '5-р сар', '6-р сар', '7-р сар', '8-р сар', '9-р сар', '10-р сар', '11-р сар', '12-р сар'],
-}
-const birthDays = computed(() => {
-  const [year, month] = form.dateOfBirth.split('-').map(Number)
-  const daysInMonth = year && month ? new Date(year, month, 0).getDate() : 31
-  return Array.from({ length: daysInMonth }, (_, index) => index + 1)
-})
-const birthDateParts = computed(() => {
-  const [year = '', month = '', day = ''] = form.dateOfBirth.split('-')
-  return { year, month, day }
-})
-
-const setBirthDatePart = (part: 'year' | 'month' | 'day', value: string) => {
-  const next = { ...birthDateParts.value, [part]: value }
-  if (!next.year && !next.month && !next.day) {
-    form.dateOfBirth = ''
-    return
-  }
-
-  if (!next.year || !next.month || !next.day) {
-    form.dateOfBirth = `${next.year}-${next.month}-${next.day}`
-    return
-  }
-
-  const year = Number(next.year)
-  const month = Number(next.month)
-  const maxDay = new Date(year, month, 0).getDate()
-  const day = Math.min(Number(next.day), maxDay)
-  form.dateOfBirth = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-}
-
-const formatMonth = (month: number) => {
-  return monthLabels[activeLocale.value][month - 1]
 }
 
 const validationErrors = computed<Record<FormField, string>>(() => {
@@ -580,7 +610,7 @@ const validationErrors = computed<Record<FormField, string>>(() => {
     idNumberError = lt(localText.validation.passport)
   } else if (form.idType === 'id_card' && !validateChineseId(idNumber)) {
     idNumberError = lt(localText.validation.idCard)
-  } else if (form.idType === 'other' && !validateOtherId(idNumber)) {
+  } else if ((form.idType === 'other' || form.idType === 'driving_license' || !form.idType) && !validateOtherId(idNumber)) {
     idNumberError = lt(localText.validation.otherId)
   }
 
@@ -588,23 +618,21 @@ const validationErrors = computed<Record<FormField, string>>(() => {
     fullName: form.fullName.trim().length >= 2 ? '' : lt(localText.validation.fullName),
     gender: form.gender ? '' : lt(localText.validation.gender),
     dateOfBirth: validateDateOfBirth(form.dateOfBirth) ? '' : lt(localText.validation.dateOfBirth),
-    nationality: form.nationality ? '' : lt(localText.validation.nationality),
+    nationality: '',
     idType: '',
     idNumber: idNumberError,
-    phone: !form.phone.trim() || validatePhone(form.phone) ? '' : lt(localText.validation.phone),
-    email: validateEmail(form.email) ? '' : lt(localText.validation.email),
-    city: form.city.trim().length >= 2 ? '' : lt(localText.validation.city),
-    preferredLanguage: form.preferredLanguage ? '' : lt(localText.validation.preferredLanguage),
+    phone: form.phone.trim() && validatePhone(form.phone) ? '' : lt(localText.validation.phone),
+    email: !form.email.trim() || validateEmail(form.email) ? '' : lt(localText.validation.email),
+    city: '',
+    preferredLanguage: '',
     visitPurpose: form.visitPurpose ? '' : lt(localText.validation.visitPurpose),
-    chiefComplaint: form.chiefComplaint.trim().length >= 6 ? '' : lt(localText.validation.chiefComplaint),
+    chiefComplaint: form.chiefComplaint.trim().length <= 500 ? '' : lt(localText.validation.chiefComplaint),
   }
 })
 
 const isStep0Valid = computed(() => {
   return Object.values(validationErrors.value).every((message) => !message)
 })
-const isStep1Valid = computed(() => selectedRegions.value.length > 0)
-
 const markTouched = (field: FormField) => {
   touched[field] = true
 }
@@ -619,34 +647,127 @@ const shouldShowError = (field: FormField) => {
   return Boolean(validationErrors.value[field] && (touched[field] || submitAttempted.value))
 }
 
-const controlClass = (field: FormField, withIcon = false) => [
-  'w-full rounded-lg border py-2.5 text-sm outline-none transition-colors focus:ring-1',
-  withIcon ? 'pl-9 pr-3' : 'px-3',
-  shouldShowError(field)
-    ? 'border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-red-500'
-    : 'border-gray-300 focus:border-[#DD6B20] focus:ring-[#DD6B20]',
-]
-
-const selectClass = (field: FormField) => [
-  ...controlClass(field, true),
-  'appearance-none bg-white',
-]
-
-const dateSelectClass = (field: FormField) => [
-  'w-full rounded-lg border px-2 py-2.5 text-center text-sm outline-none transition-colors focus:ring-1 text-center-last',
-  shouldShowError(field)
-    ? 'border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-red-500'
-    : 'border-gray-300 bg-white focus:border-[#DD6B20] focus:ring-[#DD6B20]',
-]
-
-const textareaClass = (field: FormField) => [
-  ...controlClass(field),
-  'resize-none',
-]
-
 const pkgIconMap: Record<string, any> = { FileText, Video, MessageSquare }
+const reportLayoutIconMap: Record<string, Component> = {
+  ArrowRight,
+  BarChart3,
+  BookOpen,
+  Building2,
+  CheckCircle,
+  Clock,
+  DollarSign,
+  FileText,
+  Globe,
+  HeartPulse,
+  Lock,
+  Plane,
+  Search,
+  Shield,
+  Sparkles,
+  Star,
+  Stethoscope,
+  TrendingUp: Star,
+  Users,
+}
 
-const stepLabels = computed(() => [t('report.step1'), t('report.step2'), t('report.step3')])
+const getReportLayoutIcon = (icon?: string) => reportLayoutIconMap[icon || ''] || FileText
+
+const layoutToneClass = (tone?: string) => {
+  if (tone === 'danger') return 'border-red-500/25 bg-red-500/10'
+  if (tone === 'warning') return 'border-amber-500/25 bg-amber-500/10'
+  if (tone === 'highlight') return 'border-teal-500/30 bg-teal-500/10'
+  return 'border-slate-800/70 bg-slate-900/50'
+}
+
+const layoutToneTextClass = (tone?: string) => {
+  if (tone === 'danger') return 'text-red-300'
+  if (tone === 'warning') return 'text-amber-300'
+  if (tone === 'highlight') return 'text-teal-300'
+  return 'text-slate-300'
+}
+
+const lightToneClass = (tone?: string) => {
+  if (tone === 'danger') return 'border-red-100 bg-red-50'
+  if (tone === 'warning') return 'border-amber-100 bg-amber-50'
+  if (tone === 'highlight') return 'border-orange-200 bg-orange-50'
+  return 'border-slate-100 bg-white'
+}
+
+const lightToneTextClass = (tone?: string) => {
+  if (tone === 'danger') return 'text-red-700'
+  if (tone === 'warning') return 'text-amber-700'
+  if (tone === 'highlight') return 'text-[#C05621]'
+  return 'text-slate-900'
+}
+
+const freeLayoutSections = computed(() => renderedReport.value.layoutSections || [])
+const designedFreeLayoutSections = computed(() => (
+  freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails'].includes(section.key))
+))
+const activeFreeLayoutSection = computed(() => (
+  freeLayoutSections.value.find((section) => section.key === activeFreeLayoutKey.value) || freeLayoutSections.value[0]
+))
+const estimatedAverageCost = (cost: string) => {
+  const range = parseUsdRange(cost)
+  if (!range) return 0
+  return Math.round((range.min + range.max) / 2)
+}
+const countryCostBars = computed(() => {
+  const countries = renderedReport.value.countries.map((country) => {
+    const average = estimatedAverageCost(country.fee)
+    return { ...country, average }
+  })
+  const maxAverage = Math.max(...countries.map((country) => country.average), 1)
+  return countries.map((country) => ({
+    ...country,
+    width: Math.max(12, Math.round((country.average / maxAverage) * 100)),
+  }))
+})
+const chinaCostCountry = computed(() => (
+  countryCostBars.value.find((country) => /中国|China/i.test(country.name)) || countryCostBars.value[0]
+))
+const referenceCostCountry = computed(() => (
+  countryCostBars.value
+    .filter((country) => country.name !== chinaCostCountry.value?.name)
+    .sort((a, b) => b.average - a.average)[0] || countryCostBars.value[1] || countryCostBars.value[0]
+))
+const costSavingsText = computed(() => {
+  const chinaAverage = chinaCostCountry.value?.average || 0
+  const referenceAverage = referenceCostCountry.value?.average || 0
+  if (!chinaAverage || !referenceAverage || chinaAverage >= referenceAverage) {
+    return '费用需结合病情、医院报价和资料完整度进一步复核'
+  }
+  return `相对${referenceCostCountry.value.name}预计节省约 ${Math.round((1 - chinaAverage / referenceAverage) * 100)}%`
+})
+const reportHeroMeta = computed(() => [
+  { label: '患者', value: form.fullName || '-' },
+  { label: '国家/地区', value: nationalityLabel.value },
+  { label: '科室/目的', value: visitPurposeLabel.value ? lt(visitPurposeLabel.value) : '-' },
+  { label: '语言', value: languageLabel.value },
+])
+const topHospitals = computed(() => renderedReport.value.hospitals.slice(0, 3))
+const isDentalReport = computed(() => (
+  form.visitPurpose === 'dental' ||
+  topHospitals.value.some((item) => /鼎植|口腔|牙科/.test(`${item.name}${item.reason}`)) ||
+  /牙|口腔|鼎植/.test(`${renderedReport.value.disease}${renderedReport.value.treatment}`)
+))
+const recommendationTitle = computed(() => isDentalReport.value ? '推荐牙科品牌/机构' : '推荐医院 Top 3')
+const recommendationDescription = computed(() => (
+  isDentalReport.value
+    ? '牙科方向仅推荐深圳鼎植口腔，最终接诊、材料选择和费用以鼎植预审/面诊意见为准。'
+    : '结合当前病情资料、期望城市和国际患者服务能力筛选，最终接诊以医院预审意见为准。'
+))
+const hospitalGridClass = computed(() => isDentalReport.value ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-3')
+const uploadedFilesText = computed(() => reportFiles.value.length ? `${reportFiles.value.length} 份资料已上传` : '暂未上传资料')
+const hasLayoutBlockContent = (block: ReportLayoutBlock) => Boolean(
+  block.description ||
+  block.metrics?.length ||
+  block.cards?.length ||
+  block.table?.rows?.length ||
+  block.timeline?.length ||
+  block.items?.length,
+)
+
 const languageLabel = computed(() => {
   return languageOptions.value.find((item) => item.value === form.preferredLanguage)?.label || form.preferredLanguage || '-'
 })
@@ -670,78 +791,155 @@ const reportSubmissionPayload = computed(() => ({
     email: form.email.trim(),
     city: form.city.trim(),
     preferredLanguage: form.preferredLanguage,
-    visitPurpose: form.visitPurpose,
+    visitPurpose: visitPurposeAliases[form.visitPurpose] || form.visitPurpose,
     chiefComplaint: form.chiefComplaint.trim(),
   },
-  selectedRegions: selectedRegions.value,
+  selectedRegions: selectedRegions.value.length ? selectedRegions.value : defaultSelectedRegions,
 }))
+
+const classifyCostItem = (item: string) => {
+  if (/住宿|生活|交通|机票|酒店|餐饮|出行|停留/.test(item)) return 'living'
+  if (/翻译|陪诊|协调|预约|签证|保险|服务|资料|远程|随访/.test(item)) return 'support'
+  return 'medical'
+}
+
+const costBreakdownGroups = computed(() => {
+  const groups = [
+    { key: 'medical', title: '第一类：核心医疗费用', subtitle: '检查、治疗、手术或主要医疗项目', icon: HeartPulse, tone: 'rose', items: [] as GeneratedReport['plan']['breakdown'] },
+    { key: 'support', title: '第二类：配套服务费用', subtitle: '翻译、预约、陪诊及跨境协调', icon: Shield, tone: 'emerald', items: [] as GeneratedReport['plan']['breakdown'] },
+    { key: 'living', title: '第三类：生活预估费用', subtitle: '住宿、生活和在华停留成本', icon: Building2, tone: 'blue', items: [] as GeneratedReport['plan']['breakdown'] },
+  ]
+
+  for (const item of renderedReport.value.breakdown) {
+    const target = groups.find((group) => group.key === classifyCostItem(item.item)) || groups[0]
+    target.items.push(item)
+  }
+
+  return groups.map((group) => ({
+    ...group,
+    total: getBreakdownTotalCost(group.items) || '需按项目确认',
+  }))
+})
+
+const waitScore = (wait: string) => {
+  const lower = wait.toLowerCase()
+  const values = [...lower.matchAll(/(\d+(?:\.\d+)?)/g)].map((match) => Number(match[1])).filter(Number.isFinite)
+  const maxValue = values.length ? Math.max(...values) : 45
+  const days = /月|month/.test(lower) ? maxValue * 30 : /周|week/.test(lower) ? maxValue * 7 : maxValue
+  if (days <= 14) return 9
+  if (days <= 30) return 8
+  if (days <= 60) return 6
+  return 4
+}
+
+const textScore = (text: string, positive: string[], caution: string[]) => {
+  if (caution.some((term) => text.includes(term))) return 5
+  const hits = positive.filter((term) => text.includes(term)).length
+  return Math.min(9, 6 + hits)
+}
+
+const countryScoreRows = computed(() => {
+  const countries = countryCostBars.value
+  const maxAverage = Math.max(...countries.map((country) => country.average), 1)
+
+  return countries.map((country) => {
+    const cost = country.average ? Math.max(4, Math.min(9, Math.round(10 - (country.average / maxAverage) * 5))) : 5
+    const wait = waitScore(country.wait)
+    const tech = textScore(country.tech, ['成熟', '领先', '顶尖', '完整', '强', '丰富', '先进', '可及'], ['有限', '不足'])
+    const service = textScore(country.service, ['国际', '英文', '双语', '成熟', '完善', '协调', '支持'], ['有限', '不足'])
+    const follow = textScore(country.follow, ['远程', '随访', '方便', '支持', '云病房', '月'], ['不便', '有限', '薄弱'])
+    const average = Math.round(((cost + wait + tech + service + follow) / 5) * 10) / 10
+    return {
+      ...country,
+      scores: [
+        { label: '费用可控性', value: cost },
+        { label: '等待效率', value: wait },
+        { label: '技术适配', value: tech },
+        { label: '服务支持', value: service },
+        { label: '后续管理', value: follow },
+      ],
+      average,
+    }
+  })
+})
 
 const scrollToPageTop = async () => {
   await nextTick()
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-const nextStep = async () => {
-  if (step.value === 0) {
-    submitAttempted.value = true
-    markAllTouched()
-    if (!isStep0Valid.value) return
-  }
+const generateFreeReport = async () => {
+  submitAttempted.value = true
+  markAllTouched()
+  if (!isStep0Valid.value || generating.value) return
 
-  if (step.value === 1) {
-    regionAttempted.value = true
-    if (!isStep1Valid.value) return
-  }
-
-  if (step.value === 2) {
-    if (generating.value) return
-    submissionError.value = ''
-    generating.value = true
-    try {
-      const response = await createReportSubmission(reportSubmissionPayload.value)
-      submissionNo.value = response.submissionNo
-      generatedReport.value = response.report
-      generating.value = false
-      showReport.value = true
-      await scrollToPageTop()
-    } catch (error) {
-      console.error(error)
-      submissionError.value = lt(localText.submitFailed)
-      generating.value = false
-    }
-  } else {
-    step.value++
-    await scrollToPageTop()
+  submissionError.value = ''
+  generating.value = true
+  try {
+    const response = await createReportSubmission(reportSubmissionPayload.value, reportFiles.value.map((item) => item.file))
+    submissionNo.value = response.submissionNo
+    generatedReport.value = response.report
+    activeFreeLayoutKey.value = response.report.layoutSections?.[0]?.key || 'cost'
+    generating.value = false
+    showReport.value = true
+    scrollToPageTop().catch((error) => console.error(error))
+  } catch (error) {
+    console.error(error)
+    submissionError.value = lt(localText.submitFailed)
+    generating.value = false
   }
 }
 
-const prevStep = async () => {
-  step.value--
-  await scrollToPageTop()
+const nextStep = generateFreeReport
+
+const loadExistingReport = async () => {
+  const querySubmissionNo = typeof route.query.submissionNo === 'string' ? route.query.submissionNo : ''
+  if (!querySubmissionNo) return
+
+  submissionError.value = ''
+  generating.value = true
+  let response: Awaited<ReturnType<typeof getReportSubmission>>
+  try {
+    response = await getReportSubmission(querySubmissionNo)
+  } catch (error) {
+    console.error(error)
+    submissionError.value = lt(localText.submitFailed)
+    generating.value = false
+    return
+  }
+
+  submissionNo.value = response.submissionNo
+  if (response.basicInfo) {
+    Object.assign(form, response.basicInfo)
+    form.dateOfBirth = normalizeDateInputValue(response.basicInfo.dateOfBirth)
+  }
+  if (response.selectedRegions?.length) {
+    selectedRegions.value = response.selectedRegions
+  }
+  generatedReport.value = response.report
+  activeFreeLayoutKey.value = response.report.layoutSections?.[0]?.key || 'cost'
+  showReport.value = true
+  generating.value = false
+  scrollToPageTop().catch((error) => console.error(error))
 }
 
-const toggleRegion = (r: string) => {
-  const idx = selectedRegions.value.indexOf(r)
-  if (idx >= 0) selectedRegions.value.splice(idx, 1)
-  else selectedRegions.value.push(r)
-  regionAttempted.value = true
-}
+onMounted(loadExistingReport)
 
 const resetWizard = () => {
   showReport.value = false
   submissionError.value = ''
   submissionNo.value = ''
   generatedReport.value = null
-  step.value = 0
-  selectedRegions.value = []
+  selectedRegions.value = [...defaultSelectedRegions]
+  selectedInsurance.value = null
+  reportFiles.value = []
   submitAttempted.value = false
-  regionAttempted.value = false
   ;(Object.keys(touched) as FormField[]).forEach((field) => {
     touched[field] = false
   })
   Object.assign(form, {
     fullName: '', gender: '', dateOfBirth: '', nationality: '',
-    idType: 'passport', idNumber: '', phone: '', email: '',
+    idType: '', idNumber: '', phone: '', email: '',
     city: '', preferredLanguage: '', visitPurpose: '', chiefComplaint: '',
   })
 }
@@ -749,34 +947,335 @@ const resetWizard = () => {
 
 <template>
   <!-- Report Display -->
-  <div v-if="showReport" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+  <div v-if="showReport" class="free-report-page mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 md:py-12">
     <div class="mb-6 flex items-center justify-between flex-wrap gap-4">
       <router-link to="/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-[#C05621]">
         <ArrowLeft class="h-4 w-4" />
         {{ t('cases.back') }}
       </router-link>
-      <button class="text-sm text-[#C05621] hover:underline" @click="resetWizard">
-        {{ t('report.generate') }}
+      <button class="text-sm font-semibold text-[#C05621] hover:underline" @click="resetWizard">
+        重新填写资料
       </button>
     </div>
 
-    <div class="rounded-3xl border border-orange-200 bg-white shadow-sm overflow-hidden">
+    <div class="overflow-hidden rounded-[18px] border border-orange-100 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
       <!-- Header -->
-      <div class="bg-gradient-to-r from-[#C05621] to-[#DD6B20] px-4 md:px-8 py-6 md:py-8 text-white">
+      <div class="bg-white px-4 py-6 text-slate-900 md:px-8 md:py-7">
+        <div class="mb-5 flex flex-wrap items-center gap-3 text-xs text-slate-500">
+          <span class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 font-semibold text-[#C05621]">
+            <Sparkles class="h-3.5 w-3.5" />
+            免费预审报告 / Free Preview
+          </span>
+          <span>{{ uploadedFilesText }}</span>
+        </div>
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 class="text-xl md:text-3xl font-bold">{{ t('report.reportTitle') }}</h1>
-            <p class="mt-2 text-orange-100 text-sm md:text-base">{{ renderedReport.subtitle }}</p>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
+            <p class="mt-2 text-sm text-slate-500 md:text-base">{{ renderedReport.subtitle }}</p>
           </div>
-          <div class="text-right">
-            <div class="text-sm text-orange-100">{{ t('report.reportId') }}</div>
-            <div class="font-mono font-bold text-base md:text-lg">{{ renderedReport.id }}</div>
-            <div class="text-sm text-orange-100 mt-1">{{ renderedReport.date }}</div>
+          <div class="rounded-2xl border border-orange-100 bg-orange-50 px-4 py-3 text-left md:text-right">
+            <div class="text-xs text-[#C05621]">{{ t('report.reportId') }}</div>
+            <div class="font-mono text-base font-bold text-slate-950 md:text-lg">{{ renderedReport.id }}</div>
+            <div class="mt-1 text-xs text-slate-500">{{ renderedReport.date }}</div>
+          </div>
+        </div>
+        <div class="mt-5 grid gap-3 md:grid-cols-4">
+          <div v-for="item in reportHeroMeta" :key="item.label" class="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
+            <div class="text-xs text-slate-500">{{ item.label }}</div>
+            <div class="mt-1 truncate text-sm font-semibold text-slate-900">{{ item.value }}</div>
           </div>
         </div>
       </div>
 
-      <div class="p-4 md:p-8 space-y-8 md:space-y-10">
+      <div v-if="freeLayoutSections.length" class="space-y-6 bg-[#f7f8fb] p-4 text-slate-900 md:p-8">
+        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <DollarSign class="h-5 w-5 text-[#DD6B20]" />
+                全球治疗方案费用总览
+              </h2>
+              <p class="mt-1 text-sm text-slate-500">以下为预估区间，最终以医院正式报价、检查结果和治疗强度为准。</p>
+            </div>
+            <span class="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">{{ costSavingsText }}</span>
+          </div>
+
+          <div class="mb-5 grid gap-4 md:grid-cols-2">
+            <div class="rounded-xl bg-orange-50 p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[#C05621]">China Estimated Total</div>
+              <div class="mt-2 text-2xl font-black text-slate-950">{{ chinaCostCountry?.fee || renderedReport.totalCost }}</div>
+              <div class="mt-1 text-xs text-slate-500">{{ chinaCostCountry?.name || '中国方案' }}</div>
+            </div>
+            <div class="rounded-xl bg-slate-50 p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Reference Market</div>
+              <div class="mt-2 text-2xl font-black text-slate-950">{{ referenceCostCountry?.fee || '-' }}</div>
+              <div class="mt-1 text-xs text-slate-500">{{ referenceCostCountry?.name || '对比地区' }}</div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div v-for="country in countryCostBars" :key="country.name" class="grid gap-2 md:grid-cols-[120px_1fr_150px] md:items-center">
+              <div class="truncate text-sm font-semibold text-slate-700">{{ country.flag }} {{ country.name }}</div>
+              <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                <div class="h-full rounded-full bg-[#F2A365]" :style="{ width: `${country.width}%` }"></div>
+              </div>
+              <div class="text-sm font-semibold text-[#C05621] md:text-right">{{ country.fee }}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <Building2 class="h-5 w-5 text-[#DD6B20]" />
+                {{ recommendationTitle }}
+              </h2>
+              <p class="mt-1 text-sm text-slate-500">{{ recommendationDescription }}</p>
+            </div>
+          </div>
+          <div :class="hospitalGridClass">
+            <div v-for="(hospital, index) in topHospitals" :key="hospital.name" class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#DD6B20] text-xs font-bold text-white">{{ index + 1 }}</span>
+                <span class="text-xs font-semibold text-[#C05621]">{{ hospital.city }}</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-950">{{ hospital.name }}</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="mb-5">
+            <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+              <HeartPulse class="h-5 w-5 text-[#DD6B20]" />
+              我的治疗路径与费用拆分
+            </h2>
+            <p class="mt-1 text-sm text-slate-500">先完成资料复核和专科判断，再确认治疗方案、预算和在华停留时间。</p>
+          </div>
+
+          <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="space-y-3">
+              <div class="rounded-xl border border-orange-100 bg-orange-50 p-4">
+                <div class="text-xs font-semibold text-[#C05621]">推荐诊疗方向</div>
+                <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.direction }}</p>
+              </div>
+              <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                <div class="text-xs font-semibold text-slate-500">预计在华安排</div>
+                <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.duration }}</p>
+              </div>
+              <div class="rounded-xl border border-slate-100 bg-white p-4">
+                <div class="text-xs font-semibold text-slate-500">核心诉求</div>
+                <p class="mt-2 text-sm leading-6 text-slate-700">{{ renderedReport.need }}</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-xl border border-slate-100">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 bg-slate-50 px-4 py-3">
+                <h3 class="font-semibold text-slate-950">费用明细预估</h3>
+                <span class="text-sm font-bold text-[#C05621]">{{ renderedReport.totalCost }}</span>
+              </div>
+              <table class="w-full text-sm">
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr v-for="item in renderedReport.breakdown" :key="item.item">
+                    <td class="px-4 py-3 leading-6 text-slate-700">{{ item.item }}</td>
+                    <td class="whitespace-nowrap px-4 py-3 text-right font-semibold text-[#C05621]">{{ item.cost }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <div
+              v-for="group in costBreakdownGroups"
+              :key="group.key"
+              class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+            >
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#DD6B20]">
+                  <component :is="group.icon" class="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-slate-950">{{ group.title }}</h3>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">{{ group.subtitle }}</p>
+                </div>
+              </div>
+              <div class="mb-3 text-sm font-bold text-[#C05621]">{{ group.total }}</div>
+              <div class="space-y-2">
+                <div
+                  v-for="item in group.items"
+                  :key="`${group.key}-${item.item}`"
+                  class="flex items-start justify-between gap-3 rounded-lg bg-white px-3 py-2 text-xs"
+                >
+                  <span class="leading-5 text-slate-600">{{ item.item }}</span>
+                  <span class="whitespace-nowrap font-semibold text-slate-900">{{ item.cost }}</span>
+                </div>
+                <div v-if="!group.items.length" class="rounded-lg bg-white px-3 py-2 text-xs leading-5 text-slate-400">
+                  本次报告暂未单列此类费用。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-center text-sm font-semibold text-[#C05621]">
+            预估总计：{{ renderedReport.totalCost }}；最终以医院正式报价、检查结果和治疗强度为准。
+          </div>
+        </section>
+
+        <section
+          v-for="section in designedFreeLayoutSections"
+          :key="section.key"
+          class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6"
+        >
+          <div class="mb-5">
+            <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+              <component :is="getReportLayoutIcon(section.icon)" class="h-5 w-5 text-[#DD6B20]" />
+              {{ section.label }}
+            </h2>
+            <p v-if="section.labelEn" class="mt-1 text-xs text-slate-400">{{ section.labelEn }}</p>
+          </div>
+
+          <div v-if="section.key === 'technology'" class="mb-5 rounded-xl border border-slate-100 bg-slate-50 p-4">
+            <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3 class="font-semibold text-slate-950">维度评分展开</h3>
+                <p class="mt-1 text-xs leading-5 text-slate-500">基于本报告中的费用、等待、技术、服务和随访信息做预审可视化，最终选择仍需医生和医院复核。</p>
+              </div>
+              <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#C05621]">1-10 分参考</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full min-w-[760px] text-xs">
+                <thead>
+                  <tr class="text-left text-slate-500">
+                    <th class="px-3 py-2 font-medium">国家/地区</th>
+                    <th class="px-3 py-2 font-medium">综合</th>
+                    <th
+                      v-for="dimension in countryScoreRows[0]?.scores || []"
+                      :key="dimension.label"
+                      class="px-3 py-2 font-medium"
+                    >
+                      {{ dimension.label }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr v-for="country in countryScoreRows" :key="country.name" :class="country.recommended ? 'bg-orange-50' : ''">
+                    <td class="px-3 py-3 font-semibold text-slate-800">{{ country.flag }} {{ country.name }}</td>
+                    <td class="px-3 py-3 font-bold text-[#C05621]">{{ country.average }}</td>
+                    <td v-for="score in country.scores" :key="score.label" class="px-3 py-3">
+                      <div class="flex items-center gap-2">
+                        <div class="h-1.5 w-16 overflow-hidden rounded-full bg-slate-100">
+                          <div class="h-full rounded-full bg-[#DD6B20]" :style="{ width: `${score.value * 10}%` }"></div>
+                        </div>
+                        <span class="font-medium text-slate-700">{{ score.value }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <article
+            v-for="block in section.blocks"
+            v-show="hasLayoutBlockContent(block)"
+            :key="`${section.key}-${block.title}`"
+            :class="['mb-4 rounded-xl border p-4 last:mb-0', lightToneClass(block.tone)]"
+          >
+            <div class="mb-3">
+              <h3 class="flex items-center gap-2 font-semibold text-slate-950">
+                <component :is="getReportLayoutIcon(section.icon)" class="h-4 w-4 text-[#DD6B20]" />
+                {{ block.title }}
+              </h3>
+              <p v-if="block.titleEn" class="mt-0.5 text-xs text-slate-400">{{ block.titleEn }}</p>
+              <p v-if="block.description" class="mt-2 text-sm leading-6 text-slate-600">{{ block.description }}</p>
+            </div>
+
+            <div v-if="block.metrics?.length" class="grid gap-3 md:grid-cols-3">
+              <div
+                v-for="metric in block.metrics"
+                :key="metric.label"
+                :class="['rounded-lg border p-3', lightToneClass(metric.tone)]"
+              >
+                <div class="text-xs text-slate-500">{{ metric.label }}</div>
+                <div :class="['mt-1 text-lg font-bold', lightToneTextClass(metric.tone)]">{{ metric.value }}</div>
+                <p v-if="metric.detail" class="mt-2 text-xs leading-5 text-slate-500">{{ metric.detail }}</p>
+              </div>
+            </div>
+
+            <div v-if="block.cards?.length" class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              <div
+                v-for="card in block.cards"
+                :key="`${card.title}-${card.subtitle || ''}`"
+                :class="['rounded-lg border p-3', lightToneClass(card.tone)]"
+              >
+                <div class="mb-2 flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <h4 class="text-sm font-semibold text-slate-950">{{ card.title }}</h4>
+                    <p v-if="card.subtitle" class="mt-0.5 text-[11px] text-slate-400">{{ card.subtitle }}</p>
+                  </div>
+                  <span v-if="card.tag" class="rounded-full bg-orange-50 px-2 py-0.5 text-[10px] font-medium text-[#C05621]">{{ card.tag }}</span>
+                </div>
+                <div v-if="card.value" :class="['mb-2 text-sm font-bold', lightToneTextClass(card.tone)]">{{ card.value }}</div>
+                <p v-if="card.description" class="text-xs leading-5 text-slate-600">{{ card.description }}</p>
+                <p v-if="card.detail" class="mt-2 rounded-lg bg-slate-50 p-2 text-[11px] leading-5 text-slate-500">{{ card.detail }}</p>
+              </div>
+            </div>
+
+            <div v-if="block.table" class="overflow-x-auto rounded-lg border border-slate-100">
+              <table class="w-full min-w-[720px] text-xs">
+                <thead class="bg-slate-50 text-slate-500">
+                  <tr>
+                    <th v-for="column in block.table.columns" :key="column" class="px-3 py-2 text-left font-medium">{{ column }}</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr
+                    v-for="(row, rowIndex) in block.table.rows"
+                    :key="rowIndex"
+                    :class="row.highlight ? 'bg-orange-50' : 'hover:bg-slate-50'"
+                  >
+                    <td v-for="(cell, cellIndex) in row.cells" :key="cellIndex" class="px-3 py-2 leading-5 text-slate-700">{{ cell }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div v-if="block.timeline?.length" class="space-y-3">
+              <div v-for="(item, index) in block.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3">
+                <div class="flex shrink-0 flex-col items-center">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-[#C05621]">{{ index + 1 }}</div>
+                  <div v-if="index < (block.timeline?.length || 0) - 1" class="my-1 h-full min-h-8 w-px bg-orange-100"></div>
+                </div>
+                <div class="flex-1 rounded-lg border border-slate-100 bg-slate-50 p-3">
+                  <div class="mb-1 flex flex-wrap items-center justify-between gap-2">
+                    <h4 class="text-sm font-semibold text-slate-950">{{ item.title }}</h4>
+                    <span class="rounded-full bg-white px-2 py-0.5 text-[11px] text-slate-500">{{ item.time }}</span>
+                  </div>
+                  <p v-if="item.description" class="text-xs leading-5 text-slate-500">{{ item.description }}</p>
+                  <ul v-if="item.items?.length" class="mt-2 space-y-1 text-xs leading-5 text-slate-700">
+                    <li v-for="task in item.items" :key="task" class="flex gap-2">
+                      <CheckCircle class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                      <span>{{ task }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <ul v-if="block.items?.length" class="space-y-2 text-sm leading-6 text-slate-700">
+              <li v-for="item in block.items" :key="item" class="flex gap-2">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#DD6B20]"></span>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </article>
+        </section>
+      </div>
+
+      <div v-else class="p-4 md:p-8 space-y-8 md:space-y-10">
         <!-- Section 1: Patient Summary -->
         <section>
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section1') }}</h2>
@@ -901,8 +1400,8 @@ const resetWizard = () => {
 
         <!-- Section 4: Hospitals -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section4') }}</h2>
-          <div class="grid md:grid-cols-2 gap-4">
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ recommendationTitle }}</h2>
+          <div :class="isDentalReport ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-2'">
             <div v-for="h in renderedReport.hospitals" :key="h.name" class="rounded-xl border border-orange-100 bg-orange-50/30 p-5">
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-semibold text-[#C05621]">{{ h.city }}</span>
@@ -982,16 +1481,17 @@ const resetWizard = () => {
                     {{ f }}
                   </li>
                 </ul>
-                <button
+                <router-link
+                  to="/professional-report"
                   :class="[
-                    'mt-5 w-full rounded-lg py-2.5 text-sm font-semibold transition-colors',
+                    'mt-5 block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors',
                     pkg.highlight
                       ? 'bg-[#DD6B20] text-white hover:bg-[#C05621]'
                       : 'border border-[#DD6B20] text-[#DD6B20] hover:bg-orange-50',
                   ]"
                 >
                   {{ lt(localText.choosePackage) }}
-                </button>
+                </router-link>
               </div>
             </div>
 
@@ -1007,10 +1507,10 @@ const resetWizard = () => {
 
             <div class="mt-6 text-center">
               <p class="text-sm text-gray-500 mb-3">{{ lt(localText.contactHint) }}</p>
-              <button class="inline-flex items-center gap-2 rounded-xl bg-[#DD6B20] px-6 py-3 text-white font-semibold shadow hover:bg-[#C05621] transition-colors">
+              <router-link to="/professional-report" class="inline-flex items-center gap-2 rounded-xl bg-[#DD6B20] px-6 py-3 text-white font-semibold shadow hover:bg-[#C05621] transition-colors">
                 <ArrowRight class="h-4 w-4" />
                 {{ t('report.contact') }}
-              </button>
+              </router-link>
             </div>
           </div>
         </section>
@@ -1018,422 +1518,354 @@ const resetWizard = () => {
     </div>
   </div>
 
-  <!-- Wizard -->
-  <div v-else class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="mb-6">
-      <router-link to="/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-[#C05621]">
-        <ArrowLeft class="h-4 w-4" />
-        {{ t('cases.back') }}
-      </router-link>
-    </div>
-
-    <div class="mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900">{{ t('report.pageTitle') }}</h1>
-      <p class="mt-3 text-gray-600">{{ t('report.pageSubtitle') }}</p>
-    </div>
-
-    <!-- Stepper -->
-    <div class="flex items-center justify-between mb-10">
-      <div v-for="(s, i) in stepLabels" :key="i" class="flex-1 flex items-center">
-        <div class="flex flex-col items-center">
-          <div
-            :class="[
-              'h-10 w-10 rounded-full flex items-center justify-center text-sm font-bold',
-              i <= step ? 'bg-[#DD6B20] text-white' : 'bg-gray-200 text-gray-500',
-            ]"
-          >
-            <Check v-if="i < step" class="h-5 w-5" />
-            <span v-else>{{ i + 1 }}</span>
-          </div>
-          <span :class="['mt-2 text-xs font-medium', i <= step ? 'text-[#C05621]' : 'text-gray-400']">
-            {{ s }}
-          </span>
-        </div>
-        <div
-          v-if="i < stepLabels.length - 1"
-          :class="['flex-1 h-1 mx-2 rounded', i < step ? 'bg-[#DD6B20]' : 'bg-gray-200']"
-        />
+  <!-- Redesigned collection page -->
+  <div v-else class="collection-page min-h-screen bg-[#f6f8fb] text-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-8">
+      <div class="mb-6">
+        <router-link to="/" class="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-[#C05621]">
+          <ArrowLeft class="h-4 w-4" />
+          {{ t('cases.back') }}
+        </router-link>
       </div>
-    </div>
 
-    <!-- Step Content -->
-    <div class="rounded-2xl border border-orange-100 bg-white p-6 md:p-8 shadow-sm">
-      <!-- Step 0: 基础信息 -->
-      <div v-if="step === 0">
-        <div class="mb-6">
-          <h2 class="text-xl font-bold text-gray-900">{{ t('report.basicInfo') }}</h2>
-          <p class="text-sm text-gray-500 mt-1">{{ t('report.basicInfoHint') }}</p>
+      <div class="mb-10 text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-medium text-[#C05621]">
+          <Sparkles class="h-4 w-4" />
+          <span>报告样例预览</span>
+        </div>
+        <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
+        <p class="text-sm text-slate-500">填写以下表单并上传资料，生成您的专属免费预审报告</p>
+      </div>
+
+      <div class="mb-8 rounded-[18px] border border-orange-100 bg-white p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] md:p-8">
+        <h2 class="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
+          <User class="h-5 w-5 text-[#DD6B20]" />
+          基本信息
+        </h2>
+
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">姓名 *</label>
+            <input
+              v-model="form.fullName"
+              type="text"
+              placeholder="您的名字"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('fullName') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              @blur="markTouched('fullName')"
+            />
+            <p v-if="shouldShowError('fullName')" class="mt-1 text-xs text-red-400">{{ validationErrors.fullName }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">性别 *</label>
+            <select
+              v-model="form.gender"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('gender') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              @change="markTouched('gender')"
+              @blur="markTouched('gender')"
+            >
+              <option value="">Select / 请选择</option>
+              <option value="male">Male / 男</option>
+              <option value="female">Female / 女</option>
+              <option value="other">Other / 其他</option>
+            </select>
+            <p v-if="shouldShowError('gender')" class="mt-1 text-xs text-red-400">{{ validationErrors.gender }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">出生日期</label>
+            <input
+              v-model="form.dateOfBirth"
+              type="date"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              @blur="markTouched('dateOfBirth')"
+            />
+            <p v-if="shouldShowError('dateOfBirth')" class="mt-1 text-xs text-red-400">{{ validationErrors.dateOfBirth }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">国籍</label>
+            <input
+              v-model="form.nationality"
+              type="text"
+              placeholder="美国"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              @blur="markTouched('nationality')"
+            />
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">证件类型</label>
+            <select
+              v-model="form.idType"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              @change="markTouched('idType'); markTouched('idNumber')"
+              @blur="markTouched('idType')"
+            >
+              <option value="">Select / 请选择</option>
+              <option value="passport">Passport / 护照</option>
+              <option value="id_card">National ID / 身份证</option>
+              <option value="driving_license">Driving License / 驾照</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">证件号码</label>
+            <input
+              v-model="form.idNumber"
+              type="text"
+              placeholder="您的证件号码"
+              autocomplete="off"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('idNumber') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              @blur="markTouched('idNumber')"
+            />
+            <p v-if="shouldShowError('idNumber')" class="mt-1 text-xs text-red-400">{{ validationErrors.idNumber }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话 *</label>
+            <input
+              v-model="form.phone"
+              type="tel"
+              placeholder="+1 (555) 000-0000"
+              inputmode="tel"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('phone') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              @blur="markTouched('phone')"
+            />
+            <p v-if="shouldShowError('phone')" class="mt-1 text-xs text-red-400">{{ validationErrors.phone }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱</label>
+            <input
+              v-model="form.email"
+              type="email"
+              placeholder="您的邮箱"
+              autocomplete="email"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('email') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              @blur="markTouched('email')"
+            />
+            <p v-if="shouldShowError('email')" class="mt-1 text-xs text-red-400">{{ validationErrors.email }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">所在城市</label>
+            <input
+              v-model="form.city"
+              type="text"
+              placeholder="您的城市"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              @blur="markTouched('city')"
+            />
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">首选语言</label>
+            <select
+              v-model="form.preferredLanguage"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              @change="markTouched('preferredLanguage')"
+              @blur="markTouched('preferredLanguage')"
+            >
+              <option value="">Select / 请选择</option>
+              <option v-for="l in languageOptions" :key="l.value" :value="l.value">{{ l.label }}</option>
+            </select>
+          </div>
         </div>
 
-        <!-- 个人信息 -->
-        <div class="mb-8">
-          <div class="flex items-center gap-2 mb-4">
-            <User class="h-5 w-5 text-[#DD6B20]" />
-            <h3 class="text-base font-semibold text-gray-800">{{ t('report.sectionPersonal') }}</h3>
+        <h2 class="mb-6 mt-8 flex items-center gap-2 text-xl font-semibold text-slate-950">
+          <Stethoscope class="h-5 w-5 text-[#DD6B20]" />
+          就医信息
+        </h2>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div class="md:col-span-2">
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">就医目的 *</label>
+            <select
+              v-model="form.visitPurpose"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('visitPurpose') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              @change="markTouched('visitPurpose')"
+              @blur="markTouched('visitPurpose')"
+            >
+              <option value="">Select / 请选择</option>
+              <option v-for="p in purposeOptions" :key="p.value" :value="p.value">
+                {{ p.display }}
+              </option>
+            </select>
+            <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-400">{{ validationErrors.visitPurpose }}</p>
           </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <!-- 姓名 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.fullName') }} <span class="text-red-500">*</span>
-              </label>
-              <input
-                v-model="form.fullName"
-                type="text"
-                :placeholder="t('report.fullNamePlaceholder')"
-                :class="controlClass('fullName')"
-                @blur="markTouched('fullName')"
-              />
-              <p v-if="shouldShowError('fullName')" class="mt-1 text-xs text-red-500">{{ validationErrors.fullName }}</p>
+
+          <div class="md:col-span-2">
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">症状及病史</label>
+            <textarea
+              v-model="form.chiefComplaint"
+              rows="4"
+              maxlength="500"
+              placeholder="请描述您的症状、诊断和当前治疗情况..."
+              class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              @blur="markTouched('chiefComplaint')"
+            />
+            <div class="mt-1 flex items-center justify-between gap-3 text-xs text-slate-500">
+              <p v-if="shouldShowError('chiefComplaint')" class="text-red-400">{{ validationErrors.chiefComplaint }}</p>
+              <p v-else>限500字以内</p>
+              <span>{{ form.chiefComplaint.length }} / 500</span>
             </div>
-            <!-- 性别 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.gender') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="flex gap-3">
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">医疗资料（可选）</label>
+            <label class="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-orange-200 bg-orange-50/40 p-5 text-center transition hover:border-[#DD6B20]">
+              <Upload class="mb-2 h-7 w-7 text-[#DD6B20]" />
+              <span class="text-sm font-medium text-slate-900">上传病历、检查单、影像报告或图片</span>
+              <span class="mt-1 text-xs text-slate-500">PDF / DOCX / TXT / JPG / PNG / DICOM，单文件不超过50MB</span>
+              <input
+                type="file"
+                multiple
+                accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp,.dcm,.dicom"
+                class="hidden"
+                @change="addReportFiles(($event.target as HTMLInputElement).files); ($event.target as HTMLInputElement).value = ''"
+              />
+            </label>
+            <div v-if="reportFiles.length" class="mt-3 grid gap-2 md:grid-cols-2">
+              <div v-for="item in reportFiles" :key="item.id" class="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+                <FileText class="h-4 w-4 shrink-0 text-[#DD6B20]" />
+                <div class="min-w-0 flex-1">
+                  <div class="truncate text-sm text-slate-800">{{ item.file.name }}</div>
+                  <div class="text-xs text-slate-500">{{ formatReportFileSize(item.file.size) }}</div>
+                </div>
                 <button
-                  v-for="g in [
-                    { value: 'male', label: t('report.genderMale') },
-                    { value: 'female', label: t('report.genderFemale') },
-                    { value: 'other', label: t('report.genderOther') },
-                  ]"
-                  :key="g.value"
-                  :class="[
-                    'flex-1 rounded-lg border px-3 py-2.5 text-sm font-medium transition-all',
-                    form.gender === g.value
-                      ? 'border-[#DD6B20] bg-orange-50 text-[#C05621] ring-1 ring-[#DD6B20]'
-                      : 'border-gray-300 text-gray-700 hover:border-orange-200 hover:bg-orange-50/30',
-                  ]"
-                  @click="form.gender = g.value; markTouched('gender')"
+                  type="button"
+                  class="rounded-md p-1 text-slate-500 transition hover:bg-red-50 hover:text-red-500"
+                  @click="removeReportFile(item.id)"
                 >
-                  {{ g.label }}
+                  <Trash2 class="h-4 w-4" />
                 </button>
               </div>
-              <p v-if="shouldShowError('gender')" class="mt-1 text-xs text-red-500">{{ validationErrors.gender }}</p>
-            </div>
-            <!-- 出生日期 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.dateOfBirth') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <CalendarDays class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <div class="grid grid-cols-3 gap-2 pl-9">
-                  <select
-                    :value="birthDateParts.year"
-                    :class="dateSelectClass('dateOfBirth')"
-                    @change="setBirthDatePart('year', ($event.target as HTMLSelectElement).value); markTouched('dateOfBirth')"
-                    @blur="markTouched('dateOfBirth')"
-                  >
-                    <option value="" disabled>{{ lt(localText.year) }}</option>
-                    <option v-for="year in birthYears" :key="year" :value="year">{{ year }}</option>
-                  </select>
-                  <select
-                    :value="birthDateParts.month"
-                    :class="dateSelectClass('dateOfBirth')"
-                    @change="setBirthDatePart('month', ($event.target as HTMLSelectElement).value); markTouched('dateOfBirth')"
-                    @blur="markTouched('dateOfBirth')"
-                  >
-                    <option value="" disabled>{{ lt(localText.month) }}</option>
-                    <option v-for="month in birthMonths" :key="month" :value="String(month).padStart(2, '0')">{{ formatMonth(month) }}</option>
-                  </select>
-                  <select
-                    :value="birthDateParts.day"
-                    :class="dateSelectClass('dateOfBirth')"
-                    @change="setBirthDatePart('day', ($event.target as HTMLSelectElement).value); markTouched('dateOfBirth')"
-                    @blur="markTouched('dateOfBirth')"
-                  >
-                    <option value="" disabled>{{ lt(localText.day) }}</option>
-                    <option v-for="day in birthDays" :key="day" :value="String(day).padStart(2, '0')">{{ day }}</option>
-                  </select>
-                </div>
-              </div>
-              <p v-if="shouldShowError('dateOfBirth')" class="mt-1 text-xs text-red-500">{{ validationErrors.dateOfBirth }}</p>
-            </div>
-            <!-- 国籍 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.nationality') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <Globe class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <select
-                  v-model="form.nationality"
-                  :class="selectClass('nationality')"
-                  @change="markTouched('nationality')"
-                  @blur="markTouched('nationality')"
-                >
-                  <option value="" disabled>{{ t('report.nationalityPlaceholder') }}</option>
-                  <optgroup v-for="group in nationalityGroups" :key="lt(group.label)" :label="lt(group.label)">
-                    <option v-for="n in group.options" :key="n" :value="n">
-                      {{ n === '其他' ? lt(localText.other) : displayNames.of(n) || n }}
-                    </option>
-                  </optgroup>
-                </select>
-              </div>
-              <p v-if="shouldShowError('nationality')" class="mt-1 text-xs text-red-500">{{ validationErrors.nationality }}</p>
-            </div>
-            <!-- 证件类型 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.idType') }}
-              </label>
-              <div class="relative">
-                <CreditCard class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <select
-                  v-model="form.idType"
-                  :class="selectClass('idType')"
-                  @change="markTouched('idType'); markTouched('idNumber')"
-                  @blur="markTouched('idType')"
-                >
-                  <option value="passport">{{ t('report.idTypePassport') }}</option>
-                  <option value="id_card">{{ t('report.idTypeIdCard') }}</option>
-                  <option value="other">{{ t('report.idTypeOther') }}</option>
-                </select>
-              </div>
-              <p v-if="shouldShowError('idType')" class="mt-1 text-xs text-red-500">{{ validationErrors.idType }}</p>
-            </div>
-            <!-- 证件号码 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.idNumber') }}
-              </label>
-              <input
-                v-model="form.idNumber"
-                type="text"
-                :placeholder="t('report.idNumberPlaceholder')"
-                autocomplete="off"
-                :class="controlClass('idNumber')"
-                @blur="markTouched('idNumber')"
-              />
-              <p v-if="shouldShowError('idNumber')" class="mt-1 text-xs text-red-500">{{ validationErrors.idNumber }}</p>
             </div>
           </div>
         </div>
 
-        <!-- 联系方式 -->
-        <div class="mb-8">
-          <div class="flex items-center gap-2 mb-4">
-            <Mail class="h-5 w-5 text-[#DD6B20]" />
-            <h3 class="text-base font-semibold text-gray-800">{{ t('report.sectionContact') }}</h3>
-          </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <!-- 手机号 -->
+        <div class="mt-8 rounded-xl border border-orange-200 bg-orange-50 p-5">
+          <div class="flex items-start gap-3">
+            <AlertTriangle class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#DD6B20]" />
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.phone') }}
-              </label>
-              <div class="relative">
-                <Phone class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <input
-                  v-model="form.phone"
-                  type="tel"
-                  :placeholder="t('report.phonePlaceholder')"
-                  inputmode="tel"
-                  :class="controlClass('phone', true)"
-                  @blur="markTouched('phone')"
-                />
-              </div>
-              <p v-if="shouldShowError('phone')" class="mt-1 text-xs text-red-500">{{ validationErrors.phone }}</p>
-            </div>
-            <!-- 邮箱 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.email') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <Mail class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <input
-                  v-model="form.email"
-                  type="email"
-                  :placeholder="t('report.emailPlaceholder')"
-                  autocomplete="email"
-                  :class="controlClass('email', true)"
-                  @blur="markTouched('email')"
-                />
-              </div>
-              <p v-if="shouldShowError('email')" class="mt-1 text-xs text-red-500">{{ validationErrors.email }}</p>
-            </div>
-            <!-- 常住城市 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.city') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <MapPin class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <input
-                  v-model="form.city"
-                  type="text"
-                  :placeholder="t('report.cityPlaceholder')"
-                  :class="controlClass('city', true)"
-                  @blur="markTouched('city')"
-                />
-              </div>
-              <p v-if="shouldShowError('city')" class="mt-1 text-xs text-red-500">{{ validationErrors.city }}</p>
-            </div>
-            <!-- 首选语言 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.preferredLanguage') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <Languages class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <select
-                  v-model="form.preferredLanguage"
-                  :class="selectClass('preferredLanguage')"
-                  @change="markTouched('preferredLanguage')"
-                  @blur="markTouched('preferredLanguage')"
-                >
-                  <option value="" disabled>{{ lt(localText.selectLanguage) }}</option>
-                  <option v-for="l in languageOptions" :key="l.value" :value="l.value">{{ l.label }}</option>
-                </select>
-              </div>
-              <p v-if="shouldShowError('preferredLanguage')" class="mt-1 text-xs text-red-500">{{ validationErrors.preferredLanguage }}</p>
+              <h3 class="mb-2 font-semibold text-[#C05621]">费用透明声明</h3>
+              <ul class="list-inside list-disc space-y-1.5 text-sm leading-6 text-[#9A4A1E]">
+                <li>以上费用为全周期治疗预估区间，实际费用可能因病情分期、个体差异、并发症、住院标准等因素产生±15-25%波动</li>
+                <li>进口靶向药与国产替代药价格差异可达3-10倍</li>
+                <li>费用区间基于公开信息、医院预审口径和服务项目拆分整理，最终以医院正式报价、检查结果和治疗强度为准；不作为固定收费承诺</li>
+                <li>如何获得更精准的费用预估？升级到「专业版评估报告」，由副主任医师审核后提供精准到千位的个性化费用清单</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- 就医信息 -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <HeartPulse class="h-5 w-5 text-[#DD6B20]" />
-            <h3 class="text-base font-semibold text-gray-800">{{ t('report.sectionMedical') }}</h3>
-          </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <!-- 就医目的 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.visitPurpose') }} <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <Stethoscope class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                <select
-                  v-model="form.visitPurpose"
-                  :class="selectClass('visitPurpose')"
-                  @change="markTouched('visitPurpose')"
-                  @blur="markTouched('visitPurpose')"
-                >
-                  <option value="" disabled>{{ lt(localText.selectPurpose) }}</option>
-                  <option v-for="p in purposeOptions" :key="p.value" :value="p.value">{{ lt(p.label) }}</option>
-                </select>
-              </div>
-              <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-500">{{ validationErrors.visitPurpose }}</p>
-            </div>
-            <!-- 占位保持网格对齐 -->
-            <div class="hidden md:block" />
-            <!-- 疾病/症状描述 -->
-            <div class="md:col-span-2">
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t('report.chiefComplaint') }} <span class="text-red-500">*</span>
-              </label>
-              <textarea
-                v-model="form.chiefComplaint"
-                :placeholder="t('report.chiefComplaintPlaceholder')"
-                maxlength="500"
-                rows="4"
-                :class="textareaClass('chiefComplaint')"
-                @blur="markTouched('chiefComplaint')"
-              />
-              <div class="mt-1 flex items-center justify-between gap-3">
-                <p v-if="shouldShowError('chiefComplaint')" class="text-xs text-red-500">{{ validationErrors.chiefComplaint }}</p>
-                <p v-else class="text-xs text-gray-400">{{ t('report.chiefComplaintHint') }}</p>
-                <div class="text-right text-xs text-gray-400 shrink-0">
-                  {{ form.chiefComplaint.length }} / 500
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 1: Region -->
-      <div v-if="step === 1">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">{{ t('report.selectRegion') }}</h2>
-        <p class="mb-4 text-sm text-gray-500">{{ lt(localText.regionHint) }}</p>
-        <div class="grid md:grid-cols-2 gap-3">
-          <button
-            v-for="r in regionOptions"
-            :key="r.value"
-            :class="[
-              'rounded-xl border px-4 py-3 text-sm font-medium text-left transition-all flex items-center gap-2',
-              selectedRegions.includes(r.value)
-                ? 'border-[#DD6B20] bg-orange-50 text-[#C05621] ring-1 ring-[#DD6B20]'
-                : 'border-gray-200 text-gray-700 hover:border-orange-200 hover:bg-orange-50/50',
-            ]"
-            @click="toggleRegion(r.value)"
-          >
-            <div
-              :class="[
-                'h-4 w-4 rounded border flex items-center justify-center',
-                selectedRegions.includes(r.value) ? 'bg-[#DD6B20] border-[#DD6B20]' : 'border-gray-300',
-              ]"
+        <div class="mt-8 rounded-xl border border-slate-200 bg-white p-6">
+          <h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-950">
+            <Shield class="h-5 w-5 text-[#DD6B20]" />
+            保险覆盖自检
+          </h3>
+          <div class="relative">
+            <select
+              :value="selectedInsurance ?? ''"
+              class="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              @change="selectedInsurance = ($event.target as HTMLSelectElement).value === '' ? null : Number(($event.target as HTMLSelectElement).value)"
             >
-              <Check v-if="selectedRegions.includes(r.value)" class="h-3 w-3 text-white" />
+              <option value="">Select your insurance company / 选择您的保险公司</option>
+              <option v-for="(ins, i) in insuranceOptions" :key="ins.name" :value="i">{{ ins.name }}</option>
+            </select>
+            <ChevronDown class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+          </div>
+
+          <div v-if="selectedInsuranceOption" class="mt-5 rounded-xl border border-slate-100 bg-slate-50 p-5">
+            <h4 class="mb-4 flex items-center gap-2 font-semibold text-slate-950">
+              <Search class="h-4 w-4 text-[#DD6B20]" />
+              Coverage Results for {{ selectedInsuranceOption.name }}
+            </h4>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div
+                v-for="item in insuranceCoverageItems"
+                :key="item.label"
+                :class="[
+                  'flex items-center gap-3 rounded-lg border p-3',
+                  item.covered ? 'border-emerald-100 bg-emerald-50' : 'border-slate-100 bg-white',
+                ]"
+              >
+                <component :is="item.icon" :class="['h-4 w-4', item.covered ? 'text-emerald-400' : 'text-slate-500']" />
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs text-slate-500">{{ item.label }}</div>
+                  <div :class="['text-sm font-medium', item.covered ? 'text-emerald-400' : 'text-slate-400']">{{ item.value }}</div>
+                </div>
+                <CheckCircle v-if="item.covered" class="h-4 w-4 flex-shrink-0 text-emerald-500" />
+                <XCircle v-else class="h-4 w-4 flex-shrink-0 text-red-400" />
+              </div>
             </div>
-            {{ lt(r.label) }}
-          </button>
+            <div v-if="selectedInsuranceOption.note" class="mt-3 flex items-center gap-2 text-sm text-amber-600">
+              <AlertTriangle class="h-4 w-4" />
+              <span>{{ selectedInsuranceOption.note }}</span>
+            </div>
+            <div class="mt-3 flex items-center gap-2 text-sm text-[#C05621]">
+              <DollarSign class="h-4 w-4" />
+              <span>直付网络 Direct Pay: {{ selectedInsuranceOption.directPay }}</span>
+            </div>
+            <div class="mt-3 rounded-lg border border-orange-100 bg-orange-50 p-3 text-sm text-[#9A4A1E]">
+              <span class="font-semibold">建议：</span>联系保险公司国际部，告知计划编号即可查询中国就医覆盖详情
+            </div>
+          </div>
         </div>
-        <p v-if="regionAttempted && !isStep1Valid" class="mt-3 text-sm text-red-500">{{ lt(localText.regionError) }}</p>
-      </div>
 
-      <!-- Step 2: 确认生成 -->
-      <div v-if="step === 2" class="text-center py-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-2">{{ lt(localText.confirmTitle) }}</h2>
-        <p class="text-gray-600 text-sm mb-6">
-          {{ lt(localText.confirmPrefix) }}
-          <span class="font-semibold text-[#C05621]">{{ visitPurposeLabel ? lt(visitPurposeLabel) : '-' }}</span>
-          {{ lt(localText.confirmMiddle) }}
-          {{ selectedRegionLabels.length ? selectedRegionLabels.join(regionJoiner) : lt(localText.selectedRegionsFallback) }}
-          {{ lt(localText.confirmSuffix) }}
+        <p v-if="submissionError" class="mt-6 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          {{ submissionError }}
         </p>
-        <p v-if="submissionError" class="mb-4 text-sm text-red-500">{{ submissionError }}</p>
-        <button
-          v-if="!generating && !submissionError"
-          class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C05621] to-[#DD6B20] px-8 py-4 text-white font-bold shadow-lg hover:shadow-xl transition-all"
-          @click="nextStep"
-        >
-          {{ t('report.generate') }}
-          <ArrowRight class="h-5 w-5" />
-        </button>
-      </div>
-    </div>
 
-    <div
-      v-if="generating"
-      class="fixed inset-0 z-[9999] flex items-center justify-center bg-gray-950/45 px-4 backdrop-blur-sm"
-      role="status"
-      aria-live="polite"
-      aria-busy="true"
-    >
-      <div class="flex w-full max-w-xs flex-col items-center gap-4 rounded-2xl bg-white/95 px-8 py-7 text-center shadow-2xl ring-1 ring-white/60">
-        <Loader2 class="h-11 w-11 animate-spin text-[#DD6B20]" />
-        <p class="text-base font-semibold text-gray-900">{{ t('report.generating') }}</p>
+        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <button
+            :disabled="generating"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#C05621] px-8 py-4 font-semibold text-white transition-all hover:bg-[#9A3412] disabled:cursor-not-allowed disabled:opacity-50"
+            @click="generateFreeReport"
+          >
+            <Loader2 v-if="generating" class="h-5 w-5 animate-spin" />
+            <FileText v-else class="h-5 w-5" />
+            {{ generating ? '生成报告中...' : '生成评估报告' }}
+          </button>
+          <router-link
+            to="/cases"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-700 px-8 py-4 font-semibold text-white transition-all hover:bg-slate-600"
+          >
+            <BookOpen class="h-5 w-5" />
+            查看案例
+          </router-link>
+        </div>
       </div>
-    </div>
 
-    <div v-if="step < 2" class="mt-6 flex items-center justify-between">
-      <button
-        :disabled="step === 0"
-        class="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
-        @click="prevStep"
-      >
-        <ArrowLeft class="h-4 w-4" />
-        {{ t('common.prev') }}
-      </button>
-      <button
-        :disabled="(step === 0 && submitAttempted && !isStep0Valid) || (step === 1 && regionAttempted && !isStep1Valid)"
-        :class="[
-          'inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow transition-colors',
-          (step === 0 && submitAttempted && !isStep0Valid) || (step === 1 && regionAttempted && !isStep1Valid)
-            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-[#DD6B20] text-white hover:bg-[#C05621]',
-        ]"
-        @click="nextStep"
-      >
-        {{ t('common.next') }}
-        <ArrowRight class="h-4 w-4" />
-      </button>
+      <div class="rounded-[18px] border border-orange-100 bg-white p-6 shadow-sm md:p-8">
+        <h2 class="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
+          <BarChart3 class="h-5 w-5 text-[#DD6B20]" />
+          报告预览样例
+        </h2>
+        <p class="mb-6 text-sm text-slate-500">以下为基于来华治疗的样例报告。您的实际报告将根据病情和资料定制。</p>
+        <div class="space-y-4">
+          <div
+            v-for="item in reportPreviewItems"
+            :key="item.title"
+            class="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-orange-200 hover:bg-orange-50/40"
+          >
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-[#DD6B20]">
+              <component :is="item.icon" class="h-5 w-5" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="font-medium text-slate-950">{{ item.title }}</div>
+              <div class="text-sm text-slate-500">{{ item.desc }}</div>
+            </div>
+            <Lock class="h-4 w-4 flex-shrink-0 text-slate-600" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
