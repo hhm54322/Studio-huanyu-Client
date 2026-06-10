@@ -1524,7 +1524,7 @@ const resetWizard = () => {
           <span>报告样例预览</span>
         </div>
         <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
-        <p class="text-sm text-slate-500">填写以下表单并上传资料，生成您的专属免费预审报告</p>
+        <p class="text-sm text-slate-500">填写以下基础信息，生成您的专属简易预审报告；医疗报告上传仅用于专业版。</p>
       </div>
 
       <div class="mb-8 rounded-[18px] border border-orange-100 bg-white p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] md:p-8">

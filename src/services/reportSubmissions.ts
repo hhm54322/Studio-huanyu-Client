@@ -317,22 +317,7 @@ const api = axios.create({
   timeout: 240000,
 })
 
-export const createReportSubmission = async (payload: ReportSubmissionPayload, files: File[] = []) => {
-  if (files.length) {
-    const formData = new FormData()
-    formData.append('payload', JSON.stringify(payload))
-    files.forEach((file) => {
-      formData.append('files', file)
-    })
-
-    const response = await api.post<ReportSubmissionResponse>(
-      '/report-submissions',
-      formData,
-      { headers: { 'Content-Type': 'multipart/form-data' } },
-    )
-    return response.data
-  }
-
+export const createReportSubmission = async (payload: ReportSubmissionPayload) => {
   const response = await api.post<ReportSubmissionResponse>('/report-submissions', payload)
   return response.data
 }
