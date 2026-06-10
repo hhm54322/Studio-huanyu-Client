@@ -40,6 +40,7 @@ import {
 } from 'lucide-vue-next'
 import {
   createProfessionalReportSubmission,
+  getReportSubmission,
   getProfessionalReportSubmission,
   type ProfessionalReport,
   type ProfessionalReportPayload,
@@ -109,7 +110,10 @@ const files = ref<UploadedFile[]>([])
 const generating = ref(false)
 const errorMessage = ref('')
 const report = ref<ProfessionalReport | null>(null)
-const activeTab = ref('assessment')
+const activeTab = ref('records')
+const sourceSubmissionNo = ref('')
+const sourceLoadMessage = ref('')
+const sourceLoadFailed = ref(false)
 
 const layoutIconMap: Record<string, Component> = {
   Activity,
@@ -120,6 +124,7 @@ const layoutIconMap: Record<string, Component> = {
   CheckCircle,
   ClipboardList,
   DollarSign,
+  FileSearch,
   FileText,
   Footprints,
   Globe,
@@ -235,6 +240,13 @@ const professionalPackages = [
 
 const phoneRegex = /^\+?[0-9][0-9\s\-()]{6,19}$/
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+const fromFreeReport = computed(() => Boolean(sourceSubmissionNo.value && !sourceLoadFailed.value))
+const sourceSummaryItems = computed(() => [
+  { label: '患者', value: form.fullName || '-' },
+  { label: '科室/就医目的', value: purposeOptions.find((item) => item.value === form.visitPurpose)?.label || form.visitPurpose || '-' },
+  { label: '联系电话', value: form.phone || '-' },
+  { label: '核心诉求', value: form.chiefComplaint || '-' },
+])
 
 const validationErrors = computed(() => {
   const errors: string[] = []
@@ -245,10 +257,15 @@ const validationErrors = computed(() => {
   if (!form.visitPurpose) errors.push('请选择科室/就医目的。')
   if (form.chiefComplaint.trim().length < 6) errors.push('请至少填写6个字的症状、诊断或核心诉求。')
   if (!selectedRegions.value.length) errors.push('请至少选择一个对比地区。')
+  if (!files.value.length) errors.push('请上传病历、检查单、影像报告或图片后生成专业报告。')
   return errors
 })
 
 const canSubmit = computed(() => validationErrors.value.length === 0 && !generating.value)
+const sourceFileSummary = computed(() => {
+  if (!sourceSubmissionNo.value) return ''
+  return sourceLoadMessage.value || `已沿用简易报告 ${sourceSubmissionNo.value} 的基础信息，请上传病历、检查单、影像报告或图片生成专业报告。`
+})
 
 const addFiles = (fileList: FileList | null) => {
   if (!fileList) return
@@ -345,6 +362,8 @@ const buildPayload = (): ProfessionalReportPayload => ({
     desiredCity: form.desiredCity.trim(),
     urgency: form.urgency,
   },
+  uploadedFiles: [],
+  parsedFiles: [],
 })
 
 const generateReport = async () => {
@@ -361,7 +380,7 @@ const generateReport = async () => {
     const normalizedReport = normalizeProfessionalReport(response.report)
     generating.value = false
     report.value = normalizedReport
-    activeTab.value = normalizedReport.tabs?.[0]?.key || 'diagnosis'
+    activeTab.value = normalizedReport.tabs?.[0]?.key || 'records'
     await nextTick()
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } catch (error) {
@@ -383,7 +402,7 @@ const loadExistingReport = async () => {
     const response = await getProfessionalReportSubmission(querySubmissionNo)
     const normalizedReport = normalizeProfessionalReport(response.report)
     report.value = normalizedReport
-    activeTab.value = normalizedReport.tabs?.[0]?.key || 'diagnosis'
+    activeTab.value = normalizedReport.tabs?.[0]?.key || 'records'
     await nextTick()
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } catch (error) {
@@ -394,7 +413,58 @@ const loadExistingReport = async () => {
   }
 }
 
-loadExistingReport()
+const inferDiagnosisFromFreeReport = (value: string) => {
+  const normalized = value.trim()
+  if (!normalized || normalized === '综合分诊评估') return ''
+  return normalized
+}
+
+const loadSourceSubmission = async () => {
+  const querySourceSubmissionNo = typeof route.query.sourceSubmissionNo === 'string' ? route.query.sourceSubmissionNo : ''
+  if (!querySourceSubmissionNo) return
+
+  errorMessage.value = ''
+  sourceSubmissionNo.value = querySourceSubmissionNo
+  generating.value = true
+  try {
+    const response = await getReportSubmission(querySourceSubmissionNo)
+    const basicInfo = response.basicInfo
+    if (basicInfo) {
+      form.fullName = basicInfo.fullName || form.fullName
+      form.gender = basicInfo.gender || form.gender
+      form.dateOfBirth = basicInfo.dateOfBirth || form.dateOfBirth
+      form.nationality = basicInfo.nationality || form.nationality
+      form.phone = basicInfo.phone || form.phone
+      form.email = basicInfo.email || form.email
+      form.city = basicInfo.city || form.city
+      form.preferredLanguage = basicInfo.preferredLanguage || form.preferredLanguage
+      form.visitPurpose = basicInfo.visitPurpose || form.visitPurpose
+      form.chiefComplaint = basicInfo.chiefComplaint || response.report?.need || form.chiefComplaint
+    }
+    if (response.selectedRegions?.length) selectedRegions.value = response.selectedRegions
+    form.diagnosis = inferDiagnosisFromFreeReport(response.report?.disease || form.diagnosis)
+    if (!form.chiefComplaint && response.report?.need) form.chiefComplaint = response.report.need
+    sourceLoadMessage.value = `已沿用简易报告 ${querySourceSubmissionNo} 的基础信息和症状详情。专业报告需补充上传病历、检查单、影像报告或图片。`
+    sourceLoadFailed.value = false
+  } catch (error) {
+    console.error(error)
+    sourceLoadMessage.value = '简易报告资料读取失败，请返回简易报告重新进入，或在本页完整填写信息并上传资料。'
+    sourceLoadFailed.value = true
+  } finally {
+    generating.value = false
+  }
+}
+
+const initPage = async () => {
+  const querySubmissionNo = typeof route.query.submissionNo === 'string' ? route.query.submissionNo : ''
+  if (querySubmissionNo) {
+    await loadExistingReport()
+    return
+  }
+  await loadSourceSubmission()
+}
+
+initPage()
 
 const reset = () => {
   report.value = null
@@ -432,13 +502,36 @@ const scrollToSection = (key: string) => {
           </div>
           <h1 class="text-3xl font-bold text-white md:text-4xl">上传资料，生成来华就医专业评估报告</h1>
           <p class="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-            上传病历、检查单、影像报告和既往治疗资料后，系统将结合您填写的病情信息生成专业结构化预审报告。
+            {{ fromFreeReport ? '已从简易报告带入基础信息和症状详情，请上传病历、检查单、影像报告或图片后生成专业结构化预审报告。' : '上传病历、检查单、影像报告和既往治疗资料后，系统将结合您填写的病情信息生成专业结构化预审报告。' }}
           </p>
         </section>
 
         <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <section class="space-y-6">
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="fromFreeReport" class="rounded-2xl border border-teal-500/20 bg-slate-900/70 p-5 md:p-6">
+              <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                <FileSearch class="h-5 w-5 text-teal-400" />
+                已沿用简易报告基础信息
+              </h2>
+              <p class="mb-4 text-sm leading-6 text-slate-400">
+                基础信息和症状详情已从简易报告带入，专业版只需要补充上传医疗资料。
+              </p>
+              <div class="grid gap-3 md:grid-cols-2">
+                <div
+                  v-for="item in sourceSummaryItems"
+                  :key="item.label"
+                  :class="[
+                    'rounded-xl border border-slate-800 bg-slate-950/40 p-4',
+                    item.label === '核心诉求' ? 'md:col-span-2' : '',
+                  ]"
+                >
+                  <div class="text-xs text-slate-500">{{ item.label }}</div>
+                  <div class="mt-1 text-sm font-semibold leading-6 text-slate-100">{{ item.value }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-5 flex items-center gap-2 text-lg font-semibold text-white">
                 <User class="h-5 w-5 text-teal-400" />
                 患者基础信息
@@ -484,7 +577,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-5 flex items-center gap-2 text-lg font-semibold text-white">
                 <HeartPulse class="h-5 w-5 text-teal-400" />
                 医疗资料摘要
@@ -555,6 +648,17 @@ const scrollToSection = (key: string) => {
                 <Upload class="h-5 w-5 text-teal-400" />
                 上传资料
               </h2>
+              <div
+                v-if="sourceSubmissionNo"
+                class="mb-4 rounded-xl border border-teal-500/25 bg-teal-500/10 p-3 text-xs leading-5 text-teal-100"
+              >
+                <div class="mb-1 flex items-center gap-2 font-semibold text-teal-300">
+                  <FileSearch class="h-4 w-4" />
+                  已沿用简易报告基础信息
+                </div>
+                <p>{{ sourceFileSummary }}</p>
+                <p class="mt-1 text-teal-200/70">请在此上传医疗资料，系统会基于新上传资料进行识别和专业分析。</p>
+              </div>
               <div class="mb-4 grid grid-cols-2 gap-3">
                 <div v-for="item in fileTypeCards" :key="item.label" class="rounded-xl border border-slate-800 bg-slate-950/50 p-3 text-center">
                   <component :is="item.icon" class="mx-auto mb-2 h-5 w-5 text-teal-400" />
@@ -566,7 +670,13 @@ const scrollToSection = (key: string) => {
                 <Upload class="mb-3 h-8 w-8 text-slate-500" />
                 <span class="text-sm font-medium text-white">点击选择文件</span>
                 <span class="mt-1 text-xs text-slate-500">PDF/DOCX/JPG/PNG/DICOM，单文件不超过50MB</span>
-                <input type="file" multiple accept=".pdf,.docx,.jpg,.jpeg,.png,.webp,.dcm,.dicom,.txt" class="hidden" @change="addFiles(($event.target as HTMLInputElement).files)" />
+                <input
+                  type="file"
+                  multiple
+                  accept=".pdf,.docx,.jpg,.jpeg,.png,.webp,.dcm,.dicom,.txt"
+                  class="hidden"
+                  @change="addFiles(($event.target as HTMLInputElement).files); ($event.target as HTMLInputElement).value = ''"
+                />
               </label>
               <div v-if="files.length" class="mt-4 space-y-2">
                 <div v-for="item in files" :key="item.id" class="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2">
@@ -582,7 +692,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
                 <Globe class="h-5 w-5 text-teal-400" />
                 偏好与对比地区
@@ -617,8 +727,11 @@ const scrollToSection = (key: string) => {
 
             <p v-if="errorMessage" class="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">{{ errorMessage }}</p>
             <button
-              :disabled="!canSubmit"
-              class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 font-semibold text-white transition hover:bg-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+              :disabled="generating"
+              :class="[
+                'flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60',
+                canSubmit ? 'bg-teal-600 hover:bg-teal-500' : 'bg-teal-700/70 hover:bg-teal-600',
+              ]"
               @click="generateReport"
             >
               <Loader2 v-if="generating" class="h-5 w-5 animate-spin" />

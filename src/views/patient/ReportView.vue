@@ -17,6 +17,7 @@ import {
   Shield,
   Clock,
   DollarSign,
+  FileSearch,
   Plane,
   Users,
   FileText,
@@ -33,8 +34,6 @@ import {
   BarChart3,
   Lock,
   Sparkles,
-  Trash2,
-  Upload,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
 import { createReportSubmission, getReportSubmission, type GeneratedReport, type ReportLayoutBlock } from '@/services/reportSubmissions'
@@ -45,7 +44,6 @@ const route = useRoute()
 const defaultSelectedRegions = ['north_america', 'europe', 'southeast_asia', 'japan_korea']
 const selectedRegions = ref<string[]>([...defaultSelectedRegions])
 const selectedInsurance = ref<number | null>(null)
-const reportFiles = ref<Array<{ id: string; file: File }>>([])
 const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
@@ -378,24 +376,6 @@ const selectedInsuranceOption = computed(() => (
   selectedInsurance.value === null ? null : insuranceOptions[selectedInsurance.value]
 ))
 
-const addReportFiles = (fileList: FileList | null) => {
-  if (!fileList) return
-  const nextFiles = Array.from(fileList).map((file) => ({
-    id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-    file,
-  }))
-  reportFiles.value = [...reportFiles.value, ...nextFiles].slice(0, 20)
-}
-
-const removeReportFile = (id: string) => {
-  reportFiles.value = reportFiles.value.filter((item) => item.id !== id)
-}
-
-const formatReportFileSize = (size: number) => {
-  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`
-  return `${(size / 1024 / 1024).toFixed(1)} MB`
-}
-
 const insuranceCoverageItems = computed(() => {
   const insurance = selectedInsuranceOption.value
   if (!insurance) return []
@@ -656,6 +636,7 @@ const reportLayoutIconMap: Record<string, Component> = {
   CheckCircle,
   Clock,
   DollarSign,
+  FileSearch,
   FileText,
   Globe,
   HeartPulse,
@@ -671,20 +652,6 @@ const reportLayoutIconMap: Record<string, Component> = {
 }
 
 const getReportLayoutIcon = (icon?: string) => reportLayoutIconMap[icon || ''] || FileText
-
-const layoutToneClass = (tone?: string) => {
-  if (tone === 'danger') return 'border-red-500/25 bg-red-500/10'
-  if (tone === 'warning') return 'border-amber-500/25 bg-amber-500/10'
-  if (tone === 'highlight') return 'border-teal-500/30 bg-teal-500/10'
-  return 'border-slate-800/70 bg-slate-900/50'
-}
-
-const layoutToneTextClass = (tone?: string) => {
-  if (tone === 'danger') return 'text-red-300'
-  if (tone === 'warning') return 'text-amber-300'
-  if (tone === 'highlight') return 'text-teal-300'
-  return 'text-slate-300'
-}
 
 const lightToneClass = (tone?: string) => {
   if (tone === 'danger') return 'border-red-100 bg-red-50'
@@ -702,7 +669,7 @@ const lightToneTextClass = (tone?: string) => {
 
 const freeLayoutSections = computed(() => renderedReport.value.layoutSections || [])
 const designedFreeLayoutSections = computed(() => (
-  freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails'].includes(section.key))
+  freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails', 'records'].includes(section.key))
 ))
 const activeFreeLayoutSection = computed(() => (
   freeLayoutSections.value.find((section) => section.key === activeFreeLayoutKey.value) || freeLayoutSections.value[0]
@@ -758,7 +725,12 @@ const recommendationDescription = computed(() => (
     : '结合当前病情资料、期望城市和国际患者服务能力筛选，最终接诊以医院预审意见为准。'
 ))
 const hospitalGridClass = computed(() => isDentalReport.value ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-3')
-const uploadedFilesText = computed(() => reportFiles.value.length ? `${reportFiles.value.length} 份资料已上传` : '暂未上传资料')
+const freeReportInputText = computed(() => '基础信息 + 症状详情')
+const professionalReportLink = computed(() => (
+  submissionNo.value
+    ? { path: '/professional-report', query: { sourceSubmissionNo: submissionNo.value } }
+    : '/professional-report'
+))
 const hasLayoutBlockContent = (block: ReportLayoutBlock) => Boolean(
   block.description ||
   block.metrics?.length ||
@@ -876,7 +848,7 @@ const generateFreeReport = async () => {
   submissionError.value = ''
   generating.value = true
   try {
-    const response = await createReportSubmission(reportSubmissionPayload.value, reportFiles.value.map((item) => item.file))
+    const response = await createReportSubmission(reportSubmissionPayload.value)
     submissionNo.value = response.submissionNo
     generatedReport.value = response.report
     activeFreeLayoutKey.value = response.report.layoutSections?.[0]?.key || 'cost'
@@ -932,7 +904,6 @@ const resetWizard = () => {
   generatedReport.value = null
   selectedRegions.value = [...defaultSelectedRegions]
   selectedInsurance.value = null
-  reportFiles.value = []
   submitAttempted.value = false
   ;(Object.keys(touched) as FormField[]).forEach((field) => {
     touched[field] = false
@@ -966,7 +937,7 @@ const resetWizard = () => {
             <Sparkles class="h-3.5 w-3.5" />
             免费预审报告 / Free Preview
           </span>
-          <span>{{ uploadedFilesText }}</span>
+          <span>{{ freeReportInputText }}</span>
         </div>
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -1273,6 +1244,25 @@ const resetWizard = () => {
             </ul>
           </article>
         </section>
+
+        <section class="rounded-2xl border border-orange-200 bg-white p-5 shadow-sm md:p-6">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <Sparkles class="h-5 w-5 text-[#DD6B20]" />
+                专业版评估报告
+              </h2>
+              <p class="mt-2 text-sm leading-6 text-slate-500">补充完整资料后生成带多 Tab 排版的专业报告。</p>
+            </div>
+            <router-link
+              :to="professionalReportLink"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-semibold text-white shadow hover:bg-[#C05621] transition-colors"
+            >
+              生成专业报告
+              <ArrowRight class="h-4 w-4" />
+            </router-link>
+          </div>
+        </section>
       </div>
 
       <div v-else class="p-4 md:p-8 space-y-8 md:space-y-10">
@@ -1482,7 +1472,7 @@ const resetWizard = () => {
                   </li>
                 </ul>
                 <router-link
-                  to="/professional-report"
+                  :to="professionalReportLink"
                   :class="[
                     'mt-5 block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors',
                     pkg.highlight
@@ -1507,7 +1497,7 @@ const resetWizard = () => {
 
             <div class="mt-6 text-center">
               <p class="text-sm text-gray-500 mb-3">{{ lt(localText.contactHint) }}</p>
-              <router-link to="/professional-report" class="inline-flex items-center gap-2 rounded-xl bg-[#DD6B20] px-6 py-3 text-white font-semibold shadow hover:bg-[#C05621] transition-colors">
+              <router-link :to="professionalReportLink" class="inline-flex items-center gap-2 rounded-xl bg-[#DD6B20] px-6 py-3 text-white font-semibold shadow hover:bg-[#C05621] transition-colors">
                 <ArrowRight class="h-4 w-4" />
                 {{ t('report.contact') }}
               </router-link>
@@ -1717,37 +1707,6 @@ const resetWizard = () => {
             </div>
           </div>
 
-          <div class="md:col-span-2">
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">医疗资料（可选）</label>
-            <label class="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-orange-200 bg-orange-50/40 p-5 text-center transition hover:border-[#DD6B20]">
-              <Upload class="mb-2 h-7 w-7 text-[#DD6B20]" />
-              <span class="text-sm font-medium text-slate-900">上传病历、检查单、影像报告或图片</span>
-              <span class="mt-1 text-xs text-slate-500">PDF / DOCX / TXT / JPG / PNG / DICOM，单文件不超过50MB</span>
-              <input
-                type="file"
-                multiple
-                accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp,.dcm,.dicom"
-                class="hidden"
-                @change="addReportFiles(($event.target as HTMLInputElement).files); ($event.target as HTMLInputElement).value = ''"
-              />
-            </label>
-            <div v-if="reportFiles.length" class="mt-3 grid gap-2 md:grid-cols-2">
-              <div v-for="item in reportFiles" :key="item.id" class="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
-                <FileText class="h-4 w-4 shrink-0 text-[#DD6B20]" />
-                <div class="min-w-0 flex-1">
-                  <div class="truncate text-sm text-slate-800">{{ item.file.name }}</div>
-                  <div class="text-xs text-slate-500">{{ formatReportFileSize(item.file.size) }}</div>
-                </div>
-                <button
-                  type="button"
-                  class="rounded-md p-1 text-slate-500 transition hover:bg-red-50 hover:text-red-500"
-                  @click="removeReportFile(item.id)"
-                >
-                  <Trash2 class="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="mt-8 rounded-xl border border-orange-200 bg-orange-50 p-5">

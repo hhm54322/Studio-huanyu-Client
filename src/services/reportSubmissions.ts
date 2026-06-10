@@ -120,6 +120,26 @@ export type GeneratedReport = {
   generatedBy: 'llm' | 'rules'
 }
 
+export type UploadedMedicalFile = {
+  fieldName: string
+  originalName: string
+  storedName: string
+  relativePath: string
+  mimeType: string
+  size: number
+}
+
+export type ParsedMedicalFile = {
+  originalName: string
+  mimeType: string
+  parser: string
+  status: 'parsed' | 'partial' | 'unsupported' | 'failed'
+  text: string
+  summary: string
+  metadata?: Record<string, unknown>
+  error?: string
+}
+
 export type ReportSubmissionResponse = {
   success: true
   submissionId: string
@@ -128,6 +148,8 @@ export type ReportSubmissionResponse = {
   createdAt: string
   basicInfo?: ReportSubmissionPayload['basicInfo']
   selectedRegions?: string[]
+  uploadedFiles?: UploadedMedicalFile[]
+  parsedFiles?: ParsedMedicalFile[]
   report: GeneratedReport
 }
 
@@ -163,6 +185,8 @@ export type ProfessionalReportPayload = {
     desiredCity?: string
     urgency?: 'routine' | 'priority' | 'urgent'
   }
+  uploadedFiles?: UploadedMedicalFile[]
+  parsedFiles?: ParsedMedicalFile[]
 }
 
 export type ProfessionalReport = {
