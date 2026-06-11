@@ -2,6 +2,7 @@
 import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
+import axios from 'axios'
 import {
   ArrowLeft,
   ArrowRight,
@@ -50,6 +51,7 @@ const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
 const submissionError = ref('')
+const submissionErrorTone = ref<'error' | 'warning'>('error')
 const submissionNo = ref('')
 const generatedReport = ref<GeneratedReport | null>(null)
 const activeFreeLayoutKey = ref('cost')
@@ -842,16 +844,33 @@ const scrollToPageTop = async () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const getApiErrorMessage = (error: unknown, fallback: string) => {
+  if (!axios.isAxiosError(error)) return fallback
+  const data = error.response?.data
+  if (data && typeof data === 'object' && 'message' in data && typeof data.message === 'string') {
+    return data.message
+  }
+  return fallback
+}
+
+const getApiErrorTone = (error: unknown): 'error' | 'warning' => {
+  if (!axios.isAxiosError(error)) return 'error'
+  const code = error.response?.data?.error
+  return code === 'REPORT_GENERATION_FAILED' ? 'warning' : 'error'
+}
+
 const generateFreeReport = async () => {
   submitAttempted.value = true
   markAllTouched()
   if (!isStep0Valid.value || generating.value) return
 
   submissionError.value = ''
+  submissionErrorTone.value = 'error'
   generating.value = true
   try {
     if (await checkForUpdate({ force: true })) {
       submissionError.value = '系统已更新，请先刷新页面后再生成报告。'
+      submissionErrorTone.value = 'warning'
       generating.value = false
       return
     }
@@ -865,7 +884,8 @@ const generateFreeReport = async () => {
     scrollToPageTop().catch((error) => console.error(error))
   } catch (error) {
     console.error(error)
-    submissionError.value = lt(localText.submitFailed)
+    submissionError.value = getApiErrorMessage(error, lt(localText.submitFailed))
+    submissionErrorTone.value = getApiErrorTone(error)
     generating.value = false
   }
 }
@@ -877,13 +897,15 @@ const loadExistingReport = async () => {
   if (!querySubmissionNo) return
 
   submissionError.value = ''
+  submissionErrorTone.value = 'error'
   generating.value = true
   let response: Awaited<ReturnType<typeof getReportSubmission>>
   try {
     response = await getReportSubmission(querySubmissionNo)
   } catch (error) {
     console.error(error)
-    submissionError.value = lt(localText.submitFailed)
+    submissionError.value = getApiErrorMessage(error, lt(localText.submitFailed))
+    submissionErrorTone.value = getApiErrorTone(error)
     generating.value = false
     return
   }
@@ -908,6 +930,7 @@ onMounted(loadExistingReport)
 const resetWizard = () => {
   showReport.value = false
   submissionError.value = ''
+  submissionErrorTone.value = 'error'
   submissionNo.value = ''
   generatedReport.value = null
   selectedRegions.value = [...defaultSelectedRegions]
@@ -1786,7 +1809,15 @@ const resetWizard = () => {
           </div>
         </div>
 
-        <p v-if="submissionError" class="mt-6 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+        <p
+          v-if="submissionError"
+          :class="[
+            'mt-6 rounded-xl border px-4 py-3 text-sm',
+            submissionErrorTone === 'warning'
+              ? 'border-amber-300/40 bg-amber-50 text-[#9A4A1E]'
+              : 'border-red-400/30 bg-red-500/10 text-red-300',
+          ]"
+        >
           {{ submissionError }}
         </p>
 

@@ -115,6 +115,7 @@ export type GeneratedReport = {
     features: string[]
   }>
   highlights: string[]
+  paymentAndInsurance?: string[]
   layoutSections?: ReportLayoutSection[]
   disclaimer: string
   generatedBy: 'llm' | 'rules'

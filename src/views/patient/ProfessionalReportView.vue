@@ -2,6 +2,7 @@
 import { computed, nextTick, reactive, ref, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import axios from 'axios'
 import {
   Activity,
   ArrowLeft,
@@ -111,6 +112,7 @@ const selectedRegions = ref(['north_america', 'europe', 'southeast_asia', 'japan
 const files = ref<UploadedFile[]>([])
 const generating = ref(false)
 const errorMessage = ref('')
+const errorTone = ref<'error' | 'warning'>('error')
 const report = ref<ProfessionalReport | null>(null)
 const activeTab = ref('records')
 const sourceSubmissionNo = ref('')
@@ -287,6 +289,21 @@ const formatFileSize = (size: number) => {
   return `${(size / 1024 / 1024).toFixed(1)} MB`
 }
 
+const getApiErrorMessage = (error: unknown, fallback: string) => {
+  if (!axios.isAxiosError(error)) return fallback
+  const data = error.response?.data
+  if (data && typeof data === 'object' && 'message' in data && typeof data.message === 'string') {
+    return data.message
+  }
+  return fallback
+}
+
+const getApiErrorTone = (error: unknown): 'error' | 'warning' => {
+  if (!axios.isAxiosError(error)) return 'error'
+  const code = error.response?.data?.error
+  return code === 'PROFESSIONAL_REPORT_GENERATION_FAILED' ? 'warning' : 'error'
+}
+
 const normalizeProfessionalReport = (input: ProfessionalReport): ProfessionalReport => ({
   ...input,
   diagnosticConclusion: input.diagnosticConclusion || {
@@ -370,6 +387,7 @@ const buildPayload = (): ProfessionalReportPayload => ({
 
 const generateReport = async () => {
   errorMessage.value = ''
+  errorTone.value = 'error'
   if (!canSubmit.value) {
     errorMessage.value = validationErrors.value[0] || '请检查表单。'
     return
@@ -379,6 +397,7 @@ const generateReport = async () => {
   try {
     if (await checkForUpdate({ force: true })) {
       errorMessage.value = '系统已更新，请先刷新页面后再生成专业报告。'
+      errorTone.value = 'warning'
       generating.value = false
       return
     }
@@ -393,7 +412,8 @@ const generateReport = async () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } catch (error) {
     console.error(error)
-    errorMessage.value = '专业报告生成失败，请稍后重试或减少上传文件大小。'
+    errorMessage.value = getApiErrorMessage(error, '专业报告生成失败，请稍后重试或减少上传文件大小。')
+    errorTone.value = getApiErrorTone(error)
     generating.value = false
   } finally {
     generating.value = false
@@ -405,6 +425,7 @@ const loadExistingReport = async () => {
   if (!querySubmissionNo) return
 
   errorMessage.value = ''
+  errorTone.value = 'error'
   generating.value = true
   try {
     const response = await getProfessionalReportSubmission(querySubmissionNo)
@@ -416,6 +437,7 @@ const loadExistingReport = async () => {
   } catch (error) {
     console.error(error)
     errorMessage.value = '专业报告加载失败，请检查报告编号或稍后重试。'
+    errorTone.value = 'error'
   } finally {
     generating.value = false
   }
@@ -432,6 +454,7 @@ const loadSourceSubmission = async () => {
   if (!querySourceSubmissionNo) return
 
   errorMessage.value = ''
+  errorTone.value = 'error'
   sourceSubmissionNo.value = querySourceSubmissionNo
   generating.value = true
   try {
@@ -477,6 +500,7 @@ initPage()
 const reset = () => {
   report.value = null
   errorMessage.value = ''
+  errorTone.value = 'error'
 }
 
 const scrollToSection = (key: string) => {
@@ -733,7 +757,17 @@ const scrollToSection = (key: string) => {
               </p>
             </div>
 
-            <p v-if="errorMessage" class="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">{{ errorMessage }}</p>
+            <p
+              v-if="errorMessage"
+              :class="[
+                'rounded-xl border p-3 text-sm',
+                errorTone === 'warning'
+                  ? 'border-amber-500/30 bg-amber-500/10 text-amber-100'
+                  : 'border-red-500/30 bg-red-500/10 text-red-300',
+              ]"
+            >
+              {{ errorMessage }}
+            </p>
             <button
               :disabled="generating"
               :class="[
