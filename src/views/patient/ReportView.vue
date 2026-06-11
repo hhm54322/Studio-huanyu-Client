@@ -36,10 +36,12 @@ import {
   Sparkles,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
+import { useAppVersion } from '@/composables/useAppVersion'
 import { createReportSubmission, getReportSubmission, type GeneratedReport, type ReportLayoutBlock } from '@/services/reportSubmissions'
 
 const { t, locale } = useI18n()
 const route = useRoute()
+const { checkForUpdate } = useAppVersion()
 
 const defaultSelectedRegions = ['north_america', 'europe', 'southeast_asia', 'japan_korea']
 const selectedRegions = ref<string[]>([...defaultSelectedRegions])
@@ -848,6 +850,12 @@ const generateFreeReport = async () => {
   submissionError.value = ''
   generating.value = true
   try {
+    if (await checkForUpdate({ force: true })) {
+      submissionError.value = '系统已更新，请先刷新页面后再生成报告。'
+      generating.value = false
+      return
+    }
+
     const response = await createReportSubmission(reportSubmissionPayload.value)
     submissionNo.value = response.submissionNo
     generatedReport.value = response.report

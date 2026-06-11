@@ -46,9 +46,11 @@ import {
   type ProfessionalReportPayload,
   type ReportLayoutBlock,
 } from '@/services/reportSubmissions'
+import { useAppVersion } from '@/composables/useAppVersion'
 
 const { locale } = useI18n()
 const route = useRoute()
+const { checkForUpdate } = useAppVersion()
 
 type UploadedFile = {
   id: string
@@ -375,6 +377,12 @@ const generateReport = async () => {
 
   generating.value = true
   try {
+    if (await checkForUpdate({ force: true })) {
+      errorMessage.value = '系统已更新，请先刷新页面后再生成专业报告。'
+      generating.value = false
+      return
+    }
+
     const response = await createProfessionalReportSubmission(buildPayload(), files.value.map((item) => item.file))
     if (!response.report) throw new Error('Professional report response did not include report')
     const normalizedReport = normalizeProfessionalReport(response.report)
