@@ -92,6 +92,9 @@ const form = reactive({
   city: '',
   preferredLanguage: '',
   visitPurpose: '',
+  careNeed: '',
+  careNeedOther: '',
+  expectedTreatmentTime: '',
   diagnosis: '',
   stage: '',
   chiefComplaint: '',
@@ -176,6 +179,9 @@ const hospitalSectionTitle = computed(() => (
   isDentalReport.value ? '七、推荐牙科品牌/机构' : '七、国内权威推荐就诊医院'
 ))
 const hospitalGridClass = computed(() => isDentalReport.value ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-3')
+const hospitalMatchText = (score: number) => (
+  score > 0 ? `匹配度 ${score}/100` : '匹配度待评估'
+)
 
 const hasBlockContent = (block: ReportLayoutBlock) => Boolean(
   block.description ||
@@ -242,13 +248,37 @@ const professionalPackages = [
   },
 ]
 
+const careNeedOptions = [
+  { value: 'advanced_surgery', label: '寻求前沿手术方案' },
+  { value: 'targeted_immunotherapy', label: '寻求靶向/免疫新药治疗' },
+  { value: 'second_opinion', label: '寻求第二诊疗意见' },
+  { value: 'postoperative_rehab_recurrence_prevention', label: '术后康复与防复发方案' },
+  { value: 'other', label: '其他（请补充说明）' },
+]
+
+const expectedTreatmentTimeOptions = [
+  { value: 'within_1_month', label: '1个月内' },
+  { value: '1_to_3_months', label: '1-3个月' },
+  { value: '3_to_6_months', label: '3-6个月' },
+  { value: 'consult_only', label: '仅咨询方案，暂无赴华计划' },
+]
+
 const phoneRegex = /^\+?[0-9][0-9\s\-()]{6,19}$/
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const fromFreeReport = computed(() => Boolean(sourceSubmissionNo.value && !sourceLoadFailed.value))
+const careNeedLabel = computed(() => {
+  const option = careNeedOptions.find((item) => item.value === form.careNeed)
+  if (form.careNeed === 'other' && form.careNeedOther.trim()) return `其他：${form.careNeedOther.trim()}`
+  return option?.label || '-'
+})
+const expectedTreatmentTimeLabel = computed(() => (
+  expectedTreatmentTimeOptions.find((item) => item.value === form.expectedTreatmentTime)?.label || '-'
+))
 const sourceSummaryItems = computed(() => [
   { label: '患者', value: form.fullName || '-' },
   { label: '科室/就医目的', value: purposeOptions.find((item) => item.value === form.visitPurpose)?.label || form.visitPurpose || '-' },
-  { label: '联系电话', value: form.phone || '-' },
+  { label: '就医诉求', value: careNeedLabel.value },
+  { label: '期望治疗时间', value: expectedTreatmentTimeLabel.value },
   { label: '核心诉求', value: form.chiefComplaint || '-' },
 ])
 
@@ -256,9 +286,10 @@ const validationErrors = computed(() => {
   const errors: string[] = []
   if (form.fullName.trim().length < 2) errors.push('请填写姓名。')
   if (!form.gender) errors.push('请选择性别。')
-  if (!phoneRegex.test(form.phone.trim())) errors.push('请填写有效联系电话。')
-  if (form.email.trim() && !emailRegex.test(form.email.trim())) errors.push('邮箱格式不正确。')
+  if (form.phone.trim() && !phoneRegex.test(form.phone.trim())) errors.push('联系电话格式不正确。')
+  if (!form.email.trim() || !emailRegex.test(form.email.trim())) errors.push('请填写有效邮箱。')
   if (!form.visitPurpose) errors.push('请选择科室/就医目的。')
+  if (form.careNeed === 'other' && form.careNeedOther.trim().length < 2) errors.push('请补充说明其他就医诉求。')
   if (form.chiefComplaint.trim().length < 6) errors.push('请至少填写6个字的症状、诊断或核心诉求。')
   if (!selectedRegions.value.length) errors.push('请至少选择一个对比地区。')
   if (!files.value.length) errors.push('请上传病历、检查单、影像报告或图片后生成专业报告。')
@@ -363,6 +394,9 @@ const buildPayload = (): ProfessionalReportPayload => ({
   },
   medical: {
     visitPurpose: form.visitPurpose,
+    careNeed: form.careNeed,
+    careNeedOther: form.careNeedOther.trim(),
+    expectedTreatmentTime: form.expectedTreatmentTime,
     diagnosis: form.diagnosis.trim(),
     stage: form.stage.trim(),
     chiefComplaint: form.chiefComplaint.trim(),
@@ -470,6 +504,9 @@ const loadSourceSubmission = async () => {
       form.city = basicInfo.city || form.city
       form.preferredLanguage = basicInfo.preferredLanguage || form.preferredLanguage
       form.visitPurpose = basicInfo.visitPurpose || form.visitPurpose
+      form.careNeed = basicInfo.careNeed || form.careNeed
+      form.careNeedOther = basicInfo.careNeedOther || form.careNeedOther
+      form.expectedTreatmentTime = basicInfo.expectedTreatmentTime || form.expectedTreatmentTime
       form.chiefComplaint = basicInfo.chiefComplaint || response.report?.need || form.chiefComplaint
     }
     if (response.selectedRegions?.length) selectedRegions.value = response.selectedRegions
@@ -591,11 +628,11 @@ const scrollToSection = (key: string) => {
                   <input v-model="form.nationality" class="field" placeholder="Nationality" />
                 </label>
                 <label class="space-y-1.5 text-sm text-slate-400">
-                  <span>电话 *</span>
+                  <span>电话</span>
                   <input v-model="form.phone" class="field" placeholder="+86 138..." />
                 </label>
                 <label class="space-y-1.5 text-sm text-slate-400">
-                  <span>邮箱</span>
+                  <span>邮箱 *</span>
                   <input v-model="form.email" class="field" placeholder="email@example.com" />
                 </label>
                 <label class="space-y-1.5 text-sm text-slate-400">
@@ -621,6 +658,24 @@ const scrollToSection = (key: string) => {
                     <option value="">请选择</option>
                     <option v-for="item in purposeOptions" :key="item.value" :value="item.value">{{ item.label }}</option>
                   </select>
+                </label>
+                <label class="space-y-1.5 text-sm text-slate-400">
+                  <span>就医诉求</span>
+                  <select v-model="form.careNeed" class="field">
+                    <option value="">请选择</option>
+                    <option v-for="item in careNeedOptions" :key="item.value" :value="item.value">{{ item.label }}</option>
+                  </select>
+                </label>
+                <label class="space-y-1.5 text-sm text-slate-400">
+                  <span>期望治疗时间</span>
+                  <select v-model="form.expectedTreatmentTime" class="field">
+                    <option value="">请选择</option>
+                    <option v-for="item in expectedTreatmentTimeOptions" :key="item.value" :value="item.value">{{ item.label }}</option>
+                  </select>
+                </label>
+                <label v-if="form.careNeed === 'other'" class="space-y-1.5 text-sm text-slate-400 md:col-span-2">
+                  <span>其他就医诉求说明 *</span>
+                  <input v-model="form.careNeedOther" class="field" maxlength="300" placeholder="请补充说明您的就医诉求" />
                 </label>
                 <label class="space-y-1.5 text-sm text-slate-400">
                   <span>已确诊疾病/工作诊断</span>
@@ -1176,7 +1231,7 @@ const scrollToSection = (key: string) => {
               <h3 class="font-semibold text-white">{{ hospital.hospital }}</h3>
               <div class="mt-2 text-sm text-slate-300">{{ hospital.whyFit }}</div>
               <div class="mt-3 rounded-lg bg-slate-900 p-3 text-xs leading-5 text-slate-400">{{ hospital.preparation }}</div>
-              <div class="mt-3 text-sm text-teal-300">匹配度 {{ hospital.matchScore }}/100</div>
+              <div class="mt-3 text-sm text-teal-300">{{ hospitalMatchText(hospital.matchScore) }}</div>
             </div>
           </div>
         </section>

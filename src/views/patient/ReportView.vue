@@ -35,6 +35,8 @@ import {
   BarChart3,
   Lock,
   Sparkles,
+  Microscope,
+  Pill,
 } from 'lucide-vue-next'
 import { reportData } from '@/data/report'
 import { useAppVersion } from '@/composables/useAppVersion'
@@ -50,11 +52,14 @@ const selectedInsurance = ref<number | null>(null)
 const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
+const expandedHospital = ref<string | null>(null)
 const submissionError = ref('')
 const submissionErrorTone = ref<'error' | 'warning'>('error')
 const submissionNo = ref('')
 const generatedReport = ref<GeneratedReport | null>(null)
 const activeFreeLayoutKey = ref('cost')
+const showProSampleReport = ref(false)
+const activeProSampleTab = ref('analysis')
 
 const generatingLeaveMessage = '报告正在生成中，离开页面可能导致本次生成中断，确定要离开吗？'
 
@@ -90,17 +95,24 @@ const form = reactive({
   city: '',
   preferredLanguage: '',
   visitPurpose: '',
+  careNeed: '',
+  careNeedOther: '',
+  expectedTreatmentTime: '',
   chiefComplaint: '',
 })
 
 type FormField = keyof typeof form
 type SupportedLocale = 'zh' | 'en' | 'id' | 'ru' | 'mn'
 type LocalizedText = Record<SupportedLocale, string>
+type SimpleCostBreakdownData = NonNullable<GeneratedReport['plan']['costBreakdown']>
+type SimpleCostBreakdownCategoryData = SimpleCostBreakdownData['coreMedical']
+type AdvancedCareData = NonNullable<GeneratedReport['advancedCare']>
 type RenderedReport = Omit<GeneratedReport, 'plan'> & {
   direction: string
   duration: string
   totalCost: string
   breakdown: GeneratedReport['plan']['breakdown']
+  costBreakdown?: SimpleCostBreakdownData
 }
 
 const supportedLocales: SupportedLocale[] = ['zh', 'en', 'id', 'ru', 'mn']
@@ -167,6 +179,9 @@ const localText = {
     city: { zh: '请输入常住城市', en: 'Enter your city of residence', id: 'Masukkan kota tempat tinggal', ru: 'Введите город проживания', mn: 'Оршин суугаа хотоо оруулна уу' },
     preferredLanguage: { zh: '请选择首选语言', en: 'Select preferred language', id: 'Pilih bahasa utama', ru: 'Выберите предпочтительный язык', mn: 'Үндсэн хэлээ сонгоно уу' },
     visitPurpose: { zh: '请选择就医目的', en: 'Select medical purpose', id: 'Pilih tujuan medis', ru: 'Выберите цель лечения', mn: 'Эмчилгээний зорилгоо сонгоно уу' },
+    careNeed: { zh: '请选择就医诉求', en: 'Select care need', id: 'Pilih kebutuhan perawatan', ru: 'Выберите запрос на лечение', mn: 'Эмчилгээний хэрэгцээгээ сонгоно уу' },
+    careNeedOther: { zh: '请补充说明其他就医诉求', en: 'Describe your other care need', id: 'Jelaskan kebutuhan lain', ru: 'Опишите другой запрос', mn: 'Бусад хэрэгцээгээ тайлбарлана уу' },
+    expectedTreatmentTime: { zh: '请选择期望治疗时间', en: 'Select expected treatment timing', id: 'Pilih waktu perawatan yang diharapkan', ru: 'Выберите желаемые сроки лечения', mn: 'Хүсэж буй эмчилгээний хугацаагаа сонгоно уу' },
     chiefComplaint: { zh: '请至少填写6个字，便于生成更准确的预审报告', en: 'Enter at least 6 characters so we can generate a more accurate pre-assessment report', id: 'Masukkan minimal 6 karakter agar laporan pra-asesmen lebih akurat', ru: 'Введите не менее 6 символов для более точного предварительного отчета', mn: 'Илүү нарийвчилсан урьдчилсан тайлан гаргахын тулд дор хаяж 6 тэмдэгт оруулна уу' },
   },
 } satisfies Record<string, LocalizedText | Record<string, LocalizedText>>
@@ -185,6 +200,9 @@ const touched = reactive<Record<FormField, boolean>>({
   city: false,
   preferredLanguage: false,
   visitPurpose: false,
+  careNeed: false,
+  careNeedOther: false,
+  expectedTreatmentTime: false,
   chiefComplaint: false,
 })
 const submitAttempted = ref(false)
@@ -203,6 +221,21 @@ const purposeOptions = [
   { value: 'dental', display: 'Dental / 口腔牙科', label: { zh: '口腔牙科', en: 'Dental', id: 'Dental', ru: 'Dental', mn: 'Dental' } },
   { value: 'checkup', display: 'Health Checkup / 健康体检', label: { zh: '健康体检', en: 'Health Checkup', id: 'Health Checkup', ru: 'Health Checkup', mn: 'Health Checkup' } },
   { value: 'other', display: 'Other / Diagnosis Unclear / 其他/诊断未明', label: { zh: '其他/诊断未明', en: 'Other / Diagnosis Unclear', id: 'Other / Diagnosis Unclear', ru: 'Other / Diagnosis Unclear', mn: 'Other / Diagnosis Unclear' } },
+]
+
+const careNeedOptions = [
+  { value: 'advanced_surgery', label: '寻求前沿手术方案' },
+  { value: 'targeted_immunotherapy', label: '寻求靶向/免疫新药治疗' },
+  { value: 'second_opinion', label: '寻求第二诊疗意见' },
+  { value: 'postoperative_rehab_recurrence_prevention', label: '术后康复与防复发方案' },
+  { value: 'other', label: '其他（请补充说明）' },
+]
+
+const expectedTreatmentTimeOptions = [
+  { value: 'within_1_month', label: '1个月内' },
+  { value: '1_to_3_months', label: '1-3个月' },
+  { value: '3_to_6_months', label: '3-6个月' },
+  { value: 'consult_only', label: '仅咨询方案，暂无赴华计划' },
 ]
 
 const visitPurposeAliases: Record<string, string> = {
@@ -311,21 +344,68 @@ const localizedReport = computed(() => {
       { item: { zh: '住宿与生活', en: 'Accommodation and daily living', id: 'Akomodasi dan kebutuhan harian', ru: 'Проживание и бытовые расходы', mn: 'Байр болон өдөр тутмын зардал' }, cost: '$2,000-$4,000' },
     ],
     packages: [
-      { name: { zh: '书面评估基础包', en: 'Written Review Basic Package', id: 'Paket Dasar Tinjauan Tertulis', ru: 'Базовый пакет письменной оценки', mn: 'Бичгийн үнэлгээний үндсэн багц' }, price: '60💲', icon: 'FileText', highlight: false, features: [
-        { zh: '病历整理与归档', en: 'Medical record sorting and archiving', id: 'Penyusunan dan arsip rekam medis', ru: 'Систематизация и архивирование меддокументов', mn: 'Эмнэлгийн баримт цэгцлэх ба архивлах' },
-        { zh: '专家智能匹配', en: 'Smart expert matching', id: 'Pencocokan ahli cerdas', ru: 'Интеллектуальный подбор эксперта', mn: 'Ухаалаг мэргэжилтэн тааруулах' },
-        { zh: '书面初步评估PDF', en: 'Written preliminary assessment PDF', id: 'PDF asesmen awal tertulis', ru: 'PDF предварительной письменной оценки', mn: 'Бичгийн урьдчилсан үнэлгээ PDF' },
-      ] },
-      { name: { zh: '单次视频面诊标准包', en: 'Single Video Consultation Standard Package', id: 'Paket Standar Konsultasi Video Tunggal', ru: 'Стандартный пакет одной видеоконсультации', mn: 'Нэг удаагийн видео зөвлөгөөний стандарт багц' }, price: '235💲', icon: 'Video', highlight: true, features: [
-        { zh: '专家视频面诊15-30分钟', en: '15-30 min expert video consultation', id: 'Konsultasi video ahli 15-30 menit', ru: 'Видеоконсультация эксперта 15-30 минут', mn: '15-30 минутын мэргэжилтний видео зөвлөгөө' },
-        { zh: '书面诊疗总结', en: 'Written consultation summary', id: 'Ringkasan konsultasi tertulis', ru: 'Письменное резюме консультации', mn: 'Бичгийн зөвлөгөөний хураангуй' },
-        { zh: '7天内1次跟进答疑', en: 'One follow-up Q&A within 7 days', id: '1 sesi tanya jawab lanjutan dalam 7 hari', ru: 'Один последующий Q&A в течение 7 дней', mn: '7 хоногийн дотор нэг удаагийн асуулт хариулт' },
-      ] },
-      { name: { zh: '双专家视频面诊深度包', en: 'Dual-Specialist Video Consultation Package', id: 'Paket Mendalam Konsultasi Video Dua Ahli', ru: 'Расширенный пакет видеоконсультации двух экспертов', mn: 'Хоёр мэргэжилтний видео зөвлөгөөний гүнзгий багц' }, price: '450💲', icon: 'MessageSquare', highlight: false, features: [
-        { zh: '2位相关科室专家会诊', en: 'Consultation by two relevant specialists', id: 'Konsultasi oleh 2 ahli terkait', ru: 'Консилиум двух профильных специалистов', mn: 'Холбогдох хоёр мэргэжилтний зөвлөгөө' },
-        { zh: '综合诊疗报告', en: 'Integrated treatment report', id: 'Laporan perawatan terpadu', ru: 'Комплексный лечебный отчет', mn: 'Нэгдсэн эмчилгээний тайлан' },
-        { zh: '14天内2次跟进答疑', en: 'Two follow-up Q&A sessions within 14 days', id: '2 sesi tanya jawab lanjutan dalam 14 hari', ru: 'Два последующих Q&A в течение 14 дней', mn: '14 хоногийн дотор хоёр удаагийн асуулт хариулт' },
-      ] },
+      {
+        name: { zh: '基础评估包 / Basic', en: 'Basic Assessment Package', id: 'Paket Asesmen Dasar', ru: 'Базовый пакет оценки', mn: 'Үндсэн үнэлгээний багц' },
+        subtitle: { zh: '适合已有资料、先获取书面方向判断', en: 'Best for a written first direction based on existing records', id: 'Cocok untuk arahan tertulis awal berdasarkan rekam medis', ru: 'Для первичной письменной оценки по имеющимся материалам', mn: 'Одоо байгаа баримтаар бичгээр эхний чиглэл авахад тохиромжтой' },
+        price: '$56',
+        originalPrice: '￥399',
+        cta: { zh: '选择基础包 / Choose Basic', en: 'Choose Basic', id: 'Pilih Basic', ru: 'Выбрать Basic', mn: 'Basic сонгох' },
+        icon: 'FileText',
+        highlight: false,
+        features: [
+          { zh: '副主任医师审阅病历', en: 'Associate-chief physician record review', id: 'Tinjauan rekam medis oleh dokter senior', ru: 'Проверка документов старшим врачом', mn: 'Ахлах эмчийн баримтын хяналт' },
+          { zh: '完整PDF评估报告', en: 'Complete PDF assessment report', id: 'Laporan asesmen PDF lengkap', ru: 'Полный PDF-отчет оценки', mn: 'Бүрэн PDF үнэлгээний тайлан' },
+          { zh: 'CT/病理分析解读', en: 'CT/pathology interpretation', id: 'Interpretasi CT/patologi', ru: 'Интерпретация КТ/патологии', mn: 'CT/эмгэг судлалын тайлбар' },
+          { zh: '治疗路径方案', en: 'Treatment pathway plan', id: 'Rencana jalur perawatan', ru: 'План лечебного маршрута', mn: 'Эмчилгээний замналын төлөвлөгөө' },
+          { zh: '费用明细清单', en: 'Itemized cost list', id: 'Daftar biaya terperinci', ru: 'Детализированный список затрат', mn: 'Зардлын дэлгэрэнгүй жагсаалт' },
+          { zh: '治愈率/预后参考', en: 'Outcome/prognosis reference', id: 'Referensi luaran/prognosis', ru: 'Справка по прогнозу', mn: 'Урьдчилсан таамгийн лавлагаа' },
+          { zh: '保险报销建议', en: 'Insurance reimbursement guidance', id: 'Panduan klaim asuransi', ru: 'Рекомендации по страховым выплатам', mn: 'Даатгалын нөхөн төлбөрийн зөвлөмж' },
+          { zh: '不含视频面诊', en: 'No video consultation', id: 'Tanpa konsultasi video', ru: 'Без видеоконсультации', mn: 'Видео зөвлөгөөгүй' },
+        ],
+        featureStatuses: ['included', 'included', 'included', 'included', 'included', 'included', 'included', 'excluded'],
+        footnote: { zh: '适合初步判断方向；若需要医生视频沟通，建议选择标准包。', en: 'For initial direction; choose Standard if you need live expert discussion.', id: 'Untuk arahan awal; pilih Standard bila perlu diskusi video ahli.', ru: 'Для первичной оценки; для видеообсуждения выберите Standard.', mn: 'Эхний чиглэлд; видео ярилцах бол Standard сонгоно уу.' },
+      },
+      {
+        name: { zh: '标准面诊包 / Standard', en: 'Standard Video Consultation Package', id: 'Paket Konsultasi Video Standard', ru: 'Стандартный пакет видеоконсультации', mn: 'Стандарт видео зөвлөгөөний багц' },
+        subtitle: { zh: '适合希望与专家视频沟通并获得跟进答疑', en: 'Best for expert video discussion and follow-up Q&A', id: 'Cocok untuk konsultasi video ahli dan Q&A lanjutan', ru: 'Для видеоконсультации и последующих вопросов', mn: 'Мэргэжилтэнтэй видео ярилцаж, дараах асуултад тохиромжтой' },
+        price: '$185-$425',
+        originalPrice: '￥1,300-3,000',
+        badge: { zh: '最受欢迎 / Most Popular', en: 'Most Popular', id: 'Paling populer', ru: 'Самый популярный', mn: 'Хамгийн түгээмэл' },
+        cta: { zh: '选择标准包 / Choose Standard', en: 'Choose Standard', id: 'Pilih Standard', ru: 'Выбрать Standard', mn: 'Standard сонгох' },
+        icon: 'Video',
+        highlight: true,
+        features: [
+          { zh: '包含基础包全部内容', en: 'Everything in Basic', id: 'Semua isi Basic', ru: 'Все из Basic', mn: 'Basic-ийн бүх зүйл' },
+          { zh: '专家视频面诊30分钟', en: '30-min expert video consultation', id: 'Konsultasi video ahli 30 menit', ru: '30-минутная видеоконсультация', mn: '30 минутын видео зөвлөгөө' },
+          { zh: '7天内跟进答疑', en: '7-day follow-up Q&A', id: 'Q&A lanjutan 7 hari', ru: 'Вопросы в течение 7 дней', mn: '7 хоногийн асуулт хариулт' },
+          { zh: '病历翻译服务', en: 'Record translation service', id: 'Layanan terjemahan rekam medis', ru: 'Перевод медицинских документов', mn: 'Эмнэлгийн баримт орчуулга' },
+          { zh: '精准费用到千位', en: 'Cost estimate to the nearest thousand', id: 'Estimasi biaya hingga ribuan', ru: 'Смета с точностью до тысяч', mn: 'Мянгатын нарийвчлалтай зардал' },
+          { zh: '指定专家推荐', en: 'Named expert recommendation', id: 'Rekomendasi ahli tertentu', ru: 'Рекомендация конкретного эксперта', mn: 'Тодорхой мэргэжилтний зөвлөмж' },
+          { zh: '治疗时间规划', en: 'Treatment timeline planning', id: 'Perencanaan waktu perawatan', ru: 'Планирование сроков лечения', mn: 'Эмчилгээний хугацааны төлөвлөлт' },
+        ],
+        featureStatuses: ['included', 'emphasis', 'included', 'included', 'included', 'included', 'included'],
+        footnote: { zh: '价格因专家级别、病种复杂度和资料量不同而异。', en: 'Price varies by expert level, case complexity, and record volume.', id: 'Harga bervariasi menurut level ahli, kompleksitas kasus, dan volume rekam medis.', ru: 'Цена зависит от уровня эксперта, сложности случая и объема документов.', mn: 'Үнэ нь мэргэжилтний түвшин, өвчний төвөгшил, баримтын хэмжээнээс хамаарна.' },
+      },
+      {
+        name: { zh: '深度面诊包 / Premium', en: 'Premium Deep Consultation Package', id: 'Paket Konsultasi Mendalam Premium', ru: 'Пакет углубленной консультации Premium', mn: 'Premium гүнзгий зөвлөгөөний багц' },
+        subtitle: { zh: '适合复杂病情、需要多学科联合意见', en: 'Best for complex cases needing multidisciplinary input', id: 'Cocok untuk kasus kompleks dengan masukan multidisiplin', ru: 'Для сложных случаев с мультидисциплинарной оценкой', mn: 'Олон салбарын санал хэрэгтэй төвөгтэй тохиолдолд' },
+        price: '$425-$1,400',
+        originalPrice: '￥3,000-10,000',
+        cta: { zh: '选择深度包 / Choose Premium', en: 'Choose Premium', id: 'Pilih Premium', ru: 'Выбрать Premium', mn: 'Premium сонгох' },
+        icon: 'MessageSquare',
+        highlight: false,
+        features: [
+          { zh: '包含标准包全部内容', en: 'Everything in Standard', id: 'Semua isi Standard', ru: 'Все из Standard', mn: 'Standard-ийн бүх зүйл' },
+          { zh: '多学科专家会诊（MDT）', en: 'Multidisciplinary expert consultation (MDT)', id: 'Konsultasi ahli multidisiplin (MDT)', ru: 'Мультидисциплинарный консилиум (MDT)', mn: 'Олон салбарын зөвлөгөө (MDT)' },
+          { zh: '外科+肿瘤内科+放疗科联合会诊', en: 'Surgery + medical oncology + radiotherapy joint review', id: 'Tinjauan bedah + onkologi medis + radioterapi', ru: 'Хирургия + онкология + радиотерапия', mn: 'Мэс засал + хавдар судлал + туяа эмчилгээ' },
+          { zh: '14天内跟进答疑', en: '14-day follow-up Q&A', id: 'Q&A lanjutan 14 hari', ru: 'Вопросы в течение 14 дней', mn: '14 хоногийн асуулт хариулт' },
+          { zh: '治疗方案第二意见', en: 'Second opinion on treatment plan', id: 'Pendapat kedua untuk rencana terapi', ru: 'Второе мнение по плану лечения', mn: 'Эмчилгээний төлөвлөгөөний хоёр дахь санал' },
+          { zh: '医疗签证邀请函', en: 'Medical visa invitation letter', id: 'Surat undangan visa medis', ru: 'Приглашение для медицинской визы', mn: 'Эмнэлгийн визний урилга' },
+          { zh: '防复发随访方案定制', en: 'Custom recurrence-prevention follow-up plan', id: 'Rencana tindak lanjut pencegahan kekambuhan', ru: 'Индивидуальный план профилактики рецидива', mn: 'Дахилтаас сэргийлэх хяналтын төлөвлөгөө' },
+        ],
+        featureStatuses: ['included', 'emphasis', 'included', 'included', 'included', 'included', 'included'],
+        footnote: { zh: '适合疑难病例、复发转移风险评估或跨科室治疗决策。', en: 'For difficult cases, recurrence/metastasis risk, or cross-specialty decisions.', id: 'Untuk kasus sulit, risiko kambuh/metastasis, atau keputusan lintas spesialis.', ru: 'Для сложных случаев, риска рецидива/метастазов или междисциплинарных решений.', mn: 'Төвөгтэй тохиолдол, дахилт/үсэрхийллийн эрсдэл, олон салбарын шийдвэрт.' },
+      },
     ],
     highlights: [
       { zh: '副主任医师及以上人工审核', en: 'Reviewed by associate chief physician or above', id: 'Ditinjau oleh dokter senior setingkat associate chief ke atas', ru: 'Проверка врачом уровня заместителя главврача и выше', mn: 'Дэд ахлах эмч болон түүнээс дээш түвшний хяналт' },
@@ -357,7 +437,15 @@ const localizedReport = computed(() => {
     packages: texts.packages.map((pkg) => ({
       ...pkg,
       name: lt(pkg.name),
+      subtitle: pkg.subtitle ? lt(pkg.subtitle) : undefined,
+      badge: pkg.badge ? lt(pkg.badge) : undefined,
+      cta: pkg.cta ? lt(pkg.cta) : undefined,
       features: pkg.features.map((feature) => lt(feature)),
+      featureDetails: pkg.features.map((feature, index) => ({
+        label: lt(feature),
+        status: (pkg.featureStatuses?.[index] || 'included') as 'included' | 'excluded' | 'emphasis',
+      })),
+      footnote: pkg.footnote ? lt(pkg.footnote) : undefined,
     })),
     highlights: texts.highlights.map((item) => lt(item)),
   }
@@ -405,6 +493,162 @@ const reportPreviewItems = [
   { title: '专业版升级 / Upgrade to Pro', desc: '获取更精准的个性化评估报告', icon: Sparkles },
 ]
 
+const proSampleTabs = [
+  { key: 'analysis', label: '病情分析解读', icon: FileSearch },
+  { key: 'treatment', label: '治疗路径方案', icon: Stethoscope },
+  { key: 'cost', label: '费用明细（0猫腻）', icon: DollarSign },
+  { key: 'insurance', label: '保险报销评估', icon: Shield },
+  { key: 'followup', label: '防复发随访体系', icon: HeartPulse },
+]
+
+const proSampleReport = {
+  meta: {
+    badge: '专业版精准评估报告示例',
+    title: '乳腺癌 IIA期 评估报告 #HY-2024-0618-001',
+    patient: '患者：Sarah M. | 34岁 | 英国 | 报告日期：2024年6月18日',
+    note: '以下为 Kimi 版本中的专业版报告示例内容，已按简易报告浅色风格展示；真实专业报告会根据用户资料、医学报告和医生审核结果生成。',
+  },
+  analysis: {
+    basics: [
+      { label: '确诊疾病', value: '左侧乳腺浸润性导管癌' },
+      { label: '临床分期', value: 'T2N1M0（IIA期）' },
+      { label: '病理类型', value: '浸润性导管癌（IDC）' },
+      { label: '分化程度', value: '中-低分化（Grade 2）' },
+    ],
+    groups: [
+      {
+        title: 'CT/影像分析',
+        items: [
+          '乳腺钼靶：左乳外上象限见2.8cm×2.1cm不规则高密度影，BI-RADS 5类',
+          '乳腺超声：低回声肿块，边界不清，纵横比>1，可见微小钙化',
+          '胸部CT：左肺未见转移灶，纵隔淋巴结未见肿大',
+          '腹部CT：肝脏、肾上腺未见转移灶',
+          '全身骨扫描：未见骨转移征象',
+        ],
+      },
+      {
+        title: '病理报告解读',
+        items: [
+          'ER（雌激素受体）：强阳性（80%+），推荐内分泌治疗',
+          'PR（孕激素受体）：阳性（60%+），对内分泌治疗反应良好',
+          'HER-2：阴性（1+），无需靶向治疗，预后较好',
+          'Ki-67：25%（中增殖活性），提示化疗可能获益',
+          'AR（雄激素受体）：阳性，潜在治疗靶点',
+        ],
+      },
+    ],
+    warning: '说明：以上分析基于用户提供的CT和病理报告；未包含基因检测（如BRCA1/2）。如需基因检测结果辅助治疗方案制定，建议升级到深度面诊包，由专家评估是否需要。',
+  },
+  treatment: {
+    steps: [
+      {
+        title: '保乳手术 + 前哨淋巴结活检',
+        details: [
+          '主刀医生：张XX 主任医师（复旦大学附属肿瘤医院乳腺外科，20年经验，年手术量400+）',
+          '手术方案：保留乳头乳晕复合体的保乳手术，术中快速冰冻病理确认切缘阴性',
+          '预计住院：5-7天 | 预计费用：¥28,000-35,000（$4,000-5,000）',
+        ],
+        badge: '本院该术式成功率：99.2% | 国际患者案例：156例',
+      },
+      {
+        title: '术后辅助治疗',
+        details: [
+          '放射治疗：TOMO螺旋断层放疗 25次（保护心肺），预计费用 ¥18,000-25,000',
+          '内分泌治疗：来曲唑口服5年，预计费用 ¥500-800/月',
+          '化疗评估：因Ki-67 25%，建议4周期TC方案（多西他赛+环磷酰胺）',
+        ],
+      },
+      {
+        title: '术后随访防复发方案',
+        details: [
+          '出院后1周：首次视频复诊（评估伤口）',
+          '1/3/6/12个月：定期复查（血检+乳腺超声+必要时CT）',
+          '持续5年：内分泌治疗期间每6个月复查',
+          '终身：专属微信群随访，复发预警',
+        ],
+      },
+    ],
+    outcome: [
+      { value: '92%', label: '5年无病生存率' },
+      { value: '85%', label: '10年无病生存率' },
+      { value: '8%', label: '5年内复发率' },
+    ],
+    source: '数据来源：复旦大学附属肿瘤医院2020-2024年IIA期乳腺癌随访数据（n=1,247）',
+  },
+  cost: {
+    core: [
+      ['手术费（主刀医生）', '¥28,000', '$4,000'],
+      ['麻醉费', '¥4,500', '$640'],
+      ['手术室使用费', '¥6,000', '$850'],
+      ['住院费（7天标准病房）', '¥7,000', '$1,000'],
+      ['术后药品费', '¥3,500', '$500'],
+      ['放疗费（TOMO 25次）', '¥22,000', '$3,150'],
+      ['化疗费（4周期TC方案）', '¥8,000', '$1,140'],
+    ],
+    support: [
+      '医学翻译（中英，全程陪同）',
+      '病历翻译整理（准确率98.5%）',
+      '院内生活管家/陪诊',
+      '术后远程随访（6个月）',
+      '中医康复咨询',
+      '营养膳食方案',
+      '专属医疗顾问全程跟进',
+    ],
+    living: [
+      ['酒店（医院附近，10晚）', '¥6,000', '$850'],
+      ['餐饮（15天）', '¥2,250', '$320'],
+      ['机场接送+交通', '¥1,400', '$200'],
+      ['签证费（M字医疗签证）', '¥800', '$115'],
+    ],
+    totals: {
+      core: '¥79,000（~$11,280）',
+      support: '¥0（全免费）',
+      living: '¥10,450（~$1,485）',
+      total: '¥89,450（~$12,765）',
+      note: '以上为预估费用，实际可能因病情、个体差异浮动±15-25%。治疗前会提供逐项签字确认清单。',
+    },
+  },
+  insurance: {
+    name: 'Bupa Global（英国）覆盖分析',
+    coverages: [
+      ['住院治疗', '100% 覆盖', true],
+      ['手术费用', '100% 覆盖', true],
+      ['门诊放疗', '80% 覆盖', true],
+      ['化疗药物', '80% 覆盖', true],
+      ['质子治疗', '覆盖', true],
+      ['CAR-T', '覆盖', true],
+      ['术后随访', '需确认', false],
+      ['医疗翻译', '不覆盖', false],
+    ],
+    suggestions: [
+      '治疗前14天向Bupa提交预授权申请（Pre-authorization）',
+      '所需材料：病历摘要、治疗方案、费用预估清单（我们协助准备）',
+      '协和医院、瑞金医院支持Bupa直付，无需先行垫付',
+      '预计可报销额度：¥71,200（约$10,170），占总费用80%',
+      '自费部分：约¥18,250（含翻译、住宿、餐饮等）',
+    ],
+  },
+  followup: {
+    reason: '乳腺癌术后2-3年是复发高峰期。许多国际患者回国后因与国内医生信息断层，导致复查不规范、复发信号被忽视。寰宇云医的随访体系确保您无论身在何处，都能获得持续的专业监护。',
+    timeline: [
+      { time: '术后1周', title: '首次视频复诊', desc: '主治医生评估伤口愈合、引流管拔除' },
+      { time: '术后1月', title: '复查套餐A', desc: '血常规+肝肾功能+乳腺超声，评估化疗耐受性' },
+      { time: '术后3月', title: '复查套餐B', desc: '乳腺钼靶+胸部CT+肿瘤标志物，评估放疗效果' },
+      { time: '术后6月', title: '疗效全面评估', desc: '全身评估+治疗方案调整+复发风险评分' },
+      { time: '术后12月', title: '年度大复查', desc: '全身PET-CT+骨扫描+妇科超声（他莫昔芬监测）' },
+      { time: '术后2-5年', title: '持续随访期', desc: '每6个月复查，内分泌治疗监测，生活方式指导' },
+      { time: '5年后', title: '康复期管理', desc: '每年复查，关注远期副作用（心血管、骨密度）' },
+    ],
+    services: [
+      { title: '复发预警系统', items: ['AI监测复查指标异常趋势', '肿瘤标志物动态追踪', '异常时48小时内专家会诊', '紧急回国治疗绿色通道'] },
+      { title: '跨国医疗衔接', items: ['中英文病历互译（国内医生可读懂）', '协助联系您当地的合作医院', '国内医生远程沟通桥梁', '影像资料云端共享'] },
+      { title: '康复管理', items: ['中医调理（针灸/中药，降低复发率10-15%）', '营养师定制抗癌饮食方案', '运动康复指导（渐进式）', '心理支持小组'] },
+      { title: '数据追踪', items: ['个人健康档案终身保存', '复查报告云端归档', '对比分析工具（追踪变化趋势）', '家属同步查看权限'] },
+    ],
+    fee: '随访费用：前6个月免费；6个月后：¥200/次视频复诊（$28/次）；vs 美国复查 $300-500/次 | 英国 £200-400/次',
+  },
+}
+
 const parseCostValues = (cost: string, pattern: RegExp, divisor = 1) => {
   return [...cost.replace(/,/g, '').matchAll(pattern)]
     .map((match) => {
@@ -448,8 +692,146 @@ const cleanReportText = (text: string) => text
   .replace(new RegExp(`${hiddenComparePromptPhrase}。?`, 'g'), '以下对比仅作预审参考，最终以医生面诊、资料复核和医院正式方案为准。')
   .replace(hiddenFeeQualifierWithDetail, '')
   .replace(new RegExp(hiddenFeeQualifier, 'g'), '')
+  .replace(/¥/g, '￥')
   .replace(/\s{2,}/g, ' ')
   .trim()
+
+const cleanSimpleCostCategory = (category?: SimpleCostBreakdownCategoryData) => {
+  if (!category) return undefined
+  return {
+    title: cleanReportText(category.title),
+    subtotal: cleanReportText(category.subtotal),
+    items: category.items
+      .map((item) => ({
+        item: cleanReportText(item.item),
+        cost: cleanReportText(item.cost),
+        note: item.note ? cleanReportText(item.note) : undefined,
+      }))
+      .filter((item) => item.item && item.cost),
+    tip: category.tip ? cleanReportText(category.tip) : undefined,
+  }
+}
+
+const cleanSimpleCostBreakdown = (costBreakdown?: GeneratedReport['plan']['costBreakdown']): SimpleCostBreakdownData | undefined => {
+  if (!costBreakdown) return undefined
+  const coreMedical = cleanSimpleCostCategory(costBreakdown.coreMedical)
+  const supportServices = cleanSimpleCostCategory(costBreakdown.supportServices)
+  const living = cleanSimpleCostCategory(costBreakdown.living)
+  if (!coreMedical || !supportServices || !living) return undefined
+
+  return {
+    currencyNote: cleanReportText(costBreakdown.currencyNote),
+    coreMedical,
+    supportServices,
+    living,
+    summary: {
+      formula: cleanReportText(costBreakdown.summary.formula),
+      chinaTotal: cleanReportText(costBreakdown.summary.chinaTotal),
+      referenceCountry: cleanReportText(costBreakdown.summary.referenceCountry),
+      referenceCost: cleanReportText(costBreakdown.summary.referenceCost),
+      savingsPercent: costBreakdown.summary.savingsPercent,
+      savingsText: cleanReportText(costBreakdown.summary.savingsText),
+    },
+  }
+}
+
+const cleanPackage = (pkg: GeneratedReport['packages'][number]) => {
+  const features = pkg.features.map((feature) => cleanReportText(feature)).filter(Boolean)
+  const featureDetails = (pkg.featureDetails?.length
+    ? pkg.featureDetails.map((feature) => ({
+      label: cleanReportText(feature.label),
+      status: feature.status || 'included',
+    }))
+    : features.map((feature) => ({ label: feature, status: 'included' as const })))
+    .filter((feature) => feature.label)
+
+  return {
+    ...pkg,
+    name: cleanReportText(pkg.name),
+    subtitle: pkg.subtitle ? cleanReportText(pkg.subtitle) : undefined,
+    price: cleanReportText(pkg.price),
+    originalPrice: pkg.originalPrice ? cleanReportText(pkg.originalPrice) : undefined,
+    badge: pkg.badge ? cleanReportText(pkg.badge) : undefined,
+    cta: pkg.cta ? cleanReportText(pkg.cta) : undefined,
+    features,
+    featureDetails,
+    footnote: pkg.footnote ? cleanReportText(pkg.footnote) : undefined,
+  }
+}
+
+const cleanAdvancedCare = (advancedCare?: GeneratedReport['advancedCare']): AdvancedCareData | undefined => {
+  if (!advancedCare) return undefined
+
+  const therapies = advancedCare.therapies
+    .map((therapy) => ({
+      name: cleanReportText(therapy.name),
+      category: cleanReportText(therapy.category),
+      recommendationLevel: cleanReportText(therapy.recommendationLevel),
+      summary: cleanReportText(therapy.summary),
+      applicableFor: cleanReportText(therapy.applicableFor),
+      mechanism: cleanReportText(therapy.mechanism),
+      chinaAccess: cleanReportText(therapy.chinaAccess),
+      estimatedCost: cleanReportText(therapy.estimatedCost),
+      referenceCost: therapy.referenceCost ? cleanReportText(therapy.referenceCost) : undefined,
+      advantage: cleanReportText(therapy.advantage),
+      evidence: cleanReportText(therapy.evidence),
+      limitations: cleanReportText(therapy.limitations),
+      nextStep: cleanReportText(therapy.nextStep),
+      tags: therapy.tags?.map((tag) => cleanReportText(tag)).filter(Boolean),
+    }))
+    .filter((therapy) => therapy.name && therapy.summary)
+
+  const drugItems = advancedCare.drugCostComparison.items
+    .map((item) => ({
+      drugName: cleanReportText(item.drugName),
+      drugClass: cleanReportText(item.drugClass),
+      chinaOption: cleanReportText(item.chinaOption),
+      referenceOption: cleanReportText(item.referenceOption),
+      chinaCost: cleanReportText(item.chinaCost),
+      referenceCost: cleanReportText(item.referenceCost),
+      efficacyEquivalence: cleanReportText(item.efficacyEquivalence),
+      savingInsight: cleanReportText(item.savingInsight),
+      eligibility: cleanReportText(item.eligibility),
+      note: item.note ? cleanReportText(item.note) : undefined,
+    }))
+    .filter((item) => item.drugName && item.chinaCost && item.referenceCost)
+
+  const cureItems = advancedCare.newDrugCureAssessment.items
+    .map((item) => ({
+      name: cleanReportText(item.name),
+      type: cleanReportText(item.type),
+      applicableFor: cleanReportText(item.applicableFor),
+      evidence: cleanReportText(item.evidence),
+      chinaAvailability: cleanReportText(item.chinaAvailability),
+      potentialRole: cleanReportText(item.potentialRole),
+      limitations: cleanReportText(item.limitations),
+      nextStep: cleanReportText(item.nextStep),
+    }))
+    .filter((item) => item.name && item.applicableFor)
+
+  if (!therapies.length || !drugItems.length || !cureItems.length) return undefined
+
+  return {
+    context: cleanReportText(advancedCare.context),
+    currencyNote: cleanReportText(advancedCare.currencyNote),
+    therapies,
+    drugCostComparison: {
+      title: cleanReportText(advancedCare.drugCostComparison.title),
+      basis: cleanReportText(advancedCare.drugCostComparison.basis),
+      summary: cleanReportText(advancedCare.drugCostComparison.summary),
+      items: drugItems,
+      note: cleanReportText(advancedCare.drugCostComparison.note),
+    },
+    newDrugCureAssessment: {
+      headline: cleanReportText(advancedCare.newDrugCureAssessment.headline),
+      answer: cleanReportText(advancedCare.newDrugCureAssessment.answer),
+      summary: cleanReportText(advancedCare.newDrugCureAssessment.summary),
+      items: cureItems,
+      ctaItems: advancedCare.newDrugCureAssessment.ctaItems.map((item) => cleanReportText(item)).filter(Boolean),
+    },
+    disclaimer: cleanReportText(advancedCare.disclaimer),
+  }
+}
 
 const getBreakdownTotalCost = (breakdown: GeneratedReport['plan']['breakdown']) => {
   const ranges = breakdown.map((item) => parseUsdRange(item.cost))
@@ -470,8 +852,9 @@ const renderedReport = computed<RenderedReport>(() => {
   const report = generatedReport.value
 
   if (report) {
-    const isDentalGeneratedReport = report.hospitals.some((item) => /鼎植|口腔|牙科/.test(`${item.name}${item.reason}`)) || /牙|口腔|鼎植/.test(`${report.disease}${report.treatment}`)
-    const totalCost = isDentalGeneratedReport ? report.plan.totalCost : getBreakdownTotalCost(report.plan.breakdown) || report.plan.totalCost
+    const costBreakdown = cleanSimpleCostBreakdown(report.plan.costBreakdown)
+    const advancedCare = cleanAdvancedCare(report.advancedCare)
+    const totalCost = costBreakdown?.summary.chinaTotal || report.plan.totalCost
 
     return {
       id: report.id,
@@ -497,17 +880,28 @@ const renderedReport = computed<RenderedReport>(() => {
         city: cleanReportText(item.city),
         name: cleanReportText(item.name),
         reason: cleanReportText(item.reason),
+        englishName: item.englishName ? cleanReportText(item.englishName) : undefined,
+        department: item.department ? cleanReportText(item.department) : undefined,
+        matchScore: Number.isInteger(item.matchScore) ? item.matchScore : undefined,
+        rankLabel: item.rankLabel ? cleanReportText(item.rankLabel) : undefined,
+        tags: item.tags?.map((tag) => cleanReportText(tag)).filter(Boolean),
+        internationalPatients: item.internationalPatients ? cleanReportText(item.internationalPatients) : undefined,
+        waitTime: item.waitTime ? cleanReportText(item.waitTime) : undefined,
+        detailItems: item.detailItems
+          ?.map((detail) => ({
+            label: cleanReportText(detail.label),
+            value: cleanReportText(detail.value),
+          }))
+          .filter((detail) => detail.label && detail.value),
+        preparation: item.preparation ? cleanReportText(item.preparation) : undefined,
       })),
       direction: cleanReportText(report.plan.direction),
       duration: cleanReportText(report.plan.duration),
       totalCost,
       breakdown: report.plan.breakdown.map((item) => ({ item: cleanReportText(item.item), cost: cleanReportText(item.cost) })),
-      packages: report.packages.map((pkg) => ({
-        ...pkg,
-        name: cleanReportText(pkg.name),
-        price: cleanReportText(pkg.price),
-        features: pkg.features.map((feature) => cleanReportText(feature)),
-      })),
+      costBreakdown,
+      packages: report.packages.map(cleanPackage),
+      advancedCare,
       highlights: report.highlights.map((item) => cleanReportText(item)),
       layoutSections: report.layoutSections || [],
       disclaimer: cleanReportText(report.disclaimer),
@@ -531,13 +925,23 @@ const renderedReport = computed<RenderedReport>(() => {
     duration: localizedReport.value.duration,
     totalCost: getBreakdownTotalCost(localizedReport.value.breakdown) || '$14,300 - $25,500',
     breakdown: localizedReport.value.breakdown,
+    costBreakdown: undefined,
     packages: localizedReport.value.packages,
+    advancedCare: undefined,
     highlights: localizedReport.value.highlights,
     layoutSections: [],
     disclaimer: '本报告为来华就医可行性预审，不构成诊断、处方或最终治疗建议。',
     generatedBy: 'rules' as const,
   }
 })
+
+const isInsufficientReport = computed(() => /资料不足|暂不推荐|暂不估算|需补充资料|待医生确认/.test(JSON.stringify(renderedReport.value)))
+const scoreDisplayValue = computed(() => (
+  isInsufficientReport.value && renderedReport.value.score <= 0 ? '待评估' : String(renderedReport.value.score)
+))
+const scoreDisplayCaption = computed(() => (
+  isInsufficientReport.value && renderedReport.value.score <= 0 ? '补齐资料后评估' : `${t('report.score')} / 100`
+))
 
 const displayNames = computed(() => new Intl.DisplayNames([intlLocale.value], { type: 'region' }))
 const normalizeDateInputValue = (value?: string) => {
@@ -569,6 +973,14 @@ const languageOptions = computed(() => {
 const visitPurposeLabel = computed(() => {
   return purposeOptions.find((item) => item.value === form.visitPurpose)?.label
 })
+const careNeedLabel = computed(() => {
+  const option = careNeedOptions.find((item) => item.value === form.careNeed)
+  if (form.careNeed === 'other' && form.careNeedOther.trim()) return `其他：${form.careNeedOther.trim()}`
+  return option?.label || '-'
+})
+const expectedTreatmentTimeLabel = computed(() => (
+  expectedTreatmentTimeOptions.find((item) => item.value === form.expectedTreatmentTime)?.label || '-'
+))
 
 // 表单验证
 const validatePassport = (value: string) => /^[A-Z0-9]{6,18}$/i.test(value.replace(/\s/g, ''))
@@ -587,6 +999,8 @@ const validateDateOfBirth = (value: string) => {
 
 const validationErrors = computed<Record<FormField, string>>(() => {
   const idNumber = form.idNumber.trim()
+  const phone = form.phone.trim()
+  const email = form.email.trim()
   let idNumberError = ''
   if (!idNumber) {
     idNumberError = ''
@@ -605,11 +1019,14 @@ const validationErrors = computed<Record<FormField, string>>(() => {
     nationality: '',
     idType: '',
     idNumber: idNumberError,
-    phone: form.phone.trim() && validatePhone(form.phone) ? '' : lt(localText.validation.phone),
-    email: !form.email.trim() || validateEmail(form.email) ? '' : lt(localText.validation.email),
+    phone: !phone || validatePhone(phone) ? '' : lt(localText.validation.phone),
+    email: email && validateEmail(email) ? '' : lt(localText.validation.email),
     city: '',
     preferredLanguage: '',
     visitPurpose: form.visitPurpose ? '' : lt(localText.validation.visitPurpose),
+    careNeed: '',
+    careNeedOther: form.careNeed !== 'other' || form.careNeedOther.trim().length >= 2 ? '' : lt(localText.validation.careNeedOther),
+    expectedTreatmentTime: '',
     chiefComplaint: form.chiefComplaint.trim().length <= 500 ? '' : lt(localText.validation.chiefComplaint),
   }
 })
@@ -645,6 +1062,8 @@ const reportLayoutIconMap: Record<string, Component> = {
   Globe,
   HeartPulse,
   Lock,
+  Microscope,
+  Pill,
   Plane,
   Search,
   Shield,
@@ -673,11 +1092,36 @@ const lightToneTextClass = (tone?: string) => {
 
 const freeLayoutSections = computed(() => renderedReport.value.layoutSections || [])
 const designedFreeLayoutSections = computed(() => (
-  freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails', 'records'].includes(section.key))
+  freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails', 'records', 'upgrade'].includes(section.key))
 ))
 const activeFreeLayoutSection = computed(() => (
   freeLayoutSections.value.find((section) => section.key === activeFreeLayoutKey.value) || freeLayoutSections.value[0]
 ))
+const packageToneClass = (pkg: RenderedReport['packages'][number]) => {
+  if (pkg.highlight) return 'border-orange-300 bg-orange-50/70 shadow-sm ring-1 ring-orange-100'
+  if (/Premium|深度/.test(pkg.name)) return 'border-amber-200 bg-amber-50/40'
+  return 'border-slate-100 bg-white'
+}
+const packageIconClass = (pkg: RenderedReport['packages'][number]) => {
+  if (pkg.highlight) return 'bg-[#DD6B20] text-white'
+  if (/Premium|深度/.test(pkg.name)) return 'bg-amber-100 text-amber-700'
+  return 'bg-orange-100 text-[#C05621]'
+}
+const packageFeatureIcon = (status?: string) => {
+  if (status === 'excluded') return XCircle
+  if (status === 'emphasis') return CheckCircle
+  return Check
+}
+const packageFeatureClass = (status?: string) => {
+  if (status === 'excluded') return 'text-slate-400'
+  if (status === 'emphasis') return 'font-semibold text-[#C05621]'
+  return 'text-slate-700'
+}
+const packageFeatureIconClass = (status?: string) => {
+  if (status === 'excluded') return 'text-red-400'
+  if (status === 'emphasis') return 'text-[#DD6B20]'
+  return 'text-emerald-500'
+}
 const estimatedAverageCost = (cost: string) => {
   const range = parseUsdRange(cost)
   if (!range) return 0
@@ -702,7 +1146,11 @@ const referenceCostCountry = computed(() => (
     .filter((country) => country.name !== chinaCostCountry.value?.name)
     .sort((a, b) => b.average - a.average)[0] || countryCostBars.value[1] || countryCostBars.value[0]
 ))
+const modelCostSummary = computed(() => renderedReport.value.costBreakdown?.summary)
 const costSavingsText = computed(() => {
+  if (renderedReport.value.generatedBy === 'llm') {
+    return modelCostSummary.value?.savingsText || '费用节省比例需由医疗模型补充'
+  }
   const chinaAverage = chinaCostCountry.value?.average || 0
   const referenceAverage = referenceCostCountry.value?.average || 0
   if (!chinaAverage || !referenceAverage || chinaAverage >= referenceAverage) {
@@ -714,9 +1162,38 @@ const reportHeroMeta = computed(() => [
   { label: '患者', value: form.fullName || '-' },
   { label: '国家/地区', value: nationalityLabel.value },
   { label: '科室/目的', value: visitPurposeLabel.value ? lt(visitPurposeLabel.value) : '-' },
+  { label: '就医诉求', value: careNeedLabel.value },
+  { label: '期望时间', value: expectedTreatmentTimeLabel.value },
   { label: '语言', value: languageLabel.value },
 ])
 const topHospitals = computed(() => renderedReport.value.hospitals.slice(0, 3))
+const getHospitalKey = (hospital: RenderedReport['hospitals'][number], index: number) => `${index}-${hospital.name}`
+const hospitalDetailProfiles = computed(() => topHospitals.value.map((hospital, index) => {
+  const key = getHospitalKey(hospital, index)
+  const tags = hospital.tags?.filter(Boolean) || []
+  const detailItems = [
+    ...(hospital.detailItems?.filter((item) => item.label && item.value) || []),
+    ...(hospital.department && !hospital.detailItems?.some((item) => item.label.includes('科室'))
+      ? [{ label: '建议科室', value: hospital.department }]
+      : []),
+    ...(hospital.preparation && !hospital.detailItems?.some((item) => item.label.includes('准备') || item.label.includes('资料'))
+      ? [{ label: '需准备资料', value: hospital.preparation }]
+      : []),
+  ].filter((item) => item.label && item.value)
+
+  return {
+    ...hospital,
+    key,
+    rank: index + 1,
+    matchScore: hospital.matchScore,
+    matchDisplay: typeof hospital.matchScore === 'number' && hospital.matchScore > 0 ? `${hospital.matchScore}%` : '待评估',
+    matchCaption: typeof hospital.matchScore === 'number' && hospital.matchScore > 0 ? '匹配度 / Match' : '补齐资料后评估',
+    rankLabel: hospital.rankLabel,
+    tags,
+    detailItems,
+    bestMatch: index === 0,
+  }
+}))
 const isDentalReport = computed(() => (
   form.visitPurpose === 'dental' ||
   topHospitals.value.some((item) => /鼎植|口腔|牙科/.test(`${item.name}${item.reason}`)) ||
@@ -729,6 +1206,16 @@ const recommendationDescription = computed(() => (
     : '结合当前病情资料、期望城市和国际患者服务能力筛选，最终接诊以医院预审意见为准。'
 ))
 const hospitalGridClass = computed(() => isDentalReport.value ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-3')
+const toggleHospital = (key: string) => {
+  expandedHospital.value = expandedHospital.value === key ? null : key
+}
+const openProSampleReport = () => {
+  activeProSampleTab.value = 'analysis'
+  showProSampleReport.value = true
+}
+const closeProSampleReport = () => {
+  showProSampleReport.value = false
+}
 const freeReportInputText = computed(() => '基础信息 + 症状详情')
 const professionalReportLink = computed(() => (
   submissionNo.value
@@ -768,34 +1255,43 @@ const reportSubmissionPayload = computed(() => ({
     city: form.city.trim(),
     preferredLanguage: form.preferredLanguage,
     visitPurpose: visitPurposeAliases[form.visitPurpose] || form.visitPurpose,
+    careNeed: form.careNeed,
+    careNeedOther: form.careNeedOther.trim(),
+    expectedTreatmentTime: form.expectedTreatmentTime,
     chiefComplaint: form.chiefComplaint.trim(),
   },
   selectedRegions: selectedRegions.value.length ? selectedRegions.value : defaultSelectedRegions,
 }))
 
-const classifyCostItem = (item: string) => {
-  if (/住宿|生活|交通|机票|酒店|餐饮|出行|停留/.test(item)) return 'living'
-  if (/翻译|陪诊|协调|预约|签证|保险|服务|资料|远程|随访/.test(item)) return 'support'
-  return 'medical'
-}
+const costBreakdownCategories = computed(() => {
+  const breakdown = renderedReport.value.costBreakdown
+  if (!breakdown) return []
 
-const costBreakdownGroups = computed(() => {
-  const groups = [
-    { key: 'medical', title: '第一类：核心医疗费用', subtitle: '检查、治疗、手术或主要医疗项目', icon: HeartPulse, tone: 'rose', items: [] as GeneratedReport['plan']['breakdown'] },
-    { key: 'support', title: '第二类：配套服务费用', subtitle: '翻译、预约、陪诊及跨境协调', icon: Shield, tone: 'emerald', items: [] as GeneratedReport['plan']['breakdown'] },
-    { key: 'living', title: '第三类：生活预估费用', subtitle: '住宿、生活和在华停留成本', icon: Building2, tone: 'blue', items: [] as GeneratedReport['plan']['breakdown'] },
+  return [
+    {
+      key: 'coreMedical',
+      subtitle: '检查、复核、治疗、药品或住院等核心医疗预算',
+      icon: HeartPulse,
+      tone: 'rose',
+      category: breakdown.coreMedical,
+    },
+    {
+      key: 'supportServices',
+      subtitle: '翻译、预约、陪诊、远程随访等跨境服务预算',
+      icon: Shield,
+      tone: 'emerald',
+      category: breakdown.supportServices,
+    },
+    {
+      key: 'living',
+      subtitle: '住宿、交通、餐饮、保险通讯等在华停留预算',
+      icon: Building2,
+      tone: 'blue',
+      category: breakdown.living,
+    },
   ]
-
-  for (const item of renderedReport.value.breakdown) {
-    const target = groups.find((group) => group.key === classifyCostItem(item.item)) || groups[0]
-    target.items.push(item)
-  }
-
-  return groups.map((group) => ({
-    ...group,
-    total: getBreakdownTotalCost(group.items) || '需按项目确认',
-  }))
 })
+const advancedCareInsights = computed(() => renderedReport.value.advancedCare)
 
 const waitScore = (wait: string) => {
   const lower = wait.toLowerCase()
@@ -942,7 +1438,9 @@ const resetWizard = () => {
   Object.assign(form, {
     fullName: '', gender: '', dateOfBirth: '', nationality: '',
     idType: '', idNumber: '', phone: '', email: '',
-    city: '', preferredLanguage: '', visitPurpose: '', chiefComplaint: '',
+    city: '', preferredLanguage: '', visitPurpose: '',
+    careNeed: '', careNeedOther: '', expectedTreatmentTime: '',
+    chiefComplaint: '',
   })
 }
 </script>
@@ -1037,13 +1535,106 @@ const resetWizard = () => {
             </div>
           </div>
           <div :class="hospitalGridClass">
-            <div v-for="(hospital, index) in topHospitals" :key="hospital.name" class="rounded-xl border border-slate-100 bg-slate-50 p-4">
-              <div class="mb-3 flex items-center justify-between">
-                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#DD6B20] text-xs font-bold text-white">{{ index + 1 }}</span>
-                <span class="text-xs font-semibold text-[#C05621]">{{ hospital.city }}</span>
+            <article
+              v-for="hospital in hospitalDetailProfiles"
+              :key="hospital.key"
+              :class="[
+                'overflow-hidden rounded-xl border bg-slate-50 transition-all',
+                expandedHospital === hospital.key ? 'border-orange-200 shadow-sm ring-1 ring-orange-100' : 'border-slate-100 hover:border-orange-200 hover:bg-orange-50/40',
+              ]"
+            >
+              <button
+                type="button"
+                class="w-full p-4 text-left"
+                :aria-expanded="expandedHospital === hospital.key"
+                @click="toggleHospital(hospital.key)"
+              >
+                <div class="mb-3 flex items-start justify-between gap-3">
+                  <span
+                    :class="[
+                      'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white',
+                      hospital.rank === 1 ? 'bg-[#DD6B20]' : hospital.rank === 2 ? 'bg-slate-400' : 'bg-orange-500',
+                    ]"
+                  >
+                    {{ hospital.rank }}
+                  </span>
+                  <div v-if="hospital.matchScore !== undefined" class="text-right">
+                    <div class="text-2xl font-black leading-none text-[#14B8A6]">{{ hospital.matchScore }}%</div>
+                    <div class="mt-1 text-[11px] font-medium text-slate-400">匹配度 / Match</div>
+                  </div>
+                </div>
+
+                <h3 class="text-base font-bold leading-6 text-slate-950">{{ hospital.name }}</h3>
+                <p v-if="hospital.englishName" class="mt-1 text-sm leading-5 text-slate-500">{{ hospital.englishName }}</p>
+                <p class="mt-1 text-sm text-slate-500">{{ hospital.city }}</p>
+
+                <div
+                  v-if="hospital.rankLabel"
+                  class="mt-4 rounded-lg border border-teal-100 bg-teal-50 px-3 py-2 text-sm font-semibold leading-6 text-teal-700"
+                >
+                  {{ hospital.rankLabel }}
+                </div>
+
+                <div v-if="hospital.tags.length" class="mt-3 flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in hospital.tags"
+                    :key="`${hospital.key}-${tag}`"
+                    class="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 ring-1 ring-slate-100"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+
+                <dl v-if="hospital.internationalPatients || hospital.waitTime" class="mt-4 grid gap-2 text-sm">
+                  <div v-if="hospital.internationalPatients" class="flex items-center justify-between gap-3">
+                    <dt class="text-slate-500">国际患者 / Intl Patients</dt>
+                    <dd class="font-bold text-slate-900">{{ hospital.internationalPatients }}</dd>
+                  </div>
+                  <div v-if="hospital.waitTime" class="flex items-center justify-between gap-3">
+                    <dt class="text-slate-500">等待时间 / Wait Time</dt>
+                    <dd class="font-bold text-[#14B8A6]">{{ hospital.waitTime }}</dd>
+                  </div>
+                </dl>
+
+                <div class="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-sm font-semibold">
+                  <span :class="hospital.bestMatch ? 'text-[#C05621]' : 'text-slate-500'">
+                    <Star v-if="hospital.bestMatch" class="mr-1 inline h-4 w-4 align-[-2px] text-[#ED8936]" />
+                    {{ hospital.bestMatch ? '最佳匹配 / Best Match' : '点击查看详情 / View Details' }}
+                  </span>
+                  <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
+                </div>
+              </button>
+
+              <div v-if="expandedHospital === hospital.key" class="border-t border-orange-100 bg-white px-4 pb-4 pt-4">
+                <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
+                <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
+                  <div
+                    v-for="item in hospital.detailItems"
+                    :key="`${hospital.key}-${item.label}`"
+                    class="rounded-lg border border-slate-100 bg-slate-50 p-3"
+                  >
+                    <div class="mb-1 text-xs font-semibold text-[#C05621]">{{ item.label }}</div>
+                    <p class="text-sm leading-6 text-slate-700">{{ item.value }}</p>
+                  </div>
+                </div>
               </div>
-              <h3 class="text-base font-bold text-slate-950">{{ hospital.name }}</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
+            </article>
+          </div>
+
+          <div class="mt-5 rounded-xl border border-orange-200 bg-orange-50/70 p-4">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
+                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#DD6B20]" />
+                <p>
+                  想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
+                </p>
+              </div>
+              <router-link
+                :to="professionalReportLink"
+                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#C05621] underline decoration-orange-300 underline-offset-4 transition hover:text-[#DD6B20]"
+              >
+                Upgrade to Pro ->
+              </router-link>
             </div>
           </div>
         </section>
@@ -1073,25 +1664,37 @@ const resetWizard = () => {
               </div>
             </div>
 
-            <div class="overflow-hidden rounded-xl border border-slate-100">
-              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 bg-slate-50 px-4 py-3">
-                <h3 class="font-semibold text-slate-950">费用明细预估</h3>
-                <span class="text-sm font-bold text-[#C05621]">{{ renderedReport.totalCost }}</span>
+            <div class="self-start rounded-xl border border-orange-100 bg-white p-4">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-semibold text-slate-950">AI费用汇总</h3>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">
+                    费用细项、美元折算和节省比例由医疗模型按本次信息返回。
+                  </p>
+                </div>
+                <span class="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+                  {{ modelCostSummary?.chinaTotal || renderedReport.totalCost }}
+                </span>
               </div>
-              <table class="w-full text-sm">
-                <tbody class="divide-y divide-slate-100 bg-white">
-                  <tr v-for="item in renderedReport.breakdown" :key="item.item">
-                    <td class="px-4 py-3 leading-6 text-slate-700">{{ item.item }}</td>
-                    <td class="whitespace-nowrap px-4 py-3 text-right font-semibold text-[#C05621]">{{ item.cost }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-lg bg-slate-50 p-3">
+                  <div class="text-xs text-slate-500">本次中国方案</div>
+                  <div class="mt-1 text-lg font-black text-slate-950">{{ modelCostSummary?.chinaTotal || renderedReport.totalCost }}</div>
+                </div>
+                <div class="rounded-lg bg-slate-50 p-3">
+                  <div class="text-xs text-slate-500">{{ modelCostSummary?.referenceCountry || '对比治疗地' }}</div>
+                  <div class="mt-1 text-lg font-black text-slate-950">{{ modelCostSummary?.referenceCost || '需模型返回' }}</div>
+                </div>
+              </div>
+              <p v-if="renderedReport.costBreakdown?.currencyNote" class="mt-3 rounded-lg bg-orange-50 px-3 py-2 text-xs leading-5 text-[#9A4A1E]">
+                {{ renderedReport.costBreakdown.currencyNote }}
+              </p>
             </div>
           </div>
 
-          <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <div v-if="costBreakdownCategories.length" class="mt-5 grid gap-4 xl:grid-cols-3">
             <div
-              v-for="group in costBreakdownGroups"
+              v-for="group in costBreakdownCategories"
               :key="group.key"
               class="rounded-xl border border-slate-100 bg-slate-50 p-4"
             >
@@ -1100,29 +1703,214 @@ const resetWizard = () => {
                   <component :is="group.icon" class="h-4 w-4" />
                 </div>
                 <div>
-                  <h3 class="text-sm font-bold text-slate-950">{{ group.title }}</h3>
+                  <h3 class="text-sm font-bold text-slate-950">{{ group.category.title }}</h3>
                   <p class="mt-1 text-xs leading-5 text-slate-500">{{ group.subtitle }}</p>
                 </div>
               </div>
-              <div class="mb-3 text-sm font-bold text-[#C05621]">{{ group.total }}</div>
+              <div class="mb-3 flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2">
+                <span class="text-xs font-semibold text-slate-500">小计</span>
+                <span class="text-sm font-bold text-[#C05621]">{{ group.category.subtotal }}</span>
+              </div>
               <div class="space-y-2">
                 <div
-                  v-for="item in group.items"
+                  v-for="item in group.category.items"
                   :key="`${group.key}-${item.item}`"
-                  class="flex items-start justify-between gap-3 rounded-lg bg-white px-3 py-2 text-xs"
+                  class="rounded-lg bg-white px-3 py-2 text-xs"
                 >
-                  <span class="leading-5 text-slate-600">{{ item.item }}</span>
-                  <span class="whitespace-nowrap font-semibold text-slate-900">{{ item.cost }}</span>
+                  <div class="flex items-start justify-between gap-3">
+                    <span class="leading-5 text-slate-600">{{ item.item }}</span>
+                    <span class="whitespace-nowrap font-semibold text-slate-900">{{ item.cost }}</span>
+                  </div>
+                  <p v-if="item.note" class="mt-1 leading-5 text-slate-400">{{ item.note }}</p>
                 </div>
-                <div v-if="!group.items.length" class="rounded-lg bg-white px-3 py-2 text-xs leading-5 text-slate-400">
-                  本次报告暂未单列此类费用。
+              </div>
+              <p v-if="group.category.tip" class="mt-3 rounded-lg bg-white px-3 py-2 text-xs leading-5 text-slate-500">
+                {{ group.category.tip }}
+              </p>
+            </div>
+          </div>
+          <div v-else class="mt-5 overflow-hidden rounded-xl border border-amber-100 bg-amber-50/60">
+            <div class="border-b border-amber-100 px-4 py-3">
+              <h3 class="font-semibold text-slate-950">医疗模型暂未返回三类费用细分</h3>
+              <p class="mt-1 text-xs leading-5 text-slate-500">以下仅展示兼容字段中的原始费用项，系统不会自行归类或补算。</p>
+            </div>
+            <table class="w-full text-sm">
+              <tbody class="divide-y divide-amber-100 bg-white">
+                <tr v-for="item in renderedReport.breakdown" :key="item.item">
+                  <td class="px-4 py-3 leading-6 text-slate-700">{{ item.item }}</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-right font-semibold text-[#C05621]">{{ item.cost }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div v-if="modelCostSummary" class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-4 text-center">
+            <p class="text-sm font-bold leading-6 text-[#C05621]">{{ modelCostSummary.formula }}</p>
+            <p class="mt-2 text-sm font-bold leading-6 text-slate-900">{{ modelCostSummary.savingsText }}</p>
+          </div>
+          <div v-else class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-center text-sm font-semibold text-[#C05621]">
+            费用细分、总公式和节省比例需由医疗模型返回；最终以医院正式报价、检查结果和治疗强度为准。
+          </div>
+        </section>
+
+        <section v-if="advancedCareInsights" class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <Microscope class="h-5 w-5 text-[#DD6B20]" />
+                前沿疗法与新药可及性推荐
+              </h2>
+              <p class="mt-1 text-sm leading-6 text-slate-500">{{ advancedCareInsights.context }}</p>
+            </div>
+            <span class="inline-flex w-fit items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+              AI医疗模型生成
+            </span>
+          </div>
+
+          <div class="grid gap-4 xl:grid-cols-3">
+            <article
+              v-for="therapy in advancedCareInsights.therapies"
+              :key="therapy.name"
+              class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+            >
+              <div class="mb-3 flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-xs font-semibold text-[#C05621]">{{ therapy.category }}</div>
+                  <h3 class="mt-1 text-base font-bold leading-6 text-slate-950">{{ therapy.name }}</h3>
                 </div>
+                <span class="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-teal-700 ring-1 ring-teal-100">
+                  {{ therapy.recommendationLevel }}
+                </span>
+              </div>
+              <p class="text-sm leading-6 text-slate-700">{{ therapy.summary }}</p>
+              <div class="mt-4 grid gap-2 text-xs">
+                <div class="rounded-lg bg-white p-3">
+                  <div class="font-semibold text-slate-500">适用前提</div>
+                  <p class="mt-1 leading-5 text-slate-700">{{ therapy.applicableFor }}</p>
+                </div>
+                <div class="rounded-lg bg-white p-3">
+                  <div class="font-semibold text-slate-500">治疗机制</div>
+                  <p class="mt-1 leading-5 text-slate-700">{{ therapy.mechanism }}</p>
+                </div>
+                <div class="rounded-lg bg-white p-3">
+                  <div class="font-semibold text-slate-500">中国可及性</div>
+                  <p class="mt-1 leading-5 text-slate-700">{{ therapy.chinaAccess }}</p>
+                </div>
+              </div>
+              <div class="mt-4 grid gap-2 sm:grid-cols-2">
+                <div class="rounded-lg bg-orange-50 p-3">
+                  <div class="text-xs font-semibold text-[#C05621]">中国预估</div>
+                  <div class="mt-1 text-sm font-black text-slate-950">{{ therapy.estimatedCost }}</div>
+                </div>
+                <div v-if="therapy.referenceCost" class="rounded-lg bg-white p-3">
+                  <div class="text-xs font-semibold text-slate-500">参考市场</div>
+                  <div class="mt-1 text-sm font-black text-slate-950">{{ therapy.referenceCost }}</div>
+                </div>
+              </div>
+              <div class="mt-4 space-y-2 text-xs leading-5">
+                <p class="rounded-lg bg-white p-3 text-teal-700">{{ therapy.advantage }}</p>
+                <p class="rounded-lg bg-white p-3 text-slate-600">{{ therapy.evidence }}</p>
+                <p class="rounded-lg bg-amber-50 p-3 text-amber-700">{{ therapy.limitations }}</p>
+                <p class="rounded-lg bg-white p-3 font-semibold text-slate-700">{{ therapy.nextStep }}</p>
+              </div>
+              <div v-if="therapy.tags?.length" class="mt-3 flex flex-wrap gap-2">
+                <span
+                  v-for="tag in therapy.tags"
+                  :key="`${therapy.name}-${tag}`"
+                  class="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 ring-1 ring-slate-100"
+                >
+                  {{ tag }}
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <div class="mt-5 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <div class="mb-4 flex items-start gap-3">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#DD6B20]">
+                  <Pill class="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-950">{{ advancedCareInsights.drugCostComparison.title }}</h3>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">{{ advancedCareInsights.drugCostComparison.summary }}</p>
+                </div>
+              </div>
+              <p class="mb-4 rounded-lg bg-white px-3 py-2 text-xs leading-5 text-slate-600">
+                {{ advancedCareInsights.drugCostComparison.basis }}
+              </p>
+              <div class="space-y-3">
+                <article
+                  v-for="drug in advancedCareInsights.drugCostComparison.items"
+                  :key="drug.drugName"
+                  class="rounded-lg bg-white p-3"
+                >
+                  <div class="mb-3 flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-950">{{ drug.drugName }}</h4>
+                      <p class="mt-0.5 text-xs text-slate-400">{{ drug.drugClass }}</p>
+                    </div>
+                    <span class="rounded-full bg-teal-50 px-2.5 py-1 text-[11px] font-semibold text-teal-700">{{ drug.savingInsight }}</span>
+                  </div>
+                  <div class="grid gap-3 md:grid-cols-2">
+                    <div class="rounded-lg bg-orange-50 p-3">
+                      <div class="text-xs font-semibold text-[#C05621]">{{ drug.chinaOption }}</div>
+                      <div class="mt-1 text-sm font-black text-slate-950">{{ drug.chinaCost }}</div>
+                    </div>
+                    <div class="rounded-lg bg-slate-50 p-3">
+                      <div class="text-xs font-semibold text-slate-500">{{ drug.referenceOption }}</div>
+                      <div class="mt-1 text-sm font-black text-slate-950">{{ drug.referenceCost }}</div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-xs leading-5 text-slate-600">{{ drug.efficacyEquivalence }}</p>
+                  <p class="mt-2 rounded-lg bg-slate-50 p-2 text-xs leading-5 text-slate-500">{{ drug.eligibility }}</p>
+                  <p v-if="drug.note" class="mt-2 text-xs leading-5 text-slate-400">{{ drug.note }}</p>
+                </article>
+              </div>
+              <p class="mt-3 text-xs leading-5 text-slate-500">{{ advancedCareInsights.drugCostComparison.note }}</p>
+            </div>
+
+            <div class="rounded-xl border border-orange-100 bg-orange-50/60 p-4">
+              <div class="mb-4">
+                <div class="text-xs font-semibold text-[#C05621]">{{ advancedCareInsights.newDrugCureAssessment.headline }}</div>
+                <h3 class="mt-1 text-base font-bold leading-6 text-slate-950">{{ advancedCareInsights.newDrugCureAssessment.answer }}</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">{{ advancedCareInsights.newDrugCureAssessment.summary }}</p>
+              </div>
+              <div class="space-y-3">
+                <article
+                  v-for="item in advancedCareInsights.newDrugCureAssessment.items"
+                  :key="item.name"
+                  class="rounded-lg bg-white p-3"
+                >
+                  <div class="mb-2 flex flex-wrap items-center gap-2">
+                    <h4 class="text-sm font-bold text-slate-950">{{ item.name }}</h4>
+                    <span class="rounded-full bg-slate-50 px-2 py-0.5 text-[11px] text-slate-500">{{ item.type }}</span>
+                  </div>
+                  <p class="text-xs leading-5 text-slate-600">{{ item.applicableFor }}</p>
+                  <div class="mt-3 grid gap-2 text-xs leading-5">
+                    <p class="rounded-lg bg-slate-50 p-2 text-slate-600">{{ item.evidence }}</p>
+                    <p class="rounded-lg bg-slate-50 p-2 text-slate-600">{{ item.chinaAvailability }}</p>
+                    <p class="rounded-lg bg-teal-50 p-2 text-teal-700">{{ item.potentialRole }}</p>
+                    <p class="rounded-lg bg-amber-50 p-2 text-amber-700">{{ item.limitations }}</p>
+                    <p class="rounded-lg bg-slate-50 p-2 font-semibold text-slate-700">{{ item.nextStep }}</p>
+                  </div>
+                </article>
+              </div>
+              <div v-if="advancedCareInsights.newDrugCureAssessment.ctaItems.length" class="mt-4 rounded-lg bg-white p-3">
+                <div class="text-xs font-semibold text-[#C05621]">下一步确认事项</div>
+                <ul class="mt-2 space-y-1 text-xs leading-5 text-slate-700">
+                  <li v-for="item in advancedCareInsights.newDrugCureAssessment.ctaItems" :key="item" class="flex gap-2">
+                    <CheckCircle class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <div class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-center text-sm font-semibold text-[#C05621]">
-            预估总计：{{ renderedReport.totalCost }}；最终以医院正式报价、检查结果和治疗强度为准。
+          <div class="mt-5 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-xs leading-5 text-[#9A4A1E]">
+            <p>{{ advancedCareInsights.currencyNote }}</p>
+            <p class="mt-1">{{ advancedCareInsights.disclaimer }}</p>
           </div>
         </section>
 
@@ -1276,6 +2064,110 @@ const resetWizard = () => {
           </article>
         </section>
 
+        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div class="max-w-2xl">
+              <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+                <BookOpen class="h-3.5 w-3.5" />
+                专业版报告示例 / Pro Report Sample
+              </div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <FileText class="h-5 w-5 text-[#DD6B20]" />
+                想知道专业版报告包含哪些内容? / What's in the Pro Report?
+              </h2>
+              <p class="mt-2 text-sm leading-6 text-slate-500">
+                以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。
+              </p>
+            </div>
+            <button
+              type="button"
+              class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#C05621]"
+              @click="openProSampleReport"
+            >
+              <BookOpen class="h-4 w-4" />
+              查看专业版报告示例 View Sample Report
+            </button>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                <Sparkles class="h-5 w-5 text-[#DD6B20]" />
+                专业评估服务包
+              </h2>
+              <p class="mt-1 text-sm leading-6 text-slate-500">从书面评估到专家视频面诊，再到多学科深度会诊，按资料完整度和决策复杂度选择。</p>
+            </div>
+            <span class="inline-flex w-fit items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+              副主任医师审核起
+            </span>
+          </div>
+
+          <div class="grid gap-4 xl:grid-cols-3">
+            <article
+              v-for="pkg in renderedReport.packages"
+              :key="pkg.name"
+              :class="['relative flex flex-col rounded-xl border p-4', pkg.badge ? 'pt-7' : '', packageToneClass(pkg)]"
+            >
+              <div
+                v-if="pkg.badge"
+                class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DD6B20] px-3 py-1 text-center text-xs font-bold text-white shadow-sm"
+              >
+                {{ pkg.badge }}
+              </div>
+              <div class="mb-4 flex items-start gap-3">
+                <div :class="['flex h-10 w-10 shrink-0 items-center justify-center rounded-lg', packageIconClass(pkg)]">
+                  <component :is="pkgIconMap[pkg.icon] || FileText" class="h-5 w-5" />
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-base font-bold text-slate-950">{{ pkg.name }}</h3>
+                  <p v-if="pkg.subtitle" class="mt-1 text-xs leading-5 text-slate-500">{{ pkg.subtitle }}</p>
+                </div>
+              </div>
+
+              <div class="mb-4 rounded-lg bg-white px-3 py-3 shadow-sm ring-1 ring-slate-100">
+                <div class="text-3xl font-black leading-none text-slate-950">{{ pkg.price }}</div>
+                <div v-if="pkg.originalPrice" class="mt-2 text-sm font-semibold text-slate-400 line-through">{{ pkg.originalPrice }}</div>
+              </div>
+
+              <ul class="flex-1 space-y-2">
+                <li
+                  v-for="feature in pkg.featureDetails || pkg.features.map((feature) => ({ label: feature, status: 'included' }))"
+                  :key="`${pkg.name}-${feature.label}`"
+                  :class="['flex items-start gap-2 text-sm leading-6', packageFeatureClass(feature.status)]"
+                >
+                  <component :is="packageFeatureIcon(feature.status)" :class="['mt-1 h-4 w-4 shrink-0', packageFeatureIconClass(feature.status)]" />
+                  <span>{{ feature.label }}</span>
+                </li>
+              </ul>
+
+              <router-link
+                :to="professionalReportLink"
+                :class="[
+                  'mt-5 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold transition-colors',
+                  pkg.highlight
+                    ? 'bg-[#DD6B20] text-white shadow-sm hover:bg-[#C05621]'
+                    : 'border border-orange-200 bg-white text-[#C05621] hover:bg-orange-50',
+                ]"
+              >
+                {{ pkg.cta || lt(localText.choosePackage) }}
+              </router-link>
+              <p v-if="pkg.footnote" class="mt-3 text-center text-xs leading-5 text-slate-400">{{ pkg.footnote }}</p>
+            </article>
+          </div>
+
+          <div class="mt-5 rounded-xl border border-orange-100 bg-orange-50/70 p-4">
+            <h3 class="font-semibold text-slate-950">{{ lt(localText.highlights) }}</h3>
+            <div class="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+              <div v-for="h in renderedReport.highlights" :key="h" class="flex items-start gap-2 text-sm leading-6 text-slate-700">
+                <Star class="mt-1 h-4 w-4 shrink-0 text-[#ED8936]" />
+                <span>{{ h }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="rounded-2xl border border-orange-200 bg-white p-5 shadow-sm md:p-6">
           <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
@@ -1393,8 +2285,8 @@ const resetWizard = () => {
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section3') }}</h2>
           <div class="grid md:grid-cols-3 gap-4 mb-6">
             <div class="rounded-xl bg-gradient-to-br from-[#C05621] to-[#DD6B20] p-6 text-white text-center">
-              <div class="text-4xl font-extrabold">{{ renderedReport.score }}</div>
-              <div class="text-sm text-orange-100 mt-1">{{ t('report.score') }} / 100</div>
+              <div class="text-4xl font-extrabold">{{ scoreDisplayValue }}</div>
+              <div class="text-sm text-orange-100 mt-1">{{ scoreDisplayCaption }}</div>
             </div>
             <div v-for="a in renderedReport.advantages" :key="a.label" class="rounded-xl bg-orange-50 border border-orange-100 p-6 text-center">
               <div class="text-lg font-bold text-[#C05621]">{{ a.value }}</div>
@@ -1422,13 +2314,92 @@ const resetWizard = () => {
         <!-- Section 4: Hospitals -->
         <section>
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ recommendationTitle }}</h2>
-          <div :class="isDentalReport ? 'grid gap-4 md:grid-cols-1' : 'grid gap-4 md:grid-cols-2'">
-            <div v-for="h in renderedReport.hospitals" :key="h.name" class="rounded-xl border border-orange-100 bg-orange-50/30 p-5">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-xs font-semibold text-[#C05621]">{{ h.city }}</span>
+          <div :class="hospitalGridClass">
+            <article
+              v-for="hospital in hospitalDetailProfiles"
+              :key="hospital.key"
+              :class="[
+                'overflow-hidden rounded-xl border bg-orange-50/30 transition-all',
+                expandedHospital === hospital.key ? 'border-orange-200 shadow-sm ring-1 ring-orange-100' : 'border-orange-100 hover:bg-orange-50',
+              ]"
+            >
+              <button
+                type="button"
+                class="w-full p-5 text-left"
+                :aria-expanded="expandedHospital === hospital.key"
+                @click="toggleHospital(hospital.key)"
+              >
+                <div class="mb-3 flex items-start justify-between gap-3">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DD6B20] text-sm font-bold text-white">{{ hospital.rank }}</span>
+                  <div v-if="hospital.matchScore !== undefined" class="text-right">
+                    <div class="text-2xl font-black leading-none text-[#14B8A6]">{{ hospital.matchDisplay }}</div>
+                    <div class="mt-1 text-[11px] font-medium text-slate-400">{{ hospital.matchCaption }}</div>
+                  </div>
+                </div>
+                <h4 class="font-bold text-gray-900">{{ hospital.name }}</h4>
+                <p v-if="hospital.englishName" class="mt-1 text-sm text-gray-500">{{ hospital.englishName }}</p>
+                <p class="mt-1 text-sm text-gray-500">{{ hospital.city }}</p>
+                <div
+                  v-if="hospital.rankLabel"
+                  class="mt-3 rounded-lg border border-teal-100 bg-teal-50 px-3 py-2 text-sm font-semibold leading-6 text-teal-700"
+                >
+                  {{ hospital.rankLabel }}
+                </div>
+                <div v-if="hospital.tags.length" class="mt-3 flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in hospital.tags"
+                    :key="`${hospital.key}-${tag}`"
+                    class="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-gray-500 ring-1 ring-orange-100"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+                <dl v-if="hospital.internationalPatients || hospital.waitTime" class="mt-4 grid gap-2 text-sm">
+                  <div v-if="hospital.internationalPatients" class="flex items-center justify-between gap-3">
+                    <dt class="text-gray-500">国际患者 / Intl Patients</dt>
+                    <dd class="font-bold text-gray-900">{{ hospital.internationalPatients }}</dd>
+                  </div>
+                  <div v-if="hospital.waitTime" class="flex items-center justify-between gap-3">
+                    <dt class="text-gray-500">等待时间 / Wait Time</dt>
+                    <dd class="font-bold text-[#14B8A6]">{{ hospital.waitTime }}</dd>
+                  </div>
+                </dl>
+                <p class="mt-3 text-sm leading-6 text-gray-600">{{ hospital.reason }}</p>
+                <div class="mt-4 flex items-center justify-between border-t border-orange-100 pt-3 text-sm font-semibold text-[#C05621]">
+                  <span>{{ expandedHospital === hospital.key ? '收起详情' : '点击展开医院详情' }}</span>
+                  <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
+                </div>
+              </button>
+              <div v-if="expandedHospital === hospital.key" class="border-t border-orange-100 bg-white px-5 pb-5 pt-4">
+                <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
+                <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
+                  <div
+                    v-for="item in hospital.detailItems"
+                    :key="`${hospital.key}-${item.label}`"
+                    class="rounded-lg border border-slate-100 bg-slate-50 p-3"
+                  >
+                    <div class="mb-1 text-xs font-semibold text-[#C05621]">{{ item.label }}</div>
+                    <p class="text-sm leading-6 text-slate-700">{{ item.value }}</p>
+                  </div>
+                </div>
               </div>
-              <h4 class="font-bold text-gray-900">{{ h.name }}</h4>
-              <p class="text-sm text-gray-600 mt-1">{{ h.reason }}</p>
+            </article>
+          </div>
+
+          <div class="mt-5 rounded-xl border border-orange-200 bg-orange-50/70 p-4">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
+                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#DD6B20]" />
+                <p>
+                  想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
+                </p>
+              </div>
+              <router-link
+                :to="professionalReportLink"
+                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#C05621] underline decoration-orange-300 underline-offset-4 transition hover:text-[#DD6B20]"
+              >
+                Upgrade to Pro ->
+              </router-link>
             </div>
           </div>
         </section>
@@ -1468,6 +2439,34 @@ const resetWizard = () => {
           </div>
         </section>
 
+        <section>
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+            <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+              <div class="max-w-2xl">
+                <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+                  <BookOpen class="h-3.5 w-3.5" />
+                  专业版报告示例 / Pro Report Sample
+                </div>
+                <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
+                  <FileText class="h-5 w-5 text-[#DD6B20]" />
+                  想知道专业版报告包含哪些内容? / What's in the Pro Report?
+                </h2>
+                <p class="mt-2 text-sm leading-6 text-slate-500">
+                  以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。
+                </p>
+              </div>
+              <button
+                type="button"
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#C05621]"
+                @click="openProSampleReport"
+              >
+                <BookOpen class="h-4 w-4" />
+                查看专业版报告示例 View Sample Report
+              </button>
+            </div>
+          </div>
+        </section>
+
         <!-- Section 6: Upgrade -->
         <section>
           <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section6') }}</h2>
@@ -1478,28 +2477,37 @@ const resetWizard = () => {
                 :key="pkg.name"
                 :class="[
                   'rounded-2xl border p-6 flex flex-col',
-                  pkg.highlight ? 'border-[#DD6B20] bg-white shadow-lg relative' : 'border-gray-200 bg-white',
+                  pkg.badge || pkg.highlight ? 'pt-8' : '',
+                  pkg.highlight ? 'border-[#DD6B20] bg-orange-50/70 shadow-lg relative' : 'border-gray-200 bg-white',
                 ]"
               >
                 <div
-                  v-if="pkg.highlight"
-                  class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#DD6B20] px-3 py-1 text-xs font-bold text-white"
+                  v-if="pkg.badge || pkg.highlight"
+                  class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DD6B20] px-3 py-1 text-center text-xs font-bold text-white"
                 >
-                  {{ lt(localText.popular) }}
+                  {{ pkg.badge || lt(localText.popular) }}
                 </div>
                 <div class="flex items-center gap-3 mb-3">
-                  <div :class="['h-10 w-10 rounded-lg flex items-center justify-center', pkg.highlight ? 'bg-[#DD6B20] text-white' : 'bg-orange-100 text-[#C05621]']">
-                    <component :is="pkgIconMap[pkg.icon]" class="h-5 w-5" />
+                  <div :class="['h-10 w-10 rounded-lg flex items-center justify-center', packageIconClass(pkg)]">
+                    <component :is="pkgIconMap[pkg.icon] || FileText" class="h-5 w-5" />
                   </div>
                   <div>
                     <h4 class="font-bold text-gray-900">{{ pkg.name }}</h4>
-                    <div class="text-xl font-extrabold text-[#C05621]">{{ pkg.price }}</div>
+                    <p v-if="pkg.subtitle" class="mt-1 text-xs leading-5 text-gray-500">{{ pkg.subtitle }}</p>
                   </div>
                 </div>
+                <div class="mb-4 rounded-xl bg-white p-3 ring-1 ring-orange-100">
+                  <div class="text-2xl font-extrabold text-[#C05621]">{{ pkg.price }}</div>
+                  <div v-if="pkg.originalPrice" class="mt-1 text-sm font-semibold text-gray-400 line-through">{{ pkg.originalPrice }}</div>
+                </div>
                 <ul class="space-y-2 flex-1">
-                  <li v-for="f in pkg.features" :key="f" class="flex items-start gap-2 text-sm text-gray-700">
-                    <Check class="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                    {{ f }}
+                  <li
+                    v-for="feature in pkg.featureDetails || pkg.features.map((feature) => ({ label: feature, status: 'included' }))"
+                    :key="`${pkg.name}-${feature.label}`"
+                    :class="['flex items-start gap-2 text-sm leading-6', packageFeatureClass(feature.status)]"
+                  >
+                    <component :is="packageFeatureIcon(feature.status)" :class="['mt-1 h-4 w-4 shrink-0', packageFeatureIconClass(feature.status)]" />
+                    <span>{{ feature.label }}</span>
                   </li>
                 </ul>
                 <router-link
@@ -1511,8 +2519,9 @@ const resetWizard = () => {
                       : 'border border-[#DD6B20] text-[#DD6B20] hover:bg-orange-50',
                   ]"
                 >
-                  {{ lt(localText.choosePackage) }}
+                  {{ pkg.cta || lt(localText.choosePackage) }}
                 </router-link>
+                <p v-if="pkg.footnote" class="mt-3 text-center text-xs leading-5 text-gray-400">{{ pkg.footnote }}</p>
               </div>
             </div>
 
@@ -1647,7 +2656,7 @@ const resetWizard = () => {
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话</label>
             <input
               v-model="form.phone"
               type="tel"
@@ -1661,7 +2670,7 @@ const resetWizard = () => {
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱 *</label>
             <input
               v-model="form.email"
               type="email"
@@ -1719,6 +2728,54 @@ const resetWizard = () => {
               </option>
             </select>
             <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-400">{{ validationErrors.visitPurpose }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">就医诉求</label>
+            <select
+              v-model="form.careNeed"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('careNeed') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              @change="markTouched('careNeed'); markTouched('careNeedOther')"
+              @blur="markTouched('careNeed')"
+            >
+              <option value="">Select / 请选择</option>
+              <option v-for="item in careNeedOptions" :key="item.value" :value="item.value">
+                {{ item.label }}
+              </option>
+            </select>
+            <p v-if="shouldShowError('careNeed')" class="mt-1 text-xs text-red-400">{{ validationErrors.careNeed }}</p>
+          </div>
+
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">期望治疗时间</label>
+            <select
+              v-model="form.expectedTreatmentTime"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('expectedTreatmentTime') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              @change="markTouched('expectedTreatmentTime')"
+              @blur="markTouched('expectedTreatmentTime')"
+            >
+              <option value="">Select / 请选择</option>
+              <option v-for="item in expectedTreatmentTimeOptions" :key="item.value" :value="item.value">
+                {{ item.label }}
+              </option>
+            </select>
+            <p v-if="shouldShowError('expectedTreatmentTime')" class="mt-1 text-xs text-red-400">{{ validationErrors.expectedTreatmentTime }}</p>
+          </div>
+
+          <div v-if="form.careNeed === 'other'" class="md:col-span-2">
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">其他就医诉求说明 *</label>
+            <input
+              v-model="form.careNeedOther"
+              type="text"
+              maxlength="300"
+              placeholder="请补充说明您的就医诉求"
+              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('careNeedOther') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              @blur="markTouched('careNeedOther')"
+            />
+            <p v-if="shouldShowError('careNeedOther')" class="mt-1 text-xs text-red-400">{{ validationErrors.careNeedOther }}</p>
           </div>
 
           <div class="md:col-span-2">
@@ -1863,6 +2920,281 @@ const resetWizard = () => {
             <Lock class="h-4 w-4 flex-shrink-0 text-slate-600" />
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-if="showProSampleReport"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3 sm:p-6"
+    @click="closeProSampleReport"
+  >
+    <div
+      class="flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-2xl"
+      @click.stop
+    >
+      <div class="border-b border-orange-100 bg-white px-5 py-4 md:px-6">
+        <div class="flex items-start justify-between gap-4">
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-[#C05621]">{{ proSampleReport.meta.badge }}</div>
+            <h2 class="mt-1 text-lg font-bold leading-7 text-slate-950 md:text-xl">{{ proSampleReport.meta.title }}</h2>
+            <p class="mt-1 text-sm leading-6 text-slate-500">{{ proSampleReport.meta.patient }}</p>
+          </div>
+          <button
+            type="button"
+            class="rounded-full p-1.5 text-slate-400 transition hover:bg-orange-50 hover:text-[#C05621]"
+            aria-label="关闭示例报告"
+            @click="closeProSampleReport"
+          >
+            <XCircle class="h-6 w-6" />
+          </button>
+        </div>
+
+        <div class="mt-4 flex gap-2 overflow-x-auto pb-1">
+          <button
+            v-for="tab in proSampleTabs"
+            :key="tab.key"
+            type="button"
+            :class="[
+              'inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors',
+              activeProSampleTab === tab.key
+                ? 'border-orange-200 bg-orange-50 text-[#C05621]'
+                : 'border-slate-200 bg-white text-slate-500 hover:border-orange-200 hover:text-[#C05621]',
+            ]"
+            @click="activeProSampleTab = tab.key"
+          >
+            <component :is="tab.icon" class="h-4 w-4" />
+            {{ tab.label }}
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-y-auto bg-[#f7f8fb] p-4 md:p-6">
+        <div class="mb-4 rounded-xl border border-orange-100 bg-orange-50/80 p-4 text-sm leading-6 text-[#9A4A1E]">
+          {{ proSampleReport.meta.note }}
+        </div>
+
+        <section v-if="activeProSampleTab === 'analysis'" class="space-y-4">
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
+              <FileSearch class="h-5 w-5 text-[#DD6B20]" />
+              一、病情深度分析解读
+            </h3>
+            <div class="grid gap-3 md:grid-cols-2">
+              <div
+                v-for="item in proSampleReport.analysis.basics"
+                :key="item.label"
+                class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+              >
+                <div class="text-xs font-semibold text-slate-500">{{ item.label }}</div>
+                <div class="mt-1 font-bold text-slate-950">{{ item.value }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <article
+              v-for="group in proSampleReport.analysis.groups"
+              :key="group.title"
+              class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm"
+            >
+              <h4 class="mb-3 font-bold text-[#C05621]">{{ group.title }}</h4>
+              <ul class="space-y-2 text-sm leading-6 text-slate-700">
+                <li v-for="item in group.items" :key="item" class="flex gap-2">
+                  <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-800">
+            {{ proSampleReport.analysis.warning }}
+          </div>
+        </section>
+
+        <section v-else-if="activeProSampleTab === 'treatment'" class="space-y-4">
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-5 flex items-center gap-2 font-bold text-slate-950">
+              <Stethoscope class="h-5 w-5 text-[#DD6B20]" />
+              二、治疗路径方案（预估）
+            </h3>
+            <div class="space-y-4">
+              <div v-for="(step, index) in proSampleReport.treatment.steps" :key="step.title" class="flex gap-3">
+                <div class="flex shrink-0 flex-col items-center">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-sm font-bold text-[#C05621]">{{ index + 1 }}</div>
+                  <div v-if="index < proSampleReport.treatment.steps.length - 1" class="my-1 h-full min-h-10 w-px bg-orange-100"></div>
+                </div>
+                <div class="flex-1 rounded-xl border border-slate-100 bg-slate-50 p-4">
+                  <h4 class="font-bold text-slate-950">{{ step.title }}</h4>
+                  <ul class="mt-2 space-y-1 text-sm leading-6 text-slate-600">
+                    <li v-for="detail in step.details" :key="detail" class="flex gap-2">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#DD6B20]"></span>
+                      <span>{{ detail }}</span>
+                    </li>
+                  </ul>
+                  <div v-if="step.badge" class="mt-3 inline-flex rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                    {{ step.badge }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
+            <h4 class="mb-4 font-bold text-slate-950">治愈率预估</h4>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div v-for="item in proSampleReport.treatment.outcome" :key="item.label" class="rounded-xl bg-emerald-50 p-4">
+                <div class="text-2xl font-black text-emerald-600">{{ item.value }}</div>
+                <div class="mt-1 text-xs leading-5 text-slate-500">{{ item.label }}</div>
+              </div>
+            </div>
+            <p class="mt-3 text-xs leading-5 text-slate-500">{{ proSampleReport.treatment.source }}</p>
+          </div>
+        </section>
+
+        <section v-else-if="activeProSampleTab === 'cost'" class="space-y-4">
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
+              <DollarSign class="h-5 w-5 text-[#DD6B20]" />
+              三、费用明细 - 0猫腻透明报价
+            </h3>
+            <div class="overflow-x-auto rounded-xl border border-slate-100">
+              <table class="w-full min-w-[560px] text-sm">
+                <thead class="bg-slate-50 text-slate-500">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-semibold">第一类：核心医疗费用</th>
+                    <th class="px-4 py-3 text-right font-semibold">人民币</th>
+                    <th class="px-4 py-3 text-right font-semibold">美元</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr v-for="row in proSampleReport.cost.core" :key="row[0]">
+                    <td class="px-4 py-3 text-slate-700">{{ row[0] }}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-slate-700">{{ row[1] }}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-[#C05621]">{{ row[2] }}</td>
+                  </tr>
+                  <tr class="bg-orange-50">
+                    <td class="px-4 py-3 font-bold text-slate-950">核心医疗小计</td>
+                    <td class="px-4 py-3 text-right font-bold text-slate-950">¥79,000</td>
+                    <td class="px-4 py-3 text-right font-bold text-[#C05621]">~$11,280</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+              <h4 class="mb-3 font-bold text-emerald-800">第二类：配套服务（全免费）</h4>
+              <ul class="space-y-2 text-sm leading-6 text-emerald-800">
+                <li v-for="item in proSampleReport.cost.support" :key="item" class="flex gap-2">
+                  <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-600" />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+              <div class="mt-3 font-bold text-emerald-700">小计：{{ proSampleReport.cost.totals.support }}</div>
+            </div>
+
+            <div class="rounded-2xl border border-amber-100 bg-amber-50 p-5">
+              <h4 class="mb-3 font-bold text-amber-800">第三类：生活预估（自理）</h4>
+              <div class="space-y-2 text-sm">
+                <div v-for="row in proSampleReport.cost.living" :key="row[0]" class="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-2">
+                  <span class="text-slate-700">{{ row[0] }}</span>
+                  <span class="shrink-0 font-semibold text-[#C05621]">{{ row[1] }} / {{ row[2] }}</span>
+                </div>
+              </div>
+              <div class="mt-3 font-bold text-amber-800">小计：{{ proSampleReport.cost.totals.living }}</div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-orange-200 bg-orange-50 p-5">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <div class="font-bold text-slate-950">预估总费用</div>
+                <p class="mt-1 text-sm text-[#9A4A1E]">核心医疗 + 配套服务（免费）+ 生活预估</p>
+              </div>
+              <div class="text-2xl font-black text-[#C05621]">{{ proSampleReport.cost.totals.total }}</div>
+            </div>
+            <p class="mt-3 text-sm leading-6 text-[#9A4A1E]">{{ proSampleReport.cost.totals.note }}</p>
+          </div>
+        </section>
+
+        <section v-else-if="activeProSampleTab === 'insurance'" class="space-y-4">
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
+              <Shield class="h-5 w-5 text-[#DD6B20]" />
+              四、保险报销评估
+            </h3>
+            <h4 class="mb-3 font-semibold text-slate-950">{{ proSampleReport.insurance.name }}</h4>
+            <div class="grid gap-3 md:grid-cols-2">
+              <div
+                v-for="coverage in proSampleReport.insurance.coverages"
+                :key="String(coverage[0])"
+                :class="[
+                  'flex items-center justify-between rounded-lg border px-3 py-2 text-sm',
+                  coverage[2] ? 'border-emerald-100 bg-emerald-50 text-emerald-800' : 'border-slate-100 bg-slate-50 text-slate-600',
+                ]"
+              >
+                <span>{{ coverage[0] }}</span>
+                <span class="font-bold">{{ coverage[1] }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-amber-100 bg-amber-50 p-5">
+            <h4 class="mb-3 font-bold text-amber-800">报销建议</h4>
+            <ul class="space-y-2 text-sm leading-6 text-amber-800">
+              <li v-for="item in proSampleReport.insurance.suggestions" :key="item" class="flex gap-2">
+                <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-amber-600" />
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section v-else class="space-y-4">
+          <div class="rounded-2xl border border-red-100 bg-red-50 p-5">
+            <h3 class="mb-2 flex items-center gap-2 font-bold text-red-700">
+              <HeartPulse class="h-5 w-5" />
+              五、术后防复发随访体系
+            </h3>
+            <p class="text-sm leading-6 text-red-700">{{ proSampleReport.followup.reason }}</p>
+          </div>
+
+          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+            <h4 class="mb-4 font-bold text-slate-950">随访时间线</h4>
+            <div class="space-y-3">
+              <div v-for="item in proSampleReport.followup.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3">
+                <div class="w-20 shrink-0 text-sm font-bold text-[#C05621]">{{ item.time }}</div>
+                <div>
+                  <div class="font-semibold text-slate-950">{{ item.title }}</div>
+                  <p class="mt-1 text-sm leading-6 text-slate-600">{{ item.desc }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <article
+              v-for="service in proSampleReport.followup.services"
+              :key="service.title"
+              class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm"
+            >
+              <h4 class="mb-3 font-bold text-[#C05621]">{{ service.title }}</h4>
+              <ul class="space-y-2 text-sm leading-6 text-slate-700">
+                <li v-for="item in service.items" :key="item" class="flex gap-2">
+                  <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-5 text-center font-bold text-emerald-700">
+            {{ proSampleReport.followup.fee }}
+          </div>
+        </section>
       </div>
     </div>
   </div>

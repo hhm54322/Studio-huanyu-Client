@@ -14,6 +14,9 @@ export type ReportSubmissionPayload = {
     city: string
     preferredLanguage: string
     visitPurpose: string
+    careNeed: string
+    careNeedOther?: string
+    expectedTreatmentTime: string
     chiefComplaint: string
   }
   selectedRegions: string[]
@@ -79,6 +82,96 @@ export type ReportLayoutSection = {
   blocks: ReportLayoutBlock[]
 }
 
+export type SimpleCostBreakdownLine = {
+  item: string
+  cost: string
+  note?: string
+}
+
+export type SimpleCostBreakdownCategory = {
+  title: string
+  subtotal: string
+  items: SimpleCostBreakdownLine[]
+  tip?: string
+}
+
+export type SimpleCostBreakdown = {
+  currencyNote: string
+  coreMedical: SimpleCostBreakdownCategory
+  supportServices: SimpleCostBreakdownCategory
+  living: SimpleCostBreakdownCategory
+  summary: {
+    formula: string
+    chinaTotal: string
+    referenceCountry: string
+    referenceCost: string
+    savingsPercent: number
+    savingsText: string
+  }
+}
+
+export type AdvancedTherapyRecommendation = {
+  name: string
+  category: string
+  recommendationLevel: string
+  summary: string
+  applicableFor: string
+  mechanism: string
+  chinaAccess: string
+  estimatedCost: string
+  referenceCost?: string
+  advantage: string
+  evidence: string
+  limitations: string
+  nextStep: string
+  tags?: string[]
+}
+
+export type DrugCostComparisonItem = {
+  drugName: string
+  drugClass: string
+  chinaOption: string
+  referenceOption: string
+  chinaCost: string
+  referenceCost: string
+  efficacyEquivalence: string
+  savingInsight: string
+  eligibility: string
+  note?: string
+}
+
+export type NewDrugCureAssessmentItem = {
+  name: string
+  type: string
+  applicableFor: string
+  evidence: string
+  chinaAvailability: string
+  potentialRole: string
+  limitations: string
+  nextStep: string
+}
+
+export type AdvancedCareInsights = {
+  context: string
+  currencyNote: string
+  therapies: AdvancedTherapyRecommendation[]
+  drugCostComparison: {
+    title: string
+    basis: string
+    summary: string
+    items: DrugCostComparisonItem[]
+    note: string
+  }
+  newDrugCureAssessment: {
+    headline: string
+    answer: string
+    summary: string
+    items: NewDrugCureAssessmentItem[]
+    ctaItems: string[]
+  }
+  disclaimer: string
+}
+
 export type GeneratedReport = {
   id: string
   date: string
@@ -100,20 +193,44 @@ export type GeneratedReport = {
   score: number
   advantages: Array<{ label: string; value: string }>
   concerns: Array<{ concern: string; solution: string }>
-  hospitals: Array<{ city: string; name: string; reason: string }>
+  hospitals: Array<{
+    city: string
+    name: string
+    reason: string
+    englishName?: string
+    department?: string
+    matchScore?: number
+    rankLabel?: string
+    tags?: string[]
+    internationalPatients?: string
+    waitTime?: string
+    detailItems?: Array<{ label: string; value: string }>
+    preparation?: string
+  }>
   plan: {
     direction: string
     duration: string
     totalCost: string
     breakdown: Array<{ item: string; cost: string }>
+    costBreakdown?: SimpleCostBreakdown
   }
   packages: Array<{
     name: string
+    subtitle?: string
     price: string
+    originalPrice?: string
+    badge?: string
+    cta?: string
     icon: string
     highlight: boolean
     features: string[]
+    featureDetails?: Array<{
+      label: string
+      status?: 'included' | 'excluded' | 'emphasis'
+    }>
+    footnote?: string
   }>
+  advancedCare?: AdvancedCareInsights
   highlights: string[]
   paymentAndInsurance?: string[]
   layoutSections?: ReportLayoutSection[]
@@ -161,13 +278,16 @@ export type ProfessionalReportPayload = {
     gender: string
     dateOfBirth?: string
     nationality?: string
-    phone: string
-    email?: string
+    phone?: string
+    email: string
     city?: string
     preferredLanguage?: string
   }
   medical: {
     visitPurpose: string
+    careNeed: string
+    careNeedOther?: string
+    expectedTreatmentTime: string
     diagnosis?: string
     stage?: string
     chiefComplaint: string
