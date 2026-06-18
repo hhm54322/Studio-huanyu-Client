@@ -380,12 +380,19 @@ const toggleRegion = (region: string) => {
   selectedRegions.value = [...selectedRegions.value, region]
 }
 
+const normalizeDateInputValue = (value?: string) => {
+  if (!value) return ''
+  const trimmed = value.trim()
+  const dateOnly = trimmed.match(/^(\d{4}-\d{2}-\d{2})/)
+  return dateOnly ? dateOnly[1] : trimmed
+}
+
 const buildPayload = (): ProfessionalReportPayload => ({
   locale: ['zh', 'en', 'id', 'ru', 'mn'].includes(locale.value) ? locale.value : 'zh',
   patient: {
     fullName: form.fullName.trim(),
     gender: form.gender,
-    dateOfBirth: form.dateOfBirth,
+    dateOfBirth: normalizeDateInputValue(form.dateOfBirth),
     nationality: form.nationality.trim(),
     phone: form.phone.trim(),
     email: form.email.trim(),
@@ -497,7 +504,7 @@ const loadSourceSubmission = async () => {
     if (basicInfo) {
       form.fullName = basicInfo.fullName || form.fullName
       form.gender = basicInfo.gender || form.gender
-      form.dateOfBirth = basicInfo.dateOfBirth || form.dateOfBirth
+      form.dateOfBirth = normalizeDateInputValue(basicInfo.dateOfBirth) || form.dateOfBirth
       form.nationality = basicInfo.nationality || form.nationality
       form.phone = basicInfo.phone || form.phone
       form.email = basicInfo.email || form.email
