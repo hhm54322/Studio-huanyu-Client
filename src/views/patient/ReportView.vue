@@ -1127,10 +1127,70 @@ const estimatedAverageCost = (cost: string) => {
   if (!range) return 0
   return Math.round((range.min + range.max) / 2)
 }
+const modelCostSummary = computed(() => renderedReport.value.costBreakdown?.summary)
+const normalizeCostCountryName = (value?: string) => (value || '')
+  .replace(/\s+/g, '')
+  .replace(/[（）()]/g, '')
+  .replace(/（?推荐）?/g, '')
+  .toLowerCase()
+const costCountryAliases: Record<string, string[]> = {
+  australia: ['澳大利亚', '澳洲', 'australia'],
+  澳大利亚: ['澳大利亚', '澳洲', 'australia'],
+  us: ['美国', '美國', 'unitedstates', 'usa', 'us', 'america'],
+  usa: ['美国', '美國', 'unitedstates', 'usa', 'us', 'america'],
+  unitedstates: ['美国', '美國', 'unitedstates', 'usa', 'us', 'america'],
+  america: ['美国', '美國', 'unitedstates', 'usa', 'us', 'america'],
+  美国: ['美国', '美國', 'unitedstates', 'usa', 'us', 'america'],
+  singapore: ['新加坡', 'singapore'],
+  新加坡: ['新加坡', 'singapore'],
+  japan: ['日本', 'japan'],
+  日本: ['日本', 'japan'],
+  korea: ['韩国', '韓國', 'southkorea', 'korea'],
+  southkorea: ['韩国', '韓國', 'southkorea', 'korea'],
+  韩国: ['韩国', '韓國', 'southkorea', 'korea'],
+  uk: ['英国', '英國', 'unitedkingdom', 'uk', 'britain'],
+  unitedkingdom: ['英国', '英國', 'unitedkingdom', 'uk', 'britain'],
+  britain: ['英国', '英國', 'unitedkingdom', 'uk', 'britain'],
+  英国: ['英国', '英國', 'unitedkingdom', 'uk', 'britain'],
+  germany: ['德国', '德國', 'germany'],
+  德国: ['德国', '德國', 'germany'],
+  france: ['法国', '法國', 'france'],
+  法国: ['法国', '法國', 'france'],
+  canada: ['加拿大', 'canada'],
+  加拿大: ['加拿大', 'canada'],
+  newzealand: ['新西兰', '紐西蘭', 'newzealand'],
+  新西兰: ['新西兰', '紐西蘭', 'newzealand'],
+  thailand: ['泰国', '泰國', 'thailand'],
+  泰国: ['泰国', '泰國', 'thailand'],
+  malaysia: ['马来西亚', '馬來西亞', 'malaysia'],
+  马来西亚: ['马来西亚', '馬來西亞', 'malaysia'],
+}
+const isCostReferenceCountry = (countryName?: string, referenceName?: string) => {
+  const countryKey = normalizeCostCountryName(countryName)
+  const referenceKey = normalizeCostCountryName(referenceName)
+  if (!countryKey || !referenceKey) return false
+  if (countryKey === referenceKey || countryKey.includes(referenceKey) || referenceKey.includes(countryKey)) return true
+  return (costCountryAliases[referenceKey] || [])
+    .map(normalizeCostCountryName)
+    .some((alias) => alias && (countryKey === alias || countryKey.includes(alias) || alias.includes(countryKey)))
+}
+const resolveCountryFee = (country: RenderedReport['countries'][number]) => {
+  const summary = modelCostSummary.value
+  if (
+    summary?.referenceCost &&
+    parseUsdRange(summary.referenceCost) &&
+    !parseUsdRange(country.fee) &&
+    isCostReferenceCountry(country.name, summary.referenceCountry)
+  ) {
+    return summary.referenceCost
+  }
+  return country.fee
+}
 const countryCostBars = computed(() => {
   const countries = renderedReport.value.countries.map((country) => {
-    const average = estimatedAverageCost(country.fee)
-    return { ...country, average }
+    const fee = resolveCountryFee(country)
+    const average = estimatedAverageCost(fee)
+    return { ...country, fee, average }
   })
   const maxAverage = Math.max(...countries.map((country) => country.average), 1)
   return countries.map((country) => ({
@@ -1146,7 +1206,6 @@ const referenceCostCountry = computed(() => (
     .filter((country) => country.name !== chinaCostCountry.value?.name)
     .sort((a, b) => b.average - a.average)[0] || countryCostBars.value[1] || countryCostBars.value[0]
 ))
-const modelCostSummary = computed(() => renderedReport.value.costBreakdown?.summary)
 const costSavingsText = computed(() => {
   if (renderedReport.value.generatedBy === 'llm') {
     return modelCostSummary.value?.savingsText || '费用节省比例需由医疗模型补充'
