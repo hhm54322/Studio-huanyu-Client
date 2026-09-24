@@ -1,0 +1,9 @@
+Frame 484:2568: 1440 x 1140; padding-block 96; background #F5F6F7.
+Content: width 1216; height 948; max-width 1280.
+Heading: PingFang SC 40/40, weight 600, letter-spacing 0.40, #1E3A5F, centered.
+Subtitle/note: PingFang SC 16/24, weight 400, #6B7280, centered.
+Grid: 2 columns x 2 rows; 24 gap; first row 390 high; second row 366 high.
+Card: padding 24; radius 24; white; icon 32; icon-to-content gap 80.
+Card title: PingFang SC 24/24, weight 600, #1E3A5F.
+Card copy/evidence: PingFang SC 16/24, weight 400, #4B5563; top padding 16.
+Card action: PingFang SC 14/14, weight 500, #9CA3AF; top padding 16.

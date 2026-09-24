@@ -7,6 +7,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BrandLogo: typeof import('./src/components/common/BrandLogo.vue')['default']
+    ConsultationPanel: typeof import('./src/components/common/ConsultationPanel.vue')['default']
+    CountUpNumber: typeof import('./src/components/common/CountUpNumber.vue')['default']
     HospitalFooter: typeof import('./src/components/layout/HospitalFooter.vue')['default']
     HospitalHeader: typeof import('./src/components/layout/HospitalHeader.vue')['default']
     HospitalLayout: typeof import('./src/components/layout/HospitalLayout.vue')['default']
@@ -15,5 +18,6 @@ declare module 'vue' {
     PatientLayout: typeof import('./src/components/layout/PatientLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SectionHeading: typeof import('./src/components/common/SectionHeading.vue')['default']
   }
 }

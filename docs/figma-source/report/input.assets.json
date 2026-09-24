@@ -1,0 +1,1168 @@
+[
+  {
+    "id": "2:1905",
+    "parentId": "",
+    "name": "免费报告-输入信息",
+    "type": "FRAME",
+    "fillPaints": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "colorVar": {
+          "value": {
+            "alias": {
+              "assetRef": {
+                "key": "6b337933ab84018ad5c1858e5450935db0f56f99",
+                "version": "2:85"
+              }
+            }
+          },
+          "dataType": "ALIAS",
+          "resolvedDataType": "COLOR"
+        },
+        "authoredColor": {
+          "space": "DEFAULT",
+          "c0": 1,
+          "c1": 1,
+          "c2": 1,
+          "c3": 1
+        }
+      }
+    ],
+    "exportSettings": [
+      {
+        "suffix": "",
+        "imageType": "PNG",
+        "constraint": {
+          "type": "CONTENT_SCALE",
+          "value": 1
+        },
+        "contentsOnly": true,
+        "useAbsoluteBounds": false,
+        "colorProfile": "DOCUMENT",
+        "useBicubicSampler": true
+      }
+    ],
+    "size": {
+      "x": 1440,
+      "y": 2925
+    },
+    "pluginData": [
+      {
+        "pluginID": "",
+        "value": "{\"tag\":\"body\",\"attr\":{\"id\":\"__x2d_body\"}}",
+        "key": "f2w-data"
+      },
+      {
+        "pluginID": "",
+        "value": "{\"enhanceableImageCount\":0,\"missingFonts\":[{\"platformFont\":{\"familyName\":\"Nimbus Sans\",\"postScriptName\":\"NimbusSans-Regular\"},\"platformFontFamily\":\"Nimbus Sans\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":400,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"Nimbus Sans\",\"postScriptName\":\"NimbusSans-Bold\"},\"platformFontFamily\":\"Nimbus Sans\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":700,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"WenQuanYi Zen Hei\",\"postScriptName\":\"WenQuanYiZenHei\"},\"platformFontFamily\":\"WenQuanYi Zen Hei\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":400,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"Nimbus Sans\",\"postScriptName\":\"NimbusSans-Bold\"},\"platformFontFamily\":\"Nimbus Sans\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":600,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"Nimbus Sans\",\"postScriptName\":\"NimbusSans-Regular\"},\"platformFontFamily\":\"Nimbus Sans\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":500,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"WenQuanYi Zen Hei\",\"postScriptName\":\"WenQuanYiZenHei\"},\"platformFontFamily\":\"WenQuanYi Zen Hei\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":700,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"WenQuanYi Zen Hei\",\"postScriptName\":\"WenQuanYiZenHei\"},\"platformFontFamily\":\"WenQuanYi Zen Hei\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":600,\"fontStretch\":100,\"fontStyle\":\"normal\"},{\"platformFont\":{\"familyName\":\"FreeSans\",\"postScriptName\":\"FreeSans\"},\"platformFontFamily\":\"FreeSans\",\"fontFamily\":[\"ui-sans-serif\",\"system-ui\",\"sans-serif\",\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"],\"fontWeight\":400,\"fontStretch\":100,\"fontStyle\":\"normal\"}],\"hostname\":\"z6ytgaxhvnpyw.ok.kimi.link\",\"opts\":{\"createStyles\":true}}",
+        "key": "h2d-$enhanceData"
+      },
+      {
+        "pluginID": "",
+        "value": "zh-CN",
+        "key": "h2d-$locale"
+      },
+      {
+        "pluginID": "",
+        "value": "{\"createStyles\":true}",
+        "key": "h2d-$opts"
+      },
+      {
+        "pluginID": "",
+        "value": "light",
+        "key": "h2d-$theme"
+      },
+      {
+        "pluginID": "",
+        "value": "https://z6ytgaxhvnpyw.ok.kimi.link/#/report",
+        "key": "h2d-$url"
+      },
+      {
+        "pluginID": "",
+        "value": "1440",
+        "key": "h2d-$width"
+      }
+    ]
+  },
+  {
+    "id": "2:1926",
+    "parentId": "2:1925",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.336524963378906,
+      "y": 13.336524963378906
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:1927",
+    "parentId": "2:1925",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 2.6666667461395264
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:1928",
+    "parentId": "2:1925",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 2.6666667461395264,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:1929",
+    "parentId": "2:1925",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 2.6666667461395264,
+      "y": 2.6666667461395264
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:1965",
+    "parentId": "2:1964",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 11.666666030883789,
+      "y": 5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:1966",
+    "parentId": "2:1964",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 6.666666507720947
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2011",
+    "parentId": "2:2010",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "colorVar": {
+          "value": {
+            "alias": {
+              "assetRef": {
+                "key": "10a831046a3fbe1e2e16a13e81f35bffdd96933b",
+                "version": "2:388"
+              }
+            }
+          },
+          "dataType": "ALIAS",
+          "resolvedDataType": "COLOR"
+        },
+        "authoredColor": {
+          "space": "DEFAULT",
+          "c0": 0,
+          "c1": 0,
+          "c2": 0,
+          "c3": 1
+        }
+      }
+    ],
+    "exportSettings": [],
+    "size": {
+      "x": 12.5,
+      "y": 13.75
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2067",
+    "parentId": "2:2066",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 1.6666666269302368
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2068",
+    "parentId": "2:2066",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 1.6666666269302368
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2069",
+    "parentId": "2:2066",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10,
+      "y": 10
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2070",
+    "parentId": "2:2066",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10,
+      "y": 7.5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2071",
+    "parentId": "2:2066",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 3.3333332538604736
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2093",
+    "parentId": "2:2092",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.679954528808594,
+      "y": 15.01164722442627
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2094",
+    "parentId": "2:2092",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 3.3333332538604736
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2095",
+    "parentId": "2:2092",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0.008333523757755756,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2120",
+    "parentId": "2:2119",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333015441895,
+      "y": 16.669458389282227
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2137",
+    "parentId": "2:2136",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333335876464844,
+      "y": 16.666669845581055
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2138",
+    "parentId": "2:2136",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5,
+      "y": 5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2139",
+    "parentId": "2:2136",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 1.6666666269302368,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2140",
+    "parentId": "2:2136",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2141",
+    "parentId": "2:2136",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2148",
+    "parentId": "2:2147",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 11.666666030883789
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2149",
+    "parentId": "2:2147",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.66666603088379,
+      "y": 15
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2159",
+    "parentId": "2:2158",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 15,
+      "y": 15
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2160",
+    "parentId": "2:2158",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 6.666666507720947
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2161",
+    "parentId": "2:2158",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 10
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2162",
+    "parentId": "2:2158",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 2.5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2179",
+    "parentId": "2:2178",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.66666603088379,
+      "y": 16.66666603088379
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2180",
+    "parentId": "2:2178",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 16.66666603088379
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2181",
+    "parentId": "2:2178",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.66666603088379,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2190",
+    "parentId": "2:2189",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2191",
+    "parentId": "2:2189",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2197",
+    "parentId": "2:2196",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 15.005683898925781,
+      "y": 16.67100715637207
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2204",
+    "parentId": "2:2203",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2205",
+    "parentId": "2:2203",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2209",
+    "parentId": "2:2208",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5,
+      "y": 5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2210",
+    "parentId": "2:2208",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.66666603088379,
+      "y": 8.333333015441895
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2219",
+    "parentId": "2:2218",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2220",
+    "parentId": "2:2218",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2224",
+    "parentId": "2:2223",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333335876464844,
+      "y": 16.666669845581055
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2225",
+    "parentId": "2:2223",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5,
+      "y": 5
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2226",
+    "parentId": "2:2223",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 1.6666666269302368,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2227",
+    "parentId": "2:2223",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2228",
+    "parentId": "2:2223",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.666666507720947,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2235",
+    "parentId": "2:2234",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2236",
+    "parentId": "2:2234",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2240",
+    "parentId": "2:2239",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 8.330659866333008,
+      "y": 7.591105937957764
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2241",
+    "parentId": "2:2239",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10,
+      "y": 10
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2249",
+    "parentId": "2:2248",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2250",
+    "parentId": "2:2248",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2254",
+    "parentId": "2:2253",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 11.666666030883789,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2255",
+    "parentId": "2:2253",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5.8333330154418945,
+      "y": 11.666666030883789
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2262",
+    "parentId": "2:2261",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2263",
+    "parentId": "2:2261",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2267",
+    "parentId": "2:2266",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2268",
+    "parentId": "2:2266",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2269",
+    "parentId": "2:2266",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 4.166666507720947
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2270",
+    "parentId": "2:2266",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.66666603088379,
+      "y": 11.666666030883789
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2271",
+    "parentId": "2:2266",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10,
+      "y": 15
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2278",
+    "parentId": "2:2277",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2279",
+    "parentId": "2:2277",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2283",
+    "parentId": "2:2282",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 16.670656204223633,
+      "y": 16.670656204223633
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2284",
+    "parentId": "2:2282",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 0,
+      "y": 3.3333332538604736
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2285",
+    "parentId": "2:2282",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2286",
+    "parentId": "2:2282",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 3.3333332538604736,
+      "y": 3.3333332538604736
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2293",
+    "parentId": "2:2292",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 12,
+      "y": 7.333333492279053
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2294",
+    "parentId": "2:2292",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6.6666669845581055,
+      "y": 6
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2487",
+    "parentId": "2:2486",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 11.666680335998535,
+      "y": 11.666753768920898
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2507",
+    "parentId": "2:2506",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2508",
+    "parentId": "2:2506",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5.333333492279053,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2509",
+    "parentId": "2:2506",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2515",
+    "parentId": "2:2514",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6,
+      "y": 3
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2358",
+    "parentId": "2:2357",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 3.9983699321746826
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2359",
+    "parentId": "2:2357",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 10.666666984558105
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2365",
+    "parentId": "2:2364",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2371",
+    "parentId": "2:2370",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10.666666984558105,
+      "y": 13.33316707611084
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2372",
+    "parentId": "2:2370",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 4,
+      "y": 4
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2377",
+    "parentId": "2:2376",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2378",
+    "parentId": "2:2376",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5.333333492279053,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "2:2379",
+    "parentId": "2:2376",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 0
+    },
+    "pluginData": []
+  }
+]

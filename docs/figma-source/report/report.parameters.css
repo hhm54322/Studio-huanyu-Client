@@ -1,0 +1,84 @@
+/*
+ * Locked Dev Mode parameter baseline for /report.
+ * Source: s6gMozOqPBJFujindYruwb, extracted 2026-09-24.
+ * This file records authored geometry; runtime selectors live in ReportView.vue.
+ */
+
+/* 2:1905 -> 2:1915 -> 2:1918, 2:1957, 2:2152 */
+.figma-report-input {
+  width: 1440px;
+  height: 2925px;
+  background: #fff;
+}
+
+.figma-report-input__container {
+  width: 896px;
+  height: 2860px;
+  padding: 32px 16px;
+  gap: 32px;
+}
+
+.figma-report-input__intro {
+  width: 864px;
+  height: 122px;
+  gap: 8px;
+}
+
+.figma-report-input__form {
+  width: 864px;
+  height: 1712px;
+  padding: 32px;
+  gap: 24px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.figma-report-input__preview {
+  width: 864px;
+  height: 898px;
+  padding: 32px;
+  gap: 24px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+/* 45:8457 -> 45:8505, 45:8530, 45:8560, 45:8632, 46:10809 */
+.figma-report-free {
+  width: 1440px;
+  height: 8351.583984375px;
+  background: #f8fafc;
+}
+
+.figma-report-free__toolbar { width: 1120px; height: 66px; }
+.figma-report-free__meta { width: 1120px; height: 68px; padding: 24px 32px; border-radius: 16px; }
+.figma-report-free__cost { width: 1120px; height: 649px; padding: 32px; gap: 20px; border-radius: 16px; }
+.figma-report-free__hospitals { width: 1120px; height: 538px; padding: 32px; gap: 16px; border-radius: 16px; }
+.figma-report-free__insurance { width: 1120px; height: 398px; padding: 33px; gap: 24px; border-radius: 16px; }
+
+/* 47:12118 -> 47:12220, 47:12478 */
+.figma-report-free-expanded {
+  width: 1440px;
+  height: 4488.5625px;
+  background: #f8fafc;
+}
+
+.figma-report-free-expanded__cost { width: 1120px; height: 1341px; padding: 32px; gap: 20px; border-radius: 16px; }
+.figma-report-free-expanded__comparison { width: 1120px; height: 2323px; padding: 32px; gap: 20px; border-radius: 16px; }
+
+/* 43:6175 -> 43:6177 and 43:6688 */
+.figma-report-paid {
+  width: 1440px;
+  height: 2426px;
+  background: #0f172b;
+}
+
+.figma-report-paid__main { width: 992px; height: 2008px; padding-block: 24px; gap: 40px; background: #0f172a; }
+.figma-report-paid__heading { width: 992px; height: 190px; gap: 10px; }
+.figma-report-paid__meta { width: 992px; height: 68.5px; padding: 16px; border-radius: 14px; }
+.figma-report-paid__tabs { width: 992px; height: 44px; gap: 8px; padding-bottom: 4px; }
+.figma-report-paid__pathology { width: 992px; height: 573.5px; padding: 32px; gap: 20px; border-radius: 14px; }
+.figma-report-paid__packages { width: 992px; height: 847.5px; gap: 32.25px; }
+.figma-report-paid__package-cards { width: 992px; height: 506px; padding-block: 16px; gap: 24px; }
+.figma-report-paid__cta { width: 992px; height: 224.5px; padding: 32px; gap: 16px; border-radius: 14px; }
+.figma-report-paid__back { width: 191px; height: 20px; font: 400 14px/20px Helvetica, Arial, sans-serif; color: #64748b; }
+.figma-report-paid__footer { width: 1440px; height: 353px; padding-inline: 80px; }

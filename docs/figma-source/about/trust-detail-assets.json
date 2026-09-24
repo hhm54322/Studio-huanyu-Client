@@ -1,0 +1,11 @@
+{
+  "frame": { "id": "484:2568", "name": "可信度详情" },
+  "exportedAt": "2026-09-24",
+  "assets": [
+    { "nodeId": "484:2578", "name": "subject qualification", "path": "public/images/figma/about-trust-detail/icon-scale.svg", "sha256": "41cfd0c8f346d0d0b7001fe11dba0450ff2757edde95971f4d312608dadbfae5" },
+    { "nodeId": "484:2588", "name": "detail chevron", "path": "public/images/figma/about-trust-detail/icon-chevron.svg", "sha256": "2a090084b60a4f9beba9dfaeed3c87cb0d1bddc8eb0d7734fccc211b023ccc0d" },
+    { "nodeId": "484:2594", "name": "clinical boundary", "path": "public/images/figma/about-trust-detail/icon-shield.svg", "sha256": "75416902a3fc2b9ac94eadab17b46cf14686e885749fc217d54e20fd7237a5e2" },
+    { "nodeId": "484:2612", "name": "official verification", "path": "public/images/figma/about-trust-detail/icon-search.svg", "sha256": "3dac2b1d0a1d86d7817a7a24b3ed3831380d728dd69daad9e1413fbd30999867" },
+    { "nodeId": "484:2628", "name": "cross-border privacy", "path": "public/images/figma/about-trust-detail/icon-lock.svg", "sha256": "3c330cec6c3dbebe9a02aefd355339dbc2a9f05092cc1549510ff1122ccce6a9" }
+  ]
+}

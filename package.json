@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "audit:figma": "node scripts/audit-figma-specs.mjs",
+    "prebuild": "pnpm run audit:figma",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },

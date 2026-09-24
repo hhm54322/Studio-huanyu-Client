@@ -1,0 +1,20 @@
+{
+  "figmaFrame": "419:31",
+  "exportedAt": "2026-09-24",
+  "assets": [
+    { "name": "hero background", "nodeIds": ["419:34"], "source": "abd940c4a6c355d8ee8724d6e5b99d5731dbc8b9.png", "path": "public/images/figma/insurance/hero.png", "size": "2181x1681" },
+    { "name": "hero assessment sparkle", "nodeIds": ["419:98"], "path": "public/images/figma/insurance/Icon-13.svg", "size": "20x20" },
+    { "name": "form dropdown chevron", "nodeIds": ["419:79", "419:87", "419:95"], "path": "public/images/figma/insurance/Icon-12.svg", "size": "10x6" },
+    { "name": "planned treatment plane", "nodeIds": ["419:112"], "path": "public/images/figma/insurance/Icon-17.svg", "size": "32x32" },
+    { "name": "emergency treatment stethoscope", "nodeIds": ["482:1351"], "path": "public/images/figma/insurance/Icon-15.svg", "size": "32x32" },
+    { "name": "complication cover shield", "nodeIds": ["419:139"], "path": "public/images/figma/insurance/Icon-11.svg", "size": "32x32" },
+    { "name": "card action chevron", "nodeIds": ["419:122", "419:136", "419:151", "419:300", "419:339", "419:378"], "path": "public/images/figma/insurance/Icon-16.svg", "size": "14x14" },
+    { "name": "path condition check", "nodeIds": ["419:280", "419:286", "419:292", "419:319", "419:325", "419:331", "419:358", "419:364", "419:370"], "path": "public/images/figma/insurance/Icon-10.svg", "size": "20x20" },
+    { "name": "faq expanded chevron", "nodeIds": ["419:599"], "path": "public/images/figma/insurance/Icon-7.svg", "size": "24x24" },
+    { "name": "faq collapsed chevron", "nodeIds": ["419:612", "419:620", "419:628", "419:636", "419:644", "419:652", "419:660", "419:668", "419:676"], "path": "public/images/figma/insurance/Icon-6.svg", "size": "24x24" },
+    { "name": "online service headphones", "nodeIds": ["419:687"], "path": "public/images/figma/insurance/Frame.svg", "size": "20x20" },
+    { "name": "email", "nodeIds": ["419:691"], "path": "public/images/figma/insurance/Icon-8.svg", "size": "20x20" },
+    { "name": "video consultation", "nodeIds": ["419:696"], "path": "public/images/figma/insurance/Icon-5.svg", "size": "20x20" },
+    { "name": "insurance partner matrix", "nodeIds": ["419:451"], "path": "public/images/figma/partners-matrix.png", "size": "1440x472" }
+  ]
+}

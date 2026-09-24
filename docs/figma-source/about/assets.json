@@ -1,0 +1,24 @@
+{
+  "sourceFrame": "484:1703",
+  "assets": [
+    {
+      "nodeId": "484:1706",
+      "name": "Hero image layer",
+      "projectPath": "/public/images/figma/about-hero.jpg",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "484:2070",
+      "name": "Complex case active image",
+      "projectPath": "/public/images/figma/about-complex-knee.png",
+      "fit": "cover",
+      "opacity": 0.15
+    },
+    {
+      "nodeId": "484:2369",
+      "name": "CTA image layer",
+      "projectPath": "/public/images/figma/about-cta-background.png",
+      "fit": "cover"
+    }
+  ]
+}

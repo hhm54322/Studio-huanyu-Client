@@ -1,0 +1,217 @@
+[
+  {
+    "id": "45:8457",
+    "parentId": "",
+    "name": "免费报告",
+    "type": "FRAME",
+    "fillPaints": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0.9725490212440491,
+          "g": 0.9803921580314636,
+          "b": 0.9882352948188782,
+          "a": 1
+        },
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "authoredColor": {
+          "space": "DEFAULT",
+          "c0": 0.9725490212440491,
+          "c1": 0.9803921580314636,
+          "c2": 0.9882352948188782,
+          "c3": 1
+        }
+      }
+    ],
+    "exportSettings": [
+      {
+        "suffix": "",
+        "imageType": "PNG",
+        "constraint": {
+          "type": "CONTENT_SCALE",
+          "value": 1
+        },
+        "contentsOnly": true,
+        "useAbsoluteBounds": false,
+        "colorProfile": "DOCUMENT",
+        "useBicubicSampler": true
+      }
+    ],
+    "size": {
+      "x": 1440,
+      "y": 8351.583984375
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:8471",
+    "parentId": "45:8470",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 11.666680335998535,
+      "y": 11.666753768920898
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:8491",
+    "parentId": "45:8490",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:8492",
+    "parentId": "45:8490",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5.333333492279053,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:8493",
+    "parentId": "45:8490",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 0
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:8499",
+    "parentId": "45:8498",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 6,
+      "y": 3
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9571",
+    "parentId": "45:9570",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 3.9983699321746826
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9572",
+    "parentId": "45:9570",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 10.666666984558105
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9577",
+    "parentId": "45:9576",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9582",
+    "parentId": "45:9581",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 10.666666984558105,
+      "y": 13.33316707611084
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9583",
+    "parentId": "45:9581",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 4,
+      "y": 4
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9588",
+    "parentId": "45:9587",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9589",
+    "parentId": "45:9587",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 5.333333492279053,
+      "y": 13.333333969116211
+    },
+    "pluginData": []
+  },
+  {
+    "id": "45:9590",
+    "parentId": "45:9587",
+    "name": "Vector",
+    "type": "VECTOR",
+    "fillPaints": [],
+    "exportSettings": [],
+    "size": {
+      "x": 13.333333969116211,
+      "y": 0
+    },
+    "pluginData": []
+  }
+]

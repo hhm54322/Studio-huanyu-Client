@@ -1,0 +1,37 @@
+{
+  "frame": {
+    "name": "04寰宇云医 - 信任与常见问题",
+    "nodeId": "143:2528"
+  },
+  "assets": [
+    { "order": 0, "file": "Icon.svg", "nodeId": "143:2981", "size": "16x16" },
+    { "order": 1, "file": "Icon-1.svg", "nodeId": "143:2909", "size": "20x20" },
+    { "order": 2, "file": "Frame.svg", "nodeId": "204:5652", "size": "32x32" },
+    { "order": 3, "file": "Icon-2.svg", "nodeId": "143:2719", "size": "16x16" },
+    { "order": 4, "file": "Frame-1.svg", "nodeId": "143:2699", "size": "32x32" },
+    { "order": 5, "file": "Icon-3.svg", "nodeId": "143:2690", "size": "32x32" },
+    { "order": 6, "file": "Icon-4.svg", "nodeId": "484:1497", "size": "14x14" },
+    { "order": 7, "file": "Icon-5.svg", "nodeId": "484:1473", "size": "14x14" },
+    { "order": 8, "file": "Icon-6.svg", "nodeId": "143:2708", "size": "32x32" },
+    { "order": 9, "file": "Icon-7.svg", "nodeId": "143:2671", "size": "32x32" },
+    { "order": 10, "file": "Icon-8.svg", "nodeId": "143:2663", "size": "32x32" },
+    { "order": 11, "file": "Frame-2.svg", "nodeId": "143:2655", "size": "32x32" },
+    { "order": 12, "file": "Icon-9.svg", "nodeId": "143:2646", "size": "32x32" },
+    { "order": 13, "file": "Icon-10.svg", "nodeId": "143:2918", "size": "20x20" },
+    { "order": 14, "file": "Icon-11.svg", "nodeId": "143:2616", "size": "24x24" },
+    { "order": 15, "file": "Icon-12.svg", "nodeId": "143:2682", "size": "32x32" },
+    { "order": 16, "file": "Icon-13.svg", "nodeId": "143:2992", "size": "16x16" },
+    { "order": 17, "file": "Icon-14.svg", "nodeId": "143:2565", "size": "14x14" },
+    { "order": 18, "file": "Icon-15.svg", "nodeId": "480:1338", "size": "32x32" },
+    { "order": 19, "file": "Icon-16.svg", "nodeId": "143:2550", "size": "14x14" },
+    { "order": 20, "file": "Frame-3.svg", "nodeId": "143:2568", "size": "32x32" },
+    { "order": 21, "file": "Icon-17.svg", "nodeId": "143:2913", "size": "20x20" },
+    { "order": 22, "file": "Icon-18.svg", "nodeId": "143:2603", "size": "24x24" },
+    { "order": 23, "file": "Frame-4.svg", "nodeId": "143:2579", "size": "32x32" },
+    { "order": 24, "file": "Icon-19.svg", "nodeId": "143:2923", "size": "12x12" },
+    { "order": 25, "file": "Icon-20.svg", "nodeId": "143:2987", "size": "16x16" },
+    { "order": 26, "file": "Icon-21.svg", "nodeId": "204:5666", "size": "32x32" },
+    { "order": 27, "file": "Icon-22.svg", "nodeId": "143:2540", "size": "32x32" },
+    { "order": 28, "file": "hero-source.png", "nodeId": "143:2531", "size": "1742x903", "fit": "cover", "opacity": 0.4 }
+  ]
+}

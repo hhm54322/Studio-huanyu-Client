@@ -1,0 +1,25 @@
+{
+  "sourceFrame": "143:1299",
+  "assets": [
+    {
+      "nodeId": "143:1302",
+      "name": "Hero background",
+      "projectPath": "/public/images/figma/why-china-hero-background.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:1790",
+      "name": "National medical network",
+      "projectPath": "/public/images/figma/why-china-national-background.png",
+      "fit": "cover",
+      "blend": "multiply",
+      "opacity": 0.8
+    },
+    {
+      "nodeId": "143:1824",
+      "name": "Patient story portraits",
+      "projectPath": "/public/images/figma/why-story-singapore.png,/public/images/figma/why-story-malaysia.png,/public/images/figma/why-story-europe.png",
+      "fit": "cover"
+    }
+  ]
+}

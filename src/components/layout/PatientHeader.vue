@@ -1,228 +1,435 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useRouter, useRoute } from 'vue-router'
-import { ref, computed, watch } from 'vue'
-import { useAppStore } from '@/stores/app'
-import { useScroll } from '@/composables/useScroll'
-import type { Locale } from '@/stores/app'
-import { Globe, Menu, X, ChevronDown, Check } from 'lucide-vue-next'
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRoute } from "vue-router";
+import {
+  Check,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-vue-next";
+import BrandLogo from "@/components/common/BrandLogo.vue";
+import { useAppStore } from "@/stores/app";
+import { useScroll } from "@/composables/useScroll";
+import type { Locale } from "@/stores/app";
 
-const { t, locale } = useI18n()
-const router = useRouter()
-const route = useRoute()
-const appStore = useAppStore()
-const { scrolled } = useScroll(20)
+const route = useRoute();
+const { locale } = useI18n();
+const appStore = useAppStore();
+const { scrolled } = useScroll(18);
+const menuOpen = ref(false);
+const langOpen = ref(false);
 
-const menuOpen = ref(false)
-const langOpen = ref(false)
+const navItems = [
+  { name: "首页", path: "/" },
+  { name: "为什么选择中国", path: "/why-china" },
+  { name: "信任与常见问题", path: "/trust" },
+  { name: "医疗服务", path: "/diseases-technologies" },
+  { name: "牙科", path: "/dental" },
+  { name: "中国医院", path: "/hospitals" },
+  { name: "患者案例", path: "/cases" },
+  { name: "保险指南", path: "/insurance" },
+  { name: "关于我们", path: "/about" },
+];
 
-const navItems = computed(() => [
-  { name: t('nav.home'), path: '/' },
-  { name: t('nav.cost'), path: '/cost' },
-  { name: t('nav.report'), path: '/report' },
-  { name: t('nav.hospitals'), path: '/hospitals' },
-  { name: t('nav.cases'), path: '/cases' },
-  { name: t('nav.diseaseTech'), path: '/diseases-technologies' },
-  { name: t('nav.equipment'), path: '/equipment' },
-  { name: t('nav.visa'), path: '/visa' },
-  { name: t('nav.steps'), path: '/steps' },
-  { name: t('nav.about'), path: '/about' },
-])
+const languages: { code: Locale; label: string; short: string }[] = [
+  { code: "zh", label: "中文", short: "ZH" },
+  { code: "en", label: "English", short: "EN" },
+  { code: "id", label: "Bahasa Indonesia", short: "ID" },
+  { code: "ru", label: "Русский", short: "RU" },
+  { code: "mn", label: "Монгол", short: "MN" },
+];
 
-const languages: { code: Locale; label: string; flag: string }[] = [
-  { code: 'zh', label: '中文', flag: '🇨🇳' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'id', label: 'Bahasa Indonesia', flag: '🇮🇩' },
-  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
-  { code: 'mn', label: 'Монгол', flag: '🇲🇳' },
-]
-
-const currentLang = computed(() => languages.find(l => l.code === locale.value))
+const currentLang = computed(
+  () => languages.find((item) => item.code === locale.value) || languages[0],
+);
 
 function switchLang(code: Locale) {
-  locale.value = code
-  appStore.setLocale(code)
-  langOpen.value = false
+  locale.value = code;
+  appStore.setLocale(code);
+  langOpen.value = false;
 }
 
-function navigate(path: string) {
-  router.push(path)
-  menuOpen.value = false
+function openConsultation() {
+  window.dispatchEvent(new CustomEvent("open-consultation"));
+  menuOpen.value = false;
 }
 
-// 路由切换时关闭菜单
-watch(() => route.path, () => {
-  menuOpen.value = false
-  langOpen.value = false
-})
-
-// 点击外部关闭语言下拉
-function onClickOutsideLang(e: Event) {
-  const target = e.target as HTMLElement
-  if (!target.closest('.lang-switcher')) {
-    langOpen.value = false
-  }
+function closeOutside(event: MouseEvent) {
+  if (!(event.target as HTMLElement).closest(".language-control"))
+    langOpen.value = false;
 }
+
+watch(
+  () => route.fullPath,
+  () => {
+    menuOpen.value = false;
+    langOpen.value = false;
+  },
+);
+
+onMounted(() => document.addEventListener("click", closeOutside));
+onUnmounted(() => document.removeEventListener("click", closeOutside));
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur border-b border-orange-100">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <!-- Logo -->
-        <router-link to="/" class="flex items-center gap-2">
-          <img
-            src="/images/logo.jpg"
-            alt="寰宇云医"
-            class="h-9 w-9 rounded-xl object-cover"
-          />
-          <span
-            class="text-lg font-bold tracking-wide"
-            style="background: linear-gradient(to right, #C05621, #DD6B20); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text"
-          >
-            寰宇云医
-          </span>
-        </router-link>
-
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-1">
-          <router-link
-            v-for="item in navItems"
-            :key="item.path"
+  <header
+    class="patient-header"
+    :class="{
+      'patient-header--scrolled': scrolled,
+      'patient-header--open': menuOpen,
+    }"
+  >
+    <div class="header-inner">
+      <RouterLink to="/" class="header-logo" aria-label="寰宇云医首页"
+        ><BrandLogo compact
+      /></RouterLink>
+      <button class="ask-aning" type="button" @click="openConsultation">
+        <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />问阿宁
+      </button>
+      <nav class="desktop-nav" aria-label="主导航">
+        <template v-for="item in navItems" :key="item.name">
+          <RouterLink
+            v-if="item.path"
             :to="item.path"
-            class="px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="route.path === item.path
-              ? 'text-[#C05621] bg-orange-50'
-              : 'text-gray-700 hover:text-[#DD6B20] hover:bg-orange-50/60'"
+            :class="{ active: route.path === item.path }"
+            >{{ item.name }}</RouterLink
           >
+          <button v-else type="button" title="内容正在准备中">
             {{ item.name }}
-          </router-link>
-        </nav>
-
-        <!-- Desktop Right: Language + CTA -->
-        <div class="hidden md:flex items-center gap-3">
-          <!-- Language Switcher -->
-          <div class="relative lang-switcher" @click.stop>
-            <button
-              class="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm text-gray-600 hover:text-[#DD6B20] hover:bg-orange-50/60 transition-colors"
-              @click="langOpen = !langOpen"
-            >
-              <Globe class="h-4 w-4" />
-              <span>{{ currentLang?.flag }}</span>
-              <span class="text-xs">{{ currentLang?.label }}</span>
-              <ChevronDown class="h-3 w-3" />
-            </button>
-            <transition name="dropdown">
-              <div
-                v-show="langOpen"
-                class="absolute right-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-orange-100 py-1 z-50"
-              >
-                <button
-                  v-for="l in languages"
-                  :key="l.code"
-                  class="w-full flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-orange-50 transition-colors"
-                  :class="locale === l.code ? 'text-[#C05621] font-medium bg-orange-50/50' : 'text-gray-700'"
-                  @click="switchLang(l.code)"
-                >
-                  <span class="text-base">{{ l.flag }}</span>
-                  <span>{{ l.label }}</span>
-                  <Check v-if="locale === l.code" class="h-3.5 w-3.5 ml-auto text-[#DD6B20]" />
-                </button>
-              </div>
-            </transition>
-          </div>
-
-          <!-- CTA -->
-          <button
-            class="rounded-lg px-4 py-2 text-sm font-semibold text-white shadow transition-colors"
-            style="background-color: #DD6B20"
-            @mouseover="($event.target as HTMLElement).style.backgroundColor = '#C05621'"
-            @mouseleave="($event.target as HTMLElement).style.backgroundColor = '#DD6B20'"
-          >
-            {{ t('nav.consult') }}
           </button>
+        </template>
+      </nav>
+      <div class="header-actions">
+        <div class="language-control" @click.stop>
+          <button
+            class="language-button"
+            type="button"
+            :aria-expanded="langOpen"
+            @click="langOpen = !langOpen"
+          >
+            <img src="/images/figma/trust/Icon-4.svg" alt="" aria-hidden="true" /><span class="language-flag">🇨🇳</span
+            ><b>{{ currentLang?.short }}</b
+            ><ChevronDown class="h-3 w-3" />
+          </button>
+          <Transition name="dropdown"
+            ><div v-if="langOpen" class="language-menu">
+              <button
+                v-for="language in languages"
+                :key="language.code"
+                type="button"
+                @click="switchLang(language.code)"
+              >
+                <span>{{ language.label }}</span
+                ><Check v-if="locale === language.code" class="h-4 w-4" />
+              </button></div
+          ></Transition>
         </div>
-
-        <!-- Mobile Menu Button -->
         <button
-          class="md:hidden p-2 rounded-md text-gray-700 hover:text-[#DD6B20]"
+          class="menu-button"
+          type="button"
+          :aria-label="menuOpen ? '关闭菜单' : '打开菜单'"
           @click="menuOpen = !menuOpen"
         >
-          <X v-if="menuOpen" class="h-6 w-6" />
-          <Menu v-else class="h-6 w-6" />
+          <X v-if="menuOpen" class="h-5 w-5" /><Menu v-else class="h-5 w-5" />
         </button>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <transition name="mobile-menu">
-      <div v-show="menuOpen" class="md:hidden border-t border-orange-100 bg-white overflow-hidden">
-        <div class="px-4 py-3 space-y-1">
-          <router-link
-            v-for="item in navItems"
-            :key="item.path"
-            :to="item.path"
-            class="block px-3 py-2 rounded-md text-sm font-medium"
-            :class="route.path === item.path
-              ? 'text-[#C05621] bg-orange-50'
-              : 'text-gray-700 hover:text-[#DD6B20] hover:bg-orange-50/60'"
-            @click="menuOpen = false"
-          >
-            {{ item.name }}
-          </router-link>
-
-          <!-- Mobile Language Switcher -->
-          <div class="pt-2 pb-1 border-t border-orange-50 mt-2">
-            <p class="px-3 py-1 text-xs text-gray-400 uppercase tracking-wider">
-              {{ t('nav.language') }}
-            </p>
-            <div class="flex flex-wrap gap-2 px-3 py-2">
-              <button
-                v-for="l in languages"
-                :key="l.code"
-                class="px-2 py-1 rounded text-xs border transition-colors"
-                :class="locale === l.code
-                  ? 'border-[#DD6B20] text-[#C05621] bg-orange-50'
-                  : 'border-gray-200 text-gray-600 hover:border-orange-200'"
-                @click="switchLang(l.code)"
-              >
-                {{ l.flag }} {{ l.label }}
-              </button>
-            </div>
-          </div>
-
-          <!-- Mobile CTA -->
-          <button
-            class="mt-2 w-full rounded-lg px-4 py-2 text-sm font-semibold text-white shadow transition-colors"
-            style="background-color: #DD6B20"
-          >
-            {{ t('nav.consult') }}
-          </button>
-        </div>
-      </div>
-    </transition>
+    <Transition name="mobile-menu"
+      ><div v-if="menuOpen" class="mobile-nav">
+        <nav aria-label="移动端导航">
+          <template v-for="item in navItems" :key="item.name"
+            ><RouterLink v-if="item.path" :to="item.path">{{
+              item.name
+            }}</RouterLink
+            ><button v-else type="button" title="内容正在准备中">
+              {{ item.name }}
+            </button></template
+          ><RouterLink to="/steps">来华就医流程</RouterLink>
+        </nav>
+        <button class="mobile-consult" type="button" @click="openConsultation">
+          <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />问阿宁
+        </button>
+      </div></Transition
+    >
   </header>
 </template>
 
 <style scoped>
+.patient-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: 64px;
+  pointer-events: none;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.header-inner {
+  width: min(1280px, calc(100% - 48px));
+  height: 64px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 32px;
+  pointer-events: auto;
+}
+.patient-header--scrolled,
+.patient-header--open {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 1px 0 rgba(18, 63, 103, 0.09),
+    0 12px 32px rgba(18, 63, 103, 0.06);
+  backdrop-filter: blur(18px);
+}
+.header-logo {
+  flex: none;
+}
+.ask-aning {
+  display: inline-flex;
+  width: 80px;
+  height: 30px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 12px;
+  background: linear-gradient(102deg, #ee771d, #4a82f0);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+.ask-aning:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(40, 94, 169, 0.18);
+}
+.ask-aning img {
+  width: 14px;
+  height: 14px;
+}
+.desktop-nav {
+  display: flex;
+  height: 100%;
+  flex: none;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+}
+.desktop-nav > a,
+.desktop-nav > button {
+  position: relative;
+  display: flex;
+  height: 28px;
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: transparent;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+.desktop-nav > a:hover,
+.desktop-nav > a.active,
+.desktop-nav > button:hover {
+  color: #2563eb;
+}
+.desktop-nav > a.active {
+  background: rgba(37, 99, 235, 0.1);
+  font-weight: 600;
+}
+.header-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  margin-left: 8px;
+}
+.language-control {
+  position: relative;
+}
+.language-button {
+  display: flex;
+  height: 34px;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  padding: 0 2px;
+  background: transparent;
+  color: #526879;
+  font-size: 9px;
+  cursor: pointer;
+}
+.language-button b {
+  font-weight: 700;
+}
+.language-button > img {
+  width: 14px;
+  height: 14px;
+}
+.language-flag {
+  font-size: 10px;
+  line-height: 1;
+}
+.language-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 168px;
+  padding: 7px;
+  border: 1px solid var(--hy-line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(9, 48, 76, 0.14);
+}
+.language-menu button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-radius: 4px;
+  padding: 9px 10px;
+  background: transparent;
+  color: #38546a;
+  font-size: 12px;
+  cursor: pointer;
+}
+.language-menu button:hover {
+  background: #f2f7fa;
+}
+.menu-button {
+  display: none;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: #edf5fa;
+  color: var(--hy-navy);
+  cursor: pointer;
+}
+.mobile-nav {
+  width: calc(100% - 24px);
+  max-height: calc(100vh - 82px);
+  margin: 4px auto 0;
+  overflow-y: auto;
+  padding: 14px;
+  border: 1px solid var(--hy-line);
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 22px 55px rgba(9, 48, 76, 0.16);
+  pointer-events: auto;
+}
+.mobile-nav nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.mobile-nav nav a,
+.mobile-nav nav button {
+  border: 0;
+  border-radius: 4px;
+  padding: 11px 10px;
+  background: transparent;
+  color: var(--hy-ink);
+  text-align: left;
+  font-size: 12px;
+}
+.mobile-nav nav a.router-link-active {
+  background: #edf6fb;
+  color: var(--hy-blue);
+  font-weight: 700;
+}
+.mobile-consult {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(102deg, #ee771d, #4a82f0);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.mobile-consult img {
+  width: 16px;
+  height: 16px;
+}
 .dropdown-enter-active,
-.dropdown-leave-active {
-  transition: all 0.15s ease;
-}
-.dropdown-enter-from,
-.dropdown-leave-to {
-  opacity: 0;
-  transform: translateY(-4px);
-}
-
+.dropdown-leave-active,
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
-  transition: all 0.25s ease;
-  max-height: 600px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease;
 }
+.dropdown-enter-from,
+.dropdown-leave-to,
 .mobile-menu-enter-from,
 .mobile-menu-leave-to {
-  max-height: 0;
   opacity: 0;
+  transform: translateY(-6px);
+}
+@media (max-width: 1230px) {
+  .ask-aning {
+    margin-left: auto;
+  }
+  .desktop-nav {
+    flex: none;
+    justify-content: flex-start;
+  }
+  .desktop-nav > a,
+  .desktop-nav > button {
+    padding-inline: 7px;
+    font-size: 10px;
+  }
+  .header-actions {
+    margin-left: 0;
+  }
+}
+@media (max-width: 1050px) {
+  .desktop-nav,
+  .language-control {
+    display: none;
+  }
+  .ask-aning {
+    margin-left: auto;
+  }
+  .menu-button {
+    display: grid;
+    margin-left: 8px;
+  }
+}
+@media (max-width: 640px) {
+  .patient-header {
+    height: 64px;
+  }
+  .header-inner {
+    width: calc(100% - 24px);
+    height: 64px;
+    padding: 0;
+  }
+  .ask-aning {
+    display: none;
+  }
 }
 </style>

@@ -6,6 +6,7 @@ import axios from 'axios'
 import {
   ArrowLeft,
   ArrowRight,
+  Download,
   Check,
   Loader2,
   ChevronDown,
@@ -14,6 +15,7 @@ import {
   Search,
   CheckCircle,
   XCircle,
+  X,
   Star,
   Shield,
   Clock,
@@ -48,7 +50,7 @@ const { checkForUpdate } = useAppVersion()
 
 const defaultSelectedRegions = ['north_america', 'europe', 'southeast_asia', 'japan_korea']
 const selectedRegions = ref<string[]>([...defaultSelectedRegions])
-const selectedInsurance = ref<number | null>(null)
+const selectedInsurance = ref<number | null>(0)
 const generating = ref(false)
 const showReport = ref(false)
 const expandedCountry = ref<string | null>(null)
@@ -58,8 +60,9 @@ const submissionErrorTone = ref<'error' | 'warning'>('error')
 const submissionNo = ref('')
 const generatedReport = ref<GeneratedReport | null>(null)
 const activeFreeLayoutKey = ref('cost')
+const showCostDetails = ref(false)
 const showProSampleReport = ref(false)
-const activeProSampleTab = ref('analysis')
+const activeProSampleTab = ref('pathology')
 
 const generatingLeaveMessage = '报告正在生成中，离开页面可能导致本次生成中断，确定要离开吗？'
 
@@ -483,61 +486,91 @@ const insuranceCoverageItems = computed(() => {
 })
 
 const reportPreviewItems = [
-  { title: '全球该疾病费用对比 / Global Cost Comparison', desc: '8 个国家的多维成本比较', icon: Globe },
-  { title: '技术对比 / Technology Comparison', desc: '先进医疗设备与技术可及性', icon: Stethoscope },
-  { title: '治疗效果对比 / Outcome Reference', desc: '按病情阶段和资料完整度进行风险参考', icon: Star },
-  { title: '来华就医可行性评估 / Feasibility Assessment', desc: '医疗旅行可行性及需求评估', icon: FileText },
-  { title: '医院推荐详情 / Hospital Ranking Details', desc: '医院资料、专科方向及初步适配情况', icon: Building2 },
-  { title: '医院专家推荐 / Hospital Recommendations', desc: '针对具体病情的推荐医院与专家方向', icon: Shield },
-  { title: '下一步行动建议 / Next Steps', desc: '行动计划及升级专业版建议', icon: ArrowRight },
-  { title: '专业版升级 / Upgrade to Pro', desc: '获取更精准的个性化评估报告', icon: Sparkles },
+  { title: '全球该疾病费用对比', desc: '8 个国家的多维成本比较', icon: Globe },
+  { title: '技术对比', desc: '先进的医疗设备与技术的可用性', icon: Stethoscope },
+  { title: '治愈率对比', desc: '按阶段划分的医院特定治愈率统计数据', icon: Star },
+  { title: '来华就医可行性评估', desc: '医疗旅游的可行性及需求评估', icon: FileText },
+  { title: '医院推荐详情', desc: '详细的医院资料以及相应的评分情况', icon: Building2 },
+  { title: '医院专家推荐', desc: '人工智能推荐的、针对您的具体情况的最佳三家医院', icon: Shield },
+  { title: '下一步行动建议', desc: '行动计划及升级至专业版的建议', icon: ArrowRight },
+  { title: '专业版升级', desc: '获取您的个性化精准评估报告', icon: Sparkles },
 ]
 
 const proSampleTabs = [
-  { key: 'analysis', label: '病情分析解读', icon: FileSearch },
-  { key: 'treatment', label: '治疗路径方案', icon: Stethoscope },
-  { key: 'cost', label: '费用明细（0猫腻）', icon: DollarSign },
-  { key: 'insurance', label: '保险报销评估', icon: Shield },
-  { key: 'followup', label: '防复发随访体系', icon: HeartPulse },
+  { key: 'pathology', label: '核心病理诊断', asset: '/images/figma/report/pro-tab-pathology.svg', nodeId: '43:6206' },
+  { key: 'assessment', label: '病情综合评估', asset: '/images/figma/report/pro-tab-assessment.svg', nodeId: '43:6215' },
+  { key: 'treatment', label: '治疗路径方案', asset: '/images/figma/report/pro-tab-treatment.svg', nodeId: '43:6219' },
+  { key: 'cost', label: '费用明细', asset: '/images/figma/report/pro-tab-cost.svg', nodeId: '43:6227' },
+  { key: 'technology', label: '前沿新技术新药物', asset: '/images/figma/report/pro-tab-technology.svg', nodeId: '43:6232' },
+  { key: 'countries', label: '8国全维度对比', asset: '/images/figma/report/pro-tab-countries.svg', nodeId: '43:6238' },
+  { key: 'journey', label: '21天行程规划', asset: '/images/figma/report/pro-tab-journey.svg', nodeId: '43:6244' },
+  { key: 'cases', label: '相似患者案例', asset: '/images/figma/report/pro-tab-cases.svg', nodeId: '43:6251' },
+  { key: 'experts', label: '专家推荐TOP10', asset: '/images/figma/report/pro-tab-experts.svg', nodeId: '43:6258' },
+  { key: 'service', label: '专属服务包', asset: '/images/figma/report/pro-tab-service.svg', nodeId: '43:6266' },
+  { key: 'risk', label: '风险与预后', asset: '/images/figma/report/pro-tab-risk.svg', nodeId: '43:6271' },
+  { key: 'hospitals', label: '推荐医院Top3', asset: '/images/figma/report/pro-tab-hospitals.svg', nodeId: '43:6277' },
+  { key: 'process', label: '就诊流程', asset: '/images/figma/report/pro-tab-process.svg', nodeId: '43:6285' },
+]
+
+const activeProSampleTabDefinition = computed(() => (
+  proSampleTabs.find((tab) => tab.key === activeProSampleTab.value) ?? proSampleTabs[0]
+))
+
+const proSamplePackages = [
+  {
+    name: '标准面诊包',
+    price: '$185-425',
+    originalPrice: '¥1,300-3,000',
+    summary: '含1次专家1v1视频面诊30分钟',
+    badge: '最受欢迎',
+    features: ['基础包全部内容', '专家1v1视频面诊30分钟', '7天无限跟进答疑', '病历翻译服务', '精准费用到千位', '指定专家推荐', '治疗时间规划'],
+    action: '预约面诊',
+    footnote: '价格因专家级别而异 / Price varies by expert level',
+    featured: true,
+  },
+  {
+    name: '深度面诊包 / Premium',
+    price: '$425-1,400',
+    originalPrice: '¥3,000-10,000',
+    summary: '多学科专家会诊（MDT）/ Multi-disciplinary team',
+    features: ['标准包全部内容', '多学科专家会诊', '外科+肿瘤内科+放疗科联合会诊', '14天无限跟进答疑', '治疗方案第二意见', '医疗签证邀请函', '防复发随访方案定制'],
+    action: '预约深度面诊',
+    footnote: '价格因疾病复杂度和专家数量而异',
+    featured: false,
+  },
 ]
 
 const proSampleReport = {
   meta: {
-    badge: '专业版精准评估报告示例',
-    title: '乳腺癌 IIA期 评估报告 #HY-2024-0618-001',
-    patient: '患者：Sarah M. | 34岁 | 英国 | 报告日期：2024年6月18日',
-    note: '以下为 Kimi 版本中的专业版报告示例内容，已按简易报告浅色风格展示；真实专业报告会根据用户资料、医学报告和医生审核结果生成。',
+    badge: 'DEMO示例 / DEMO Sample',
+    title: '脊髓星形细胞瘤 WHO 4级 专业评估报告 / Spinal Astrocytoma WHO Grade IV Professional Assessment Report',
+    patient: 'DEMO示例报告 / DEMO Sample Report',
+    note: '报告编号 / Report ID: DEMO-20260530-SP-001 · 生成时间 / Generated: 2026年05月30日（北京时间）',
   },
   analysis: {
     basics: [
-      { label: '确诊疾病', value: '左侧乳腺浸润性导管癌' },
-      { label: '临床分期', value: 'T2N1M0（IIA期）' },
-      { label: '病理类型', value: '浸润性导管癌（IDC）' },
-      { label: '分化程度', value: '中-低分化（Grade 2）' },
+      { label: '最终确诊结果 / Final Diagnosis', value: '脊髓星形细胞瘤（高级别神经胶质瘤）' },
+      { label: 'Tumor type', value: 'Spinal Astrocytoma (High-grade Glioma)' },
+      { label: '肿瘤分级 / Tumor Grade', value: 'WHO 4级（世界卫生组织IV级）— 最高恶性级别' },
+      { label: 'WHO classification', value: 'WHO Grade IV — Highest Malignancy' },
     ],
     groups: [
       {
-        title: 'CT/影像分析',
+        title: 'Ki67 · 20%-30%',
         items: [
-          '乳腺钼靶：左乳外上象限见2.8cm×2.1cm不规则高密度影，BI-RADS 5类',
-          '乳腺超声：低回声肿块，边界不清，纵横比>1，可见微小钙化',
-          '胸部CT：左肺未见转移灶，纵隔淋巴结未见肿大',
-          '腹部CT：肝脏、肾上腺未见转移灶',
-          '全身骨扫描：未见骨转移征象',
+          '中高水平增殖状态，提示肿瘤细胞分裂活跃，恶性程度较高',
+          'Moderately-high proliferation rate indicating active tumor cell division',
         ],
       },
       {
-        title: '病理报告解读',
+        title: 'IDH · 野生型 (IDH-wildtype)',
         items: [
-          'ER（雌激素受体）：强阳性（80%+），推荐内分泌治疗',
-          'PR（孕激素受体）：阳性（60%+），对内分泌治疗反应良好',
-          'HER-2：阴性（1+），无需靶向治疗，预后较好',
-          'Ki-67：25%（中增殖活性），提示化疗可能获益',
-          'AR（雄激素受体）：阳性，潜在治疗靶点',
+          '关键基因检测结果：IDH野生型为预后不良因素，对常规放化疗敏感性较低',
+          'IDH-wildtype is a poor prognostic factor with lower sensitivity to conventional chemoradiotherapy',
         ],
       },
     ],
-    warning: '说明：以上分析基于用户提供的CT和病理报告；未包含基因检测（如BRCA1/2）。如需基因检测结果辅助治疗方案制定，建议升级到深度面诊包，由专家评估是否需要。',
+    warning: '说明 / Disclaimer：以上分析基于您提供的病理报告和影像资料 / Analysis based on pathology reports and imaging data provided by you',
   },
   treatment: {
     steps: [
@@ -1019,8 +1052,8 @@ const validationErrors = computed<Record<FormField, string>>(() => {
     nationality: '',
     idType: '',
     idNumber: idNumberError,
-    phone: !phone || validatePhone(phone) ? '' : lt(localText.validation.phone),
-    email: email && validateEmail(email) ? '' : lt(localText.validation.email),
+    phone: phone && validatePhone(phone) ? '' : lt(localText.validation.phone),
+    email: !email || validateEmail(email) ? '' : lt(localText.validation.email),
     city: '',
     preferredLanguage: '',
     visitPurpose: form.visitPurpose ? '' : lt(localText.validation.visitPurpose),
@@ -1079,14 +1112,14 @@ const getReportLayoutIcon = (icon?: string) => reportLayoutIconMap[icon || ''] |
 const lightToneClass = (tone?: string) => {
   if (tone === 'danger') return 'border-red-100 bg-red-50'
   if (tone === 'warning') return 'border-amber-100 bg-amber-50'
-  if (tone === 'highlight') return 'border-orange-200 bg-orange-50'
+  if (tone === 'highlight') return 'border-sky-200 bg-sky-50'
   return 'border-slate-100 bg-white'
 }
 
 const lightToneTextClass = (tone?: string) => {
   if (tone === 'danger') return 'text-red-700'
   if (tone === 'warning') return 'text-amber-700'
-  if (tone === 'highlight') return 'text-[#C05621]'
+  if (tone === 'highlight') return 'text-[#123F67]'
   return 'text-slate-900'
 }
 
@@ -1094,18 +1127,23 @@ const freeLayoutSections = computed(() => renderedReport.value.layoutSections ||
 const designedFreeLayoutSections = computed(() => (
   freeLayoutSections.value.filter((section) => !['cost', 'hospitals', 'hospitalDetails', 'records', 'upgrade'].includes(section.key))
 ))
+const visibleDesignedFreeLayoutSections = computed(() => (
+  showCostDetails.value
+    ? designedFreeLayoutSections.value.filter((section) => section.key === 'technology')
+    : designedFreeLayoutSections.value
+))
 const activeFreeLayoutSection = computed(() => (
   freeLayoutSections.value.find((section) => section.key === activeFreeLayoutKey.value) || freeLayoutSections.value[0]
 ))
 const packageToneClass = (pkg: RenderedReport['packages'][number]) => {
-  if (pkg.highlight) return 'border-orange-300 bg-orange-50/70 shadow-sm ring-1 ring-orange-100'
+  if (pkg.highlight) return 'border-sky-300 bg-sky-50/70 shadow-sm ring-1 ring-sky-100'
   if (/Premium|深度/.test(pkg.name)) return 'border-amber-200 bg-amber-50/40'
   return 'border-slate-100 bg-white'
 }
 const packageIconClass = (pkg: RenderedReport['packages'][number]) => {
-  if (pkg.highlight) return 'bg-[#DD6B20] text-white'
+  if (pkg.highlight) return 'bg-[#1685C3] text-white'
   if (/Premium|深度/.test(pkg.name)) return 'bg-amber-100 text-amber-700'
-  return 'bg-orange-100 text-[#C05621]'
+  return 'bg-sky-100 text-[#123F67]'
 }
 const packageFeatureIcon = (status?: string) => {
   if (status === 'excluded') return XCircle
@@ -1114,12 +1152,12 @@ const packageFeatureIcon = (status?: string) => {
 }
 const packageFeatureClass = (status?: string) => {
   if (status === 'excluded') return 'text-slate-400'
-  if (status === 'emphasis') return 'font-semibold text-[#C05621]'
+  if (status === 'emphasis') return 'font-semibold text-[#123F67]'
   return 'text-slate-700'
 }
 const packageFeatureIconClass = (status?: string) => {
   if (status === 'excluded') return 'text-red-400'
-  if (status === 'emphasis') return 'text-[#DD6B20]'
+  if (status === 'emphasis') return 'text-[#1685C3]'
   return 'text-emerald-500'
 }
 const estimatedAverageCost = (cost: string) => {
@@ -1269,8 +1307,11 @@ const toggleHospital = (key: string) => {
   expandedHospital.value = expandedHospital.value === key ? null : key
 }
 const openProSampleReport = () => {
-  activeProSampleTab.value = 'analysis'
+  activeProSampleTab.value = 'pathology'
   showProSampleReport.value = true
+}
+const openConsultation = () => {
+  window.dispatchEvent(new CustomEvent('open-consultation'))
 }
 const closeProSampleReport = () => {
   showProSampleReport.value = false
@@ -1399,6 +1440,10 @@ const scrollToPageTop = async () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const downloadFreeReport = () => {
+  window.print()
+}
+
 const getApiErrorMessage = (error: unknown, fallback: string) => {
   if (!axios.isAxiosError(error)) return fallback
   const data = error.response?.data
@@ -1488,8 +1533,9 @@ const resetWizard = () => {
   submissionErrorTone.value = 'error'
   submissionNo.value = ''
   generatedReport.value = null
+  showCostDetails.value = false
   selectedRegions.value = [...defaultSelectedRegions]
-  selectedInsurance.value = null
+  selectedInsurance.value = 0
   submitAttempted.value = false
   ;(Object.keys(touched) as FormField[]).forEach((field) => {
     touched[field] = false
@@ -1506,88 +1552,84 @@ const resetWizard = () => {
 
 <template>
   <!-- Report Display -->
-  <div v-if="showReport" class="free-report-page mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 md:py-12">
-    <div class="mb-6 flex items-center justify-between flex-wrap gap-4">
-      <router-link to="/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-[#C05621]">
+  <div v-if="showReport" class="free-report-page mx-auto text-slate-900">
+    <div class="free-report-toolbar flex items-center justify-between gap-4">
+      <button type="button" class="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-[#c05621]" @click="resetWizard">
         <ArrowLeft class="h-4 w-4" />
-        {{ t('cases.back') }}
-      </router-link>
-      <button class="text-sm font-semibold text-[#C05621] hover:underline" @click="resetWizard">
-        重新填写资料
+        返回
       </button>
+      <div class="free-report-toolbar__title min-w-0 flex-1">
+        <span>可行性评估报告</span>
+        <h1>海外就医可行性评估报告</h1>
+      </div>
+      <div class="free-report-toolbar__actions flex items-center gap-3">
+        <button type="button" class="free-report-action free-report-action--secondary" @click="downloadFreeReport">
+          <Download class="h-4 w-4" />
+          下载PDF
+        </button>
+        <router-link :to="professionalReportLink" class="free-report-action free-report-action--primary">
+          升级到专业版
+        </router-link>
+      </div>
     </div>
 
-    <div class="overflow-hidden rounded-[18px] border border-orange-100 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
-      <!-- Header -->
-      <div class="bg-white px-4 py-6 text-slate-900 md:px-8 md:py-7">
-        <div class="mb-5 flex flex-wrap items-center gap-3 text-xs text-slate-500">
-          <span class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 font-semibold text-[#C05621]">
-            <Sparkles class="h-3.5 w-3.5" />
-            免费预审报告 / Free Preview
-          </span>
-          <span>{{ freeReportInputText }}</span>
-        </div>
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 class="text-2xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
-            <p class="mt-2 text-sm text-slate-500 md:text-base">{{ renderedReport.subtitle }}</p>
-          </div>
-          <div class="rounded-2xl border border-orange-100 bg-orange-50 px-4 py-3 text-left md:text-right">
-            <div class="text-xs text-[#C05621]">{{ t('report.reportId') }}</div>
-            <div class="font-mono text-base font-bold text-slate-950 md:text-lg">{{ renderedReport.id }}</div>
-            <div class="mt-1 text-xs text-slate-500">{{ renderedReport.date }}</div>
-          </div>
-        </div>
-        <div class="mt-5 grid gap-3 md:grid-cols-4">
-          <div v-for="item in reportHeroMeta" :key="item.label" class="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
-            <div class="text-xs text-slate-500">{{ item.label }}</div>
-            <div class="mt-1 truncate text-sm font-semibold text-slate-900">{{ item.value }}</div>
-          </div>
-        </div>
+    <div class="free-report-meta grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div v-for="item in reportHeroMeta.slice(0, 4)" :key="item.label">
+        <span>{{ item.label }}:</span>
+        <strong>{{ item.value }}</strong>
       </div>
+    </div>
 
-      <div v-if="freeLayoutSections.length" class="space-y-6 bg-[#f7f8fb] p-4 text-slate-900 md:p-8">
-        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+    <div class="free-report-content">
+      <div v-if="freeLayoutSections.length" class="free-report-sections space-y-6">
+        <section class="free-report-panel free-report-cost rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <DollarSign class="h-5 w-5 text-[#DD6B20]" />
-                全球治疗方案费用总览
+                <DollarSign class="h-5 w-5 text-[#dd6b20]" />
+                您的治疗方案预估总费用
               </h2>
               <p class="mt-1 text-sm text-slate-500">以下为预估区间，最终以医院正式报价、检查结果和治疗强度为准。</p>
             </div>
-            <span class="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">{{ costSavingsText }}</span>
+            <button type="button" class="free-report-detail-toggle" :aria-expanded="showCostDetails" @click="showCostDetails = !showCostDetails">
+              {{ showCostDetails ? '收起费用明细' : '查看费用明细' }}
+              <component :is="showCostDetails ? ChevronUp : ChevronDown" class="h-4 w-4" />
+            </button>
           </div>
 
-          <div class="mb-5 grid gap-4 md:grid-cols-2">
-            <div class="rounded-xl bg-orange-50 p-5">
-              <div class="text-xs font-semibold uppercase tracking-wide text-[#C05621]">China Estimated Total</div>
+          <div class="free-report-cost-summary mb-5 grid gap-4 md:grid-cols-3">
+            <div class="rounded-[14px] bg-orange-50 p-5">
+              <div class="text-xs font-semibold text-[#9a4a1e]">治疗总费用（中国）</div>
               <div class="mt-2 text-2xl font-black text-slate-950">{{ chinaCostCountry?.fee || renderedReport.totalCost }}</div>
               <div class="mt-1 text-xs text-slate-500">{{ chinaCostCountry?.name || '中国方案' }}</div>
             </div>
-            <div class="rounded-xl bg-slate-50 p-5">
-              <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Reference Market</div>
+            <div class="rounded-[14px] bg-slate-50 p-5">
+              <div class="text-xs font-semibold text-slate-500">本国同等治疗预估</div>
               <div class="mt-2 text-2xl font-black text-slate-950">{{ referenceCostCountry?.fee || '-' }}</div>
               <div class="mt-1 text-xs text-slate-500">{{ referenceCostCountry?.name || '对比地区' }}</div>
+            </div>
+            <div class="rounded-[14px] bg-emerald-50 p-5">
+              <div class="text-xs font-semibold text-emerald-700">预计可节省</div>
+              <div class="mt-2 text-lg font-black text-emerald-700">{{ costSavingsText }}</div>
             </div>
           </div>
 
           <div class="space-y-3">
             <div v-for="country in countryCostBars" :key="country.name" class="grid gap-2 md:grid-cols-[120px_1fr_150px] md:items-center">
               <div class="truncate text-sm font-semibold text-slate-700">{{ country.flag }} {{ country.name }}</div>
-              <div class="h-3 overflow-hidden rounded-full bg-slate-100">
-                <div class="h-full rounded-full bg-[#F2A365]" :style="{ width: `${country.width}%` }"></div>
+              <div class="h-3 overflow-hidden rounded-full bg-orange-50">
+                <div class="h-full rounded-full bg-[#dd6b20]" :style="{ width: `${country.width}%` }"></div>
               </div>
-              <div class="text-sm font-semibold text-[#C05621] md:text-right">{{ country.fee }}</div>
+              <div class="text-sm font-semibold text-[#9a4a1e] md:text-right">{{ country.fee }}</div>
             </div>
           </div>
         </section>
 
-        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="!showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Building2 class="h-5 w-5 text-[#DD6B20]" />
+                <Building2 class="h-5 w-5 text-[#1685C3]" />
                 {{ recommendationTitle }}
               </h2>
               <p class="mt-1 text-sm text-slate-500">{{ recommendationDescription }}</p>
@@ -1598,8 +1640,8 @@ const resetWizard = () => {
               v-for="hospital in hospitalDetailProfiles"
               :key="hospital.key"
               :class="[
-                'overflow-hidden rounded-xl border bg-slate-50 transition-all',
-                expandedHospital === hospital.key ? 'border-orange-200 shadow-sm ring-1 ring-orange-100' : 'border-slate-100 hover:border-orange-200 hover:bg-orange-50/40',
+                'overflow-hidden rounded-lg border bg-slate-50 transition-all',
+                expandedHospital === hospital.key ? 'border-sky-200 shadow-sm ring-1 ring-sky-100' : 'border-slate-100 hover:border-sky-200 hover:bg-sky-50/40',
               ]"
             >
               <button
@@ -1612,7 +1654,7 @@ const resetWizard = () => {
                   <span
                     :class="[
                       'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white',
-                      hospital.rank === 1 ? 'bg-[#DD6B20]' : hospital.rank === 2 ? 'bg-slate-400' : 'bg-orange-500',
+                      hospital.rank === 1 ? 'bg-[#1685C3]' : hospital.rank === 2 ? 'bg-slate-400' : 'bg-sky-500',
                     ]"
                   >
                     {{ hospital.rank }}
@@ -1656,15 +1698,15 @@ const resetWizard = () => {
                 </dl>
 
                 <div class="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-sm font-semibold">
-                  <span :class="hospital.bestMatch ? 'text-[#C05621]' : 'text-slate-500'">
-                    <Star v-if="hospital.bestMatch" class="mr-1 inline h-4 w-4 align-[-2px] text-[#ED8936]" />
+                  <span :class="hospital.bestMatch ? 'text-[#123F67]' : 'text-slate-500'">
+                    <Star v-if="hospital.bestMatch" class="mr-1 inline h-4 w-4 align-[-2px] text-[#FF8A34]" />
                     {{ hospital.bestMatch ? '最佳匹配 / Best Match' : '点击查看详情 / View Details' }}
                   </span>
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
               </button>
 
-              <div v-if="expandedHospital === hospital.key" class="border-t border-orange-100 bg-white px-4 pb-4 pt-4">
+              <div v-if="expandedHospital === hospital.key" class="border-t border-sky-100 bg-white px-4 pb-4 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -1672,7 +1714,7 @@ const resetWizard = () => {
                     :key="`${hospital.key}-${item.label}`"
                     class="rounded-lg border border-slate-100 bg-slate-50 p-3"
                   >
-                    <div class="mb-1 text-xs font-semibold text-[#C05621]">{{ item.label }}</div>
+                    <div class="mb-1 text-xs font-semibold text-[#123F67]">{{ item.label }}</div>
                     <p class="text-sm leading-6 text-slate-700">{{ item.value }}</p>
                   </div>
                 </div>
@@ -1680,17 +1722,17 @@ const resetWizard = () => {
             </article>
           </div>
 
-          <div class="mt-5 rounded-xl border border-orange-200 bg-orange-50/70 p-4">
+          <div class="mt-5 rounded-lg border border-sky-200 bg-sky-50/70 p-4">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
-                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#DD6B20]" />
+                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#1685C3]" />
                 <p>
                   想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
                 </p>
               </div>
               <router-link
                 :to="professionalReportLink"
-                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#C05621] underline decoration-orange-300 underline-offset-4 transition hover:text-[#DD6B20]"
+                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#123F67] underline decoration-sky-300 underline-offset-4 transition hover:text-[#1685C3]"
               >
                 Upgrade to Pro ->
               </router-link>
@@ -1698,10 +1740,10 @@ const resetWizard = () => {
           </div>
         </section>
 
-        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5">
             <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-              <HeartPulse class="h-5 w-5 text-[#DD6B20]" />
+              <HeartPulse class="h-5 w-5 text-[#1685C3]" />
               我的治疗路径与费用拆分
             </h2>
             <p class="mt-1 text-sm text-slate-500">先完成资料复核和专科判断，再确认治疗方案、预算和在华停留时间。</p>
@@ -1709,21 +1751,21 @@ const resetWizard = () => {
 
           <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <div class="space-y-3">
-              <div class="rounded-xl border border-orange-100 bg-orange-50 p-4">
-                <div class="text-xs font-semibold text-[#C05621]">推荐诊疗方向</div>
+              <div class="rounded-lg border border-sky-100 bg-sky-50 p-4">
+                <div class="text-xs font-semibold text-[#123F67]">推荐诊疗方向</div>
                 <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.direction }}</p>
               </div>
-              <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <div class="rounded-lg border border-slate-100 bg-slate-50 p-4">
                 <div class="text-xs font-semibold text-slate-500">预计在华安排</div>
                 <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.duration }}</p>
               </div>
-              <div class="rounded-xl border border-slate-100 bg-white p-4">
+              <div class="rounded-lg border border-slate-100 bg-white p-4">
                 <div class="text-xs font-semibold text-slate-500">核心诉求</div>
                 <p class="mt-2 text-sm leading-6 text-slate-700">{{ renderedReport.need }}</p>
               </div>
             </div>
 
-            <div class="self-start rounded-xl border border-orange-100 bg-white p-4">
+            <div class="self-start rounded-lg border border-sky-100 bg-white p-4">
               <div class="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h3 class="font-semibold text-slate-950">AI费用汇总</h3>
@@ -1731,7 +1773,7 @@ const resetWizard = () => {
                     费用细项、美元折算和节省比例由医疗模型按本次信息返回。
                   </p>
                 </div>
-                <span class="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+                <span class="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
                   {{ modelCostSummary?.chinaTotal || renderedReport.totalCost }}
                 </span>
               </div>
@@ -1745,7 +1787,7 @@ const resetWizard = () => {
                   <div class="mt-1 text-lg font-black text-slate-950">{{ modelCostSummary?.referenceCost || '需模型返回' }}</div>
                 </div>
               </div>
-              <p v-if="renderedReport.costBreakdown?.currencyNote" class="mt-3 rounded-lg bg-orange-50 px-3 py-2 text-xs leading-5 text-[#9A4A1E]">
+              <p v-if="renderedReport.costBreakdown?.currencyNote" class="mt-3 rounded-lg bg-sky-50 px-3 py-2 text-xs leading-5 text-[#9A4A1E]">
                 {{ renderedReport.costBreakdown.currencyNote }}
               </p>
             </div>
@@ -1755,10 +1797,10 @@ const resetWizard = () => {
             <div
               v-for="group in costBreakdownCategories"
               :key="group.key"
-              class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+              class="rounded-lg border border-slate-100 bg-slate-50 p-4"
             >
               <div class="mb-3 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#DD6B20]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#1685C3]">
                   <component :is="group.icon" class="h-4 w-4" />
                 </div>
                 <div>
@@ -1768,7 +1810,7 @@ const resetWizard = () => {
               </div>
               <div class="mb-3 flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2">
                 <span class="text-xs font-semibold text-slate-500">小计</span>
-                <span class="text-sm font-bold text-[#C05621]">{{ group.category.subtotal }}</span>
+                <span class="text-sm font-bold text-[#123F67]">{{ group.category.subtotal }}</span>
               </div>
               <div class="space-y-2">
                 <div
@@ -1788,7 +1830,7 @@ const resetWizard = () => {
               </p>
             </div>
           </div>
-          <div v-else class="mt-5 overflow-hidden rounded-xl border border-amber-100 bg-amber-50/60">
+          <div v-else class="mt-5 overflow-hidden rounded-lg border border-amber-100 bg-amber-50/60">
             <div class="border-b border-amber-100 px-4 py-3">
               <h3 class="font-semibold text-slate-950">医疗模型暂未返回三类费用细分</h3>
               <p class="mt-1 text-xs leading-5 text-slate-500">以下仅展示兼容字段中的原始费用项，系统不会自行归类或补算。</p>
@@ -1797,31 +1839,31 @@ const resetWizard = () => {
               <tbody class="divide-y divide-amber-100 bg-white">
                 <tr v-for="item in renderedReport.breakdown" :key="item.item">
                   <td class="px-4 py-3 leading-6 text-slate-700">{{ item.item }}</td>
-                  <td class="whitespace-nowrap px-4 py-3 text-right font-semibold text-[#C05621]">{{ item.cost }}</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-right font-semibold text-[#123F67]">{{ item.cost }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div v-if="modelCostSummary" class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-4 text-center">
-            <p class="text-sm font-bold leading-6 text-[#C05621]">{{ modelCostSummary.formula }}</p>
+          <div v-if="modelCostSummary" class="mt-4 rounded-lg border border-sky-100 bg-sky-50 px-4 py-4 text-center">
+            <p class="text-sm font-bold leading-6 text-[#123F67]">{{ modelCostSummary.formula }}</p>
             <p class="mt-2 text-sm font-bold leading-6 text-slate-900">{{ modelCostSummary.savingsText }}</p>
           </div>
-          <div v-else class="mt-4 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-center text-sm font-semibold text-[#C05621]">
+          <div v-else class="mt-4 rounded-lg border border-sky-100 bg-sky-50 px-4 py-3 text-center text-sm font-semibold text-[#123F67]">
             费用细分、总公式和节省比例需由医疗模型返回；最终以医院正式报价、检查结果和治疗强度为准。
           </div>
         </section>
 
-        <section v-if="advancedCareInsights" class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="advancedCareInsights && !showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Microscope class="h-5 w-5 text-[#DD6B20]" />
+                <Microscope class="h-5 w-5 text-[#1685C3]" />
                 前沿疗法与新药可及性推荐
               </h2>
               <p class="mt-1 text-sm leading-6 text-slate-500">{{ advancedCareInsights.context }}</p>
             </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
               AI医疗模型生成
             </span>
           </div>
@@ -1830,11 +1872,11 @@ const resetWizard = () => {
             <article
               v-for="therapy in advancedCareInsights.therapies"
               :key="therapy.name"
-              class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+              class="rounded-lg border border-slate-100 bg-slate-50 p-4"
             >
               <div class="mb-3 flex items-start justify-between gap-3">
                 <div>
-                  <div class="text-xs font-semibold text-[#C05621]">{{ therapy.category }}</div>
+                  <div class="text-xs font-semibold text-[#123F67]">{{ therapy.category }}</div>
                   <h3 class="mt-1 text-base font-bold leading-6 text-slate-950">{{ therapy.name }}</h3>
                 </div>
                 <span class="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-teal-700 ring-1 ring-teal-100">
@@ -1857,8 +1899,8 @@ const resetWizard = () => {
                 </div>
               </div>
               <div class="mt-4 grid gap-2 sm:grid-cols-2">
-                <div class="rounded-lg bg-orange-50 p-3">
-                  <div class="text-xs font-semibold text-[#C05621]">中国预估</div>
+                <div class="rounded-lg bg-sky-50 p-3">
+                  <div class="text-xs font-semibold text-[#123F67]">中国预估</div>
                   <div class="mt-1 text-sm font-black text-slate-950">{{ therapy.estimatedCost }}</div>
                 </div>
                 <div v-if="therapy.referenceCost" class="rounded-lg bg-white p-3">
@@ -1885,9 +1927,9 @@ const resetWizard = () => {
           </div>
 
           <div class="mt-5 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-            <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+            <div class="rounded-lg border border-slate-100 bg-slate-50 p-4">
               <div class="mb-4 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#DD6B20]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#1685C3]">
                   <Pill class="h-4 w-4" />
                 </div>
                 <div>
@@ -1912,8 +1954,8 @@ const resetWizard = () => {
                     <span class="rounded-full bg-teal-50 px-2.5 py-1 text-[11px] font-semibold text-teal-700">{{ drug.savingInsight }}</span>
                   </div>
                   <div class="grid gap-3 md:grid-cols-2">
-                    <div class="rounded-lg bg-orange-50 p-3">
-                      <div class="text-xs font-semibold text-[#C05621]">{{ drug.chinaOption }}</div>
+                    <div class="rounded-lg bg-sky-50 p-3">
+                      <div class="text-xs font-semibold text-[#123F67]">{{ drug.chinaOption }}</div>
                       <div class="mt-1 text-sm font-black text-slate-950">{{ drug.chinaCost }}</div>
                     </div>
                     <div class="rounded-lg bg-slate-50 p-3">
@@ -1929,9 +1971,9 @@ const resetWizard = () => {
               <p class="mt-3 text-xs leading-5 text-slate-500">{{ advancedCareInsights.drugCostComparison.note }}</p>
             </div>
 
-            <div class="rounded-xl border border-orange-100 bg-orange-50/60 p-4">
+            <div class="rounded-lg border border-sky-100 bg-sky-50/60 p-4">
               <div class="mb-4">
-                <div class="text-xs font-semibold text-[#C05621]">{{ advancedCareInsights.newDrugCureAssessment.headline }}</div>
+                <div class="text-xs font-semibold text-[#123F67]">{{ advancedCareInsights.newDrugCureAssessment.headline }}</div>
                 <h3 class="mt-1 text-base font-bold leading-6 text-slate-950">{{ advancedCareInsights.newDrugCureAssessment.answer }}</h3>
                 <p class="mt-2 text-sm leading-6 text-slate-600">{{ advancedCareInsights.newDrugCureAssessment.summary }}</p>
               </div>
@@ -1956,7 +1998,7 @@ const resetWizard = () => {
                 </article>
               </div>
               <div v-if="advancedCareInsights.newDrugCureAssessment.ctaItems.length" class="mt-4 rounded-lg bg-white p-3">
-                <div class="text-xs font-semibold text-[#C05621]">下一步确认事项</div>
+                <div class="text-xs font-semibold text-[#123F67]">下一步确认事项</div>
                 <ul class="mt-2 space-y-1 text-xs leading-5 text-slate-700">
                   <li v-for="item in advancedCareInsights.newDrugCureAssessment.ctaItems" :key="item" class="flex gap-2">
                     <CheckCircle class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
@@ -1967,32 +2009,32 @@ const resetWizard = () => {
             </div>
           </div>
 
-          <div class="mt-5 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-xs leading-5 text-[#9A4A1E]">
+          <div class="mt-5 rounded-lg border border-sky-100 bg-sky-50 px-4 py-3 text-xs leading-5 text-[#9A4A1E]">
             <p>{{ advancedCareInsights.currencyNote }}</p>
             <p class="mt-1">{{ advancedCareInsights.disclaimer }}</p>
           </div>
         </section>
 
         <section
-          v-for="section in designedFreeLayoutSections"
+          v-for="section in visibleDesignedFreeLayoutSections"
           :key="section.key"
-          class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6"
+          class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm md:p-6"
         >
           <div class="mb-5">
             <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-              <component :is="getReportLayoutIcon(section.icon)" class="h-5 w-5 text-[#DD6B20]" />
+              <component :is="getReportLayoutIcon(section.icon)" class="h-5 w-5 text-[#1685C3]" />
               {{ section.label }}
             </h2>
             <p v-if="section.labelEn" class="mt-1 text-xs text-slate-400">{{ section.labelEn }}</p>
           </div>
 
-          <div v-if="section.key === 'technology'" class="mb-5 rounded-xl border border-slate-100 bg-slate-50 p-4">
+          <div v-if="section.key === 'technology'" class="mb-5 rounded-lg border border-slate-100 bg-slate-50 p-4">
             <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h3 class="font-semibold text-slate-950">维度评分展开</h3>
                 <p class="mt-1 text-xs leading-5 text-slate-500">基于本报告中的费用、等待、技术、服务和随访信息做预审可视化，最终选择仍需医生和医院复核。</p>
               </div>
-              <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#C05621]">1-10 分参考</span>
+              <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#123F67]">1-10 分参考</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full min-w-[760px] text-xs">
@@ -2010,13 +2052,13 @@ const resetWizard = () => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 bg-white">
-                  <tr v-for="country in countryScoreRows" :key="country.name" :class="country.recommended ? 'bg-orange-50' : ''">
+                  <tr v-for="country in countryScoreRows" :key="country.name" :class="country.recommended ? 'bg-sky-50' : ''">
                     <td class="px-3 py-3 font-semibold text-slate-800">{{ country.flag }} {{ country.name }}</td>
-                    <td class="px-3 py-3 font-bold text-[#C05621]">{{ country.average }}</td>
+                    <td class="px-3 py-3 font-bold text-[#123F67]">{{ country.average }}</td>
                     <td v-for="score in country.scores" :key="score.label" class="px-3 py-3">
                       <div class="flex items-center gap-2">
                         <div class="h-1.5 w-16 overflow-hidden rounded-full bg-slate-100">
-                          <div class="h-full rounded-full bg-[#DD6B20]" :style="{ width: `${score.value * 10}%` }"></div>
+                          <div class="h-full rounded-full bg-[#1685C3]" :style="{ width: `${score.value * 10}%` }"></div>
                         </div>
                         <span class="font-medium text-slate-700">{{ score.value }}</span>
                       </div>
@@ -2031,11 +2073,11 @@ const resetWizard = () => {
             v-for="block in section.blocks"
             v-show="hasLayoutBlockContent(block)"
             :key="`${section.key}-${block.title}`"
-            :class="['mb-4 rounded-xl border p-4 last:mb-0', lightToneClass(block.tone)]"
+            :class="['mb-4 rounded-lg border p-4 last:mb-0', lightToneClass(block.tone)]"
           >
             <div class="mb-3">
               <h3 class="flex items-center gap-2 font-semibold text-slate-950">
-                <component :is="getReportLayoutIcon(section.icon)" class="h-4 w-4 text-[#DD6B20]" />
+                <component :is="getReportLayoutIcon(section.icon)" class="h-4 w-4 text-[#1685C3]" />
                 {{ block.title }}
               </h3>
               <p v-if="block.titleEn" class="mt-0.5 text-xs text-slate-400">{{ block.titleEn }}</p>
@@ -2065,7 +2107,7 @@ const resetWizard = () => {
                     <h4 class="text-sm font-semibold text-slate-950">{{ card.title }}</h4>
                     <p v-if="card.subtitle" class="mt-0.5 text-[11px] text-slate-400">{{ card.subtitle }}</p>
                   </div>
-                  <span v-if="card.tag" class="rounded-full bg-orange-50 px-2 py-0.5 text-[10px] font-medium text-[#C05621]">{{ card.tag }}</span>
+                  <span v-if="card.tag" class="rounded-full bg-sky-50 px-2 py-0.5 text-[10px] font-medium text-[#123F67]">{{ card.tag }}</span>
                 </div>
                 <div v-if="card.value" :class="['mb-2 text-sm font-bold', lightToneTextClass(card.tone)]">{{ card.value }}</div>
                 <p v-if="card.description" class="text-xs leading-5 text-slate-600">{{ card.description }}</p>
@@ -2084,7 +2126,7 @@ const resetWizard = () => {
                   <tr
                     v-for="(row, rowIndex) in block.table.rows"
                     :key="rowIndex"
-                    :class="row.highlight ? 'bg-orange-50' : 'hover:bg-slate-50'"
+                    :class="row.highlight ? 'bg-sky-50' : 'hover:bg-slate-50'"
                   >
                     <td v-for="(cell, cellIndex) in row.cells" :key="cellIndex" class="px-3 py-2 leading-5 text-slate-700">{{ cell }}</td>
                   </tr>
@@ -2095,8 +2137,8 @@ const resetWizard = () => {
             <div v-if="block.timeline?.length" class="space-y-3">
               <div v-for="(item, index) in block.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3">
                 <div class="flex shrink-0 flex-col items-center">
-                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-[#C05621]">{{ index + 1 }}</div>
-                  <div v-if="index < (block.timeline?.length || 0) - 1" class="my-1 h-full min-h-8 w-px bg-orange-100"></div>
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-xs font-bold text-[#123F67]">{{ index + 1 }}</div>
+                  <div v-if="index < (block.timeline?.length || 0) - 1" class="my-1 h-full min-h-8 w-px bg-sky-100"></div>
                 </div>
                 <div class="flex-1 rounded-lg border border-slate-100 bg-slate-50 p-3">
                   <div class="mb-1 flex flex-wrap items-center justify-between gap-2">
@@ -2116,22 +2158,22 @@ const resetWizard = () => {
 
             <ul v-if="block.items?.length" class="space-y-2 text-sm leading-6 text-slate-700">
               <li v-for="item in block.items" :key="item" class="flex gap-2">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#DD6B20]"></span>
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1685C3]"></span>
                 <span>{{ item }}</span>
               </li>
             </ul>
           </article>
         </section>
 
-        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="!showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div class="max-w-2xl">
-              <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+              <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
                 <BookOpen class="h-3.5 w-3.5" />
                 专业版报告示例 / Pro Report Sample
               </div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <FileText class="h-5 w-5 text-[#DD6B20]" />
+                <FileText class="h-5 w-5 text-[#1685C3]" />
                 想知道专业版报告包含哪些内容? / What's in the Pro Report?
               </h2>
               <p class="mt-2 text-sm leading-6 text-slate-500">
@@ -2140,7 +2182,7 @@ const resetWizard = () => {
             </div>
             <button
               type="button"
-              class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#C05621]"
+              class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#123F67]"
               @click="openProSampleReport"
             >
               <BookOpen class="h-4 w-4" />
@@ -2149,16 +2191,16 @@ const resetWizard = () => {
           </div>
         </section>
 
-        <section class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="!showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Sparkles class="h-5 w-5 text-[#DD6B20]" />
+                <Sparkles class="h-5 w-5 text-[#1685C3]" />
                 专业评估服务包
               </h2>
               <p class="mt-1 text-sm leading-6 text-slate-500">从书面评估到专家视频面诊，再到多学科深度会诊，按资料完整度和决策复杂度选择。</p>
             </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
               副主任医师审核起
             </span>
           </div>
@@ -2167,11 +2209,11 @@ const resetWizard = () => {
             <article
               v-for="pkg in renderedReport.packages"
               :key="pkg.name"
-              :class="['relative flex flex-col rounded-xl border p-4', pkg.badge ? 'pt-7' : '', packageToneClass(pkg)]"
+              :class="['relative flex flex-col rounded-lg border p-4', pkg.badge ? 'pt-7' : '', packageToneClass(pkg)]"
             >
               <div
                 v-if="pkg.badge"
-                class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DD6B20] px-3 py-1 text-center text-xs font-bold text-white shadow-sm"
+                class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#1685C3] px-3 py-1 text-center text-xs font-bold text-white shadow-sm"
               >
                 {{ pkg.badge }}
               </div>
@@ -2204,10 +2246,10 @@ const resetWizard = () => {
               <router-link
                 :to="professionalReportLink"
                 :class="[
-                  'mt-5 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold transition-colors',
+                  'mt-5 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold transition-colors',
                   pkg.highlight
-                    ? 'bg-[#DD6B20] text-white shadow-sm hover:bg-[#C05621]'
-                    : 'border border-orange-200 bg-white text-[#C05621] hover:bg-orange-50',
+                    ? 'bg-[#1685C3] text-white shadow-sm hover:bg-[#123F67]'
+                    : 'border border-sky-200 bg-white text-[#123F67] hover:bg-sky-50',
                 ]"
               >
                 {{ pkg.cta || lt(localText.choosePackage) }}
@@ -2216,29 +2258,29 @@ const resetWizard = () => {
             </article>
           </div>
 
-          <div class="mt-5 rounded-xl border border-orange-100 bg-orange-50/70 p-4">
+          <div class="mt-5 rounded-lg border border-sky-100 bg-sky-50/70 p-4">
             <h3 class="font-semibold text-slate-950">{{ lt(localText.highlights) }}</h3>
             <div class="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
               <div v-for="h in renderedReport.highlights" :key="h" class="flex items-start gap-2 text-sm leading-6 text-slate-700">
-                <Star class="mt-1 h-4 w-4 shrink-0 text-[#ED8936]" />
+                <Star class="mt-1 h-4 w-4 shrink-0 text-[#FF8A34]" />
                 <span>{{ h }}</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="rounded-2xl border border-orange-200 bg-white p-5 shadow-sm md:p-6">
+        <section v-if="!showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Sparkles class="h-5 w-5 text-[#DD6B20]" />
+                <Sparkles class="h-5 w-5 text-[#1685C3]" />
                 专业版评估报告
               </h2>
               <p class="mt-2 text-sm leading-6 text-slate-500">补充完整资料后生成带多 Tab 排版的专业报告。</p>
             </div>
             <router-link
               :to="professionalReportLink"
-              class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-semibold text-white shadow hover:bg-[#C05621] transition-colors"
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-semibold text-white shadow hover:bg-[#123F67] transition-colors"
             >
               生成专业报告
               <ArrowRight class="h-4 w-4" />
@@ -2250,35 +2292,35 @@ const resetWizard = () => {
       <div v-else class="p-4 md:p-8 space-y-8 md:space-y-10">
         <!-- Section 1: Patient Summary -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section1') }}</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ t('report.section1') }}</h2>
           <div class="grid md:grid-cols-3 gap-4 text-sm">
-            <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
+            <div class="rounded-lg bg-sky-50/50 p-4 border border-sky-100">
               <div class="text-gray-500 mb-1">{{ t('report.diagnosis') }}</div>
               <div class="font-semibold text-gray-900">{{ renderedReport.disease }}</div>
             </div>
-            <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
+            <div class="rounded-lg bg-sky-50/50 p-4 border border-sky-100">
               <div class="text-gray-500 mb-1">{{ lt(localText.coreNeed) }}</div>
               <div class="font-semibold text-gray-900 line-clamp-2">{{ renderedReport.need }}</div>
             </div>
-            <div class="rounded-xl bg-orange-50/50 p-4 border border-orange-100">
+            <div class="rounded-lg bg-sky-50/50 p-4 border border-sky-100">
               <div class="text-gray-500 mb-1">{{ lt(localText.compareRegions) }}</div>
               <div class="font-semibold text-gray-900">{{ selectedRegionText }}</div>
             </div>
           </div>
           <div class="mt-4 grid md:grid-cols-4 gap-3 text-sm">
-            <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-4">
               <div class="text-gray-500 mb-1">{{ t('report.patient') }}</div>
               <div class="font-medium text-gray-900">{{ form.fullName || '-' }}</div>
             </div>
-            <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-4">
               <div class="text-gray-500 mb-1">{{ t('report.nationality') }}</div>
               <div class="font-medium text-gray-900">{{ nationalityLabel }}</div>
             </div>
-            <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-4">
               <div class="text-gray-500 mb-1">{{ t('report.preferredLanguage') }}</div>
               <div class="font-medium text-gray-900">{{ languageLabel }}</div>
             </div>
-            <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-4">
               <div class="text-gray-500 mb-1">{{ t('report.email') }}</div>
               <div class="font-medium text-gray-900 break-all">{{ form.email || '-' }}</div>
             </div>
@@ -2287,14 +2329,14 @@ const resetWizard = () => {
 
         <!-- Section 2: Country Comparison -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section2') }}</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ t('report.section2') }}</h2>
           <div class="space-y-3">
             <div
               v-for="c in renderedReport.countries"
               :key="c.name"
               :class="[
-                'rounded-xl border transition-all',
-                c.recommended ? 'border-[#DD6B20] bg-orange-50/30' : 'border-gray-200 bg-white',
+                'rounded-lg border transition-all',
+                c.recommended ? 'border-[#1685C3] bg-sky-50/30' : 'border-gray-200 bg-white',
               ]"
             >
               <button
@@ -2303,7 +2345,7 @@ const resetWizard = () => {
               >
                 <div class="flex items-center gap-3">
                   <span class="text-xl">{{ c.flag }}</span>
-                  <span :class="['font-bold', c.recommended ? 'text-[#C05621]' : 'text-gray-900']">
+                  <span :class="['font-bold', c.recommended ? 'text-[#123F67]' : 'text-gray-900']">
                     {{ c.name }}
                   </span>
                 </div>
@@ -2311,27 +2353,27 @@ const resetWizard = () => {
               </button>
               <div v-if="expandedCountry === c.name" class="px-5 pb-5 grid md:grid-cols-2 gap-3 text-sm">
                 <div class="flex items-start gap-2">
-                  <DollarSign class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <DollarSign class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.totalCost') }}：</span>{{ c.fee }}</div>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Clock class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <Clock class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.waitTime') }}：</span>{{ c.wait }}</div>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Stethoscope class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <Stethoscope class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.tech') }}：</span>{{ c.tech }}</div>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Users class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <Users class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.service') }}：</span>{{ c.service }}</div>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Plane class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <Plane class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.visa') }}：</span>{{ c.visa }}</div>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Shield class="h-4 w-4 text-[#DD6B20] mt-0.5" />
+                  <Shield class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.followup') }}：</span>{{ c.follow }}</div>
                 </div>
               </div>
@@ -2341,18 +2383,18 @@ const resetWizard = () => {
 
         <!-- Section 3: Score -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section3') }}</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ t('report.section3') }}</h2>
           <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <div class="rounded-xl bg-gradient-to-br from-[#C05621] to-[#DD6B20] p-6 text-white text-center">
+            <div class="rounded-lg bg-gradient-to-br from-[#123F67] to-[#1685C3] p-6 text-white text-center">
               <div class="text-4xl font-extrabold">{{ scoreDisplayValue }}</div>
-              <div class="text-sm text-orange-100 mt-1">{{ scoreDisplayCaption }}</div>
+              <div class="text-sm text-sky-100 mt-1">{{ scoreDisplayCaption }}</div>
             </div>
-            <div v-for="a in renderedReport.advantages" :key="a.label" class="rounded-xl bg-orange-50 border border-orange-100 p-6 text-center">
-              <div class="text-lg font-bold text-[#C05621]">{{ a.value }}</div>
+            <div v-for="a in renderedReport.advantages" :key="a.label" class="rounded-lg bg-sky-50 border border-sky-100 p-6 text-center">
+              <div class="text-lg font-bold text-[#123F67]">{{ a.value }}</div>
               <div class="text-sm text-gray-600 mt-1">{{ a.label }}</div>
             </div>
           </div>
-          <div class="rounded-xl border border-gray-200 overflow-hidden">
+          <div class="rounded-lg border border-gray-200 overflow-hidden">
             <table class="w-full text-sm">
               <thead class="bg-gray-50">
                 <tr>
@@ -2372,14 +2414,14 @@ const resetWizard = () => {
 
         <!-- Section 4: Hospitals -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ recommendationTitle }}</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ recommendationTitle }}</h2>
           <div :class="hospitalGridClass">
             <article
               v-for="hospital in hospitalDetailProfiles"
               :key="hospital.key"
               :class="[
-                'overflow-hidden rounded-xl border bg-orange-50/30 transition-all',
-                expandedHospital === hospital.key ? 'border-orange-200 shadow-sm ring-1 ring-orange-100' : 'border-orange-100 hover:bg-orange-50',
+                'overflow-hidden rounded-lg border bg-sky-50/30 transition-all',
+                expandedHospital === hospital.key ? 'border-sky-200 shadow-sm ring-1 ring-sky-100' : 'border-sky-100 hover:bg-sky-50',
               ]"
             >
               <button
@@ -2389,7 +2431,7 @@ const resetWizard = () => {
                 @click="toggleHospital(hospital.key)"
               >
                 <div class="mb-3 flex items-start justify-between gap-3">
-                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DD6B20] text-sm font-bold text-white">{{ hospital.rank }}</span>
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1685C3] text-sm font-bold text-white">{{ hospital.rank }}</span>
                   <div v-if="hospital.matchScore !== undefined" class="text-right">
                     <div class="text-2xl font-black leading-none text-[#14B8A6]">{{ hospital.matchDisplay }}</div>
                     <div class="mt-1 text-[11px] font-medium text-slate-400">{{ hospital.matchCaption }}</div>
@@ -2408,7 +2450,7 @@ const resetWizard = () => {
                   <span
                     v-for="tag in hospital.tags"
                     :key="`${hospital.key}-${tag}`"
-                    class="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-gray-500 ring-1 ring-orange-100"
+                    class="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-gray-500 ring-1 ring-sky-100"
                   >
                     {{ tag }}
                   </span>
@@ -2424,12 +2466,12 @@ const resetWizard = () => {
                   </div>
                 </dl>
                 <p class="mt-3 text-sm leading-6 text-gray-600">{{ hospital.reason }}</p>
-                <div class="mt-4 flex items-center justify-between border-t border-orange-100 pt-3 text-sm font-semibold text-[#C05621]">
+                <div class="mt-4 flex items-center justify-between border-t border-sky-100 pt-3 text-sm font-semibold text-[#123F67]">
                   <span>{{ expandedHospital === hospital.key ? '收起详情' : '点击展开医院详情' }}</span>
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
               </button>
-              <div v-if="expandedHospital === hospital.key" class="border-t border-orange-100 bg-white px-5 pb-5 pt-4">
+              <div v-if="expandedHospital === hospital.key" class="border-t border-sky-100 bg-white px-5 pb-5 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -2437,7 +2479,7 @@ const resetWizard = () => {
                     :key="`${hospital.key}-${item.label}`"
                     class="rounded-lg border border-slate-100 bg-slate-50 p-3"
                   >
-                    <div class="mb-1 text-xs font-semibold text-[#C05621]">{{ item.label }}</div>
+                    <div class="mb-1 text-xs font-semibold text-[#123F67]">{{ item.label }}</div>
                     <p class="text-sm leading-6 text-slate-700">{{ item.value }}</p>
                   </div>
                 </div>
@@ -2445,17 +2487,17 @@ const resetWizard = () => {
             </article>
           </div>
 
-          <div class="mt-5 rounded-xl border border-orange-200 bg-orange-50/70 p-4">
+          <div class="mt-5 rounded-lg border border-sky-200 bg-sky-50/70 p-4">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
-                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#DD6B20]" />
+                <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#1685C3]" />
                 <p>
                   想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
                 </p>
               </div>
               <router-link
                 :to="professionalReportLink"
-                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#C05621] underline decoration-orange-300 underline-offset-4 transition hover:text-[#DD6B20]"
+                class="inline-flex shrink-0 items-center justify-center gap-1 text-sm font-bold text-[#123F67] underline decoration-sky-300 underline-offset-4 transition hover:text-[#1685C3]"
               >
                 Upgrade to Pro ->
               </router-link>
@@ -2465,17 +2507,17 @@ const resetWizard = () => {
 
         <!-- Section 5: Plan -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section5') }}</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ t('report.section5') }}</h2>
           <div class="space-y-4">
-            <div class="rounded-xl bg-gray-50 p-4">
+            <div class="rounded-lg bg-gray-50 p-4">
               <div class="text-sm text-gray-500 mb-1">{{ t('report.direction') }}</div>
               <div class="font-medium text-gray-900">{{ renderedReport.direction }}</div>
             </div>
-            <div class="rounded-xl bg-gray-50 p-4">
+            <div class="rounded-lg bg-gray-50 p-4">
               <div class="text-sm text-gray-500 mb-1">{{ t('report.duration') }}</div>
               <div class="font-medium text-gray-900">{{ renderedReport.duration }}</div>
             </div>
-            <div class="rounded-xl border border-gray-200 overflow-hidden">
+            <div class="rounded-lg border border-gray-200 overflow-hidden">
               <table class="w-full text-sm">
                 <thead class="bg-gray-50">
                   <tr>
@@ -2486,11 +2528,11 @@ const resetWizard = () => {
                 <tbody class="divide-y divide-gray-100">
                   <tr v-for="b in renderedReport.breakdown" :key="b.item">
                     <td class="px-4 py-3 text-gray-800">{{ b.item }}</td>
-                    <td class="px-4 py-3 text-right text-[#C05621] font-semibold whitespace-nowrap">{{ b.cost }}</td>
+                    <td class="px-4 py-3 text-right text-[#123F67] font-semibold whitespace-nowrap">{{ b.cost }}</td>
                   </tr>
-                  <tr class="bg-orange-50">
+                  <tr class="bg-sky-50">
                     <td class="px-4 py-3 font-bold text-gray-900">{{ t('report.total') }}</td>
-                    <td class="px-4 py-3 text-right font-bold text-[#C05621] whitespace-nowrap">{{ renderedReport.totalCost }}</td>
+                    <td class="px-4 py-3 text-right font-bold text-[#123F67] whitespace-nowrap">{{ renderedReport.totalCost }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -2499,15 +2541,15 @@ const resetWizard = () => {
         </section>
 
         <section>
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm md:p-6">
+          <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm md:p-6">
             <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
               <div class="max-w-2xl">
-                <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#C05621]">
+                <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
                   <BookOpen class="h-3.5 w-3.5" />
                   专业版报告示例 / Pro Report Sample
                 </div>
                 <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                  <FileText class="h-5 w-5 text-[#DD6B20]" />
+                  <FileText class="h-5 w-5 text-[#1685C3]" />
                   想知道专业版报告包含哪些内容? / What's in the Pro Report?
                 </h2>
                 <p class="mt-2 text-sm leading-6 text-slate-500">
@@ -2516,7 +2558,7 @@ const resetWizard = () => {
               </div>
               <button
                 type="button"
-                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#DD6B20] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#C05621]"
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#123F67]"
                 @click="openProSampleReport"
               >
                 <BookOpen class="h-4 w-4" />
@@ -2528,21 +2570,21 @@ const resetWizard = () => {
 
         <!-- Section 6: Upgrade -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-100">{{ t('report.section6') }}</h2>
-          <div class="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-4 md:p-8">
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-sky-100">{{ t('report.section6') }}</h2>
+          <div class="rounded-lg border border-sky-200 bg-gradient-to-br from-sky-50 to-white p-4 md:p-8">
             <div class="grid md:grid-cols-3 gap-6 mb-8">
               <div
                 v-for="pkg in renderedReport.packages"
                 :key="pkg.name"
                 :class="[
-                  'rounded-2xl border p-6 flex flex-col',
+                  'rounded-lg border p-6 flex flex-col',
                   pkg.badge || pkg.highlight ? 'pt-8' : '',
-                  pkg.highlight ? 'border-[#DD6B20] bg-orange-50/70 shadow-lg relative' : 'border-gray-200 bg-white',
+                  pkg.highlight ? 'border-[#1685C3] bg-sky-50/70 shadow-lg relative' : 'border-gray-200 bg-white',
                 ]"
               >
                 <div
                   v-if="pkg.badge || pkg.highlight"
-                  class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DD6B20] px-3 py-1 text-center text-xs font-bold text-white"
+                  class="absolute -top-3 left-1/2 min-w-[180px] -translate-x-1/2 whitespace-nowrap rounded-full bg-[#1685C3] px-3 py-1 text-center text-xs font-bold text-white"
                 >
                   {{ pkg.badge || lt(localText.popular) }}
                 </div>
@@ -2555,8 +2597,8 @@ const resetWizard = () => {
                     <p v-if="pkg.subtitle" class="mt-1 text-xs leading-5 text-gray-500">{{ pkg.subtitle }}</p>
                   </div>
                 </div>
-                <div class="mb-4 rounded-xl bg-white p-3 ring-1 ring-orange-100">
-                  <div class="text-2xl font-extrabold text-[#C05621]">{{ pkg.price }}</div>
+                <div class="mb-4 rounded-lg bg-white p-3 ring-1 ring-sky-100">
+                  <div class="text-2xl font-extrabold text-[#123F67]">{{ pkg.price }}</div>
                   <div v-if="pkg.originalPrice" class="mt-1 text-sm font-semibold text-gray-400 line-through">{{ pkg.originalPrice }}</div>
                 </div>
                 <ul class="space-y-2 flex-1">
@@ -2574,8 +2616,8 @@ const resetWizard = () => {
                   :class="[
                     'mt-5 block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors',
                     pkg.highlight
-                      ? 'bg-[#DD6B20] text-white hover:bg-[#C05621]'
-                      : 'border border-[#DD6B20] text-[#DD6B20] hover:bg-orange-50',
+                      ? 'bg-[#1685C3] text-white hover:bg-[#123F67]'
+                      : 'border border-[#1685C3] text-[#1685C3] hover:bg-sky-50',
                   ]"
                 >
                   {{ pkg.cta || lt(localText.choosePackage) }}
@@ -2584,11 +2626,11 @@ const resetWizard = () => {
               </div>
             </div>
 
-            <div class="rounded-xl bg-white border border-orange-100 p-5">
+            <div class="rounded-lg bg-white border border-sky-100 p-5">
               <h4 class="font-bold text-gray-900 mb-3">{{ lt(localText.highlights) }}</h4>
               <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                 <div v-for="h in renderedReport.highlights" :key="h" class="flex items-center gap-2 text-sm text-gray-700">
-                  <Star class="h-4 w-4 text-[#ED8936] shrink-0" />
+                  <Star class="h-4 w-4 text-[#FF8A34] shrink-0" />
                   {{ h }}
                 </div>
               </div>
@@ -2596,7 +2638,7 @@ const resetWizard = () => {
 
             <div class="mt-6 text-center">
               <p class="text-sm text-gray-500 mb-3">{{ lt(localText.contactHint) }}</p>
-              <router-link :to="professionalReportLink" class="inline-flex items-center gap-2 rounded-xl bg-[#DD6B20] px-6 py-3 text-white font-semibold shadow hover:bg-[#C05621] transition-colors">
+              <router-link :to="professionalReportLink" class="inline-flex items-center gap-2 rounded-lg bg-[#1685C3] px-6 py-3 text-white font-semibold shadow hover:bg-[#123F67] transition-colors">
                 <ArrowRight class="h-4 w-4" />
                 {{ t('report.contact') }}
               </router-link>
@@ -2609,38 +2651,31 @@ const resetWizard = () => {
 
   <!-- Redesigned collection page -->
   <div v-else class="collection-page min-h-screen bg-[#f6f8fb] text-slate-900">
-    <div class="mx-auto max-w-4xl px-4 py-8">
-      <div class="mb-6">
-        <router-link to="/" class="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-[#C05621]">
-          <ArrowLeft class="h-4 w-4" />
-          {{ t('cases.back') }}
-        </router-link>
-      </div>
-
-      <div class="mb-10 text-center">
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-medium text-[#C05621]">
-          <Sparkles class="h-4 w-4" />
+    <div class="report-form-shell mx-auto max-w-4xl px-4">
+      <div class="report-form-intro text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-[#123F67]">
+          <img class="h-4 w-4" src="/images/figma/report/input-preview-sparkles.svg" data-figma-node="2:1925" alt="" aria-hidden="true" />
           <span>报告样例预览</span>
         </div>
         <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
-        <p class="text-sm text-slate-500">填写以下基础信息，生成您的专属简易预审报告；医疗报告上传仅用于专业版。</p>
+        <p class="text-sm text-slate-500">填写以下表单生成您的专属报告</p>
       </div>
 
-      <div class="mb-8 rounded-[18px] border border-orange-100 bg-white p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] md:p-8">
-        <h2 class="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <User class="h-5 w-5 text-[#DD6B20]" />
+      <div class="report-form-card mb-8 rounded-2xl bg-white p-6 md:p-8">
+        <h2 class="report-form-section-title mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
+          <User class="h-5 w-5 text-[#1685C3]" />
           基本信息
         </h2>
 
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div class="report-form-grid grid grid-cols-1 gap-5 md:grid-cols-2">
           <div>
             <label class="mb-1.5 block text-sm font-medium text-slate-700">姓名 *</label>
             <input
               v-model="form.fullName"
               type="text"
               placeholder="您的名字"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
-              :class="shouldShowError('fullName') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('fullName') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('fullName')"
             />
             <p v-if="shouldShowError('fullName')" class="mt-1 text-xs text-red-400">{{ validationErrors.fullName }}</p>
@@ -2650,8 +2685,8 @@ const resetWizard = () => {
             <label class="mb-1.5 block text-sm font-medium text-slate-700">性别 *</label>
             <select
               v-model="form.gender"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
-              :class="shouldShowError('gender') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('gender') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#1685C3]'"
               @change="markTouched('gender')"
               @blur="markTouched('gender')"
             >
@@ -2668,7 +2703,7 @@ const resetWizard = () => {
             <input
               v-model="form.dateOfBirth"
               type="date"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('dateOfBirth')"
             />
             <p v-if="shouldShowError('dateOfBirth')" class="mt-1 text-xs text-red-400">{{ validationErrors.dateOfBirth }}</p>
@@ -2680,7 +2715,7 @@ const resetWizard = () => {
               v-model="form.nationality"
               type="text"
               placeholder="美国"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('nationality')"
             />
           </div>
@@ -2689,7 +2724,7 @@ const resetWizard = () => {
             <label class="mb-1.5 block text-sm font-medium text-slate-700">证件类型</label>
             <select
               v-model="form.idType"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="markTouched('idType'); markTouched('idNumber')"
               @blur="markTouched('idType')"
             >
@@ -2707,36 +2742,36 @@ const resetWizard = () => {
               type="text"
               placeholder="您的证件号码"
               autocomplete="off"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
-              :class="shouldShowError('idNumber') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('idNumber') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('idNumber')"
             />
             <p v-if="shouldShowError('idNumber')" class="mt-1 text-xs text-red-400">{{ validationErrors.idNumber }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话 *</label>
             <input
               v-model="form.phone"
               type="tel"
               placeholder="+1 (555) 000-0000"
               inputmode="tel"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
-              :class="shouldShowError('phone') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('phone') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('phone')"
             />
             <p v-if="shouldShowError('phone')" class="mt-1 text-xs text-red-400">{{ validationErrors.phone }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱</label>
             <input
               v-model="form.email"
               type="email"
               placeholder="您的邮箱"
               autocomplete="email"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
-              :class="shouldShowError('email') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
+              :class="shouldShowError('email') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('email')"
             />
             <p v-if="shouldShowError('email')" class="mt-1 text-xs text-red-400">{{ validationErrors.email }}</p>
@@ -2748,7 +2783,7 @@ const resetWizard = () => {
               v-model="form.city"
               type="text"
               placeholder="您的城市"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('city')"
             />
           </div>
@@ -2757,7 +2792,7 @@ const resetWizard = () => {
             <label class="mb-1.5 block text-sm font-medium text-slate-700">首选语言</label>
             <select
               v-model="form.preferredLanguage"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="markTouched('preferredLanguage')"
               @blur="markTouched('preferredLanguage')"
             >
@@ -2767,17 +2802,17 @@ const resetWizard = () => {
           </div>
         </div>
 
-        <h2 class="mb-6 mt-8 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <Stethoscope class="h-5 w-5 text-[#DD6B20]" />
+        <h2 class="report-form-section-title mb-6 mt-8 flex items-center gap-2 text-xl font-semibold text-slate-950">
+          <Stethoscope class="h-5 w-5 text-[#1685C3]" />
           就医信息
         </h2>
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div class="report-form-grid report-form-grid--medical grid grid-cols-1 gap-5 md:grid-cols-2">
           <div class="md:col-span-2">
             <label class="mb-1.5 block text-sm font-medium text-slate-700">就医目的 *</label>
             <select
               v-model="form.visitPurpose"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
-              :class="shouldShowError('visitPurpose') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
+              class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 outline-none transition"
+              :class="shouldShowError('visitPurpose') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#1685C3]'"
               @change="markTouched('visitPurpose')"
               @blur="markTouched('visitPurpose')"
             >
@@ -2789,54 +2824,6 @@ const resetWizard = () => {
             <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-400">{{ validationErrors.visitPurpose }}</p>
           </div>
 
-          <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">就医诉求</label>
-            <select
-              v-model="form.careNeed"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
-              :class="shouldShowError('careNeed') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
-              @change="markTouched('careNeed'); markTouched('careNeedOther')"
-              @blur="markTouched('careNeed')"
-            >
-              <option value="">Select / 请选择</option>
-              <option v-for="item in careNeedOptions" :key="item.value" :value="item.value">
-                {{ item.label }}
-              </option>
-            </select>
-            <p v-if="shouldShowError('careNeed')" class="mt-1 text-xs text-red-400">{{ validationErrors.careNeed }}</p>
-          </div>
-
-          <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">期望治疗时间</label>
-            <select
-              v-model="form.expectedTreatmentTime"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 outline-none transition"
-              :class="shouldShowError('expectedTreatmentTime') ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-[#DD6B20]'"
-              @change="markTouched('expectedTreatmentTime')"
-              @blur="markTouched('expectedTreatmentTime')"
-            >
-              <option value="">Select / 请选择</option>
-              <option v-for="item in expectedTreatmentTimeOptions" :key="item.value" :value="item.value">
-                {{ item.label }}
-              </option>
-            </select>
-            <p v-if="shouldShowError('expectedTreatmentTime')" class="mt-1 text-xs text-red-400">{{ validationErrors.expectedTreatmentTime }}</p>
-          </div>
-
-          <div v-if="form.careNeed === 'other'" class="md:col-span-2">
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">其他就医诉求说明 *</label>
-            <input
-              v-model="form.careNeedOther"
-              type="text"
-              maxlength="300"
-              placeholder="请补充说明您的就医诉求"
-              class="w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
-              :class="shouldShowError('careNeedOther') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#DD6B20] focus:ring-orange-200'"
-              @blur="markTouched('careNeedOther')"
-            />
-            <p v-if="shouldShowError('careNeedOther')" class="mt-1 text-xs text-red-400">{{ validationErrors.careNeedOther }}</p>
-          </div>
-
           <div class="md:col-span-2">
             <label class="mb-1.5 block text-sm font-medium text-slate-700">症状及病史</label>
             <textarea
@@ -2844,7 +2831,7 @@ const resetWizard = () => {
               rows="4"
               maxlength="500"
               placeholder="请描述您的症状、诊断和当前治疗情况..."
-              class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#DD6B20]"
+              class="w-full resize-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('chiefComplaint')"
             />
             <div class="mt-1 flex items-center justify-between gap-3 text-xs text-slate-500">
@@ -2856,11 +2843,11 @@ const resetWizard = () => {
 
         </div>
 
-        <div class="mt-8 rounded-xl border border-orange-200 bg-orange-50 p-5">
+        <div class="report-disclaimer mt-8 rounded-[14px] p-5">
           <div class="flex items-start gap-3">
-            <AlertTriangle class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#DD6B20]" />
+            <AlertTriangle class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#1685C3]" />
             <div>
-              <h3 class="mb-2 font-semibold text-[#C05621]">费用透明声明</h3>
+              <h3 class="mb-2 font-semibold text-[#123F67]">费用透明声明</h3>
               <ul class="list-inside list-disc space-y-1.5 text-sm leading-6 text-[#9A4A1E]">
                 <li>以上费用为全周期治疗预估区间，实际费用可能因病情分期、个体差异、并发症、住院标准等因素产生±15-25%波动</li>
                 <li>进口靶向药与国产替代药价格差异可达3-10倍</li>
@@ -2871,15 +2858,15 @@ const resetWizard = () => {
           </div>
         </div>
 
-        <div class="mt-8 rounded-xl border border-slate-200 bg-white p-6">
+        <div class="report-insurance-card mt-8 rounded-[14px] border border-slate-300 bg-white p-6">
           <h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-950">
-            <Shield class="h-5 w-5 text-[#DD6B20]" />
+            <Shield class="h-5 w-5 text-[#1685C3]" />
             保险覆盖自检
           </h3>
           <div class="relative">
             <select
               :value="selectedInsurance ?? ''"
-              class="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#DD6B20]"
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="selectedInsurance = ($event.target as HTMLSelectElement).value === '' ? null : Number(($event.target as HTMLSelectElement).value)"
             >
               <option value="">Select your insurance company / 选择您的保险公司</option>
@@ -2888,9 +2875,9 @@ const resetWizard = () => {
             <ChevronDown class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
           </div>
 
-          <div v-if="selectedInsuranceOption" class="mt-5 rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <div v-if="selectedInsuranceOption" class="mt-5 rounded-lg border border-slate-100 bg-slate-50 p-5">
             <h4 class="mb-4 flex items-center gap-2 font-semibold text-slate-950">
-              <Search class="h-4 w-4 text-[#DD6B20]" />
+              <Search class="h-4 w-4 text-[#1685C3]" />
               Coverage Results for {{ selectedInsuranceOption.name }}
             </h4>
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -2915,11 +2902,11 @@ const resetWizard = () => {
               <AlertTriangle class="h-4 w-4" />
               <span>{{ selectedInsuranceOption.note }}</span>
             </div>
-            <div class="mt-3 flex items-center gap-2 text-sm text-[#C05621]">
+            <div class="mt-3 flex items-center gap-2 text-sm text-[#123F67]">
               <DollarSign class="h-4 w-4" />
               <span>直付网络 Direct Pay: {{ selectedInsuranceOption.directPay }}</span>
             </div>
-            <div class="mt-3 rounded-lg border border-orange-100 bg-orange-50 p-3 text-sm text-[#9A4A1E]">
+            <div class="mt-3 rounded-lg border border-sky-100 bg-sky-50 p-3 text-sm text-[#9A4A1E]">
               <span class="font-semibold">建议：</span>联系保险公司国际部，告知计划编号即可查询中国就医覆盖详情
             </div>
           </div>
@@ -2928,7 +2915,7 @@ const resetWizard = () => {
         <p
           v-if="submissionError"
           :class="[
-            'mt-6 rounded-xl border px-4 py-3 text-sm',
+            'mt-6 rounded-lg border px-4 py-3 text-sm',
             submissionErrorTone === 'warning'
               ? 'border-amber-300/40 bg-amber-50 text-[#9A4A1E]'
               : 'border-red-400/30 bg-red-500/10 text-red-300',
@@ -2937,10 +2924,10 @@ const resetWizard = () => {
           {{ submissionError }}
         </p>
 
-        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <div class="report-form-actions mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <button
             :disabled="generating"
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#C05621] px-8 py-4 font-semibold text-white transition-all hover:bg-[#9A3412] disabled:cursor-not-allowed disabled:opacity-50"
+            class="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#C05621] px-8 py-4 font-semibold text-white transition-all hover:bg-[#9A3412] disabled:cursor-not-allowed disabled:opacity-50"
             @click="generateFreeReport"
           >
             <Loader2 v-if="generating" class="h-5 w-5 animate-spin" />
@@ -2949,7 +2936,7 @@ const resetWizard = () => {
           </button>
           <router-link
             to="/cases"
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-700 px-8 py-4 font-semibold text-white transition-all hover:bg-slate-600"
+            class="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#334155] px-8 py-4 font-semibold text-white transition-all hover:bg-slate-600"
           >
             <BookOpen class="h-5 w-5" />
             查看案例
@@ -2957,19 +2944,19 @@ const resetWizard = () => {
         </div>
       </div>
 
-      <div class="rounded-[18px] border border-orange-100 bg-white p-6 shadow-sm md:p-8">
+      <div class="report-preview-card rounded-2xl bg-white p-6 md:p-8">
         <h2 class="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <BarChart3 class="h-5 w-5 text-[#DD6B20]" />
+          <BarChart3 class="h-5 w-5 text-[#1685C3]" />
           报告预览样例
         </h2>
-        <p class="mb-6 text-sm text-slate-500">以下为基于来华治疗的样例报告。您的实际报告将根据病情和资料定制。</p>
-        <div class="space-y-4">
+        <p class="mb-6 text-sm text-slate-500">以下为基于乳腺癌中国治疗的样例报告。您的实际报告将根据您的病情定制。</p>
+        <div class="report-preview-list space-y-4">
           <div
             v-for="item in reportPreviewItems"
             :key="item.title"
-            class="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-orange-200 hover:bg-orange-50/40"
+            class="report-preview-item flex items-center gap-4 rounded-[14px] border border-slate-300 bg-white p-4 transition-all hover:border-orange-300 hover:bg-orange-50/40"
           >
-            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-[#DD6B20]">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-50 text-[#1685C3]">
               <component :is="item.icon" class="h-5 w-5" />
             </div>
             <div class="min-w-0 flex-1">
@@ -2985,80 +2972,105 @@ const resetWizard = () => {
 
   <div
     v-if="showProSampleReport"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3 sm:p-6"
+    class="pro-report-page fixed inset-x-0 bottom-0 top-[65px] z-50 overflow-y-auto bg-[#0f172a]"
     @click="closeProSampleReport"
   >
     <div
-      class="flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-2xl"
+      class="pro-report-shell mx-auto flex min-h-full w-full max-w-[992px] flex-col"
       @click.stop
     >
-      <div class="border-b border-orange-100 bg-white px-5 py-4 md:px-6">
+      <div class="pro-report-header px-5 pb-5 pt-6 md:px-0">
+        <div class="pro-report-kicker">
+          <span>报告体验</span>
+          <ArrowRight class="h-3.5 w-3.5" />
+          <strong>专业版报告生成</strong>
+        </div>
         <div class="flex items-start justify-between gap-4">
           <div class="min-w-0">
-            <div class="text-sm font-semibold text-[#C05621]">{{ proSampleReport.meta.badge }}</div>
-            <h2 class="mt-1 text-lg font-bold leading-7 text-slate-950 md:text-xl">{{ proSampleReport.meta.title }}</h2>
-            <p class="mt-1 text-sm leading-6 text-slate-500">{{ proSampleReport.meta.patient }}</p>
+            <div class="pro-report-demo-badge">
+              <img class="pro-report-figma-icon pro-report-figma-icon--demo" src="/images/figma/report/pro-demo-file.svg" data-figma-node="43:6180" alt="" aria-hidden="true" />
+              {{ proSampleReport.meta.badge }}
+            </div>
+            <h2 class="pro-report-title">{{ proSampleReport.meta.title }}</h2>
+            <p class="pro-report-patient">{{ proSampleReport.meta.patient }}</p>
           </div>
           <button
             type="button"
-            class="rounded-full p-1.5 text-slate-400 transition hover:bg-orange-50 hover:text-[#C05621]"
+            class="rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
             aria-label="关闭示例报告"
             @click="closeProSampleReport"
           >
-            <XCircle class="h-6 w-6" />
+            <X class="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
+      </div>
 
-        <div class="mt-4 flex gap-2 overflow-x-auto pb-1">
+      <div class="pro-report-body flex-1 bg-[#0f172a] px-5 md:px-0">
+        <div class="pro-report-meta-grid">
+          <div><span>报告编号 / Report ID:</span><strong>DEMO-20260530-SP-001</strong></div>
+          <div><span>患者编号 / Patient ID:</span><strong>国际患者专属编码 / International Patient ID</strong></div>
+          <div><span>生成时间 / Generated:</span><strong>2026年05月30日（北京时间） / May 30, 2026 (Beijing Time)</strong></div>
+          <div><span>版本 / Version:</span><strong>专业完整版V1.0 / Professional Full Version V1.0</strong></div>
+        </div>
+
+        <div class="pro-report-tabs flex gap-2 overflow-x-auto pb-1">
           <button
             v-for="tab in proSampleTabs"
             :key="tab.key"
             type="button"
             :class="[
-              'inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors',
+              'inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-colors',
               activeProSampleTab === tab.key
-                ? 'border-orange-200 bg-orange-50 text-[#C05621]'
-                : 'border-slate-200 bg-white text-slate-500 hover:border-orange-200 hover:text-[#C05621]',
+                ? 'border-teal-400/40 bg-teal-400/10 text-teal-200'
+                : 'border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-500 hover:text-white',
             ]"
+            :aria-pressed="activeProSampleTab === tab.key"
             @click="activeProSampleTab = tab.key"
           >
-            <component :is="tab.icon" class="h-4 w-4" />
+            <span
+              class="pro-report-tab-icon"
+              :style="{ '--pro-report-tab-icon': `url(${tab.asset})` }"
+              :data-figma-node="tab.nodeId"
+              aria-hidden="true"
+            />
             {{ tab.label }}
           </button>
         </div>
-      </div>
 
-      <div class="overflow-y-auto bg-[#f7f8fb] p-4 md:p-6">
-        <div class="mb-4 rounded-xl border border-orange-100 bg-orange-50/80 p-4 text-sm leading-6 text-[#9A4A1E]">
-          {{ proSampleReport.meta.note }}
+        <div class="pro-report-section-label">
+          <img class="pro-report-section-chevron" src="/images/figma/report/pro-section-chevron.svg" data-figma-node="43:6292" alt="" aria-hidden="true" />
+          <span>{{ activeProSampleTabDefinition.label }}</span>
+          <span>/</span>
+          <span>{{ activeProSampleTab === 'pathology' ? 'Core Pathology' : 'Professional Report' }}</span>
         </div>
 
-        <section v-if="activeProSampleTab === 'analysis'" class="space-y-4">
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
-            <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
-              <FileSearch class="h-5 w-5 text-[#DD6B20]" />
-              一、病情深度分析解读
+        <section v-if="activeProSampleTab === 'pathology'" class="space-y-4">
+          <div class="pro-pathology-panel rounded-[14px] border border-slate-700 bg-slate-900/80 p-5 shadow-sm md:p-8">
+            <h3 class="mb-4 flex items-center gap-2 font-bold text-white">
+              <img class="pro-pathology-heading-icon" src="/images/figma/report/pro-pathology-heading.svg" data-figma-node="43:6299" alt="" aria-hidden="true" />
+              核心病理诊断 / Core Pathology Diagnosis
             </h3>
-            <div class="grid gap-3 md:grid-cols-2">
+            <div class="pro-diagnosis-grid grid gap-4 md:grid-cols-2">
               <div
-                v-for="item in proSampleReport.analysis.basics"
-                :key="item.label"
-                class="rounded-xl border border-slate-100 bg-slate-50 p-4"
+                v-for="(pair, pairIndex) in [proSampleReport.analysis.basics.slice(0, 2), proSampleReport.analysis.basics.slice(2, 4)]"
+                :key="pairIndex"
+                class="pro-diagnosis-card rounded-lg border border-slate-700 bg-slate-950/70 p-6"
               >
-                <div class="text-xs font-semibold text-slate-500">{{ item.label }}</div>
-                <div class="mt-1 font-bold text-slate-950">{{ item.value }}</div>
+                <div class="text-xs font-semibold text-slate-400">{{ pair[0]?.label }}</div>
+                <div class="mt-1 text-sm font-bold leading-5 text-white">{{ pair[0]?.value }}</div>
+                <div class="mt-1 text-xs leading-4 text-slate-400">{{ pair[1]?.value }}</div>
               </div>
             </div>
-          </div>
 
-          <div class="grid gap-4 md:grid-cols-2">
+          <div class="pro-indicator-list mt-5 grid gap-3">
+            <h4 class="text-sm font-semibold text-slate-200">核心病理指标解读 / Core Pathology Indicators</h4>
             <article
               v-for="group in proSampleReport.analysis.groups"
               :key="group.title"
-              class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm"
+              class="rounded-lg border border-slate-700 bg-slate-950/50 p-4 shadow-sm"
             >
-              <h4 class="mb-3 font-bold text-[#C05621]">{{ group.title }}</h4>
-              <ul class="space-y-2 text-sm leading-6 text-slate-700">
+              <h4 class="mb-3 font-bold text-teal-200">{{ group.title }}</h4>
+              <ul class="space-y-2 text-sm leading-6 text-slate-300">
                 <li v-for="item in group.items" :key="item" class="flex gap-2">
                   <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
                   <span>{{ item }}</span>
@@ -3067,28 +3079,29 @@ const resetWizard = () => {
             </article>
           </div>
 
-          <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-800">
+          <div class="mt-5 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-5 text-amber-200">
             {{ proSampleReport.analysis.warning }}
+          </div>
           </div>
         </section>
 
         <section v-else-if="activeProSampleTab === 'treatment'" class="space-y-4">
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+          <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-5 flex items-center gap-2 font-bold text-slate-950">
-              <Stethoscope class="h-5 w-5 text-[#DD6B20]" />
+              <Stethoscope class="h-5 w-5 text-[#1685C3]" />
               二、治疗路径方案（预估）
             </h3>
             <div class="space-y-4">
               <div v-for="(step, index) in proSampleReport.treatment.steps" :key="step.title" class="flex gap-3">
                 <div class="flex shrink-0 flex-col items-center">
-                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-sm font-bold text-[#C05621]">{{ index + 1 }}</div>
-                  <div v-if="index < proSampleReport.treatment.steps.length - 1" class="my-1 h-full min-h-10 w-px bg-orange-100"></div>
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-[#123F67]">{{ index + 1 }}</div>
+                  <div v-if="index < proSampleReport.treatment.steps.length - 1" class="my-1 h-full min-h-10 w-px bg-sky-100"></div>
                 </div>
-                <div class="flex-1 rounded-xl border border-slate-100 bg-slate-50 p-4">
+                <div class="flex-1 rounded-lg border border-slate-100 bg-slate-50 p-4">
                   <h4 class="font-bold text-slate-950">{{ step.title }}</h4>
                   <ul class="mt-2 space-y-1 text-sm leading-6 text-slate-600">
                     <li v-for="detail in step.details" :key="detail" class="flex gap-2">
-                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#DD6B20]"></span>
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1685C3]"></span>
                       <span>{{ detail }}</span>
                     </li>
                   </ul>
@@ -3100,10 +3113,10 @@ const resetWizard = () => {
             </div>
           </div>
 
-          <div class="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
+          <div class="rounded-lg border border-emerald-100 bg-white p-5 shadow-sm">
             <h4 class="mb-4 font-bold text-slate-950">治愈率预估</h4>
             <div class="grid grid-cols-3 gap-3 text-center">
-              <div v-for="item in proSampleReport.treatment.outcome" :key="item.label" class="rounded-xl bg-emerald-50 p-4">
+              <div v-for="item in proSampleReport.treatment.outcome" :key="item.label" class="rounded-lg bg-emerald-50 p-4">
                 <div class="text-2xl font-black text-emerald-600">{{ item.value }}</div>
                 <div class="mt-1 text-xs leading-5 text-slate-500">{{ item.label }}</div>
               </div>
@@ -3113,12 +3126,12 @@ const resetWizard = () => {
         </section>
 
         <section v-else-if="activeProSampleTab === 'cost'" class="space-y-4">
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+          <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
-              <DollarSign class="h-5 w-5 text-[#DD6B20]" />
+              <DollarSign class="h-5 w-5 text-[#1685C3]" />
               三、费用明细 - 0猫腻透明报价
             </h3>
-            <div class="overflow-x-auto rounded-xl border border-slate-100">
+            <div class="overflow-x-auto rounded-lg border border-slate-100">
               <table class="w-full min-w-[560px] text-sm">
                 <thead class="bg-slate-50 text-slate-500">
                   <tr>
@@ -3131,12 +3144,12 @@ const resetWizard = () => {
                   <tr v-for="row in proSampleReport.cost.core" :key="row[0]">
                     <td class="px-4 py-3 text-slate-700">{{ row[0] }}</td>
                     <td class="px-4 py-3 text-right font-semibold text-slate-700">{{ row[1] }}</td>
-                    <td class="px-4 py-3 text-right font-semibold text-[#C05621]">{{ row[2] }}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-[#123F67]">{{ row[2] }}</td>
                   </tr>
-                  <tr class="bg-orange-50">
+                  <tr class="bg-sky-50">
                     <td class="px-4 py-3 font-bold text-slate-950">核心医疗小计</td>
                     <td class="px-4 py-3 text-right font-bold text-slate-950">¥79,000</td>
-                    <td class="px-4 py-3 text-right font-bold text-[#C05621]">~$11,280</td>
+                    <td class="px-4 py-3 text-right font-bold text-[#123F67]">~$11,280</td>
                   </tr>
                 </tbody>
               </table>
@@ -3144,7 +3157,7 @@ const resetWizard = () => {
           </div>
 
           <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+            <div class="rounded-lg border border-emerald-100 bg-emerald-50 p-5">
               <h4 class="mb-3 font-bold text-emerald-800">第二类：配套服务（全免费）</h4>
               <ul class="space-y-2 text-sm leading-6 text-emerald-800">
                 <li v-for="item in proSampleReport.cost.support" :key="item" class="flex gap-2">
@@ -3155,34 +3168,34 @@ const resetWizard = () => {
               <div class="mt-3 font-bold text-emerald-700">小计：{{ proSampleReport.cost.totals.support }}</div>
             </div>
 
-            <div class="rounded-2xl border border-amber-100 bg-amber-50 p-5">
+            <div class="rounded-lg border border-amber-100 bg-amber-50 p-5">
               <h4 class="mb-3 font-bold text-amber-800">第三类：生活预估（自理）</h4>
               <div class="space-y-2 text-sm">
                 <div v-for="row in proSampleReport.cost.living" :key="row[0]" class="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-2">
                   <span class="text-slate-700">{{ row[0] }}</span>
-                  <span class="shrink-0 font-semibold text-[#C05621]">{{ row[1] }} / {{ row[2] }}</span>
+                  <span class="shrink-0 font-semibold text-[#123F67]">{{ row[1] }} / {{ row[2] }}</span>
                 </div>
               </div>
               <div class="mt-3 font-bold text-amber-800">小计：{{ proSampleReport.cost.totals.living }}</div>
             </div>
           </div>
 
-          <div class="rounded-2xl border border-orange-200 bg-orange-50 p-5">
+          <div class="rounded-lg border border-sky-200 bg-sky-50 p-5">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div>
                 <div class="font-bold text-slate-950">预估总费用</div>
                 <p class="mt-1 text-sm text-[#9A4A1E]">核心医疗 + 配套服务（免费）+ 生活预估</p>
               </div>
-              <div class="text-2xl font-black text-[#C05621]">{{ proSampleReport.cost.totals.total }}</div>
+              <div class="text-2xl font-black text-[#123F67]">{{ proSampleReport.cost.totals.total }}</div>
             </div>
             <p class="mt-3 text-sm leading-6 text-[#9A4A1E]">{{ proSampleReport.cost.totals.note }}</p>
           </div>
         </section>
 
         <section v-else-if="activeProSampleTab === 'insurance'" class="space-y-4">
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+          <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
-              <Shield class="h-5 w-5 text-[#DD6B20]" />
+              <Shield class="h-5 w-5 text-[#1685C3]" />
               四、保险报销评估
             </h3>
             <h4 class="mb-3 font-semibold text-slate-950">{{ proSampleReport.insurance.name }}</h4>
@@ -3201,7 +3214,7 @@ const resetWizard = () => {
             </div>
           </div>
 
-          <div class="rounded-2xl border border-amber-100 bg-amber-50 p-5">
+          <div class="rounded-lg border border-amber-100 bg-amber-50 p-5">
             <h4 class="mb-3 font-bold text-amber-800">报销建议</h4>
             <ul class="space-y-2 text-sm leading-6 text-amber-800">
               <li v-for="item in proSampleReport.insurance.suggestions" :key="item" class="flex gap-2">
@@ -3212,8 +3225,8 @@ const resetWizard = () => {
           </div>
         </section>
 
-        <section v-else class="space-y-4">
-          <div class="rounded-2xl border border-red-100 bg-red-50 p-5">
+        <section v-else-if="activeProSampleTab === 'service'" class="space-y-4">
+          <div class="rounded-lg border border-red-100 bg-red-50 p-5">
             <h3 class="mb-2 flex items-center gap-2 font-bold text-red-700">
               <HeartPulse class="h-5 w-5" />
               五、术后防复发随访体系
@@ -3221,11 +3234,11 @@ const resetWizard = () => {
             <p class="text-sm leading-6 text-red-700">{{ proSampleReport.followup.reason }}</p>
           </div>
 
-          <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
+          <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h4 class="mb-4 font-bold text-slate-950">随访时间线</h4>
             <div class="space-y-3">
-              <div v-for="item in proSampleReport.followup.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3">
-                <div class="w-20 shrink-0 text-sm font-bold text-[#C05621]">{{ item.time }}</div>
+              <div v-for="item in proSampleReport.followup.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3 rounded-lg border border-slate-100 bg-slate-50 p-3">
+                <div class="w-20 shrink-0 text-sm font-bold text-[#123F67]">{{ item.time }}</div>
                 <div>
                   <div class="font-semibold text-slate-950">{{ item.title }}</div>
                   <p class="mt-1 text-sm leading-6 text-slate-600">{{ item.desc }}</p>
@@ -3238,9 +3251,9 @@ const resetWizard = () => {
             <article
               v-for="service in proSampleReport.followup.services"
               :key="service.title"
-              class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm"
+              class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm"
             >
-              <h4 class="mb-3 font-bold text-[#C05621]">{{ service.title }}</h4>
+              <h4 class="mb-3 font-bold text-[#123F67]">{{ service.title }}</h4>
               <ul class="space-y-2 text-sm leading-6 text-slate-700">
                 <li v-for="item in service.items" :key="item" class="flex gap-2">
                   <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
@@ -3250,11 +3263,963 @@ const resetWizard = () => {
             </article>
           </div>
 
-          <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-5 text-center font-bold text-emerald-700">
+          <div class="rounded-lg border border-emerald-100 bg-emerald-50 p-5 text-center font-bold text-emerald-700">
             {{ proSampleReport.followup.fee }}
           </div>
         </section>
+
+        <section v-else class="rounded-lg border border-slate-700 bg-slate-900/80 p-6 text-slate-300">
+          <h3 class="text-lg font-bold text-white">{{ proSampleTabs.find((tab) => tab.key === activeProSampleTab)?.label }}</h3>
+          <p class="mt-3 text-sm leading-6">该模块将在真实专业报告中根据完整病历、影像与专家审核结果生成。</p>
+        </section>
+
+        <section class="pro-package-section">
+          <div class="pro-package-heading">
+            <h3>选择您的评估报告套餐 / Choose Your Assessment Package</h3>
+            <p>所有费用均以美元标价 / All prices displayed in USD</p>
+          </div>
+
+          <div class="pro-package-grid">
+            <article
+              v-for="pkg in proSamplePackages"
+              :key="pkg.name"
+              :class="['pro-package-card', { 'pro-package-card--featured': pkg.featured }]"
+            >
+              <span v-if="pkg.badge" class="pro-package-badge">{{ pkg.badge }}</span>
+              <h4>{{ pkg.name }}</h4>
+              <div class="pro-package-price">{{ pkg.price }}</div>
+              <div class="pro-package-original">{{ pkg.originalPrice }}</div>
+              <p class="pro-package-summary"><CheckCircle class="h-4 w-4" />{{ pkg.summary }}</p>
+              <ul>
+                <li v-for="feature in pkg.features" :key="feature">
+                  <Check class="h-4 w-4" />
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+              <router-link to="/professional-report">{{ pkg.action }}</router-link>
+              <p class="pro-package-footnote">{{ pkg.footnote }}</p>
+            </article>
+          </div>
+
+          <div class="pro-upgrade-cta">
+            <div>
+              <h4><Sparkles class="h-5 w-5" />想要获得属于您的专业版精准评估报告？</h4>
+              <p>Want your own professional assessment report?</p>
+              <p>联系客服升级，享受副主任医师1v1面诊、精准费用预估、个性化治疗方案</p>
+            </div>
+            <div class="pro-upgrade-actions">
+              <button type="button" @click="openConsultation">联系客服 / Contact</button>
+              <a href="mailto:contact@huanyuyunyi.com">邮件咨询 / Email</a>
+            </div>
+            <small>已有 2,847 位国际患者通过专业版报告成功规划了海外就医行程 / 2,847 international patients have successfully planned their medical travel</small>
+          </div>
+
+          <button type="button" class="pro-report-back" @click="closeProSampleReport">
+            返回重新上传 / Back to Upload
+          </button>
+        </section>
       </div>
     </div>
+
+    <footer class="pro-report-footer">
+      <div class="pro-report-footer__inner">
+        <div>
+          <strong>寰宇云医</strong>
+          <p>全球患者来华就医首选平台</p>
+          <span>蚂蚁集团技术保障 × 好大夫94万医生</span>
+        </div>
+        <div>
+          <strong>服务</strong>
+          <router-link to="/diseases-technologies">疾病中心</router-link>
+          <router-link to="/cost">费用对比</router-link>
+          <router-link to="/report">报告体验</router-link>
+          <router-link to="/visa">签证办理</router-link>
+        </div>
+        <div>
+          <strong>资源</strong>
+          <router-link to="/cases">患者案例</router-link>
+          <router-link to="/insurance">保险指南</router-link>
+          <router-link to="/steps">就医步骤</router-link>
+          <router-link to="/about">关于我们</router-link>
+        </div>
+        <div>
+          <strong>联系</strong>
+          <a href="mailto:contact@huanyuyunyi.com">contact@huanyuyunyi.com</a>
+          <a href="tel:+864008886688">+86 400-888-6688</a>
+          <span>WhatsApp · 24小时客服</span>
+        </div>
+      </div>
+      <p class="pro-report-footer__copyright">Copyright 2026 寰宇云医. All rights reserved.</p>
+    </footer>
   </div>
 </template>
+
+<style scoped>
+.collection-page,
+.free-report-page {
+  min-height: 640px;
+  background: #f8fafc;
+  overflow-x: hidden;
+}
+
+.free-report-page {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 1120px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.free-report-toolbar {
+  min-height: 66px;
+}
+
+.free-report-toolbar > button:first-child {
+  width: 56px;
+  flex: 0 0 56px;
+}
+
+.free-report-toolbar__title > span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.free-report-toolbar__title h1 {
+  margin-top: 2px;
+  color: #0f172a;
+  font-family: "PingFang SC", Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+.free-report-action {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.free-report-action--secondary {
+  border: 1px solid #fed7aa;
+  background: #fff;
+  color: #9a4a1e;
+}
+
+.free-report-action--primary {
+  background: #c05621;
+  color: #fff;
+}
+
+.free-report-meta {
+  min-height: 68px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 14px 24px;
+  border: 1px solid #ffedd5;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+}
+
+.free-report-meta > div {
+  min-width: 0;
+}
+
+.free-report-meta span {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.free-report-meta strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 2px;
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.free-report-content {
+  margin-top: 24px;
+}
+
+.free-report-sections {
+  background: transparent;
+}
+
+.free-report-panel {
+  border-color: #ffedd5;
+  border-radius: 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+}
+
+.free-report-panel h2 > svg {
+  color: #dd6b20;
+}
+
+.free-report-cost {
+  min-height: 649px;
+}
+
+.free-report-detail-toggle {
+  display: inline-flex;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  background: #fff7ed;
+  color: #9a4a1e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.free-report-cost-summary > div {
+  min-height: 112px;
+}
+
+.report-form-shell {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.report-form-card,
+.report-preview-card,
+.report-form-grid > * {
+  min-width: 0;
+}
+
+.report-form-intro {
+  display: flex;
+  min-height: 122px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.report-form-intro > :is(div, h1, p) {
+  margin: 0;
+}
+
+.report-form-intro > div:first-child {
+  height: 38px;
+  padding: 8px 16px;
+  border-color: rgba(245, 158, 11, .3);
+  background: rgba(245, 158, 11, .1);
+  color: #dd6b20;
+}
+
+.report-form-intro h1 {
+  min-height: 48px;
+  font-family: "PingFang SC", Inter, sans-serif;
+  font-size: 35.4px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0;
+}
+
+.report-form-intro p {
+  font-size: 13.3px;
+  line-height: 20px;
+}
+
+.report-form-card,
+.report-preview-card {
+  border: 1px solid #ffedd5;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+}
+
+.report-form-card {
+  min-height: 1712px;
+}
+
+.report-preview-card {
+  min-height: 898px;
+}
+
+.report-form-section-title {
+  min-height: 28px;
+  font-family: Inter, "PingFang SC", sans-serif;
+  font-size: 19.8px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0;
+}
+
+.report-form-card > .report-form-section-title:nth-of-type(2) {
+  margin-top: 24px;
+}
+
+.report-form-grid {
+  column-gap: 20px;
+  row-gap: 18px;
+}
+
+.report-form-grid label {
+  margin-bottom: 6px;
+  color: #0f172a;
+  font-family: Inter, "PingFang SC", sans-serif;
+  font-size: 13.3px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.collection-page input,
+.collection-page select,
+.collection-page textarea {
+  width: 100%;
+  max-width: 100%;
+  border-color: #d1d5dc;
+  border-radius: 14px;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.collection-page input {
+  height: 52px;
+}
+
+.collection-page select {
+  height: 44px;
+  min-height: 44px;
+}
+
+.collection-page textarea {
+  min-height: 98px;
+}
+
+.report-form-grid--medical {
+  row-gap: 20px;
+}
+
+.report-disclaimer {
+  margin-top: 24px;
+  border: 1px solid rgba(245, 158, 11, .3);
+  background: rgba(245, 158, 11, .1);
+}
+
+.report-disclaimer :is(svg, h3) {
+  color: #dd6b20;
+}
+
+.report-disclaimer ul {
+  color: #9a4a1e;
+}
+
+.report-insurance-card {
+  min-height: 534px;
+  margin-top: 24px;
+}
+
+.report-insurance-card > .relative select {
+  height: 50px;
+}
+
+.report-insurance-card > div:nth-of-type(2) {
+  min-height: 374px;
+  margin-top: 16px;
+  border-color: #d1d5dc;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.report-form-actions {
+  min-height: 64px;
+  margin-top: 24px;
+}
+
+.report-form-actions > * {
+  height: 56px;
+}
+
+.report-preview-list {
+  gap: 16px;
+}
+
+.report-preview-item {
+  min-height: 78px;
+}
+
+.pro-report-page {
+  background: #0f172b;
+}
+
+.pro-report-shell {
+  gap: 40px;
+  padding-bottom: 24px;
+}
+
+.pro-report-header {
+  position: relative;
+  min-height: 190px;
+  padding-bottom: 0;
+}
+
+.pro-report-kicker {
+  display: flex;
+  height: 34px;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-report-kicker strong {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.pro-report-demo-badge {
+  display: inline-flex;
+  height: 34px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 5px 13px;
+  border: 1px solid rgba(20, 184, 166, .2);
+  border-radius: 9999px;
+  background: rgba(20, 184, 166, .1);
+  color: #5eead4;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+.pro-report-figma-icon { width: 16px; height: 16px; flex: 0 0 16px; object-fit: contain; }
+.pro-report-figma-icon--demo { width: 24px; height: 24px; flex-basis: 24px; }
+.pro-report-section-chevron,
+.pro-pathology-heading-icon { width: 24px; height: 24px; flex: 0 0 24px; object-fit: contain; }
+
+.pro-report-title {
+  max-width: 915px;
+  margin-top: 10px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0;
+}
+
+.pro-report-patient {
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-report-body {
+  min-width: 0;
+}
+
+.pro-report-meta-grid {
+  display: grid;
+  box-sizing: border-box;
+  height: 68.5px;
+  min-height: 68.5px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5px 24px;
+  padding: 16px;
+  border: 1px solid rgba(51, 65, 85, .5);
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(30, 41, 59, .6), rgba(30, 41, 59, .3));
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pro-report-meta-grid > div {
+  display: flex;
+  min-width: 0;
+  gap: 6px;
+}
+
+.pro-report-meta-grid span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.pro-report-meta-grid strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #cbd5e1;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pro-report-tabs {
+  margin-top: 24px;
+  scrollbar-width: thin;
+}
+
+.pro-report-tabs > button {
+  height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.pro-report-tab-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  background: #94a3b8;
+  mask: var(--pro-report-tab-icon) center / contain no-repeat;
+}
+
+.pro-report-tabs > button[aria-pressed="true"] .pro-report-tab-icon {
+  background: #2dd4bf;
+}
+
+.pro-report-section-label {
+  display: flex;
+  min-height: 24.5px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  color: #5eead4;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pro-pathology-panel {
+  box-sizing: border-box;
+  height: 573.5px;
+  min-height: 573.5px;
+}
+
+.pro-diagnosis-grid,
+.pro-diagnosis-card {
+  min-height: 108px;
+}
+
+.pro-indicator-list article {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.pro-package-section {
+  margin-top: 40px;
+}
+
+.pro-package-heading {
+  text-align: center;
+}
+
+.pro-package-heading h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.pro-package-heading p {
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-package-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 336px);
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32.25px;
+  padding-top: 16px;
+}
+
+.pro-package-card {
+  position: relative;
+  display: flex;
+  min-height: 490px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid rgba(51, 65, 85, .7);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, .66);
+  color: #cbd5e1;
+}
+
+.pro-package-card--featured {
+  border-color: rgba(45, 212, 191, .5);
+  background: rgba(20, 184, 166, .06);
+}
+
+.pro-package-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  padding: 4px 16px;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: #14b8a6;
+  color: #052e2b;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.pro-package-card h4 {
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-package-price {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
+}
+
+.pro-package-original {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 14px;
+  text-decoration: line-through;
+}
+
+.pro-package-summary {
+  display: flex;
+  min-height: 32px;
+  align-items: flex-start;
+  gap: 8px;
+  color: #99f6e4;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pro-package-summary svg,
+.pro-package-card li svg {
+  flex: 0 0 auto;
+  color: #2dd4bf;
+}
+
+.pro-package-card ul {
+  display: grid;
+  flex: 1;
+  gap: 10px;
+}
+
+.pro-package-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-package-card > a {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(45, 212, 191, .5);
+  border-radius: 10px;
+  color: #5eead4;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pro-package-card--featured > a {
+  border-color: #2dd4bf;
+  background: #2dd4bf;
+  color: #042f2e;
+}
+
+.pro-package-footnote {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.pro-upgrade-cta {
+  display: grid;
+  min-height: 224.5px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 24px;
+  margin-top: 32px;
+  padding: 32px;
+  border: 1px solid rgba(20, 184, 166, .2);
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(20, 184, 166, .1), rgba(16, 185, 129, .1));
+}
+
+.pro-upgrade-cta h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.pro-upgrade-cta h4 svg {
+  color: #5eead4;
+}
+
+.pro-upgrade-cta p {
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-upgrade-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pro-upgrade-actions :is(button, a) {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid rgba(45, 212, 191, .45);
+  border-radius: 10px;
+  color: #ccfbf1;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pro-upgrade-actions button {
+  background: #2dd4bf;
+  color: #042f2e;
+}
+
+.pro-upgrade-cta small {
+  grid-column: 1 / -1;
+  align-self: end;
+  color: #5eead4;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pro-report-back {
+  display: block;
+  margin: 40px auto 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pro-report-footer {
+  min-height: 353px;
+  padding: 48px 80px 24px;
+  background: linear-gradient(135deg, #9a3412 0%, #c05621 54%, #dd6b20 100%);
+  color: rgba(255, 255, 255, .82);
+}
+
+.pro-report-footer__inner {
+  display: grid;
+  width: 100%;
+  max-width: 1280px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0 auto;
+}
+
+.pro-report-footer__inner > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.pro-report-footer__inner strong {
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.pro-report-footer__inner > div:first-child strong {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.pro-report-footer__inner a {
+  transition: color .2s ease;
+}
+
+.pro-report-footer__inner a:hover {
+  color: #fff;
+}
+
+.pro-report-footer__copyright {
+  max-width: 1216px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .68);
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.collection-page button:focus-visible,
+.collection-page a:focus-visible,
+.free-report-page button:focus-visible,
+.free-report-page a:focus-visible {
+  outline: 3px solid rgba(255, 138, 52, .62);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .free-report-page {
+    width: calc(100% - 24px);
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .free-report-toolbar {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .free-report-toolbar > button:first-child {
+    width: auto;
+    flex-basis: auto;
+  }
+
+  .free-report-toolbar__title {
+    order: -1;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .free-report-toolbar__actions {
+    margin-left: auto;
+  }
+
+  .free-report-action {
+    height: 38px;
+    padding: 0 12px;
+  }
+
+  .free-report-meta {
+    padding: 14px 16px;
+  }
+
+  .free-report-cost {
+    min-height: 0;
+  }
+
+  .report-form-shell {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .report-form-intro {
+    min-height: auto;
+    margin-bottom: 24px;
+  }
+
+  .report-form-intro h1 {
+    min-height: auto;
+    font-size: 28px;
+    line-height: 36px;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .report-form-card,
+  .report-preview-card,
+  .report-insurance-card {
+    min-height: 0;
+  }
+
+  .pro-report-shell {
+    gap: 24px;
+  }
+
+  .pro-report-header {
+    min-height: auto;
+  }
+
+  .pro-report-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .pro-report-meta-grid {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .pro-report-meta-grid > div {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pro-report-meta-grid strong {
+    white-space: normal;
+  }
+
+  .pro-pathology-panel {
+    height: auto;
+    min-height: 0;
+  }
+
+  .pro-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pro-package-card {
+    min-height: 0;
+  }
+
+  .pro-upgrade-cta {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .pro-upgrade-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pro-report-footer {
+    min-height: 0;
+    padding: 36px 24px 24px;
+  }
+
+  .pro-report-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+</style>

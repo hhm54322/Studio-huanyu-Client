@@ -1,0 +1,62 @@
+{
+  "fileId": "s6gMozOqPBJFujindYruwb",
+  "extractedAt": "2026-09-24",
+  "states": [
+    {
+      "slug": "input",
+      "nodeId": "2:1905",
+      "nodes": 478,
+      "texts": 107,
+      "assets": 81,
+      "files": [
+        "input.clipboard.html",
+        "input.tree.json",
+        "input.layers.csv",
+        "input.texts.csv",
+        "input.assets.json"
+      ]
+    },
+    {
+      "slug": "free-report",
+      "nodeId": "45:8457",
+      "nodes": 1214,
+      "texts": 451,
+      "assets": 14,
+      "files": [
+        "free-report.clipboard.html",
+        "free-report.tree.json",
+        "free-report.layers.csv",
+        "free-report.texts.csv",
+        "free-report.assets.json"
+      ]
+    },
+    {
+      "slug": "free-expanded",
+      "nodeId": "47:12118",
+      "nodes": 978,
+      "texts": 354,
+      "assets": 14,
+      "files": [
+        "free-expanded.clipboard.html",
+        "free-expanded.tree.json",
+        "free-expanded.layers.csv",
+        "free-expanded.texts.csv",
+        "free-expanded.assets.json"
+      ]
+    },
+    {
+      "slug": "paid-report",
+      "nodeId": "43:6175",
+      "nodes": 406,
+      "texts": 119,
+      "assets": 14,
+      "files": [
+        "paid-report.clipboard.html",
+        "paid-report.tree.json",
+        "paid-report.layers.csv",
+        "paid-report.texts.csv",
+        "paid-report.assets.json"
+      ]
+    }
+  ]
+}

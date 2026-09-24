@@ -1,169 +1,337 @@
 @import "tailwindcss";
 
-/* ─── 双端色彩体系 CSS 变量 ─── */
 @theme {
-  /* 患者端色系 (橙色) */
-  --color-patient-primary: #C05621;
-  --color-patient-secondary: #DD6B20;
-  --color-patient-accent: #ED8936;
-  --color-patient-light: #FFF5EB;
-  --color-patient-lighter: #FFFAF5;
-
-  /* 医院端色系 (深蓝+青绿) */
-  --color-hospital-primary: #1A365D;
+  --color-patient-primary: #123f67;
+  --color-patient-secondary: #1685c3;
+  --color-patient-accent: #ff8a34;
+  --color-patient-light: #eef7fb;
+  --color-patient-lighter: #f8fbfd;
+  --color-hospital-primary: #1a365d;
   --color-hospital-secondary: #319795;
-  --color-hospital-accent: #D69E2E;
-  --color-hospital-light: #F7FAFC;
+  --color-hospital-accent: #d69e2e;
+  --color-hospital-light: #f7fafc;
 }
 
-/* ─── 基础样式（放在 @layer base 中，不与 Tailwind 工具类冲突） ─── */
 @layer base {
   :root {
-    --text-primary: #1a202c;
-    --text-secondary: #4a5568;
-    --text-muted: #a0aec0;
-    --border-color: #e2e8f0;
-    --bg-page: #f7fafc;
+    --hy-navy: #123f67;
+    --hy-navy-deep: #082d4b;
+    --hy-blue: #1685c3;
+    --hy-blue-bright: #30a9de;
+    --hy-orange: #ff8a34;
+    --hy-ink: #152b3c;
+    --hy-muted: #60788b;
+    --hy-line: #dce8ef;
+    --hy-surface: #f3f8fb;
+    --text-primary: #152b3c;
+    --text-secondary: #60788b;
+    --text-muted: #8da1af;
+    --border-color: #dce8ef;
+    --bg-page: #ffffff;
   }
 
   html {
+    scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
+    margin: 0;
     color: var(--text-primary);
-    background-color: var(--bg-page);
+    background: var(--bg-page);
+    font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
     line-height: 1.6;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+  button,
+  input,
+  textarea,
+  select { font: inherit; }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  button,
+  a { -webkit-tap-highlight-color: transparent; }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
 }
 
-/* ─── 安全区域适配 ─── */
-.safe-area-top {
-  padding-top: env(safe-area-inset-top);
+.patient-shell {
+  min-width: 320px;
+  overflow: clip;
+  background: #fff;
 }
 
-.safe-area-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
+.hy-container {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
 }
 
-.safe-area-left {
-  padding-left: env(safe-area-inset-left);
+.hy-section { padding-block: 96px; }
+.hy-section--soft { background: var(--hy-surface); }
+
+.hy-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--hy-blue);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0;
 }
 
-.safe-area-right {
-  padding-right: env(safe-area-inset-right);
-}
-
-/* ─── 弹窗隐藏滚动条（内容可滚动，滚动条不占空间、不显示白边） ─── */
-.modal-overlay-scroll {
-  overflow-y: auto;
-  -ms-overflow-style: none;  /* IE/Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-.modal-overlay-scroll::-webkit-scrollbar {
-  display: none;             /* Chrome/Safari */
-}
-
-/* ─── 滚动锁定（modal 打开时用） ─── */
-body.scroll-locked {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  touch-action: none;
-}
-
-/* ─── 触摸优化 ─── */
-/* 注意：不再对所有 button/a 设 min-height: 44px，
-   因为会撑高导航菜单项和语言选择按钮。
-   Tailwind 的 py-2/py-3 已提供足够触摸区域。
-   仅对表单控件保留最小触摸区域。 */
-@media (pointer: coarse) {
-  input[type="checkbox"],
-  input[type="radio"],
-  select {
-    min-height: 44px;
-    min-width: 44px;
-  }
-}
-
-/* ─── 横向滚动提示渐变 ─── */
-.scroll-hint {
-  position: relative;
-}
-
-.scroll-hint::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 24px;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ─── 图表容器（固定高度，防止 autoresize 与 grid 布局产生无限增长循环） ─── */
-.chart-container-mobile {
-  width: 100%;
-  height: 260px;
-}
-
-@media (min-width: 768px) {
-  .chart-container-mobile {
-    height: 400px;
-  }
-}
-
-/* ─── 自定义滚动条 ─── */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
+.hy-kicker::before {
+  width: 18px;
+  height: 3px;
   border-radius: 3px;
+  background: var(--hy-orange);
+  content: "";
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+.hy-title {
+  margin: 14px 0 0;
+  color: var(--hy-navy-deep);
+  font-size: 50px;
+  font-weight: 760;
+  line-height: 1.18;
+  letter-spacing: 0;
 }
 
-/* ─── 横向滚动表格容器 ─── */
-.table-scroll-container {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+.hy-copy {
+  color: var(--hy-muted);
+  font-size: 16px;
+  line-height: 1.85;
 }
 
-/* ─── Select 当前值居中（Safari/部分浏览器需要 text-align-last） ─── */
-.text-center-last {
-  text-align-last: center;
+.hy-button-primary,
+.hy-button-secondary,
+.hy-button-light {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 6px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease;
 }
 
-/* ─── 页面切换过渡 ─── */
+.hy-motion-button::before {
+  position: absolute;
+  left: var(--motion-x, 50%);
+  top: var(--motion-y, 50%);
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(22, 133, 195, .1);
+  content: "";
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+}
+
+.hy-motion-button:hover::before { transform: translate(-50%, -50%) scale(1); }
+.hy-button-primary.hy-motion-button::before { background: rgba(255, 255, 255, .17); }
+.hy-button-light.hy-motion-button::before { background: rgba(22, 133, 195, .08); }
+.hy-motion-button > svg { position: relative; transition: transform .28s cubic-bezier(.22, 1, .36, 1); }
+.hy-motion-button:hover > svg:last-child { transform: translateX(3px); }
+
+.hy-button-primary {
+  background: var(--hy-orange);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(255, 138, 52, .24);
+}
+
+.hy-button-primary:hover {
+  transform: translateY(-2px);
+  background: #f47a20;
+  box-shadow: 0 16px 34px rgba(255, 138, 52, .32);
+}
+
+.hy-button-secondary {
+  border-color: rgba(18, 63, 103, .22);
+  background: #fff;
+  color: var(--hy-navy);
+}
+
+.hy-button-secondary:hover {
+  transform: translateY(-2px);
+  border-color: var(--hy-blue);
+  color: var(--hy-blue);
+}
+
+.hy-button-light { background: #fff; color: var(--hy-navy-deep); }
+.hy-button-light:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(4, 36, 61, .2); }
+.hy-button-primary:active,
+.hy-button-secondary:active,
+.hy-button-light:active { transform: translateY(0) scale(.985); }
+.hy-button-primary:focus-visible,
+.hy-button-secondary:focus-visible,
+.hy-button-light:focus-visible { outline: 3px solid rgba(48, 169, 222, .28); outline-offset: 3px; }
+
+.hy-card {
+  border: 1px solid var(--hy-line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 34px rgba(18, 63, 103, .06);
+}
+
+.hy-page-hero {
+  position: relative;
+  min-height: 480px;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--hy-navy-deep);
+  color: #fff;
+}
+
+.hy-page-hero__media,
+.hy-page-hero__overlay { position: absolute; inset: 0; }
+
+.hy-page-hero__media {
+  width: 100%;
+  height: calc(100% + 80px);
+  top: -40px;
+  bottom: auto;
+  object-fit: cover;
+  z-index: -2;
+  transform: translate3d(0, var(--hy-hero-media-y, 0), 0) scale(1.035);
+  will-change: transform;
+}
+
+.hy-page-hero__overlay {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(5, 38, 63, .94) 0%, rgba(8, 45, 75, .75) 47%, rgba(8, 45, 75, .15) 100%);
+}
+
+.hy-page-hero__content {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: 96px 72px;
+  opacity: var(--hy-hero-content-opacity, 1);
+  transform: translate3d(0, var(--hy-hero-content-y, 0), 0);
+  will-change: opacity, transform;
+}
+
+.hy-page-hero__content h1 {
+  max-width: 720px;
+  margin: 12px 0 18px;
+  font-size: 64px;
+  line-height: 1.13;
+  font-weight: 760;
+}
+
+.hy-page-hero__content p {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+[data-reveal] {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: opacity .62s cubic-bezier(.22, 1, .36, 1), filter .48s ease, transform .72s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, filter, transform;
+}
+
+.hy-reveal-ready [data-reveal] { opacity: 0; filter: blur(5px); transform: translateY(22px); }
+.hy-reveal-ready [data-reveal].is-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+.hy-page-hero__content[data-reveal].is-visible {
+  opacity: var(--hy-hero-content-opacity, 1);
+  transform: translate3d(0, var(--hy-hero-content-y, 0), 0);
+}
+.section-heading[data-reveal] { filter: none; }
+.hy-image-zoom { overflow: hidden; }
+.hy-image-zoom img { transition: transform .65s cubic-bezier(.22, 1, .36, 1); }
+.hy-image-zoom:hover img { transform: scale(1.045); }
+
+.safe-area-top { padding-top: env(safe-area-inset-top); }
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-area-left { padding-left: env(safe-area-inset-left); }
+.safe-area-right { padding-right: env(safe-area-inset-right); }
+
+.modal-overlay-scroll { overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; }
+.modal-overlay-scroll::-webkit-scrollbar { display: none; }
+body.scroll-locked { position: fixed; width: 100%; overflow: hidden; touch-action: none; }
+
+.scroll-hint { position: relative; }
+.scroll-hint::after {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 1;
+  width: 24px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, .94));
+  content: "";
+}
+
+.chart-container-mobile { width: 100%; height: 280px; }
+.table-scroll-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.text-center-last { text-align-last: center; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { border-radius: 3px; background: #b8c8d3; }
+::-webkit-scrollbar-thumb:hover { background: #849baa; }
+
 .page-enter-active,
-.page-leave-active {
-  transition: opacity 0.25s ease;
+.page-leave-active { transition: opacity .22s ease, transform .22s ease; }
+.page-enter-from { opacity: 0; transform: translateY(7px); }
+.page-leave-to { opacity: 0; }
+
+@media (min-width: 768px) { .chart-container-mobile { height: 400px; } }
+
+@media (max-width: 767px) {
+  .hy-container,
+  .hy-page-hero__content { width: min(100% - 32px, 1180px); }
+  .hy-section { padding-block: 68px; }
+  .hy-title { font-size: 32px; }
+  .hy-page-hero { min-height: 430px; }
+  .hy-page-hero__media { height: 100%; top: 0; transform: none; }
+  .hy-page-hero__content,
+  .hy-page-hero__content[data-reveal].is-visible { opacity: 1; transform: none; }
+  .hy-page-hero__overlay { background: linear-gradient(0deg, rgba(5, 38, 63, .96) 0%, rgba(8, 45, 75, .72) 58%, rgba(8, 45, 75, .3) 100%); }
+  .hy-page-hero__content { padding-block: 96px 52px; }
+  .hy-page-hero__content h1 { font-size: 40px; }
+  [data-reveal] { opacity: 1; filter: none; transform: none; }
+  .hy-reveal-ready [data-reveal],
+  .hy-reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
 }
 
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
+@media (pointer: coarse) {
+  input[type="checkbox"], input[type="radio"], select { min-height: 44px; min-width: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  [data-reveal],
+  .hy-reveal-ready [data-reveal],
+  .hy-reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
 }

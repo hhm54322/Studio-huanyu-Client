@@ -554,7 +554,7 @@ const scrollToSection = (key: string) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-950 text-slate-200">
+  <div class="professional-report-page min-h-screen bg-slate-950 text-slate-200">
     <div class="mx-auto max-w-6xl px-4 py-8">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
         <router-link to="/report" class="inline-flex items-center gap-2 text-sm text-slate-500 transition hover:text-teal-300">
@@ -584,7 +584,7 @@ const scrollToSection = (key: string) => {
 
         <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <section class="space-y-6">
-            <div v-if="fromFreeReport" class="rounded-2xl border border-teal-500/20 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="fromFreeReport" class="rounded-lg border border-teal-500/20 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
                 <FileSearch class="h-5 w-5 text-teal-400" />
                 已沿用简易报告基础信息
@@ -597,7 +597,7 @@ const scrollToSection = (key: string) => {
                   v-for="item in sourceSummaryItems"
                   :key="item.label"
                   :class="[
-                    'rounded-xl border border-slate-800 bg-slate-950/40 p-4',
+                    'rounded-lg border border-slate-800 bg-slate-950/40 p-4',
                     item.label === '核心诉求' ? 'md:col-span-2' : '',
                   ]"
                 >
@@ -607,7 +607,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="!fromFreeReport" class="rounded-lg border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-5 flex items-center gap-2 text-lg font-semibold text-white">
                 <User class="h-5 w-5 text-teal-400" />
                 患者基础信息
@@ -653,7 +653,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="!fromFreeReport" class="rounded-lg border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-5 flex items-center gap-2 text-lg font-semibold text-white">
                 <HeartPulse class="h-5 w-5 text-teal-400" />
                 医疗资料摘要
@@ -737,14 +737,14 @@ const scrollToSection = (key: string) => {
           </section>
 
           <aside class="space-y-6">
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div class="rounded-lg border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
                 <Upload class="h-5 w-5 text-teal-400" />
                 上传资料
               </h2>
               <div
                 v-if="sourceSubmissionNo"
-                class="mb-4 rounded-xl border border-teal-500/25 bg-teal-500/10 p-3 text-xs leading-5 text-teal-100"
+                class="mb-4 rounded-lg border border-teal-500/25 bg-teal-500/10 p-3 text-xs leading-5 text-teal-100"
               >
                 <div class="mb-1 flex items-center gap-2 font-semibold text-teal-300">
                   <FileSearch class="h-4 w-4" />
@@ -754,13 +754,13 @@ const scrollToSection = (key: string) => {
                 <p class="mt-1 text-teal-200/70">请在此上传医疗资料，系统会基于新上传资料进行识别和专业分析。</p>
               </div>
               <div class="mb-4 grid grid-cols-2 gap-3">
-                <div v-for="item in fileTypeCards" :key="item.label" class="rounded-xl border border-slate-800 bg-slate-950/50 p-3 text-center">
+                <div v-for="item in fileTypeCards" :key="item.label" class="rounded-lg border border-slate-800 bg-slate-950/50 p-3 text-center">
                   <component :is="item.icon" class="mx-auto mb-2 h-5 w-5 text-teal-400" />
                   <div class="text-xs font-medium text-white">{{ item.label }}</div>
                   <div class="mt-1 text-[11px] text-slate-500">{{ item.desc }}</div>
                 </div>
               </div>
-              <label class="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-700 bg-slate-950/40 p-6 text-center transition hover:border-teal-500/60">
+              <label class="flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-700 bg-slate-950/40 p-6 text-center transition hover:border-teal-500/60">
                 <Upload class="mb-3 h-8 w-8 text-slate-500" />
                 <span class="text-sm font-medium text-white">点击选择文件</span>
                 <span class="mt-1 text-xs text-slate-500">PDF/DOCX/JPG/PNG/DICOM，单文件不超过50MB</span>
@@ -786,7 +786,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div v-if="!fromFreeReport" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6">
+            <div v-if="!fromFreeReport" class="rounded-lg border border-slate-800 bg-slate-900/70 p-5 md:p-6">
               <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
                 <Globe class="h-5 w-5 text-teal-400" />
                 偏好与对比地区
@@ -796,7 +796,7 @@ const scrollToSection = (key: string) => {
                   v-for="region in regionOptions"
                   :key="region.value"
                   :class="[
-                    'flex items-center justify-between rounded-xl border px-3 py-2 text-left text-sm transition',
+                    'flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition',
                     selectedRegions.includes(region.value) ? 'border-teal-500/40 bg-teal-500/10 text-teal-200' : 'border-slate-800 bg-slate-950/40 text-slate-400 hover:border-slate-700',
                   ]"
                   @click="toggleRegion(region.value)"
@@ -812,7 +812,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
 
-            <div class="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm text-amber-100">
+            <div class="rounded-lg border border-amber-500/20 bg-amber-500/10 p-5 text-sm text-amber-100">
               <div class="mb-2 font-semibold text-amber-300">专业版说明</div>
               <p class="leading-6">
                 本报告用于跨境就医资料预审和方案准备，不替代医生诊断。若资料不足，报告会明确列出缺失材料和下一步检查。
@@ -822,7 +822,7 @@ const scrollToSection = (key: string) => {
             <p
               v-if="errorMessage"
               :class="[
-                'rounded-xl border p-3 text-sm',
+                'rounded-lg border p-3 text-sm',
                 errorTone === 'warning'
                   ? 'border-amber-500/30 bg-amber-500/10 text-amber-100'
                   : 'border-red-500/30 bg-red-500/10 text-red-300',
@@ -833,7 +833,7 @@ const scrollToSection = (key: string) => {
             <button
               :disabled="generating"
               :class="[
-                'flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60',
+                'flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60',
                 canSubmit ? 'bg-teal-600 hover:bg-teal-500' : 'bg-teal-700/70 hover:bg-teal-600',
               ]"
               @click="generateReport"
@@ -847,7 +847,7 @@ const scrollToSection = (key: string) => {
       </template>
 
       <template v-else>
-        <section class="mb-6 rounded-2xl border border-teal-500/20 bg-slate-900/80 p-6">
+        <section class="mb-6 rounded-lg border border-teal-500/20 bg-slate-900/80 p-6">
           <div class="flex flex-wrap items-start justify-between gap-5">
             <div>
               <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1 text-xs text-teal-300">
@@ -865,25 +865,25 @@ const scrollToSection = (key: string) => {
           </div>
 
           <div class="mt-6 grid gap-3 md:grid-cols-4">
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">患者</div>
               <div class="mt-1 font-semibold text-white">{{ report.patientSnapshot.patient }}</div>
             </div>
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">诊断状态</div>
               <div class="mt-1 font-semibold text-white">{{ report.patientSnapshot.diagnosisStatus }}</div>
             </div>
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">资料完整度</div>
               <div class="mt-1 font-semibold text-teal-300">{{ report.patientSnapshot.dataCompleteness }}/100</div>
             </div>
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">上传文件</div>
               <div class="mt-1 font-semibold text-white">{{ report.patientSnapshot.uploadedFiles.length }} 个</div>
             </div>
           </div>
 
-          <div v-if="report.patientSnapshot.parsedFiles.length" class="mt-4 rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+          <div v-if="report.patientSnapshot.parsedFiles.length" class="mt-4 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
             <div class="mb-3 text-sm font-semibold text-white">资料解析摘要</div>
             <div class="grid gap-3 md:grid-cols-2">
               <div v-for="file in report.patientSnapshot.parsedFiles" :key="file.file" class="rounded-lg border border-slate-800 bg-slate-900/70 p-3">
@@ -905,14 +905,14 @@ const scrollToSection = (key: string) => {
         </section>
 
         <section class="mb-6 grid gap-3 md:grid-cols-3">
-          <div v-for="item in report.executiveSummary" :key="item" class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm leading-6 text-slate-300">
+          <div v-for="item in report.executiveSummary" :key="item" class="rounded-lg border border-slate-800 bg-slate-900/60 p-4 text-sm leading-6 text-slate-300">
             {{ item }}
           </div>
         </section>
 
         <template v-if="professionalLayoutTabs.length">
           <div class="space-y-5">
-            <div class="rounded-xl border border-slate-800 bg-gradient-to-r from-slate-900/80 to-slate-900/30 p-4">
+            <div class="rounded-lg border border-slate-800 bg-gradient-to-r from-slate-900/80 to-slate-900/30 p-4">
               <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
                 <div>
                   <span class="text-slate-500">报告编号 / Report ID: </span>
@@ -960,7 +960,7 @@ const scrollToSection = (key: string) => {
             </div>
 
             <section v-if="activeProfessionalLayoutTab" class="space-y-4">
-              <div v-if="activeProfessionalLayoutTab.summary" class="rounded-xl border border-teal-500/20 bg-teal-500/10 p-4 text-sm leading-6 text-teal-100">
+              <div v-if="activeProfessionalLayoutTab.summary" class="rounded-lg border border-teal-500/20 bg-teal-500/10 p-4 text-sm leading-6 text-teal-100">
                 {{ activeProfessionalLayoutTab.summary }}
               </div>
 
@@ -968,7 +968,7 @@ const scrollToSection = (key: string) => {
                 v-for="block in activeProfessionalLayoutTab.blocks"
                 v-show="hasBlockContent(block)"
                 :key="`${activeProfessionalLayoutTab.key}-${block.title}`"
-                :class="['rounded-xl border p-4', toneClass(block.tone)]"
+                :class="['rounded-lg border p-4', toneClass(block.tone)]"
               >
                 <div class="mb-3">
                   <h3 class="flex items-center gap-2 font-semibold text-white">
@@ -1081,15 +1081,15 @@ const scrollToSection = (key: string) => {
         <section id="section-diagnosis" class="report-panel report-section">
           <h2 class="section-title"><Microscope class="h-5 w-5 text-teal-400" />一、核心诊断结论与资料解读</h2>
           <div class="space-y-4">
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">诊断/工作方向</div>
               <p class="mt-2 text-sm leading-7 text-slate-200">{{ report.diagnosticConclusion.finalImpression }}</p>
             </div>
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">严重程度解读</div>
               <p class="mt-2 text-sm leading-7 text-slate-200">{{ report.diagnosticConclusion.severityInterpretation }}</p>
             </div>
-            <div class="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40">
+            <div class="overflow-hidden rounded-lg border border-slate-800 bg-slate-950/40">
               <div class="border-b border-slate-800 px-4 py-3 font-semibold text-white">核心指标解释</div>
               <div class="overflow-x-auto">
                 <table class="w-full text-sm">
@@ -1117,11 +1117,11 @@ const scrollToSection = (key: string) => {
         <section id="section-assessment" class="report-panel report-section">
           <h2 class="section-title"><Target class="h-5 w-5 text-teal-400" />二、患者病情综合全面评估</h2>
           <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">工作诊断</div>
               <div class="mt-1 text-white">{{ report.clinicalAssessment.workingDiagnosis }}</div>
             </div>
-            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="text-xs text-slate-500">严重程度</div>
               <div class="mt-1 text-white">{{ report.clinicalAssessment.severity }}</div>
             </div>
@@ -1132,7 +1132,7 @@ const scrollToSection = (key: string) => {
             <ListBlock title="需补充材料" :items="report.clinicalAssessment.missingMaterials" />
             <ListBlock title="风险信号" :items="report.clinicalAssessment.redFlags.length ? report.clinicalAssessment.redFlags : ['当前资料未显示明确急症信号，仍需医生结合检查确认。']" />
           </div>
-          <div class="mt-5 overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40">
+          <div class="mt-5 overflow-hidden rounded-lg border border-slate-800 bg-slate-950/40">
             <div class="border-b border-slate-800 px-4 py-3 font-semibold text-white">预后/决策参考对比</div>
             <p class="px-4 py-3 text-sm leading-6 text-slate-300">{{ report.prognosisComparison.positioning }}</p>
             <div class="overflow-x-auto">
@@ -1161,9 +1161,9 @@ const scrollToSection = (key: string) => {
 
         <section id="section-pathway" class="report-panel report-section">
           <h2 class="section-title"><Stethoscope class="h-5 w-5 text-teal-400" />三、中国专属标准化治疗路径</h2>
-          <p class="mb-5 rounded-xl border border-teal-500/20 bg-teal-500/10 p-4 text-sm leading-6 text-teal-100">{{ report.treatmentPathway.goal }}</p>
+          <p class="mb-5 rounded-lg border border-teal-500/20 bg-teal-500/10 p-4 text-sm leading-6 text-teal-100">{{ report.treatmentPathway.goal }}</p>
           <div class="space-y-4">
-            <div v-for="phase in report.treatmentPathway.phases" :key="phase.phase" class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div v-for="phase in report.treatmentPathway.phases" :key="phase.phase" class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <h3 class="font-semibold text-white">{{ phase.phase }}</h3>
                 <span class="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-400">{{ phase.timeline }}</span>
@@ -1181,13 +1181,13 @@ const scrollToSection = (key: string) => {
 
         <section id="section-cost" class="report-panel report-section">
           <h2 class="section-title"><DollarSign class="h-5 w-5 text-teal-400" />四、来华就医全套费用明细</h2>
-          <p class="mb-4 rounded-xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm leading-6 text-amber-100">{{ report.costBreakdown.currencyNote }}</p>
+          <p class="mb-4 rounded-lg border border-amber-500/20 bg-amber-500/10 p-4 text-sm leading-6 text-amber-100">{{ report.costBreakdown.currencyNote }}</p>
           <div class="space-y-5">
             <CostTable :category="report.costBreakdown.medical" />
             <CostTable :category="report.costBreakdown.services" />
             <CostTable :category="report.costBreakdown.living" />
           </div>
-          <div class="mt-5 rounded-xl border border-teal-500/20 bg-teal-500/10 p-5">
+          <div class="mt-5 rounded-lg border border-teal-500/20 bg-teal-500/10 p-5">
             <div class="text-sm text-teal-200">综合预估总费用</div>
             <div class="mt-1 text-2xl font-bold text-white">{{ report.costBreakdown.grandTotal }}</div>
             <p class="mt-2 text-sm leading-6 text-teal-100">{{ report.costBreakdown.volatilityNote }}</p>
@@ -1197,7 +1197,7 @@ const scrollToSection = (key: string) => {
         <section id="section-technology" class="report-panel report-section">
           <h2 class="section-title"><Sparkles class="h-5 w-5 text-teal-400" />五、中国前沿技术与服务优势</h2>
           <div class="grid gap-4 md:grid-cols-3">
-            <div v-for="item in report.technologyAdvantages" :key="item.technology" class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div v-for="item in report.technologyAdvantages" :key="item.technology" class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="mb-2 flex items-center gap-2 font-semibold text-white">
                 <Landmark class="h-4 w-4 text-teal-400" />
                 {{ item.technology }}
@@ -1214,7 +1214,7 @@ const scrollToSection = (key: string) => {
             <div
               v-for="country in report.countryComparison"
               :key="country.country"
-              :class="['rounded-xl border p-4', country.recommended ? 'border-teal-500/30 bg-teal-500/10' : 'border-slate-800 bg-slate-950/40']"
+              :class="['rounded-lg border p-4', country.recommended ? 'border-teal-500/30 bg-teal-500/10' : 'border-slate-800 bg-slate-950/40']"
             >
               <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center gap-2 font-semibold text-white"><span>{{ country.flag }}</span>{{ country.country }}</div>
@@ -1233,7 +1233,7 @@ const scrollToSection = (key: string) => {
         <section id="section-hospitals" class="report-panel report-section">
           <h2 class="section-title"><Hospital class="h-5 w-5 text-teal-400" />{{ hospitalSectionTitle }}</h2>
           <div :class="hospitalGridClass">
-            <div v-for="hospital in report.hospitalRecommendations" :key="hospital.hospital" class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div v-for="hospital in report.hospitalRecommendations" :key="hospital.hospital" class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
               <div class="mb-2 text-xs text-teal-300">{{ hospital.city }} · {{ hospital.department }}</div>
               <h3 class="font-semibold text-white">{{ hospital.hospital }}</h3>
               <div class="mt-2 text-sm text-slate-300">{{ hospital.whyFit }}</div>
@@ -1247,7 +1247,7 @@ const scrollToSection = (key: string) => {
           <h2 class="section-title"><Calendar class="h-5 w-5 text-teal-400" />八、外籍患者来华全程行程与服务</h2>
           <div class="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
             <div class="space-y-3">
-              <div v-for="item in report.itinerary" :key="item.dayRange" class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+              <div v-for="item in report.itinerary" :key="item.dayRange" class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
                 <div class="mb-2 flex items-center justify-between gap-3">
                   <h3 class="font-semibold text-white">{{ item.stage }}</h3>
                   <span class="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-400">{{ item.dayRange }}</span>
@@ -1258,7 +1258,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
             <div class="space-y-3">
-              <div v-for="service in report.servicePlan" :key="service.service" class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+              <div v-for="service in report.servicePlan" :key="service.service" class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
                 <div class="mb-1 flex items-center gap-2 font-semibold text-white">
                   <Users class="h-4 w-4 text-teal-400" />
                   {{ service.service }}
@@ -1267,7 +1267,7 @@ const scrollToSection = (key: string) => {
               </div>
             </div>
           </div>
-          <div class="mt-5 rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+          <div class="mt-5 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
             <h3 class="mb-3 font-semibold text-white">支付与保险保障</h3>
             <ul class="space-y-2 text-sm leading-6 text-slate-300">
               <li v-for="item in report.paymentAndInsurance" :key="item" class="flex gap-2">
@@ -1298,7 +1298,7 @@ const scrollToSection = (key: string) => {
               v-for="pkg in professionalPackages"
               :key="pkg.name"
               :class="[
-                'relative rounded-2xl border bg-slate-950/30 p-6',
+                'relative rounded-lg border bg-slate-950/30 p-6',
                 pkg.featured ? 'border-teal-500/70 shadow-[0_0_40px_rgba(20,184,166,0.12)]' : 'border-amber-500/50',
               ]"
             >
@@ -1322,7 +1322,7 @@ const scrollToSection = (key: string) => {
               <button
                 type="button"
                 :class="[
-                  'mt-6 w-full rounded-xl px-4 py-3 text-sm font-semibold transition',
+                  'mt-6 w-full rounded-lg px-4 py-3 text-sm font-semibold transition',
                   pkg.featured ? 'bg-teal-500 text-slate-950 hover:bg-teal-400' : 'border border-amber-500/60 text-amber-300 hover:bg-amber-500/10',
                 ]"
               >
@@ -1333,7 +1333,7 @@ const scrollToSection = (key: string) => {
           </div>
         </section>
 
-        <section class="mt-8 rounded-2xl border border-teal-500/20 bg-teal-500/10 p-6 md:p-8">
+        <section class="mt-8 rounded-lg border border-teal-500/20 bg-teal-500/10 p-6 md:p-8">
           <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-xl font-bold text-white">
@@ -1345,11 +1345,11 @@ const scrollToSection = (key: string) => {
               </p>
             </div>
             <div class="flex flex-col gap-3 sm:flex-row">
-              <button type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-400">
+              <button type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-teal-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-400">
                 <Phone class="h-4 w-4" />
                 联系客服
               </button>
-              <button type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
+              <button type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
                 <Mail class="h-4 w-4" />
                 邮件咨询
               </button>
@@ -1373,7 +1373,7 @@ export default {
         items: { type: Array as PropType<string[]>, required: true },
       },
       template: `
-        <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+        <div class="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
           <h3 class="mb-3 font-semibold text-white">{{ title }}</h3>
           <ul class="space-y-2 text-sm leading-6 text-slate-300">
             <li v-for="item in items" :key="item" class="flex gap-2">
@@ -1389,7 +1389,7 @@ export default {
         category: { type: Object as PropType<ProfessionalCostCategory>, required: true },
       },
       template: `
-        <div class="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40">
+        <div class="overflow-hidden rounded-lg border border-slate-800 bg-slate-950/40">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 px-4 py-3">
             <h3 class="font-semibold text-white">{{ category.title }}</h3>
             <span class="text-sm font-semibold text-teal-300">{{ category.total }}</span>
@@ -1460,5 +1460,34 @@ export default {
   font-size: 1.125rem;
   font-weight: 700;
   color: white;
+}
+
+.professional-report-page {
+  background: #061725;
+}
+
+.professional-report-page > div {
+  padding-top: clamp(32px, 5vw, 72px);
+  padding-bottom: clamp(56px, 7vw, 112px);
+}
+
+.professional-report-page .field {
+  min-height: 48px;
+}
+
+.professional-report-page button:focus-visible,
+.professional-report-page a:focus-visible,
+.professional-report-page label:has(input:focus-visible),
+.professional-report-page label:has(select:focus-visible),
+.professional-report-page label:has(textarea:focus-visible) {
+  outline: 2px solid rgba(45, 212, 191, .84);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .professional-report-page > div {
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
 }
 </style>

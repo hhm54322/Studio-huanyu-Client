@@ -1,0 +1,17 @@
+{
+  "sourceFrame": "144:4707",
+  "assets": [
+    {
+      "nodeId": "144:4710",
+      "name": "Hospital directory hero",
+      "projectPath": "/public/images/figma/hospital-directory-hero.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "144:4748",
+      "name": "Beijing hospital card images",
+      "projectPath": "/public/images/figma/hospital-card-01.png through hospital-card-08.png",
+      "fit": "cover"
+    }
+  ]
+}

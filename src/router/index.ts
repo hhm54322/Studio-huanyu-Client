@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(_to, _from, savedPosition) {
+  scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash, behavior: 'smooth' }
     return { top: 0 }
   },
   routes: [
@@ -21,8 +22,32 @@ const router = createRouter({
         {
           path: 'cost',
           name: 'patient-cost',
-          component: () => import('@/views/patient/CostView.vue'),
+          component: () => import('@/views/patient/CostGeneratedView.vue'),
           meta: { title: '费用对比' },
+        },
+        {
+          path: 'cost-generated',
+          name: 'patient-cost-generated',
+          component: () => import('@/views/patient/CostGeneratedView.vue'),
+          meta: { title: '费用对比生成基线' },
+        },
+        {
+          path: 'why-china',
+          name: 'patient-why-china',
+          component: () => import('@/views/patient/WhyChinaView.vue'),
+          meta: { title: '为什么选择中国' },
+        },
+        {
+          path: 'trust',
+          name: 'patient-trust',
+          component: () => import('@/views/patient/TrustView.vue'),
+          meta: { title: '信任与常见问题' },
+        },
+        {
+          path: 'insurance',
+          name: 'patient-insurance',
+          component: () => import('@/views/patient/InsuranceView.vue'),
+          meta: { title: '保险指南' },
         },
         {
           path: 'hospitals',
@@ -47,6 +72,12 @@ const router = createRouter({
           name: 'patient-cases',
           component: () => import('@/views/patient/CaseView.vue'),
           meta: { title: '患者案例' },
+        },
+        {
+          path: 'dental',
+          name: 'patient-dental',
+          component: () => import('@/views/patient/DentalView.vue'),
+          meta: { title: '牙科服务' },
         },
         {
           path: 'diseases-technologies',
@@ -120,8 +151,14 @@ const router = createRouter({
   ],
 })
 
+// These destinations have no authored patient-facing Figma frame yet. Keep the
+// implementation available for later work, but prevent production navigation
+// from entering an unapproved design surface.
+const pendingDesignRoutes = new Set(['/equipment', '/visa', '/professional-report'])
+
 // 动态页面标题
 router.beforeEach((to) => {
+  if (pendingDesignRoutes.has(to.path)) return false
   const title = to.meta.title as string | undefined
   document.title = title ? `${title} - 寰宇云医` : '寰宇云医'
 })

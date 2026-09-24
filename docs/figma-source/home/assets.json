@@ -1,0 +1,53 @@
+{
+  "sourceFrame": "143:45",
+  "assets": [
+    {
+      "nodeId": "143:52",
+      "name": "Hero patient image",
+      "projectPath": "/public/images/figma/patient-hero.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:377",
+      "name": "Global care artwork",
+      "projectPath": "/public/images/figma/global-care.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:847",
+      "name": "Partners matrix",
+      "projectPath": "/public/images/figma/partners-matrix.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:209",
+      "name": "Patient story image",
+      "projectPath": "/public/images/figma/patient-story.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:413",
+      "name": "Medical steward",
+      "projectPath": "/public/images/figma/team-medical-steward.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:414",
+      "name": "Interpreter",
+      "projectPath": "/public/images/figma/team-interpreter.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:415",
+      "name": "Advisor",
+      "projectPath": "/public/images/figma/team-advisor.png",
+      "fit": "cover"
+    },
+    {
+      "nodeId": "143:416",
+      "name": "Coordinator",
+      "projectPath": "/public/images/figma/team-coordinator.png",
+      "fit": "cover"
+    }
+  ]
+}
