@@ -1,0 +1,72 @@
+{
+  "sourceFrame": "143:1299",
+  "captured": "2026-09-29",
+  "nodes": [
+    {
+      "id": "143:1481",
+      "code": [
+        "width: 1168.02px;height: 363.26px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1168",
+        "Copy height: 363",
+        "Copy bottom gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #666666",
+        "Copy #E0E1E1",
+        "Copy #1D4ED8",
+        "Copy #3B82F6",
+        "Copy colors"
+      ],
+      "selectedName": "Group 615",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1481&m=dev"
+    },
+    {
+      "id": "143:1482",
+      "code": [
+        "width: 1120.616px;height: 336px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 7.74",
+        "Copy distance to left container edge: 47.4",
+        "Copy top border: 1",
+        "Copy left border: 1",
+        "Copy width: 1121",
+        "Copy height: 336",
+        "Copy right border: 1",
+        "Copy bottom border: 1",
+        "Copy distance to bottom container edge: 19.5",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #E0E1E1",
+        "Copy #E0E1E1",
+        "Copy colors"
+      ],
+      "selectedName": "Group",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1482&m=dev"
+    },
+    {
+      "id": "143:1681",
+      "code": [
+        "width: 14px;height: 14px;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><path d=\"M0 1.75H14V12.25H0V1.75Z\" fill=\"#6B7280\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 6.79",
+        "Copy distance to right container edge: 36",
+        "Copy distance to bottom container edge: 3.21",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280",
+        "Copy colors"
+      ],
+      "selectedName": "Icon",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1681&m=dev"
+    }
+  ]
+}

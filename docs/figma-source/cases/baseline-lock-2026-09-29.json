@@ -1,0 +1,49 @@
+{
+  "sourceFrame": "190:5300",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "nodeCount": 248,
+  "lockedAt": "2026-09-28T23:03:35.438Z",
+  "phase": "Source hierarchy, exact parameter supplement, mapping and static baseline locked before Vue changes",
+  "files": [
+    {
+      "name": "layers-2026-09-29.json",
+      "sha256": "03423593e78494a4c33c0d181665b76d411dc5ee9cf4e4dc0200c6f7e920784d"
+    },
+    {
+      "name": "dev-mode-2026-09-29.json",
+      "sha256": "04ebe3d5595c26d9b0752ae267b5f624f7bed64713577458535479d5d2a78478"
+    },
+    {
+      "name": "native-inventory-2026-09-29.json",
+      "sha256": "0e25b6636d828455b0f3ab204aa61f86f9f9f656db68fa33e8bb7cf7dc1699be"
+    },
+    {
+      "name": "native-parameters-2026-09-29.json",
+      "sha256": "66345259cc8781c729e7f549498608db7ae39bdba3d057cb4fe93393de5d1a29"
+    },
+    {
+      "name": "native-image-paints-2026-09-29.json",
+      "sha256": "12a152f1ad232558a6d0d7a5da3c5f194ffd7013f5f5f2d1face688925aad72a"
+    },
+    {
+      "name": "node-to-code-2026-09-29.json",
+      "sha256": "f780656d1d09d39d7d127c035d880e45108d155b577f881999f27206097ce09f"
+    },
+    {
+      "name": "content-2026-09-29.json",
+      "sha256": "b49640eb80a9484bb653d57fb31ce1b9029e8c0bfa11d9bfd395864d7ed4485d"
+    },
+    {
+      "name": "source-frame-2026-09-29.html",
+      "sha256": "2d6eff93f5381834493f090f33e2fb22f4c2de9d5dfc0b206d3b646c6e95bdb8"
+    },
+    {
+      "name": "dev-styles-2026-09-29.css",
+      "sha256": "cb71f24caae651775f1af0469537aa95e89afad12b8f97d58db849c67d78e3eb"
+    },
+    {
+      "name": "assets.json",
+      "sha256": "ea14451e5a6e901904ca706eb5ac29a890cb6903d937803122a9e0601599fe8a"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sourceFrame": "143:45",
+  "files": [
+    {
+      "name": "frame-2026-09-28.html",
+      "sha256": "6a2c575abf0c31f4ccc5889a193e9b26dea5b012863d2dff350cb428da8b65c6"
+    },
+    {
+      "name": "styles-2026-09-28.txt",
+      "sha256": "ba2caf995dc6e271ba9ee12e43ee6773692b6ed6d70b0940d8c4a86f59bd56ef"
+    },
+    {
+      "name": "layers-2026-09-29.json",
+      "sha256": "29b6b96149faed9abf2f77e263666e629e20bad89d0b36443de632921470335d"
+    },
+    {
+      "name": "dev-mode-2026-09-29.json",
+      "sha256": "ee7a49e73e188a3b9ae20906adb54962b5eab2f710a29940244397ed4cded636"
+    },
+    {
+      "name": "node-to-code-2026-09-29.json",
+      "sha256": "d281b4fc19a0354f1e5efa3f82f0697da932aaa2b95c8398294e79edb5492ace"
+    }
+  ],
+  "visible": 976,
+  "hidden": 127
+}

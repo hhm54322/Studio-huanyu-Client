@@ -1,0 +1,71 @@
+{
+  "sourceFrame": "143:1299",
+  "captured": "2026-09-29",
+  "nodes": [
+    {
+      "id": "143:1761",
+      "code": [
+        "width: 16px;height: 16px;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3.33301 8H12.6663\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M8 3.3335L12.6667 8.00016L8 12.6668\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 18",
+        "Copy left gap: 8",
+        "Copy parent right padding: 24",
+        "Copy parent bottom padding: 18",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy colors"
+      ],
+      "selectedName": "Icon",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1761&m=dev"
+    },
+    {
+      "id": "143:1821",
+      "code": [
+        "width: 20px;height: 20px;aspect-ratio: 1/1;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M4.16699 10H15.8337\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M10 4.1665L15.8333 9.99984L10 15.8332\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy left gap: 8",
+        "Copy parent right padding: 24",
+        "Copy parent bottom padding: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy colors"
+      ],
+      "selectedName": "Icon",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1821&m=dev"
+    },
+    {
+      "id": "143:1922",
+      "code": [
+        "width: 20px;height: 20px;aspect-ratio: 1/1;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M4.16699 10H15.8337\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M10 4.1665L15.8333 9.99984L10 15.8332\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy left gap: 8",
+        "Copy parent right padding: 24",
+        "Copy parent bottom padding: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy colors"
+      ],
+      "selectedName": "Icon",
+      "sourceUrl": "https://www.figma.com/design/s6gMozOqPBJFujindYruwb/%E5%AF%B0%E5%AE%87%E4%BA%91%E5%8C%BB?node-id=143-1922&m=dev"
+    }
+  ]
+}

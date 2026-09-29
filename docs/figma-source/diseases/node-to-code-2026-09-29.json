@@ -1,0 +1,7655 @@
+{
+  "sourceFrame": "144:4380",
+  "nodes": [
+    {
+      "id": "144:4380",
+      "index": 0,
+      "level": 0,
+      "name": "05寰宇云医 - 疾病中心",
+      "type": "FRAME",
+      "parentNodeId": null,
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4381"
+      ],
+      "selector": ".patient-shell",
+      "mode": "DOM",
+      "ownerNodeId": "144:4380",
+      "parametersNodeId": "144:4380",
+      "devModeNodeId": "144:4380",
+      "framePosition": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "144:4381",
+      "index": 1,
+      "level": 1,
+      "name": "Body",
+      "type": "FRAME",
+      "parentNodeId": "144:4380",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4382",
+        "144:4586",
+        "484:1506"
+      ],
+      "selector": ".patient-shell",
+      "mode": "DOM",
+      "ownerNodeId": "144:4381",
+      "parametersNodeId": "144:4381",
+      "devModeNodeId": "144:4381",
+      "framePosition": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "144:4382",
+      "index": 2,
+      "level": 2,
+      "name": "Main Content",
+      "type": "FRAME",
+      "parentNodeId": "144:4381",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4383",
+        "144:4390",
+        "144:4572"
+      ],
+      "selector": "[data-figma-node=\"144:4382\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4382",
+      "parametersNodeId": "144:4382",
+      "devModeNodeId": "144:4382",
+      "framePosition": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "144:4383",
+      "index": 3,
+      "level": 3,
+      "name": "Section",
+      "type": "FRAME",
+      "parentNodeId": "144:4382",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4384"
+      ],
+      "selector": "[data-figma-node=\"144:4383\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4383",
+      "parametersNodeId": "144:4383",
+      "devModeNodeId": "144:4383",
+      "framePosition": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "144:4384",
+      "index": 4,
+      "level": 4,
+      "name": "Frame 74",
+      "type": "FRAME",
+      "parentNodeId": "144:4383",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4385"
+      ],
+      "selector": "[data-figma-node=\"144:4384\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4384",
+      "parametersNodeId": "144:4384",
+      "devModeNodeId": "144:4384",
+      "framePosition": {
+        "x": 112,
+        "y": 172
+      }
+    },
+    {
+      "id": "144:4385",
+      "index": 5,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4384",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4386",
+        "144:4388"
+      ],
+      "selector": "[data-figma-node=\"144:4385\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4385",
+      "parametersNodeId": "144:4385",
+      "devModeNodeId": "144:4385",
+      "framePosition": {
+        "x": 112,
+        "y": 172
+      }
+    },
+    {
+      "id": "144:4386",
+      "index": 6,
+      "level": 6,
+      "name": "Heading 1",
+      "type": "FRAME",
+      "parentNodeId": "144:4385",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4387"
+      ],
+      "selector": "[data-figma-node=\"144:4386\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4386",
+      "parametersNodeId": "144:4386",
+      "devModeNodeId": "144:4386",
+      "framePosition": {
+        "x": 112,
+        "y": 172
+      }
+    },
+    {
+      "id": "144:4387",
+      "index": 7,
+      "level": 7,
+      "name": "Cardiac Remote Monitoring with Fewer Clicks and Mo",
+      "type": "TEXT",
+      "parentNodeId": "144:4386",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4387\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4387",
+      "parametersNodeId": "144:4387",
+      "devModeNodeId": "144:4387",
+      "framePosition": {
+        "x": 112,
+        "y": 172
+      }
+    },
+    {
+      "id": "144:4388",
+      "index": 8,
+      "level": 6,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4385",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4389"
+      ],
+      "selector": "[data-figma-node=\"144:4388\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4388",
+      "parametersNodeId": "144:4388",
+      "devModeNodeId": "144:4388",
+      "framePosition": {
+        "x": 112,
+        "y": 292
+      }
+    },
+    {
+      "id": "144:4389",
+      "index": 9,
+      "level": 7,
+      "name": "Cut alert fatigue. Prioritize urgent care. Deliver",
+      "type": "TEXT",
+      "parentNodeId": "144:4388",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4389\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4389",
+      "parametersNodeId": "144:4389",
+      "devModeNodeId": "144:4389",
+      "framePosition": {
+        "x": 112,
+        "y": 292
+      }
+    },
+    {
+      "id": "144:4390",
+      "index": 10,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4382",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4391",
+        "144:4396",
+        "144:4403"
+      ],
+      "selector": "[data-figma-node=\"144:4390\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4390",
+      "parametersNodeId": "144:4390",
+      "devModeNodeId": "144:4390",
+      "framePosition": {
+        "x": 0,
+        "y": 460
+      }
+    },
+    {
+      "id": "144:4391",
+      "index": 11,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4390",
+      "siblingOrder": 0,
+      "visible": false,
+      "rendered": false,
+      "hiddenBy": "144:4391",
+      "children": [
+        "144:4392",
+        "144:4394"
+      ],
+      "selector": "[data-figma-node=\"144:4391\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4391",
+      "parametersNodeId": "144:4391",
+      "devModeNodeId": "144:4391",
+      "framePosition": {
+        "x": 112,
+        "y": 556
+      }
+    },
+    {
+      "id": "144:4392",
+      "index": 12,
+      "level": 5,
+      "name": "Heading 2",
+      "type": "FRAME",
+      "parentNodeId": "144:4391",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4391",
+      "children": [
+        "144:4393"
+      ],
+      "selector": "[data-figma-node=\"144:4392\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4392",
+      "parametersNodeId": "144:4392",
+      "devModeNodeId": "144:4392",
+      "framePosition": {
+        "x": 112,
+        "y": 556
+      }
+    },
+    {
+      "id": "144:4393",
+      "index": 13,
+      "level": 6,
+      "name": "全部疾病科室",
+      "type": "TEXT",
+      "parentNodeId": "144:4392",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4391",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4393\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4393",
+      "parametersNodeId": "144:4393",
+      "devModeNodeId": "144:4393",
+      "framePosition": {
+        "x": 599,
+        "y": 556
+      }
+    },
+    {
+      "id": "144:4394",
+      "index": 14,
+      "level": 5,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4391",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4391",
+      "children": [
+        "144:4395"
+      ],
+      "selector": "[data-figma-node=\"144:4394\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4394",
+      "parametersNodeId": "144:4394",
+      "devModeNodeId": "144:4394",
+      "framePosition": {
+        "x": 112,
+        "y": 596
+      }
+    },
+    {
+      "id": "144:4395",
+      "index": 15,
+      "level": 6,
+      "name": "覆盖重点专科中心与先进诊疗技术，帮助国际患者快速理解可匹配的医疗资源",
+      "type": "TEXT",
+      "parentNodeId": "144:4394",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4391",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4395\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4395",
+      "parametersNodeId": "144:4395",
+      "devModeNodeId": "144:4395",
+      "framePosition": {
+        "x": 448,
+        "y": 612
+      }
+    },
+    {
+      "id": "144:4396",
+      "index": 16,
+      "level": 4,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "144:4390",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4397"
+      ],
+      "selector": "[data-figma-node=\"144:4396\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4396",
+      "parametersNodeId": "144:4396",
+      "devModeNodeId": "144:4396",
+      "framePosition": {
+        "x": 112,
+        "y": 556
+      }
+    },
+    {
+      "id": "144:4397",
+      "index": 17,
+      "level": 5,
+      "name": "Frame 609",
+      "type": "FRAME",
+      "parentNodeId": "144:4396",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4398",
+        "144:4401"
+      ],
+      "selector": "[data-figma-node=\"144:4397\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4397",
+      "parametersNodeId": "144:4397",
+      "devModeNodeId": "144:4397",
+      "framePosition": {
+        "x": 112,
+        "y": 556
+      }
+    },
+    {
+      "id": "144:4398",
+      "index": 18,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4397",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4399",
+        "144:4400"
+      ],
+      "selector": "[data-figma-node=\"144:4398\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4398",
+      "parametersNodeId": "144:4398",
+      "devModeNodeId": "144:4398",
+      "framePosition": {
+        "x": 137,
+        "y": 574
+      }
+    },
+    {
+      "id": "144:4399",
+      "index": 19,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4398",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4398\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4398",
+      "ownerNodeId": "144:4398",
+      "parametersNodeId": "144:4399",
+      "devModeNodeId": "144:4399",
+      "framePosition": {
+        "x": 153.6599998474121,
+        "y": 590.6599998474121
+      }
+    },
+    {
+      "id": "144:4400",
+      "index": 20,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4398",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4398\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4398",
+      "ownerNodeId": "144:4398",
+      "parametersNodeId": "144:4400",
+      "devModeNodeId": "144:4400",
+      "framePosition": {
+        "x": 140,
+        "y": 577
+      }
+    },
+    {
+      "id": "144:4401",
+      "index": 21,
+      "level": 6,
+      "name": "Text Input",
+      "type": "FRAME",
+      "parentNodeId": "144:4397",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4402"
+      ],
+      "selector": "[data-figma-node=\"144:4401\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4401",
+      "parametersNodeId": "144:4401",
+      "devModeNodeId": "144:4401",
+      "framePosition": {
+        "x": 161,
+        "y": 574
+      }
+    },
+    {
+      "id": "144:4402",
+      "index": 22,
+      "level": 7,
+      "name": "搜索疾病 / Search diseases...",
+      "type": "TEXT",
+      "parentNodeId": "144:4401",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4402\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4402",
+      "parametersNodeId": "144:4402",
+      "devModeNodeId": "144:4402",
+      "framePosition": {
+        "x": 177,
+        "y": 575
+      }
+    },
+    {
+      "id": "144:4403",
+      "index": 23,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4390",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4404",
+        "144:4415",
+        "144:4428",
+        "144:4439",
+        "144:4449",
+        "144:4459",
+        "144:4471",
+        "144:4481",
+        "144:4492",
+        "144:4502",
+        "144:4512",
+        "144:4523",
+        "144:4537",
+        "144:4547",
+        "144:4560"
+      ],
+      "selector": "[data-figma-node=\"144:4403\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4403",
+      "parametersNodeId": "144:4403",
+      "devModeNodeId": "144:4403",
+      "framePosition": {
+        "x": 112,
+        "y": 616
+      }
+    },
+    {
+      "id": "144:4404",
+      "index": 24,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 0,
+      "visible": false,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [
+        "144:4405",
+        "144:4410"
+      ],
+      "selector": "[data-figma-node=\"144:4404\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4404",
+      "parametersNodeId": "144:4404",
+      "devModeNodeId": "144:4404",
+      "framePosition": {
+        "x": 698.6666870117188,
+        "y": 1960
+      }
+    },
+    {
+      "id": "144:4405",
+      "index": 25,
+      "level": 6,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4404",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [
+        "144:4406",
+        "144:4407"
+      ],
+      "selector": "[data-figma-node=\"144:4405\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4405",
+      "parametersNodeId": "144:4405",
+      "devModeNodeId": "144:4405",
+      "framePosition": {
+        "x": 804.0000305175781,
+        "y": 2007
+      }
+    },
+    {
+      "id": "144:4406",
+      "index": 26,
+      "level": 7,
+      "name": "查看全部疾病",
+      "type": "TEXT",
+      "parentNodeId": "144:4405",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4406\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4406",
+      "parametersNodeId": "144:4406",
+      "devModeNodeId": "144:4406",
+      "framePosition": {
+        "x": 824.0000305175781,
+        "y": 2023
+      }
+    },
+    {
+      "id": "144:4407",
+      "index": 27,
+      "level": 7,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4405",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [
+        "144:4408",
+        "144:4409"
+      ],
+      "selector": "[data-figma-node=\"144:4407\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4407",
+      "parametersNodeId": "144:4407",
+      "devModeNodeId": "144:4407",
+      "framePosition": {
+        "x": 928.0000305175781,
+        "y": 2023
+      }
+    },
+    {
+      "id": "144:4408",
+      "index": 28,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4407",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4408\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4408",
+      "parametersNodeId": "144:4408",
+      "devModeNodeId": "144:4408",
+      "framePosition": {
+        "x": 931.3333637714386,
+        "y": 2031
+      }
+    },
+    {
+      "id": "144:4409",
+      "index": 29,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4407",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4409\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4409",
+      "parametersNodeId": "144:4409",
+      "devModeNodeId": "144:4409",
+      "framePosition": {
+        "x": 936.0000305175781,
+        "y": 2026.3333332538605
+      }
+    },
+    {
+      "id": "144:4410",
+      "index": 30,
+      "level": 6,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4404",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [
+        "144:4411",
+        "144:4412"
+      ],
+      "selector": "[data-figma-node=\"144:4410\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4410",
+      "parametersNodeId": "144:4410",
+      "devModeNodeId": "144:4410",
+      "framePosition": {
+        "x": 804.0000305175781,
+        "y": 2087
+      }
+    },
+    {
+      "id": "144:4411",
+      "index": 31,
+      "level": 7,
+      "name": "查看全部案例",
+      "type": "TEXT",
+      "parentNodeId": "144:4410",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4411\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4411",
+      "parametersNodeId": "144:4411",
+      "devModeNodeId": "144:4411",
+      "framePosition": {
+        "x": 824.0000305175781,
+        "y": 2101
+      }
+    },
+    {
+      "id": "144:4412",
+      "index": 32,
+      "level": 7,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4410",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [
+        "144:4413",
+        "144:4414"
+      ],
+      "selector": "[data-figma-node=\"144:4412\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4412",
+      "parametersNodeId": "144:4412",
+      "devModeNodeId": "144:4412",
+      "framePosition": {
+        "x": 928.0000305175781,
+        "y": 2103
+      }
+    },
+    {
+      "id": "144:4413",
+      "index": 33,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4412",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4413\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4413",
+      "parametersNodeId": "144:4413",
+      "devModeNodeId": "144:4413",
+      "framePosition": {
+        "x": 931.3333637714386,
+        "y": 2111
+      }
+    },
+    {
+      "id": "144:4414",
+      "index": 34,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4412",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": false,
+      "hiddenBy": "144:4404",
+      "children": [],
+      "selector": "[data-figma-node=\"144:4414\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4414",
+      "parametersNodeId": "144:4414",
+      "devModeNodeId": "144:4414",
+      "framePosition": {
+        "x": 936.0000305175781,
+        "y": 2106.3333332538605
+      }
+    },
+    {
+      "id": "144:4415",
+      "index": 35,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4416",
+        "144:4421"
+      ],
+      "selector": "[data-figma-node=\"144:4415\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4415",
+      "parametersNodeId": "144:4415",
+      "devModeNodeId": "144:4415",
+      "framePosition": {
+        "x": 112,
+        "y": 664
+      }
+    },
+    {
+      "id": "144:4416",
+      "index": 36,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4415",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4417"
+      ],
+      "selector": "[data-figma-node=\"144:4416\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4416",
+      "parametersNodeId": "144:4416",
+      "devModeNodeId": "144:4416",
+      "framePosition": {
+        "x": 136,
+        "y": 688
+      }
+    },
+    {
+      "id": "144:4417",
+      "index": 37,
+      "level": 7,
+      "name": "Group 605",
+      "type": "FRAME",
+      "parentNodeId": "144:4416",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4418",
+        "144:4419",
+        "144:4420"
+      ],
+      "selector": "[data-figma-node=\"144:4416\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4416",
+      "ownerNodeId": "144:4416",
+      "parametersNodeId": "144:4417",
+      "devModeNodeId": "144:4417",
+      "framePosition": {
+        "x": 138.9296875,
+        "y": 690.9297559261322
+      }
+    },
+    {
+      "id": "144:4418",
+      "index": 38,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4417",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4416\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4416",
+      "ownerNodeId": "144:4416",
+      "parametersNodeId": "144:4418",
+      "devModeNodeId": "144:4418",
+      "framePosition": {
+        "x": 146.3527216911316,
+        "y": 700.2790458202362
+      }
+    },
+    {
+      "id": "144:4419",
+      "index": 39,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4417",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4416\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4416",
+      "ownerNodeId": "144:4416",
+      "parametersNodeId": "144:4419",
+      "devModeNodeId": "144:4419",
+      "framePosition": {
+        "x": 149.92578029632568,
+        "y": 704.4024798870087
+      }
+    },
+    {
+      "id": "144:4420",
+      "index": 40,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4417",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4416\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4416",
+      "ownerNodeId": "144:4416",
+      "parametersNodeId": "144:4420",
+      "devModeNodeId": "144:4420",
+      "framePosition": {
+        "x": 138.9296875,
+        "y": 690.9298242855002
+      }
+    },
+    {
+      "id": "144:4421",
+      "index": 41,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4415",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4422",
+        "144:4424"
+      ],
+      "selector": "[data-figma-node=\"144:4421\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4421",
+      "parametersNodeId": "144:4421",
+      "devModeNodeId": "144:4421",
+      "framePosition": {
+        "x": 136,
+        "y": 788
+      }
+    },
+    {
+      "id": "144:4422",
+      "index": 42,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4421",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4423"
+      ],
+      "selector": "[data-figma-node=\"144:4422\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4422",
+      "parametersNodeId": "144:4422",
+      "devModeNodeId": "144:4422",
+      "framePosition": {
+        "x": 136,
+        "y": 788
+      }
+    },
+    {
+      "id": "144:4423",
+      "index": 43,
+      "level": 8,
+      "name": "肿瘤科",
+      "type": "TEXT",
+      "parentNodeId": "144:4422",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4423\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4423",
+      "parametersNodeId": "144:4423",
+      "devModeNodeId": "144:4423",
+      "framePosition": {
+        "x": 136,
+        "y": 788
+      }
+    },
+    {
+      "id": "144:4424",
+      "index": 44,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4421",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4425",
+        "144:4426",
+        "144:4427"
+      ],
+      "selector": "[data-figma-node=\"144:4424\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4424",
+      "parametersNodeId": "144:4424",
+      "devModeNodeId": "144:4424",
+      "framePosition": {
+        "x": 136,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4425",
+      "index": 45,
+      "level": 8,
+      "name": "合作医院：32家",
+      "type": "TEXT",
+      "parentNodeId": "144:4424",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4425\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4425",
+      "parametersNodeId": "144:4425",
+      "devModeNodeId": "144:4425",
+      "framePosition": {
+        "x": 136,
+        "y": 828
+      }
+    },
+    {
+      "id": "144:4426",
+      "index": 46,
+      "level": 8,
+      "name": "擅长病例：实体肿瘤、复发难治肿瘤",
+      "type": "TEXT",
+      "parentNodeId": "144:4424",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4426\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4426",
+      "parametersNodeId": "144:4426",
+      "devModeNodeId": "144:4426",
+      "framePosition": {
+        "x": 136,
+        "y": 860
+      }
+    },
+    {
+      "id": "144:4427",
+      "index": 47,
+      "level": 8,
+      "name": "诊疗特色：多学科MDT会诊，前沿新药与个体化治疗方案",
+      "type": "TEXT",
+      "parentNodeId": "144:4424",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4427\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4427",
+      "parametersNodeId": "144:4427",
+      "devModeNodeId": "144:4427",
+      "framePosition": {
+        "x": 136,
+        "y": 892
+      }
+    },
+    {
+      "id": "144:4428",
+      "index": 48,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4429",
+        "144:4432"
+      ],
+      "selector": "[data-figma-node=\"144:4428\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4428",
+      "parametersNodeId": "144:4428",
+      "devModeNodeId": "144:4428",
+      "framePosition": {
+        "x": 525.3333435058594,
+        "y": 664
+      }
+    },
+    {
+      "id": "144:4429",
+      "index": 49,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4428",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4430",
+        "144:4431"
+      ],
+      "selector": "[data-figma-node=\"144:4429\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4429",
+      "parametersNodeId": "144:4429",
+      "devModeNodeId": "144:4429",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 688
+      }
+    },
+    {
+      "id": "144:4430",
+      "index": 50,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4429",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4429\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4429",
+      "ownerNodeId": "144:4429",
+      "parametersNodeId": "144:4430",
+      "devModeNodeId": "144:4430",
+      "framePosition": {
+        "x": 552.0000104904175,
+        "y": 693.3117952346802
+      }
+    },
+    {
+      "id": "144:4431",
+      "index": 51,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4429",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4429\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4429",
+      "ownerNodeId": "144:4429",
+      "parametersNodeId": "144:4431",
+      "devModeNodeId": "144:4431",
+      "framePosition": {
+        "x": 553.6266775131226,
+        "y": 700.6666660308838
+      }
+    },
+    {
+      "id": "144:4432",
+      "index": 52,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4428",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4433",
+        "144:4435"
+      ],
+      "selector": "[data-figma-node=\"144:4432\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4432",
+      "parametersNodeId": "144:4432",
+      "devModeNodeId": "144:4432",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4433",
+      "index": 53,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4432",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4434"
+      ],
+      "selector": "[data-figma-node=\"144:4433\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4433",
+      "parametersNodeId": "144:4433",
+      "devModeNodeId": "144:4433",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4434",
+      "index": 54,
+      "level": 8,
+      "name": "心血管",
+      "type": "TEXT",
+      "parentNodeId": "144:4433",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4434\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4434",
+      "parametersNodeId": "144:4434",
+      "devModeNodeId": "144:4434",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4435",
+      "index": 55,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4432",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4436",
+        "144:4437",
+        "144:4438"
+      ],
+      "selector": "[data-figma-node=\"144:4435\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4435",
+      "parametersNodeId": "144:4435",
+      "devModeNodeId": "144:4435",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 836
+      }
+    },
+    {
+      "id": "144:4436",
+      "index": 56,
+      "level": 8,
+      "name": "合作医院：26家",
+      "type": "TEXT",
+      "parentNodeId": "144:4435",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4436\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4436",
+      "parametersNodeId": "144:4436",
+      "devModeNodeId": "144:4436",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 852
+      }
+    },
+    {
+      "id": "144:4437",
+      "index": 57,
+      "level": 8,
+      "name": "擅长病例：冠心病、瓣膜病、复杂心律失常",
+      "type": "TEXT",
+      "parentNodeId": "144:4435",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4437\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4437",
+      "parametersNodeId": "144:4437",
+      "devModeNodeId": "144:4437",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 884
+      }
+    },
+    {
+      "id": "144:4438",
+      "index": 58,
+      "level": 8,
+      "name": "诊疗特色：微创介入手术、重症心脏外科诊疗",
+      "type": "TEXT",
+      "parentNodeId": "144:4435",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4438\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4438",
+      "parametersNodeId": "144:4438",
+      "devModeNodeId": "144:4438",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 916
+      }
+    },
+    {
+      "id": "144:4439",
+      "index": 59,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4440",
+        "144:4442"
+      ],
+      "selector": "[data-figma-node=\"144:4439\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4439",
+      "parametersNodeId": "144:4439",
+      "devModeNodeId": "144:4439",
+      "framePosition": {
+        "x": 938.6666870117188,
+        "y": 664
+      }
+    },
+    {
+      "id": "144:4440",
+      "index": 60,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4439",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4441"
+      ],
+      "selector": "[data-figma-node=\"144:4440\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4440",
+      "parametersNodeId": "144:4440",
+      "devModeNodeId": "144:4440",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 688
+      }
+    },
+    {
+      "id": "144:4441",
+      "index": 61,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4440",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4440\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4440",
+      "ownerNodeId": "144:4440",
+      "parametersNodeId": "144:4441",
+      "devModeNodeId": "144:4441",
+      "framePosition": {
+        "x": 966.1666870117188,
+        "y": 691.5
+      }
+    },
+    {
+      "id": "144:4442",
+      "index": 62,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4439",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4443",
+        "144:4445"
+      ],
+      "selector": "[data-figma-node=\"144:4442\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4442",
+      "parametersNodeId": "144:4442",
+      "devModeNodeId": "144:4442",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4443",
+      "index": 63,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4442",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4444"
+      ],
+      "selector": "[data-figma-node=\"144:4443\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4443",
+      "parametersNodeId": "144:4443",
+      "devModeNodeId": "144:4443",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4444",
+      "index": 64,
+      "level": 8,
+      "name": "神经外科",
+      "type": "TEXT",
+      "parentNodeId": "144:4443",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4444\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4444",
+      "parametersNodeId": "144:4444",
+      "devModeNodeId": "144:4444",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 812
+      }
+    },
+    {
+      "id": "144:4445",
+      "index": 65,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4442",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4446",
+        "144:4447",
+        "144:4448"
+      ],
+      "selector": "[data-figma-node=\"144:4445\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4445",
+      "parametersNodeId": "144:4445",
+      "devModeNodeId": "144:4445",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 836
+      }
+    },
+    {
+      "id": "144:4446",
+      "index": 66,
+      "level": 8,
+      "name": "合作医院：24家",
+      "type": "TEXT",
+      "parentNodeId": "144:4445",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4446\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4446",
+      "parametersNodeId": "144:4446",
+      "devModeNodeId": "144:4446",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 852
+      }
+    },
+    {
+      "id": "144:4447",
+      "index": 67,
+      "level": 8,
+      "name": "擅长病例：脑肿瘤、脑血管病变、脊髓疾病",
+      "type": "TEXT",
+      "parentNodeId": "144:4445",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4447\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4447",
+      "parametersNodeId": "144:4447",
+      "devModeNodeId": "144:4447",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 884
+      }
+    },
+    {
+      "id": "144:4448",
+      "index": 68,
+      "level": 8,
+      "name": "诊疗特色：显微神经外科、神经内镜精准手术",
+      "type": "TEXT",
+      "parentNodeId": "144:4445",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4448\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4448",
+      "parametersNodeId": "144:4448",
+      "devModeNodeId": "144:4448",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 916
+      }
+    },
+    {
+      "id": "144:4449",
+      "index": 69,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4450",
+        "144:4452"
+      ],
+      "selector": "[data-figma-node=\"144:4449\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4449",
+      "parametersNodeId": "144:4449",
+      "devModeNodeId": "144:4449",
+      "framePosition": {
+        "x": 112,
+        "y": 988
+      }
+    },
+    {
+      "id": "144:4450",
+      "index": 70,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4449",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4451"
+      ],
+      "selector": "[data-figma-node=\"144:4450\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4450",
+      "parametersNodeId": "144:4450",
+      "devModeNodeId": "144:4450",
+      "framePosition": {
+        "x": 136,
+        "y": 1012
+      }
+    },
+    {
+      "id": "144:4451",
+      "index": 71,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4450",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4450\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4450",
+      "ownerNodeId": "144:4450",
+      "parametersNodeId": "144:4451",
+      "devModeNodeId": "144:4451",
+      "framePosition": {
+        "x": 138.6666669845581,
+        "y": 1014.6666669845581
+      }
+    },
+    {
+      "id": "144:4452",
+      "index": 72,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4449",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4453",
+        "144:4455"
+      ],
+      "selector": "[data-figma-node=\"144:4452\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4452",
+      "parametersNodeId": "144:4452",
+      "devModeNodeId": "144:4452",
+      "framePosition": {
+        "x": 136,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4453",
+      "index": 73,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4452",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4454"
+      ],
+      "selector": "[data-figma-node=\"144:4453\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4453",
+      "parametersNodeId": "144:4453",
+      "devModeNodeId": "144:4453",
+      "framePosition": {
+        "x": 136,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4454",
+      "index": 74,
+      "level": 8,
+      "name": "骨科",
+      "type": "TEXT",
+      "parentNodeId": "144:4453",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4454\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4454",
+      "parametersNodeId": "144:4454",
+      "devModeNodeId": "144:4454",
+      "framePosition": {
+        "x": 136,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4455",
+      "index": 75,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4452",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4456",
+        "144:4457",
+        "144:4458"
+      ],
+      "selector": "[data-figma-node=\"144:4455\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4455",
+      "parametersNodeId": "144:4455",
+      "devModeNodeId": "144:4455",
+      "framePosition": {
+        "x": 136,
+        "y": 1160
+      }
+    },
+    {
+      "id": "144:4456",
+      "index": 76,
+      "level": 8,
+      "name": "合作医院：28家",
+      "type": "TEXT",
+      "parentNodeId": "144:4455",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4456\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4456",
+      "parametersNodeId": "144:4456",
+      "devModeNodeId": "144:4456",
+      "framePosition": {
+        "x": 136,
+        "y": 1176
+      }
+    },
+    {
+      "id": "144:4457",
+      "index": 77,
+      "level": 8,
+      "name": "擅长病例：脊柱疾病、关节置换、复杂创伤修复",
+      "type": "TEXT",
+      "parentNodeId": "144:4455",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4457\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4457",
+      "parametersNodeId": "144:4457",
+      "devModeNodeId": "144:4457",
+      "framePosition": {
+        "x": 136,
+        "y": 1208
+      }
+    },
+    {
+      "id": "144:4458",
+      "index": 78,
+      "level": 8,
+      "name": "诊疗特色：微创骨科、快速康复ERAS体系",
+      "type": "TEXT",
+      "parentNodeId": "144:4455",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4458\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4458",
+      "parametersNodeId": "144:4458",
+      "devModeNodeId": "144:4458",
+      "framePosition": {
+        "x": 136,
+        "y": 1240
+      }
+    },
+    {
+      "id": "144:4459",
+      "index": 79,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 5,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4460",
+        "144:4464"
+      ],
+      "selector": "[data-figma-node=\"144:4459\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4459",
+      "parametersNodeId": "144:4459",
+      "devModeNodeId": "144:4459",
+      "framePosition": {
+        "x": 525.3333435058594,
+        "y": 988
+      }
+    },
+    {
+      "id": "144:4460",
+      "index": 80,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4459",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4461"
+      ],
+      "selector": "[data-figma-node=\"144:4460\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4460",
+      "parametersNodeId": "144:4460",
+      "devModeNodeId": "144:4460",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1012
+      }
+    },
+    {
+      "id": "144:4461",
+      "index": 81,
+      "level": 7,
+      "name": "Group 606",
+      "type": "FRAME",
+      "parentNodeId": "144:4460",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4462",
+        "144:4463"
+      ],
+      "selector": "[data-figma-node=\"144:4460\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4460",
+      "ownerNodeId": "144:4460",
+      "parametersNodeId": "144:4461",
+      "devModeNodeId": "144:4461",
+      "framePosition": {
+        "x": 552.3333435058594,
+        "y": 1015
+      }
+    },
+    {
+      "id": "144:4462",
+      "index": 82,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4461",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4460\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4460",
+      "ownerNodeId": "144:4460",
+      "parametersNodeId": "144:4462",
+      "devModeNodeId": "144:4462",
+      "framePosition": {
+        "x": 552.3333435058594,
+        "y": 1015
+      }
+    },
+    {
+      "id": "144:4463",
+      "index": 83,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4461",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4460\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4460",
+      "ownerNodeId": "144:4460",
+      "parametersNodeId": "144:4463",
+      "devModeNodeId": "144:4463",
+      "framePosition": {
+        "x": 569.7386169433594,
+        "y": 1019.88525390625
+      }
+    },
+    {
+      "id": "144:4464",
+      "index": 84,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4459",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4465",
+        "144:4467"
+      ],
+      "selector": "[data-figma-node=\"144:4464\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4464",
+      "parametersNodeId": "144:4464",
+      "devModeNodeId": "144:4464",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4465",
+      "index": 85,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4464",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4466"
+      ],
+      "selector": "[data-figma-node=\"144:4465\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4465",
+      "parametersNodeId": "144:4465",
+      "devModeNodeId": "144:4465",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4466",
+      "index": 86,
+      "level": 8,
+      "name": "牙科",
+      "type": "TEXT",
+      "parentNodeId": "144:4465",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4466\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4466",
+      "parametersNodeId": "144:4466",
+      "devModeNodeId": "144:4466",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4467",
+      "index": 87,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4464",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4468",
+        "144:4469",
+        "144:4470"
+      ],
+      "selector": "[data-figma-node=\"144:4467\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4467",
+      "parametersNodeId": "144:4467",
+      "devModeNodeId": "144:4467",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1160
+      }
+    },
+    {
+      "id": "144:4468",
+      "index": 88,
+      "level": 8,
+      "name": "合作医院：21家",
+      "type": "TEXT",
+      "parentNodeId": "144:4467",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4468\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4468",
+      "parametersNodeId": "144:4468",
+      "devModeNodeId": "144:4468",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1176
+      }
+    },
+    {
+      "id": "144:4469",
+      "index": 89,
+      "level": 8,
+      "name": "擅长病例：全口种植、颌面修复、复杂正畸",
+      "type": "TEXT",
+      "parentNodeId": "144:4467",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4469\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4469",
+      "parametersNodeId": "144:4469",
+      "devModeNodeId": "144:4469",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1208
+      }
+    },
+    {
+      "id": "144:4470",
+      "index": 90,
+      "level": 8,
+      "name": "诊疗特色：数字化口腔、All-on系列种植方案",
+      "type": "TEXT",
+      "parentNodeId": "144:4467",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4470\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4470",
+      "parametersNodeId": "144:4470",
+      "devModeNodeId": "144:4470",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1240
+      }
+    },
+    {
+      "id": "144:4471",
+      "index": 91,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 6,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4472",
+        "144:4474"
+      ],
+      "selector": "[data-figma-node=\"144:4471\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4471",
+      "parametersNodeId": "144:4471",
+      "devModeNodeId": "144:4471",
+      "framePosition": {
+        "x": 112,
+        "y": 1312
+      }
+    },
+    {
+      "id": "144:4472",
+      "index": 92,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4471",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4473"
+      ],
+      "selector": "[data-figma-node=\"144:4472\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4472",
+      "parametersNodeId": "144:4472",
+      "devModeNodeId": "144:4472",
+      "framePosition": {
+        "x": 136,
+        "y": 1336
+      }
+    },
+    {
+      "id": "144:4473",
+      "index": 93,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4472",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4472\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4472",
+      "ownerNodeId": "144:4472",
+      "parametersNodeId": "144:4473",
+      "devModeNodeId": "144:4473",
+      "framePosition": {
+        "x": 138.3330078125,
+        "y": 1338
+      }
+    },
+    {
+      "id": "144:4474",
+      "index": 94,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4471",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4475",
+        "144:4477"
+      ],
+      "selector": "[data-figma-node=\"144:4474\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4474",
+      "parametersNodeId": "144:4474",
+      "devModeNodeId": "144:4474",
+      "framePosition": {
+        "x": 136,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4475",
+      "index": 95,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4474",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4476"
+      ],
+      "selector": "[data-figma-node=\"144:4475\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4475",
+      "parametersNodeId": "144:4475",
+      "devModeNodeId": "144:4475",
+      "framePosition": {
+        "x": 136,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4476",
+      "index": 96,
+      "level": 8,
+      "name": "妇科",
+      "type": "TEXT",
+      "parentNodeId": "144:4475",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4476\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4476",
+      "parametersNodeId": "144:4476",
+      "devModeNodeId": "144:4476",
+      "framePosition": {
+        "x": 136,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4477",
+      "index": 97,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4474",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4478",
+        "144:4479",
+        "144:4480"
+      ],
+      "selector": "[data-figma-node=\"144:4477\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4477",
+      "parametersNodeId": "144:4477",
+      "devModeNodeId": "144:4477",
+      "framePosition": {
+        "x": 136,
+        "y": 1484
+      }
+    },
+    {
+      "id": "144:4478",
+      "index": 98,
+      "level": 8,
+      "name": "合作医院：20家",
+      "type": "TEXT",
+      "parentNodeId": "144:4477",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4478\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4478",
+      "parametersNodeId": "144:4478",
+      "devModeNodeId": "144:4478",
+      "framePosition": {
+        "x": 136,
+        "y": 1500
+      }
+    },
+    {
+      "id": "144:4479",
+      "index": 99,
+      "level": 8,
+      "name": "擅长病例：妇科肿瘤、盆底疾病、生殖相关疾病",
+      "type": "TEXT",
+      "parentNodeId": "144:4477",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4479\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4479",
+      "parametersNodeId": "144:4479",
+      "devModeNodeId": "144:4479",
+      "framePosition": {
+        "x": 136,
+        "y": 1532
+      }
+    },
+    {
+      "id": "144:4480",
+      "index": 100,
+      "level": 8,
+      "name": "诊疗特色：微创妇科手术，生育力保护方案",
+      "type": "TEXT",
+      "parentNodeId": "144:4477",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4480\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4480",
+      "parametersNodeId": "144:4480",
+      "devModeNodeId": "144:4480",
+      "framePosition": {
+        "x": 136,
+        "y": 1564
+      }
+    },
+    {
+      "id": "144:4481",
+      "index": 101,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 7,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4482",
+        "144:4485"
+      ],
+      "selector": "[data-figma-node=\"144:4481\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4481",
+      "parametersNodeId": "144:4481",
+      "devModeNodeId": "144:4481",
+      "framePosition": {
+        "x": 938.6666870117188,
+        "y": 988
+      }
+    },
+    {
+      "id": "144:4482",
+      "index": 102,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4481",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4483",
+        "144:4484"
+      ],
+      "selector": "[data-figma-node=\"144:4482\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4482",
+      "parametersNodeId": "144:4482",
+      "devModeNodeId": "144:4482",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1012
+      }
+    },
+    {
+      "id": "144:4483",
+      "index": 103,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4482",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4482\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4482",
+      "ownerNodeId": "144:4482",
+      "parametersNodeId": "144:4483",
+      "devModeNodeId": "144:4483",
+      "framePosition": {
+        "x": 965.3326802253723,
+        "y": 1018.6674890518188
+      }
+    },
+    {
+      "id": "144:4484",
+      "index": 104,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4482",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4482\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4482",
+      "ownerNodeId": "144:4482",
+      "parametersNodeId": "144:4484",
+      "devModeNodeId": "144:4484",
+      "framePosition": {
+        "x": 974.6666870117188,
+        "y": 1024
+      }
+    },
+    {
+      "id": "144:4485",
+      "index": 105,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4481",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4486",
+        "144:4488"
+      ],
+      "selector": "[data-figma-node=\"144:4485\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4485",
+      "parametersNodeId": "144:4485",
+      "devModeNodeId": "144:4485",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4486",
+      "index": 106,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4485",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4487"
+      ],
+      "selector": "[data-figma-node=\"144:4486\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4486",
+      "parametersNodeId": "144:4486",
+      "devModeNodeId": "144:4486",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4487",
+      "index": 107,
+      "level": 8,
+      "name": "眼科",
+      "type": "TEXT",
+      "parentNodeId": "144:4486",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4487\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4487",
+      "parametersNodeId": "144:4487",
+      "devModeNodeId": "144:4487",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1136
+      }
+    },
+    {
+      "id": "144:4488",
+      "index": 108,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4485",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4489",
+        "144:4490",
+        "144:4491"
+      ],
+      "selector": "[data-figma-node=\"144:4488\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4488",
+      "parametersNodeId": "144:4488",
+      "devModeNodeId": "144:4488",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1160
+      }
+    },
+    {
+      "id": "144:4489",
+      "index": 109,
+      "level": 8,
+      "name": "合作医院：20家",
+      "type": "TEXT",
+      "parentNodeId": "144:4488",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4489\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4489",
+      "parametersNodeId": "144:4489",
+      "devModeNodeId": "144:4489",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1176
+      }
+    },
+    {
+      "id": "144:4490",
+      "index": 110,
+      "level": 8,
+      "name": "擅长病例：眼底病变、白内障、复杂屈光问题",
+      "type": "TEXT",
+      "parentNodeId": "144:4488",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4490\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4490",
+      "parametersNodeId": "144:4490",
+      "devModeNodeId": "144:4490",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1208
+      }
+    },
+    {
+      "id": "144:4491",
+      "index": 111,
+      "level": 8,
+      "name": "诊疗特色：高端晶体植入、微创眼底外科手术",
+      "type": "TEXT",
+      "parentNodeId": "144:4488",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4491\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4491",
+      "parametersNodeId": "144:4491",
+      "devModeNodeId": "144:4491",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1240
+      }
+    },
+    {
+      "id": "144:4492",
+      "index": 112,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 8,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4493",
+        "144:4495"
+      ],
+      "selector": "[data-figma-node=\"144:4492\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4492",
+      "parametersNodeId": "144:4492",
+      "devModeNodeId": "144:4492",
+      "framePosition": {
+        "x": 525.3333435058594,
+        "y": 1312
+      }
+    },
+    {
+      "id": "144:4493",
+      "index": 113,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4492",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4494"
+      ],
+      "selector": "[data-figma-node=\"144:4493\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4493",
+      "parametersNodeId": "144:4493",
+      "devModeNodeId": "144:4493",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1336
+      }
+    },
+    {
+      "id": "144:4494",
+      "index": 114,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4493",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4493\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4493",
+      "ownerNodeId": "144:4493",
+      "parametersNodeId": "144:4494",
+      "devModeNodeId": "144:4494",
+      "framePosition": {
+        "x": 551.6663513183594,
+        "y": 1339
+      }
+    },
+    {
+      "id": "144:4495",
+      "index": 115,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4492",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4496",
+        "144:4498"
+      ],
+      "selector": "[data-figma-node=\"144:4495\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4495",
+      "parametersNodeId": "144:4495",
+      "devModeNodeId": "144:4495",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1436
+      }
+    },
+    {
+      "id": "144:4496",
+      "index": 116,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4495",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4497"
+      ],
+      "selector": "[data-figma-node=\"144:4496\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4496",
+      "parametersNodeId": "144:4496",
+      "devModeNodeId": "144:4496",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1436
+      }
+    },
+    {
+      "id": "144:4497",
+      "index": 117,
+      "level": 8,
+      "name": "消化科",
+      "type": "TEXT",
+      "parentNodeId": "144:4496",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4497\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4497",
+      "parametersNodeId": "144:4497",
+      "devModeNodeId": "144:4497",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1436
+      }
+    },
+    {
+      "id": "144:4498",
+      "index": 118,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4495",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4499",
+        "144:4500",
+        "144:4501"
+      ],
+      "selector": "[data-figma-node=\"144:4498\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4498",
+      "parametersNodeId": "144:4498",
+      "devModeNodeId": "144:4498",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4499",
+      "index": 119,
+      "level": 8,
+      "name": "合作医院：25家",
+      "type": "TEXT",
+      "parentNodeId": "144:4498",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4499\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4499",
+      "parametersNodeId": "144:4499",
+      "devModeNodeId": "144:4499",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1476
+      }
+    },
+    {
+      "id": "144:4500",
+      "index": 120,
+      "level": 8,
+      "name": "擅长病例：消化道早癌、肝胆胰肿瘤、难治性胃肠病",
+      "type": "TEXT",
+      "parentNodeId": "144:4498",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4500\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4500",
+      "parametersNodeId": "144:4500",
+      "devModeNodeId": "144:4500",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1508
+      }
+    },
+    {
+      "id": "144:4501",
+      "index": 121,
+      "level": 8,
+      "name": "诊疗特色：内镜微创诊疗，消化道早癌筛查",
+      "type": "TEXT",
+      "parentNodeId": "144:4498",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4501\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4501",
+      "parametersNodeId": "144:4501",
+      "devModeNodeId": "144:4501",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1564
+      }
+    },
+    {
+      "id": "144:4502",
+      "index": 122,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 9,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4503",
+        "144:4505"
+      ],
+      "selector": "[data-figma-node=\"144:4502\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4502",
+      "parametersNodeId": "144:4502",
+      "devModeNodeId": "144:4502",
+      "framePosition": {
+        "x": 938.6666870117188,
+        "y": 1312
+      }
+    },
+    {
+      "id": "144:4503",
+      "index": 123,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4502",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4504"
+      ],
+      "selector": "[data-figma-node=\"144:4503\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4503",
+      "parametersNodeId": "144:4503",
+      "devModeNodeId": "144:4503",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1336
+      }
+    },
+    {
+      "id": "144:4504",
+      "index": 124,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4503",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4503\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4503",
+      "ownerNodeId": "144:4503",
+      "parametersNodeId": "144:4504",
+      "devModeNodeId": "144:4504",
+      "framePosition": {
+        "x": 963.6666870117188,
+        "y": 1339.5
+      }
+    },
+    {
+      "id": "144:4505",
+      "index": 125,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4502",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4506",
+        "144:4508"
+      ],
+      "selector": "[data-figma-node=\"144:4505\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4505",
+      "parametersNodeId": "144:4505",
+      "devModeNodeId": "144:4505",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4506",
+      "index": 126,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4505",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4507"
+      ],
+      "selector": "[data-figma-node=\"144:4506\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4506",
+      "parametersNodeId": "144:4506",
+      "devModeNodeId": "144:4506",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4507",
+      "index": 127,
+      "level": 8,
+      "name": "呼吸科",
+      "type": "TEXT",
+      "parentNodeId": "144:4506",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4507\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4507",
+      "parametersNodeId": "144:4507",
+      "devModeNodeId": "144:4507",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1460
+      }
+    },
+    {
+      "id": "144:4508",
+      "index": 128,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4505",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4509",
+        "144:4510",
+        "144:4511"
+      ],
+      "selector": "[data-figma-node=\"144:4508\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4508",
+      "parametersNodeId": "144:4508",
+      "devModeNodeId": "144:4508",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1484
+      }
+    },
+    {
+      "id": "144:4509",
+      "index": 129,
+      "level": 8,
+      "name": "合作医院：22家",
+      "type": "TEXT",
+      "parentNodeId": "144:4508",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4509\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4509",
+      "parametersNodeId": "144:4509",
+      "devModeNodeId": "144:4509",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1500
+      }
+    },
+    {
+      "id": "144:4510",
+      "index": 130,
+      "level": 8,
+      "name": "擅长病例：肺部肿瘤、间质性肺病、复杂肺结节",
+      "type": "TEXT",
+      "parentNodeId": "144:4508",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4510\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4510",
+      "parametersNodeId": "144:4510",
+      "devModeNodeId": "144:4510",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1532
+      }
+    },
+    {
+      "id": "144:4511",
+      "index": 131,
+      "level": 8,
+      "name": "诊疗特色：精准靶向、免疫综合治疗",
+      "type": "TEXT",
+      "parentNodeId": "144:4508",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4511\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4511",
+      "parametersNodeId": "144:4511",
+      "devModeNodeId": "144:4511",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1564
+      }
+    },
+    {
+      "id": "144:4512",
+      "index": 132,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 10,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4513",
+        "144:4516"
+      ],
+      "selector": "[data-figma-node=\"144:4512\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4512",
+      "parametersNodeId": "144:4512",
+      "devModeNodeId": "144:4512",
+      "framePosition": {
+        "x": 112,
+        "y": 1636
+      }
+    },
+    {
+      "id": "144:4513",
+      "index": 133,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4512",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4514",
+        "144:4515"
+      ],
+      "selector": "[data-figma-node=\"144:4513\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4513",
+      "parametersNodeId": "144:4513",
+      "devModeNodeId": "144:4513",
+      "framePosition": {
+        "x": 136,
+        "y": 1660
+      }
+    },
+    {
+      "id": "144:4514",
+      "index": 134,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4513",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4513\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4513",
+      "ownerNodeId": "144:4513",
+      "parametersNodeId": "144:4514",
+      "devModeNodeId": "144:4514",
+      "framePosition": {
+        "x": 140.00000047683716,
+        "y": 1667.0666670799255
+      }
+    },
+    {
+      "id": "144:4515",
+      "index": 135,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4513",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4513\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4513",
+      "ownerNodeId": "144:4513",
+      "parametersNodeId": "144:4515",
+      "devModeNodeId": "144:4515",
+      "framePosition": {
+        "x": 148.1200008392334,
+        "y": 1664.0266671180725
+      }
+    },
+    {
+      "id": "144:4516",
+      "index": 136,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4512",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4517",
+        "144:4519"
+      ],
+      "selector": "[data-figma-node=\"144:4516\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4516",
+      "parametersNodeId": "144:4516",
+      "devModeNodeId": "144:4516",
+      "framePosition": {
+        "x": 136,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4517",
+      "index": 137,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4516",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4518"
+      ],
+      "selector": "[data-figma-node=\"144:4517\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4517",
+      "parametersNodeId": "144:4517",
+      "devModeNodeId": "144:4517",
+      "framePosition": {
+        "x": 136,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4518",
+      "index": 138,
+      "level": 8,
+      "name": "泌尿外科",
+      "type": "TEXT",
+      "parentNodeId": "144:4517",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4518\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4518",
+      "parametersNodeId": "144:4518",
+      "devModeNodeId": "144:4518",
+      "framePosition": {
+        "x": 136,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4519",
+      "index": 139,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4516",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4520",
+        "144:4521",
+        "144:4522"
+      ],
+      "selector": "[data-figma-node=\"144:4519\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4519",
+      "parametersNodeId": "144:4519",
+      "devModeNodeId": "144:4519",
+      "framePosition": {
+        "x": 136,
+        "y": 1808
+      }
+    },
+    {
+      "id": "144:4520",
+      "index": 140,
+      "level": 8,
+      "name": "合作医院：23家",
+      "type": "TEXT",
+      "parentNodeId": "144:4519",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4520\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4520",
+      "parametersNodeId": "144:4520",
+      "devModeNodeId": "144:4520",
+      "framePosition": {
+        "x": 136,
+        "y": 1824
+      }
+    },
+    {
+      "id": "144:4521",
+      "index": 141,
+      "level": 8,
+      "name": "擅长病例：泌尿系肿瘤、复杂结石、前列腺疾病",
+      "type": "TEXT",
+      "parentNodeId": "144:4519",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4521\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4521",
+      "parametersNodeId": "144:4521",
+      "devModeNodeId": "144:4521",
+      "framePosition": {
+        "x": 136,
+        "y": 1856
+      }
+    },
+    {
+      "id": "144:4522",
+      "index": 142,
+      "level": 8,
+      "name": "诊疗特色：腹腔镜、机器人微创外科",
+      "type": "TEXT",
+      "parentNodeId": "144:4519",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4522\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4522",
+      "parametersNodeId": "144:4522",
+      "devModeNodeId": "144:4522",
+      "framePosition": {
+        "x": 136,
+        "y": 1888
+      }
+    },
+    {
+      "id": "144:4523",
+      "index": 143,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 11,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4524",
+        "144:4530"
+      ],
+      "selector": "[data-figma-node=\"144:4523\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4523",
+      "parametersNodeId": "144:4523",
+      "devModeNodeId": "144:4523",
+      "framePosition": {
+        "x": 525.3333435058594,
+        "y": 1636
+      }
+    },
+    {
+      "id": "144:4524",
+      "index": 144,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4523",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4525",
+        "144:4526",
+        "144:4527",
+        "144:4528",
+        "144:4529"
+      ],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4524",
+      "devModeNodeId": "144:4524",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1660
+      }
+    },
+    {
+      "id": "144:4525",
+      "index": 145,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4524",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4524",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4525",
+      "devModeNodeId": "144:4525",
+      "framePosition": {
+        "x": 553.3333439826965,
+        "y": 1664.0000004768372
+      }
+    },
+    {
+      "id": "144:4526",
+      "index": 146,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4524",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4524",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4526",
+      "devModeNodeId": "144:4526",
+      "framePosition": {
+        "x": 560.1600103378296,
+        "y": 1670.8266668319702
+      }
+    },
+    {
+      "id": "144:4527",
+      "index": 147,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4524",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4524",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4527",
+      "devModeNodeId": "144:4527",
+      "framePosition": {
+        "x": 560.1600103378296,
+        "y": 1665.333333492279
+      }
+    },
+    {
+      "id": "144:4528",
+      "index": 148,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4524",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4524",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4528",
+      "devModeNodeId": "144:4528",
+      "framePosition": {
+        "x": 553.3333439826965,
+        "y": 1680
+      }
+    },
+    {
+      "id": "144:4529",
+      "index": 149,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4524",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4524\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4524",
+      "ownerNodeId": "144:4524",
+      "parametersNodeId": "144:4529",
+      "devModeNodeId": "144:4529",
+      "framePosition": {
+        "x": 569.0666770935059,
+        "y": 1679.7333335876465
+      }
+    },
+    {
+      "id": "144:4530",
+      "index": 150,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4523",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4531",
+        "144:4533"
+      ],
+      "selector": "[data-figma-node=\"144:4530\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4530",
+      "parametersNodeId": "144:4530",
+      "devModeNodeId": "144:4530",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4531",
+      "index": 151,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4530",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4532"
+      ],
+      "selector": "[data-figma-node=\"144:4531\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4531",
+      "parametersNodeId": "144:4531",
+      "devModeNodeId": "144:4531",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4532",
+      "index": 152,
+      "level": 8,
+      "name": "整形外科",
+      "type": "TEXT",
+      "parentNodeId": "144:4531",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4532\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4532",
+      "parametersNodeId": "144:4532",
+      "devModeNodeId": "144:4532",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4533",
+      "index": 153,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4530",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4534",
+        "144:4535",
+        "144:4536"
+      ],
+      "selector": "[data-figma-node=\"144:4533\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4533",
+      "parametersNodeId": "144:4533",
+      "devModeNodeId": "144:4533",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1808
+      }
+    },
+    {
+      "id": "144:4534",
+      "index": 154,
+      "level": 8,
+      "name": "合作医院：19家",
+      "type": "TEXT",
+      "parentNodeId": "144:4533",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4534\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4534",
+      "parametersNodeId": "144:4534",
+      "devModeNodeId": "144:4534",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1824
+      }
+    },
+    {
+      "id": "144:4535",
+      "index": 155,
+      "level": 8,
+      "name": "擅长病例：肿瘤术后重建、颌面整形、创面修复",
+      "type": "TEXT",
+      "parentNodeId": "144:4533",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4535\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4535",
+      "parametersNodeId": "144:4535",
+      "devModeNodeId": "144:4535",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1856
+      }
+    },
+    {
+      "id": "144:4536",
+      "index": 156,
+      "level": 8,
+      "name": "诊疗特色：显微修复、个性化美学重建",
+      "type": "TEXT",
+      "parentNodeId": "144:4533",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4536\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4536",
+      "parametersNodeId": "144:4536",
+      "devModeNodeId": "144:4536",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1888
+      }
+    },
+    {
+      "id": "144:4537",
+      "index": 157,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 12,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4538",
+        "144:4540"
+      ],
+      "selector": "[data-figma-node=\"144:4537\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4537",
+      "parametersNodeId": "144:4537",
+      "devModeNodeId": "144:4537",
+      "framePosition": {
+        "x": 938.6666870117188,
+        "y": 1636
+      }
+    },
+    {
+      "id": "144:4538",
+      "index": 158,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4537",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4539"
+      ],
+      "selector": "[data-figma-node=\"144:4538\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4538",
+      "parametersNodeId": "144:4538",
+      "devModeNodeId": "144:4538",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1660
+      }
+    },
+    {
+      "id": "144:4539",
+      "index": 159,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4538",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4538\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4538",
+      "ownerNodeId": "144:4538",
+      "parametersNodeId": "144:4539",
+      "devModeNodeId": "144:4539",
+      "framePosition": {
+        "x": 964.6666870117188,
+        "y": 1662
+      }
+    },
+    {
+      "id": "144:4540",
+      "index": 160,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4537",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4541",
+        "144:4543"
+      ],
+      "selector": "[data-figma-node=\"144:4540\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4540",
+      "parametersNodeId": "144:4540",
+      "devModeNodeId": "144:4540",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4541",
+      "index": 161,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4540",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4542"
+      ],
+      "selector": "[data-figma-node=\"144:4541\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4541",
+      "parametersNodeId": "144:4541",
+      "devModeNodeId": "144:4541",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4542",
+      "index": 162,
+      "level": 8,
+      "name": "细胞治疗",
+      "type": "TEXT",
+      "parentNodeId": "144:4541",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4542\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4542",
+      "parametersNodeId": "144:4542",
+      "devModeNodeId": "144:4542",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1784
+      }
+    },
+    {
+      "id": "144:4543",
+      "index": 163,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4540",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4544",
+        "144:4545",
+        "144:4546"
+      ],
+      "selector": "[data-figma-node=\"144:4543\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4543",
+      "parametersNodeId": "144:4543",
+      "devModeNodeId": "144:4543",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1808
+      }
+    },
+    {
+      "id": "144:4544",
+      "index": 164,
+      "level": 8,
+      "name": "合作医院：16家",
+      "type": "TEXT",
+      "parentNodeId": "144:4543",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4544\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4544",
+      "parametersNodeId": "144:4544",
+      "devModeNodeId": "144:4544",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1824
+      }
+    },
+    {
+      "id": "144:4545",
+      "index": 165,
+      "level": 8,
+      "name": "擅长病例：肿瘤免疫治疗、衰老干预",
+      "type": "TEXT",
+      "parentNodeId": "144:4543",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4545\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4545",
+      "parametersNodeId": "144:4545",
+      "devModeNodeId": "144:4545",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1856
+      }
+    },
+    {
+      "id": "144:4546",
+      "index": 166,
+      "level": 8,
+      "name": "诊疗特色：个体化细胞方案，严格质控管理",
+      "type": "TEXT",
+      "parentNodeId": "144:4543",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4546\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4546",
+      "parametersNodeId": "144:4546",
+      "devModeNodeId": "144:4546",
+      "framePosition": {
+        "x": 962.6666870117188,
+        "y": 1888
+      }
+    },
+    {
+      "id": "144:4547",
+      "index": 167,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 13,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4548",
+        "144:4553"
+      ],
+      "selector": "[data-figma-node=\"144:4547\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4547",
+      "parametersNodeId": "144:4547",
+      "devModeNodeId": "144:4547",
+      "framePosition": {
+        "x": 112,
+        "y": 1960
+      }
+    },
+    {
+      "id": "144:4548",
+      "index": 168,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4547",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4549",
+        "144:4550",
+        "144:4551",
+        "144:4552"
+      ],
+      "selector": "[data-figma-node=\"144:4548\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4548",
+      "parametersNodeId": "144:4548",
+      "devModeNodeId": "144:4548",
+      "framePosition": {
+        "x": 136,
+        "y": 1984
+      }
+    },
+    {
+      "id": "144:4549",
+      "index": 169,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4548",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4548\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4548",
+      "ownerNodeId": "144:4548",
+      "parametersNodeId": "144:4549",
+      "devModeNodeId": "144:4549",
+      "framePosition": {
+        "x": 149.33333492279053,
+        "y": 2005.333330154419
+      }
+    },
+    {
+      "id": "144:4550",
+      "index": 170,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4548",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4548\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4548",
+      "ownerNodeId": "144:4548",
+      "parametersNodeId": "144:4550",
+      "devModeNodeId": "144:4550",
+      "framePosition": {
+        "x": 156,
+        "y": 2000
+      }
+    },
+    {
+      "id": "144:4551",
+      "index": 171,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4548",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4548\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4548",
+      "ownerNodeId": "144:4548",
+      "parametersNodeId": "144:4551",
+      "devModeNodeId": "144:4551",
+      "framePosition": {
+        "x": 138.7623736858368,
+        "y": 1988.0000004768372
+      }
+    },
+    {
+      "id": "144:4552",
+      "index": 172,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4548",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4548\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4548",
+      "ownerNodeId": "144:4548",
+      "parametersNodeId": "144:4552",
+      "devModeNodeId": "144:4552",
+      "framePosition": {
+        "x": 148,
+        "y": 2000
+      }
+    },
+    {
+      "id": "144:4553",
+      "index": 173,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4547",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4554",
+        "144:4556"
+      ],
+      "selector": "[data-figma-node=\"144:4553\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4553",
+      "parametersNodeId": "144:4553",
+      "devModeNodeId": "144:4553",
+      "framePosition": {
+        "x": 136,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4554",
+      "index": 174,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4553",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4555"
+      ],
+      "selector": "[data-figma-node=\"144:4554\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4554",
+      "parametersNodeId": "144:4554",
+      "devModeNodeId": "144:4554",
+      "framePosition": {
+        "x": 136,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4555",
+      "index": 175,
+      "level": 8,
+      "name": "儿科",
+      "type": "TEXT",
+      "parentNodeId": "144:4554",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4555\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4555",
+      "parametersNodeId": "144:4555",
+      "devModeNodeId": "144:4555",
+      "framePosition": {
+        "x": 136,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4556",
+      "index": 176,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4553",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4557",
+        "144:4558",
+        "144:4559"
+      ],
+      "selector": "[data-figma-node=\"144:4556\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4556",
+      "parametersNodeId": "144:4556",
+      "devModeNodeId": "144:4556",
+      "framePosition": {
+        "x": 136,
+        "y": 2132
+      }
+    },
+    {
+      "id": "144:4557",
+      "index": 177,
+      "level": 8,
+      "name": "合作医院：17家",
+      "type": "TEXT",
+      "parentNodeId": "144:4556",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4557\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4557",
+      "parametersNodeId": "144:4557",
+      "devModeNodeId": "144:4557",
+      "framePosition": {
+        "x": 136,
+        "y": 2148
+      }
+    },
+    {
+      "id": "144:4558",
+      "index": 178,
+      "level": 8,
+      "name": "擅长病例：儿童先天疾病、儿童肿瘤、罕见病",
+      "type": "TEXT",
+      "parentNodeId": "144:4556",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4558\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4558",
+      "parametersNodeId": "144:4558",
+      "devModeNodeId": "144:4558",
+      "framePosition": {
+        "x": 136,
+        "y": 2180
+      }
+    },
+    {
+      "id": "144:4559",
+      "index": 179,
+      "level": 8,
+      "name": "诊疗特色：儿童专科多学科联合诊疗",
+      "type": "TEXT",
+      "parentNodeId": "144:4556",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4559\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4559",
+      "parametersNodeId": "144:4559",
+      "devModeNodeId": "144:4559",
+      "framePosition": {
+        "x": 136,
+        "y": 2212
+      }
+    },
+    {
+      "id": "144:4560",
+      "index": 180,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4403",
+      "siblingOrder": 14,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4561",
+        "144:4565"
+      ],
+      "selector": "[data-figma-node=\"144:4560\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4560",
+      "parametersNodeId": "144:4560",
+      "devModeNodeId": "144:4560",
+      "framePosition": {
+        "x": 525.3333435058594,
+        "y": 1960
+      }
+    },
+    {
+      "id": "144:4561",
+      "index": 181,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4560",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4562"
+      ],
+      "selector": "[data-figma-node=\"144:4561\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4561",
+      "parametersNodeId": "144:4561",
+      "devModeNodeId": "144:4561",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 1984
+      }
+    },
+    {
+      "id": "144:4562",
+      "index": 182,
+      "level": 7,
+      "name": "Group 607",
+      "type": "FRAME",
+      "parentNodeId": "144:4561",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4563",
+        "144:4564"
+      ],
+      "selector": "[data-figma-node=\"144:4561\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4561",
+      "ownerNodeId": "144:4561",
+      "parametersNodeId": "144:4562",
+      "devModeNodeId": "144:4562",
+      "framePosition": {
+        "x": 553.7132263183594,
+        "y": 1985.5
+      }
+    },
+    {
+      "id": "144:4563",
+      "index": 183,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4562",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4561\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4561",
+      "ownerNodeId": "144:4561",
+      "parametersNodeId": "144:4563",
+      "devModeNodeId": "144:4563",
+      "framePosition": {
+        "x": 553.7132263183594,
+        "y": 1985.5
+      }
+    },
+    {
+      "id": "144:4564",
+      "index": 184,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4562",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4561\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4561",
+      "ownerNodeId": "144:4561",
+      "parametersNodeId": "144:4564",
+      "devModeNodeId": "144:4564",
+      "framePosition": {
+        "x": 558.5551404953003,
+        "y": 2000.93701171875
+      }
+    },
+    {
+      "id": "144:4565",
+      "index": 185,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4560",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4566",
+        "144:4568"
+      ],
+      "selector": "[data-figma-node=\"144:4565\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4565",
+      "parametersNodeId": "144:4565",
+      "devModeNodeId": "144:4565",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4566",
+      "index": 186,
+      "level": 7,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "144:4565",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4567"
+      ],
+      "selector": "[data-figma-node=\"144:4566\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4566",
+      "parametersNodeId": "144:4566",
+      "devModeNodeId": "144:4566",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4567",
+      "index": 187,
+      "level": 8,
+      "name": "中医药",
+      "type": "TEXT",
+      "parentNodeId": "144:4566",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4567\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4567",
+      "parametersNodeId": "144:4567",
+      "devModeNodeId": "144:4567",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2108
+      }
+    },
+    {
+      "id": "144:4568",
+      "index": 188,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4565",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4569",
+        "144:4570",
+        "144:4571"
+      ],
+      "selector": "[data-figma-node=\"144:4568\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4568",
+      "parametersNodeId": "144:4568",
+      "devModeNodeId": "144:4568",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2132
+      }
+    },
+    {
+      "id": "144:4569",
+      "index": 189,
+      "level": 8,
+      "name": "合作医院：21家",
+      "type": "TEXT",
+      "parentNodeId": "144:4568",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4569\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4569",
+      "parametersNodeId": "144:4569",
+      "devModeNodeId": "144:4569",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2148
+      }
+    },
+    {
+      "id": "144:4570",
+      "index": 190,
+      "level": 8,
+      "name": "擅长病例：肿瘤辅助治疗、慢病调理",
+      "type": "TEXT",
+      "parentNodeId": "144:4568",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4570\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4570",
+      "parametersNodeId": "144:4570",
+      "devModeNodeId": "144:4570",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2180
+      }
+    },
+    {
+      "id": "144:4571",
+      "index": 191,
+      "level": 8,
+      "name": "诊疗特色：中西医联合干预，个性化调理方案",
+      "type": "TEXT",
+      "parentNodeId": "144:4568",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4571\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4571",
+      "parametersNodeId": "144:4571",
+      "devModeNodeId": "144:4571",
+      "framePosition": {
+        "x": 549.3333435058594,
+        "y": 2212
+      }
+    },
+    {
+      "id": "144:4572",
+      "index": 192,
+      "level": 3,
+      "name": "Section",
+      "type": "FRAME",
+      "parentNodeId": "144:4382",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4573"
+      ],
+      "selector": "[data-figma-node=\"144:4572\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4572",
+      "parametersNodeId": "144:4572",
+      "devModeNodeId": "144:4572",
+      "framePosition": {
+        "x": 0,
+        "y": 2356
+      }
+    },
+    {
+      "id": "144:4573",
+      "index": 193,
+      "level": 4,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "144:4572",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4574"
+      ],
+      "selector": "[data-figma-node=\"144:4573\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4573",
+      "parametersNodeId": "144:4573",
+      "devModeNodeId": "144:4573",
+      "framePosition": {
+        "x": 0,
+        "y": 2452
+      }
+    },
+    {
+      "id": "144:4574",
+      "index": 194,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4573",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4575",
+        "144:4577"
+      ],
+      "selector": "[data-figma-node=\"144:4574\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4574",
+      "parametersNodeId": "144:4574",
+      "devModeNodeId": "144:4574",
+      "framePosition": {
+        "x": 80,
+        "y": 2452
+      }
+    },
+    {
+      "id": "144:4575",
+      "index": 195,
+      "level": 6,
+      "name": "Heading 2",
+      "type": "FRAME",
+      "parentNodeId": "144:4574",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4576"
+      ],
+      "selector": "[data-figma-node=\"144:4575\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4575",
+      "parametersNodeId": "144:4575",
+      "devModeNodeId": "144:4575",
+      "framePosition": {
+        "x": 112,
+        "y": 2452
+      }
+    },
+    {
+      "id": "144:4576",
+      "index": 196,
+      "level": 7,
+      "name": "没有找到您的疾病？问阿宁帮您解答",
+      "type": "TEXT",
+      "parentNodeId": "144:4575",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4576\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4576",
+      "parametersNodeId": "144:4576",
+      "devModeNodeId": "144:4576",
+      "framePosition": {
+        "x": 397,
+        "y": 2452
+      }
+    },
+    {
+      "id": "144:4577",
+      "index": 197,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4574",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4578",
+        "144:4582"
+      ],
+      "selector": "[data-figma-node=\"144:4577\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4577",
+      "parametersNodeId": "144:4577",
+      "devModeNodeId": "144:4577",
+      "framePosition": {
+        "x": 112,
+        "y": 2492
+      }
+    },
+    {
+      "id": "144:4578",
+      "index": 198,
+      "level": 7,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4577",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4579",
+        "144:4581"
+      ],
+      "selector": "[data-figma-node=\"144:4578\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4578",
+      "parametersNodeId": "144:4578",
+      "devModeNodeId": "144:4578",
+      "framePosition": {
+        "x": 554,
+        "y": 2540
+      }
+    },
+    {
+      "id": "144:4579",
+      "index": 199,
+      "level": 8,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "144:4578",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4580"
+      ],
+      "selector": "[data-figma-node=\"144:4579\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4579",
+      "parametersNodeId": "144:4579",
+      "devModeNodeId": "144:4579",
+      "framePosition": {
+        "x": 578,
+        "y": 2556
+      }
+    },
+    {
+      "id": "144:4580",
+      "index": 200,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4579",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4579\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4579",
+      "ownerNodeId": "144:4579",
+      "parametersNodeId": "144:4580",
+      "devModeNodeId": "144:4580",
+      "framePosition": {
+        "x": 580,
+        "y": 2556.5
+      }
+    },
+    {
+      "id": "144:4581",
+      "index": 201,
+      "level": 8,
+      "name": "提交病历",
+      "type": "TEXT",
+      "parentNodeId": "144:4578",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4581\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4581",
+      "parametersNodeId": "144:4581",
+      "devModeNodeId": "144:4581",
+      "framePosition": {
+        "x": 606,
+        "y": 2558
+      }
+    },
+    {
+      "id": "144:4582",
+      "index": 202,
+      "level": 7,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4577",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4583",
+        "144:4585"
+      ],
+      "selector": "[data-figma-node=\"144:4582\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4582",
+      "parametersNodeId": "144:4582",
+      "devModeNodeId": "144:4582",
+      "framePosition": {
+        "x": 710,
+        "y": 2540
+      }
+    },
+    {
+      "id": "144:4583",
+      "index": 203,
+      "level": 8,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4582",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4584"
+      ],
+      "selector": "[data-figma-node=\"144:4583\"]",
+      "mode": "Exact Figma SVG asset",
+      "ownerNodeId": "144:4583",
+      "parametersNodeId": "144:4583",
+      "devModeNodeId": "144:4583",
+      "framePosition": {
+        "x": 736,
+        "y": 2556
+      }
+    },
+    {
+      "id": "144:4584",
+      "index": 204,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4583",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4583\"]",
+      "mode": "SVG descendant retained in exact owner asset 144:4583",
+      "ownerNodeId": "144:4583",
+      "parametersNodeId": "144:4584",
+      "devModeNodeId": "144:4584",
+      "framePosition": {
+        "x": 737.6669239997864,
+        "y": 2557.666921377182
+      }
+    },
+    {
+      "id": "144:4585",
+      "index": 205,
+      "level": 8,
+      "name": "免费咨询阿宁",
+      "type": "TEXT",
+      "parentNodeId": "144:4582",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": "[data-figma-node=\"144:4585\"]",
+      "mode": "DOM",
+      "ownerNodeId": "144:4585",
+      "parametersNodeId": "144:4585",
+      "devModeNodeId": "144:4585",
+      "framePosition": {
+        "x": 764,
+        "y": 2558
+      }
+    },
+    {
+      "id": "144:4586",
+      "index": 206,
+      "level": 2,
+      "name": "Footer",
+      "type": "FRAME",
+      "parentNodeId": "144:4381",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4587"
+      ],
+      "selector": ".patient-footer",
+      "mode": "DOM",
+      "ownerNodeId": "144:4586",
+      "parametersNodeId": "144:4586",
+      "devModeNodeId": "144:4586",
+      "framePosition": {
+        "x": 0,
+        "y": 2688
+      }
+    },
+    {
+      "id": "144:4587",
+      "index": 207,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4586",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4588",
+        "144:4652"
+      ],
+      "selector": ".patient-footer",
+      "mode": "DOM",
+      "ownerNodeId": "144:4587",
+      "parametersNodeId": "144:4587",
+      "devModeNodeId": "144:4587",
+      "framePosition": {
+        "x": 80,
+        "y": 2688
+      }
+    },
+    {
+      "id": "144:4588",
+      "index": 208,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4587",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4589",
+        "144:4599",
+        "144:4613",
+        "144:4625"
+      ],
+      "selector": ".footer-top",
+      "mode": "DOM",
+      "ownerNodeId": "144:4588",
+      "parametersNodeId": "144:4588",
+      "devModeNodeId": "144:4588",
+      "framePosition": {
+        "x": 112,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4589",
+      "index": 209,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4588",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4590",
+        "144:4595",
+        "144:4597"
+      ],
+      "selector": ".footer-intro",
+      "mode": "DOM",
+      "ownerNodeId": "144:4589",
+      "parametersNodeId": "144:4589",
+      "devModeNodeId": "144:4589",
+      "framePosition": {
+        "x": 112,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4590",
+      "index": 210,
+      "level": 6,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4589",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4591",
+        "144:4593"
+      ],
+      "selector": ".footer-intro .brand-logo",
+      "mode": "DOM",
+      "ownerNodeId": "144:4590",
+      "parametersNodeId": "144:4590",
+      "devModeNodeId": "144:4590",
+      "framePosition": {
+        "x": 112,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4591",
+      "index": 211,
+      "level": 7,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4590",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4592"
+      ],
+      "selector": ".footer-intro .brand-logo__mark",
+      "mode": "DOM",
+      "ownerNodeId": "144:4591",
+      "parametersNodeId": "144:4591",
+      "devModeNodeId": "144:4591",
+      "framePosition": {
+        "x": 112,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4592",
+      "index": 212,
+      "level": 8,
+      "name": "寰",
+      "type": "TEXT",
+      "parentNodeId": "144:4591",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-intro .brand-logo__mark",
+      "mode": "DOM",
+      "ownerNodeId": "144:4592",
+      "parametersNodeId": "144:4592",
+      "devModeNodeId": "144:4592",
+      "framePosition": {
+        "x": 121,
+        "y": 2758
+      }
+    },
+    {
+      "id": "144:4593",
+      "index": 213,
+      "level": 7,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "144:4590",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4594"
+      ],
+      "selector": ".footer-intro .brand-logo__copy strong",
+      "mode": "DOM",
+      "ownerNodeId": "144:4593",
+      "parametersNodeId": "144:4593",
+      "devModeNodeId": "144:4593",
+      "framePosition": {
+        "x": 152,
+        "y": 2754
+      }
+    },
+    {
+      "id": "144:4594",
+      "index": 214,
+      "level": 8,
+      "name": "寰宇云医",
+      "type": "TEXT",
+      "parentNodeId": "144:4593",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-intro .brand-logo__copy strong",
+      "mode": "DOM",
+      "ownerNodeId": "144:4594",
+      "parametersNodeId": "144:4594",
+      "devModeNodeId": "144:4594",
+      "framePosition": {
+        "x": 152,
+        "y": 2754
+      }
+    },
+    {
+      "id": "144:4595",
+      "index": 215,
+      "level": 6,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4589",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4596"
+      ],
+      "selector": ".footer-intro p",
+      "mode": "DOM",
+      "ownerNodeId": "144:4595",
+      "parametersNodeId": "144:4595",
+      "devModeNodeId": "144:4595",
+      "framePosition": {
+        "x": 112,
+        "y": 2784
+      }
+    },
+    {
+      "id": "144:4596",
+      "index": 216,
+      "level": 7,
+      "name": "全球患者来华就医首选平台",
+      "type": "TEXT",
+      "parentNodeId": "144:4595",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-intro p",
+      "mode": "DOM",
+      "ownerNodeId": "144:4596",
+      "parametersNodeId": "144:4596",
+      "devModeNodeId": "144:4596",
+      "framePosition": {
+        "x": 112,
+        "y": 2800
+      }
+    },
+    {
+      "id": "144:4597",
+      "index": 217,
+      "level": 6,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4589",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4598"
+      ],
+      "selector": ".footer-intro>small",
+      "mode": "DOM",
+      "ownerNodeId": "144:4597",
+      "parametersNodeId": "144:4597",
+      "devModeNodeId": "144:4597",
+      "framePosition": {
+        "x": 112,
+        "y": 2823
+      }
+    },
+    {
+      "id": "144:4598",
+      "index": 218,
+      "level": 7,
+      "name": "蚂蚁集团技术保障 × 好大夫94万医生",
+      "type": "TEXT",
+      "parentNodeId": "144:4597",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-intro>small",
+      "mode": "DOM",
+      "ownerNodeId": "144:4598",
+      "parametersNodeId": "144:4598",
+      "devModeNodeId": "144:4598",
+      "framePosition": {
+        "x": 112,
+        "y": 2835
+      }
+    },
+    {
+      "id": "144:4599",
+      "index": 219,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4588",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4600",
+        "144:4602"
+      ],
+      "selector": ".footer-column:nth-child(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4599",
+      "parametersNodeId": "144:4599",
+      "devModeNodeId": "144:4599",
+      "framePosition": {
+        "x": 428,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4600",
+      "index": 220,
+      "level": 6,
+      "name": "Heading 4",
+      "type": "FRAME",
+      "parentNodeId": "144:4599",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4601"
+      ],
+      "selector": ".footer-column:nth-child(2) h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4600",
+      "parametersNodeId": "144:4600",
+      "devModeNodeId": "144:4600",
+      "framePosition": {
+        "x": 428,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4601",
+      "index": 221,
+      "level": 7,
+      "name": "服务",
+      "type": "TEXT",
+      "parentNodeId": "144:4600",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2) h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4601",
+      "parametersNodeId": "144:4601",
+      "devModeNodeId": "144:4601",
+      "framePosition": {
+        "x": 428,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4602",
+      "index": 222,
+      "level": 6,
+      "name": "List",
+      "type": "FRAME",
+      "parentNodeId": "144:4599",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4603",
+        "144:4605",
+        "144:4607",
+        "144:4609",
+        "144:4611"
+      ],
+      "selector": ".footer-column:nth-child(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4602",
+      "parametersNodeId": "144:4602",
+      "devModeNodeId": "144:4602",
+      "framePosition": {
+        "x": 428,
+        "y": 2772
+      }
+    },
+    {
+      "id": "144:4603",
+      "index": 223,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4602",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4604"
+      ],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4603",
+      "parametersNodeId": "144:4603",
+      "devModeNodeId": "144:4603",
+      "framePosition": {
+        "x": 428,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4604",
+      "index": 224,
+      "level": 8,
+      "name": "疾病中心",
+      "type": "TEXT",
+      "parentNodeId": "144:4603",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4604",
+      "parametersNodeId": "144:4604",
+      "devModeNodeId": "144:4604",
+      "framePosition": {
+        "x": 428,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4605",
+      "index": 225,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4602",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4606"
+      ],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4605",
+      "parametersNodeId": "144:4605",
+      "devModeNodeId": "144:4605",
+      "framePosition": {
+        "x": 428,
+        "y": 2808
+      }
+    },
+    {
+      "id": "144:4606",
+      "index": 226,
+      "level": 8,
+      "name": "费用对比",
+      "type": "TEXT",
+      "parentNodeId": "144:4605",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4606",
+      "parametersNodeId": "144:4606",
+      "devModeNodeId": "144:4606",
+      "framePosition": {
+        "x": 428,
+        "y": 2818
+      }
+    },
+    {
+      "id": "144:4607",
+      "index": 227,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4602",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4608"
+      ],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4607",
+      "parametersNodeId": "144:4607",
+      "devModeNodeId": "144:4607",
+      "framePosition": {
+        "x": 428,
+        "y": 2838
+      }
+    },
+    {
+      "id": "144:4608",
+      "index": 228,
+      "level": 8,
+      "name": "报告体验",
+      "type": "TEXT",
+      "parentNodeId": "144:4607",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4608",
+      "parametersNodeId": "144:4608",
+      "devModeNodeId": "144:4608",
+      "framePosition": {
+        "x": 428,
+        "y": 2848
+      }
+    },
+    {
+      "id": "144:4609",
+      "index": 229,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4602",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4610"
+      ],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(4)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4609",
+      "parametersNodeId": "144:4609",
+      "devModeNodeId": "144:4609",
+      "framePosition": {
+        "x": 428,
+        "y": 2868
+      }
+    },
+    {
+      "id": "144:4610",
+      "index": 230,
+      "level": 8,
+      "name": "签证办理",
+      "type": "TEXT",
+      "parentNodeId": "144:4609",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(4)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4610",
+      "parametersNodeId": "144:4610",
+      "devModeNodeId": "144:4610",
+      "framePosition": {
+        "x": 428,
+        "y": 2878
+      }
+    },
+    {
+      "id": "144:4611",
+      "index": 231,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4602",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4612"
+      ],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(5)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4611",
+      "parametersNodeId": "144:4611",
+      "devModeNodeId": "144:4611",
+      "framePosition": {
+        "x": 428,
+        "y": 2898
+      }
+    },
+    {
+      "id": "144:4612",
+      "index": 232,
+      "level": 8,
+      "name": "就医步骤",
+      "type": "TEXT",
+      "parentNodeId": "144:4611",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(5)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4612",
+      "parametersNodeId": "144:4612",
+      "devModeNodeId": "144:4612",
+      "framePosition": {
+        "x": 428,
+        "y": 2908
+      }
+    },
+    {
+      "id": "144:4613",
+      "index": 233,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4588",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4614",
+        "144:4616"
+      ],
+      "selector": ".footer-column:nth-child(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4613",
+      "parametersNodeId": "144:4613",
+      "devModeNodeId": "144:4613",
+      "framePosition": {
+        "x": 744,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4614",
+      "index": 234,
+      "level": 6,
+      "name": "Heading 4",
+      "type": "FRAME",
+      "parentNodeId": "144:4613",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4615"
+      ],
+      "selector": ".footer-column:nth-child(3) h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4614",
+      "parametersNodeId": "144:4614",
+      "devModeNodeId": "144:4614",
+      "framePosition": {
+        "x": 744,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4615",
+      "index": 235,
+      "level": 7,
+      "name": "资源",
+      "type": "TEXT",
+      "parentNodeId": "144:4614",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(3) h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4615",
+      "parametersNodeId": "144:4615",
+      "devModeNodeId": "144:4615",
+      "framePosition": {
+        "x": 744,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4616",
+      "index": 236,
+      "level": 6,
+      "name": "List",
+      "type": "FRAME",
+      "parentNodeId": "144:4613",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4617",
+        "144:4619",
+        "144:4621",
+        "144:4623"
+      ],
+      "selector": ".footer-column:nth-child(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4616",
+      "parametersNodeId": "144:4616",
+      "devModeNodeId": "144:4616",
+      "framePosition": {
+        "x": 744,
+        "y": 2772
+      }
+    },
+    {
+      "id": "144:4617",
+      "index": 237,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4616",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4618"
+      ],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4617",
+      "parametersNodeId": "144:4617",
+      "devModeNodeId": "144:4617",
+      "framePosition": {
+        "x": 744,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4618",
+      "index": 238,
+      "level": 8,
+      "name": "患者案例",
+      "type": "TEXT",
+      "parentNodeId": "144:4617",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4618",
+      "parametersNodeId": "144:4618",
+      "devModeNodeId": "144:4618",
+      "framePosition": {
+        "x": 744,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4619",
+      "index": 239,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4616",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4620"
+      ],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4619",
+      "parametersNodeId": "144:4619",
+      "devModeNodeId": "144:4619",
+      "framePosition": {
+        "x": 744,
+        "y": 2808
+      }
+    },
+    {
+      "id": "144:4620",
+      "index": 240,
+      "level": 8,
+      "name": "保险指南",
+      "type": "TEXT",
+      "parentNodeId": "144:4619",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4620",
+      "parametersNodeId": "144:4620",
+      "devModeNodeId": "144:4620",
+      "framePosition": {
+        "x": 744,
+        "y": 2818
+      }
+    },
+    {
+      "id": "144:4621",
+      "index": 241,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4616",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4622"
+      ],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4621",
+      "parametersNodeId": "144:4621",
+      "devModeNodeId": "144:4621",
+      "framePosition": {
+        "x": 744,
+        "y": 2838
+      }
+    },
+    {
+      "id": "144:4622",
+      "index": 242,
+      "level": 8,
+      "name": "就医步骤",
+      "type": "TEXT",
+      "parentNodeId": "144:4621",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4622",
+      "parametersNodeId": "144:4622",
+      "devModeNodeId": "144:4622",
+      "framePosition": {
+        "x": 744,
+        "y": 2848
+      }
+    },
+    {
+      "id": "144:4623",
+      "index": 243,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4616",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4624"
+      ],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(4)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4623",
+      "parametersNodeId": "144:4623",
+      "devModeNodeId": "144:4623",
+      "framePosition": {
+        "x": 744,
+        "y": 2868
+      }
+    },
+    {
+      "id": "144:4624",
+      "index": 244,
+      "level": 8,
+      "name": "关于我们",
+      "type": "TEXT",
+      "parentNodeId": "144:4623",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(4)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4624",
+      "parametersNodeId": "144:4624",
+      "devModeNodeId": "144:4624",
+      "framePosition": {
+        "x": 744,
+        "y": 2878
+      }
+    },
+    {
+      "id": "144:4625",
+      "index": 245,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4588",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4626",
+        "144:4628"
+      ],
+      "selector": ".footer-contact",
+      "mode": "DOM",
+      "ownerNodeId": "144:4625",
+      "parametersNodeId": "144:4625",
+      "devModeNodeId": "144:4625",
+      "framePosition": {
+        "x": 1060,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4626",
+      "index": 246,
+      "level": 6,
+      "name": "Heading 4",
+      "type": "FRAME",
+      "parentNodeId": "144:4625",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4627"
+      ],
+      "selector": ".footer-contact h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4626",
+      "parametersNodeId": "144:4626",
+      "devModeNodeId": "144:4626",
+      "framePosition": {
+        "x": 1060,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4627",
+      "index": 247,
+      "level": 7,
+      "name": "联系",
+      "type": "TEXT",
+      "parentNodeId": "144:4626",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact h3",
+      "mode": "DOM",
+      "ownerNodeId": "144:4627",
+      "parametersNodeId": "144:4627",
+      "devModeNodeId": "144:4627",
+      "framePosition": {
+        "x": 1060,
+        "y": 2752
+      }
+    },
+    {
+      "id": "144:4628",
+      "index": 248,
+      "level": 6,
+      "name": "List",
+      "type": "FRAME",
+      "parentNodeId": "144:4625",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4629",
+        "144:4635",
+        "144:4640",
+        "144:4645"
+      ],
+      "selector": ".footer-contact",
+      "mode": "DOM",
+      "ownerNodeId": "144:4628",
+      "parametersNodeId": "144:4628",
+      "devModeNodeId": "144:4628",
+      "framePosition": {
+        "x": 1060,
+        "y": 2772
+      }
+    },
+    {
+      "id": "144:4629",
+      "index": 249,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4628",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4630",
+        "144:4633"
+      ],
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4629",
+      "parametersNodeId": "144:4629",
+      "devModeNodeId": "144:4629",
+      "framePosition": {
+        "x": 1060,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4630",
+      "index": 250,
+      "level": 8,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4629",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4631",
+        "144:4632"
+      ],
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4630",
+      "parametersNodeId": "144:4630",
+      "devModeNodeId": "144:4630",
+      "framePosition": {
+        "x": 1060,
+        "y": 2790
+      }
+    },
+    {
+      "id": "144:4631",
+      "index": 251,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4630",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4631",
+      "parametersNodeId": "144:4631",
+      "devModeNodeId": "144:4631",
+      "framePosition": {
+        "x": 1061.3333331346512,
+        "y": 2794.666666507721
+      }
+    },
+    {
+      "id": "144:4632",
+      "index": 252,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4630",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4632",
+      "parametersNodeId": "144:4632",
+      "devModeNodeId": "144:4632",
+      "framePosition": {
+        "x": 1061.3333331346512,
+        "y": 2792.666666507721
+      }
+    },
+    {
+      "id": "144:4633",
+      "index": 253,
+      "level": 8,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "144:4629",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4634"
+      ],
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4633",
+      "parametersNodeId": "144:4633",
+      "devModeNodeId": "144:4633",
+      "framePosition": {
+        "x": 1084,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4634",
+      "index": 254,
+      "level": 9,
+      "name": "contact@huanyuyunyi.com",
+      "type": "TEXT",
+      "parentNodeId": "144:4633",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4634",
+      "parametersNodeId": "144:4634",
+      "devModeNodeId": "144:4634",
+      "framePosition": {
+        "x": 1084,
+        "y": 2788
+      }
+    },
+    {
+      "id": "144:4635",
+      "index": 255,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4628",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4636",
+        "144:4638"
+      ],
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4635",
+      "parametersNodeId": "144:4635",
+      "devModeNodeId": "144:4635",
+      "framePosition": {
+        "x": 1060,
+        "y": 2808
+      }
+    },
+    {
+      "id": "144:4636",
+      "index": 256,
+      "level": 8,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4635",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4637"
+      ],
+      "selector": ".footer-contact a:nth-of-type(2) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4636",
+      "parametersNodeId": "144:4636",
+      "devModeNodeId": "144:4636",
+      "framePosition": {
+        "x": 1060,
+        "y": 2822
+      }
+    },
+    {
+      "id": "144:4637",
+      "index": 257,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4636",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(2) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4637",
+      "parametersNodeId": "144:4637",
+      "devModeNodeId": "144:4637",
+      "framePosition": {
+        "x": 1061.3333331346512,
+        "y": 2823.333333134651
+      }
+    },
+    {
+      "id": "144:4638",
+      "index": 258,
+      "level": 8,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "144:4635",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4639"
+      ],
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4638",
+      "parametersNodeId": "144:4638",
+      "devModeNodeId": "144:4638",
+      "framePosition": {
+        "x": 1084,
+        "y": 2820
+      }
+    },
+    {
+      "id": "144:4639",
+      "index": 259,
+      "level": 9,
+      "name": "+86 400-888-XXXX",
+      "type": "TEXT",
+      "parentNodeId": "144:4638",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4639",
+      "parametersNodeId": "144:4639",
+      "devModeNodeId": "144:4639",
+      "framePosition": {
+        "x": 1084,
+        "y": 2820
+      }
+    },
+    {
+      "id": "144:4640",
+      "index": 260,
+      "level": 7,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4628",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4641",
+        "144:4643"
+      ],
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4640",
+      "parametersNodeId": "144:4640",
+      "devModeNodeId": "144:4640",
+      "framePosition": {
+        "x": 1060,
+        "y": 2840
+      }
+    },
+    {
+      "id": "144:4641",
+      "index": 261,
+      "level": 8,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "144:4640",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4642"
+      ],
+      "selector": ".footer-contact a:nth-of-type(3) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4641",
+      "parametersNodeId": "144:4641",
+      "devModeNodeId": "144:4641",
+      "framePosition": {
+        "x": 1060,
+        "y": 2854
+      }
+    },
+    {
+      "id": "144:4642",
+      "index": 262,
+      "level": 9,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "144:4641",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(3) img",
+      "mode": "DOM",
+      "ownerNodeId": "144:4642",
+      "parametersNodeId": "144:4642",
+      "devModeNodeId": "144:4642",
+      "framePosition": {
+        "x": 1061.3335390090942,
+        "y": 2855.3335366249084
+      }
+    },
+    {
+      "id": "144:4643",
+      "index": 263,
+      "level": 8,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "144:4640",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4644"
+      ],
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4643",
+      "parametersNodeId": "144:4643",
+      "devModeNodeId": "144:4643",
+      "framePosition": {
+        "x": 1084,
+        "y": 2852
+      }
+    },
+    {
+      "id": "144:4644",
+      "index": 264,
+      "level": 9,
+      "name": "WhatsApp",
+      "type": "TEXT",
+      "parentNodeId": "144:4643",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "mode": "DOM",
+      "ownerNodeId": "144:4644",
+      "parametersNodeId": "144:4644",
+      "devModeNodeId": "144:4644",
+      "framePosition": {
+        "x": 1084,
+        "y": 2852
+      }
+    },
+    {
+      "id": "144:4645",
+      "index": 265,
+      "level": 7,
+      "name": "List Item:margin",
+      "type": "FRAME",
+      "parentNodeId": "144:4628",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4646"
+      ],
+      "selector": ".footer-service",
+      "mode": "DOM",
+      "ownerNodeId": "144:4645",
+      "parametersNodeId": "144:4645",
+      "devModeNodeId": "144:4645",
+      "framePosition": {
+        "x": 1060,
+        "y": 2872
+      }
+    },
+    {
+      "id": "144:4646",
+      "index": 266,
+      "level": 8,
+      "name": "List Item",
+      "type": "FRAME",
+      "parentNodeId": "144:4645",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4647",
+        "144:4649"
+      ],
+      "selector": ".footer-service",
+      "mode": "DOM",
+      "ownerNodeId": "144:4646",
+      "parametersNodeId": "144:4646",
+      "devModeNodeId": "144:4646",
+      "framePosition": {
+        "x": 1060,
+        "y": 2884
+      }
+    },
+    {
+      "id": "144:4647",
+      "index": 267,
+      "level": 9,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4646",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4648"
+      ],
+      "selector": ".footer-service b",
+      "mode": "DOM",
+      "ownerNodeId": "144:4647",
+      "parametersNodeId": "144:4647",
+      "devModeNodeId": "144:4647",
+      "framePosition": {
+        "x": 1060,
+        "y": 2897
+      }
+    },
+    {
+      "id": "144:4648",
+      "index": 268,
+      "level": 10,
+      "name": "24小时客服",
+      "type": "TEXT",
+      "parentNodeId": "144:4647",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-service b",
+      "mode": "DOM",
+      "ownerNodeId": "144:4648",
+      "parametersNodeId": "144:4648",
+      "devModeNodeId": "144:4648",
+      "framePosition": {
+        "x": 1060,
+        "y": 2897
+      }
+    },
+    {
+      "id": "144:4649",
+      "index": 269,
+      "level": 9,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "144:4646",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4650"
+      ],
+      "selector": ".footer-service i",
+      "mode": "DOM",
+      "ownerNodeId": "144:4649",
+      "parametersNodeId": "144:4649",
+      "devModeNodeId": "144:4649",
+      "framePosition": {
+        "x": 1060,
+        "y": 2913
+      }
+    },
+    {
+      "id": "144:4650",
+      "index": 270,
+      "level": 10,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4649",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4651"
+      ],
+      "selector": ".footer-service i",
+      "mode": "DOM",
+      "ownerNodeId": "144:4650",
+      "parametersNodeId": "144:4650",
+      "devModeNodeId": "144:4650",
+      "framePosition": {
+        "x": 1060,
+        "y": 2919
+      }
+    },
+    {
+      "id": "144:4651",
+      "index": 271,
+      "level": 11,
+      "name": "扫码加微信",
+      "type": "TEXT",
+      "parentNodeId": "144:4650",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-service i",
+      "mode": "DOM",
+      "ownerNodeId": "144:4651",
+      "parametersNodeId": "144:4651",
+      "devModeNodeId": "144:4651",
+      "framePosition": {
+        "x": 1070,
+        "y": 2951
+      }
+    },
+    {
+      "id": "144:4652",
+      "index": 272,
+      "level": 4,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "144:4587",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4653"
+      ],
+      "selector": ".footer-bottom",
+      "mode": "DOM",
+      "ownerNodeId": "144:4652",
+      "parametersNodeId": "144:4652",
+      "devModeNodeId": "144:4652",
+      "framePosition": {
+        "x": 112,
+        "y": 2999
+      }
+    },
+    {
+      "id": "144:4653",
+      "index": 273,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4652",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4654",
+        "144:4656"
+      ],
+      "selector": ".footer-bottom-row",
+      "mode": "DOM",
+      "ownerNodeId": "144:4653",
+      "parametersNodeId": "144:4653",
+      "devModeNodeId": "144:4653",
+      "framePosition": {
+        "x": 112,
+        "y": 3039
+      }
+    },
+    {
+      "id": "144:4654",
+      "index": 274,
+      "level": 6,
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentNodeId": "144:4653",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4655"
+      ],
+      "selector": ".footer-bottom-row>span",
+      "mode": "DOM",
+      "ownerNodeId": "144:4654",
+      "parametersNodeId": "144:4654",
+      "devModeNodeId": "144:4654",
+      "framePosition": {
+        "x": 112,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4655",
+      "index": 275,
+      "level": 7,
+      "name": "Copyright 2026 寰宇云医. All rights reserved.",
+      "type": "TEXT",
+      "parentNodeId": "144:4654",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-bottom-row>span",
+      "mode": "DOM",
+      "ownerNodeId": "144:4655",
+      "parametersNodeId": "144:4655",
+      "devModeNodeId": "144:4655",
+      "framePosition": {
+        "x": 112,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4656",
+      "index": 276,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "144:4653",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4657",
+        "144:4659",
+        "144:4661"
+      ],
+      "selector": ".footer-bottom-row>div",
+      "mode": "DOM",
+      "ownerNodeId": "144:4656",
+      "parametersNodeId": "144:4656",
+      "devModeNodeId": "144:4656",
+      "framePosition": {
+        "x": 1196,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4657",
+      "index": 277,
+      "level": 7,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4656",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4658"
+      ],
+      "selector": ".footer-bottom button:first-child",
+      "mode": "DOM",
+      "ownerNodeId": "144:4657",
+      "parametersNodeId": "144:4657",
+      "devModeNodeId": "144:4657",
+      "framePosition": {
+        "x": 1196,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4658",
+      "index": 278,
+      "level": 8,
+      "name": "隐私政策",
+      "type": "TEXT",
+      "parentNodeId": "144:4657",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-bottom button:first-child",
+      "mode": "DOM",
+      "ownerNodeId": "144:4658",
+      "parametersNodeId": "144:4658",
+      "devModeNodeId": "144:4658",
+      "framePosition": {
+        "x": 1196,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4659",
+      "index": 279,
+      "level": 7,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "144:4656",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4660"
+      ],
+      "selector": ".footer-separator",
+      "mode": "DOM",
+      "ownerNodeId": "144:4659",
+      "parametersNodeId": "144:4659",
+      "devModeNodeId": "144:4659",
+      "framePosition": {
+        "x": 1260,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4660",
+      "index": 280,
+      "level": 8,
+      "name": "|",
+      "type": "TEXT",
+      "parentNodeId": "144:4659",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-separator",
+      "mode": "DOM",
+      "ownerNodeId": "144:4660",
+      "parametersNodeId": "144:4660",
+      "devModeNodeId": "144:4660",
+      "framePosition": {
+        "x": 1260,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4661",
+      "index": 281,
+      "level": 7,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "144:4656",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "144:4662"
+      ],
+      "selector": ".footer-bottom button:last-child",
+      "mode": "DOM",
+      "ownerNodeId": "144:4661",
+      "parametersNodeId": "144:4661",
+      "devModeNodeId": "144:4661",
+      "framePosition": {
+        "x": 1280,
+        "y": 3064
+      }
+    },
+    {
+      "id": "144:4662",
+      "index": 282,
+      "level": 8,
+      "name": "服务条款",
+      "type": "TEXT",
+      "parentNodeId": "144:4661",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".footer-bottom button:last-child",
+      "mode": "DOM",
+      "ownerNodeId": "144:4662",
+      "parametersNodeId": "144:4662",
+      "devModeNodeId": "144:4662",
+      "framePosition": {
+        "x": 1280,
+        "y": 3064
+      }
+    },
+    {
+      "id": "484:1506",
+      "index": 283,
+      "level": 2,
+      "name": "Header",
+      "type": "FRAME",
+      "parentNodeId": "144:4381",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1507"
+      ],
+      "selector": ".patient-header",
+      "mode": "DOM",
+      "ownerNodeId": "484:1506",
+      "parametersNodeId": "484:1506",
+      "devModeNodeId": "484:1506",
+      "framePosition": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "484:1507",
+      "index": 284,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "484:1506",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1508",
+        "484:1513"
+      ],
+      "selector": ".header-inner",
+      "mode": "DOM",
+      "ownerNodeId": "484:1507",
+      "parametersNodeId": "484:1507",
+      "devModeNodeId": "484:1507",
+      "framePosition": {
+        "x": 80,
+        "y": 0
+      }
+    },
+    {
+      "id": "484:1508",
+      "index": 285,
+      "level": 4,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1507",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1509",
+        "484:1511"
+      ],
+      "selector": ".header-logo",
+      "mode": "DOM",
+      "ownerNodeId": "484:1508",
+      "parametersNodeId": "484:1508",
+      "devModeNodeId": "484:1508",
+      "framePosition": {
+        "x": 112,
+        "y": 16
+      }
+    },
+    {
+      "id": "484:1509",
+      "index": 286,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "484:1508",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1510"
+      ],
+      "selector": ".header-logo .brand-logo__mark",
+      "mode": "DOM",
+      "ownerNodeId": "484:1509",
+      "parametersNodeId": "484:1509",
+      "devModeNodeId": "484:1509",
+      "framePosition": {
+        "x": 112,
+        "y": 16
+      }
+    },
+    {
+      "id": "484:1510",
+      "index": 287,
+      "level": 6,
+      "name": "寰",
+      "type": "TEXT",
+      "parentNodeId": "484:1509",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".header-logo .brand-logo__mark",
+      "mode": "DOM",
+      "ownerNodeId": "484:1510",
+      "parametersNodeId": "484:1510",
+      "devModeNodeId": "484:1510",
+      "framePosition": {
+        "x": 121,
+        "y": 22
+      }
+    },
+    {
+      "id": "484:1511",
+      "index": 288,
+      "level": 5,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "484:1508",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1512"
+      ],
+      "selector": ".header-logo .brand-logo__copy strong",
+      "mode": "DOM",
+      "ownerNodeId": "484:1511",
+      "parametersNodeId": "484:1511",
+      "devModeNodeId": "484:1511",
+      "framePosition": {
+        "x": 152,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1512",
+      "index": 289,
+      "level": 6,
+      "name": "寰宇云医",
+      "type": "TEXT",
+      "parentNodeId": "484:1511",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".header-logo .brand-logo__copy strong",
+      "mode": "DOM",
+      "ownerNodeId": "484:1512",
+      "parametersNodeId": "484:1512",
+      "devModeNodeId": "484:1512",
+      "framePosition": {
+        "x": 152,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1513",
+      "index": 290,
+      "level": 4,
+      "name": "Navigation",
+      "type": "FRAME",
+      "parentNodeId": "484:1507",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1514",
+        "484:1520",
+        "484:1522",
+        "484:1524",
+        "484:1526",
+        "484:1528",
+        "484:1530",
+        "484:1532",
+        "484:1534",
+        "484:1536",
+        "484:1538"
+      ],
+      "selector": ".desktop-nav",
+      "mode": "DOM",
+      "ownerNodeId": "484:1513",
+      "parametersNodeId": "484:1513",
+      "devModeNodeId": "484:1513",
+      "framePosition": {
+        "x": 511,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1514",
+      "index": 291,
+      "level": 5,
+      "name": "Link:margin",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1515"
+      ],
+      "selector": ".ask-aning",
+      "mode": "DOM",
+      "ownerNodeId": "484:1514",
+      "parametersNodeId": "484:1514",
+      "devModeNodeId": "484:1514",
+      "framePosition": {
+        "x": 511,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1515",
+      "index": 292,
+      "level": 6,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1514",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1516",
+        "484:1518"
+      ],
+      "selector": ".ask-aning",
+      "mode": "DOM",
+      "ownerNodeId": "484:1515",
+      "parametersNodeId": "484:1515",
+      "devModeNodeId": "484:1515",
+      "framePosition": {
+        "x": 511,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1516",
+      "index": 293,
+      "level": 7,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "484:1515",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1517"
+      ],
+      "selector": ".ask-aning img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1516",
+      "parametersNodeId": "484:1516",
+      "devModeNodeId": "484:1516",
+      "framePosition": {
+        "x": 523,
+        "y": 25
+      }
+    },
+    {
+      "id": "484:1517",
+      "index": 294,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "484:1516",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".ask-aning img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1517",
+      "parametersNodeId": "484:1517",
+      "devModeNodeId": "484:1517",
+      "framePosition": {
+        "x": 524.1668469905853,
+        "y": 26.166844844818115
+      }
+    },
+    {
+      "id": "484:1518",
+      "index": 295,
+      "level": 7,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "484:1515",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1519"
+      ],
+      "selector": ".ask-aning",
+      "mode": "DOM",
+      "ownerNodeId": "484:1518",
+      "parametersNodeId": "484:1518",
+      "devModeNodeId": "484:1518",
+      "framePosition": {
+        "x": 543,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1519",
+      "index": 296,
+      "level": 8,
+      "name": "问阿宁",
+      "type": "TEXT",
+      "parentNodeId": "484:1518",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".ask-aning",
+      "mode": "DOM",
+      "ownerNodeId": "484:1519",
+      "parametersNodeId": "484:1519",
+      "devModeNodeId": "484:1519",
+      "framePosition": {
+        "x": 543,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1520",
+      "index": 297,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1521"
+      ],
+      "selector": ".desktop-nav>a:nth-child(1)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1520",
+      "parametersNodeId": "484:1520",
+      "devModeNodeId": "484:1520",
+      "framePosition": {
+        "x": 601,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1521",
+      "index": 298,
+      "level": 6,
+      "name": "首页",
+      "type": "TEXT",
+      "parentNodeId": "484:1520",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(1)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1521",
+      "parametersNodeId": "484:1521",
+      "devModeNodeId": "484:1521",
+      "framePosition": {
+        "x": 611,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1522",
+      "index": 299,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1523"
+      ],
+      "selector": ".desktop-nav>a:nth-child(2)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1522",
+      "parametersNodeId": "484:1522",
+      "devModeNodeId": "484:1522",
+      "framePosition": {
+        "x": 647,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1523",
+      "index": 300,
+      "level": 6,
+      "name": "为什么选择中国",
+      "type": "TEXT",
+      "parentNodeId": "484:1522",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(2)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1523",
+      "parametersNodeId": "484:1523",
+      "devModeNodeId": "484:1523",
+      "framePosition": {
+        "x": 657,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1524",
+      "index": 301,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1525"
+      ],
+      "selector": ".desktop-nav>a:nth-child(3)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1524",
+      "parametersNodeId": "484:1524",
+      "devModeNodeId": "484:1524",
+      "framePosition": {
+        "x": 753,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1525",
+      "index": 302,
+      "level": 6,
+      "name": "信任与常见问题",
+      "type": "TEXT",
+      "parentNodeId": "484:1524",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(3)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1525",
+      "parametersNodeId": "484:1525",
+      "devModeNodeId": "484:1525",
+      "framePosition": {
+        "x": 763,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1526",
+      "index": 303,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1527"
+      ],
+      "selector": ".desktop-nav>a:nth-child(4)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1526",
+      "parametersNodeId": "484:1526",
+      "devModeNodeId": "484:1526",
+      "framePosition": {
+        "x": 859,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1527",
+      "index": 304,
+      "level": 6,
+      "name": "医疗服务",
+      "type": "TEXT",
+      "parentNodeId": "484:1526",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(4)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1527",
+      "parametersNodeId": "484:1527",
+      "devModeNodeId": "484:1527",
+      "framePosition": {
+        "x": 869,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1528",
+      "index": 305,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 5,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1529"
+      ],
+      "selector": ".desktop-nav>a:nth-child(5)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1528",
+      "parametersNodeId": "484:1528",
+      "devModeNodeId": "484:1528",
+      "framePosition": {
+        "x": 929,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1529",
+      "index": 306,
+      "level": 6,
+      "name": "牙科",
+      "type": "TEXT",
+      "parentNodeId": "484:1528",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(5)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1529",
+      "parametersNodeId": "484:1529",
+      "devModeNodeId": "484:1529",
+      "framePosition": {
+        "x": 939,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1530",
+      "index": 307,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 6,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1531"
+      ],
+      "selector": ".desktop-nav>a:nth-child(6)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1530",
+      "parametersNodeId": "484:1530",
+      "devModeNodeId": "484:1530",
+      "framePosition": {
+        "x": 975,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1531",
+      "index": 308,
+      "level": 6,
+      "name": "中国医院",
+      "type": "TEXT",
+      "parentNodeId": "484:1530",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(6)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1531",
+      "parametersNodeId": "484:1531",
+      "devModeNodeId": "484:1531",
+      "framePosition": {
+        "x": 985,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1532",
+      "index": 309,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 7,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1533"
+      ],
+      "selector": ".desktop-nav>a:nth-child(7)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1532",
+      "parametersNodeId": "484:1532",
+      "devModeNodeId": "484:1532",
+      "framePosition": {
+        "x": 1045,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1533",
+      "index": 310,
+      "level": 6,
+      "name": "患者案例",
+      "type": "TEXT",
+      "parentNodeId": "484:1532",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(7)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1533",
+      "parametersNodeId": "484:1533",
+      "devModeNodeId": "484:1533",
+      "framePosition": {
+        "x": 1055,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1534",
+      "index": 311,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 8,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1535"
+      ],
+      "selector": ".desktop-nav>a:nth-child(8)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1534",
+      "parametersNodeId": "484:1534",
+      "devModeNodeId": "484:1534",
+      "framePosition": {
+        "x": 1115,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1535",
+      "index": 312,
+      "level": 6,
+      "name": "保险指南",
+      "type": "TEXT",
+      "parentNodeId": "484:1534",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(8)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1535",
+      "parametersNodeId": "484:1535",
+      "devModeNodeId": "484:1535",
+      "framePosition": {
+        "x": 1125,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1536",
+      "index": 313,
+      "level": 5,
+      "name": "Link",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 9,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1537"
+      ],
+      "selector": ".desktop-nav>a:nth-child(9)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1536",
+      "parametersNodeId": "484:1536",
+      "devModeNodeId": "484:1536",
+      "framePosition": {
+        "x": 1185,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1537",
+      "index": 314,
+      "level": 6,
+      "name": "关于我们",
+      "type": "TEXT",
+      "parentNodeId": "484:1536",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".desktop-nav>a:nth-child(9)",
+      "mode": "DOM",
+      "ownerNodeId": "484:1537",
+      "parametersNodeId": "484:1537",
+      "devModeNodeId": "484:1537",
+      "framePosition": {
+        "x": 1195,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1538",
+      "index": 315,
+      "level": 5,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "484:1513",
+      "siblingOrder": 10,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1539"
+      ],
+      "selector": ".header-actions",
+      "mode": "DOM",
+      "ownerNodeId": "484:1538",
+      "parametersNodeId": "484:1538",
+      "devModeNodeId": "484:1538",
+      "framePosition": {
+        "x": 1255,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1539",
+      "index": 316,
+      "level": 6,
+      "name": "Button",
+      "type": "FRAME",
+      "parentNodeId": "484:1538",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1540",
+        "484:1544",
+        "484:1546"
+      ],
+      "selector": ".language-button",
+      "mode": "DOM",
+      "ownerNodeId": "484:1539",
+      "parametersNodeId": "484:1539",
+      "devModeNodeId": "484:1539",
+      "framePosition": {
+        "x": 1263,
+        "y": 18
+      }
+    },
+    {
+      "id": "484:1540",
+      "index": 317,
+      "level": 7,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "484:1539",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1541",
+        "484:1542",
+        "484:1543"
+      ],
+      "selector": ".language-button img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1540",
+      "parametersNodeId": "484:1540",
+      "devModeNodeId": "484:1540",
+      "framePosition": {
+        "x": 1271,
+        "y": 25
+      }
+    },
+    {
+      "id": "484:1541",
+      "index": 318,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "484:1540",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".language-button img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1541",
+      "parametersNodeId": "484:1541",
+      "devModeNodeId": "484:1541",
+      "framePosition": {
+        "x": 1272.1666668653488,
+        "y": 26.166666865348816
+      }
+    },
+    {
+      "id": "484:1542",
+      "index": 319,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "484:1540",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".language-button img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1542",
+      "parametersNodeId": "484:1542",
+      "devModeNodeId": "484:1542",
+      "framePosition": {
+        "x": 1275.666666984558,
+        "y": 26.166666865348816
+      }
+    },
+    {
+      "id": "484:1543",
+      "index": 320,
+      "level": 8,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "484:1540",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".language-button img",
+      "mode": "DOM",
+      "ownerNodeId": "484:1543",
+      "parametersNodeId": "484:1543",
+      "devModeNodeId": "484:1543",
+      "framePosition": {
+        "x": 1272.1666668653488,
+        "y": 32
+      }
+    },
+    {
+      "id": "484:1544",
+      "index": 321,
+      "level": 7,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "484:1539",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1545"
+      ],
+      "selector": ".language-flag",
+      "mode": "DOM",
+      "ownerNodeId": "484:1544",
+      "parametersNodeId": "484:1544",
+      "devModeNodeId": "484:1544",
+      "framePosition": {
+        "x": 1289,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1545",
+      "index": 322,
+      "level": 8,
+      "name": "🇨🇳",
+      "type": "TEXT",
+      "parentNodeId": "484:1544",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".language-flag",
+      "mode": "DOM",
+      "ownerNodeId": "484:1545",
+      "parametersNodeId": "484:1545",
+      "devModeNodeId": "484:1545",
+      "framePosition": {
+        "x": 1289,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1546",
+      "index": 323,
+      "level": 7,
+      "name": "Text",
+      "type": "FRAME",
+      "parentNodeId": "484:1539",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "484:1547"
+      ],
+      "selector": ".language-button b",
+      "mode": "DOM",
+      "ownerNodeId": "484:1546",
+      "parametersNodeId": "484:1546",
+      "devModeNodeId": "484:1546",
+      "framePosition": {
+        "x": 1305,
+        "y": 24
+      }
+    },
+    {
+      "id": "484:1547",
+      "index": 324,
+      "level": 8,
+      "name": "ZH",
+      "type": "TEXT",
+      "parentNodeId": "484:1546",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [],
+      "selector": ".language-button b",
+      "mode": "DOM",
+      "ownerNodeId": "484:1547",
+      "parametersNodeId": "484:1547",
+      "devModeNodeId": "484:1547",
+      "framePosition": {
+        "x": 1305,
+        "y": 24
+      }
+    }
+  ]
+}

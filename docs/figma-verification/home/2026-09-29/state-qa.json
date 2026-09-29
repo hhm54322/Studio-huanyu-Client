@@ -1,0 +1,102 @@
+[
+  {
+    "width": 1440,
+    "slide": 1,
+    "title": "让全球患者安心赴华就医",
+    "image": "/images/figma/home-banner-01-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 0,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-1-1440.png"
+  },
+  {
+    "width": 1440,
+    "slide": 2,
+    "title": "8000+个家庭已陪伴赴华就医",
+    "image": "/images/figma/home-banner-02-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 1,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-2-1440.png"
+  },
+  {
+    "width": 1440,
+    "slide": 3,
+    "title": "就医保障，写在前面",
+    "image": "/images/figma/home-banner-03-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 2,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-3-1440.png"
+  },
+  {
+    "width": 1440,
+    "slide": 4,
+    "title": "\"来中国是我做过最正确的决定\"",
+    "image": "/images/figma/patient-hero.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 3,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-4-1440.png"
+  },
+  {
+    "width": 390,
+    "slide": 1,
+    "title": "让全球患者安心赴华就医",
+    "image": "/images/figma/home-banner-01-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 0,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-1-390.png"
+  },
+  {
+    "width": 390,
+    "slide": 2,
+    "title": "8000+个家庭已陪伴赴华就医",
+    "image": "/images/figma/home-banner-02-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 1,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-2-390.png"
+  },
+  {
+    "width": 390,
+    "slide": 3,
+    "title": "就医保障，写在前面",
+    "image": "/images/figma/home-banner-03-source.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 2,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-3-390.png"
+  },
+  {
+    "width": 390,
+    "slide": 4,
+    "title": "\"来中国是我做过最正确的决定\"",
+    "image": "/images/figma/patient-hero.png",
+    "loaded": true,
+    "buttons": 4,
+    "active": 3,
+    "overflow": false,
+    "screenshot": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/home/2026-09-29/local-banner-4-390.png"
+  },
+  {
+    "slide": 1,
+    "changedPixelRatio": 0.024406867079280872
+  },
+  {
+    "slide": 2,
+    "changedPixelRatio": 0.02566405098732685
+  },
+  {
+    "slide": 3,
+    "changedPixelRatio": 0.03303860890067787
+  }
+]

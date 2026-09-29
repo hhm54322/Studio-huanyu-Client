@@ -3,23 +3,45 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import {
   ArrowRight,
   Award,
-  BadgeCheck,
   Bed,
   Building2,
   Calendar,
   Check,
   ExternalLink,
   MapPin,
-  Microscope,
   ShieldCheck,
   Stethoscope,
-  UsersRound,
   X,
 } from "lucide-vue-next";
 import { cities, hospitals } from "@/data/hospitals";
+import sourceCards from "../../../docs/figma-source/hospitals/card-data-2026-09-29.json";
+
+const designCards = new Map(sourceCards.map((card) => [card.hospitalId, card]));
+const sourceIcon = (id: number) => `/images/figma/hospital-source/node-144-${id}.svg`;
+function photoStyle(hospitalId: number) {
+  const photo = designCards.get(hospitalId)?.photo;
+  return photo ? {
+    left: `${photo.x / (389 + 1 / 3) * 100}%`,
+    top: `${photo.y}px`,
+    width: `${photo.width / (389 + 1 / 3) * 100}%`,
+    height: `${photo.height}px`,
+  } : {};
+}
+function imageStyle(hospitalId: number) {
+  const paint = designCards.get(hospitalId)?.photo.paint;
+  if (paint?.imageScaleMode !== "STRETCH") return {};
+  const t = paint.transform;
+  return {
+    width: `${100 / t.m00}%`, height: `${100 / t.m11}%`,
+    left: `${-100 * t.m02 / t.m00}%`, top: `${-100 * t.m12 / t.m11}%`,
+    objectFit: "fill" as const,
+  };
+}
 
 const displayedCities = cities.filter((city) => city !== "博鳌");
 const selectedCity = ref("北京");
+const hasFiltered = ref(false);
+watch(selectedCity, () => { hasFiltered.value = true; });
 const selectedId = ref<number | null>(null);
 const filtered = computed(() =>
   (selectedCity.value === "全部"
@@ -34,11 +56,7 @@ const modalCloseButton = ref<HTMLButtonElement | null>(null);
 const modalPanel = ref<HTMLElement | null>(null);
 let modalTrigger: HTMLButtonElement | null = null;
 const cardImage = (hospitalId: number, fallback: string) =>
-  hospitalId >= 1 && hospitalId <= 8
-    ? `/images/figma/hospital-card-${String(hospitalId).padStart(2, "0")}.png`
-    : fallback;
-const hasBakedBadges = (hospitalId: number) =>
-  hospitalId >= 1 && hospitalId <= 8;
+  designCards.get(hospitalId)?.photo.src ?? fallback;
 let savedScrollY = 0;
 watch(selectedId, (value) => {
   if (value !== null) {
@@ -82,16 +100,18 @@ function openConsultation() {
 
 <template>
   <div class="hospital-page">
-    <section class="hospital-hero">
+    <section class="hospital-hero" data-figma-node="144:4710">
       <div class="hospital-hero__visual" />
       <div class="hospital-hero__content hy-container" data-reveal>
+        <div class="hospital-hero__copy">
         <div class="hospital-hero__features">
-          <span><UsersRound />专业团队</span>
-          <span><Microscope />先进设备</span>
-          <span><BadgeCheck />权威认证</span>
+          <span><img :src="sourceIcon(4715)" alt="" /><span class="feature-label">专业团队</span></span>
+          <span><img :src="sourceIcon(4719)" alt="" /><span class="feature-label">先进设备</span></span>
+          <span><img :src="sourceIcon(4724)" alt="" /><span class="feature-label">权威认证</span></span>
         </div>
-        <h1>中国顶尖国际医疗资源</h1>
-        <p>51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种</p>
+        <h1 data-figma-node="144:4728">中国顶尖国际医疗资源</h1>
+        <p data-figma-node="144:4730">51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种</p>
+        </div>
       </div>
     </section>
 
@@ -103,6 +123,7 @@ function openConsultation() {
             :key="city"
             type="button"
             :class="{ active: selectedCity === city }"
+            :aria-pressed="selectedCity === city"
             @click="selectedCity = city"
           >
             {{ city }}
@@ -112,40 +133,66 @@ function openConsultation() {
           <article
             v-for="(hospital, index) in filtered"
             :key="hospital.id"
+            :data-figma-node="designCards.get(hospital.id)?.nodeId"
             data-reveal
-            :style="{ '--reveal-delay': `${(index % 3) * 45}ms` }"
+            :class="{ 'is-visible': hasFiltered }"
+            :style="{ '--reveal-delay': `${((designCards.get(hospital.id)?.gridColumn ?? index % 3 + 1) - 1) * 45}ms`, gridColumn: selectedCity === '北京' ? designCards.get(hospital.id)?.gridColumn : undefined, gridRow: selectedCity === '北京' ? designCards.get(hospital.id)?.gridRow : undefined }"
           >
             <div class="hospital-image">
+              <div class="hospital-photo" :style="photoStyle(hospital.id)">
               <img
                 :src="cardImage(hospital.id, hospital.image)"
                 :alt="hospital.name"
+                :style="imageStyle(hospital.id)"
               />
-              <template v-if="!hasBakedBadges(hospital.id)">
+              </div>
+              <template v-if="designCards.has(hospital.id)">
+                <span v-for="badge in designCards.get(hospital.id)!.badges" :key="badge.nodeId"
+                  class="hospital-badge" :class="`hospital-badge--${badge.kind}`"
+                  :data-figma-node="badge.nodeId"
+                  :style="{ left: `${badge.x}px`, top: `${badge.y}px`, width: `${badge.width}px`, height: `${badge.height}px` }">
+                  <img v-if="badge.icon" :src="badge.icon" alt="" /><span class="badge-label">{{ badge.label }}</span>
+                </span>
+              </template>
+              <template v-else>
                 <span><MapPin />{{ hospital.city }}</span>
                 <i>{{ hospital.type }}</i>
                 <b v-if="hospital.jci"><Award />JCI</b>
               </template>
             </div>
             <div class="hospital-body">
-              <h2>{{ hospital.name }}</h2>
+              <h2 :data-figma-node="designCards.get(hospital.id)?.titleNodeId"
+                :style="{ fontFamily: designCards.get(hospital.id)?.titleFont.family, fontWeight: designCards.get(hospital.id)?.titleWeight }">{{ designCards.get(hospital.id)?.name ?? hospital.name }}</h2>
               <div class="specialties">
+                <template v-if="designCards.has(hospital.id)">
+                  <span v-for="item in designCards.get(hospital.id)!.specialties" :key="item.nodeId"
+                    :data-figma-node="item.nodeId" :style="{ borderRadius: `${item.radius}px` }"><span class="specialty-label">{{ item.label }}</span></span>
+                </template>
+                <template v-else>
                 <span
                   v-for="item in hospital.specialties.slice(0, 3)"
                   :key="item"
                   >{{ item }}</span
                 >
+                </template>
               </div>
               <div class="hospital-facts">
-                <span><Calendar />{{ hospital.established }}</span>
-                <span><Bed />{{ hospital.beds }}床</span>
-                <span><Building2 />{{ hospital.departments }}科室</span>
+                <template v-if="designCards.has(hospital.id)">
+                  <span v-for="item in designCards.get(hospital.id)!.metadata" :key="item.nodeId"
+                    :data-figma-node="item.nodeId" :style="{ width: `${item.width}px` }"><img :src="item.icon" alt="" /><span class="fact-label">{{ item.label }}</span></span>
+                </template>
+                <template v-else>
+                  <span><img :src="sourceIcon(4777)" alt="" />{{ hospital.established }}</span>
+                  <span><img :src="sourceIcon(4784)" alt="" />{{ hospital.beds }}床</span>
+                  <span><img :src="sourceIcon(4791)" alt="" />{{ hospital.departments }}科室</span>
+                </template>
               </div>
               <div class="hospital-actions">
                 <button type="button" @click="selectedId = hospital.id">
-                  查看详情
+                  <span class="button-label">查看详情</span>
                 </button>
                 <button type="button" @click="openConsultation">
-                  预约咨询
+                  <span class="button-label">预约咨询</span>
                 </button>
               </div>
             </div>
@@ -174,7 +221,7 @@ function openConsultation() {
               <X />
             </button>
             <div class="modal-hero">
-              <img :src="selectedHospital.image" :alt="selectedHospital.name" />
+              <img :src="cardImage(selectedHospital.id, selectedHospital.image)" :alt="selectedHospital.name" />
               <div />
               <span><MapPin />{{ selectedHospital.city }}</span>
               <h2 id="hospital-modal-title">{{ selectedHospital.name }}</h2>
@@ -1093,5 +1140,130 @@ function openConsultation() {
   .hospital-actions button {
     transition: none;
   }
+}
+
+/* Copied from the locked 144:4707 node baseline. */
+.hospital-page { font-family: "SF Pro", -apple-system, "PingFang SC", sans-serif; }
+.hospital-hero { padding: 0; }
+.hospital-hero__visual {
+  inset: 0;
+  background: url("/images/figma/hospital-source/node-144-4710.webp") lightgray -174px -31.688px / 112.106% 109.497% no-repeat;
+}
+.hospital-hero > .hospital-hero__content {
+  position: relative;
+  display: flex;
+  width: min(1216px, calc(100% - 64px)) !important;
+  height: 211px;
+  min-height: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 141.5px auto 0;
+  padding: 0;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
+.hospital-hero__copy {
+  display: flex;
+  width: 644px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.hospital-hero__features { display: flex; width: 644px; height: 38px; gap: 10px; }
+.hospital-hero__features > span {
+  display: inline-flex;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, .1);
+  color: #2563eb;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: -0.15px;
+  white-space: nowrap;
+}
+.hospital-hero__features img { width: 14px; height: 14px; flex: none; }
+.hospital-hero h1 {
+  width: 644px;
+  margin: 0;
+  color: #143162;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 96px;
+  letter-spacing: 0.352px;
+  white-space: nowrap;
+}
+.hospital-hero p { width: 644px; margin: 0; color: #5b606a; font-family: "PingFang SC", sans-serif; font-size: 20px; font-weight: 400; line-height: 29px; letter-spacing: -0.439px; white-space: nowrap; }
+.city-tabs button { width: 82px; padding: 12px 24px; border-radius: 24px; color: #1e3a5f; font-family: "PingFang SC", sans-serif; font-weight: 400; line-height: 16px; letter-spacing: -0.15px; }
+.city-tabs button.active { width: 80px; border: 0; font-weight: 500; line-height: 18px; }
+.hospital-grid article { border: 0; }
+.hospital-photo { position: absolute; inset: 0; }
+.hospital-photo > img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.hospital-image > .hospital-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: #374151;
+  background: rgba(255,255,255,.9);
+  font-size: 12px;
+  font-weight: 510;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.hospital-image > .hospital-badge--location { background: #2563eb; color: #fff; font-weight: 400; }
+.hospital-image > .hospital-badge--jci { background: rgb(3,149,109); color: #fff; }
+.hospital-badge img { width: 12px; height: 12px; flex: none; }
+.hospital-body h2 { color: #111827; font-size: 24px; line-height: 36px; font-weight: 600; letter-spacing: -0.439px; }
+.specialties { height: 36px; min-height: 0; gap: 8px; margin: 0; padding-top: 12px; overflow: visible; }
+.specialties > span { height: 24px; border-radius: 14px; padding: 4px 8px; background: rgba(37,99,235,.1); color: #2563eb; font-size: 12px; font-weight: 400; line-height: 16px; }
+.specialties .specialty-label { border-radius: 0; padding: 0; background: none; color: inherit; font: inherit; }
+.hospital-facts { height: 36px; gap: 16px; margin: 0; padding-top: 16px; color: #6b7280; font-size: 14px; line-height: 20px; letter-spacing: -0.15px; }
+.hospital-facts > span { height: 20px; gap: 4px; flex: none; }
+.hospital-facts img { width: 14px; height: 14px; flex: none; }
+.hospital-actions { height: 54px; grid-template-columns: 168.6133fr 164.72fr; gap: 8px; margin: 0; padding-top: 16px; }
+.hospital-actions button { height: 38px; border-radius: 10px; font-size: 14px; font-weight: 510; line-height: 20px; letter-spacing: -0.15px; background: transparent; }
+.hospital-actions button:last-child { border: 0; background: #dd6b20; }
+.hospital-actions button:hover { background: #dd6b20; border-color: #dd6b20; }
+@media (max-width: 1100px) {
+  .hospital-body { padding-right: 16px; padding-left: 16px; }
+  .hospital-body h2 { font-size: 20px; }
+  .hospital-facts { gap: 10px; }
+}
+@media (max-width: 900px) {
+  .hospital-grid { padding-top: 48px; }
+  .hospital-grid article { grid-column: auto !important; grid-row: auto !important; }
+  .hospital-photo { inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .hospital-photo > img { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+}
+@media (max-width: 650px) {
+  .hospital-hero { height: 620px; }
+  .hospital-hero__visual { background-color: #eef7fc; background-position: 62% top; background-size: auto 350px; }
+  .hospital-hero > .hospital-hero__content { width: calc(100% - 32px) !important; height: auto; margin: 310px auto 0; }
+  .hospital-hero__copy { width: 100%; gap: 20px; }
+  .hospital-hero__features { width: 100%; height: auto; flex-wrap: wrap; gap: 8px; }
+  .hospital-hero__features > span { height: 34px; padding: 10px 12px; font-size: 12px; }
+  .hospital-hero h1 { width: 100%; font-size: 38px; line-height: 49px; white-space: normal; text-wrap: balance; }
+  .hospital-hero p { width: 100%; font-size: 14px; line-height: 22px; white-space: normal; }
+  .hospital-body { padding: 20px 24px 24px; }
+  .hospital-body h2 { font-size: 24px; }
+  .hospital-facts { gap: 16px; }
+  .hospital-grid { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hospital-grid article:hover, .hospital-grid article:hover .hospital-image img,
+  .city-tabs button:hover, .hospital-actions button:hover { transform: none; }
+  .hospital-modal { backdrop-filter: none; }
 }
 </style>

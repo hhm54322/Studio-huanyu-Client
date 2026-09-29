@@ -1,0 +1,828 @@
+{
+  "sourceFrame": "231:1292",
+  "sourceFile": "/Users/hhm/Downloads/寰宇云医.fig",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "extractionComplete": true,
+  "source": "Figma Dev Mode properties reproduced from the selected native layer properties",
+  "nodes": [
+    {
+      "nodeId": "231:1292",
+      "layerName": "医生简介",
+      "parentNodeId": null,
+      "css": [
+        "display:flex;width:1440px;height:756px;background:rgba(255,255,255,1);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 756",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1293",
+      "layerName": "04寰宇云医 - 信任与常见问题 1",
+      "parentNodeId": "231:1292",
+      "css": [
+        "width:1440px;height:1136px;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 1136",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1294",
+      "layerName": "Container",
+      "parentNodeId": "231:1292",
+      "css": [
+        "display:flex;width:1440px;height:756px;flex-direction:row;padding-bottom:40px;background:rgba(0,0,0,0.5);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 756",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1295",
+      "layerName": "Frame 631",
+      "parentNodeId": "231:1294",
+      "css": [
+        "display:flex;width:896px;height:501px;gap:10px;padding-right:32px;padding-bottom:32px;border-radius:24px 24px 24px 24px;background:rgba(255,255,255,1);"
+      ],
+      "properties": [
+        "Copy width: 896",
+        "Copy height: 501",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1296",
+      "layerName": "Button",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:36px;height:36px;flex-direction:column;padding-right:8px;padding-bottom:8px;border-radius:9999px 9999px 9999px 9999px;"
+      ],
+      "properties": [
+        "Copy width: 36",
+        "Copy height: 36",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1297",
+      "layerName": "Icon",
+      "parentNodeId": "231:1296",
+      "css": [
+        "display:flex;width:20px;height:20px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1298",
+      "layerName": "Vector",
+      "parentNodeId": "231:1297",
+      "css": [
+        "width:10px;height:10px;"
+      ],
+      "properties": [
+        "Copy width: 10",
+        "Copy height: 10",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1299",
+      "layerName": "Container",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:832px;height:32px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1300",
+      "layerName": "Heading 2",
+      "parentNodeId": "231:1299",
+      "css": [
+        "display:flex;width:832px;height:32px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1301",
+      "layerName": "医生详情",
+      "parentNodeId": "231:1300",
+      "css": [
+        "width:130px;height:32px;font-family:PingFang SC;font-size:32px;font-weight:700;line-height:32px;letter-spacing:0.396px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 130",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1302",
+      "layerName": "Frame 650",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:832px;height:106px;flex-direction:row;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 106",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1303",
+      "layerName": "Image (Shanti Bansal picture)",
+      "parentNodeId": "231:1302",
+      "css": [
+        "display:flex;width:60px;height:60px;border-radius:16px 16px 16px 16px;"
+      ],
+      "properties": [
+        "Copy width: 60",
+        "Copy height: 60",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1304",
+      "layerName": "Container",
+      "parentNodeId": "231:1302",
+      "css": [
+        "display:flex;width:760px;height:74px;flex-direction:column;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 760",
+        "Copy height: 74",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1305",
+      "layerName": "Frame 675",
+      "parentNodeId": "231:1304",
+      "css": [
+        "display:flex;width:153px;height:18px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 153",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1306",
+      "layerName": "Heading 3",
+      "parentNodeId": "231:1305",
+      "css": [
+        "display:flex;width:54px;height:18px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 54",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1307",
+      "layerName": "郑雨容",
+      "parentNodeId": "231:1306",
+      "css": [
+        "width:54px;height:18px;font-family:SF Pro;font-size:18px;font-weight:700;line-height:18px;letter-spacing:-0.439px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 54",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1308",
+      "layerName": "Container",
+      "parentNodeId": "231:1305",
+      "css": [
+        "display:flex;width:91px;height:16px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 91",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1309",
+      "layerName": "主任医师/教授",
+      "parentNodeId": "231:1308",
+      "css": [
+        "width:91px;height:16px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 91",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1310",
+      "layerName": "Container",
+      "parentNodeId": "231:1304",
+      "css": [
+        "display:flex;width:256px;height:20px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 256",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1311",
+      "layerName": "Icon",
+      "parentNodeId": "231:1310",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1312",
+      "layerName": "Vector",
+      "parentNodeId": "231:1311",
+      "css": [
+        "width:13.333px;height:12px;"
+      ],
+      "properties": [
+        "Copy width: 13.333333969116211",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1313",
+      "layerName": "上海交通大学医学院附属第九人民医院",
+      "parentNodeId": "231:1310",
+      "css": [
+        "width:236px;height:20px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 236",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1314",
+      "layerName": "Container",
+      "parentNodeId": "231:1304",
+      "css": [
+        "display:flex;width:79px;height:20px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 79",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1315",
+      "layerName": "Frame",
+      "parentNodeId": "231:1314",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1316",
+      "layerName": "Vector",
+      "parentNodeId": "231:1315",
+      "css": [
+        "width:12.369px;height:11.72px;"
+      ],
+      "properties": [
+        "Copy width: 12.369214057922363",
+        "Copy height: 11.720000267028809",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1317",
+      "layerName": "26年经验",
+      "parentNodeId": "231:1314",
+      "css": [
+        "width:59px;height:20px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 59",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1318",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:832px;height:51px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 51",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1319",
+      "layerName": "Container",
+      "parentNodeId": "231:1318",
+      "css": [
+        "display:flex;width:832px;height:27px;flex-direction:row;border:1px solid rgba(241,245,249,1);"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 27",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1320",
+      "layerName": "Button",
+      "parentNodeId": "231:1319",
+      "css": [
+        "display:flex;width:57px;height:26px;flex-direction:column;padding-bottom:8px;border:1px solid rgba(37,99,235,1);"
+      ],
+      "properties": [
+        "Copy width: 57",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1321",
+      "layerName": "医生简介",
+      "parentNodeId": "231:1320",
+      "css": [
+        "width:57px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(37,99,235,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 57",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1322",
+      "layerName": "Button",
+      "parentNodeId": "231:1319",
+      "css": [
+        "display:flex;width:63px;height:26px;flex-direction:column;padding-bottom:10px;"
+      ],
+      "properties": [
+        "Copy width: 63",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1323",
+      "layerName": "案例集",
+      "parentNodeId": "231:1322",
+      "css": [
+        "width:43px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 43",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1324",
+      "layerName": "Button",
+      "parentNodeId": "231:1319",
+      "css": [
+        "display:flex;width:77px;height:26px;flex-direction:column;padding-bottom:10px;"
+      ],
+      "properties": [
+        "Copy width: 77",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1325",
+      "layerName": "患者评价",
+      "parentNodeId": "231:1324",
+      "css": [
+        "width:57px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 57",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1326",
+      "layerName": "Container",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:832px;height:64px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 64",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1327",
+      "layerName": "Handpicked for exclusive Pegasus Program for secur",
+      "parentNodeId": "231:1326",
+      "css": [
+        "width:832px;height:48px;font-family:PingFang SC;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.15px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 48",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1328",
+      "layerName": "Container",
+      "parentNodeId": "231:1295",
+      "css": [
+        "display:flex;width:832px;height:184px;flex-direction:column;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 184",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1329",
+      "layerName": "Container",
+      "parentNodeId": "231:1328",
+      "css": [
+        "display:flex;width:832px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1330",
+      "layerName": "专业资质",
+      "parentNodeId": "231:1329",
+      "css": [
+        "width:65px;height:16px;font-family:PingFang SC;font-size:16px;font-weight:700;line-height:16px;letter-spacing:0.064px;color:rgba(15,22,46,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 65",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1331",
+      "layerName": "Frame 678",
+      "parentNodeId": "231:1328",
+      "css": [
+        "display:flex;width:163px;height:24px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 163",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1332",
+      "layerName": "Icon:margin",
+      "parentNodeId": "231:1331",
+      "css": [
+        "display:flex;width:16px;height:16px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1333",
+      "layerName": "Icon",
+      "parentNodeId": "231:1332",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1334",
+      "layerName": "Vector",
+      "parentNodeId": "231:1333",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.33334732055664",
+        "Copy height: 13.333349227905273",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1335",
+      "layerName": "Vector",
+      "parentNodeId": "231:1333",
+      "css": [
+        "width:8.667px;height:6.667px;"
+      ],
+      "properties": [
+        "Copy width: 8.666666984558105",
+        "Copy height: 6.6666669845581055",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1336",
+      "layerName": "医师执业证书(可查)",
+      "parentNodeId": "231:1331",
+      "css": [
+        "width:139px;height:24px;font-family:PingFang SC;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 139",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1337",
+      "layerName": "Frame 679",
+      "parentNodeId": "231:1328",
+      "css": [
+        "display:flex;width:120px;height:24px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 120",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1338",
+      "layerName": "Icon:margin",
+      "parentNodeId": "231:1337",
+      "css": [
+        "display:flex;width:16px;height:16px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1339",
+      "layerName": "Icon",
+      "parentNodeId": "231:1338",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1340",
+      "layerName": "Vector",
+      "parentNodeId": "231:1339",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.33334732055664",
+        "Copy height: 13.333349227905273",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1341",
+      "layerName": "Vector",
+      "parentNodeId": "231:1339",
+      "css": [
+        "width:8.667px;height:6.667px;"
+      ],
+      "properties": [
+        "Copy width: 8.666666984558105",
+        "Copy height: 6.6666669845581055",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1342",
+      "layerName": "主任医师职称",
+      "parentNodeId": "231:1337",
+      "css": [
+        "width:96px;height:24px;font-family:PingFang SC;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 96",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1343",
+      "layerName": "Frame 680",
+      "parentNodeId": "231:1328",
+      "css": [
+        "display:flex;width:202px;height:24px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 202",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1344",
+      "layerName": "Icon:margin",
+      "parentNodeId": "231:1343",
+      "css": [
+        "display:flex;width:16px;height:16px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1345",
+      "layerName": "Icon",
+      "parentNodeId": "231:1344",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1346",
+      "layerName": "Vector",
+      "parentNodeId": "231:1345",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.33334732055664",
+        "Copy height: 13.333349227905273",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1347",
+      "layerName": "Vector",
+      "parentNodeId": "231:1345",
+      "css": [
+        "width:8.667px;height:6.667px;"
+      ],
+      "properties": [
+        "Copy width: 8.666666984558105",
+        "Copy height: 6.6666669845581055",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1348",
+      "layerName": "ITI国际口腔种植学会会员",
+      "parentNodeId": "231:1343",
+      "css": [
+        "width:178px;height:24px;font-family:PingFang SC;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 178",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1349",
+      "layerName": "Frame 681",
+      "parentNodeId": "231:1328",
+      "css": [
+        "display:flex;width:164px;height:24px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 164",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1350",
+      "layerName": "Icon:margin",
+      "parentNodeId": "231:1349",
+      "css": [
+        "display:flex;width:16px;height:16px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1351",
+      "layerName": "Icon",
+      "parentNodeId": "231:1350",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1352",
+      "layerName": "Vector",
+      "parentNodeId": "231:1351",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.33334732055664",
+        "Copy height: 13.333349227905273",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1353",
+      "layerName": "Vector",
+      "parentNodeId": "231:1351",
+      "css": [
+        "width:8.667px;height:6.667px;"
+      ],
+      "properties": [
+        "Copy width: 8.666666984558105",
+        "Copy height: 6.6666669845581055",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1354",
+      "layerName": "DIO种植牙高级教授",
+      "parentNodeId": "231:1349",
+      "css": [
+        "width:140px;height:24px;font-family:PingFang SC;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 140",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1394 @@
+[
+  {
+    "nodeId": "144:4749",
+    "index": 0,
+    "hospitalId": 1,
+    "gridColumn": 1,
+    "gridRow": 1,
+    "name": "北京协和医院",
+    "titleNodeId": "144:4767",
+    "titleFont": {
+      "family": "PingFang SC",
+      "style": "Semibold",
+      "postscript": "PingFangSC-Semibold"
+    },
+    "titleWeight": 600,
+    "specialties": [
+      {
+        "nodeId": "144:4769",
+        "label": "风湿免疫",
+        "radius": 24
+      },
+      {
+        "nodeId": "144:4771",
+        "label": "内分泌科",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4773",
+        "label": "妇产科",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:4776",
+        "label": "1921",
+        "icon": "/images/figma/hospital-source/node-144-4777.svg",
+        "width": 48
+      },
+      {
+        "nodeId": "144:4783",
+        "label": "2000床",
+        "icon": "/images/figma/hospital-source/node-144-4784.svg",
+        "width": 67
+      },
+      {
+        "nodeId": "144:4790",
+        "label": "56科室",
+        "icon": "/images/figma/hospital-source/node-144-4791.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:4799",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:4801",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:4753",
+        "label": "JCI",
+        "kind": "jci",
+        "icon": "/images/figma/hospital-source/node-144-4754.svg",
+        "x": 12,
+        "y": 12,
+        "width": 51,
+        "height": 24,
+        "css": "display: flex;padding: 4px 8px;align-items: center;gap: 4px;align-self: stretch;border-radius: 8px;background: #03956D;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4758",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 71,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;padding: 4px 8px;flex-direction: column;align-items: flex-start;align-self: stretch;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4760",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-4761.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:4751",
+      "src": "/images/figma/hospital-source/node-144-4751.webp",
+      "x": 0,
+      "y": 0,
+      "width": 389.3333435058594,
+      "height": 192,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            148,
+            240,
+            42,
+            248,
+            180,
+            86,
+            158,
+            142,
+            140,
+            223,
+            19,
+            119,
+            172,
+            2,
+            124,
+            90,
+            14,
+            206,
+            55,
+            153
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            91,
+            212,
+            201,
+            230,
+            82,
+            6,
+            98,
+            183,
+            52,
+            18,
+            147,
+            241,
+            177,
+            88,
+            41,
+            174,
+            163,
+            82,
+            231,
+            79
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 700,
+        "originalImageHeight": 580,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:4803",
+    "index": 1,
+    "hospitalId": 2,
+    "gridColumn": 3,
+    "gridRow": 1,
+    "name": "中国医学科学院肿瘤医院",
+    "titleNodeId": "144:4816",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:4818",
+        "label": "肺癌",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4820",
+        "label": "乳腺癌",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4822",
+        "label": "结直肠癌",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:4825",
+        "label": "1958",
+        "icon": "/images/figma/hospital-source/node-144-4826.svg",
+        "width": 51
+      },
+      {
+        "nodeId": "144:4832",
+        "label": "2000床",
+        "icon": "/images/figma/hospital-source/node-144-4833.svg",
+        "width": 67
+      },
+      {
+        "nodeId": "144:4839",
+        "label": "40科室",
+        "icon": "/images/figma/hospital-source/node-144-4840.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:4848",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:4850",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:4807",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4809",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-4810.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:4806",
+      "src": "/images/figma/hospital-source/node-144-4806.webp",
+      "x": 0.333984375,
+      "y": 0,
+      "width": 389,
+      "height": 260,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            16,
+            55,
+            20,
+            174,
+            49,
+            99,
+            232,
+            45,
+            222,
+            228,
+            142,
+            131,
+            216,
+            36,
+            143,
+            64,
+            105,
+            4,
+            233,
+            226
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            18,
+            96,
+            204,
+            128,
+            69,
+            106,
+            191,
+            163,
+            191,
+            54,
+            40,
+            106,
+            159,
+            169,
+            70,
+            37,
+            195,
+            30,
+            232,
+            45
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 2992,
+        "originalImageHeight": 2000,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:4852",
+    "index": 2,
+    "hospitalId": 3,
+    "gridColumn": 1,
+    "gridRow": 2,
+    "name": "北京大学肿瘤医院",
+    "titleNodeId": "144:4865",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:4867",
+        "label": "胃癌",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4869",
+        "label": "乳腺癌",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4871",
+        "label": "淋巴瘤",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:4874",
+        "label": "1976",
+        "icon": "/images/figma/hospital-source/node-144-4875.svg",
+        "width": 50
+      },
+      {
+        "nodeId": "144:4881",
+        "label": "1200床",
+        "icon": "/images/figma/hospital-source/node-144-4882.svg",
+        "width": 64
+      },
+      {
+        "nodeId": "144:4888",
+        "label": "28科室",
+        "icon": "/images/figma/hospital-source/node-144-4889.svg",
+        "width": 63
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:4897",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:4899",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:4856",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4858",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-4859.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:4855",
+      "src": "/images/figma/hospital-source/node-144-4855.webp",
+      "x": -122,
+      "y": 0,
+      "width": 592,
+      "height": 268,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            146,
+            193,
+            112,
+            173,
+            121,
+            161,
+            150,
+            255,
+            75,
+            130,
+            79,
+            97,
+            194,
+            152,
+            235,
+            32,
+            194,
+            149,
+            203,
+            5
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            121,
+            71,
+            30,
+            125,
+            85,
+            121,
+            175,
+            105,
+            134,
+            24,
+            7,
+            61,
+            89,
+            79,
+            133,
+            126,
+            3,
+            32,
+            75,
+            87
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 3648,
+        "originalImageHeight": 1650,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:4901",
+    "index": 3,
+    "hospitalId": 4,
+    "gridColumn": 2,
+    "gridRow": 2,
+    "name": "北京大学人民医院",
+    "titleNodeId": "144:4914",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:4916",
+        "label": "血液病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4918",
+        "label": "骨关节病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4920",
+        "label": "胸外科",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:4923",
+        "label": "1918",
+        "icon": "/images/figma/hospital-source/node-144-4924.svg",
+        "width": 49
+      },
+      {
+        "nodeId": "144:4930",
+        "label": "1448床",
+        "icon": "/images/figma/hospital-source/node-144-4931.svg",
+        "width": 65
+      },
+      {
+        "nodeId": "144:4937",
+        "label": "52科室",
+        "icon": "/images/figma/hospital-source/node-144-4938.svg",
+        "width": 63
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:4946",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:4948",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:4905",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4907",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-4908.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:4904",
+      "src": "/images/figma/hospital-source/node-144-4904.webp",
+      "x": -0.333984375,
+      "y": -68,
+      "width": 390,
+      "height": 260,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            166,
+            232,
+            28,
+            3,
+            113,
+            182,
+            234,
+            190,
+            25,
+            24,
+            192,
+            213,
+            83,
+            133,
+            94,
+            76,
+            48,
+            255,
+            92,
+            53
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            22,
+            182,
+            6,
+            139,
+            183,
+            129,
+            70,
+            132,
+            88,
+            127,
+            123,
+            1,
+            18,
+            168,
+            58,
+            101,
+            41,
+            106,
+            140,
+            35
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 1200,
+        "originalImageHeight": 799,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:4950",
+    "index": 4,
+    "hospitalId": 5,
+    "gridColumn": 3,
+    "gridRow": 2,
+    "name": "北医三院",
+    "titleNodeId": "144:4969",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:4971",
+        "label": "生殖医学",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4973",
+        "label": "脊柱外科",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:4975",
+        "label": "运动医学",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:4978",
+        "label": "1958",
+        "icon": "/images/figma/hospital-source/node-144-4979.svg",
+        "width": 51
+      },
+      {
+        "nodeId": "144:4985",
+        "label": "1891床",
+        "icon": "/images/figma/hospital-source/node-144-4986.svg",
+        "width": 63
+      },
+      {
+        "nodeId": "144:4992",
+        "label": "45科室",
+        "icon": "/images/figma/hospital-source/node-144-4993.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:5001",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:5003",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:4955",
+        "label": "JCI",
+        "kind": "jci",
+        "icon": "/images/figma/hospital-source/node-144-4956.svg",
+        "x": 12,
+        "y": 12,
+        "width": 51,
+        "height": 24,
+        "css": "display: flex;padding: 4px 8px;align-items: center;gap: 4px;align-self: stretch;border-radius: 8px;background: #03956D;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4960",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 71,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;padding: 4px 8px;flex-direction: column;align-items: flex-start;align-self: stretch;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:4962",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-4963.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:4953",
+      "src": "/images/figma/hospital-source/node-144-4953.webp",
+      "x": 0.333984375,
+      "y": -33,
+      "width": 390,
+      "height": 292,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            185,
+            115,
+            23,
+            183,
+            31,
+            103,
+            79,
+            176,
+            97,
+            6,
+            138,
+            53,
+            222,
+            144,
+            55,
+            176,
+            194,
+            131,
+            163,
+            125
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            242,
+            15,
+            84,
+            241,
+            215,
+            137,
+            239,
+            195,
+            225,
+            8,
+            89,
+            30,
+            234,
+            70,
+            46,
+            197,
+            26,
+            242,
+            42,
+            45
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 2276,
+        "originalImageHeight": 1708,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:5005",
+    "index": 5,
+    "hospitalId": 6,
+    "gridColumn": 1,
+    "gridRow": 3,
+    "name": "中日友好医院",
+    "titleNodeId": "144:5019",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:5021",
+        "label": "呼吸与危重症",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5023",
+        "label": "中西医结合",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5025",
+        "label": "疼痛医学",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:5028",
+        "label": "1984",
+        "icon": "/images/figma/hospital-source/node-144-5029.svg",
+        "width": 51
+      },
+      {
+        "nodeId": "144:5035",
+        "label": "1610床",
+        "icon": "/images/figma/hospital-source/node-144-5036.svg",
+        "width": 63
+      },
+      {
+        "nodeId": "144:5042",
+        "label": "54科室",
+        "icon": "/images/figma/hospital-source/node-144-5043.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:5051",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:5053",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:5010",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:5012",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-5013.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:5009",
+      "src": "/images/figma/hospital-source/node-144-5009.webp",
+      "x": 0,
+      "y": -31,
+      "width": 389,
+      "height": 292,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            6,
+            166,
+            5,
+            19,
+            86,
+            178,
+            15,
+            203,
+            83,
+            176,
+            224,
+            236,
+            204,
+            173,
+            172,
+            129,
+            122,
+            196,
+            157,
+            35
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            127,
+            222,
+            10,
+            128,
+            182,
+            142,
+            9,
+            218,
+            15,
+            185,
+            3,
+            158,
+            41,
+            240,
+            189,
+            187,
+            206,
+            70,
+            222,
+            144
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 1440,
+        "originalImageHeight": 1080,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:5055",
+    "index": 6,
+    "hospitalId": 7,
+    "gridColumn": 2,
+    "gridRow": 3,
+    "name": "北京安贞医院",
+    "titleNodeId": "144:5068",
+    "titleFont": {
+      "family": "SF Pro",
+      "style": "Bold",
+      "postscript": ""
+    },
+    "titleWeight": 700,
+    "specialties": [
+      {
+        "nodeId": "144:5070",
+        "label": "冠心病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5072",
+        "label": "心脏瓣膜病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5074",
+        "label": "先心病",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:5077",
+        "label": "1984",
+        "icon": "/images/figma/hospital-source/node-144-5078.svg",
+        "width": 51
+      },
+      {
+        "nodeId": "144:5084",
+        "label": "1500床",
+        "icon": "/images/figma/hospital-source/node-144-5085.svg",
+        "width": 65
+      },
+      {
+        "nodeId": "144:5091",
+        "label": "34科室",
+        "icon": "/images/figma/hospital-source/node-144-5092.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:5100",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:5102",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:5059",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:5061",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-5062.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:5058",
+      "src": "/images/figma/hospital-source/node-144-5058.webp",
+      "x": -0.333984375,
+      "y": -37,
+      "width": 390,
+      "height": 298,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": 0,
+          "m10": 0,
+          "m11": 1,
+          "m12": 0
+        },
+        "image": {
+          "hash": [
+            188,
+            184,
+            176,
+            98,
+            223,
+            166,
+            128,
+            96,
+            89,
+            140,
+            43,
+            215,
+            197,
+            218,
+            219,
+            228,
+            174,
+            41,
+            52,
+            33
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            244,
+            181,
+            42,
+            250,
+            122,
+            35,
+            58,
+            146,
+            84,
+            227,
+            246,
+            10,
+            182,
+            188,
+            12,
+            195,
+            16,
+            168,
+            143,
+            206
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "FILL",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 4096,
+        "originalImageHeight": 3133,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  },
+  {
+    "nodeId": "144:5104",
+    "index": 7,
+    "hospitalId": 8,
+    "gridColumn": 2,
+    "gridRow": 1,
+    "name": "北京阜外医院",
+    "titleNodeId": "144:5118",
+    "titleFont": {
+      "family": "PingFang SC",
+      "style": "Semibold",
+      "postscript": "PingFangSC-Semibold"
+    },
+    "titleWeight": 600,
+    "specialties": [
+      {
+        "nodeId": "144:5120",
+        "label": "冠心病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5122",
+        "label": "心脏瓣膜病",
+        "radius": 14
+      },
+      {
+        "nodeId": "144:5124",
+        "label": "先天性心脏病",
+        "radius": 14
+      }
+    ],
+    "metadata": [
+      {
+        "nodeId": "144:5127",
+        "label": "1956",
+        "icon": "/images/figma/hospital-source/node-144-5128.svg",
+        "width": 51
+      },
+      {
+        "nodeId": "144:5134",
+        "label": "1500床",
+        "icon": "/images/figma/hospital-source/node-144-5135.svg",
+        "width": 65
+      },
+      {
+        "nodeId": "144:5141",
+        "label": "36科室",
+        "icon": "/images/figma/hospital-source/node-144-5142.svg",
+        "width": 64
+      }
+    ],
+    "buttons": [
+      {
+        "nodeId": "144:5150",
+        "label": "查看详情",
+        "width": 168.61334228515625
+      },
+      {
+        "nodeId": "144:5152",
+        "label": "预约咨询",
+        "width": 164.72000122070312
+      }
+    ],
+    "badges": [
+      {
+        "nodeId": "144:5109",
+        "label": "三甲/公立",
+        "kind": "type",
+        "icon": null,
+        "x": 12,
+        "y": 12,
+        "width": 68,
+        "height": 24,
+        "css": "display: flex;height: 24px;padding: 4px 8px;flex-direction: column;align-items: flex-start;position: absolute;left: 12px;top: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.90);",
+        "textCss": "color: #374151;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 16px; /* 133.333% */"
+      },
+      {
+        "nodeId": "144:5111",
+        "label": "北京",
+        "kind": "location",
+        "icon": "/images/figma/hospital-source/node-144-5112.svg",
+        "x": 12,
+        "y": 156,
+        "width": 56,
+        "height": 24,
+        "css": "display: flex;width: 56px;height: 24px;padding: 4px 8px;align-items: center;gap: 4px;position: absolute;left: 12px;bottom: 12px;border-radius: 8px;background: #2563EB;",
+        "textCss": "color: #FFF;font-family: \"SF Pro\";font-size: 12px;font-style: normal;font-weight: 400;line-height: 16px; /* 133.333% */"
+      }
+    ],
+    "photo": {
+      "nodeId": "144:5108",
+      "src": "/images/figma/hospital-source/node-144-5108.webp",
+      "x": -502.333984375,
+      "y": -230,
+      "width": 1269,
+      "height": 846,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 3.2845356464385986,
+          "m01": 0,
+          "m02": -1.3061634302139282,
+          "m10": 0,
+          "m11": 3.2845356464385986,
+          "m12": -0.8584678173065186
+        },
+        "image": {
+          "hash": [
+            60,
+            12,
+            245,
+            110,
+            29,
+            102,
+            202,
+            97,
+            40,
+            192,
+            55,
+            250,
+            110,
+            12,
+            53,
+            113,
+            64,
+            85,
+            49,
+            80
+          ],
+          "name": "image"
+        },
+        "imageThumbnail": {
+          "hash": [
+            79,
+            248,
+            49,
+            30,
+            214,
+            216,
+            255,
+            35,
+            208,
+            212,
+            208,
+            196,
+            176,
+            63,
+            226,
+            90,
+            227,
+            242,
+            118,
+            241
+          ],
+          "name": "image"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "STRETCH",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 1269,
+        "originalImageHeight": 846,
+        "thumbHash": [],
+        "altText": ""
+      }
+    }
+  }
+]

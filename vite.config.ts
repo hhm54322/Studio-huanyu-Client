@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -8,8 +8,18 @@ import { writeFileSync } from 'node:fs'
 
 const buildVersion = process.env.VITE_APP_VERSION || new Date().toISOString()
 
-const versionFilePlugin = () => ({
+const versionPayload = () => JSON.stringify({ version: buildVersion, builtAt: new Date().toISOString() })
+
+const versionFilePlugin = (): Plugin => ({
   name: 'huanyu-version-file',
+  configureServer(server) {
+    server.middlewares.use((request, response, next) => {
+      if (new URL(request.url || '/', 'http://localhost').pathname !== '/version.json') return next()
+      response.setHeader('Content-Type', 'application/json')
+      response.setHeader('Cache-Control', 'no-store')
+      response.end(versionPayload())
+    })
+  },
   closeBundle() {
     writeFileSync(
       fileURLToPath(new URL('./dist/version.json', import.meta.url)),

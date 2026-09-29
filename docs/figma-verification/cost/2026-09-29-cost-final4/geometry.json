@@ -1,0 +1,57 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 2481,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "cost-generated-frame",
+          "x": 0,
+          "y": 64,
+          "width": 1440,
+          "height": 1961.25
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 2025.25,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 4538,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "cost-generated-frame",
+          "x": 0,
+          "y": 64,
+          "width": 390,
+          "height": 3696
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 3760,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "referenceHeight": 1962,
+      "localHeight": 2481,
+      "changedPixelRatio": 0.26766172914147524,
+      "comparison": "1440-css-pixels"
+    }
+  ],
+  "errors": []
+}

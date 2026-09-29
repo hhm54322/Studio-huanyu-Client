@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 3144,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "disease-hero",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 460
+        },
+        {
+          "selector": "disease-directory",
+          "x": 0,
+          "y": 460,
+          "width": 1440,
+          "height": 1896
+        },
+        {
+          "selector": "disease-cta",
+          "x": 0,
+          "y": 2356,
+          "width": 1440,
+          "height": 332
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 2688,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 6162,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "disease-hero",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 460
+        },
+        {
+          "selector": "disease-directory",
+          "x": 0,
+          "y": 460,
+          "width": 390,
+          "height": 4596
+        },
+        {
+          "selector": "disease-cta",
+          "x": 0,
+          "y": 5056,
+          "width": 390,
+          "height": 328
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 5384,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "referenceHeight": 3144,
+      "localHeight": 3144,
+      "changedPixelRatio": 0.0031363200629064177,
+      "comparison": "native-2x"
+    }
+  ],
+  "errors": []
+}

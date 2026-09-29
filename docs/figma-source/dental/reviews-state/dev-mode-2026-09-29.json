@@ -1,0 +1,1062 @@
+{
+  "sourceFrame": "231:1421",
+  "sourceFile": "/Users/hhm/Downloads/寰宇云医.fig",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "extractionComplete": true,
+  "source": "Figma Dev Mode properties reproduced from the selected native layer properties",
+  "nodes": [
+    {
+      "nodeId": "231:1421",
+      "layerName": "患者评价",
+      "parentNodeId": null,
+      "css": [
+        "display:flex;width:1440px;height:756px;background:rgba(255,255,255,1);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 756",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1422",
+      "layerName": "04寰宇云医 - 信任与常见问题 1",
+      "parentNodeId": "231:1421",
+      "css": [
+        "width:1440px;height:1136px;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 1136",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1423",
+      "layerName": "Container",
+      "parentNodeId": "231:1421",
+      "css": [
+        "display:flex;width:1440px;height:756px;flex-direction:row;padding-bottom:40px;background:rgba(0,0,0,0.5);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 756",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1424",
+      "layerName": "Rectangle 17",
+      "parentNodeId": "231:1423",
+      "css": [
+        "width:896px;height:600px;"
+      ],
+      "properties": [
+        "Copy width: 896",
+        "Copy height: 600",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1425",
+      "layerName": "Frame 631",
+      "parentNodeId": "231:1423",
+      "css": [
+        "display:flex;width:896px;height:654px;gap:10px;padding-right:32px;padding-bottom:32px;border-radius:24px 24px 24px 24px;background:rgba(255,255,255,1);"
+      ],
+      "properties": [
+        "Copy width: 896",
+        "Copy height: 654",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1426",
+      "layerName": "Button",
+      "parentNodeId": "231:1425",
+      "css": [
+        "display:flex;width:36px;height:36px;flex-direction:column;padding-right:8px;padding-bottom:8px;border-radius:9999px 9999px 9999px 9999px;"
+      ],
+      "properties": [
+        "Copy width: 36",
+        "Copy height: 36",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1427",
+      "layerName": "Icon",
+      "parentNodeId": "231:1426",
+      "css": [
+        "display:flex;width:20px;height:20px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1428",
+      "layerName": "Vector",
+      "parentNodeId": "231:1427",
+      "css": [
+        "width:10px;height:10px;"
+      ],
+      "properties": [
+        "Copy width: 10",
+        "Copy height: 10",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1429",
+      "layerName": "Frame 683",
+      "parentNodeId": "231:1425",
+      "css": [
+        "display:flex;width:832px;height:669px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 669",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1430",
+      "layerName": "Container",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:32px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1431",
+      "layerName": "Heading 2",
+      "parentNodeId": "231:1430",
+      "css": [
+        "display:flex;width:832px;height:32px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1432",
+      "layerName": "医生详情",
+      "parentNodeId": "231:1431",
+      "css": [
+        "width:130px;height:32px;font-family:PingFang SC;font-size:32px;font-weight:700;line-height:32px;letter-spacing:0.396px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 130",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1433",
+      "layerName": "Frame 650",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:106px;flex-direction:row;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 106",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1434",
+      "layerName": "Image (Shanti Bansal picture)",
+      "parentNodeId": "231:1433",
+      "css": [
+        "display:flex;width:60px;height:60px;border-radius:16px 16px 16px 16px;"
+      ],
+      "properties": [
+        "Copy width: 60",
+        "Copy height: 60",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1435",
+      "layerName": "Container",
+      "parentNodeId": "231:1433",
+      "css": [
+        "display:flex;width:760px;height:74px;flex-direction:column;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 760",
+        "Copy height: 74",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1436",
+      "layerName": "Frame 675",
+      "parentNodeId": "231:1435",
+      "css": [
+        "display:flex;width:153px;height:18px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 153",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1437",
+      "layerName": "Heading 3",
+      "parentNodeId": "231:1436",
+      "css": [
+        "display:flex;width:54px;height:18px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 54",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1438",
+      "layerName": "郑雨容",
+      "parentNodeId": "231:1437",
+      "css": [
+        "width:54px;height:18px;font-family:SF Pro;font-size:18px;font-weight:700;line-height:18px;letter-spacing:-0.439px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 54",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1439",
+      "layerName": "Container",
+      "parentNodeId": "231:1436",
+      "css": [
+        "display:flex;width:91px;height:16px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 91",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1440",
+      "layerName": "主任医师/教授",
+      "parentNodeId": "231:1439",
+      "css": [
+        "width:91px;height:16px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 91",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1441",
+      "layerName": "Container",
+      "parentNodeId": "231:1435",
+      "css": [
+        "display:flex;width:256px;height:20px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 256",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1442",
+      "layerName": "Icon",
+      "parentNodeId": "231:1441",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1443",
+      "layerName": "Vector",
+      "parentNodeId": "231:1442",
+      "css": [
+        "width:13.333px;height:12px;"
+      ],
+      "properties": [
+        "Copy width: 13.333333969116211",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1444",
+      "layerName": "上海交通大学医学院附属第九人民医院",
+      "parentNodeId": "231:1441",
+      "css": [
+        "width:236px;height:20px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 236",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1445",
+      "layerName": "Container",
+      "parentNodeId": "231:1435",
+      "css": [
+        "display:flex;width:79px;height:20px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 79",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1446",
+      "layerName": "Frame",
+      "parentNodeId": "231:1445",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1447",
+      "layerName": "Vector",
+      "parentNodeId": "231:1446",
+      "css": [
+        "width:12.369px;height:11.72px;"
+      ],
+      "properties": [
+        "Copy width: 12.369214057922363",
+        "Copy height: 11.720000267028809",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1448",
+      "layerName": "26年经验",
+      "parentNodeId": "231:1445",
+      "css": [
+        "width:59px;height:20px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 59",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1449",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:51px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 51",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1450",
+      "layerName": "Container",
+      "parentNodeId": "231:1449",
+      "css": [
+        "display:flex;width:832px;height:27px;flex-direction:row;border:1px solid rgba(241,245,249,1);"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 27",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1451",
+      "layerName": "Button",
+      "parentNodeId": "231:1450",
+      "css": [
+        "display:flex;width:77px;height:26px;flex-direction:column;padding-right:20px;padding-bottom:10px;"
+      ],
+      "properties": [
+        "Copy width: 77",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1452",
+      "layerName": "医生简介",
+      "parentNodeId": "231:1451",
+      "css": [
+        "width:57px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 57",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1453",
+      "layerName": "Button",
+      "parentNodeId": "231:1450",
+      "css": [
+        "display:flex;width:108px;height:26px;flex-direction:column;padding-right:20px;padding-bottom:10px;"
+      ],
+      "properties": [
+        "Copy width: 108",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1454",
+      "layerName": "案例集（32）",
+      "parentNodeId": "231:1453",
+      "css": [
+        "width:88px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 88",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1455",
+      "layerName": "Button",
+      "parentNodeId": "231:1450",
+      "css": [
+        "display:flex;width:108px;height:26px;flex-direction:column;padding-bottom:8px;border:1px solid rgba(37,99,235,1);"
+      ],
+      "properties": [
+        "Copy width: 108",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1456",
+      "layerName": "患者评价（128）",
+      "parentNodeId": "231:1455",
+      "css": [
+        "width:108px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:600;line-height:14px;letter-spacing:0.064px;color:rgba(37,99,235,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 108",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1457",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:160px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 160",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1458",
+      "layerName": "Container",
+      "parentNodeId": "231:1457",
+      "css": [
+        "display:flex;width:832px;height:144px;flex-direction:column;gap:12px;padding-right:24px;padding-bottom:24px;border-radius:24px 24px 24px 24px;background:rgba(243,244,246,1);"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 144",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1459",
+      "layerName": "Container",
+      "parentNodeId": "231:1458",
+      "css": [
+        "display:flex;width:784px;height:16px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1460",
+      "layerName": "Italic Text",
+      "parentNodeId": "231:1459",
+      "css": [
+        "display:flex;width:12px;height:12px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1461",
+      "layerName": "",
+      "parentNodeId": "231:1460",
+      "css": [
+        "width:12px;height:10px;font-family:Font Awesome 6 Free;font-size:10px;font-weight:400;line-height:10px;letter-spacing:0px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 10",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1462",
+      "layerName": "Text",
+      "parentNodeId": "231:1459",
+      "css": [
+        "display:flex;width:21px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 21",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1463",
+      "layerName": "5.0",
+      "parentNodeId": "231:1462",
+      "css": [
+        "width:18px;height:12px;font-family:PingFang SC;font-size:12px;font-weight:700;line-height:12px;letter-spacing:0.117px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 18",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1464",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1458",
+      "css": [
+        "width:238px;height:16px;font-family:PingFang SC;font-size:16px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 238",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1465",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1458",
+      "css": [
+        "width:784px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1466",
+      "layerName": "Container",
+      "parentNodeId": "231:1458",
+      "css": [
+        "display:flex;width:784px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1467",
+      "layerName": "Frame 2",
+      "parentNodeId": "231:1466",
+      "css": [
+        "display:flex;width:286px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 286",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1468",
+      "layerName": "Container",
+      "parentNodeId": "231:1467",
+      "css": [
+        "display:flex;width:17px;height:14px;flex-direction:column;padding-right:4px;"
+      ],
+      "properties": [
+        "Copy width: 17",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1469",
+      "layerName": "—",
+      "parentNodeId": "231:1468",
+      "css": [
+        "width:13px;height:14px;font-family:DM Sans;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 13",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1470",
+      "layerName": "Container",
+      "parentNodeId": "231:1467",
+      "css": [
+        "display:flex;width:269px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1471",
+      "layerName": "Global Lead for Health and Life Sciences Microsoft",
+      "parentNodeId": "231:1470",
+      "css": [
+        "width:269px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1472",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:160px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 160",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1473",
+      "layerName": "Container",
+      "parentNodeId": "231:1472",
+      "css": [
+        "display:flex;width:832px;height:144px;flex-direction:column;gap:12px;padding-right:24px;padding-bottom:24px;border-radius:24px 24px 24px 24px;background:rgba(243,244,246,1);"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 144",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1474",
+      "layerName": "Container",
+      "parentNodeId": "231:1473",
+      "css": [
+        "display:flex;width:784px;height:16px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1475",
+      "layerName": "Italic Text",
+      "parentNodeId": "231:1474",
+      "css": [
+        "display:flex;width:12px;height:12px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1476",
+      "layerName": "",
+      "parentNodeId": "231:1475",
+      "css": [
+        "width:12px;height:10px;font-family:Font Awesome 6 Free;font-size:10px;font-weight:400;line-height:10px;letter-spacing:0px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 10",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1477",
+      "layerName": "Text",
+      "parentNodeId": "231:1474",
+      "css": [
+        "display:flex;width:21px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 21",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1478",
+      "layerName": "5.0",
+      "parentNodeId": "231:1477",
+      "css": [
+        "width:18px;height:12px;font-family:PingFang SC;font-size:12px;font-weight:700;line-height:12px;letter-spacing:0.117px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 18",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1479",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1473",
+      "css": [
+        "width:238px;height:16px;font-family:PingFang SC;font-size:16px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 238",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1480",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1473",
+      "css": [
+        "width:784px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1481",
+      "layerName": "Container",
+      "parentNodeId": "231:1473",
+      "css": [
+        "display:flex;width:784px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1482",
+      "layerName": "Frame 2",
+      "parentNodeId": "231:1481",
+      "css": [
+        "display:flex;width:286px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 286",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1483",
+      "layerName": "Container",
+      "parentNodeId": "231:1482",
+      "css": [
+        "display:flex;width:17px;height:14px;flex-direction:column;padding-right:4px;"
+      ],
+      "properties": [
+        "Copy width: 17",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1484",
+      "layerName": "—",
+      "parentNodeId": "231:1483",
+      "css": [
+        "width:13px;height:14px;font-family:DM Sans;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 13",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1485",
+      "layerName": "Container",
+      "parentNodeId": "231:1482",
+      "css": [
+        "display:flex;width:269px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1486",
+      "layerName": "Global Lead for Health and Life Sciences Microsoft",
+      "parentNodeId": "231:1485",
+      "css": [
+        "width:269px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1487",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1429",
+      "css": [
+        "display:flex;width:832px;height:160px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 160",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1488",
+      "layerName": "Container",
+      "parentNodeId": "231:1487",
+      "css": [
+        "display:flex;width:832px;height:144px;flex-direction:column;gap:12px;padding-right:24px;padding-bottom:24px;border-radius:24px 24px 24px 24px;background:rgba(243,244,246,1);"
+      ],
+      "properties": [
+        "Copy width: 832",
+        "Copy height: 144",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1489",
+      "layerName": "Container",
+      "parentNodeId": "231:1488",
+      "css": [
+        "display:flex;width:784px;height:16px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1490",
+      "layerName": "Italic Text",
+      "parentNodeId": "231:1489",
+      "css": [
+        "display:flex;width:12px;height:12px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1491",
+      "layerName": "",
+      "parentNodeId": "231:1490",
+      "css": [
+        "width:12px;height:10px;font-family:Font Awesome 6 Free;font-size:10px;font-weight:400;line-height:10px;letter-spacing:0px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 10",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1492",
+      "layerName": "Text",
+      "parentNodeId": "231:1489",
+      "css": [
+        "display:flex;width:21px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 21",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1493",
+      "layerName": "5.0",
+      "parentNodeId": "231:1492",
+      "css": [
+        "width:18px;height:12px;font-family:PingFang SC;font-size:12px;font-weight:700;line-height:12px;letter-spacing:0.117px;color:rgba(245,158,11,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 18",
+        "Copy height: 12",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1494",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1488",
+      "css": [
+        "width:238px;height:16px;font-family:PingFang SC;font-size:16px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 238",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1495",
+      "layerName": "“By aligning clinical efficiency with financial su",
+      "parentNodeId": "231:1488",
+      "css": [
+        "width:784px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1496",
+      "layerName": "Container",
+      "parentNodeId": "231:1488",
+      "css": [
+        "display:flex;width:784px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 784",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1497",
+      "layerName": "Frame 2",
+      "parentNodeId": "231:1496",
+      "css": [
+        "display:flex;width:286px;height:14px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 286",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1498",
+      "layerName": "Container",
+      "parentNodeId": "231:1497",
+      "css": [
+        "display:flex;width:17px;height:14px;flex-direction:column;padding-right:4px;"
+      ],
+      "properties": [
+        "Copy width: 17",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1499",
+      "layerName": "—",
+      "parentNodeId": "231:1498",
+      "css": [
+        "width:13px;height:14px;font-family:DM Sans;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(148,163,184,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 13",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1500",
+      "layerName": "Container",
+      "parentNodeId": "231:1497",
+      "css": [
+        "display:flex;width:269px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1501",
+      "layerName": "Global Lead for Health and Life Sciences Microsoft",
+      "parentNodeId": "231:1500",
+      "css": [
+        "width:269px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 269",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    }
+  ]
+}

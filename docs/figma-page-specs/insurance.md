@@ -108,5 +108,6 @@ The complete, ordered source inventory is stored in `docs/figma-source/insurance
 - Mobile geometry: 390px viewport, 384px body content width, no body overflow, no broken assets; comparison table scroll is intentionally contained inside `.insurance-compare`.
 - Interaction evidence: scenario index 1 activated; step 02 detail rendered; all three reimbursement path actions reached their process/consultation destination; FAQ item 2 expanded; assessment routed to `/report`.
 - Desktop geometry: section sequence `757 + 582 + 788 + 690 + 667 + 791 + 1067 + 412 = 5754px`; page plus shared 456px footer is 6210px versus 6211px source raster rounding.
-- Verification run: `2026-09-24`
+- Verification run: `2026-09-29`
+- Latest desktop diff: `docs/figma-verification/insurance/2026-09-29/geometry.json` (`0.72%` changed pixels using native 2x comparison; source height `6212px`, local height `6211px`)
 - Remaining differences: none

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { init, use, type ECharts } from 'echarts/core'
+import { GraphicComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+
+use([GraphicComponent, CanvasRenderer])
 
 type Country = '美国' | '英国' | '德国' | '中国' | '新加坡' | '日本'
 
@@ -33,13 +38,85 @@ const generatedHeights = [
   [31.92, 39.2, 12.88, 53.2, 182, 70, 25.2, 1.4, 2.24],
 ]
 
-const chartData = computed(() => treatments.map((name, treatmentIndex) => ({
-  name,
-  bars: countries.map((country, countryIndex) => ({
-    ...country,
-    height: generatedHeights[countryIndex][treatmentIndex],
-  })),
-})))
+const barColors = [
+  ['#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF', '#9CA3AF'],
+  ['#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280'],
+  ['#4B5563', '#4B5563', '#4B5563', '#4B5563', '#4B5563', '#4B5563', '#4B5563', '#4B5563', '#4B5563'],
+  ['#1D4ED8', '#1D4ED8', '#1D4ED8', '#DD6B20', '#1D4ED8', '#1D4ED8', '#DD6B20', '#1D4ED8', '#1D4ED8'],
+  ['#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#2563EB', '#2563EB', '#2563EB', '#3B82F6', '#3B82F6'],
+  ['#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6', '#3B82F6'],
+]
+
+const chartEl = ref<HTMLElement | null>(null)
+let chart: ECharts | undefined
+let resizeObserver: ResizeObserver | undefined
+
+function renderChart() {
+  if (!chartEl.value) return
+  chart?.dispose()
+  chart = init(chartEl.value, undefined, { renderer: 'canvas' })
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const width = chartEl.value.clientWidth
+  const height = chartEl.value.clientHeight
+  const scaleX = width / 1216
+  const scaleY = height / 363.2602233886719
+  const plotLeft = 71.39339065551758 * scaleX
+  const plotRight = 23.990276336669922 * scaleX
+  const plotBottom = 19.519989013671875 * scaleY
+  const plotHeight = 280 * scaleY
+  const plotWidth = width - plotLeft - plotRight
+  const categoryWidth = plotWidth / treatments.length
+  const barWidth = 12.269521713256836 * scaleX
+  const barGap = 4.08984 * scaleX
+  const barOrigin = 83.84393692016602 * scaleX
+  const bars = countries.flatMap((country, countryIndex) => generatedHeights[countryIndex].map((sourceHeight, treatmentIndex) => {
+    const barHeight = sourceHeight * (plotHeight / 280)
+    const x = barOrigin + categoryWidth * treatmentIndex + countryIndex * (barWidth + barGap)
+    return {
+      type: 'rect' as const,
+      id: `cost-bar-${countryIndex}-${treatmentIndex}`,
+      silent: true,
+      shape: { x, y: height - plotBottom - barHeight, width: barWidth, height: barHeight },
+      style: { fill: barColors[countryIndex][treatmentIndex] },
+    }
+  }))
+  const labels = treatments.flatMap((label, index) => [{
+    type: 'text', silent: true, x: plotLeft + categoryWidth * (index + 0.5), y: 348.2602233886719 * scaleY,
+    style: { text: label, fill: '#666', fontFamily: 'Inter, "Noto Sans SC", sans-serif', fontSize: 12, align: 'center', verticalAlign: 'top' },
+  }])
+  const gridLines = [0, 1, 2, 3, 4].flatMap((index) => [{
+    type: 'line', silent: true, shape: { x1: plotLeft, y1: height - plotBottom - 84 * scaleY * index, x2: width - plotRight, y2: height - plotBottom - 84 * scaleY * index }, style: { stroke: '#e0e1e1', lineWidth: 1, lineDash: [3, 3] },
+  }])
+  const verticalPositions = [0, ...Array.from({ length: 9 }, (_, index) => index + .5), 9]
+  const verticalLines = verticalPositions.map((position) => ({
+    type: 'line' as const, silent: true,
+    shape: { x1: plotLeft + categoryWidth * position, y1: 7.740234375 * scaleY, x2: plotLeft + categoryWidth * position, y2: height - plotBottom },
+    style: { stroke: '#e0e1e1', lineWidth: 1, lineDash: [3, 3] },
+  }))
+  const axis = { type: 'line' as const, silent: true, shape: { x1: plotLeft, y1: 7.740234375 * scaleY, x2: plotLeft, y2: height - plotBottom }, style: { stroke: '#888888', lineWidth: 1 } }
+  const axisLabels = [600, 450, 300, 150, 0].map((value, index) => ({
+    type: 'text', silent: true, x: plotLeft - 8, y: 84 * scaleY * index,
+    style: { text: value === 0 ? '0' : `$${value}K`, fill: '#666', fontFamily: 'Inter, sans-serif', fontSize: 12, align: 'right', verticalAlign: 'top' },
+  }))
+  chart.setOption({
+    animation: !reducedMotion,
+    animationDuration: 650,
+    animationEasing: 'cubicOut',
+    graphic: [...gridLines, ...verticalLines, axis, ...axisLabels, ...labels, ...bars],
+  })
+}
+
+function resizeChart() { chart?.resize() }
+
+onMounted(async () => {
+  await nextTick()
+  renderChart()
+  if (chartEl.value) {
+    resizeObserver = new ResizeObserver(resizeChart)
+    resizeObserver.observe(chartEl.value)
+  }
+})
+onBeforeUnmount(() => { resizeObserver?.disconnect(); chart?.dispose() })
 
 const savings = [
   '心脏搭桥节省69%',
@@ -77,17 +154,9 @@ function toggleDetails() {
         </header>
 
         <div class="cost-generated-chart" data-figma-node="143:2085" data-reveal>
-          <div class="chart-plot" data-figma-node="143:2086" aria-label="不同国家治疗费用对比">
-            <div class="chart-axis"><span>$600K</span><span>$450K</span><span>$300K</span><span>$150K</span><span>0</span></div>
-            <div v-for="item in chartData" :key="item.name" class="chart-group">
-              <div class="chart-bars">
-                <i v-for="bar in item.bars" :key="bar.name" :style="{ height: `${Math.max(bar.height, 2)}px`, backgroundColor: bar.color }" />
-              </div>
-              <span>{{ item.name }}</span>
-            </div>
-          </div>
+          <div ref="chartEl" class="chart-plot" data-figma-node="143:2086" role="img" aria-label="不同国家治疗费用对比" />
           <div class="chart-legend" data-figma-node="143:2281" aria-label="国家图例">
-            <span v-for="country in countries" :key="country.name" :data-figma-node="country.node"><img :src="country.icon" alt="" />{{ country.name }}</span>
+            <span v-for="country in countries" :key="country.name" :data-figma-node="country.node" :style="{ color: country.color }"><img :src="country.icon" alt="" />{{ country.name }}</span>
           </div>
         </div>
 
@@ -126,29 +195,22 @@ function toggleDetails() {
 
 <style scoped>
 .cost-generated-page { background: #fff; color: #1e3a5f; }
-.cost-generated-frame { min-height: 1768px; padding: 96px 0; box-sizing: border-box; border-bottom: 1px solid #d9dde2; background: #f5f6f7; }
+.cost-generated-frame { min-height: 1768px; padding: 96px 0; box-sizing: border-box; background: #f5f6f7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .cost-generated-inner { width: min(1216px, calc(100% - 48px)); margin: 0 auto; }
 .cost-generated-heading { text-align: center; }
 .cost-generated-heading h1 { margin: 0; color: #1e3a5f; font-family: 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 40px; font-weight: 600; line-height: 40px; letter-spacing: .4px; }
 .cost-generated-heading p { margin: 16px 0 0; color: #6b7280; font-family: 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 16px; line-height: 24px; }
 .cost-generated-chart { padding-top: 48px; }
-.chart-plot { position: relative; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 16px; align-items: end; min-height: 352px; padding: 0 24px 34px 64px; }
-.chart-plot::before { position: absolute; inset: 0 24px 34px 64px; border-bottom: 1px solid rgba(102,102,102,.52); border-left: 1px solid rgba(102,102,102,.52); background-image: linear-gradient(to right, rgba(107,114,128,.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(107,114,128,.12) 1px, transparent 1px); background-position: left top; background-size: calc(100% / 9) 100%, 100% 25%; content: ''; pointer-events: none; }
-.chart-axis { position: absolute; inset: 0 auto 34px 0; display: flex; width: 58px; flex-direction: column; justify-content: space-between; align-items: flex-end; color: #666; font: 12px/1 Inter, sans-serif; pointer-events: none; }
-.chart-group { position: relative; z-index: 1; display: flex; min-width: 0; height: 320px; flex-direction: column; justify-content: flex-end; gap: 12px; text-align: center; }
-.chart-bars { display: flex; height: 280px; align-items: flex-end; justify-content: center; gap: 3px; }
-.chart-bars i { display: block; width: 12px; min-height: 2px; border-radius: 2px 2px 0 0; transition: transform .45s cubic-bezier(.22,1,.36,1), filter .25s ease; }
-.chart-group:hover .chart-bars i { filter: brightness(1.12); transform: translateY(-3px); }
-.chart-group > span { overflow: hidden; color: #666; font: 12px/1.3 Inter, 'Noto Sans SC', sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.chart-plot { position: relative; width: 100%; height: 363.26px; }
 .chart-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 16px; color: #6b7280; font: 16px/24px 'SF Pro', 'PingFang SC', sans-serif; }
 .chart-legend span { display: inline-flex; align-items: center; gap: 4px; }
 .chart-legend img { display: block; width: 14px; height: 14px; }
-.savings-marquee { position: relative; height: 48px; overflow: hidden; margin-top: 48px; }
+.savings-marquee { position: relative; height: 96px; padding-top: 48px; box-sizing: border-box; overflow: hidden; margin-top: 0; }
 .savings-marquee::before, .savings-marquee::after { position: absolute; top: 0; z-index: 2; width: 160px; height: 96px; content: ''; pointer-events: none; }
 .savings-marquee::before { left: 0; background: linear-gradient(90deg, #f5f6f7 25%, rgba(245,246,247,0)); }
 .savings-marquee::after { right: 0; transform: rotate(180deg); background: linear-gradient(90deg, #f5f6f7 25%, rgba(245,246,247,0)); }
-.savings-track { display: flex; width: max-content; height: 48px; gap: 24px; animation: cost-marquee 24s linear infinite; }
-.savings-track span { flex: none; padding: 12px 24px; border-radius: 14px; background: #fff; color: #1e3a5f; font: 16px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; white-space: nowrap; }
+.savings-track { position: absolute; top: 48px; left: 0; display: flex; width: max-content; height: 48px; gap: 24px; animation: cost-marquee 24s linear infinite; }
+.savings-track span { flex: none; padding: 12px 24px; border-radius: 14px; background: #fff; color: #1e3a5f; font: 16px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; letter-spacing: -0.313px; white-space: nowrap; }
 .cost-generated-actions { padding-top: 48px; text-align: center; }
 .cost-generated-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .cost-generated-button { display: inline-flex; align-items: center; gap: 8px; border-radius: 14px; padding: 18px 24px; box-shadow: 0 4px 6px -4px rgba(0,0,0,.1); color: #fff; font: 600 16px/16px 'PingFang SC', 'Noto Sans SC', sans-serif; transition: transform .25s ease, box-shadow .25s ease; }
@@ -162,13 +224,13 @@ function toggleDetails() {
 .cost-detail-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(30,58,95,.12); }
 .cost-detail-card__icon { display: block; width: 32px; height: 32px; }
 .cost-detail-card__content { width: 100%; }
-.cost-detail-card h2 { margin: 0 0 20px; color: #1e3a5f; font: 600 24px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; text-align: left; }
+.cost-detail-card h2 { margin: 0 0 20px; color: #1e3a5f; font: 600 24px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; letter-spacing: -0.439px; text-align: left; }
 .cost-detail-card__metrics { display: flex; justify-content: space-between; gap: 16px; color: #6b7280; font: 16px/16px 'PingFang SC', 'Noto Sans SC', sans-serif; }
 .cost-detail-card__metrics + .cost-detail-card__metrics { margin-top: 12px; }
 .cost-detail-card__metrics strong { color: #2563eb; font-weight: 500; }
-.cost-detail-card p { margin: 22px 0 0; color: #4b5563; font: 16px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; }
+.cost-detail-card p { margin: 12px 0 0; color: #4b5563; font: 16px/24px 'PingFang SC', 'Noto Sans SC', sans-serif; letter-spacing: -0.150px; }
 @keyframes cost-marquee { to { transform: translateX(calc(-50% - 12px)); } }
-@media (prefers-reduced-motion: reduce) { .savings-track { animation: none; } .chart-bars i, .cost-detail-card, .cost-generated-button { transition: none; } }
-@media (max-width: 900px) { .cost-generated-frame { min-height: 0; padding: 72px 0; }.cost-generated-heading h1 { font-size: 32px; line-height: 38px; }.chart-plot { overflow-x: auto; grid-template-columns: repeat(9, minmax(92px, 1fr)); padding-left: 0; }.chart-plot::before, .chart-axis { display: none; }.cost-generated-details { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) { .savings-track { animation: none; } .cost-detail-card, .cost-generated-button { transition: none; } }
+@media (max-width: 900px) { .cost-generated-frame { min-height: 0; padding: 72px 0; }.cost-generated-heading h1 { font-size: 32px; line-height: 38px; }.chart-plot { height: 320px; }.cost-generated-details { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .cost-generated-inner { width: min(100% - 32px, 520px); }.cost-generated-heading p { font-size: 14px; }.chart-legend { justify-content: flex-start; font-size: 14px; }.cost-generated-buttons { align-items: stretch; flex-direction: column; }.cost-generated-button { justify-content: center; text-align: center; }.cost-generated-details { grid-template-columns: 1fr; }.cost-detail-card { min-height: 308px; gap: 24px; }.cost-detail-card h2 { font-size: 21px; } }
 </style>

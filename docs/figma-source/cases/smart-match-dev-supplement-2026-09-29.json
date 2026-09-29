@@ -1,0 +1,32 @@
+{
+  "source": "Figma Dev Mode Inspect panel via browser-client + iab",
+  "sourceFrame": "190:5550",
+  "nodes": [
+    {
+      "nodeId": "190:5593",
+      "parentNodeId": "190:5592",
+      "name": "Container",
+      "width": 800,
+      "height": 48,
+      "parentPaddingTop": 24,
+      "parentPaddingLeft": 32,
+      "css": "display: inline-grid; row-gap: 24px; column-gap: 24px; align-self: stretch; grid-template-rows: repeat(1,fit-content(100%)); grid-template-columns: repeat(5,minmax(0,1fr)); grid-auto-flow: row;"
+    },
+    {
+      "nodeId": "190:5611",
+      "parentNodeId": "190:5610",
+      "name": "Container",
+      "width": 800,
+      "height": 48,
+      "parentPaddingTop": 24,
+      "parentPaddingLeft": 32,
+      "css": "display: inline-grid; row-gap: 24px; column-gap: 24px; align-self: stretch; grid-template-rows: repeat(1,fit-content(100%)); grid-template-columns: repeat(5,minmax(0,1fr)); grid-auto-flow: row;"
+    },
+    {
+      "nodeId": "190:5594",
+      "parentNodeId": "190:5593",
+      "name": "Button",
+      "css": "display: flex; padding: 14px 36px; justify-content: center; align-items: center; gap: 10px; align-self: stretch; grid-row: span 1; grid-column: span 1; justify-self: stretch; border-radius: 14px; border: 2px solid #F3F4F6; background: #F9FAFB;"
+    }
+  ]
+}

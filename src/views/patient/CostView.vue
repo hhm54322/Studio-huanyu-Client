@@ -1,14 +1,72 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { BarChart } from 'echarts/charts'
+import { init, use, type ECharts } from 'echarts/core'
+import { GridComponent, TooltipComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
 import { ArrowRight, Check, CircleDollarSign, Info, TrendingDown } from 'lucide-vue-next'
 import SectionHeading from '@/components/common/SectionHeading.vue'
 import { barData, chinaColumnIndex, costMatrix, countries } from '@/data/costs'
+
+use([BarChart, GridComponent, TooltipComponent, CanvasRenderer])
 
 const activeTreatment = ref(0)
 const current = computed(() => barData[activeTreatment.value])
 const chartCountries = ['中国', '美国', '英国', '德国', '新加坡', '日本']
 const chartKeys = ['china', 'usa', 'uk', 'germany', 'singapore', 'japan'] as const
 const maxValue = computed(() => Math.max(...chartKeys.map((key) => Number(current.value?.[key] || 0))))
+const chartEl = ref<HTMLElement | null>(null)
+let chart: ECharts | undefined
+let resizeObserver: ResizeObserver | undefined
+
+function renderChart() {
+  if (!chartEl.value) return
+  chart?.dispose()
+  chart = init(chartEl.value, undefined, { renderer: 'canvas' })
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  chart.setOption({
+    animation: !reducedMotion,
+    animationDuration: 520,
+    animationEasing: 'cubicOut',
+    grid: { left: 8, right: 8, top: 28, bottom: 42, containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: chartCountries,
+      axisLine: { lineStyle: { color: '#D9E1E6' } },
+      axisTick: { show: false },
+      axisLabel: { color: '#6B7F8C', fontSize: 11, margin: 14 },
+    },
+    yAxis: { type: 'value', max: Math.ceil(maxValue.value * 1.2 / 10) * 10, show: false },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      valueFormatter: (value: number | string) => `${value} 千美元`,
+    },
+    series: [{
+      type: 'bar',
+      barWidth: '42%',
+      data: chartKeys.map((key, index) => ({
+        value: Number(current.value?.[key] || 0),
+        itemStyle: { color: index === 0 ? '#F28A3C' : '#BFD8E5', borderRadius: [4, 4, 0, 0] },
+      })),
+      label: { show: true, position: 'top', color: '#183B56', fontSize: 12, formatter: '{c}' },
+      emphasis: { itemStyle: { color: '#E86F1C' } },
+    }],
+  })
+}
+
+function resizeChart() { chart?.resize() }
+
+onMounted(async () => {
+  await nextTick()
+  renderChart()
+  if (chartEl.value) {
+    resizeObserver = new ResizeObserver(resizeChart)
+    resizeObserver.observe(chartEl.value)
+  }
+})
+watch(activeTreatment, () => renderChart())
+onBeforeUnmount(() => { resizeObserver?.disconnect(); chart?.dispose() })
 
 const costFactors = [
   ['疾病分期与治疗复杂度', '同一病种在不同分期可能采用完全不同的治疗组合。'],
@@ -38,13 +96,7 @@ const costFactors = [
         </div>
         <div class="chart-panel" data-reveal>
           <div class="chart-panel__meta"><span><CircleDollarSign class="h-5 w-5" /> {{ current.name }}</span><small>单位：千美元</small></div>
-          <div class="bar-chart">
-            <div v-for="(country, index) in chartCountries" :key="country" class="bar-column" :class="{ china: index === 0 }">
-              <strong>{{ current[chartKeys[index]!] }}</strong>
-              <div class="bar-track"><i :style="{ height: `${Math.max(8, Number(current[chartKeys[index]!]) / maxValue * 100)}%` }" /></div>
-              <span>{{ country }}</span>
-            </div>
-          </div>
+          <div ref="chartEl" class="bar-chart" role="img" :aria-label="`${current.name}各国费用对比`" />
           <div class="chart-callout"><TrendingDown class="h-5 w-5" /><span>以{{ current.name }}为例，中国治疗费用约为美国的 <strong>{{ Math.round(Number(current.china) / Number(current.usa) * 100) }}%</strong></span></div>
         </div>
       </div>
@@ -91,14 +143,7 @@ const costFactors = [
 .chart-panel__meta span { display: flex; align-items: center; gap: 8px; color: var(--hy-navy-deep); font-weight: 750; }
 .chart-panel__meta svg { color: var(--hy-orange); }
 .chart-panel__meta small { color: var(--hy-muted); }
-.bar-chart { height: 350px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; align-items: end; margin-top: 25px; border-bottom: 1px solid var(--hy-line); }
-.bar-column { height: 100%; display: grid; grid-template-rows: 26px 1fr 42px; gap: 8px; text-align: center; }
-.bar-column strong { color: var(--hy-navy); font-size: 12px; }
-.bar-track { height: 100%; display: flex; align-items: flex-end; justify-content: center; }
-.bar-track i { width: min(54px, 80%); border-radius: 4px 4px 0 0; background: #bfd8e5; transition: height .5s cubic-bezier(.22, 1, .36, 1); }
-.bar-column.china .bar-track i { background: var(--hy-orange); }
-.bar-column.china strong, .bar-column.china > span { color: var(--hy-orange); font-weight: 800; }
-.bar-column > span { color: var(--hy-muted); font-size: 11px; }
+.bar-chart { height: 350px; width: 100%; margin-top: 25px; border-bottom: 1px solid var(--hy-line); }
 .chart-callout { display: flex; align-items: center; gap: 9px; margin-top: 24px; color: #547084; font-size: 12px; }
 .chart-callout svg { color: #27a776; }
 .chart-callout strong { color: #1f8a68; }
@@ -127,5 +172,5 @@ const costFactors = [
 .cost-page .hy-section { background: #f5f6f7; }
 .cost-page .matrix-section { background: #eef2f4; }
 @media (max-width: 800px) { .factors-layout { grid-template-columns: 1fr; gap: 40px; } .cost-cta > div { align-items: flex-start; flex-direction: column; } }
-@media (max-width: 600px) { .cost-page { margin-top: -70px; } .cost-hero { min-height: 520px; } .chart-panel { padding: 24px 16px; } .bar-chart { gap: 7px; height: 290px; } .bar-track i { width: 70%; } .cost-cta h2 { font-size: 30px; } .cost-cta .hy-button-primary { width: 100%; } }
+@media (max-width: 600px) { .cost-page { margin-top: -70px; } .cost-hero { min-height: 520px; } .chart-panel { padding: 24px 16px; } .bar-chart { height: 290px; } .cost-cta h2 { font-size: 30px; } .cost-cta .hy-button-primary { width: 100%; } }
 </style>

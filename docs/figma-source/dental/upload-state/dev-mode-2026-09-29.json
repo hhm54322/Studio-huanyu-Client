@@ -1,0 +1,2583 @@
+{
+  "sourceFrame": "231:815",
+  "sourceFile": "/Users/hhm/Downloads/寰宇云医.fig",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "extractionComplete": true,
+  "source": "Figma Dev Mode properties reproduced from the selected native layer properties",
+  "nodes": [
+    {
+      "nodeId": "231:815",
+      "layerName": "04寰宇云医 - 牙科 - 上传影像资料",
+      "parentNodeId": null,
+      "css": [
+        "display:flex;width:1440px;height:1766px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 1766",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:816",
+      "layerName": "Body",
+      "parentNodeId": "231:815",
+      "css": [
+        "display:flex;width:1440px;height:1766px;flex-direction:column;background:rgba(249,250,251,1);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 1766",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:817",
+      "layerName": "Main Content",
+      "parentNodeId": "231:816",
+      "css": [
+        "display:flex;width:1440px;height:1310px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 1310",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1643",
+      "layerName": "Section",
+      "parentNodeId": "231:817",
+      "css": [
+        "display:flex;width:1440px;height:460px;flex-direction:column;gap:44px;padding-right:112px;padding-bottom:146px;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 460",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1644",
+      "layerName": "Frame 75",
+      "parentNodeId": "484:1643",
+      "css": [
+        "display:flex;width:1216px;height:274px;flex-direction:row;gap:40px;"
+      ],
+      "properties": [
+        "Copy width: 1216",
+        "Copy height: 274",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1645",
+      "layerName": "Container",
+      "parentNodeId": "484:1644",
+      "css": [
+        "display:flex;width:568px;height:274px;flex-direction:column;gap:24px;"
+      ],
+      "properties": [
+        "Copy width: 568",
+        "Copy height: 274",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1646",
+      "layerName": "Heading 1",
+      "parentNodeId": "484:1645",
+      "css": [
+        "display:flex;width:568px;height:192px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 568",
+        "Copy height: 192",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1647",
+      "layerName": "Cardiac Remote Monitoring with Fewer Clicks and Mo",
+      "parentNodeId": "484:1646",
+      "css": [
+        "width:579px;height:192px;font-family:PingFang SC;font-size:64px;font-weight:700;line-height:96px;letter-spacing:0.352px;color:rgba(20,49,98,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 579",
+        "Copy height: 192",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1648",
+      "layerName": "Paragraph",
+      "parentNodeId": "484:1645",
+      "css": [
+        "display:flex;width:568px;height:58px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 568",
+        "Copy height: 58",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "484:1649",
+      "layerName": "Cut alert fatigue. Prioritize urgent care. Deliver",
+      "parentNodeId": "484:1648",
+      "css": [
+        "width:579px;height:58px;font-family:PingFang SC;font-size:20px;font-weight:400;line-height:29px;letter-spacing:-0.439px;color:rgba(91,96,106,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 579",
+        "Copy height: 58",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:825",
+      "layerName": "Section",
+      "parentNodeId": "231:817",
+      "css": [
+        "display:flex;width:1440px;height:850px;flex-direction:column;gap:48px;padding-bottom:96px;background:rgba(255,255,255,1);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 850",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:826",
+      "layerName": "Container",
+      "parentNodeId": "231:825",
+      "css": [
+        "display:flex;width:864px;height:76px;flex-direction:column;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 864",
+        "Copy height: 76",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:827",
+      "layerName": "Heading 1",
+      "parentNodeId": "231:826",
+      "css": [
+        "display:flex;width:864px;height:48px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 864",
+        "Copy height: 48",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:828",
+      "layerName": "匹配城市与医生获取个性化治疗方案",
+      "parentNodeId": "231:827",
+      "css": [
+        "width:567px;height:40px;font-family:PingFang SC;font-size:35.4px;font-weight:700;line-height:40px;letter-spacing:0px;color:rgba(15,23,42,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 567",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:829",
+      "layerName": "Container",
+      "parentNodeId": "231:826",
+      "css": [
+        "display:flex;width:864px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 864",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:830",
+      "layerName": "种植牙、牙齿美白、牙齿贴面、正畸、修复一一先了解项目，再自主选择城市与医生，最后获取书面报价",
+      "parentNodeId": "231:829",
+      "css": [
+        "width:612px;height:20px;font-family:PingFang SC;font-size:13.3px;font-weight:400;line-height:20px;letter-spacing:0px;color:rgba(100,116,139,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 612",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:831",
+      "layerName": "Container",
+      "parentNodeId": "231:825",
+      "css": [
+        "display:flex;width:918px;height:66px;flex-direction:row;gap:20px;padding-right:49px;padding-bottom:13px;border-radius:12px 12px 12px 12px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 66",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:832",
+      "layerName": "Container",
+      "parentNodeId": "231:831",
+      "css": [
+        "display:flex;width:196px;height:40px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 196",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:833",
+      "layerName": "Text",
+      "parentNodeId": "231:832",
+      "css": [
+        "display:flex;width:40px;height:40px;flex-direction:row;border-radius:9999px 9999px 9999px 9999px;background:rgba(30,58,95,1);"
+      ],
+      "properties": [
+        "Copy width: 40",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:834",
+      "layerName": "01",
+      "parentNodeId": "231:833",
+      "css": [
+        "width:21px;height:20px;font-family:PingFang SC;font-size:20px;font-weight:700;line-height:20px;letter-spacing:0px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 21",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:835",
+      "layerName": "Text",
+      "parentNodeId": "231:832",
+      "css": [
+        "display:flex;width:156px;height:24px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 156",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:836",
+      "layerName": "选择牙科项目",
+      "parentNodeId": "231:835",
+      "css": [
+        "width:144px;height:24px;font-family:PingFang SC;font-size:24px;font-weight:700;line-height:24px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 144",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:837",
+      "layerName": "Container",
+      "parentNodeId": "231:831",
+      "css": [
+        "display:flex;width:64px;height:2px;background:rgba(226,232,240,1);"
+      ],
+      "properties": [
+        "Copy width: 64",
+        "Copy height: 2",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:838",
+      "layerName": "Container",
+      "parentNodeId": "231:831",
+      "css": [
+        "display:flex;width:220px;height:40px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 220",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:839",
+      "layerName": "Text",
+      "parentNodeId": "231:838",
+      "css": [
+        "display:flex;width:40px;height:40px;flex-direction:row;border-radius:9999px 9999px 9999px 9999px;background:rgba(30,58,95,1);"
+      ],
+      "properties": [
+        "Copy width: 40",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:840",
+      "layerName": "02",
+      "parentNodeId": "231:839",
+      "css": [
+        "width:24px;height:20px;font-family:PingFang SC;font-size:20px;font-weight:700;line-height:20px;letter-spacing:0px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 24",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:841",
+      "layerName": "Text",
+      "parentNodeId": "231:838",
+      "css": [
+        "display:flex;width:180px;height:24px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 180",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:842",
+      "layerName": "城市与医生匹配",
+      "parentNodeId": "231:841",
+      "css": [
+        "width:168px;height:24px;font-family:PingFang SC;font-size:24px;font-weight:700;line-height:24px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 168",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:843",
+      "layerName": "Container",
+      "parentNodeId": "231:831",
+      "css": [
+        "display:flex;width:64px;height:2px;background:rgba(226,232,240,1);"
+      ],
+      "properties": [
+        "Copy width: 64",
+        "Copy height: 2",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:844",
+      "layerName": "Container",
+      "parentNodeId": "231:831",
+      "css": [
+        "display:flex;width:196px;height:40px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 196",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:845",
+      "layerName": "Text",
+      "parentNodeId": "231:844",
+      "css": [
+        "display:flex;width:40px;height:40px;flex-direction:row;border-radius:9999px 9999px 9999px 9999px;background:rgba(30,58,95,1);"
+      ],
+      "properties": [
+        "Copy width: 40",
+        "Copy height: 40",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:846",
+      "layerName": "03",
+      "parentNodeId": "231:845",
+      "css": [
+        "width:24px;height:20px;font-family:PingFang SC;font-size:20px;font-weight:700;line-height:20px;letter-spacing:0px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 24",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:847",
+      "layerName": "Text",
+      "parentNodeId": "231:844",
+      "css": [
+        "display:flex;width:156px;height:24px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 156",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:848",
+      "layerName": "上传影像资料",
+      "parentNodeId": "231:847",
+      "css": [
+        "width:144px;height:24px;font-family:PingFang SC;font-size:24px;font-weight:600;line-height:24px;letter-spacing:0px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 144",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:849",
+      "layerName": "Frame 684",
+      "parentNodeId": "231:825",
+      "css": [
+        "display:flex;width:918px;height:448px;flex-direction:column;gap:24px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 448",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:850",
+      "layerName": "Container",
+      "parentNodeId": "231:849",
+      "css": [
+        "display:flex;width:918px;height:448px;flex-direction:column;gap:24px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 448",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:851",
+      "layerName": "Container",
+      "parentNodeId": "231:850",
+      "css": [
+        "display:flex;width:918px;height:192px;flex-direction:column;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 192",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:852",
+      "layerName": "Label",
+      "parentNodeId": "231:851",
+      "css": [
+        "display:flex;width:918px;height:14px;flex-direction:row;gap:4px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:853",
+      "layerName": "上传牙片/口腔照片",
+      "parentNodeId": "231:852",
+      "css": [
+        "width:119px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(15,23,42,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 119",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:854",
+      "layerName": "(JPG/PNG/PDF，≤10MB)",
+      "parentNodeId": "231:852",
+      "css": [
+        "width:165px;height:14px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0.117px;color:rgba(203,213,225,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 165",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:855",
+      "layerName": "Options",
+      "parentNodeId": "231:851",
+      "css": [
+        "display:flex;width:140px;height:140px;flex-direction:row;border-radius:14px 14px 14px 14px;background:rgba(255,255,255,1);border:1px solid rgba(209,213,220,1);"
+      ],
+      "properties": [
+        "Copy width: 140",
+        "Copy height: 140",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:856",
+      "layerName": "Group 623",
+      "parentNodeId": "231:855",
+      "css": [
+        "display:flex;width:20px;height:20px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:857",
+      "layerName": "Rectangle 18",
+      "parentNodeId": "231:856",
+      "css": [
+        "width:20px;height:2px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 2",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:858",
+      "layerName": "Rectangle 19",
+      "parentNodeId": "231:856",
+      "css": [
+        "width:20px;height:2px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 2",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:859",
+      "layerName": "查看照片示例",
+      "parentNodeId": "231:851",
+      "css": [
+        "width:84px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(37,99,235,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 84",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:860",
+      "layerName": "Container",
+      "parentNodeId": "231:850",
+      "css": [
+        "display:flex;width:918px;height:150px;flex-direction:column;gap:8px;padding-right:24px;padding-bottom:24px;border-radius:24px 24px 24px 24px;background:rgba(243,244,246,1);"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 150",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:861",
+      "layerName": "Label",
+      "parentNodeId": "231:860",
+      "css": [
+        "display:flex;width:870px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 870",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:862",
+      "layerName": "照片示例",
+      "parentNodeId": "231:861",
+      "css": [
+        "width:56px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(15,23,42,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:863",
+      "layerName": "Frame 685",
+      "parentNodeId": "231:860",
+      "css": [
+        "display:flex;width:256px;height:80px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 256",
+        "Copy height: 80",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:864",
+      "layerName": "image 15",
+      "parentNodeId": "231:863",
+      "css": [
+        "width:80px;height:80px;"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:865",
+      "layerName": "image 16",
+      "parentNodeId": "231:863",
+      "css": [
+        "width:80px;height:80px;"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:866",
+      "layerName": "image 17",
+      "parentNodeId": "231:863",
+      "css": [
+        "width:80px;height:80px;"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:867",
+      "layerName": "Frame 686",
+      "parentNodeId": "231:850",
+      "css": [
+        "display:flex;width:918px;height:232px;gap:24px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 232",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:868",
+      "layerName": "Container",
+      "parentNodeId": "231:867",
+      "css": [
+        "display:flex;width:447px;height:78px;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 78",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:869",
+      "layerName": "Label",
+      "parentNodeId": "231:868",
+      "css": [
+        "display:flex;width:447px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:870",
+      "layerName": "预算范围",
+      "parentNodeId": "231:869",
+      "css": [
+        "width:447px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(15,23,42,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:871",
+      "layerName": "Options",
+      "parentNodeId": "231:868",
+      "css": [
+        "display:flex;width:447px;height:52px;flex-direction:row;padding-right:32px;padding-bottom:12px;border-radius:14px 14px 14px 14px;background:rgba(255,255,255,1);border:1px solid rgba(209,213,220,1);"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 52",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:872",
+      "layerName": "Container",
+      "parentNodeId": "231:871",
+      "css": [
+        "display:flex;width:393px;height:18px;flex-direction:column;padding-bottom:1px;"
+      ],
+      "properties": [
+        "Copy width: 393",
+        "Copy height: 18",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:873",
+      "layerName": "请输入您的预算",
+      "parentNodeId": "231:872",
+      "css": [
+        "width:393px;height:16px;font-family:Inter;font-size:15.4px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(51,65,85,0.5);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 393",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:874",
+      "layerName": "Container",
+      "parentNodeId": "231:867",
+      "css": [
+        "display:flex;width:447px;height:78px;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 78",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:875",
+      "layerName": "Label",
+      "parentNodeId": "231:874",
+      "css": [
+        "display:flex;width:447px;height:14px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:876",
+      "layerName": "计划到访时间",
+      "parentNodeId": "231:875",
+      "css": [
+        "width:447px;height:14px;font-family:PingFang SC;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0px;color:rgba(31,41,55,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:877",
+      "layerName": "Input",
+      "parentNodeId": "231:874",
+      "css": [
+        "display:flex;width:447px;height:52px;flex-direction:row;padding-right:16px;padding-bottom:12px;border-radius:14px 14px 14px 14px;background:rgba(255,255,255,1);border:1px solid rgba(209,213,220,1);"
+      ],
+      "properties": [
+        "Copy width: 447",
+        "Copy height: 52",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:878",
+      "layerName": "Container",
+      "parentNodeId": "231:877",
+      "css": [
+        "display:flex;width:413px;height:26px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 413",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:879",
+      "layerName": "Container",
+      "parentNodeId": "231:878",
+      "css": [
+        "display:flex;width:393px;height:26px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 393",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:880",
+      "layerName": "Paragraph",
+      "parentNodeId": "231:879",
+      "css": [
+        "display:flex;width:50px;height:26px;flex-direction:row;gap:1px;padding-right:1px;padding-bottom:1px;"
+      ],
+      "properties": [
+        "Copy width: 50",
+        "Copy height: 26",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:881",
+      "layerName": "Spinbutton - Month → mm",
+      "parentNodeId": "231:880",
+      "css": [
+        "width:48px;height:24px;font-family:Inter;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(51,65,85,0.5);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:882",
+      "layerName": "Button menu",
+      "parentNodeId": "231:878",
+      "css": [
+        "display:flex;width:20px;height:20px;flex-direction:column;padding-right:2px;padding-bottom:2px;"
+      ],
+      "properties": [
+        "Copy width: 20",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:883",
+      "layerName": "image",
+      "parentNodeId": "231:882",
+      "css": [
+        "display:flex;width:16px;height:15px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 15",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:884",
+      "layerName": "Vector",
+      "parentNodeId": "231:883",
+      "css": [
+        "width:12.5px;height:13.75px;"
+      ],
+      "properties": [
+        "Copy width: 12.5",
+        "Copy height: 13.75",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:885",
+      "layerName": "Vector",
+      "parentNodeId": "231:883",
+      "css": [
+        "width:15px;height:15px;"
+      ],
+      "properties": [
+        "Copy width: 15",
+        "Copy height: 15",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:886",
+      "layerName": "Container",
+      "parentNodeId": "231:867",
+      "css": [
+        "display:flex;width:918px;height:130px;gap:12px;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 130",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:887",
+      "layerName": "Label",
+      "parentNodeId": "231:886",
+      "css": [
+        "display:flex;width:918px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:888",
+      "layerName": "其他说明",
+      "parentNodeId": "231:887",
+      "css": [
+        "width:918px;height:20px;font-family:PingFang SC;font-size:13.3px;font-weight:400;line-height:20px;letter-spacing:0px;color:rgba(31,41,55,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:889",
+      "layerName": "Textarea",
+      "parentNodeId": "231:886",
+      "css": [
+        "display:flex;width:918px;height:98px;flex-direction:row;padding-right:16px;padding-bottom:60px;border-radius:14px 14px 14px 14px;background:rgba(255,255,255,1);border:1px solid rgba(209,213,220,1);"
+      ],
+      "properties": [
+        "Copy width: 918",
+        "Copy height: 98",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:890",
+      "layerName": "Container",
+      "parentNodeId": "231:889",
+      "css": [
+        "display:flex;width:884px;height:24px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 884",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:891",
+      "layerName": "其他说明...",
+      "parentNodeId": "231:890",
+      "css": [
+        "width:884px;height:24px;font-family:Inter;font-size:15.1px;font-weight:400;line-height:24px;letter-spacing:0px;color:rgba(51,65,85,0.5);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 884",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:892",
+      "layerName": "Link",
+      "parentNodeId": "231:825",
+      "css": [
+        "display:flex;width:265px;height:48px;flex-direction:row;gap:8px;padding-right:24px;padding-bottom:12px;border-radius:14px 14px 14px 14px;background:rgba(221,107,32,1);"
+      ],
+      "properties": [
+        "Copy width: 265",
+        "Copy height: 48",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:893",
+      "layerName": "提交评估 · 24h 内获取书面报价",
+      "parentNodeId": "231:892",
+      "css": [
+        "width:217px;height:24px;font-family:Inter;font-size:15.6px;font-weight:700;line-height:24px;letter-spacing:0px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 217",
+        "Copy height: 24",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1171",
+      "layerName": "Footer",
+      "parentNodeId": "231:816",
+      "css": [
+        "display:flex;width:1440px;height:456px;flex-direction:column;background:rgba(2,29,46,1);"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 456",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1172",
+      "layerName": "Container",
+      "parentNodeId": "231:1171",
+      "css": [
+        "display:flex;width:1280px;height:456px;flex-direction:column;padding-right:32px;padding-bottom:64px;"
+      ],
+      "properties": [
+        "Copy width: 1280",
+        "Copy height: 456",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1173",
+      "layerName": "Container",
+      "parentNodeId": "231:1172",
+      "css": [
+        "display:flex;width:1216px;height:247px;"
+      ],
+      "properties": [
+        "Copy width: 1216",
+        "Copy height: 247",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1174",
+      "layerName": "Container",
+      "parentNodeId": "231:1173",
+      "css": [
+        "display:flex;width:268px;height:247px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1175",
+      "layerName": "Link",
+      "parentNodeId": "231:1174",
+      "css": [
+        "display:flex;width:268px;height:32px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1176",
+      "layerName": "Container",
+      "parentNodeId": "231:1175",
+      "css": [
+        "display:flex;width:32px;height:32px;flex-direction:row;border-radius:10px 10px 10px 10px;"
+      ],
+      "properties": [
+        "Copy width: 32",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1177",
+      "layerName": "寰",
+      "parentNodeId": "231:1176",
+      "css": [
+        "width:14px;height:20px;font-family:SF Pro;font-size:14px;font-weight:700;line-height:20px;letter-spacing:-0.15px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 14",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1178",
+      "layerName": "Text",
+      "parentNodeId": "231:1175",
+      "css": [
+        "display:flex;width:71px;height:28px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1179",
+      "layerName": "寰宇云医",
+      "parentNodeId": "231:1178",
+      "css": [
+        "width:71px;height:28px;font-family:SF Pro;font-size:18px;font-weight:700;line-height:28px;letter-spacing:-0.439px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1180",
+      "layerName": "Paragraph",
+      "parentNodeId": "231:1174",
+      "css": [
+        "display:flex;width:268px;height:39px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 39",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1181",
+      "layerName": "全球患者来华就医首选平台",
+      "parentNodeId": "231:1180",
+      "css": [
+        "width:167px;height:23px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:22.75px;letter-spacing:-0.15px;color:rgba(209,213,219,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 167",
+        "Copy height: 23",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1182",
+      "layerName": "Paragraph",
+      "parentNodeId": "231:1174",
+      "css": [
+        "display:flex;width:268px;height:32px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1183",
+      "layerName": "蚂蚁集团技术保障 × 好大夫94万医生",
+      "parentNodeId": "231:1182",
+      "css": [
+        "width:198px;height:20px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:19.5px;letter-spacing:0px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 198",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1184",
+      "layerName": "Container",
+      "parentNodeId": "231:1173",
+      "css": [
+        "display:flex;width:268px;height:247px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1185",
+      "layerName": "Heading 4",
+      "parentNodeId": "231:1184",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1186",
+      "layerName": "服务",
+      "parentNodeId": "231:1185",
+      "css": [
+        "width:29px;height:20px;font-family:SF Pro;font-size:14px;font-weight:700;line-height:20px;letter-spacing:0.55px;color:rgba(209,213,219,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 29",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1187",
+      "layerName": "List",
+      "parentNodeId": "231:1184",
+      "css": [
+        "display:flex;width:268px;height:156px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 156",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1188",
+      "layerName": "List Item",
+      "parentNodeId": "231:1187",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1189",
+      "layerName": "疾病中心",
+      "parentNodeId": "231:1188",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1190",
+      "layerName": "List Item",
+      "parentNodeId": "231:1187",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1191",
+      "layerName": "费用对比",
+      "parentNodeId": "231:1190",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1192",
+      "layerName": "List Item",
+      "parentNodeId": "231:1187",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1193",
+      "layerName": "报告体验",
+      "parentNodeId": "231:1192",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1194",
+      "layerName": "List Item",
+      "parentNodeId": "231:1187",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1195",
+      "layerName": "签证办理",
+      "parentNodeId": "231:1194",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1196",
+      "layerName": "List Item",
+      "parentNodeId": "231:1187",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1197",
+      "layerName": "就医步骤",
+      "parentNodeId": "231:1196",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1198",
+      "layerName": "Container",
+      "parentNodeId": "231:1173",
+      "css": [
+        "display:flex;width:268px;height:247px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1199",
+      "layerName": "Heading 4",
+      "parentNodeId": "231:1198",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1200",
+      "layerName": "资源",
+      "parentNodeId": "231:1199",
+      "css": [
+        "width:29px;height:20px;font-family:SF Pro;font-size:14px;font-weight:700;line-height:20px;letter-spacing:0.55px;color:rgba(209,213,219,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 29",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1201",
+      "layerName": "List",
+      "parentNodeId": "231:1198",
+      "css": [
+        "display:flex;width:268px;height:126px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 126",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1202",
+      "layerName": "List Item",
+      "parentNodeId": "231:1201",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1203",
+      "layerName": "患者案例",
+      "parentNodeId": "231:1202",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1204",
+      "layerName": "List Item",
+      "parentNodeId": "231:1201",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1205",
+      "layerName": "保险指南",
+      "parentNodeId": "231:1204",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1206",
+      "layerName": "List Item",
+      "parentNodeId": "231:1201",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1207",
+      "layerName": "就医步骤",
+      "parentNodeId": "231:1206",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1208",
+      "layerName": "List Item",
+      "parentNodeId": "231:1201",
+      "css": [
+        "display:flex;width:268px;height:30px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 30",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1209",
+      "layerName": "关于我们",
+      "parentNodeId": "231:1208",
+      "css": [
+        "width:56px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 56",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1210",
+      "layerName": "Container",
+      "parentNodeId": "231:1173",
+      "css": [
+        "display:flex;width:268px;height:247px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1211",
+      "layerName": "Heading 4",
+      "parentNodeId": "231:1210",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1212",
+      "layerName": "联系",
+      "parentNodeId": "231:1211",
+      "css": [
+        "width:29px;height:20px;font-family:SF Pro;font-size:14px;font-weight:700;line-height:20px;letter-spacing:0.55px;color:rgba(209,213,219,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 29",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1213",
+      "layerName": "List",
+      "parentNodeId": "231:1210",
+      "css": [
+        "display:flex;width:268px;height:227px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 227",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1214",
+      "layerName": "List Item",
+      "parentNodeId": "231:1213",
+      "css": [
+        "display:flex;width:268px;height:20px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1215",
+      "layerName": "Icon",
+      "parentNodeId": "231:1214",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1216",
+      "layerName": "Vector",
+      "parentNodeId": "231:1215",
+      "css": [
+        "width:13.333px;height:3.998px;"
+      ],
+      "properties": [
+        "Copy width: 13.333333969116211",
+        "Copy height: 3.9983699321746826",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1217",
+      "layerName": "Vector",
+      "parentNodeId": "231:1215",
+      "css": [
+        "width:13.333px;height:10.667px;"
+      ],
+      "properties": [
+        "Copy width: 13.333333969116211",
+        "Copy height: 10.666666984558105",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1218",
+      "layerName": "Text",
+      "parentNodeId": "231:1214",
+      "css": [
+        "display:flex;width:175px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 175",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1219",
+      "layerName": "contact@huanyuyunyi.com",
+      "parentNodeId": "231:1218",
+      "css": [
+        "width:175px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 175",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1220",
+      "layerName": "List Item",
+      "parentNodeId": "231:1213",
+      "css": [
+        "display:flex;width:268px;height:32px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1221",
+      "layerName": "Icon",
+      "parentNodeId": "231:1220",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1222",
+      "layerName": "Vector",
+      "parentNodeId": "231:1221",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.333333969116211",
+        "Copy height: 13.333333969116211",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1223",
+      "layerName": "Text",
+      "parentNodeId": "231:1220",
+      "css": [
+        "display:flex;width:133px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 133",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1224",
+      "layerName": "+86 400-888-XXXX",
+      "parentNodeId": "231:1223",
+      "css": [
+        "width:133px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 133",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1225",
+      "layerName": "List Item",
+      "parentNodeId": "231:1213",
+      "css": [
+        "display:flex;width:268px;height:32px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1226",
+      "layerName": "Icon",
+      "parentNodeId": "231:1225",
+      "css": [
+        "display:flex;width:16px;height:16px;"
+      ],
+      "properties": [
+        "Copy width: 16",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1227",
+      "layerName": "Vector",
+      "parentNodeId": "231:1226",
+      "css": [
+        "width:13.333px;height:13.333px;"
+      ],
+      "properties": [
+        "Copy width: 13.33335018157959",
+        "Copy height: 13.333434104919434",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1228",
+      "layerName": "Text",
+      "parentNodeId": "231:1225",
+      "css": [
+        "display:flex;width:68px;height:20px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1229",
+      "layerName": "WhatsApp",
+      "parentNodeId": "231:1228",
+      "css": [
+        "width:68px;height:20px;font-family:SF Pro;font-size:14px;font-weight:400;line-height:20px;letter-spacing:-0.15px;color:rgba(156,163,175,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1230",
+      "layerName": "List Item:margin",
+      "parentNodeId": "231:1213",
+      "css": [
+        "display:flex;width:268px;height:127px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 127",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1231",
+      "layerName": "List Item",
+      "parentNodeId": "231:1230",
+      "css": [
+        "display:flex;width:268px;height:115px;flex-direction:column;border:1px solid rgba(255,255,255,0.1);"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 115",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1232",
+      "layerName": "Paragraph",
+      "parentNodeId": "231:1231",
+      "css": [
+        "display:flex;width:268px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 268",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1233",
+      "layerName": "24小时客服",
+      "parentNodeId": "231:1232",
+      "css": [
+        "width:64px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(37,99,235,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 64",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1234",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1231",
+      "css": [
+        "display:flex;width:80px;height:86px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 86",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1235",
+      "layerName": "Container",
+      "parentNodeId": "231:1234",
+      "css": [
+        "display:flex;width:80px;height:80px;flex-direction:row;border-radius:10px 10px 10px 10px;background:rgba(255,255,255,0.1);"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1236",
+      "layerName": "扫码加微信",
+      "parentNodeId": "231:1235",
+      "css": [
+        "width:60px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 60",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1237",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1172",
+      "css": [
+        "display:flex;width:1216px;height:81px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 1216",
+        "Copy height: 81",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1238",
+      "layerName": "Container",
+      "parentNodeId": "231:1237",
+      "css": [
+        "display:flex;width:1216px;height:41px;flex-direction:row;gap:12px;border:1px solid rgba(255,255,255,0.1);"
+      ],
+      "properties": [
+        "Copy width: 1216",
+        "Copy height: 41",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1239",
+      "layerName": "Paragraph",
+      "parentNodeId": "231:1238",
+      "css": [
+        "display:flex;width:254px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 254",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1240",
+      "layerName": "Copyright 2026 寰宇云医. All rights reserved.",
+      "parentNodeId": "231:1239",
+      "css": [
+        "width:254px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 254",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1241",
+      "layerName": "Container",
+      "parentNodeId": "231:1238",
+      "css": [
+        "display:flex;width:132px;height:16px;flex-direction:row;gap:16px;"
+      ],
+      "properties": [
+        "Copy width: 132",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1242",
+      "layerName": "Link",
+      "parentNodeId": "231:1241",
+      "css": [
+        "display:flex;width:48px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1243",
+      "layerName": "隐私政策",
+      "parentNodeId": "231:1242",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1244",
+      "layerName": "Text",
+      "parentNodeId": "231:1241",
+      "css": [
+        "display:flex;width:4px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 4",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1245",
+      "layerName": "|",
+      "parentNodeId": "231:1244",
+      "css": [
+        "width:4px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 4",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1246",
+      "layerName": "Link",
+      "parentNodeId": "231:1241",
+      "css": [
+        "display:flex;width:48px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1247",
+      "layerName": "服务条款",
+      "parentNodeId": "231:1246",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1248",
+      "layerName": "Header",
+      "parentNodeId": "231:816",
+      "css": [
+        "display:flex;width:1440px;height:64px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 1440",
+        "Copy height: 64",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1249",
+      "layerName": "Container",
+      "parentNodeId": "231:1248",
+      "css": [
+        "display:flex;width:1280px;height:64px;flex-direction:row;padding-right:32px;"
+      ],
+      "properties": [
+        "Copy width: 1280",
+        "Copy height: 64",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1250",
+      "layerName": "Link",
+      "parentNodeId": "231:1249",
+      "css": [
+        "display:flex;width:111px;height:32px;flex-direction:row;gap:8px;"
+      ],
+      "properties": [
+        "Copy width: 111",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1251",
+      "layerName": "Container",
+      "parentNodeId": "231:1250",
+      "css": [
+        "display:flex;width:32px;height:32px;flex-direction:row;border-radius:10px 10px 10px 10px;"
+      ],
+      "properties": [
+        "Copy width: 32",
+        "Copy height: 32",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1252",
+      "layerName": "寰",
+      "parentNodeId": "231:1251",
+      "css": [
+        "width:14px;height:20px;font-family:SF Pro;font-size:14px;font-weight:700;line-height:20px;letter-spacing:-0.15px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 14",
+        "Copy height: 20",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1253",
+      "layerName": "Text",
+      "parentNodeId": "231:1250",
+      "css": [
+        "display:flex;width:71px;height:28px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1254",
+      "layerName": "寰宇云医",
+      "parentNodeId": "231:1253",
+      "css": [
+        "width:71px;height:28px;font-family:SF Pro;font-size:18px;font-weight:700;line-height:28px;letter-spacing:-0.439px;color:rgba(30,58,95,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1255",
+      "layerName": "Navigation",
+      "parentNodeId": "231:1249",
+      "css": [
+        "display:flex;width:817px;height:28px;flex-direction:row;gap:2px;"
+      ],
+      "properties": [
+        "Copy width: 817",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1256",
+      "layerName": "Link:margin",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:88px;height:28px;flex-direction:row;padding-right:8px;"
+      ],
+      "properties": [
+        "Copy width: 88",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1257",
+      "layerName": "Link",
+      "parentNodeId": "231:1256",
+      "css": [
+        "display:flex;width:80px;height:28px;flex-direction:row;gap:6px;padding-right:12px;padding-bottom:6px;border-radius:10px 10px 10px 10px;"
+      ],
+      "properties": [
+        "Copy width: 80",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1258",
+      "layerName": "Icon",
+      "parentNodeId": "231:1257",
+      "css": [
+        "display:flex;width:14px;height:14px;"
+      ],
+      "properties": [
+        "Copy width: 14",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1259",
+      "layerName": "Vector",
+      "parentNodeId": "231:1258",
+      "css": [
+        "width:11.667px;height:11.667px;"
+      ],
+      "properties": [
+        "Copy width: 11.666680335998535",
+        "Copy height: 11.666753768920898",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1260",
+      "layerName": "Text",
+      "parentNodeId": "231:1257",
+      "css": [
+        "display:flex;width:36px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 36",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1261",
+      "layerName": "问阿宁",
+      "parentNodeId": "231:1260",
+      "css": [
+        "width:36px;height:16px;font-family:SF Pro;font-size:12px;font-weight:700;line-height:16px;letter-spacing:0px;color:rgba(255,255,255,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 36",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1262",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:44px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 44",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1263",
+      "layerName": "首页",
+      "parentNodeId": "231:1262",
+      "css": [
+        "width:24px;height:16px;font-family:PingFang SC;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 24",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1264",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:104px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 104",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1265",
+      "layerName": "为什么选择中国",
+      "parentNodeId": "231:1264",
+      "css": [
+        "width:84px;height:16px;font-family:PingFang SC;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 84",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1266",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:104px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 104",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1267",
+      "layerName": "信任与常见问题",
+      "parentNodeId": "231:1266",
+      "css": [
+        "width:84px;height:16px;font-family:PingFang SC;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 84",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1268",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:68px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1269",
+      "layerName": "疾病中心",
+      "parentNodeId": "231:1268",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1270",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:44px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;background:rgba(37,99,235,0.1);"
+      ],
+      "properties": [
+        "Copy width: 44",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1271",
+      "layerName": "牙科",
+      "parentNodeId": "231:1270",
+      "css": [
+        "width:24px;height:16px;font-family:PingFang SC;font-size:12px;font-weight:700;line-height:16px;letter-spacing:0px;color:rgba(37,99,235,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 24",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1272",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:68px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1273",
+      "layerName": "中国医院",
+      "parentNodeId": "231:1272",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1274",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:68px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1275",
+      "layerName": "患者案例",
+      "parentNodeId": "231:1274",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1276",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:68px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1277",
+      "layerName": "保险指南",
+      "parentNodeId": "231:1276",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1280",
+      "layerName": "Link",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:68px;height:28px;flex-direction:column;padding-right:10px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 68",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1281",
+      "layerName": "关于我们",
+      "parentNodeId": "231:1280",
+      "css": [
+        "width:48px;height:16px;font-family:SF Pro;font-size:12px;font-weight:600;line-height:16px;letter-spacing:0px;color:rgba(75,85,99,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1282",
+      "layerName": "Container:margin",
+      "parentNodeId": "231:1255",
+      "css": [
+        "display:flex;width:73px;height:28px;flex-direction:row;"
+      ],
+      "properties": [
+        "Copy width: 73",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1283",
+      "layerName": "Button",
+      "parentNodeId": "231:1282",
+      "css": [
+        "display:flex;width:65px;height:28px;flex-direction:row;gap:4px;padding-right:8px;padding-bottom:6px;border-radius:8px 8px 8px 8px;"
+      ],
+      "properties": [
+        "Copy width: 65",
+        "Copy height: 28",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1284",
+      "layerName": "Icon",
+      "parentNodeId": "231:1283",
+      "css": [
+        "display:flex;width:14px;height:14px;"
+      ],
+      "properties": [
+        "Copy width: 14",
+        "Copy height: 14",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1285",
+      "layerName": "Vector",
+      "parentNodeId": "231:1284",
+      "css": [
+        "width:11.667px;height:11.667px;"
+      ],
+      "properties": [
+        "Copy width: 11.666666030883789",
+        "Copy height: 11.666666030883789",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1286",
+      "layerName": "Vector",
+      "parentNodeId": "231:1284",
+      "css": [
+        "width:4.667px;height:11.667px;"
+      ],
+      "properties": [
+        "Copy width: 4.666666507720947",
+        "Copy height: 11.666666030883789",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1287",
+      "layerName": "Vector",
+      "parentNodeId": "231:1284",
+      "css": [
+        "width:11.667px;height:0px;"
+      ],
+      "properties": [
+        "Copy width: 11.666666030883789",
+        "Copy height: 0",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1288",
+      "layerName": "Text",
+      "parentNodeId": "231:1283",
+      "css": [
+        "display:flex;width:12px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1289",
+      "layerName": "🇨🇳",
+      "parentNodeId": "231:1288",
+      "css": [
+        "width:12px;height:16px;font-family:SF Pro;font-size:12px;font-weight:400;line-height:16px;letter-spacing:0px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 12",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1290",
+      "layerName": "Text",
+      "parentNodeId": "231:1283",
+      "css": [
+        "display:flex;width:15px;height:16px;flex-direction:column;"
+      ],
+      "properties": [
+        "Copy width: 15",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "231:1291",
+      "layerName": "ZH",
+      "parentNodeId": "231:1290",
+      "css": [
+        "width:15px;height:16px;font-family:SF Pro;font-size:10px;font-weight:400;line-height:16px;letter-spacing:0.117px;color:rgba(107,114,128,1);white-space:pre-wrap;"
+      ],
+      "properties": [
+        "Copy width: 15",
+        "Copy height: 16",
+        "Copy Layout, press shift to copy all code"
+      ]
+    }
+  ]
+}

@@ -73,8 +73,8 @@
 ## Verification
 
 - Figma reference screenshot: `/Users/hhm/Downloads/医生简介.png`
-- Local desktop screenshot: `/tmp/huanyu-doctor-profile-verified.png`
-- Local mobile screenshot: `/tmp/huanyu-doctor-profile-mobile-verified.png`
+- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-profile-1440.png`
+- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-profile-390.png`
 - Local verification: `/dental`, state 2, doctor `了解更多`, profile tab
 - Desktop geometry: viewport `1440 x 756`; dialog `896 x 501` at `(272, 127.5)`; profile header `832 x 106`; tabs `832 x 27`; body `832 x 248`
 - Mobile geometry: viewport `390 x 844`; dialog `342 x 593` at `(24, 125.5)`; one-column credentials; document width remains 390px

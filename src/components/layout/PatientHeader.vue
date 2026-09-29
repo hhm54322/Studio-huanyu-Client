@@ -4,7 +4,6 @@ import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import {
   Check,
-  ChevronDown,
   Menu,
   X,
 } from "lucide-vue-next";
@@ -14,6 +13,7 @@ import { useScroll } from "@/composables/useScroll";
 import type { Locale } from "@/stores/app";
 
 const route = useRoute();
+withDefaults(defineProps<{ consultationIcon?: string; languageIcon?: string }>(), { consultationIcon: '/images/figma/about-icons/Icon.svg', languageIcon: '/images/figma/about-icons/Icon-8.svg' });
 const { locale } = useI18n();
 const appStore = useAppStore();
 const { scrolled } = useScroll(18);
@@ -85,7 +85,7 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
         ><BrandLogo compact
       /></RouterLink>
       <button class="ask-aning" type="button" @click="openConsultation">
-        <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />问阿宁
+        <img :src="consultationIcon" alt="" aria-hidden="true" />问阿宁
       </button>
       <nav class="desktop-nav" aria-label="主导航">
         <template v-for="item in navItems" :key="item.name">
@@ -108,9 +108,9 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
             :aria-expanded="langOpen"
             @click="langOpen = !langOpen"
           >
-            <img src="/images/figma/trust/Icon-4.svg" alt="" aria-hidden="true" /><span class="language-flag">🇨🇳</span
+            <img :src="languageIcon" alt="" aria-hidden="true" /><span class="language-flag">🇨🇳</span
             ><b>{{ currentLang?.short }}</b
-            ><ChevronDown class="h-3 w-3" />
+            >
           </button>
           <Transition name="dropdown"
             ><div v-if="langOpen" class="language-menu">
@@ -157,6 +157,8 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
 
 <style scoped>
 .patient-header {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  -webkit-font-smoothing: antialiased;
   position: sticky;
   top: 0;
   z-index: 60;
@@ -187,22 +189,39 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
 .header-logo {
   flex: none;
 }
+.header-logo :deep(.brand-logo__mark) {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  box-shadow: none;
+}
+.header-logo :deep(.brand-logo__copy strong) {
+  color: #1e3a5f;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.439px;
+}
 .ask-aning {
   display: inline-flex;
   width: 80px;
-  height: 30px;
+  height: 28px;
   flex: none;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
   margin-left: auto;
+  margin-right: 8px;
   border: 0;
   border-radius: 10px;
   padding: 0 12px;
-  background: linear-gradient(102deg, #ee771d, #4a82f0);
+  background: linear-gradient(90deg, #dd6b20, #3b82f6);
   color: #fff;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
   cursor: pointer;
   transition:
     transform 0.22s ease,
@@ -264,26 +283,28 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
 }
 .language-button {
   display: flex;
-  height: 34px;
+  height: 28px;
   align-items: center;
   gap: 4px;
   border: 0;
-  padding: 0 2px;
+  padding: 6px 8px;
   background: transparent;
-  color: #526879;
-  font-size: 9px;
+  color: #6b7280;
+  font-size: 10px;
+  line-height: 16px;
   cursor: pointer;
 }
 .language-button b {
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: .12px;
 }
 .language-button > img {
   width: 14px;
   height: 14px;
 }
 .language-flag {
-  font-size: 10px;
-  line-height: 1;
+  font-size: 12px;
+  line-height: 16px;
 }
 .language-menu {
   position: absolute;

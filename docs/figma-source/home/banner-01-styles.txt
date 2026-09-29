@@ -1,0 +1,32 @@
+// 来华就医首选平台
+color: #2563EB;
+font-size: 14px;
+font-family: PingFang SC;
+font-weight: 400;
+line-height: 14px;
+word-wrap: break-word
+---
+// 让全球患者安心赴华就医
+color: #143162;
+font-size: 52px;
+font-family: PingFang SC;
+font-weight: 600;
+line-height: 52px;
+letter-spacing: 0.35px;
+word-wrap: break-word
+---
+// 从首份病历到回国复查，全程有人替你安排。
+color: #5B606A;
+font-size: 18px;
+font-family: PingFang SC;
+font-weight: 400;
+line-height: 18px;
+word-wrap: break-word
+---
+// 提交病例.3分钟获取方案
+color: var(--color-text-white, white);
+font-size: 16px;
+font-family: PingFang SC;
+font-weight: 600;
+line-height: 16px;
+word-wrap: break-word

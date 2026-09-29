@@ -1,10 +1,458 @@
 {
-  "frame": "144:4380",
-  "heroImage": "144:4383",
-  "icons": "144:4415",
-  "search": "144:4397",
-  "cta": [
-    "144:4578",
-    "144:4582"
+  "sourceFrame": "144:4380",
+  "assets": [
+    {
+      "nodeId": "144:4398",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4398.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4399",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4399.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4400",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4400.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4416",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4416.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4418",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4418.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4419",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4419.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4420",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4420.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4429",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4429.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4430",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4430.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4431",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4431.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4440",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4440.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4441",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4441.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4450",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4450.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4451",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4451.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4460",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4460.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4462",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4462.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4463",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4463.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4472",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4472.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4473",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4473.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4482",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4482.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4483",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4483.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4484",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4484.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4493",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4493.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4494",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4494.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4503",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4503.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4504",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4504.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4513",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4513.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4514",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4514.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4515",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4515.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4524",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4524.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4525",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4525.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4526",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4526.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4527",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4527.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4528",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4528.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4529",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4529.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4538",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4538.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4539",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4539.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4548",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4548.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4549",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4549.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4550",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4550.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4551",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4551.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4552",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4552.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4561",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4561.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4563",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4563.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4564",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4564.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4579",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/disease-source/node-144-4579.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4580",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4580.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4583",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4583.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4584",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4584.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4630",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4630.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4631",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4631.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4632",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4632.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4636",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4636.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4637",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4637.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4641",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-144-4641.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4642",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-144-4642.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1516",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-484-1516.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1517",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-484-1517.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1540",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/disease-source/node-484-1540.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1541",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-484-1541.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1542",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-484-1542.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "484:1543",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/disease-source/node-484-1543.svg",
+      "export": "Exact selected Dev Mode SVG"
+    },
+    {
+      "nodeId": "144:4383",
+      "imageHash": "abf2cbb26028780e699b68c6f183c13b9881e782",
+      "sha256": "8cf4135cb4890aeb7bf957774cf1068b8f05a9c5e09e937e69a4b6d1e373a1e6",
+      "rendered": true,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": -0.0003308521118015051,
+          "m10": 0,
+          "m11": 0.9433006644248962,
+          "m12": 0.02815631404519081
+        },
+        "image": {
+          "hash": [
+            171,
+            242,
+            203,
+            178,
+            96,
+            40,
+            120,
+            14,
+            105,
+            155,
+            104,
+            198,
+            241,
+            131,
+            193,
+            59,
+            152,
+            129,
+            231,
+            130
+          ],
+          "name": "ChatGPT Image 2026年9月16日 14_54_25"
+        },
+        "imageThumbnail": {
+          "hash": [
+            243,
+            118,
+            128,
+            201,
+            208,
+            99,
+            0,
+            113,
+            52,
+            74,
+            95,
+            193,
+            16,
+            142,
+            113,
+            4,
+            49,
+            67,
+            77,
+            45
+          ],
+          "name": "ChatGPT Image 2026年9月16日 14_54_25"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "STRETCH",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 2510,
+        "originalImageHeight": 850,
+        "thumbHash": [],
+        "altText": ""
+      },
+      "projectPath": "/public/images/figma/disease-source/node-144-4383.webp",
+      "export": "Original Figma image pixels; lossless WebP; selected crop preserved"
+    }
   ]
 }

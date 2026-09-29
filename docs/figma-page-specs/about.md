@@ -98,10 +98,41 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 关于我们 (2).png`
-- Local desktop screenshot: `/tmp/huanyu-about-desktop-verified.png`; route `http://127.0.0.1:5173/about`, `1440 x 900`, full-page after scrolling each section into the viewport; measured document height `4916px`
-- Local mobile screenshot: `/tmp/huanyu-about-mobile-verified.png`; `390 x 844`, full-page after section-by-section scroll; measured document height `7197px`, `scrollWidth === innerWidth`
-- Interaction evidence: complex case switch, detail modal focus and Escape close, trust-detail focus and Escape close, body scroll lock/unlock, CTA consultation panel, reduced-motion fallback, and asset URL resolution verified in tab `36`
-- Build and lint evidence: bundled-node production build, typecheck, and `git diff --check` recorded on `2026-09-24`
-- Verification run: `2026-09-24`
+- Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 关于我们 (3).png`
+- Local desktop screenshot: `docs/figma-verification/about/2026-09-28/local-1440.png`; route `http://127.0.0.1:5173/about`; measured document height `4916px`, `scrollWidth === innerWidth`; changed-pixel ratio `1.0902%` at threshold `.15`, dominated by browser text rasterization/anti-aliasing.
+- Local mobile screenshot: `docs/figma-verification/about/2026-09-28/local-390.png`; `390 x 844`, measured document height `7727px`, `scrollWidth === innerWidth`.
+- Detail state reference screenshots: `/Users/hhm/Downloads/复杂病例详情模版.png`, `/Users/hhm/Downloads/可信度详情.png`; local crops and overlays are in `docs/figma-verification/about/2026-09-28/complex-1440.png`, `trust-1440.png`, `complex-overlay.png`, and `trust-overlay.png`; state pixel ratios `1.8526%` and `0.3578%` at threshold `.15` after source geometry, copy, ordering, and asset correction.
+- Interaction evidence: `docs/figma-verification/about/2026-09-28/interactions.json` and `state-comparison.json`; complex/trust desktop and mobile focus containment, scroll lock, Escape close, trigger focus restoration, consultation entry, reduced-motion fallback, and detail scroll crops all passed.
+- Build and lint evidence: `vue-tsc -b`, Vite production build, and `git diff --check` passed on `2026-09-28`; scoped page audit is run separately. The workspace-wide audit/build remains a final all-page gate, not evidence that unreviewed pages match.
+- Verification run: `2026-09-28`
+- Renderer tolerance: fine text rasterization, one-pixel text baseline differences, and minor intra-line justification spacing remain between Figma and Chromium. These are not missing layouts or assets. Pixel ratios are diagnostic numbers, not a pass criterion; section/state screenshots were reviewed manually.
 - Remaining differences: none
+
+## 2026-09-28 Current Source Re-extraction
+
+- Native CSS supplement: `docs/figma-source/about/native-css-2026-09-28.json`. The HTML plugin omits letter spacing and grid placement, so native CSS overrides incomplete plugin output. Network and complex paragraphs have no letter spacing; trust privacy/boundary/official paragraphs use -0.15px; titles use -0.439px. `text-spacing-trim: space-all` prevents Chromium's automatic CJK punctuation compression from changing authored line breaks; antialiased text preserves the Figma raster appearance.
+- Detail source frames freshly exported: `484:2568` 1440 x 1140 and `484:2646` 1440 x 1279. Main page static section sizes and detail modal crops now match the current Figma exports.
+- Complex technical grid `484:2667`: native CSS `inline-grid`, 1 fit-content row, 3 minmax(0,1fr) columns, row/column gaps 24. Solution grid `484:2698`: native CSS must be copied before changing the incorrectly linear implementation.
+
+### Detail native CSS correction record (before implementation)
+
+- Native node evidence: `docs/figma-source/about/detail-native-css-2026-09-28.json`.
+- Modal `484:2649` -> `.complex-detail-modal`: width 896, padding 32, six fit-content grid rows, one minmax(0,1fr) column, gap 32, radius 24, white.
+- `484:2667` -> `.complex-detail-capabilities`: three equal columns, gap 24. ERAS `484:2676` is column 3; robot is column 1 and cost is column 2. Cards padding 24, icon 32, body gap 40. ERAS title `484:2682`: 18/18, weight 600, letter spacing -0.439, PingFang SC; source title wrapper width 314.66.
+- `484:2698` -> `.complex-detail-solutions`: two rows and two columns, gap 12; solution `484:2699` is row 1/column 1, padding 12 24, radius 12, fill #F5F6F7. Text 16/24.
+- Trust boundary `484:2577` -> `.trust-detail-card` boundary: row 2/column 1, padding 24, gap 80. Subject `484:2593`: row 1/column 1. Privacy `484:2627`: row 1/column 2. Official `484:2611`: row 2/column 2, height 366, padding 24, space-between. All radius 24 and white.
+- Trust detail icon mapping corrected: scale `484:2578` belongs to boundary; shield `484:2594` belongs to subject. Grid top padding 48 from the source wrapper replaces invented inter-row gaps. All detail cards retain full authored copy/evidence.
+- Design Properties for rich text `484:2665`: width 832, height 117; paragraph spacing 8px for body and bold span; body 16/24, weight 400, letter spacing 0; lead 20/28, weight 600. This parameter is absent from both HTML and native CSS exports. Each paragraph maps to a block span with an 8px inter-paragraph gap; the authored desktop text box is at least 117px high.
+- Brand mark `484:2462`: 32 x 32, radius 10, linear-gradient(135deg, #2563EB 0%, #3B82F6 100%), no shadow. Apply only to patient header so administration UI is unchanged.
+- Brand glyph `484:2463`: SF Pro, 14/20, weight 700, letter spacing -0.15, white. Detail subtitle `484:2663`: PingFang SC 24/24, 600, letter spacing -0.439. ERAS body `484:2684`: width 213.33, height 144, 16/24, letter spacing -0.15; exact range delimiter is an en dash and quoted words use straight quotes.
+- Brand name `484:2465`: SF Pro 18/28, weight 700, letter spacing -0.439, #1E3A5F. Official detail evidence `484:2626`: PingFang SC 16/24, weight 400, #4B5563, no letter spacing. Cost body `484:2693`: 213.33 x 144, 16/24, letter spacing 0, paragraph spacing 8.
+- Privacy detail evidence `484:2643`: PingFang SC 16/24, weight 400, #4B5563, letter spacing 0; subject title `484:2600`: 24/24, weight 600, letter spacing -0.439. Quotation marks are copied as straight quotes (invalid literal escape characters are removed as source copy corrections).
+- Boundary detail evidence `484:2592`: PingFang SC 16/24, weight 400, #4B5563, no letter spacing. Dental body `484:2125`: 16/24, weight 400, white at 70%, letter spacing -0.15 (unlike orthopedic copy). Apply this exact per-node distinction to restore the authored dental line wrap.
+
+- Full Layers inventory: `docs/figma-source/about/2026-09-28-extraction.json` records all 798 rows in source order, including hidden legacy branches. Root HTML and all text styles were expanded in Dev Mode and recopied into `frame.html` and `styles.txt`.
+- Network `484:1749`, `484:1765`, `484:1779`: padding 24, icon 32, icon/body gap 80, title 24/24 weight 600 PingFang SC, paragraph top padding 16 and 16/24 weight 400; fill #F5F6F7, radius 24.
+- Complex `484:2092`: height 248, padding 24, column space-between; title 24/24, paragraph top padding 16, action top padding 16 and 16/16 weight 500. Other cards use icon/body gap 80. The Dev Mode child was separately selected and read to confirm this distinction.
+- Matching `484:2253`, `484:2261`, `484:2269`, `484:2280`, `484:2288`, `484:2297`: padding 24, icon 32, gap 80, paragraph top padding 16; titles 24/24 and copy 16/24.
+- Proof `484:2314`, `484:2329`, `484:2355`: padding 24, icon 32, gap 80, paragraph top padding 16; full authored copy, not summaries. Actions left-aligned with down-chevron at right, 14/14 weight 500 #9CA3AF, top padding 16. Official `484:2342` uses height 302 and space-between.
+- Footer `484:2382`: inner width 1216, 4 columns 268 with gap 48; padding top/bottom 64; top content 247, bottom margin 40, divider then padding 24 and 16px text row. SF Pro: headings/links 14/20, description 14/22.75, subcopy 12/19.5, bottom 12/16.
+- Icons freshly downloaded from this root on 2026-09-28: `/Users/hhm/Downloads/寰宇云医_icon (9).zip`, copied unchanged to `public/images/figma/about-icons/`; exact asset-node mapping recorded in `icons.json`.

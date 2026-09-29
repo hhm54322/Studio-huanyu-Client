@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": [],
+      "search": true,
+      "featureSearch": true,
+      "reset": true,
+      "empty": true,
+      "dental": true,
+      "report": true,
+      "unfinishedDisabled": true,
+      "consultation": true,
+      "focusTrap": true,
+      "focusRestore": true,
+      "escape": true,
+      "reveal": true
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": [],
+      "search": true,
+      "featureSearch": true,
+      "reset": true,
+      "empty": true,
+      "dental": true,
+      "report": true,
+      "unfinishedDisabled": true,
+      "consultation": true,
+      "focusTrap": true,
+      "focusRestore": true,
+      "escape": true,
+      "reveal": true
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": [],
+      "search": true,
+      "featureSearch": true,
+      "reset": true,
+      "empty": true,
+      "dental": true,
+      "report": true,
+      "unfinishedDisabled": true,
+      "consultation": true,
+      "focusTrap": true,
+      "focusRestore": true,
+      "escape": true,
+      "reveal": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": [],
+      "search": true,
+      "featureSearch": true,
+      "reset": true,
+      "empty": true,
+      "dental": true,
+      "report": true,
+      "unfinishedDisabled": true,
+      "consultation": true,
+      "focusTrap": true,
+      "focusRestore": true,
+      "escape": true,
+      "reveal": true
+    }
+  ],
+  "hover": {
+    "transform": "matrix(1, 0, 0, 1, 0, -6)",
+    "width": 389.328125,
+    "height": 300
+  },
+  "reduced": {
+    "transform": "none",
+    "transition": "1e-05s",
+    "opacity": "1"
+  },
+  "errors": []
+}

@@ -4,12 +4,12 @@
 - Figma frames: `04寰宇云医 - 牙科 - 选择牙科项目`, `04寰宇云医 - 牙科 - 城市与医生匹配`
 - Desktop frames: `1440 x 2384px` (项目选择), `1440 x 2064px` (城市与医生匹配)
 - Mobile frame: no dedicated frame found; responsive adaptation required
-- Source baseline HTML: `docs/figma-source/dental/frame.html`
-- Source baseline CSS: `docs/figma-source/dental/styles.txt`
-- Source asset manifest: `docs/figma-source/dental/assets.json`
-- Doctor matching source baseline HTML: `docs/figma-source/dental/doctor-matching.html`
-- Doctor matching source baseline CSS: `docs/figma-source/dental/doctor-matching-styles.txt`
-- Doctor matching asset manifest: `docs/figma-source/dental/doctor-matching-assets.json`
+- Source baseline HTML: `docs/figma-source/dental/source-frame-2026-09-29.html`
+- Source baseline CSS: `docs/figma-source/dental/dev-styles-2026-09-29.css`
+- Source asset manifest: `docs/figma-source/dental/assets-2026-09-29.json`
+- Doctor matching source baseline HTML: `docs/figma-source/dental/matching/source-frame-2026-09-29.html`
+- Doctor matching source baseline CSS: `docs/figma-source/dental/matching/dev-styles-2026-09-29.css`
+- Doctor matching asset manifest: `docs/figma-source/dental/matching/native-image-paints-2026-09-29.json`
 - Status: verified
 - Node IDs: project selection `231:88`, doctor matching `231:397`; modal states `医生简介 231:1292`, `案例集 231:1355`, `患者评价 231:1421`
 
@@ -82,15 +82,15 @@
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 牙科 - 选择牙科项目 (1).png`
-- Figma doctor-state reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 牙科 - 城市与医生匹配 (1).png`
-- Local desktop screenshot: `/tmp/huanyu-dental-project-verified.png`
-- Local doctor-state screenshot: `/tmp/huanyu-dental-doctors-verified.png`
-- Local mobile screenshot: `/tmp/huanyu-dental-mobile-verified.png`
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/figma-project-2x.png`
+- Figma doctor-state reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/figma-doctors-2x.png`
+- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/local-1440.png`
+- Local doctor-state screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/local-step2-1440.png`
+- Local mobile screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/local-390.png`
 - Desktop geometry: `2384px` project state, `2064px` doctor state
 - Mobile geometry: project and doctor states have no horizontal overflow; doctor state verified at `390 x 844`
 - Interaction checks: step switching, project selection, applied doctor filters (including price), sorting, reset, doctor modal open/close/Escape/focus restoration and body scroll lock
 - Backend behavior: `/api/dental-assessments` accepts multipart JPG/PNG/PDF uploads, requires at least one file, persists the assessment and returns explicit submitting/success/error states. One submission reuses its request ID across retries; the server returns the original record for an idempotent retry and removes the retry's duplicate upload files.
 - Latest program regression screenshot: `artifacts/program-regression/dental-upload-success.png`; captured after a real browser multipart upload reached the API and the persisted success state rendered.
 - Remaining differences: none
-- Verification run: 2026-09-24. Re-read Dev Mode source frames `231:88` and `231:397`; verified project and doctor desktop geometry, responsive mobile flow, filters/reset, step transitions, doctor modal tabs, Escape close, body scroll lock, image loading, and reduced-motion fallback.
+- Verification run: 2026-09-29. Re-read Figma source frames `231:88`, `231:397`, `231:815`, `231:1292`, `231:1355`, and `231:1421`; locked 307/416/198/63/66/81 node trees, regenerated source baselines, and verified project/doctor/upload desktop geometry, responsive mobile flow, filters/reset, step transitions, doctor modal tabs, Escape close, body scroll lock, image loading, empty-upload rejection, and reduced-motion fallback. Source screenshot changed-pixel ratios: project 2.71%, doctor 3.76%, upload 2.19% at threshold .15; all authored frame heights match exactly. State evidence: `docs/figma-verification/dental/2026-09-29/state-results.json`.

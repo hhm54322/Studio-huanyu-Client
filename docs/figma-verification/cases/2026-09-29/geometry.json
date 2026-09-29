@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 1822,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "case-hero",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 460
+        },
+        {
+          "selector": "case-directory hy-section",
+          "x": 0,
+          "y": 460,
+          "width": 1440,
+          "height": 622
+        },
+        {
+          "selector": "case-summary",
+          "x": 0,
+          "y": 1082,
+          "width": 1440,
+          "height": 284
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 1366,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 2808,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "case-hero",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 620
+        },
+        {
+          "selector": "case-directory hy-section",
+          "x": 0,
+          "y": 620,
+          "width": 390,
+          "height": 1066
+        },
+        {
+          "selector": "case-summary",
+          "x": 0,
+          "y": 1686,
+          "width": 390,
+          "height": 344
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 2030,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "referenceHeight": 1822,
+      "localHeight": 1822,
+      "changedPixelRatio": 0.007997164288327845,
+      "comparison": "native-2x"
+    }
+  ],
+  "errors": []
+}

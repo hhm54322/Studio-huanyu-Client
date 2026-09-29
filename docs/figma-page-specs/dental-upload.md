@@ -54,8 +54,8 @@
 ## Verification
 
 - Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 牙科 - 上传影像资料 (1).png`
-- Local desktop screenshot: `/tmp/huanyu-dental-upload-verified.png`
-- Local mobile screenshot: `/tmp/huanyu-dental-upload-mobile-verified.png`
+- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/dental-upload-1440.png`
+- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/dental-upload-390.png`
 - Upload states: idle, ready, submitting, success, and retryable error feedback are implemented without changing the authored idle geometry. The submit action calls the backend `/api/dental-assessments` multipart endpoint and rejects empty submissions.
 - Remaining differences: none
 - Verification run: 2026-09-24. Re-read Dev Mode source frame `231:815`; verified authored desktop geometry `460 / 164 / 686 / 456px`, upload idle/reading/ready/error states, form submission feedback, mobile adaptation, image loading, no horizontal overflow, and reduced-motion fallback.

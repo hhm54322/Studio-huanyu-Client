@@ -1,0 +1,812 @@
+/* 190:5300 07寰宇云医 - 患者案例 */
+[data-figma-node="190:5300"] { display: flex;width: 1440px;flex-direction: column;align-items: flex-start; }
+
+/* 190:5301 Body */
+[data-figma-node="190:5301"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;
+background: var(--color-grey-98, #F9FAFB); }
+
+/* 190:5302 Main Content */
+[data-figma-node="190:5302"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5303 Section */
+[data-figma-node="190:5303"] { display: flex;height: 460px;padding: 180px 112px 146px 112px;flex-direction: column;justify-content: center;align-items: center;gap: 44px;align-self: stretch;
+background: url(<path-to-image>) lightgray 0px -78.03px / 100% 123.964% no-repeat; }
+
+/* 190:5304 Frame 74 */
+[data-figma-node="190:5304"] { display: flex;width: 1216px;justify-content: space-between;align-items: center; }
+
+/* 190:5305 Container */
+[data-figma-node="190:5305"] { display: flex;width: 568px;flex-direction: column;align-items: flex-start;gap: 24px;flex-shrink: 0; }
+
+/* 190:5306 Container */
+[data-figma-node="190:5306"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5307 Text */
+[data-figma-node="190:5307"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5308 Icon */
+[data-figma-node="190:5308"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5309 Vector */
+[data-figma-node="190:5309"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5310 真实案例 */
+[data-figma-node="190:5310"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5311 Text */
+[data-figma-node="190:5311"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5312 Frame */
+[data-figma-node="190:5312"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5313 Vector */
+[data-figma-node="190:5313"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5314 国际患者 */
+[data-figma-node="190:5314"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5315 Text */
+[data-figma-node="190:5315"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5316 Frame */
+[data-figma-node="190:5316"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5317 Vector */
+[data-figma-node="190:5317"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5318 专业服务 */
+[data-figma-node="190:5318"] { display: flex;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5319 Heading 1 */
+[data-figma-node="190:5319"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5320 Cardiac Remote Monitoring with Fewer Clicks and Mo */
+[data-figma-node="190:5320"] { color: #143162;font-family: "PingFang SC";font-size: 64px;font-style: normal;font-weight: 600;line-height: 96px; /* 150% */letter-spacing: 0.352px; }
+
+/* 190:5321 Paragraph */
+[data-figma-node="190:5321"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5322 Cut alert fatigue. Prioritize urgent care. Deliver */
+[data-figma-node="190:5322"] { color: #5B606A;font-family: "PingFang SC";font-size: 20px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 29px; /* 145% */letter-spacing: -0.439px; }
+
+/* 190:5323 Link */
+[data-figma-node="190:5323"] { display: flex;padding: 16px 24px;align-items: center;gap: 8px;
+border-radius: 14px;background: #1E3A5F;box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10); }
+
+/* 190:5324 Frame */
+[data-figma-node="190:5324"] { width: 24px;height: 24px;aspect-ratio: 1/1; }
+
+/* 190:5325 Vector */
+[data-figma-node="190:5325"] { width: 2px;height: 2px;
+fill: #FFF;stroke-width: 0.2px;stroke: #FFF; }
+
+/* 190:5326 Vector */
+[data-figma-node="190:5326"] { width: 22.001px;height: 21.971px;
+fill: #FFF;stroke-width: 0.2px;stroke: #FFF; }
+
+/* 190:5327 开始智能匹配 */
+[data-figma-node="190:5327"] { color: #FFF;text-align: center;font-family: "PingFang SC";font-size: 20px;font-style: normal;font-weight: 600;line-height: 30px; /* 150% */letter-spacing: -0.312px; }
+
+/* 190:5328 Container */
+[data-figma-node="190:5328"] { display: flex;padding: 96px 40px;flex-direction: column;align-items: center;align-self: stretch;
+background: #FFF; }
+
+/* 221:6191 Frame 663 */
+[data-figma-node="221:6191"] { display: flex;flex-direction: column;align-items: flex-start;gap: 16px; }
+
+/* 221:6192 Tab List */
+[data-figma-node="221:6192"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6193 Dropdown */
+[data-figma-node="221:6193"] { display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;
+border-radius: 10px;border: 1px solid #DBDEE6; }
+
+/* 221:6194 科室/病种 */
+[data-figma-node="221:6194"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px; }
+
+/* 221:6195 Container */
+[data-figma-node="221:6195"] { display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0; }
+
+/* 221:6196 Icon */
+[data-figma-node="221:6196"] { width: 10px;height: 6px;flex-shrink: 0; }
+
+/* 221:6197 Vector */
+[data-figma-node="221:6197"] { width: 8px;height: 4px;
+stroke-width: 1.5px;stroke: #6B7280; }
+
+/* 221:6198 Dropdown */
+[data-figma-node="221:6198"] { display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;
+border-radius: 10px;border: 1px solid #DBDEE6; }
+
+/* 221:6199 来源地区 */
+[data-figma-node="221:6199"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px; }
+
+/* 221:6200 Container */
+[data-figma-node="221:6200"] { display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0; }
+
+/* 221:6201 Icon */
+[data-figma-node="221:6201"] { width: 10px;height: 6px;flex-shrink: 0; }
+
+/* 221:6202 Vector */
+[data-figma-node="221:6202"] { width: 8px;height: 4px;
+stroke-width: 1.5px;stroke: #6B7280; }
+
+/* 221:6203 Dropdown */
+[data-figma-node="221:6203"] { display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;
+border-radius: 10px;border: 1px solid #DBDEE6; }
+
+/* 221:6204 治疗类型 */
+[data-figma-node="221:6204"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px; }
+
+/* 221:6205 Container */
+[data-figma-node="221:6205"] { display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0; }
+
+/* 221:6206 Icon */
+[data-figma-node="221:6206"] { width: 10px;height: 6px;flex-shrink: 0; }
+
+/* 221:6207 Vector */
+[data-figma-node="221:6207"] { width: 8px;height: 4px;
+stroke-width: 1.5px;stroke: #6B7280; }
+
+/* 221:6208 Dropdown */
+[data-figma-node="221:6208"] { display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;
+border-radius: 10px;border: 1px solid #DBDEE6; }
+
+/* 221:6209 就诊时长 */
+[data-figma-node="221:6209"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px; }
+
+/* 221:6210 Container */
+[data-figma-node="221:6210"] { display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0; }
+
+/* 221:6211 Icon */
+[data-figma-node="221:6211"] { width: 10px;height: 6px;flex-shrink: 0; }
+
+/* 221:6212 Vector */
+[data-figma-node="221:6212"] { width: 8px;height: 4px;
+stroke-width: 1.5px;stroke: #6B7280; }
+
+/* 221:6213 Link */
+[data-figma-node="221:6213"] { display: flex;height: 42px;padding: 16px 24px;align-items: center;gap: 8px;
+border-radius: 14px;background: #DD6B20; }
+
+/* 221:6214 Frame */
+[data-figma-node="221:6214"] { width: 16px;height: 16px;aspect-ratio: 1/1; }
+
+/* 221:6215 Vector */
+[data-figma-node="221:6215"] { width: 14px;height: 14px;aspect-ratio: 1/1;
+fill: #FFF;stroke-width: 0.2px;stroke: #FFF; }
+
+/* 221:6216 筛选 */
+[data-figma-node="221:6216"] { color: #FFF;text-align: center;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 500;line-height: 16px; /* 100% */letter-spacing: -0.312px; }
+
+/* 221:6217 Link */
+[data-figma-node="221:6217"] { display: flex;height: 42px;padding: 16px 24px;align-items: center;gap: 8px;
+border-radius: 14px;border: 1px solid #DBDEE6;box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10); }
+
+/* 221:6218 Frame */
+[data-figma-node="221:6218"] { width: 16px;height: 16px;aspect-ratio: 1/1; }
+
+/* 221:6219 Vector */
+[data-figma-node="221:6219"] { width: 14px;height: 14px;aspect-ratio: 1/1;
+fill: #6B7280;stroke-width: 0.3px;stroke: #6B7280; }
+
+/* 221:6220 重置 */
+[data-figma-node="221:6220"] { color: #6B7280;text-align: center;font-family: "PingFang SC";font-size: 16px;font-style: normal;font-weight: 500;line-height: 16px; /* 100% */letter-spacing: -0.312px; }
+
+/* 221:6221 Tab List */
+[data-figma-node="221:6221"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6222 Tab */
+[data-figma-node="221:6222"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6223 Container */
+[data-figma-node="221:6223"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6224 肿瘤 */
+[data-figma-node="221:6224"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6225 Icon */
+[data-figma-node="221:6225"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 221:6226 Vector */
+[data-figma-node="221:6226"] { display: flex;width: 1216px;align-items: flex-start;gap: 16px; }
+
+/* 190:5365 Container */
+[data-figma-node="190:5365"] { display: inline-grid;width: 1216px;padding-top: 48px;row-gap: 24px;column-gap: 24px;grid-template-rows: repeat(1,fit-content(100%));grid-template-columns: repeat(3,minmax(0,1fr)); }
+
+/* 190:5366 Container */
+[data-figma-node="190:5366"] { display: flex;padding: 24px;flex-direction: column;align-items: flex-start;gap: 80px;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch;
+border-radius: 24px;background: #F5F6F7; }
+
+/* 190:5367 Frame 650 */
+[data-figma-node="190:5367"] { display: flex;align-items: center;gap: 12px; }
+
+/* 190:5368 Image (Shanti Bansal picture) */
+[data-figma-node="190:5368"] { width: 60px;height: 60px;aspect-ratio: 1/1;
+border-radius: 16px;background: url(<path-to-image>) lightgray -0.228px -2.622px / 100% 135.013% no-repeat; }
+
+/* 190:5369 Container */
+[data-figma-node="190:5369"] { display: flex;width: 148.398px;flex-direction: column;align-items: flex-start;gap: 8px; }
+
+/* 190:5370 Heading 3 */
+[data-figma-node="190:5370"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5371 Maria S. */
+[data-figma-node="190:5371"] { color: #1E3A5F;font-family: "SF Pro";font-size: 18px;font-style: normal;font-weight: 600;line-height: 18px; /* 100% */letter-spacing: -0.439px; }
+
+/* 190:5372 Container */
+[data-figma-node="190:5372"] { display: flex;align-items: center;gap: 4px; }
+
+/* 190:5373 东南亚 · 消化内科 · 多学科诊疗 */
+[data-figma-node="190:5373"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5374 Container */
+[data-figma-node="190:5374"] { display: flex;flex-direction: column;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5375 Heading 3 */
+[data-figma-node="190:5375"] { display: flex;padding-bottom: 16px;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5376 消化系统疑难疾病 */
+[data-figma-node="190:5376"] { align-self: stretch;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 24px;font-style: normal;font-weight: 500;line-height: 24px; /* 100% */ }
+
+/* 190:5377 Frame 653 */
+[data-figma-node="190:5377"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5378 患者背景：40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断 */
+[data-figma-node="190:5378"] { flex: 1 0 0;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5379 Frame 651 */
+[data-figma-node="190:5379"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5380 诊疗路径：远程会诊-到院检查-MDT讨论-制定方案 */
+[data-figma-node="190:5380"] { flex: 1 0 0;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5381 Frame 652 */
+[data-figma-node="190:5381"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5382 咨询到首诊：约 7 天 · 广州 */
+[data-figma-node="190:5382"] { color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5383 Container */
+[data-figma-node="190:5383"] { display: flex;padding: 24px;flex-direction: column;align-items: flex-start;gap: 80px;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch;
+border-radius: 24px;background: #F5F6F7; }
+
+/* 190:5384 Frame 650 */
+[data-figma-node="190:5384"] { display: flex;align-items: center;gap: 12px; }
+
+/* 190:5385 Image (Shanti Bansal picture) */
+[data-figma-node="190:5385"] { width: 60px;height: 60px;aspect-ratio: 1/1;
+border-radius: 16px;background: url(<path-to-image>) lightgray -0.068px -0.464px / 100% 133.596% no-repeat; }
+
+/* 190:5386 Container */
+[data-figma-node="190:5386"] { display: flex;width: 148.398px;flex-direction: column;align-items: flex-start;gap: 8px; }
+
+/* 190:5387 Heading 3 */
+[data-figma-node="190:5387"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5388 James T. */
+[data-figma-node="190:5388"] { color: #1E3A5F;font-family: "SF Pro";font-size: 18px;font-style: normal;font-weight: 600;line-height: 18px; /* 100% */letter-spacing: -0.439px; }
+
+/* 190:5389 Container */
+[data-figma-node="190:5389"] { display: flex;align-items: center;gap: 4px; }
+
+/* 190:5390 南亚 · 脊柱外科 · 手术治疗 */
+[data-figma-node="190:5390"] { color: #9CA3AF;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5391 Text */
+[data-figma-node="190:5391"] { display: flex;padding: 8px;flex-direction: column;align-items: flex-start;
+position: absolute;right: 15.667px;top: 16px;
+border-radius: 8px;background: #03956D; }
+
+/* 190:5392 为您推荐 */
+[data-figma-node="190:5392"] { color: #FFF;font-family: "PingFang SC";font-size: 12px;font-style: normal;font-weight: 500;line-height: 12px; /* 100% */ }
+
+/* 190:5393 Container */
+[data-figma-node="190:5393"] { display: flex;flex-direction: column;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5394 Heading 3 */
+[data-figma-node="190:5394"] { display: flex;padding-bottom: 16px;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5395 脊柱复杂病变 */
+[data-figma-node="190:5395"] { align-self: stretch;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 24px;font-style: normal;font-weight: 500;line-height: 24px; /* 100% */ }
+
+/* 190:5396 Frame 653 */
+[data-figma-node="190:5396"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5397 患者背景：:50+岁，男性，颈椎病变面临神经压迫险，多地评估手术险较高 */
+[data-figma-node="190:5397"] { flex: 1 0 0;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5398 Frame 651 */
+[data-figma-node="190:5398"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5399 诊疗路径：国际转诊-影像评估-手术方案-术后康复 */
+[data-figma-node="190:5399"] { flex: 1 0 0;
+color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5400 Frame 652 */
+[data-figma-node="190:5400"] { display: flex;align-items: flex-start;gap: 8px;align-self: stretch; }
+
+/* 190:5401 咨询到手术：约 14 天 · 广州 */
+[data-figma-node="190:5401"] { color: #1E3A5F;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;
+color: #4B5563;font-family: "PingFang SC";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px; }
+
+/* 190:5402 Section */
+[data-figma-node="190:5402"] { display: flex;padding: 96px 0;flex-direction: column;align-items: center;align-self: stretch;
+background: url(<path-to-image>) lightgray 50% / cover no-repeat, #1E3A5F; }
+
+/* 190:5403 Container:margin */
+[data-figma-node="190:5403"] { display: flex;flex-direction: column;align-items: center;align-self: stretch; }
+
+/* 190:5404 Container */
+[data-figma-node="190:5404"] { display: inline-grid;width: 1216px;row-gap: 24px;column-gap: 24px;grid-template-rows: repeat(1,fit-content(100%));grid-template-columns: repeat(4,minmax(0,1fr)); }
+
+/* 190:5405 Container */
+[data-figma-node="190:5405"] { display: flex;flex-direction: column;align-items: flex-start;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch; }
+
+/* 190:5406 Container */
+[data-figma-node="190:5406"] { display: flex;padding: 0 47px;justify-content: center;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5407 500+ */
+[data-figma-node="190:5407"] { color: #52E8FF;text-align: center;font-family: "SF Pro";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px; }
+
+/* 190:5408 Container */
+[data-figma-node="190:5408"] { display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center; }
+
+/* 190:5409 已协助国际患者完成咨询 */
+[data-figma-node="190:5409"] { color: #FFF;text-align: center;font-family: "SF Pro";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5410 Container */
+[data-figma-node="190:5410"] { display: flex;flex-direction: column;align-items: flex-start;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch; }
+
+/* 190:5411 Container */
+[data-figma-node="190:5411"] { display: flex;padding: 0 88px 0 89px;justify-content: center;align-items: center;align-self: stretch; }
+
+/* 190:5412 30+ */
+[data-figma-node="190:5412"] { color: #52E8FF;text-align: center;font-family: "SF Pro";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px; }
+
+/* 190:5413 Container */
+[data-figma-node="190:5413"] { display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center; }
+
+/* 190:5414 覆盖国家和地区来源 */
+[data-figma-node="190:5414"] { color: #FFF;text-align: center;font-family: "SF Pro";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5415 Container */
+[data-figma-node="190:5415"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 3 / span 1;justify-self: stretch; }
+
+/* 190:5416 Container */
+[data-figma-node="190:5416"] { display: flex;padding: 0 65px;justify-content: center;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5417 2-14 */
+[data-figma-node="190:5417"] { color: #52E8FF;text-align: center;font-family: "SF Pro";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px; }
+
+/* 190:5418 Container */
+[data-figma-node="190:5418"] { display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center; }
+
+/* 190:5419 工作日预约响应参考 */
+[data-figma-node="190:5419"] { color: #FFF;text-align: center;font-family: "SF Pro";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5420 Container */
+[data-figma-node="190:5420"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 4 / span 1;justify-self: stretch; }
+
+/* 190:5421 Container */
+[data-figma-node="190:5421"] { display: flex;padding: 0 86px;justify-content: center;align-items: center;gap: 10px;align-self: stretch; }
+
+/* 190:5422 100% */
+[data-figma-node="190:5422"] { color: #52E8FF;text-align: center;font-family: "SF Pro";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px; }
+
+/* 190:5423 Container */
+[data-figma-node="190:5423"] { display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center; }
+
+/* 190:5424 费用就诊前书面预估 */
+[data-figma-node="190:5424"] { color: #FFF;text-align: center;font-family: "SF Pro";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5425 Rectangle 11 */
+[data-figma-node="190:5425"] { width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;
+position: absolute;left: 298px;top: 11px;
+opacity: 0.1;background: #FFF; }
+
+/* 190:5426 Rectangle 12 */
+[data-figma-node="190:5426"] { width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;
+position: absolute;right: 607px;top: 11px;
+opacity: 0.1;background: #FFF; }
+
+/* 190:5427 Rectangle 13 */
+[data-figma-node="190:5427"] { width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;
+position: absolute;right: 298px;top: 11px;
+opacity: 0.1;background: #FFF; }
+
+/* 190:5428 Frame 657 */
+[data-figma-node="190:5428"] { display: flex;flex-direction: column;align-items: flex-start;gap: 10px;align-self: stretch; }
+
+/* 190:5429 Footer */
+[data-figma-node="190:5429"] { display: flex;flex-direction: column;align-items: center;align-self: stretch;
+background: #021D2E; }
+
+/* 190:5430 Container */
+[data-figma-node="190:5430"] { display: flex;width: 1280px;max-width: 1280px;padding: 64px var(--item-spacing-m, 32px);flex-direction: column;align-items: flex-start; }
+
+/* 190:5431 Container */
+[data-figma-node="190:5431"] { display: inline-grid;row-gap: 48px;column-gap: 48px;align-self: stretch;grid-template-rows:  247px;grid-template-columns:     268px 268px 268px 268px; }
+
+/* 190:5432 Container */
+[data-figma-node="190:5432"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch; }
+
+/* 190:5433 Link */
+[data-figma-node="190:5433"] { display: flex;align-items: center;gap: var(--item-spacing-xs, 8px);align-self: stretch; }
+
+/* 190:5434 Container */
+[data-figma-node="190:5434"] { display: flex;width: 32px;height: 32px;justify-content: center;align-items: center;
+border-radius: 10px;background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%); }
+
+/* 190:5435 寰 */
+[data-figma-node="190:5435"] { color: var(--color-text-white, #FFF);font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5436 Text */
+[data-figma-node="190:5436"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5437 寰宇云医 */
+[data-figma-node="190:5437"] { color: var(--color-text-white, #FFF);font-family: "SF Pro";font-size: var(--font-size-18, 18px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-28, 28px); /* 155.556% */letter-spacing: -0.439px; }
+
+/* 190:5438 Paragraph */
+[data-figma-node="190:5438"] { display: flex;width: 268px;height: 39px;padding-top: 16px;flex-direction: column;align-items: flex-start; }
+
+/* 190:5439 全球患者来华就医首选平台 */
+[data-figma-node="190:5439"] { color: #D1D5DB;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-22_75, 22.75px); /* 162.5% */letter-spacing: -0.15px; }
+
+/* 190:5440 Paragraph */
+[data-figma-node="190:5440"] { display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start; }
+
+/* 190:5441 蚂蚁集团技术保障 × 好大夫94万医生 */
+[data-figma-node="190:5441"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 19.5px; /* 162.5% */ }
+
+/* 190:5442 Container */
+[data-figma-node="190:5442"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch; }
+
+/* 190:5443 Heading 4 */
+[data-figma-node="190:5443"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5444 服务 */
+[data-figma-node="190:5444"] { color: #D1D5DB;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase; }
+
+/* 190:5445 List */
+[data-figma-node="190:5445"] { display: flex;width: 268px;height: 156px;padding-top: 16px;flex-direction: column;align-items: flex-start; }
+
+/* 190:5446 List Item */
+[data-figma-node="190:5446"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5447 疾病中心 */
+[data-figma-node="190:5447"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5448 List Item */
+[data-figma-node="190:5448"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5449 费用对比 */
+[data-figma-node="190:5449"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5450 List Item */
+[data-figma-node="190:5450"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5451 报告体验 */
+[data-figma-node="190:5451"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5452 List Item */
+[data-figma-node="190:5452"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5453 签证办理 */
+[data-figma-node="190:5453"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5454 List Item */
+[data-figma-node="190:5454"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5455 就医步骤 */
+[data-figma-node="190:5455"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5456 Container */
+[data-figma-node="190:5456"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 3 / span 1;justify-self: stretch; }
+
+/* 190:5457 Heading 4 */
+[data-figma-node="190:5457"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5458 资源 */
+[data-figma-node="190:5458"] { color: #D1D5DB;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase; }
+
+/* 190:5459 List */
+[data-figma-node="190:5459"] { display: flex;width: 268px;height: 126px;padding-top: 16px;flex-direction: column;align-items: flex-start; }
+
+/* 190:5460 List Item */
+[data-figma-node="190:5460"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5461 患者案例 */
+[data-figma-node="190:5461"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5462 List Item */
+[data-figma-node="190:5462"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5463 保险指南 */
+[data-figma-node="190:5463"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5464 List Item */
+[data-figma-node="190:5464"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5465 就医步骤 */
+[data-figma-node="190:5465"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5466 List Item */
+[data-figma-node="190:5466"] { display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0; }
+
+/* 190:5467 关于我们 */
+[data-figma-node="190:5467"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5468 Container */
+[data-figma-node="190:5468"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 4 / span 1;justify-self: stretch; }
+
+/* 190:5469 Heading 4 */
+[data-figma-node="190:5469"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5470 联系 */
+[data-figma-node="190:5470"] { color: #D1D5DB;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase; }
+
+/* 190:5471 List */
+[data-figma-node="190:5471"] { display: flex;width: 268px;height: 227px;padding-top: 16px;flex-direction: column;align-items: flex-start; }
+
+/* 190:5472 List Item */
+[data-figma-node="190:5472"] { display: flex;align-items: center;gap: var(--item-spacing-xs, 8px);align-self: stretch; }
+
+/* 190:5473 Icon */
+[data-figma-node="190:5473"] { width: 16px;height: 16px; }
+
+/* 190:5474 Vector */
+[data-figma-node="190:5474"] { width: 13.333px;height: 3.998px;
+stroke-width: 1.333px;stroke: #2563EB; }
+
+/* 190:5475 Vector */
+[data-figma-node="190:5475"] { width: 13.333px;height: 10.667px;
+stroke-width: 1.333px;stroke: #2563EB; }
+
+/* 190:5476 Text */
+[data-figma-node="190:5476"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5477 contact@huanyuyunyi.com */
+[data-figma-node="190:5477"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5478 List Item */
+[data-figma-node="190:5478"] { display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-xs, 8px);flex-shrink: 0; }
+
+/* 190:5479 Icon */
+[data-figma-node="190:5479"] { width: 16px;height: 16px;flex-shrink: 0; }
+
+/* 190:5480 Vector */
+[data-figma-node="190:5480"] { width: 13.333px;height: 13.333px;
+stroke-width: 1.333px;stroke: #2563EB; }
+
+/* 190:5481 Text */
+[data-figma-node="190:5481"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5482 +86 400-888-XXXX */
+[data-figma-node="190:5482"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5483 List Item */
+[data-figma-node="190:5483"] { display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-xs, 8px);flex-shrink: 0; }
+
+/* 190:5484 Icon */
+[data-figma-node="190:5484"] { width: 16px;height: 16px;flex-shrink: 0; }
+
+/* 190:5485 Vector */
+[data-figma-node="190:5485"] { width: 13.333px;height: 13.333px;
+stroke-width: 1.333px;stroke: #2563EB; }
+
+/* 190:5486 Text */
+[data-figma-node="190:5486"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5487 WhatsApp */
+[data-figma-node="190:5487"] { color: #9CA3AF;font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 190:5488 List Item:margin */
+[data-figma-node="190:5488"] { display: flex;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5489 List Item */
+[data-figma-node="190:5489"] { display: flex;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start;align-self: stretch;
+border-top: 1px solid rgba(255, 255, 255, 0.10); }
+
+/* 190:5490 Paragraph */
+[data-figma-node="190:5490"] { display: flex;flex-direction: column;align-items: flex-start;align-self: stretch; }
+
+/* 190:5491 24小时客服 */
+[data-figma-node="190:5491"] { color: #2563EB;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 190:5492 Container:margin */
+[data-figma-node="190:5492"] { display: flex;padding-top: var(--item-spacing-6, 6px);flex-direction: column;align-items: flex-start; }
+
+/* 190:5493 Container */
+[data-figma-node="190:5493"] { display: flex;width: 80px;height: 80px;justify-content: center;align-items: center;
+border-radius: 10px;background: rgba(255, 255, 255, 0.10); }
+
+/* 190:5494 扫码加微信 */
+[data-figma-node="190:5494"] { color: #6B7280;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 190:5495 Container:margin */
+[data-figma-node="190:5495"] { display: flex;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;align-self: stretch; }
+
+/* 190:5496 Container */
+[data-figma-node="190:5496"] { display: flex;padding-top: var(--item-spacing-s, 24px);justify-content: space-between;align-items: center;align-self: stretch;
+border-top: 1px solid rgba(255, 255, 255, 0.10); }
+
+/* 190:5497 Paragraph */
+[data-figma-node="190:5497"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5498 Copyright 2026 寰宇云医. All rights reserved. */
+[data-figma-node="190:5498"] { color: #6B7280;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 190:5499 Container */
+[data-figma-node="190:5499"] { display: flex;align-items: center;gap: 16px; }
+
+/* 190:5500 Link */
+[data-figma-node="190:5500"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5501 隐私政策 */
+[data-figma-node="190:5501"] { color: #6B7280;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 190:5502 Text */
+[data-figma-node="190:5502"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5503 | */
+[data-figma-node="190:5503"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 190:5504 Link */
+[data-figma-node="190:5504"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 190:5505 服务条款 */
+[data-figma-node="190:5505"] { color: #6B7280;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1592 Header */
+[data-figma-node="484:1592"] { display: flex;width: 1440px;flex-direction: column;align-items: center;
+position: absolute; }
+
+/* 484:1593 Container */
+[data-figma-node="484:1593"] { display: flex;width: 1280px;height: 64px;max-width: 1280px;padding: 0 var(--item-spacing-m, 32px);justify-content: space-between;align-items: center; }
+
+/* 484:1594 Link */
+[data-figma-node="484:1594"] { display: flex;align-items: center;gap: var(--item-spacing-xs, 8px); }
+
+/* 484:1595 Container */
+[data-figma-node="484:1595"] { display: flex;width: 32px;height: 32px;justify-content: center;align-items: center;
+border-radius: 10px;background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%); }
+
+/* 484:1596 寰 */
+[data-figma-node="484:1596"] { color: var(--color-text-white, #FFF);font-family: "SF Pro";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px; }
+
+/* 484:1597 Text */
+[data-figma-node="484:1597"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 484:1598 寰宇云医 */
+[data-figma-node="484:1598"] { color: #1E3A5F;font-family: "SF Pro";font-size: var(--font-size-18, 18px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-28, 28px); /* 155.556% */letter-spacing: -0.439px; }
+
+/* 484:1599 Navigation */
+[data-figma-node="484:1599"] { display: flex;align-items: center;gap: 2px; }
+
+/* 484:1600 Link:margin */
+[data-figma-node="484:1600"] { display: flex;padding-right: var(--item-spacing-xs, 8px);align-items: flex-start; }
+
+/* 484:1601 Link */
+[data-figma-node="484:1601"] { display: flex;padding: var(--item-spacing-6, 6px) var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-6, 6px);
+border-radius: 10px;background: var(--1, linear-gradient(90deg, #DD6B20 0%, #3B82F6 100%));box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.10); }
+
+/* 484:1602 Icon */
+[data-figma-node="484:1602"] { width: 14px;height: 14px; }
+
+/* 484:1603 Vector */
+[data-figma-node="484:1603"] { width: 11.667px;height: 11.667px;
+stroke-width: 1.167px;stroke: var(--color-text-white, #FFF); }
+
+/* 484:1604 Text */
+[data-figma-node="484:1604"] { display: flex;flex-direction: column;align-items: flex-start; }
+
+/* 484:1605 问阿宁 */
+[data-figma-node="484:1605"] { color: var(--color-text-white, #FFF);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1606 Link */
+[data-figma-node="484:1606"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1607 首页 */
+[data-figma-node="484:1607"] { color: var(--color-azure-34, #4B5563);font-family: "PingFang SC";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1608 Link */
+[data-figma-node="484:1608"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1609 为什么选择中国 */
+[data-figma-node="484:1609"] { color: var(--color-azure-34, #4B5563);font-family: "PingFang SC";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1610 Link */
+[data-figma-node="484:1610"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1611 信任与常见问题 */
+[data-figma-node="484:1611"] { color: var(--color-azure-34, #4B5563);font-family: "PingFang SC";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1612 Link */
+[data-figma-node="484:1612"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1613 医疗服务 */
+[data-figma-node="484:1613"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1614 Link */
+[data-figma-node="484:1614"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1615 牙科 */
+[data-figma-node="484:1615"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1616 Link */
+[data-figma-node="484:1616"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1617 中国医院 */
+[data-figma-node="484:1617"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1618 Link */
+[data-figma-node="484:1618"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px;background: rgba(37, 99, 235, 0.10); }
+
+/* 484:1619 患者案例 */
+[data-figma-node="484:1619"] { color: #2563EB;font-family: "PingFang SC";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 600;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1620 Link */
+[data-figma-node="484:1620"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1621 保险指南 */
+[data-figma-node="484:1621"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1622 Link */
+[data-figma-node="484:1622"] { display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;
+border-radius: 8px; }
+
+/* 484:1623 关于我们 */
+[data-figma-node="484:1623"] { color: var(--color-azure-34, #4B5563);font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1624 Container:margin */
+[data-figma-node="484:1624"] { display: flex;padding-left: var(--item-spacing-xs, 8px);align-items: flex-start; }
+
+/* 484:1625 Button */
+[data-figma-node="484:1625"] { display: flex;padding: var(--item-spacing-6, 6px) var(--item-spacing-xs, 8px);align-items: center;gap: var(--item-spacing-xxs, 4px);
+border-radius: 8px; }
+
+/* 484:1626 Icon */
+[data-figma-node="484:1626"] { width: 14px;height: 14px; }
+
+/* 484:1627 Vector */
+[data-figma-node="484:1627"] { width: 11.667px;height: 11.667px;
+stroke-width: 1.167px;stroke: #6B7280; }
+
+/* 484:1628 Vector */
+[data-figma-node="484:1628"] { width: 4.667px;height: 11.667px;
+stroke-width: 1.167px;stroke: #6B7280; }
+
+/* 484:1629 Vector */
+[data-figma-node="484:1629"] { width: 11.667px;height: 0;
+stroke-width: 1.167px;stroke: #6B7280; }
+
+/* 484:1630 Text */
+[data-figma-node="484:1630"] { display: flex;flex-direction: column;align-items: center; }
+
+/* 484:1631 🇨🇳 */
+[data-figma-node="484:1631"] { color: #6B7280;text-align: center;font-family: "SF Pro";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */ }
+
+/* 484:1632 Text */
+[data-figma-node="484:1632"] { display: flex;flex-direction: column;align-items: center; }
+
+/* 484:1633 ZH */
+[data-figma-node="484:1633"] { color: #6B7280;text-align: center;font-family: "SF Pro";font-size: 10px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 160% */letter-spacing: 0.117px; }

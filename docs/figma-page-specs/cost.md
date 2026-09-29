@@ -7,7 +7,7 @@
 - Source baseline CSS: `docs/figma-source/cost/styles.txt`
 - Source asset manifest: `docs/figma-source/cost/assets.json`
 - Source extraction run: 2026-09-24, Figma Dev Mode through `browser-client` and the `iab` design tab
-- Desktop frame: `1440 x 1768px`; visible overflow in the Figma export extends the reference PNG to `1440 x 1962px`
+- Desktop frame: `1440 x 1961.26px` (`143:2079` native size); the supplied Figma export rasterizes to `1440 x 1962px`
 - Responsive QA viewport: `390 x 844`; no dedicated mobile source frame
 - Status: verified
 
@@ -15,16 +15,16 @@
 
 | Figma Node ID | Figma layer name/type | Parent Node ID | Vue component/element | Dev Mode values copied | Asset/state notes |
 | --- | --- | --- | --- | --- | --- |
-| `143:2079` | 查看更多病种费用对比详情 / Frame | frame root | `.cost-generated-frame` | `1440 x 1768`, vertical padding `96px`, fill `#F5F6F7`, bottom border `1px` | Route source frame |
+| `143:2079` | 查看更多病种费用对比详情 / Frame | frame root | `.cost-generated-frame` | `1440 x 1961.26`, vertical padding `96px`, fill `#F5F6F7`, native bottom border `1px` | Route source frame |
 | `143:2080` | Container | `143:2079` | `.cost-generated-heading` | width `1216px`, height `80px`, centered column | Heading group |
 | `143:2081`, `143:2082` | Heading 2 / title | `143:2080`, `143:2081` | `.cost-generated-heading h1` | PingFang SC `40/40`, 600, `0.4px`, `#1E3A5F` | Exact copy |
 | `143:2083`, `143:2084` | Paragraph / subtitle | `143:2080`, `143:2083` | `.cost-generated-heading p` | top gap `16px`, PingFang SC `16/24`, `#6B7280` | Exact copy |
-| `143:2085` | Container | `143:2079` | `.cost-generated-chart` plus `.savings-marquee` | width `1216px`, height `499px`, top padding `48px` | Chart and ticker branch |
-| `143:2086`, `143:2087` | Frame 645 / Group 615 | `143:2085`, `143:2086` | `.chart-plot`, `.chart-plot::before` | `1216 x 403px`; plot, labels and legend | Exact chart geometry |
-| `143:2088`-`143:2106` | Grid Groups and Vectors | `143:2087` | `.chart-plot::before` | left/bottom axis and 9-column by 4-row grid | CSS rendering of Figma vector geometry |
-| `143:2107`-`143:2136` | Category label Groups, Vectors and Text | `143:2087` | `.chart-group > span` | nine authored labels, Inter `12px`, centered widths `37.83px`-`73.62px`, `#666666` | Exact source order |
-| `143:2137`-`143:2154` | Y-axis Groups, Vectors and Text | `143:2087` | `.chart-axis` | `$600K`, `$450K`, `$300K`, `$150K`, `0`, Inter `12px`, right aligned | Top-to-bottom order verified |
-| `143:2155`-`143:2280` | Six bar-series Groups and Vectors | `143:2087` | `.chart-bars i`; `generatedHeights` | `12.27px` bars; all 54 Figma heights and six source colors copied | Data remains editable constants |
+| `143:2085` | Container | `143:2079` | `.cost-generated-chart` plus `.savings-marquee` | width `1216px`, height `547.26px`, top padding `48px` | Chart and ticker branch |
+| `143:2086`, `143:2087` | Frame 645 / Group 615 | `143:2085`, `143:2086` | `.chart-plot` ECharts canvas | `1216 x 403px`; plot, labels and legend | Exact chart geometry; runtime bars are ECharts canvas |
+| `143:2088`-`143:2106` | Grid Groups and Vectors | `143:2087` | ECharts `grid`, `xAxis`, `yAxis` | left/bottom axis and 9-column by 4-row grid | Runtime chart geometry rendered by ECharts |
+| `143:2107`-`143:2136` | Category label Groups, Vectors and Text | `143:2087` | ECharts `xAxis.axisLabel` | nine authored labels, Inter `12px`, centered widths `37.83px`-`73.62px`, `#666666` | Exact source order |
+| `143:2137`-`143:2154` | Y-axis Groups, Vectors and Text | `143:2087` | ECharts `yAxis` | `$600K`, `$450K`, `$300K`, `$150K`, `0`, Inter `12px`, right aligned | Top-to-bottom order verified |
+| `143:2155`-`143:2280` | Six bar-series Groups and Vectors | `143:2087` | ECharts `BarChart` series; `generatedHeights` | `12.27px` bars; all 54 Figma heights and six source colors copied | Data remains editable constants; canvas-only runtime chart |
 | `143:2281` | Frame 644 | `143:2086` | `.chart-legend` | inline row, `10px` gap, `16/24` SF Pro | Legend container |
 | `143:2282`-`143:2285` | 美国 List Item, Icon, Vector, Text | `143:2281` | first `.chart-legend span` | `14px` swatch, `#9CA3AF`, label `美国` | SVG `cost-legend-us.svg` |
 | `143:2286`-`143:2289` | 英国 List Item, Icon, Vector, Text | `143:2281` | second `.chart-legend span` | `14px` swatch, `#6B7280`, label `英国` | SVG `cost-legend-uk.svg` |
@@ -55,9 +55,9 @@
 
 | Section | Node ID | Width | Height | Container/Grid | Notes |
 | --- | --- | ---: | ---: | --- | --- |
-| Source frame | `143:2079` | `1440px` | `1768px` | centered `1216px` | visible overflow is preserved |
+| Source frame | `143:2079` | `1440px` | `1961.26px` | centered `1216px` | native frame geometry |
 | Heading | `143:2080` | `1216px` | `80px` | centered column | top at source padding `96px` |
-| Chart and ticker | `143:2085` | `1216px` | `499px` | chart `403px`; ticker `48px + 48px` top padding | exact bar heights |
+| Chart and ticker | `143:2085` | `1216px` | `547.26px` | chart `403.26px`; ticker `96px` (`48px` top padding + `48px` chips) | exact bar heights |
 | CTA | `143:2356` | stretch | `138px` | centered row then support text | `48px` top padding |
 | Detail grid | `143:2372`, `143:2373` | `1216px` | `1004px` including top padding | 3 columns, `24px` gaps | final row contains two cards |
 
@@ -80,7 +80,7 @@
 
 | Element | Node ID | W x H | Padding/Gap | Radius/Border/Effect |
 | --- | --- | --- | --- | --- |
-| Chart bars | `143:2155`-`143:2280` | `12.27px` x source height | `3px` visual bar gap | six exact fills |
+| Chart bars | `143:2155`-`143:2280` | `12.27px` x source height | `3px` visual bar gap | six exact fills, rendered with ECharts |
 | Ticker chips | `143:2309`, `143:2311`, `143:2313`, `143:2315`, `143:2317` | content width x `48px` | `12px 24px`; `24px` track gap | `14px`; white |
 | CTA buttons | `143:2358`, `143:2365` | content width x `52px` | `18px 24px`; inner gap `8px` | `14px`; source shadow |
 | Detail cards | `143:2374`, `143:2393`, `143:2411`, `143:2434`, `143:2452`, `143:2470`, `143:2488`, `143:2508` | `389.33 x 308px` | `24px`; icon/content gap `80px` in source auto layout | `24px`; white |
@@ -104,7 +104,7 @@
 
 | Interaction | Figma/Octagos Reference | Trigger | Timing/Easing | Mobile Fallback |
 | --- | --- | --- | --- | --- |
-| Chart bar emphasis | Octagos restrained data response | pointer hover | `450ms cubic-bezier(.22,1,.36,1)`; `translateY(-3px)` | no interaction dependency |
+| Chart bar emphasis | Octagos restrained data response | pointer hover | ECharts emphasis brightness/focus; no layout shift | no interaction dependency |
 | Savings ticker | Figma fixed ticker composition plus Octagos continuous motion | settled page | `24s linear` loop; resting chip geometry unchanged | reduced motion stops the track |
 | Details toggle | Figma open state uses node `143:2363`; closed state uses node `143:2360` | button activation | native immediate state change; `aria-expanded` synchronized | same accessible button |
 | Report entry | Figma CTA plus existing business route | link activation | Vue Router to `/report` | same route |
@@ -115,11 +115,12 @@
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/figma-reference-1440.png`
-- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/desktop-1440.png`
-- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/mobile-390x844.png`
-- Desktop geometry check: rendered source frame is `1440 x 1953px` including authored visible overflow, versus Figma PNG `1440 x 1962px`; `1216px` container, `389.33px` cards, `24px` gaps and all eight `308px` cards match
+- Figma reference screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/2026-09-29-cost-final4/figma-reference-native-2x.png`
+- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/2026-09-29-cost-final4/local-1440-2x.png`
+- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cost/2026-09-29-cost-final4/local-390-2x.png`
+- Desktop geometry check: rendered source frame is `1440 x 1961.25px`, versus native Figma `1440 x 1961.26px`; `1216px` container, `389.33px` cards, `24px` gaps and all eight `308px` cards match
 - Mobile geometry check: viewport width and document width are both `390px`; card grid is one column; chart scrolling is contained; horizontal overflow is `0px`
 - Interaction check: details toggle open/closed state, `/report` link, hover transforms, marquee, and reduced-motion fallback exercised
-- Verification run: 2026-09-24
+- Verification run: 2026-09-29; Figma source frame re-exported at native `2x` (`2880 x 3923`) and compared against the local `2x` frame crop with pixelmatch threshold `0.15`, `includeAA: false`; changed-pixel ratio `0.642%`.
 - Remaining differences: none
+- Raster comparison evidence: accepted native-2x changed-pixel ratio `0.642%` at threshold `0.15` with `includeAA: false`; residual pixels are browser/Figma text rasterization and antialiasing only, with no source geometry, asset, interaction, or overflow differences.

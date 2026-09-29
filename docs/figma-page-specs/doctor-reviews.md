@@ -82,8 +82,8 @@
 ## Verification
 
 - Figma reference screenshot: `/Users/hhm/Downloads/患者评价 (1).png`
-- Local desktop screenshot: `/tmp/huanyu-doctor-reviews-verified.png`
-- Local mobile screenshot: `/tmp/huanyu-doctor-reviews-mobile-verified.png`
+- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-reviews-1440.png`
+- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-reviews-390.png`
 - Desktop geometry: viewport `1440 x 756`; dialog `896 x 654` at `(272, 51)`; three authored cards `832 x 144`; the fixed Figma frame intentionally clips the lower part of the third card.
 - Mobile geometry: viewport `390 x 844`; dialog `342 x 720` at `(24, 62)` with internal scrolling; document width remains 390px.
 - Interaction checks: all three tabs switch authored states; close-button focus, Escape and close-button paths restore body scroll; backdrop uses the existing self-click close path.

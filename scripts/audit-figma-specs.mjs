@@ -1,5 +1,6 @@
 import { access, readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { spawnSync } from 'node:child_process'
 
 const specsDir = join(process.cwd(), 'docs', 'figma-page-specs')
 const requestedFiles = new Set(process.argv.slice(2).map((file) => file.split('/').at(-1)))
@@ -7,7 +8,49 @@ const files = (await readdir(specsDir)).filter((file) => file.endsWith('.md') &&
 const deliveryFiles = files.filter((file) => file !== 'compliance-audit.md' && file !== 'cost-generated-experiment.md')
 const errors = []
 
+if (!requestedFiles.size || requestedFiles.has('home.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-home-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('home.md: Figma source inventory/parameter/node-to-code coverage is incomplete')
+}
+
+if (!requestedFiles.size || requestedFiles.has('why-china.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-why-china-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('why-china.md: native parameters, exact node mapping, source lock or verification evidence failed')
+}
+
 console.log('Figma-first gate: source inventory -> Dev Mode parameters -> node mapping -> implementation -> evidence')
+
+if (!requestedFiles.size || requestedFiles.has('hospitals.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-hospitals-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('hospitals.md: source coverage, exact mapping, source lock or verification evidence failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('cases.md') || requestedFiles.has('smart-match.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-cases-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('cases.md: source coverage, source lock, live node checks or final state evidence failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('diseases.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-diseases-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('diseases.md: complete source lock, live node checks or final state evidence failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('dental.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-dental-source.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('dental.md: complete source lock, live state checks or final evidence failed')
+}
 
 for (const file of deliveryFiles) {
   const source = await readFile(join(specsDir, file), 'utf8')

@@ -1,0 +1,113 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 4165,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "trust-hero",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 757
+        },
+        {
+          "selector": "faq-section",
+          "x": 0,
+          "y": 757,
+          "width": 1440,
+          "height": 650.03125
+        },
+        {
+          "selector": "articles-section",
+          "x": 0,
+          "y": 1407.03125,
+          "width": 1440,
+          "height": 1136
+        },
+        {
+          "selector": "toolkit-section",
+          "x": 0,
+          "y": 2543.03125,
+          "width": 1440,
+          "height": 754
+        },
+        {
+          "selector": "trust-cta",
+          "x": 0,
+          "y": 3297.03125,
+          "width": 1440,
+          "height": 412
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 3709.03125,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 7044,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "trust-hero",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 1510
+        },
+        {
+          "selector": "faq-section",
+          "x": 0,
+          "y": 1510,
+          "width": 390,
+          "height": 842.03125
+        },
+        {
+          "selector": "articles-section",
+          "x": 0,
+          "y": 2352.03125,
+          "width": 390,
+          "height": 2344
+        },
+        {
+          "selector": "toolkit-section",
+          "x": 0,
+          "y": 4696.03125,
+          "width": 390,
+          "height": 1060
+        },
+        {
+          "selector": "trust-cta",
+          "x": 0,
+          "y": 5756.03125,
+          "width": 390,
+          "height": 510
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 6266.03125,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "referenceHeight": 4166,
+      "localHeight": 4165,
+      "changedPixelRatio": 0.013225494805212125,
+      "comparison": "native-2x"
+    }
+  ],
+  "errors": []
+}

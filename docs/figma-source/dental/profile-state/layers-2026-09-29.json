@@ -1,0 +1,927 @@
+{
+  "sourceFrame": "231:1292",
+  "sourceFile": "/Users/hhm/Downloads/寰宇云医.fig",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "source": "Figma Layers hierarchy cross-checked against native node tree",
+  "layersCrossCheck": true,
+  "nodeCount": 63,
+  "nodes": [
+    {
+      "id": "231:1292",
+      "index": 0,
+      "level": 0,
+      "name": "医生简介",
+      "type": "FRAME",
+      "parentNodeId": null,
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1293",
+        "231:1294"
+      ]
+    },
+    {
+      "id": "231:1293",
+      "index": 1,
+      "level": 1,
+      "name": "04寰宇云医 - 信任与常见问题 1",
+      "type": "ROUNDED_RECTANGLE",
+      "parentNodeId": "231:1292",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1294",
+      "index": 2,
+      "level": 1,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1292",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1295"
+      ]
+    },
+    {
+      "id": "231:1295",
+      "index": 3,
+      "level": 2,
+      "name": "Frame 631",
+      "type": "FRAME",
+      "parentNodeId": "231:1294",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1296",
+        "231:1299",
+        "231:1302",
+        "231:1318",
+        "231:1326",
+        "231:1328"
+      ]
+    },
+    {
+      "id": "231:1296",
+      "index": 4,
+      "level": 3,
+      "name": "Button",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1297"
+      ]
+    },
+    {
+      "id": "231:1297",
+      "index": 5,
+      "level": 4,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1296",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1298"
+      ]
+    },
+    {
+      "id": "231:1298",
+      "index": 6,
+      "level": 5,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1297",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1299",
+      "index": 7,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1300"
+      ]
+    },
+    {
+      "id": "231:1300",
+      "index": 8,
+      "level": 4,
+      "name": "Heading 2",
+      "type": "FRAME",
+      "parentNodeId": "231:1299",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1301"
+      ]
+    },
+    {
+      "id": "231:1301",
+      "index": 9,
+      "level": 5,
+      "name": "医生详情",
+      "type": "TEXT",
+      "parentNodeId": "231:1300",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1302",
+      "index": 10,
+      "level": 3,
+      "name": "Frame 650",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1303",
+        "231:1304"
+      ]
+    },
+    {
+      "id": "231:1303",
+      "index": 11,
+      "level": 4,
+      "name": "Image (Shanti Bansal picture)",
+      "type": "FRAME",
+      "parentNodeId": "231:1302",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1304",
+      "index": 12,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1302",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1305",
+        "231:1310",
+        "231:1314"
+      ]
+    },
+    {
+      "id": "231:1305",
+      "index": 13,
+      "level": 5,
+      "name": "Frame 675",
+      "type": "FRAME",
+      "parentNodeId": "231:1304",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1306",
+        "231:1308"
+      ]
+    },
+    {
+      "id": "231:1306",
+      "index": 14,
+      "level": 6,
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentNodeId": "231:1305",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1307"
+      ]
+    },
+    {
+      "id": "231:1307",
+      "index": 15,
+      "level": 7,
+      "name": "郑雨容",
+      "type": "TEXT",
+      "parentNodeId": "231:1306",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1308",
+      "index": 16,
+      "level": 6,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1305",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1309"
+      ]
+    },
+    {
+      "id": "231:1309",
+      "index": 17,
+      "level": 7,
+      "name": "主任医师/教授",
+      "type": "TEXT",
+      "parentNodeId": "231:1308",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1310",
+      "index": 18,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1304",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1311",
+        "231:1313"
+      ]
+    },
+    {
+      "id": "231:1311",
+      "index": 19,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1310",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1312"
+      ]
+    },
+    {
+      "id": "231:1312",
+      "index": 20,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1311",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1313",
+      "index": 21,
+      "level": 6,
+      "name": "上海交通大学医学院附属第九人民医院",
+      "type": "TEXT",
+      "parentNodeId": "231:1310",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1314",
+      "index": 22,
+      "level": 5,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1304",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1315",
+        "231:1317"
+      ]
+    },
+    {
+      "id": "231:1315",
+      "index": 23,
+      "level": 6,
+      "name": "Frame",
+      "type": "FRAME",
+      "parentNodeId": "231:1314",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1316"
+      ]
+    },
+    {
+      "id": "231:1316",
+      "index": 24,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1315",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1317",
+      "index": 25,
+      "level": 6,
+      "name": "26年经验",
+      "type": "TEXT",
+      "parentNodeId": "231:1314",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1318",
+      "index": 26,
+      "level": 3,
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1319"
+      ]
+    },
+    {
+      "id": "231:1319",
+      "index": 27,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1318",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1320",
+        "231:1322",
+        "231:1324"
+      ]
+    },
+    {
+      "id": "231:1320",
+      "index": 28,
+      "level": 5,
+      "name": "Button",
+      "type": "FRAME",
+      "parentNodeId": "231:1319",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1321"
+      ]
+    },
+    {
+      "id": "231:1321",
+      "index": 29,
+      "level": 6,
+      "name": "医生简介",
+      "type": "TEXT",
+      "parentNodeId": "231:1320",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1322",
+      "index": 30,
+      "level": 5,
+      "name": "Button",
+      "type": "FRAME",
+      "parentNodeId": "231:1319",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1323"
+      ]
+    },
+    {
+      "id": "231:1323",
+      "index": 31,
+      "level": 6,
+      "name": "案例集",
+      "type": "TEXT",
+      "parentNodeId": "231:1322",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1324",
+      "index": 32,
+      "level": 5,
+      "name": "Button",
+      "type": "FRAME",
+      "parentNodeId": "231:1319",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1325"
+      ]
+    },
+    {
+      "id": "231:1325",
+      "index": 33,
+      "level": 6,
+      "name": "患者评价",
+      "type": "TEXT",
+      "parentNodeId": "231:1324",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1326",
+      "index": 34,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1327"
+      ]
+    },
+    {
+      "id": "231:1327",
+      "index": 35,
+      "level": 4,
+      "name": "Handpicked for exclusive Pegasus Program for secur",
+      "type": "TEXT",
+      "parentNodeId": "231:1326",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1328",
+      "index": 36,
+      "level": 3,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1295",
+      "siblingOrder": 5,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1329",
+        "231:1331",
+        "231:1337",
+        "231:1343",
+        "231:1349"
+      ]
+    },
+    {
+      "id": "231:1329",
+      "index": 37,
+      "level": 4,
+      "name": "Container",
+      "type": "FRAME",
+      "parentNodeId": "231:1328",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1330"
+      ]
+    },
+    {
+      "id": "231:1330",
+      "index": 38,
+      "level": 5,
+      "name": "专业资质",
+      "type": "TEXT",
+      "parentNodeId": "231:1329",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1331",
+      "index": 39,
+      "level": 4,
+      "name": "Frame 678",
+      "type": "FRAME",
+      "parentNodeId": "231:1328",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1332",
+        "231:1336"
+      ]
+    },
+    {
+      "id": "231:1332",
+      "index": 40,
+      "level": 5,
+      "name": "Icon:margin",
+      "type": "FRAME",
+      "parentNodeId": "231:1331",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1333"
+      ]
+    },
+    {
+      "id": "231:1333",
+      "index": 41,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1332",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1334",
+        "231:1335"
+      ]
+    },
+    {
+      "id": "231:1334",
+      "index": 42,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1333",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1335",
+      "index": 43,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1333",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1336",
+      "index": 44,
+      "level": 5,
+      "name": "医师执业证书(可查)",
+      "type": "TEXT",
+      "parentNodeId": "231:1331",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1337",
+      "index": 45,
+      "level": 4,
+      "name": "Frame 679",
+      "type": "FRAME",
+      "parentNodeId": "231:1328",
+      "siblingOrder": 2,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1338",
+        "231:1342"
+      ]
+    },
+    {
+      "id": "231:1338",
+      "index": 46,
+      "level": 5,
+      "name": "Icon:margin",
+      "type": "FRAME",
+      "parentNodeId": "231:1337",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1339"
+      ]
+    },
+    {
+      "id": "231:1339",
+      "index": 47,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1338",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1340",
+        "231:1341"
+      ]
+    },
+    {
+      "id": "231:1340",
+      "index": 48,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1339",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1341",
+      "index": 49,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1339",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1342",
+      "index": 50,
+      "level": 5,
+      "name": "主任医师职称",
+      "type": "TEXT",
+      "parentNodeId": "231:1337",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1343",
+      "index": 51,
+      "level": 4,
+      "name": "Frame 680",
+      "type": "FRAME",
+      "parentNodeId": "231:1328",
+      "siblingOrder": 3,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1344",
+        "231:1348"
+      ]
+    },
+    {
+      "id": "231:1344",
+      "index": 52,
+      "level": 5,
+      "name": "Icon:margin",
+      "type": "FRAME",
+      "parentNodeId": "231:1343",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1345"
+      ]
+    },
+    {
+      "id": "231:1345",
+      "index": 53,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1344",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1346",
+        "231:1347"
+      ]
+    },
+    {
+      "id": "231:1346",
+      "index": 54,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1345",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1347",
+      "index": 55,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1345",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1348",
+      "index": 56,
+      "level": 5,
+      "name": "ITI国际口腔种植学会会员",
+      "type": "TEXT",
+      "parentNodeId": "231:1343",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1349",
+      "index": 57,
+      "level": 4,
+      "name": "Frame 681",
+      "type": "FRAME",
+      "parentNodeId": "231:1328",
+      "siblingOrder": 4,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1350",
+        "231:1354"
+      ]
+    },
+    {
+      "id": "231:1350",
+      "index": 58,
+      "level": 5,
+      "name": "Icon:margin",
+      "type": "FRAME",
+      "parentNodeId": "231:1349",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1351"
+      ]
+    },
+    {
+      "id": "231:1351",
+      "index": 59,
+      "level": 6,
+      "name": "Icon",
+      "type": "FRAME",
+      "parentNodeId": "231:1350",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": [
+        "231:1352",
+        "231:1353"
+      ]
+    },
+    {
+      "id": "231:1352",
+      "index": 60,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1351",
+      "siblingOrder": 0,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1353",
+      "index": 61,
+      "level": 7,
+      "name": "Vector",
+      "type": "VECTOR",
+      "parentNodeId": "231:1351",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    },
+    {
+      "id": "231:1354",
+      "index": 62,
+      "level": 5,
+      "name": "DIO种植牙高级教授",
+      "type": "TEXT",
+      "parentNodeId": "231:1349",
+      "siblingOrder": 1,
+      "visible": true,
+      "rendered": true,
+      "hiddenBy": null,
+      "children": []
+    }
+  ]
+}

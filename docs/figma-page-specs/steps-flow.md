@@ -142,5 +142,5 @@ Nodes after `204:6052` are off-frame content outside the visible source composit
 - Desktop geometry check: card edges match the 2x Figma exports at `x=526`, travel `y=216`, aftercare `y=285`; rendered section sizes are `1440 x 1275` and `1440 x 754`
 - Mobile geometry check: viewport and document width both `390px`; all travel cards are `350px`; no horizontal overflow
 - Interaction check: `/visa` navigation, consultation panel, phase hash, hover lift, and reduced-motion fallback exercised in Playwright
-- Verification run: 2026-09-24
+- Verification run: 2026-09-29; latest source-frame crops measured `0.904%` for travel and `0.818%` for aftercare at 2x, after removing the two browser locator raster rows. The visa card uses the authored `304px + 80px` gap and other travel cards use `305px`.
 - Remaining differences: none

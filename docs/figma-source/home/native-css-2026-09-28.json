@@ -1,0 +1,1145 @@
+{
+  "143:1145": [
+    "display: flex;padding: var(--item-spacing-12, 12px) 16px;align-items: center;gap: var(--item-spacing-xs, 8px);",
+    "position: absolute;right: 24px;top: 686px;",
+    "border-radius: 9999px;background: var(--, linear-gradient(135deg, #DD6B20 0%, #3B82F6 100%));box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);"
+  ],
+  "143:45": {
+    "css": [
+      "display: flex;width: 1440px;flex-direction: column;align-items: flex-start;"
+    ]
+  },
+  "143:46": {
+    "name": "Body",
+    "css": [
+      "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;",
+      "background: var(--color-grey-98, #F9FAFB);"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 8806\"': \"8806\""
+    ]
+  },
+  "143:47": {
+    "name": "Main Content",
+    "css": [
+      "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 8350\"': \"8350\""
+    ]
+  },
+  "143:48": {
+    "name": "Section",
+    "css": [
+      "display: flex;height: 754px;flex-direction: column;align-items: flex-start;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 754\"': \"754\""
+    ]
+  },
+  "143:49": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 1440px;align-items: flex-start;",
+      "position: absolute;"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 754\"': \"754\""
+    ]
+  },
+  "143:50": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 1440px;height: 754px;padding: 0 80px;flex-direction: column;justify-content: center;align-items: flex-start;gap: 10px;flex-shrink: 0;",
+      "background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy left padding: 80\"':",
+      "      - 'button \"Copy width: 1280\"': \"1280\"",
+      "      - 'button \"Copy height: 754\"': \"754\"",
+      "      - 'button \"Copy right padding: 80\"':"
+    ]
+  },
+  "143:51": {
+    "name": "Image",
+    "css": [
+      "display: flex;width: 1440px;justify-content: center;align-items: center;",
+      "position: absolute;"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 754\"': \"754\""
+    ]
+  },
+  "143:52": {
+    "name": "ChatGPT Image 2026年9月3日 11_05_52 2",
+    "css": [
+      "width: 1440.715px;height: 757px;flex-shrink: 0;aspect-ratio: 59/31;",
+      "background: url(<path-to-image>) lightgray 50% / cover no-repeat;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to right container edge: -0.7\"':",
+      "      - 'button \"Copy distance to bottom container edge: -3\"':"
+    ]
+  },
+  "143:53": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 1280px;max-width: 1280px;padding: 0 var(--item-spacing-m, 32px);flex-direction: column;justify-content: center;align-items: flex-start;gap: 40px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 80\"':",
+      "      - 'button \"Copy left padding: 32\"':",
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 362\"': \"362\"",
+      "      - 'button \"Copy right padding: 32\"':",
+      "      - 'button \"Copy parent right padding: 80\"':"
+    ]
+  },
+  "143:54": {
+    "name": "Text",
+    "css": [
+      "display: flex;padding: 10px 16px;justify-content: center;align-items: center;gap: 10px;",
+      "border-radius: 9999px;background: rgba(37, 99, 235, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 32\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy top padding: 10\"':",
+      "      - 'button \"Copy left padding: 16\"':",
+      "      - 'button \"Copy width: 100\"': \"100\"",
+      "      - 'button \"Copy height: 12\"': \"12\"",
+      "      - 'button \"Copy right padding: 16\"':",
+      "      - 'button \"Copy bottom padding: 10\"':",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy parent right padding: 32\"':",
+      "      - 'button \"Copy bottom gap: 40\"':"
+    ]
+  },
+  "143:55": {
+    "name": "Frame 1",
+    "css": [
+      "display: flex;align-items: center;gap: 4px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent top padding: 10\"':",
+      "      - 'button \"Copy parent left padding: 16\"':",
+      "      - 'button \"Copy width: 102\"': \"102\"",
+      "      - 'button \"Copy height: 14\"': \"14\"",
+      "      - 'button \"Copy parent right padding: 16\"':",
+      "      - 'button \"Copy parent bottom padding: 10\"':"
+    ]
+  },
+  "143:56": {
+    "name": "Frame",
+    "css": [
+      "width: 14px;height: 14px;aspect-ratio: 1/1;",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><g clip-path=\"url(#clip0_143_56)\"><path d=\"M9.85611 4.14411C9.85611 2.01611 8.13411 0.266113 6.00611 0.266113C3.87811 0.266113 2.15611 2.01611 2.15611 4.14411C2.15611 5.57211 2.91211 6.83911 4.15111 7.51111C3.34611 7.77711 2.59011 8.26711 1.96711 8.88311C0.861113 9.96111 0.266113 11.4171 0.266113 12.9501C0.266113 13.1671 0.455113 13.3561 0.672113 13.3561C0.889113 13.3561 1.07811 13.1671 1.07811 12.9501C1.07811 11.6341 1.58911 10.3951 2.53411 9.45011C3.42311 8.56111 4.63411 8.02211 5.90111 7.99411H6.03411C8.13411 7.99411 9.85611 6.27211 9.85611 4.14411ZM6.05511 7.21711H5.86611C4.22111 7.13311 2.93311 5.78911 2.93311 4.15111C2.93311 2.45711 4.30511 1.08511 5.99911 1.08511C7.69311 1.08511 9.06511 2.45711 9.06511 4.15111C9.07211 5.81711 7.72811 7.18911 6.05511 7.21711ZM13.2161 9.28911C12.8941 8.96711 12.4321 8.77811 11.9771 8.77811C11.5431 8.77811 11.1721 8.91111 10.8431 9.18411C10.5211 8.91811 10.1151 8.77811 9.70911 8.77811C9.22611 8.77811 8.79211 8.96711 8.47011 9.28911C8.14811 9.61111 7.95911 10.0731 7.95911 10.5281C7.95911 10.9831 8.14811 11.4451 8.47011 11.7671L8.60311 11.9001L10.6191 13.6221C10.6751 13.6781 10.7521 13.7061 10.8641 13.7061C10.9481 13.7061 11.0251 13.6781 11.1091 13.6221L13.1041 11.9281L13.2651 11.7671C13.5871 11.4451 13.7761 10.9831 13.7761 10.5281C13.7831 10.0661 13.5661 9.61111 13.2161 9.28911ZM12.7331 11.2841L12.6001 11.4171L10.8501 12.9221L9.10011 11.4381L8.96711 11.3051C8.77811 11.1161 8.67311 10.8501 8.67311 10.5491C8.67311 10.2551 8.77811 10.0101 8.96711 9.79311C9.37311 9.38711 10.0731 9.38711 10.4511 9.79311L10.5841 9.92611C10.7171 10.0591 10.9621 10.0591 11.0951 9.92611L11.2281 9.79311C11.6341 9.38711 12.3341 9.38711 12.7121 9.79311C12.9011 9.98211 13.0061 10.2481 13.0061 10.5491C13.0061 10.8501 12.9221 11.0671 12.7331 11.2841Z\" fill=\"#2563EB\"/></g><defs><clipPath id=\"clip0_143_56\"><rect width=\"14\" height=\"14\" fill=\"white\"/></clipPath></defs></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy right gap: 4\"':"
+    ]
+  },
+  "143:57": {
+    "name": "Vector",
+    "css": [
+      "width: 13.51px;height: 13.44px;",
+      "fill: #2563EB;",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><path d=\"M9.59 3.878C9.59 1.75 7.868 0 5.74 0C3.612 0 1.89 1.75 1.89 3.878C1.89 5.306 2.646 6.573 3.885 7.245C3.08 7.511 2.324 8.001 1.701 8.617C0.595 9.695 0 11.151 0 12.684C0 12.901 0.189 13.09 0.406 13.09C0.623 13.09 0.812 12.901 0.812 12.684C0.812 11.368 1.323 10.129 2.268 9.184C3.157 8.295 4.368 7.756 5.635 7.728H5.768C7.868 7.728 9.59 6.006 9.59 3.878ZM5.789 6.951H5.6C3.955 6.867 2.667 5.523 2.667 3.885C2.667 2.191 4.039 0.819 5.733 0.819C7.427 0.819 8.799 2.191 8.799 3.885C8.806 5.551 7.462 6.923 5.789 6.951ZM12.95 9.023C12.628 8.701 12.166 8.512 11.711 8.512C11.277 8.512 10.906 8.645 10.577 8.918C10.255 8.652 9.849 8.512 9.443 8.512C8.96 8.512 8.526 8.701 8.204 9.023C7.882 9.345 7.693 9.807 7.693 10.262C7.693 10.717 7.882 11.179 8.204 11.501L8.337 11.634L10.353 13.356C10.409 13.412 10.486 13.44 10.598 13.44C10.682 13.44 10.759 13.412 10.843 13.356L12.838 11.662L12.999 11.501C13.321 11.179 13.51 10.717 13.51 10.262C13.517 9.8 13.3 9.345 12.95 9.023ZM12.467 11.018L12.334 11.151L10.584 12.656L8.834 11.172L8.701 11.039C8.512 10.85 8.407 10.584 8.407 10.283C8.407 9.989 8.512 9.744 8.701 9.527C9.107 9.121 9.807 9.121 10.185 9.527L10.318 9.66C10.451 9.793 10.696 9.793 10.829 9.66L10.962 9.527C11.368 9.121 12.068 9.121 12.446 9.527C12.635 9.716 12.74 9.982 12.74 10.283C12.74 10.584 12.656 10.801 12.467 11.018Z\" fill=\"#2563EB\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 0.27\"':",
+      "      - 'button \"Copy distance to left container edge: 0.27\"':",
+      "      - 'button \"Copy width: 13.5\"': \"13.5\"",
+      "      - 'button \"Copy height: 13.4\"': \"13.4\"",
+      "      - 'button \"Copy distance to right container edge: 0.22\"':",
+      "      - 'button \"Copy distance to bottom container edge: 0.29\"':"
+    ]
+  },
+  "143:58": {
+    "name": "真实患者声音",
+    "css": [
+      "color: #2563EB;font-family: \"PingFang SC\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: 400;line-height: 14px; /* 100% */letter-spacing: -0.15px;"
+    ],
+    "properties": []
+  },
+  "143:59": {
+    "name": "Heading 1",
+    "css": [
+      "display: flex;width: 730px;flex-direction: column;align-items: flex-start;gap: 24px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top gap: 40\"':",
+      "      - 'button \"Copy parent left padding: 32\"':",
+      "      - 'button \"Copy width: 730\"': \"730\"",
+      "      - 'button \"Copy height: 94\"': \"94\"",
+      "      - 'button \"Copy parent right padding: 32\"':",
+      "      - 'button \"Copy bottom gap: 40\"':"
+    ]
+  },
+  "143:60": {
+    "name": "\"来中国是我做过最正确的决定\"",
+    "css": [
+      "color: #143162;font-family: \"PingFang SC\";font-size: 52px;font-style: normal;font-weight: 600;line-height: 52px; /* 100% */letter-spacing: 0.352px;"
+    ],
+    "properties": []
+  },
+  "143:61": {
+    "name": "来自俄罗斯、印尼、哈萨克斯坦等国的患者，在中国重获新生",
+    "css": [
+      "color: #5B606A;font-family: \"PingFang SC\";font-size: var(--font-size-18, 18px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 18px; /* 100% */letter-spacing: -0.439px;"
+    ],
+    "properties": []
+  },
+  "143:62": {
+    "name": "Container",
+    "css": [
+      "display: flex;padding: 12px;justify-content: center;align-items: center;gap: 10px;",
+      "border-radius: 10px;border: 1px solid rgba(37, 99, 235, 0.20);background: rgba(255, 255, 255, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy top gap: 40\"':",
+      "      - 'button \"Copy parent left padding: 32\"':",
+      "      - 'button \"Copy top left border radius: 10\"':",
+      "      - 'button \"Copy top right border radius: 10\"':",
+      "      - 'button \"Copy top padding: 12\"':",
+      "      - 'button \"Copy left padding: 12\"':",
+      "      - 'button \"Copy width: 335\"': \"335\"",
+      "      - 'button \"Copy height: 20\"': \"20\"",
+      "      - 'button \"Copy right padding: 12\"':",
+      "      - 'button \"Copy bottom padding: 12\"':",
+      "      - 'button \"Copy bottom left border radius: 10\"':",
+      "      - 'button \"Copy bottom right border radius: 10\"':",
+      "      - 'button \"Copy parent right padding: 32\"':",
+      "      - 'button \"Copy bottom gap: 40\"':"
+    ]
+  },
+  "143:63": {
+    "name": "M·A，35岁，脊髓肿瘤 → 天坛医院 → 术后3年无复发",
+    "css": [
+      "color: #3B82F6;font-family: \"PingFang SC\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+    ],
+    "properties": []
+  },
+  "143:64": {
+    "name": "Container",
+    "css": [
+      "display: flex;padding-top: 16px;flex-direction: column;align-items: flex-start;gap: 32px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top gap: 40\"':",
+      "      - 'button \"Copy parent left padding: 32\"':",
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 168\"': \"168\"",
+      "      - 'button \"Copy height: 52\"': \"52\"",
+      "      - 'button \"Copy parent right padding: 32\"':"
+    ]
+  },
+  "143:65": {
+    "name": "Link",
+    "css": [
+      "display: flex;height: 52px;padding: 18px 24px;align-items: center;gap: var(--item-spacing-xs, 8px);",
+      "border-radius: 14px;background: linear-gradient(0deg, #1E3A5F 0%, #1E3A5F 100%), var(--color-orange-50, #DD6B20);box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent top padding: 16\"':",
+      "      - 'button \"Copy top left border radius: 14\"':",
+      "      - 'button \"Copy top right border radius: 14\"':",
+      "      - 'button \"Copy top padding: 18\"':",
+      "      - 'button \"Copy left padding: 24\"':",
+      "      - 'button \"Copy width: 120\"': \"120\"",
+      "      - 'button \"Copy height: 16\"': \"16\"",
+      "      - 'button \"Copy right padding: 24\"':",
+      "      - 'button \"Copy bottom padding: 18\"':",
+      "      - 'button \"Copy bottom left border radius: 14\"':",
+      "      - 'button \"Copy bottom right border radius: 14\"':"
+    ]
+  },
+  "143:66": {
+    "name": "查看更多案例",
+    "css": [
+      "color: var(--color-text-white, #FFF);font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: var(--font-weight-600, 600);line-height: 16px; /* 100% */letter-spacing: -0.15px;"
+    ],
+    "properties": []
+  },
+  "143:67": {
+    "name": "Icon",
+    "css": [
+      "width: 16px;height: 16px;",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3.3335 8H12.6668\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M8 3.33325L12.6667 7.99992L8 12.6666\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent top padding: 18\"':",
+      "      - 'button \"Copy left gap: 8\"':",
+      "      - 'button \"Copy parent right padding: 24\"':",
+      "      - 'button \"Copy parent bottom padding: 18\"':"
+    ]
+  },
+  "143:68": {
+    "name": "Vector",
+    "css": [
+      "width: 9.333px;height: 0;",
+      "stroke-width: 1.333px;stroke: var(--color-text-white, #FFF);",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"11\" height=\"2\" viewBox=\"0 0 11 2\" fill=\"none\"><path d=\"M0.666504 0.666748H9.99984\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 8\"':",
+      "      - 'button \"Copy distance to left container edge: 3.33\"':",
+      "      - 'button \"Copy width: 9.33\"': \"9.33\"",
+      "      - 'button \"Copy height: 0\"': \"0\"",
+      "      - 'button \"Copy distance to right container edge: 3.33\"':",
+      "      - 'button \"Copy distance to bottom container edge: 8\"':"
+    ]
+  },
+  "143:69": {
+    "name": "Vector",
+    "css": [
+      "width: 4.667px;height: 9.333px;",
+      "stroke-width: 1.333px;stroke: var(--color-text-white, #FFF);",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"11\" viewBox=\"0 0 6 11\" fill=\"none\"><path d=\"M0.666504 0.666748L5.33317 5.33341L0.666504 10.0001\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 3.33\"':",
+      "      - 'button \"Copy distance to left container edge: 8\"':",
+      "      - 'button \"Copy width: 4.67\"': \"4.67\"",
+      "      - 'button \"Copy height: 9.33\"': \"9.33\"",
+      "      - 'button \"Copy distance to right container edge: 3.33\"':",
+      "      - 'button \"Copy distance to bottom container edge: 3.33\"':"
+    ]
+  },
+  "143:70": {
+    "name": "Button",
+    "css": [
+      "display: flex;width: 48px;height: 48px;justify-content: center;align-items: center;",
+      "position: absolute;left: 24px;top: 353px;",
+      "border-radius: 9999px;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 353\"':",
+      "      - 'button \"Copy distance to left container edge: 24\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 46\"': \"46\"",
+      "      - 'button \"Copy height: 46\"': \"46\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy distance to right container edge: 1368\"':",
+      "      - 'button \"Copy distance to bottom container edge: 353\"':"
+    ]
+  },
+  "143:71": {
+    "name": "Icon",
+    "css": [
+      "width: 24px;height: 24px;flex-shrink: 0;",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M14 18L8 12L14 6\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": []
+  },
+  "143:72": {
+    "name": "Vector",
+    "css": [
+      "width: 6px;height: 12px;",
+      "stroke-width: 2px;stroke: var(--color-text-secondary, #475569);",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"14\" viewBox=\"0 0 8 14\" fill=\"none\"><path d=\"M7 13L1 7L7 1\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 6\"':",
+      "      - 'button \"Copy distance to left container edge: 8\"':",
+      "      - 'button \"Copy width: 6\"': \"6\"",
+      "      - 'button \"Copy height: 12\"': \"12\"",
+      "      - 'button \"Copy distance to right container edge: 10\"':",
+      "      - 'button \"Copy distance to bottom container edge: 6\"':"
+    ]
+  },
+  "143:73": {
+    "name": "Button",
+    "css": [
+      "display: flex;width: 48px;height: 48px;transform: scaleX(-1);justify-content: center;align-items: center;",
+      "position: absolute;right: 24px;top: 353px;",
+      "border-radius: 9999px;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 353\"':",
+      "      - 'button \"Copy distance to left container edge: 1368\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 46\"': \"46\"",
+      "      - 'button \"Copy height: 46\"': \"46\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy distance to right container edge: 24\"':",
+      "      - 'button \"Copy distance to bottom container edge: 353\"':"
+    ]
+  },
+  "143:74": {
+    "name": "Icon",
+    "css": [
+      "width: 24px;height: 24px;flex-shrink: 0;",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M10 18L16 12L10 6\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": []
+  },
+  "143:75": {
+    "name": "Vector",
+    "css": [
+      "width: 6px;height: 12px;",
+      "stroke-width: 2px;stroke: var(--color-text-secondary, #475569);",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"14\" viewBox=\"0 0 8 14\" fill=\"none\"><path d=\"M1 13L7 7L1 1\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 6\"':",
+      "      - 'button \"Copy distance to left container edge: 10\"':",
+      "      - 'button \"Copy width: 6\"': \"6\"",
+      "      - 'button \"Copy height: 12\"': \"12\"",
+      "      - 'button \"Copy distance to right container edge: 8\"':",
+      "      - 'button \"Copy distance to bottom container edge: 6\"':"
+    ]
+  },
+  "143:76": {
+    "name": "Container",
+    "css": [
+      "display: flex;align-items: flex-start;gap: var(--item-spacing-xs, 8px);",
+      "position: absolute;left: 677px;bottom: 24px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 720\"':",
+      "      - 'button \"Copy distance to left container edge: 677\"':",
+      "      - 'button \"Copy width: 86\"': \"86\"",
+      "      - 'button \"Copy height: 10\"': \"10\"",
+      "      - 'button \"Copy distance to right container edge: 677\"':",
+      "      - 'button \"Copy distance to bottom container edge: 24\"':"
+    ]
+  },
+  "143:77": {
+    "name": "Button",
+    "css": [
+      "width: 10px;height: 10px;",
+      "border-radius: 9999px;background: rgba(0, 0, 0, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 10\"': \"10\"",
+      "      - 'button \"Copy height: 10\"': \"10\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy right gap: 8\"':"
+    ]
+  },
+  "143:78": {
+    "name": "Button",
+    "css": [
+      "width: 10px;height: 10px;",
+      "border-radius: 9999px;background: rgba(0, 0, 0, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy left gap: 8\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 10\"': \"10\"",
+      "      - 'button \"Copy height: 10\"': \"10\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy right gap: 8\"':"
+    ]
+  },
+  "143:79": {
+    "name": "Button",
+    "css": [
+      "width: 10px;height: 10px;",
+      "border-radius: 9999px;background: rgba(0, 0, 0, 0.10);"
+    ],
+    "properties": [
+      "      - 'button \"Copy left gap: 8\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 10\"': \"10\"",
+      "      - 'button \"Copy height: 10\"': \"10\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':",
+      "      - 'button \"Copy right gap: 8\"':"
+    ]
+  },
+  "143:80": {
+    "name": "Button",
+    "css": [
+      "width: 32px;height: 10px;",
+      "border-radius: 9999px;background: var(--color-orange-50, #DD6B20);"
+    ],
+    "properties": [
+      "      - 'button \"Copy left gap: 8\"':",
+      "      - 'button \"Copy top left border radius: 9999\"':",
+      "      - 'button \"Copy top right border radius: 9999\"':",
+      "      - 'button \"Copy width: 32\"': \"32\"",
+      "      - 'button \"Copy height: 10\"': \"10\"",
+      "      - 'button \"Copy bottom left border radius: 9999\"':",
+      "      - 'button \"Copy bottom right border radius: 9999\"':"
+    ]
+  },
+  "143:81": {
+    "name": "Section",
+    "css": [
+      "display: flex;padding: 96px 0;flex-direction: column;align-items: center;align-self: stretch;",
+      "background: var(--color-bg-primary, #FFF);"
+    ],
+    "properties": [
+      "      - 'button \"Copy top padding: 96\"':",
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 323\"': \"323\"",
+      "      - 'button \"Copy bottom padding: 96\"':"
+    ]
+  },
+  "143:82": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 1216px;flex-direction: column;align-items: flex-start;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent top padding: 96\"':",
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 80\"': \"80\""
+    ]
+  },
+  "143:83": {
+    "name": "Heading 2",
+    "css": [
+      "display: flex;flex-direction: column;align-items: center;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 40\"': \"40\""
+    ]
+  },
+  "143:84": {
+    "name": "来华就医流程",
+    "css": [
+      "color: #1E3A5F;text-align: center;font-family: \"SF Pro\";font-size: 40px;font-style: normal;font-weight: var(--font-weight-700, 700);line-height: 40px; /* 100% */letter-spacing: 0.396px;"
+    ],
+    "properties": []
+  },
+  "143:85": {
+    "name": "Paragraph",
+    "css": [
+      "display: flex;width: 1216px;padding-top: 16px;flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 24\"': \"24\""
+    ]
+  },
+  "143:86": {
+    "name": "点击步骤卡片跳转到对应页面",
+    "css": [
+      "color: #6B7280;text-align: center;font-family: \"PingFang SC\";font-size: var(--font-size-16, 16px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-24, 24px); /* 150% */"
+    ],
+    "properties": []
+  },
+  "143:87": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 1216px;height: 244px;padding-top: 68px;flex-direction: column;align-items: flex-start;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top padding: 68\"':",
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 176\"': \"176\"",
+      "      - 'button \"Copy parent bottom padding: 96\"':"
+    ]
+  },
+  "143:88": {
+    "name": "Container",
+    "css": [
+      "display: inline-grid;width: 1216px;padding-top: 68px;grid-template-rows: repeat(1,fit-content(100%));grid-template-columns: repeat(4,minmax(0,1fr));grid-auto-flow: row;",
+      "position: absolute;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top padding: 68\"':",
+      "      - 'button \"Copy width: 1216\"': \"1216\"",
+      "      - 'button \"Copy height: 176\"': \"176\""
+    ]
+  },
+  "143:89": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 285px;padding: 0 20px;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: span 1;grid-column: span 1;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 68\"':",
+      "      - 'button \"Copy left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 176\"': \"176\"",
+      "      - 'button \"Copy right padding: 20\"':",
+      "      - 'button \"Copy distance to right container edge: 931\"':"
+    ]
+  },
+  "143:90": {
+    "name": "Container",
+    "css": [
+      "height: 80px;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:91": {
+    "name": "Link",
+    "css": [
+      "display: flex;width: 80px;justify-content: center;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 34.5\"':",
+      "      - 'button \"Copy distance to left container edge: 82.5\"':",
+      "      - 'button \"Copy width: 80\"': \"80\"",
+      "      - 'button \"Copy height: 19\"': \"19\"",
+      "      - 'button \"Copy distance to right container edge: 82.5\"':",
+      "      - 'button \"Copy distance to bottom container edge: 26.5\"':"
+    ]
+  },
+  "143:92": {
+    "name": "Text",
+    "css": [
+      "display: flex;width: 80px;height: 80px;padding: 0 22.891px 0 24.109px;justify-content: center;align-items: center;flex-shrink: 0;",
+      "border-radius: 40px;border: 20px solid #FCF1E9;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: -35\"':",
+      "      - 'button \"Copy top left border radius: 40\"':",
+      "      - 'button \"Copy top right border radius: 40\"':",
+      "      - 'button \"Copy left padding: 24.1\"':",
+      "      - 'button \"Copy width: 33\"': \"33\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy right padding: 22.9\"':",
+      "      - 'button \"Copy bottom left border radius: 40\"':",
+      "      - 'button \"Copy bottom right border radius: 40\"':",
+      "      - 'button \"Copy distance to bottom container edge: -27\"':"
+    ]
+  },
+  "143:93": {
+    "name": "01",
+    "css": [
+      "color: #1E3A5F;text-align: center;font-family: \"PingFang SC\";font-size: 32px;font-style: normal;font-weight: 600;line-height: 80px; /* 250% */"
+    ],
+    "properties": []
+  },
+  "143:94": {
+    "name": "Text",
+    "css": [
+      "width: 185px;height: 4px;",
+      "border: 2px dashed #FCF1E9;background: rgba(255, 255, 255, 0.00);"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 38\"':",
+      "      - 'button \"Copy distance to left container edge: 182\"':",
+      "      - 'button \"Copy width: 185\"': \"185\"",
+      "      - 'button \"Copy height: 4\"': \"4\"",
+      "      - 'button \"Copy distance to right container edge: -122\"':",
+      "      - 'button \"Copy distance to bottom container edge: 38\"':"
+    ]
+  },
+  "143:95": {
+    "name": "Heading 6",
+    "css": [
+      "display: flex;width: 245px;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 40\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 24\"': \"24\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:96": {
+    "name": "认知",
+    "css": [
+      "color: #DD6B20;text-align: center;font-family: \"SF Pro\";font-size: 24px;font-style: normal;font-weight: 700;line-height: 24px; /* 100% */letter-spacing: -0.15px;text-transform: capitalize;"
+    ],
+    "properties": []
+  },
+  "143:97": {
+    "name": "Paragraph",
+    "css": [
+      "display: flex;width: 245px;padding-top: 16px;flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 16\"': \"16\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:98": {
+    "name": "If you need to miss work due to illness or caregiv",
+    "css": [
+      "width: 245px;",
+      "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: 16px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 16px; /* 100% */letter-spacing: 0.117px;"
+    ],
+    "properties": []
+  },
+  "143:99": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 285px;padding: 0 20px;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: span 1;grid-column: span 1;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 68\"':",
+      "      - 'button \"Copy distance to left container edge: 304\"':",
+      "      - 'button \"Copy left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 176\"': \"176\"",
+      "      - 'button \"Copy right padding: 20\"':",
+      "      - 'button \"Copy distance to right container edge: 627\"':"
+    ]
+  },
+  "143:100": {
+    "name": "Container",
+    "css": [
+      "height: 80px;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:101": {
+    "name": "Text",
+    "css": [
+      "width: 185px;height: 4px;",
+      "border: 2px dashed #FCF1E9;background: rgba(255, 255, 255, 0.00);"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 38\"':",
+      "      - 'button \"Copy distance to left container edge: 182\"':",
+      "      - 'button \"Copy width: 185\"': \"185\"",
+      "      - 'button \"Copy height: 4\"': \"4\"",
+      "      - 'button \"Copy distance to right container edge: -122\"':",
+      "      - 'button \"Copy distance to bottom container edge: 38\"':"
+    ]
+  },
+  "143:102": {
+    "name": "Link",
+    "css": [
+      "display: flex;width: 80px;justify-content: center;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 34.5\"':",
+      "      - 'button \"Copy distance to left container edge: 82.5\"':",
+      "      - 'button \"Copy width: 80\"': \"80\"",
+      "      - 'button \"Copy height: 19\"': \"19\"",
+      "      - 'button \"Copy distance to right container edge: 82.5\"':",
+      "      - 'button \"Copy distance to bottom container edge: 26.5\"':"
+    ]
+  },
+  "143:103": {
+    "name": "Text",
+    "css": [
+      "display: flex;width: 80px;height: 80px;padding: 0 19.891px 0 21.109px;justify-content: center;align-items: center;flex-shrink: 0;",
+      "border-radius: 40px;border: 20px solid #FCF1E9;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: -35\"':",
+      "      - 'button \"Copy top left border radius: 40\"':",
+      "      - 'button \"Copy top right border radius: 40\"':",
+      "      - 'button \"Copy left padding: 21.1\"':",
+      "      - 'button \"Copy width: 39\"': \"39\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy right padding: 19.9\"':",
+      "      - 'button \"Copy bottom left border radius: 40\"':",
+      "      - 'button \"Copy bottom right border radius: 40\"':",
+      "      - 'button \"Copy distance to bottom container edge: -27\"':"
+    ]
+  },
+  "143:104": {
+    "name": "02",
+    "css": [
+      "color: #1E3A5F;text-align: center;font-family: \"PingFang SC\";font-size: 32px;font-style: normal;font-weight: 600;line-height: 80px; /* 250% */"
+    ],
+    "properties": []
+  },
+  "143:105": {
+    "name": "Heading 6",
+    "css": [
+      "display: flex;width: 245px;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 40\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 24\"': \"24\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:106": {
+    "name": "评估",
+    "css": [
+      "color: #DD6B20;text-align: center;font-family: \"SF Pro\";font-size: 24px;font-style: normal;font-weight: 700;line-height: 24px; /* 100% */letter-spacing: -0.15px;text-transform: capitalize;"
+    ],
+    "properties": []
+  },
+  "143:107": {
+    "name": "Paragraph",
+    "css": [
+      "display: flex;width: 245px;padding-top: 16px;flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 16\"': \"16\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:108": {
+    "name": "If you need to miss work due to illness or caregiv",
+    "css": [
+      "width: 245px;",
+      "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: 16px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 16px; /* 100% */letter-spacing: 0.117px;"
+    ],
+    "properties": []
+  },
+  "143:109": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 285px;padding: 0 20px;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: span 1;grid-column: span 1;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 68\"':",
+      "      - 'button \"Copy distance to left container edge: 608\"':",
+      "      - 'button \"Copy left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 176\"': \"176\"",
+      "      - 'button \"Copy right padding: 20\"':",
+      "      - 'button \"Copy distance to right container edge: 323\"':"
+    ]
+  },
+  "143:110": {
+    "name": "Container",
+    "css": [
+      "height: 80px;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:111": {
+    "name": "Link",
+    "css": [
+      "display: flex;width: 80px;justify-content: center;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 34.5\"':",
+      "      - 'button \"Copy distance to left container edge: 82.5\"':",
+      "      - 'button \"Copy width: 80\"': \"80\"",
+      "      - 'button \"Copy height: 19\"': \"19\"",
+      "      - 'button \"Copy distance to right container edge: 82.5\"':",
+      "      - 'button \"Copy distance to bottom container edge: 26.5\"':"
+    ]
+  },
+  "143:112": {
+    "name": "Text",
+    "css": [
+      "display: flex;width: 80px;height: 80px;padding: 0 19.891px 0 21.109px;justify-content: center;align-items: center;flex-shrink: 0;",
+      "border-radius: 40px;border: 20px solid #FCF1E9;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: -35\"':",
+      "      - 'button \"Copy top left border radius: 40\"':",
+      "      - 'button \"Copy top right border radius: 40\"':",
+      "      - 'button \"Copy left padding: 21.1\"':",
+      "      - 'button \"Copy width: 39\"': \"39\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy right padding: 19.9\"':",
+      "      - 'button \"Copy bottom left border radius: 40\"':",
+      "      - 'button \"Copy bottom right border radius: 40\"':",
+      "      - 'button \"Copy distance to bottom container edge: -27\"':"
+    ]
+  },
+  "143:113": {
+    "name": "03",
+    "css": [
+      "color: #1E3A5F;text-align: center;font-family: \"PingFang SC\";font-size: 32px;font-style: normal;font-weight: 600;line-height: 80px; /* 250% */"
+    ],
+    "properties": []
+  },
+  "143:114": {
+    "name": "Text",
+    "css": [
+      "width: 185px;height: 4px;",
+      "border: 2px dashed #FCF1E9;background: rgba(255, 255, 255, 0.00);"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 38\"':",
+      "      - 'button \"Copy distance to left container edge: 182\"':",
+      "      - 'button \"Copy width: 185\"': \"185\"",
+      "      - 'button \"Copy height: 4\"': \"4\"",
+      "      - 'button \"Copy distance to right container edge: -122\"':",
+      "      - 'button \"Copy distance to bottom container edge: 38\"':"
+    ]
+  },
+  "143:115": {
+    "name": "Heading 6",
+    "css": [
+      "display: flex;width: 245px;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 40\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 24\"': \"24\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:116": {
+    "name": "信任",
+    "css": [
+      "color: #DD6B20;text-align: center;font-family: \"SF Pro\";font-size: 24px;font-style: normal;font-weight: 700;line-height: 24px; /* 100% */letter-spacing: -0.15px;text-transform: capitalize;"
+    ],
+    "properties": []
+  },
+  "143:117": {
+    "name": "Paragraph",
+    "css": [
+      "display: flex;width: 245px;padding-top: 16px;flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 16\"': \"16\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:118": {
+    "name": "If you need to miss work due to illness or caregiv",
+    "css": [
+      "width: 245px;",
+      "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: 16px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 16px; /* 100% */letter-spacing: 0.117px;"
+    ],
+    "properties": []
+  },
+  "143:119": {
+    "name": "Container",
+    "css": [
+      "display: flex;width: 285px;padding: 0 20px;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: span 1;grid-column: span 1;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 68\"':",
+      "      - 'button \"Copy distance to left container edge: 912\"':",
+      "      - 'button \"Copy left padding: 20\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 176\"': \"176\"",
+      "      - 'button \"Copy right padding: 20\"':",
+      "      - 'button \"Copy distance to right container edge: 19\"':"
+    ]
+  },
+  "143:120": {
+    "name": "Container",
+    "css": [
+      "display: flex;height: 80px;padding: 34.5px 82.5px 26.5px 82.5px;justify-content: center;align-items: center;align-self: stretch;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 34.5\"':",
+      "      - 'button \"Copy left padding: 82.5\"':",
+      "      - 'button \"Copy width: 80\"': \"80\"",
+      "      - 'button \"Copy height: 19\"': \"19\"",
+      "      - 'button \"Copy right padding: 82.5\"':",
+      "      - 'button \"Copy bottom padding: 26.5\"':",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:121": {
+    "name": "Link",
+    "css": [
+      "display: flex;width: 80px;height: 19px;justify-content: center;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 34.5\"':",
+      "      - 'button \"Copy distance to left container edge: 82.5\"':",
+      "      - 'button \"Copy width: 80\"': \"80\"",
+      "      - 'button \"Copy height: 19\"': \"19\"",
+      "      - 'button \"Copy distance to right container edge: 82.5\"':",
+      "      - 'button \"Copy distance to bottom container edge: 26.5\"':"
+    ]
+  },
+  "143:122": {
+    "name": "Text",
+    "css": [
+      "display: flex;width: 80px;height: 80px;padding: 0 19.891px 0 21.109px;justify-content: center;align-items: center;flex-shrink: 0;",
+      "border-radius: 40px;border: 20px solid #FCF1E9;background: #FFF;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: -35\"':",
+      "      - 'button \"Copy top left border radius: 40\"':",
+      "      - 'button \"Copy top right border radius: 40\"':",
+      "      - 'button \"Copy left padding: 21.1\"':",
+      "      - 'button \"Copy width: 39\"': \"39\"",
+      "      - 'button \"Copy height: 80\"': \"80\"",
+      "      - 'button \"Copy right padding: 19.9\"':",
+      "      - 'button \"Copy bottom left border radius: 40\"':",
+      "      - 'button \"Copy bottom right border radius: 40\"':",
+      "      - 'button \"Copy distance to bottom container edge: -27\"':"
+    ]
+  },
+  "143:123": {
+    "name": "04",
+    "css": [
+      "color: #1E3A5F;text-align: center;font-family: \"PingFang SC\";font-size: 32px;font-style: normal;font-weight: 600;line-height: 80px; /* 250% */"
+    ],
+    "properties": []
+  },
+  "143:124": {
+    "name": "Heading 6",
+    "css": [
+      "display: flex;width: 245px;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 40\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 24\"': \"24\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:125": {
+    "name": "行动",
+    "css": [
+      "color: #DD6B20;text-align: center;font-family: \"SF Pro\";font-size: 24px;font-style: normal;font-weight: 700;line-height: 24px; /* 100% */letter-spacing: -0.15px;text-transform: capitalize;"
+    ],
+    "properties": []
+  },
+  "143:126": {
+    "name": "Paragraph",
+    "css": [
+      "display: flex;width: 245px;padding-top: 16px;flex-direction: column;align-items: center;"
+    ],
+    "properties": [
+      "      - 'button \"Copy parent left padding: 20\"':",
+      "      - 'button \"Copy top padding: 16\"':",
+      "      - 'button \"Copy width: 245\"': \"245\"",
+      "      - 'button \"Copy height: 16\"': \"16\"",
+      "      - 'button \"Copy parent right padding: 20\"':"
+    ]
+  },
+  "143:127": {
+    "name": "If you need to miss work due to illness or caregiv",
+    "css": [
+      "width: 245px;",
+      "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: 16px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 16px; /* 100% */letter-spacing: 0.117px;"
+    ],
+    "properties": []
+  },
+  "143:128": {
+    "name": "Section",
+    "css": [
+      "display: flex;width: 1440px;height: 1208px;padding: 96px 0;flex-direction: column;align-items: flex-start;",
+      "background: #F5F6F7;"
+    ],
+    "properties": [
+      "      - 'button \"Copy top padding: 96\"':",
+      "      - 'button \"Copy width: 1440\"': \"1440\"",
+      "      - 'button \"Copy height: 1016\"': \"1016\"",
+      "      - 'button \"Copy bottom padding: 96\"':"
+    ]
+  },
+  "143:129": {
+    "name": "Group 601",
+    "css": [
+      "width: 220px;height: 650px;",
+      "position: absolute;left: 132px;top: 52px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 52\"':",
+      "      - 'button \"Copy distance to left container edge: 132\"':",
+      "      - 'button \"Copy width: 220\"': \"220\"",
+      "      - 'button \"Copy height: 650\"': \"650\"",
+      "      - 'button \"Copy distance to right container edge: 1088\"':",
+      "      - 'button \"Copy distance to bottom container edge: 506\"':"
+    ]
+  },
+  "143:130": {
+    "name": "Container",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:131": {
+    "name": "认知",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:132": {
+    "name": "Text",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:133": {
+    "name": "Text",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:134": {
+    "name": "Text",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:135": {
+    "name": "01",
+    "excluded": "Hidden legacy Group 601; not rendered or implemented"
+  },
+  "143:136": {
+    "name": "Group 602",
+    "css": [
+      "width: 220px;height: 650px;",
+      "position: absolute;left: 132px;top: 279px;"
+    ]
+  },
+  "143:137": {
+    "name": "Container",
+    "css": [
+      "display: inline-flex;flex-direction: column;align-items: center;gap: 16px;"
+    ],
+    "properties": [
+      "      - 'button \"Copy distance to top container edge: 301\"':",
+      "      - 'button \"Copy distance to left container edge: 160\"':",
+      "      - 'button \"Copy width: 60\"': \"60\"",
+      "      - 'button \"Copy height: 48\"': \"48\"",
+      "      - 'button \"Copy distance to bottom container edge: 301\"':"
+    ]
+  },
+  "143:138": {
+    "css": [
+      "color: #1E3A5F;font-family: \"SF Pro\";font-size: 30px;font-style: normal;font-weight: var(--font-weight-700, 700);line-height: 48px; /* 160% */letter-spacing: -0.15px;"
+    ]
+  },
+  "143:462": {
+    "css": [
+      "height: 300px;flex-shrink: 0;align-self: stretch;"
+    ]
+  },
+  "143:535": {
+    "css": [
+      "height: 300px;flex-shrink: 0;align-self: stretch;"
+    ]
+  },
+  "143:461": {
+    "css": [
+      "display: flex;width: 542px;height: 316px;max-width: 542px;max-height: 316px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+    ]
+  },
+  "143:534": {
+    "css": [
+      "display: flex;width: 542px;height: 316px;max-width: 542px;max-height: 316px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+    ]
+  }
+}

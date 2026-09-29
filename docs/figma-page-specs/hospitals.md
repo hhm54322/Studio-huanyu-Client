@@ -3,93 +3,117 @@
 - Route: `/hospitals`
 - Figma frame: `07寰宇云医 - 中国医院`
 - Node ID: `144:4707`
-- Source baseline HTML: `docs/figma-source/hospitals/frame.html`
-- Source baseline CSS: `docs/figma-source/hospitals/styles.txt`
+- Source baseline HTML: `docs/figma-source/hospitals/source-frame-2026-09-29.html`
+- Source baseline CSS: `docs/figma-source/hospitals/dev-styles-2026-09-29.css`
 - Source asset manifest: `docs/figma-source/hospitals/assets.json`
-- Source extraction run: `2026-09-24 Dev Mode HTML expansion from node 144:4707`
-- Desktop frame: `1440 x 2440px` (`2x` export: `2880 x 4880px`)
-- Mobile frame: no dedicated frame found; responsive adaptation required
-- Status: verified (desktop frame; responsive mobile adaptation)
+- Source extraction run: `2026-09-29`, parent-first Layers and Dev Mode extraction
+- Desktop frame: `1440 x 2440px`
+- Mobile frame: no dedicated Figma frame; responsive adaptation verified at `390px`
+- Status: verified
+
+## Source Gate
+
+- Complete Layers inventory: `layers-2026-09-29.json`, 566 nodes.
+- Every node selected and Dev Mode CSS copied: `dev-mode-2026-09-29.json`, 566 records.
+- Native cross-check: `native-inventory-2026-09-29.json` and `native-parameters-2026-09-29.json`, 566 records; no missing ID, parent or displayed sibling-order mismatch.
+- Native source SHA256: `f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb`.
+- Concrete mapping: `node-to-code-2026-09-29.json`, 566 selectors, including exact exported vector owners; every source node is also present in the static HTML.
+- Source lock: `baseline-lock-2026-09-29.json`.
+- Editable authored card data: `card-data-2026-09-29.json`. Original image paints/crops: `native-image-paints-2026-09-29.json`.
+- All filenames above are under `docs/figma-source/hospitals/`. Historical `frame.html` and `styles.txt` do not override this locked baseline.
 
 ## Layer Mapping
 
-| Figma Node ID | Figma layer name/type | Parent Node ID | Vue component/element | Dev Mode values copied | Asset/state notes |
-| --- | --- | --- | --- | --- | --- |
-| `144:4707` | `07寰宇云医 - 中国医院` frame | — | `.hospital-page` | `1440 x 2440px` | Source frame |
-| `144:4709` | `Main Content` auto-layout | `144:4708` | page section flow | `1440 x 1984px` | Header/footer shell-owned |
-| `144:4710` | Hero section | `144:4709` | `.hospital-hero` | `1440 x 460px` | Image stage below overlay header |
-| `144:4731` | Hospital directory container | `144:4709` | `.hospital-directory` | `1440 x 1524px`, padding `96px 40px` | City tabs + 3 x 3 cards |
-| `144:4732` | Tab List | `144:4731` | `.city-tabs` | `1216 x 42px`, gap `16px` | Tab nodes `144:4733`, `144:4736`, `144:4739`, `144:4742`, `144:4745` |
-| `144:4748` | Hospital card grid | `144:4731` | `.hospital-grid` | `1216 x 1290px`, 3 x 3, `24px` gaps | Representative card `144:5104` |
-| `144:5104` | Hospital card component | `144:4748` | `.hospital-grid article` | `389.33 x 398px`, radius `24px` | Image stage `192px`; body `206px` |
-| `144:5154` | Footer | `144:4707` | `PatientFooter.vue` | `1440 x 456px` | Shared shell |
+The complete per-node hierarchy, source CSS, parameter and DOM mapping is recorded in the JSON files above. Key nodes:
+
+| Node ID | Layer | Parent Node ID | Vue element | Exact values |
+| --- | --- | --- | --- | --- |
+| `144:4707` | page frame | `143:2` | `.hospital-page` | 1440 x 2440 |
+| `144:4710` | hero | `144:4709` | `.hospital-hero` | 1440 x 460 |
+| `144:4711` | hero content | `144:4710` | `.hospital-hero__content` | x112/y141.5, 1216 x 211 |
+| `144:4728` | hero title | `144:4712` | `h1` | PingFang SC600, 64/96 |
+| `144:4730` | subtitle | `144:4712` | `p` | PingFang SC400, 20/29 |
+| `144:4732` | tabs | `144:4731` | `.city-tabs` | 1216 x 42, gap16 |
+| `144:4748` | grid | `144:4731` | `.hospital-grid` | 1216 x1290, columns389.3333, gap24 |
+| `144:4749` | Union card | `144:4748` | `article[data-figma-node]` | row1/col1, 389.3333 x398 |
+| `144:4803` | Cancer Hospital card | `144:4748` | `article[data-figma-node]` | row1/col3 |
+| `144:4852` | University Cancer card | `144:4748` | `article[data-figma-node]` | row2/col1 |
+| `144:4901` | University People card | `144:4748` | `article[data-figma-node]` | row2/col2 |
+| `144:4950` | University Third card | `144:4748` | `article[data-figma-node]` | row2/col3 |
+| `144:5005` | China-Japan Friendship card | `144:4748` | `article[data-figma-node]` | row3/col1 |
+| `144:5055` | Anzhen card | `144:4748` | `article[data-figma-node]` | row3/col2 |
+| `144:5104` | Fuwai card | `144:4748` | `article[data-figma-node]` | row1/col2 |
+| `144:5154` | footer | `144:4707` | `PatientFooter.vue` | 1440 x456 |
+
+Grid DOM order retains Layers order; desktop placement uses native grid coordinates, which are not the same as Layers order.
 
 ## Sections
 
-| Order | Section | Node / Layer | Width | Height | Container/Grid | Background / Notes |
-| ---: | --- | --- | ---: | ---: | --- | --- |
-| 1 | Hero | `144:4710` (`Section`) | 1440 | 460 | Full width; image stage starts below the 64px overlaid header | Figma bitmap crop, `1440 x 396px`, exact image copy and artwork |
-| 2 | Hospital directory | `144:4731` (`Container`) | 1440 | 1524 | `1216px` content; city tabs `1216 x 42px`; card grid `1216 x 1290px`, 3 columns x 3 rows, 24px gaps | White; 96px top/bottom padding |
-| 3 | Shared footer | `144:5154` (`Footer`) | 1440 | 456 | `1216px` content | Dark navy footer, `#021D2E` |
+| Section | Node ID | Width | Height | Layout |
+| --- | --- | ---: | ---: | --- |
+| Hero | `144:4710` | 1440 | 460 | content x112/y141.5, actual source image |
+| Directory | `144:4731` | 1440 | 1524 | padding96/40, 1216px content, grid top padding48 |
+| Footer | `144:5154` | 1440 | 456 | shared shell |
 
-The three sections total exactly `2440px`. The shared header is overlaid on the hero and does not add to the body height.
-
-## Verified Figma Parameters
-
-- Hero section: vertical flow, fixed `460px`, padding `180px 112px 146px`, gap `44px`; the exported image is cropped to `1440 x 396px` beneath the overlaid 64px header.
-- Directory section: vertical flow, hug `1524px`, padding `96px 40px`; content width `1216px`.
-- City tab list: `144:4732`, `1216 x 42px`, 16px gap, 80px minimum tab width, 1px border, 24px radius; inactive border `#DBDEE6`; active Beijing variant is `80 x 42px`, fill/border `#DD6B20`.
-- Hospital grid: `144:4748`, `1216 x 1290px`, 3 rows x 3 columns, 24px row/column gap.
-- Hospital cards: `144:5104` (representative card), `389.33 x 398px`, `#F5F6F7` fill, 1px border, 24px radius. Image stage `192px`; content stage `206px` with padding `20px 24px 24px`.
-- Footer: fixed `456px` height.
-
-## Assets
-
-| Asset | Source | Export/Fit | Project Path |
-| --- | --- | --- | --- |
-| Hospital directory hero | `144:4710` image layer, hash `ded16e6e38437219c4b5a6aa20f61c740a19ba87` | Crop, `1440 x 396px` | `/public/images/figma/hospital-directory-hero.png` |
-| Beijing hospital card 01-08 | `144:4748` card image instances | Cover, baked location/type/JCI badges where authored | `/public/images/figma/hospital-card-01.png` through `/public/images/figma/hospital-card-08.png` |
-
-## Behavior
-
-- City tabs filter the editable hospital constants; the Beijing view exposes the eight authored Figma cards.
-- `查看详情` opens the existing accessible modal and preserves the selected hospital data.
-- `预约咨询` dispatches the existing `open-consultation` event without changing report or hospital administration behavior.
-- Desktop cards use restrained lift/image feedback and reveal timing inspired by Octagos; resting geometry remains unchanged.
-- Mobile uses a responsive single-column card flow and keeps the tab list horizontally scrollable without page-level overflow.
-- `prefers-reduced-motion` disables card, image, tab and action transitions.
-
-## Verification
-
-- Figma reference screenshot: `/Users/hhm/Downloads/07寰宇云医 - 中国医院 (3).png`
-- Local desktop screenshot: `/tmp/huanyu-hospitals-desktop-verified.png` (exact 1440px viewport; full-page geometry checked via DOM)
-- Local mobile screenshot: `/tmp/huanyu-hospitals-mobile-verified.png`
-- Verification run: `2026-09-24`
-- Remaining differences: none
-- Desktop geometry: `460 / 1524 / 456px`; exact total height `2440px`
-- Desktop and mobile: no horizontal overflow, broken images, or unrevealed content
-- Interaction checks: city filtering, detail modal open/close, consultation event, body scroll lock, and responsive tab scrolling
-- 2026-09-23: Re-read Dev Mode source frame `144:4707` and checked the live page at desktop geometry. Hero bitmap copy remains intentionally hidden from the live text layer; directory measured `460 / 1524 / 456px`, cards `389.33 x 398px`, city tabs `1216 x 42px`. Mobile remains the approved responsive interpretation because no dedicated Figma mobile frame is present.
+Header overlays the hero. Total desktop height is exactly 2440px.
 
 ## Typography
 
 | Element | Node ID | Font | Size/Line Height | Weight | Color |
 | --- | --- | --- | --- | ---: | --- |
-| Hero title and subtitle | baked into `144:4710` image | Figma exported bitmap | N/A (image pixels) | N/A | Image pixels |
-| Hospital card title | `144:5117` (`Heading 3`) | Patient shell heading | `36px` line box | 700 | `#192D47` |
-| Hospital card metadata/actions | `144:5104` descendants | Patient shell body | 12-14px / authored card layout | 400-700 | `#173B67` / Figma fills |
+| Hero title | `144:4728` | PingFang SC | 64/96 | 600 | #143162 |
+| Subtitle | `144:4730` | PingFang SC | 20/29 | 400 | #5B606A |
+| Union title | `144:4767` | PingFang SC | 24/36 | 600 | #111827 |
+
+Other titles use the exact per-card font data in the source JSON. SF Pro Medium has native weight 510; CSS nominal500 is supplemented with that native value. Source letter-spacing is normalized to zero under the application instruction; minor glyph rasterization differences are accepted, not a pixel-identity claim.
 
 ## Components And Spacing
 
-| Element | Node ID | W x H | Padding/Gap | Radius/Border/Effect |
-| --- | --- | --- | --- | --- |
-| City tabs | `144:4732` (`Tab List`) | 1216 x 42px | 16px gap; items 80-82px x 42px; 12px/24px item padding | 24px, 1px border |
-| Hospital grid | `144:4748` | 1216 x 1290px | 3 x 3; 24px row/column gap | Grid container |
-| Hospital card | `144:5104` | 389.33 x 398px | 192px image + 206px body; body padding 20/24/24 | 24px, 1px border |
+- Hero inner copy: 644 x211, gap24. Chips: 106 x38, gap4, padding12/16, source icons14px, blue10% fill.
+- Hero background: original 2814 x878 image; exact Dev crop `-174px -31.688px / 112.106% 109.497% no-repeat`.
+- Inactive tabs: 82 x42, border1 #DBDEE6, radius24, PingFang400 16/16 #1E3A5F. Beijing: 80 x42, #DD6B20, weight500 16/18.
+- Cards: 389.3333 x398, image192 +body206, body padding20/24/24, no visible border, radius24, #F5F6F7, shadow0/1/2 rgba(0,0,0,.05).
+- Specialties: row36 including top12; tags24, padding4/8, font12/16. Facts: row36 including top16, gap16, source icons14, font14/20 #6B7280.
+- Actions: row54 including top16, buttons38, gap8, widths168.6133/164.72, radius10, font14/20.
+- Mobile retains source assets, uses single-column cards and horizontally scrolling tabs; hero fallback uses the hero section fill instead of exposed gray image-paint fallback. Title uses balanced wrapping.
+
+## Assets
+
+| Asset | Node ID | Export/Fit | Project Path |
+| --- | --- | --- | --- |
+| Hero | `144:4710` | original lossless WebP, exact Dev crop | `public/images/figma/hospital-source/node-144-4710.webp` |
+| Union photo | `144:4751` | original image pixels and authored crop | `public/images/figma/hospital-source/node-144-4751.webp` |
+| JCI icon | `144:4754` | exact SVG | `public/images/figma/hospital-source/node-144-4754.svg` |
+| Location icon | `144:4761` | exact SVG | `public/images/figma/hospital-source/node-144-4761.svg` |
+| Calendar icon | `144:4777` | exact SVG | `public/images/figma/hospital-source/node-144-4777.svg` |
+
+The manifest contains all 187 exact asset rows and source owners. Photos do not bake text/badges; live semantic text and separate source icons remain inspectable.
 
 ## Prototype And Motion
 
-| Interaction | Figma/Octagos Reference | Trigger | Timing/Easing | Mobile Fallback |
+| Interaction | Reference | Trigger | Timing/Easing | Mobile/Reduced Fallback |
 | --- | --- | --- | --- | --- |
-| City filter | Figma prototype | Tab click | Short color transition | Horizontal tab scroll |
-| Detail modal | Existing patient flow | Detail action | Backdrop fade | Full-width scrollable modal |
+| City filter | prototype state / existing hospital constants | click, Enter, Space | color transition .25s ease, aria-pressed | horizontal tab scroll; reduced transitions disabled |
+| Detail modal | existing patient business flow | detail action | opacity .25s, panel .3s | bottom sheet; focus trap, Escape, restoration |
+| Consultation | existing open-consultation event | direct action or modal CTA | transfers to consultation panel | same business event |
+| Reveal | Octagos scroll vocabulary | viewport/scroll | opacity .62s, lift .72s cubic-bezier(.22,1,.36,1), stagger45ms | readable resting content with reduced motion |
+| Hover | Octagos restrained interactive feedback | pointer | lift6px .38s, photo1.025 .7s | reduced-motion removes transforms |
+
+Octagos was actively inspected through scrolling, Device Volume tabs and accordion interaction. Motion does not restructure Figma or change resting card dimensions. Existing hospital modal content is retained, not claimed as an authored state inside this resting source frame.
+
+## Verification
+
+- Figma reference screenshot: `/Users/hhm/Downloads/07寰宇云医 - 中国医院 (4).png`
+- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/hospitals/2026-09-29/local-1440.png`
+- Local mobile screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/hospitals/2026-09-29/local-390.png`
+- Verification run: `2026-09-29`
+- Remaining differences: none
+- Accepted minor rendering tolerance: glyph antialiasing/tracking and subpixel image sampling; not mathematical pixel identity. Mobile is adaptation, not comparison against a nonexistent authored mobile frame.
+- Evidence directory: `docs/figma-verification/hospitals/2026-09-29/`; source and local hero/directory/footer crops personally reviewed. Desktop pixelmatch changedPixelRatio: 0.0151073 (threshold0.15, AA excluded); this metric is not a fidelity percentage.
+- Fresh screenshots generated after final mobile changes; gray fallback and orphaned title wrapping fixed and rechecked.
+- Final detail screenshots wait for the enter animation to settle; detail imagery reuses the selected card's exact source photo, fixing the legacy incorrect Union Hospital image.
+- Source QA: 566 resolved mappings, 139 exact typography checks, 15 geometry checks.
+- State QA: 1440/1024/768/390 widths, 20 filters, keyboard activation, modal focus trap, Escape, focus restoration, consultation transfer/direct CTA, home/footer links, hover/reduced-motion. No page errors, broken images or horizontal overflow.
+- Desktop geometry: 460 /1524 /456; total2440. Mobile: 620 /3498 /778.25; total4896.
+- Type check, direct Vite production compilation and git diff checks pass.
+- Formal `pnpm build` passed after the whole-site evidence gate was refreshed on 2026-09-29.

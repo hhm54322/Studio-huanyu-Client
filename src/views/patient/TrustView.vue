@@ -30,7 +30,7 @@ const activeFaq = ref(0);
 const faqs = [
   {
     q: "合作的中国医院是什么等级？是否国际认可？",
-    a: "我们仅对接国内三级甲等公立总院、三级国际高端私立医院、JCI国际认证医院、博鳌特许医疗中心。所有医院具备国家正规医疗执业资质，病历、检查报告、手术记录全球通用，可用于海外复诊与保险理赔。",
+    a: "我们仅对接国内三级甲等公立总院、三级国际高端私立医院、JCI国际认证医院、博鳌特许医疗中心。<br />所有医院具备国家正规医疗执业资质，病历、检查报告、手术记录全球通用，可用于海外复诊与保险理赔。",
   },
   {
     q: "主治医生是什么资质？能否对接专科专家？",
@@ -174,7 +174,7 @@ function openConsultation() {
                   aria-hidden="true"
                 /></button
               ><Transition name="faq"
-                ><p v-if="activeFaq === index">{{ item.a }}</p></Transition
+              ><p v-if="activeFaq === index" v-html="item.a"></p></Transition
               >
             </article>
           </div>
@@ -491,7 +491,7 @@ function openConsultation() {
   align-items: flex-start;
   border-radius: 9px;
   padding: 27px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.96);
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
@@ -647,7 +647,7 @@ function openConsultation() {
 }
 .trust-cta button:first-child {
   border: 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.96);
   color: #ed6d1f;
 }
 .trust-cta button.dark {
@@ -728,6 +728,9 @@ function openConsultation() {
 .trust-page {
   margin-top: -64px;
   color: #1e3a5f;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-spacing-trim: space-all;
 }
 .trust-page :deep(.hy-container) {
   width: min(1216px, calc(100% - 48px));
@@ -738,7 +741,7 @@ function openConsultation() {
   min-height: 0;
   overflow: hidden;
   padding: 180px 0 96px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.96);
 }
 .trust-hero__media {
   position: absolute;
@@ -772,6 +775,7 @@ function openConsultation() {
   color: #5b606a;
   font-size: 20px;
   line-height: 30px;
+  letter-spacing: -0.439px;
 }
 .assurance-grid {
   display: grid;
@@ -790,7 +794,7 @@ function openConsultation() {
   align-items: flex-start;
   border-radius: 24px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.96);
+  background: #fff;
   box-shadow: 0 1px 20px rgba(237, 247, 254, 0.7);
   cursor: pointer;
   transition:
@@ -816,12 +820,13 @@ function openConsultation() {
 }
 .assurance-grid h2,
 .assurance-grid article.expanded h2 {
-  margin: auto 0 12px;
+  margin: 80px 0 16px;
   color: #1e3a5f;
   white-space: pre-line;
   font-size: 24px;
   font-weight: 600;
   line-height: 36px;
+  letter-spacing: -0.439px;
 }
 .assurance-grid span {
   display: flex;
@@ -844,8 +849,8 @@ function openConsultation() {
 }
 .assurance-grid p {
   display: none;
-  margin: 14px 0 0;
-  color: #65778a;
+  margin: 16px 0 0;
+  color: #4b5563;
   font-size: 16px;
   line-height: 24px;
 }
@@ -875,9 +880,11 @@ function openConsultation() {
 .faq-layout aside h2 {
   margin: 0;
   color: #1e3a5f;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 40px;
+  letter-spacing: 0.396px;
 }
 .faq-layout aside p {
   margin: 16px 0 0;
@@ -924,10 +931,11 @@ function openConsultation() {
   flex: none;
 }
 .faq-list p {
-  margin: -2px 38px 23.04px 0;
-  color: #6b7280;
+  margin: 0 38px 15.04px 0;
+  color: #4b5563;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 32px;
+  text-align: justify;
 }
 .articles-section {
   height: 1136px;
@@ -991,23 +999,28 @@ function openConsultation() {
   font-weight: 600;
   line-height: 24px;
 }
+.article-grid article:nth-child(-n + 3) h3 {
+  letter-spacing: -0.439px;
+}
 .article-grid p {
   margin: 0;
-  color: #6b7280;
+  color: #4b5563;
   font-size: 16px;
   line-height: 24px;
+  letter-spacing: -0.15px;
 }
 .article-grid button {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 4px;
+  margin-top: 16px;
   border: 0;
   padding: 0;
   background: transparent;
   color: #dd6b20;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
   cursor: pointer;
 }
 .article-grid button .arrow-icon {
@@ -1047,7 +1060,7 @@ function openConsultation() {
   width: 300px;
   max-width: none;
   margin: 24px 0 0;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   line-height: 28px;
 }
@@ -1064,7 +1077,7 @@ function openConsultation() {
 }
 .toolkit-layout > div > header p {
   margin: 16px 0 0;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   line-height: 24px;
 }
@@ -1104,21 +1117,23 @@ function openConsultation() {
   font-size: 24px;
   font-weight: 600;
   line-height: 24px;
+  letter-spacing: -0.439px;
 }
 .tool-grid p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   line-height: 24px;
 }
 .tool-grid a {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 14px;
+  gap: 4px;
+  margin-top: 16px;
   color: #dd6b20;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
 }
 .tool-grid a .arrow-icon {
   display: block;
@@ -1140,12 +1155,15 @@ function openConsultation() {
   font-size: 40px;
   font-weight: 600;
   line-height: 40px;
+  letter-spacing: 0.396px;
 }
 .trust-cta p {
   margin: 16px 0 0;
   color: rgba(255, 255, 255, 0.8);
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 24px;
+  letter-spacing: -0.3125px;
 }
 .trust-cta > div > div {
   display: flex;
@@ -1168,6 +1186,7 @@ function openConsultation() {
   padding: 0 24px;
   background: transparent;
   color: #fff;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -1187,6 +1206,12 @@ function openConsultation() {
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   color: #dd6b20;
   line-height: 16px;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.15px;
+}
+.trust-cta a,
+.trust-cta button.dark {
+  letter-spacing: -0.3125px;
 }
 .trust-cta button.dark {
   border: 0;
@@ -1210,6 +1235,7 @@ function openConsultation() {
   margin-top: 0;
   padding-top: 24px;
   color: rgba(255, 255, 255, 0.6);
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 12px;
   line-height: 16px;
 }

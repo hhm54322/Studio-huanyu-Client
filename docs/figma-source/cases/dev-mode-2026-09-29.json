@@ -1,0 +1,4818 @@
+{
+  "sourceFrame": "190:5300",
+  "capturedAt": "2026-09-28T22:58:59.740Z",
+  "source": "Every expanded Layers node selected and Inspect Code CSS read through browser-client/iab",
+  "nodes": [
+    {
+      "nodeId": "190:5300",
+      "layerName": "07寰宇云医 - 患者案例",
+      "parentNodeId": null,
+      "css": [
+        "display: flex;width: 1440px;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 1822",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy color/text/white",
+        "Copy color/grey/98",
+        "Copy 1"
+      ]
+    },
+    {
+      "nodeId": "190:5301",
+      "layerName": "Body",
+      "parentNodeId": "190:5300",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;",
+        "background: var(--color-grey-98, #F9FAFB);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 1822",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/grey/98",
+        "Copy color/azure/34",
+        "Copy color/text/white",
+        "Copy 1",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5302",
+      "layerName": "Main Content",
+      "parentNodeId": "190:5301",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 1366",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF",
+        "Copy #1E3A5F",
+        "Copy #6B7280",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5303",
+      "layerName": "Section",
+      "parentNodeId": "190:5302",
+      "css": [
+        "display: flex;height: 460px;padding: 180px 112px 146px 112px;flex-direction: column;justify-content: center;align-items: center;gap: 44px;align-self: stretch;",
+        "background: url(<path-to-image>) lightgray 0px -78.03px / 100% 123.964% no-repeat;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF",
+        "Copy #143162",
+        "Copy #1E3A5F",
+        "Copy #5B606A"
+      ]
+    },
+    {
+      "nodeId": "190:5304",
+      "layerName": "Frame 74",
+      "parentNodeId": "190:5303",
+      "css": [
+        "display: flex;width: 1216px;justify-content: space-between;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 180",
+        "Copy parent left padding: 112",
+        "Copy width: 1216",
+        "Copy height: 235",
+        "Copy parent right padding: 112",
+        "Copy parent bottom padding: 146",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF",
+        "Copy #143162",
+        "Copy #1E3A5F",
+        "Copy #5B606A"
+      ]
+    },
+    {
+      "nodeId": "190:5305",
+      "layerName": "Container",
+      "parentNodeId": "190:5304",
+      "css": [
+        "display: flex;width: 568px;flex-direction: column;align-items: flex-start;gap: 24px;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 235",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF",
+        "Copy #143162",
+        "Copy #1E3A5F",
+        "Copy #5B606A"
+      ]
+    },
+    {
+      "nodeId": "190:5306",
+      "layerName": "Container",
+      "parentNodeId": "190:5305",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5307",
+      "layerName": "Text",
+      "parentNodeId": "190:5306",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5308",
+      "layerName": "Icon",
+      "parentNodeId": "190:5307",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5309",
+      "layerName": "Vector",
+      "parentNodeId": "190:5308",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5310",
+      "layerName": "真实案例",
+      "parentNodeId": "190:5307",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5311",
+      "layerName": "Text",
+      "parentNodeId": "190:5306",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5312",
+      "layerName": "Frame",
+      "parentNodeId": "190:5311",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5313",
+      "layerName": "Vector",
+      "parentNodeId": "190:5312",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5314",
+      "layerName": "国际患者",
+      "parentNodeId": "190:5311",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5315",
+      "layerName": "Text",
+      "parentNodeId": "190:5306",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5316",
+      "layerName": "Frame",
+      "parentNodeId": "190:5315",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5317",
+      "layerName": "Vector",
+      "parentNodeId": "190:5316",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5318",
+      "layerName": "专业服务",
+      "parentNodeId": "190:5315",
+      "css": [
+        "display: flex;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 568",
+        "Copy height: 38",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5319",
+      "layerName": "Heading 1",
+      "parentNodeId": "190:5305",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 24",
+        "Copy width: 568",
+        "Copy height: 96",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #143162"
+      ]
+    },
+    {
+      "nodeId": "190:5320",
+      "layerName": "Cardiac Remote Monitoring with Fewer Clicks and Mo",
+      "parentNodeId": "190:5319",
+      "css": [
+        "color: #143162;font-family: \"PingFang SC\";font-size: 64px;font-style: normal;font-weight: 600;line-height: 96px; /* 150% */letter-spacing: 0.352px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #143162"
+      ]
+    },
+    {
+      "nodeId": "190:5321",
+      "layerName": "Paragraph",
+      "parentNodeId": "190:5305",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 24",
+        "Copy width: 568",
+        "Copy height: 29",
+        "Copy bottom gap: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #5B606A"
+      ]
+    },
+    {
+      "nodeId": "190:5322",
+      "layerName": "Cut alert fatigue. Prioritize urgent care. Deliver",
+      "parentNodeId": "190:5321",
+      "css": [
+        "color: #5B606A;font-family: \"PingFang SC\";font-size: 20px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 29px; /* 145% */letter-spacing: -0.439px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #5B606A"
+      ]
+    },
+    {
+      "nodeId": "190:5323",
+      "layerName": "Link",
+      "parentNodeId": "190:5305",
+      "css": [
+        "display: flex;padding: 16px 24px;align-items: center;gap: 8px;",
+        "border-radius: 14px;background: #1E3A5F;box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 24",
+        "Copy top left border radius: 14",
+        "Copy top right border radius: 14",
+        "Copy top padding: 16",
+        "Copy left padding: 24",
+        "Copy width: 151",
+        "Copy height: 30",
+        "Copy right padding: 24",
+        "Copy bottom padding: 16",
+        "Copy bottom left border radius: 14",
+        "Copy bottom right border radius: 14",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5324",
+      "layerName": "Frame",
+      "parentNodeId": "190:5323",
+      "css": [
+        "width: 24px;height: 24px;aspect-ratio: 1/1;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M10.8008 11.8C10.8008 11.9313 10.8266 12.0613 10.8769 12.1827C10.9271 12.304 11.0008 12.4143 11.0936 12.5072C11.1865 12.6 11.2967 12.6737 11.4181 12.724C11.5394 12.7742 11.6694 12.8001 11.8008 12.8001C11.9321 12.8001 12.0622 12.7742 12.1835 12.724C12.3048 12.6737 12.4151 12.6 12.5079 12.5072C12.6008 12.4143 12.6745 12.304 12.7247 12.1827C12.775 12.0613 12.8008 11.9313 12.8008 11.8C12.8008 11.6686 12.775 11.5386 12.7247 11.4172C12.6745 11.2959 12.6008 11.1856 12.5079 11.0928C12.4151 10.9999 12.3048 10.9262 12.1835 10.8759C12.0622 10.8257 11.9321 10.7998 11.8008 10.7998C11.6694 10.7998 11.5394 10.8257 11.4181 10.8759C11.2967 10.9262 11.1865 10.9999 11.0936 11.0928C11.0008 11.1856 10.9271 11.2959 10.8769 11.4172C10.8266 11.5386 10.8008 11.6686 10.8008 11.8Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/><path d=\"M21.6502 6.70003C19.1002 2.10003 13.7502 0.0500331 8.95019 1.45003C8.50019 1.60003 8.25019 2.10003 8.50019 2.55003C8.65019 2.85003 9.00019 3.00003 9.35019 2.90003C13.8502 1.60003 18.8502 3.75003 20.8002 8.35003C22.5002 12.4 21.1502 17.2 17.5502 19.75C12.8502 23.1 6.40019 21.5 3.70019 16.6C1.80019 13.15 2.25019 9.05003 4.55019 6.15003L7.95019 9.55003C8.25019 9.85003 8.75019 9.85003 9.05019 9.55003C9.35019 9.25003 9.35019 8.75003 9.05019 8.45003L5.10019 4.45003C4.90019 4.30003 4.65019 4.25003 4.40019 4.30003C4.25019 4.30003 4.10019 4.35003 3.95019 4.50003C0.500192 8.20003 -0.0998087 14 3.10019 18.45C6.00019 22.55 11.5002 24.1 16.2002 22.15C22.3502 19.6 24.7502 12.35 21.6502 6.70003Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy parent left padding: 24",
+        "Copy right gap: 8",
+        "Copy parent bottom padding: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5325",
+      "layerName": "Vector",
+      "parentNodeId": "190:5324",
+      "css": [
+        "width: 2px;height: 2px;",
+        "fill: #FFF;stroke-width: 0.2px;stroke: #FFF;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"3\" height=\"3\" viewBox=\"0 0 3 3\" fill=\"none\"><path d=\"M0.0996094 1.10025C0.0995893 1.23159 0.12544 1.36164 0.175686 1.48298C0.225932 1.60432 0.299588 1.71458 0.392449 1.80746C0.485309 1.90033 0.595555 1.974 0.716891 2.02427C0.838226 2.07453 0.968275 2.1004 1.09961 2.1004C1.23094 2.1004 1.36099 2.07453 1.48233 2.02427C1.60366 1.974 1.71391 1.90033 1.80677 1.80746C1.89963 1.71458 1.97329 1.60432 2.02353 1.48298C2.07378 1.36164 2.09963 1.23159 2.09961 1.10025C2.09963 0.968916 2.07378 0.838864 2.02353 0.717521C1.97329 0.596177 1.89963 0.48592 1.80677 0.393045C1.71391 0.30017 1.60366 0.226497 1.48233 0.176233C1.36099 0.125969 1.23094 0.100098 1.09961 0.100098C0.968275 0.100098 0.838226 0.125969 0.716891 0.176233C0.595555 0.226497 0.485309 0.30017 0.392449 0.393045C0.299588 0.48592 0.225932 0.596177 0.175686 0.717521C0.12544 0.838864 0.0995893 0.968916 0.0996094 1.10025Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 10.8",
+        "Copy distance to left container edge: 10.8",
+        "Copy top border: 0.2",
+        "Copy left border: 0.2",
+        "Copy width: 2",
+        "Copy height: 2",
+        "Copy right border: 0.2",
+        "Copy bottom border: 0.2",
+        "Copy distance to right container edge: 11.2",
+        "Copy distance to bottom container edge: 11.2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5326",
+      "layerName": "Vector",
+      "parentNodeId": "190:5324",
+      "css": [
+        "width: 22.001px;height: 21.971px;",
+        "fill: #FFF;stroke-width: 0.2px;stroke: #FFF;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"none\"><path d=\"M20.7478 5.78402C18.1978 1.18402 12.8478 -0.865983 8.04785 0.534017C7.59785 0.684017 7.34785 1.18402 7.59785 1.63402C7.74785 1.93402 8.09785 2.08402 8.44785 1.98402C12.9478 0.684017 17.9478 2.83402 19.8978 7.43402C21.5978 11.484 20.2478 16.284 16.6478 18.834C11.9478 22.184 5.49785 20.584 2.79785 15.684C0.897848 12.234 1.34785 8.13402 3.64785 5.23402L7.04785 8.63402C7.34785 8.93402 7.84785 8.93402 8.14785 8.63402C8.44785 8.33402 8.44785 7.83402 8.14785 7.53402L4.19785 3.53402C3.99785 3.38402 3.74785 3.33402 3.49785 3.38402C3.34785 3.38402 3.19785 3.43402 3.04785 3.58402C-0.402152 7.28402 -1.00215 13.084 2.19785 17.534C5.09785 21.634 10.5978 23.184 15.2978 21.234C21.4478 18.684 23.8478 11.434 20.7478 5.78402Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.02",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 0.2",
+        "Copy left border: 0.2",
+        "Copy width: 22",
+        "Copy height: 22",
+        "Copy right border: 0.2",
+        "Copy bottom border: 0.2",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1.01",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5327",
+      "layerName": "开始智能匹配",
+      "parentNodeId": "190:5323",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"PingFang SC\";font-size: 20px;font-style: normal;font-weight: 600;line-height: 30px; /* 150% */letter-spacing: -0.312px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5328",
+      "layerName": "Container",
+      "parentNodeId": "190:5302",
+      "css": [
+        "display: flex;padding: 96px 40px;flex-direction: column;align-items: center;align-self: stretch;",
+        "background: #FFF;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 96",
+        "Copy left padding: 40",
+        "Copy width: 1360",
+        "Copy height: 430",
+        "Copy right padding: 40",
+        "Copy bottom padding: 96",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #1E3A5F",
+        "Copy #6B7280",
+        "Copy #4B5563",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6191",
+      "layerName": "Frame 663",
+      "parentNodeId": "190:5328",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 96",
+        "Copy parent left padding: 40",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy parent right padding: 40",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280",
+        "Copy #DBDEE6",
+        "Copy #9CA3AF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6192",
+      "layerName": "Tab List",
+      "parentNodeId": "221:6191",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy bottom gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280",
+        "Copy #DBDEE6",
+        "Copy #9CA3AF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6193",
+      "layerName": "Dropdown",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;",
+        "border-radius: 10px;border: 1px solid #DBDEE6;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 10",
+        "Copy top border: 1",
+        "Copy top right border radius: 10",
+        "Copy left border: 1",
+        "Copy top padding: 1",
+        "Copy left padding: 16",
+        "Copy width: 186",
+        "Copy height: 38",
+        "Copy right padding: 16",
+        "Copy bottom padding: 1",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 10",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DBDEE6",
+        "Copy #6B7280",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6194",
+      "layerName": "科室/病种",
+      "parentNodeId": "221:6193",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6195",
+      "layerName": "Container",
+      "parentNodeId": "221:6193",
+      "css": [
+        "display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 1",
+        "Copy left gap: 215",
+        "Copy width: 20",
+        "Copy height: 38.5",
+        "Copy parent right padding: 16",
+        "Copy parent bottom padding: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6196",
+      "layerName": "Icon",
+      "parentNodeId": "221:6195",
+      "css": [
+        "width: 10px;height: 6px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M1 1L5 5L9 1\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6197",
+      "layerName": "Vector",
+      "parentNodeId": "221:6196",
+      "css": [
+        "width: 8px;height: 4px;",
+        "stroke-width: 1.5px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M0.75 0.75L4.75 4.75L8.75 0.75\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 1.5",
+        "Copy left border: 1.5",
+        "Copy width: 8",
+        "Copy height: 4",
+        "Copy right border: 1.5",
+        "Copy bottom border: 1.5",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6198",
+      "layerName": "Dropdown",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;",
+        "border-radius: 10px;border: 1px solid #DBDEE6;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy top left border radius: 10",
+        "Copy top border: 1",
+        "Copy top right border radius: 10",
+        "Copy left border: 1",
+        "Copy top padding: 1",
+        "Copy left padding: 16",
+        "Copy width: 186",
+        "Copy height: 38",
+        "Copy right padding: 16",
+        "Copy bottom padding: 1",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 10",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DBDEE6",
+        "Copy #6B7280",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6199",
+      "layerName": "来源地区",
+      "parentNodeId": "221:6198",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6200",
+      "layerName": "Container",
+      "parentNodeId": "221:6198",
+      "css": [
+        "display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 1",
+        "Copy left gap: 215",
+        "Copy width: 20",
+        "Copy height: 38.5",
+        "Copy parent right padding: 16",
+        "Copy parent bottom padding: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6201",
+      "layerName": "Icon",
+      "parentNodeId": "221:6200",
+      "css": [
+        "width: 10px;height: 6px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M1 1L5 5L9 1\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6202",
+      "layerName": "Vector",
+      "parentNodeId": "221:6201",
+      "css": [
+        "width: 8px;height: 4px;",
+        "stroke-width: 1.5px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M0.75 0.75L4.75 4.75L8.75 0.75\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 1.5",
+        "Copy left border: 1.5",
+        "Copy width: 8",
+        "Copy height: 4",
+        "Copy right border: 1.5",
+        "Copy bottom border: 1.5",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6203",
+      "layerName": "Dropdown",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;",
+        "border-radius: 10px;border: 1px solid #DBDEE6;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy top left border radius: 10",
+        "Copy top border: 1",
+        "Copy top right border radius: 10",
+        "Copy left border: 1",
+        "Copy top padding: 1",
+        "Copy left padding: 16",
+        "Copy width: 186",
+        "Copy height: 38",
+        "Copy right padding: 16",
+        "Copy bottom padding: 1",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 10",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DBDEE6",
+        "Copy #6B7280",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6204",
+      "layerName": "治疗类型",
+      "parentNodeId": "221:6203",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6205",
+      "layerName": "Container",
+      "parentNodeId": "221:6203",
+      "css": [
+        "display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 1",
+        "Copy left gap: 215",
+        "Copy width: 20",
+        "Copy height: 38.5",
+        "Copy parent right padding: 16",
+        "Copy parent bottom padding: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6206",
+      "layerName": "Icon",
+      "parentNodeId": "221:6205",
+      "css": [
+        "width: 10px;height: 6px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M1 1L5 5L9 1\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6207",
+      "layerName": "Vector",
+      "parentNodeId": "221:6206",
+      "css": [
+        "width: 8px;height: 4px;",
+        "stroke-width: 1.5px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M0.75 0.75L4.75 4.75L8.75 0.75\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 1.5",
+        "Copy left border: 1.5",
+        "Copy width: 8",
+        "Copy height: 4",
+        "Copy right border: 1.5",
+        "Copy bottom border: 1.5",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6208",
+      "layerName": "Dropdown",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;width: 220px;height: 42px;padding: 1px 16px;justify-content: space-between;align-items: center;flex-shrink: 0;",
+        "border-radius: 10px;border: 1px solid #DBDEE6;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy top left border radius: 10",
+        "Copy top border: 1",
+        "Copy top right border radius: 10",
+        "Copy left border: 1",
+        "Copy top padding: 1",
+        "Copy left padding: 16",
+        "Copy width: 186",
+        "Copy height: 38",
+        "Copy right padding: 16",
+        "Copy bottom padding: 1",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 10",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DBDEE6",
+        "Copy #6B7280",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6209",
+      "layerName": "就诊时长",
+      "parentNodeId": "221:6208",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 400;line-height: 16px; /* 100% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "221:6210",
+      "layerName": "Container",
+      "parentNodeId": "221:6208",
+      "css": [
+        "display: flex;width: 20px;height: 38.5px;justify-content: center;align-items: center;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 1",
+        "Copy left gap: 215",
+        "Copy width: 20",
+        "Copy height: 38.5",
+        "Copy parent right padding: 16",
+        "Copy parent bottom padding: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6211",
+      "layerName": "Icon",
+      "parentNodeId": "221:6210",
+      "css": [
+        "width: 10px;height: 6px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M1 1L5 5L9 1\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6212",
+      "layerName": "Vector",
+      "parentNodeId": "221:6211",
+      "css": [
+        "width: 8px;height: 4px;",
+        "stroke-width: 1.5px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"6\" viewBox=\"0 0 10 6\" fill=\"none\"><path d=\"M0.75 0.75L4.75 4.75L8.75 0.75\" stroke=\"#6B7280\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 1.5",
+        "Copy left border: 1.5",
+        "Copy width: 8",
+        "Copy height: 4",
+        "Copy right border: 1.5",
+        "Copy bottom border: 1.5",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6213",
+      "layerName": "Link",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;height: 42px;padding: 16px 24px;align-items: center;gap: 8px;",
+        "border-radius: 14px;background: #DD6B20;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy top left border radius: 14",
+        "Copy top right border radius: 14",
+        "Copy top padding: 16",
+        "Copy left padding: 24",
+        "Copy width: 56",
+        "Copy height: 10",
+        "Copy right padding: 24",
+        "Copy bottom padding: 16",
+        "Copy bottom left border radius: 14",
+        "Copy bottom right border radius: 14",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DD6B20",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6214",
+      "layerName": "Frame",
+      "parentNodeId": "221:6213",
+      "css": [
+        "width: 16px;height: 16px;aspect-ratio: 1/1;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><g clip-path=\"url(#clip0_221_6214)\"><path d=\"M14.8375 14.101L12.1866 11.457C14.3073 8.97167 14.1748 5.21719 11.842 2.86402C9.3502 0.378659 5.3209 0.378659 2.8556 2.86402C1.66271 4.05382 1 5.66667 1 7.35883C1 9.05099 1.66271 10.6374 2.8556 11.8536C4.04848 13.0434 5.66551 13.7044 7.36205 13.7044C8.87304 13.7044 10.331 13.1756 11.4709 12.1974L14.1217 14.8414C14.3338 15.0529 14.6519 15.0529 14.864 14.8414C15.0495 14.6298 15.0495 14.3126 14.8375 14.101ZM3.59784 11.1133C2.59051 10.1086 2.03383 8.78659 2.03383 7.38527C2.03383 5.98395 2.59051 4.6355 3.59784 3.65722C4.63167 2.62606 5.98361 2.1237 7.33555 2.1237C8.68748 2.1237 10.0394 2.62606 11.0733 3.65722C13.1409 5.71955 13.1409 9.07743 11.0733 11.1398C10.0659 12.1445 8.7405 12.6997 7.33555 12.6997C5.93059 12.6468 4.60516 12.118 3.59784 11.1133Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/></g><defs><clipPath id=\"clip0_221_6214\"><rect width=\"16\" height=\"16\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy parent left padding: 24",
+        "Copy right gap: 8",
+        "Copy parent bottom padding: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6215",
+      "layerName": "Vector",
+      "parentNodeId": "221:6214",
+      "css": [
+        "width: 14px;height: 14px;aspect-ratio: 1/1;",
+        "fill: #FFF;stroke-width: 0.2px;stroke: #FFF;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M13.9371 13.2011L11.2862 10.5571C13.4069 8.07177 13.2744 4.31728 10.9416 1.96412C8.44981 -0.521243 4.42051 -0.521243 1.95521 1.96412C0.762323 3.15392 0.0996094 4.76676 0.0996094 6.45893C0.0996094 8.15109 0.762323 9.73749 1.95521 10.9537C3.14809 12.1435 4.76512 12.8045 6.46166 12.8045C7.97265 12.8045 9.43062 12.2757 10.5705 11.2975L13.2213 13.9415C13.4334 14.153 13.7515 14.153 13.9636 13.9415C14.1491 13.7299 14.1491 13.4127 13.9371 13.2011ZM2.69745 10.2134C1.69012 9.20869 1.13344 7.88669 1.13344 6.48537C1.13344 5.08404 1.69012 3.7356 2.69745 2.75732C3.73128 1.72616 5.08322 1.2238 6.43516 1.2238C7.78709 1.2238 9.13903 1.72616 10.1729 2.75732C12.2405 4.81964 12.2405 8.17753 10.1729 10.2399C9.16554 11.2446 7.84011 11.7998 6.43516 11.7998C5.0302 11.7469 3.70477 11.2181 2.69745 10.2134Z\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 0.2",
+        "Copy left border: 0.2",
+        "Copy width: 14",
+        "Copy height: 14",
+        "Copy right border: 0.2",
+        "Copy bottom border: 0.2",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6216",
+      "layerName": "筛选",
+      "parentNodeId": "221:6213",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 500;line-height: 16px; /* 100% */letter-spacing: -0.312px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "221:6217",
+      "layerName": "Link",
+      "parentNodeId": "221:6192",
+      "css": [
+        "display: flex;height: 42px;padding: 16px 24px;align-items: center;gap: 8px;",
+        "border-radius: 14px;border: 1px solid #DBDEE6;box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy top left border radius: 14",
+        "Copy top border: 1",
+        "Copy top right border radius: 14",
+        "Copy left border: 1",
+        "Copy top padding: 16",
+        "Copy left padding: 24",
+        "Copy width: 56",
+        "Copy height: 8",
+        "Copy right padding: 24",
+        "Copy bottom padding: 16",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 14",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 14",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #DBDEE6",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6218",
+      "layerName": "Frame",
+      "parentNodeId": "221:6217",
+      "css": [
+        "width: 16px;height: 16px;aspect-ratio: 1/1;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><g clip-path=\"url(#clip0_221_6218)\"><path d=\"M14.4498 5.27515C14.0973 4.44159 13.5925 3.69302 12.9499 3.05026C12.3071 2.4075 11.5586 1.90289 10.725 1.55037C9.8617 1.18529 8.94487 1 8.00017 1C6.79568 1 5.60771 1.31123 4.56443 1.8998C3.87384 2.28948 3.25293 2.79632 2.73146 3.3916L2.57077 2.25111C2.53103 1.96879 2.26986 1.77214 1.98771 1.81205C1.70538 1.8518 1.50891 2.11279 1.54865 2.39511L1.87141 4.68607C1.90358 4.91403 2.08268 5.09313 2.31047 5.12513L4.60142 5.44788C4.62585 5.45132 4.65011 5.45304 4.67402 5.45304C4.9271 5.45304 5.14818 5.26672 5.18448 5.00882C5.22422 4.7265 5.02758 4.4655 4.74542 4.42576L3.37095 4.23221C4.49871 2.84312 6.18165 2.03227 8 2.03227C11.2907 2.03227 13.9677 4.70946 13.9677 8C13.9677 11.2905 11.2905 13.9677 8 13.9677C4.70946 13.9677 2.03227 11.2905 2.03227 8C2.03227 7.71492 1.80121 7.48386 1.51614 7.48386C1.23106 7.48386 1 7.71492 1 8C1 8.9447 1.18512 9.86153 1.55037 10.7249C1.90289 11.5584 2.40767 12.307 3.05026 12.9497C3.69302 13.5925 4.44159 14.0971 5.27515 14.4496C6.13847 14.8147 7.0553 15 8 15C8.9447 15 9.86153 14.8149 10.7249 14.4496C11.5584 14.0971 12.307 13.5923 12.9497 12.9497C13.5925 12.307 14.0971 11.5584 14.4496 10.7249C14.8147 9.86153 15 8.9447 15 8C15 7.0553 14.8149 6.13847 14.4496 5.27515H14.4498Z\" fill=\"#6B7280\" stroke=\"#6B7280\" stroke-width=\"0.3\"/></g><defs><clipPath id=\"clip0_221_6218\"><rect width=\"16\" height=\"16\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy parent left padding: 24",
+        "Copy right gap: 8",
+        "Copy parent bottom padding: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6219",
+      "layerName": "Vector",
+      "parentNodeId": "221:6218",
+      "css": [
+        "width: 14px;height: 14px;aspect-ratio: 1/1;",
+        "fill: #6B7280;stroke-width: 0.3px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M13.6002 4.42505C13.2477 3.59149 12.7429 2.84292 12.1003 2.20016C11.4575 1.5574 10.709 1.0528 9.87541 0.700275C9.01209 0.335195 8.09526 0.149902 7.15056 0.149902C5.94607 0.149902 4.7581 0.461132 3.71482 1.0497C3.02423 1.43938 2.40332 1.94623 1.88185 2.5415L1.72116 1.40101C1.68142 1.11869 1.42026 0.922041 1.1381 0.961955C0.855776 1.0017 0.6593 1.26269 0.699043 1.54502L1.0218 3.83597C1.05397 4.06393 1.23307 4.24303 1.46086 4.27503L3.75181 4.59778C3.77624 4.60123 3.8005 4.60295 3.82441 4.60295C4.07749 4.60295 4.29857 4.41662 4.33487 4.15873C4.37461 3.8764 4.17797 3.61541 3.89581 3.57566L2.52134 3.38211C3.6491 1.99302 5.33205 1.18217 7.15039 1.18217C10.4411 1.18217 13.1181 3.85937 13.1181 7.1499C13.1181 10.4404 10.4409 13.1176 7.15039 13.1176C3.85986 13.1176 1.18266 10.4404 1.18266 7.1499C1.18266 6.86482 0.951605 6.63377 0.666526 6.63377C0.381447 6.63377 0.150391 6.86482 0.150391 7.1499C0.150391 8.0946 0.335511 9.01143 0.700763 9.87475C1.05328 10.7083 1.55806 11.4569 2.20065 12.0996C2.84341 12.7424 3.59198 13.247 4.42554 13.5995C5.28886 13.9646 6.20569 14.1499 7.15039 14.1499C8.09509 14.1499 9.01192 13.9648 9.87524 13.5995C10.7088 13.247 11.4574 12.7422 12.1001 12.0996C12.7429 11.4569 13.2475 10.7083 13.6 9.87475C13.9651 9.01143 14.1504 8.0946 14.1504 7.1499C14.1504 6.2052 13.9653 5.28837 13.6 4.42505H13.6002Z\" fill=\"#6B7280\" stroke=\"#6B7280\" stroke-width=\"0.3\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1",
+        "Copy distance to left container edge: 1",
+        "Copy top border: 0.3",
+        "Copy left border: 0.3",
+        "Copy width: 14",
+        "Copy height: 14",
+        "Copy right border: 0.3",
+        "Copy bottom border: 0.3",
+        "Copy distance to right container edge: 1",
+        "Copy distance to bottom container edge: 1",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6220",
+      "layerName": "重置",
+      "parentNodeId": "221:6217",
+      "css": [
+        "color: #6B7280;text-align: center;font-family: \"PingFang SC\";font-size: 16px;font-style: normal;font-weight: 500;line-height: 16px; /* 100% */letter-spacing: -0.312px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "221:6221",
+      "layerName": "Tab List",
+      "parentNodeId": "221:6191",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "221:6222",
+      "layerName": "Tab",
+      "parentNodeId": "221:6221",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "221:6223",
+      "layerName": "Container",
+      "parentNodeId": "221:6222",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "221:6224",
+      "layerName": "肿瘤",
+      "parentNodeId": "221:6223",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "221:6225",
+      "layerName": "Icon",
+      "parentNodeId": "221:6222",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "221:6226",
+      "layerName": "Vector",
+      "parentNodeId": "221:6225",
+      "css": [
+        "display: flex;width: 1216px;align-items: flex-start;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 16",
+        "Copy width: 1216",
+        "Copy height: 42",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5365",
+      "layerName": "Container",
+      "parentNodeId": "190:5328",
+      "css": [
+        "display: inline-grid;width: 1216px;padding-top: 48px;row-gap: 24px;column-gap: 24px;grid-template-rows: repeat(1,fit-content(100%));grid-template-columns: repeat(3,minmax(0,1fr));"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent left padding: 40",
+        "Copy top padding: 48",
+        "Copy width: 1216",
+        "Copy height: 340",
+        "Copy parent right padding: 40",
+        "Copy parent bottom padding: 96",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563",
+        "Copy #9CA3AF",
+        "Copy #F5F6F7"
+      ]
+    },
+    {
+      "nodeId": "190:5366",
+      "layerName": "Container",
+      "parentNodeId": "190:5365",
+      "css": [
+        "display: flex;padding: 24px;flex-direction: column;align-items: flex-start;gap: 80px;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch;",
+        "border-radius: 24px;background: #F5F6F7;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 48",
+        "Copy top left border radius: 24",
+        "Copy top border: 1",
+        "Copy top right border radius: 24",
+        "Copy left border: 1",
+        "Copy top padding: 24",
+        "Copy left padding: 24",
+        "Copy width: 339",
+        "Copy height: 290",
+        "Copy right padding: 24",
+        "Copy bottom padding: 24",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 24",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 24",
+        "Copy distance to right container edge: 827",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #F5F6F7",
+        "Copy #1E3A5F",
+        "Copy #4B5563",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5367",
+      "layerName": "Frame 650",
+      "parentNodeId": "190:5366",
+      "css": [
+        "display: flex;align-items: center;gap: 12px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 24",
+        "Copy parent left padding: 24",
+        "Copy width: 220",
+        "Copy height: 60",
+        "Copy parent right padding: 24",
+        "Copy bottom gap: 80",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5368",
+      "layerName": "Image (Shanti Bansal picture)",
+      "parentNodeId": "190:5367",
+      "css": [
+        "width: 60px;height: 60px;aspect-ratio: 1/1;",
+        "border-radius: 16px;background: url(<path-to-image>) lightgray -0.228px -2.622px / 100% 135.013% no-repeat;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 16",
+        "Copy top right border radius: 16",
+        "Copy bottom left border radius: 16",
+        "Copy bottom right border radius: 16",
+        "Copy right gap: 12",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5369",
+      "layerName": "Container",
+      "parentNodeId": "190:5367",
+      "css": [
+        "display: flex;width: 148.398px;flex-direction: column;align-items: flex-start;gap: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 12",
+        "Copy width: 148",
+        "Copy height: 46",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5370",
+      "layerName": "Heading 3",
+      "parentNodeId": "190:5369",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 148",
+        "Copy height: 18",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5371",
+      "layerName": "Maria S.",
+      "parentNodeId": "190:5370",
+      "css": [
+        "color: #1E3A5F;font-family: \"SF Pro\";font-size: 18px;font-style: normal;font-weight: 600;line-height: 18px; /* 100% */letter-spacing: -0.439px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5372",
+      "layerName": "Container",
+      "parentNodeId": "190:5369",
+      "css": [
+        "display: flex;align-items: center;gap: 4px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 199",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5373",
+      "layerName": "东南亚 · 消化内科 · 多学科诊疗",
+      "parentNodeId": "190:5372",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5374",
+      "layerName": "Container",
+      "parentNodeId": "190:5366",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 80",
+        "Copy parent left padding: 24",
+        "Copy width: 341",
+        "Copy height: 152",
+        "Copy parent right padding: 24",
+        "Copy parent bottom padding: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5375",
+      "layerName": "Heading 3",
+      "parentNodeId": "190:5374",
+      "css": [
+        "display: flex;padding-bottom: 16px;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 341",
+        "Copy height: 24",
+        "Copy bottom padding: 16",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5376",
+      "layerName": "消化系统疑难疾病",
+      "parentNodeId": "190:5375",
+      "css": [
+        "align-self: stretch;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 24px;font-style: normal;font-weight: 500;line-height: 24px; /* 100% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5377",
+      "layerName": "Frame 653",
+      "parentNodeId": "190:5374",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 44",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5378",
+      "layerName": "患者背景：40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断",
+      "parentNodeId": "190:5377",
+      "css": [
+        "flex: 1 0 0;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy \"40+岁，女性，反复...\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5379",
+      "layerName": "Frame 651",
+      "parentNodeId": "190:5374",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 22",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5380",
+      "layerName": "诊疗路径：远程会诊-到院检查-MDT讨论-制定方案",
+      "parentNodeId": "190:5379",
+      "css": [
+        "flex: 1 0 0;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy \"远程会诊-到院检查-...\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5381",
+      "layerName": "Frame 652",
+      "parentNodeId": "190:5374",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 22",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5382",
+      "layerName": "咨询到首诊：约 7 天 · 广州",
+      "parentNodeId": "190:5381",
+      "css": [
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy \"约 7 天 · 广州\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5383",
+      "layerName": "Container",
+      "parentNodeId": "190:5365",
+      "css": [
+        "display: flex;padding: 24px;flex-direction: column;align-items: flex-start;gap: 80px;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch;",
+        "border-radius: 24px;background: #F5F6F7;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 48",
+        "Copy distance to left container edge: 413",
+        "Copy top left border radius: 24",
+        "Copy top border: 1",
+        "Copy top right border radius: 24",
+        "Copy left border: 1",
+        "Copy top padding: 24",
+        "Copy left padding: 24",
+        "Copy width: 339",
+        "Copy height: 290",
+        "Copy right padding: 24",
+        "Copy bottom padding: 24",
+        "Copy right border: 1",
+        "Copy bottom left border radius: 24",
+        "Copy bottom border: 1",
+        "Copy bottom right border radius: 24",
+        "Copy distance to right container edge: 413",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #F5F6F7",
+        "Copy #1E3A5F",
+        "Copy #4B5563",
+        "Copy #03956D",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5384",
+      "layerName": "Frame 650",
+      "parentNodeId": "190:5383",
+      "css": [
+        "display: flex;align-items: center;gap: 12px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 24",
+        "Copy parent left padding: 24",
+        "Copy width: 220",
+        "Copy height: 60",
+        "Copy parent right padding: 24",
+        "Copy bottom gap: 80",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5385",
+      "layerName": "Image (Shanti Bansal picture)",
+      "parentNodeId": "190:5384",
+      "css": [
+        "width: 60px;height: 60px;aspect-ratio: 1/1;",
+        "border-radius: 16px;background: url(<path-to-image>) lightgray -0.068px -0.464px / 100% 133.596% no-repeat;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 16",
+        "Copy top right border radius: 16",
+        "Copy bottom left border radius: 16",
+        "Copy bottom right border radius: 16",
+        "Copy right gap: 12",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5386",
+      "layerName": "Container",
+      "parentNodeId": "190:5384",
+      "css": [
+        "display: flex;width: 148.398px;flex-direction: column;align-items: flex-start;gap: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 12",
+        "Copy width: 148",
+        "Copy height: 46",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5387",
+      "layerName": "Heading 3",
+      "parentNodeId": "190:5386",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 148",
+        "Copy height: 18",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5388",
+      "layerName": "James T.",
+      "parentNodeId": "190:5387",
+      "css": [
+        "color: #1E3A5F;font-family: \"SF Pro\";font-size: 18px;font-style: normal;font-weight: 600;line-height: 18px; /* 100% */letter-spacing: -0.439px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5389",
+      "layerName": "Container",
+      "parentNodeId": "190:5386",
+      "css": [
+        "display: flex;align-items: center;gap: 4px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 171",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5390",
+      "layerName": "南亚 · 脊柱外科 · 手术治疗",
+      "parentNodeId": "190:5389",
+      "css": [
+        "color: #9CA3AF;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5391",
+      "layerName": "Text",
+      "parentNodeId": "190:5383",
+      "css": [
+        "display: flex;padding: 8px;flex-direction: column;align-items: flex-start;",
+        "position: absolute;right: 15.667px;top: 16px;",
+        "border-radius: 8px;background: #03956D;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 16",
+        "Copy distance to left container edge: 310",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 8",
+        "Copy left padding: 8",
+        "Copy width: 48",
+        "Copy height: 12",
+        "Copy right padding: 8",
+        "Copy bottom padding: 8",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy distance to right container edge: 15.7",
+        "Copy distance to bottom container edge: 296",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Position, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #03956D",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5392",
+      "layerName": "为您推荐",
+      "parentNodeId": "190:5391",
+      "css": [
+        "color: #FFF;font-family: \"PingFang SC\";font-size: 12px;font-style: normal;font-weight: 500;line-height: 12px; /* 100% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5393",
+      "layerName": "Container",
+      "parentNodeId": "190:5383",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 80",
+        "Copy parent left padding: 24",
+        "Copy width: 341",
+        "Copy height: 152",
+        "Copy parent right padding: 24",
+        "Copy parent bottom padding: 24",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5394",
+      "layerName": "Heading 3",
+      "parentNodeId": "190:5393",
+      "css": [
+        "display: flex;padding-bottom: 16px;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 341",
+        "Copy height: 24",
+        "Copy bottom padding: 16",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5395",
+      "layerName": "脊柱复杂病变",
+      "parentNodeId": "190:5394",
+      "css": [
+        "align-self: stretch;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 24px;font-style: normal;font-weight: 500;line-height: 24px; /* 100% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "190:5396",
+      "layerName": "Frame 653",
+      "parentNodeId": "190:5393",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 44",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5397",
+      "layerName": "患者背景：:50+岁，男性，颈椎病变面临神经压迫险，多地评估手术险较高",
+      "parentNodeId": "190:5396",
+      "css": [
+        "flex: 1 0 0;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy \":50+岁，男性，颈...\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5398",
+      "layerName": "Frame 651",
+      "parentNodeId": "190:5393",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 22",
+        "Copy bottom gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5399",
+      "layerName": "诊疗路径：国际转诊-影像评估-手术方案-术后康复",
+      "parentNodeId": "190:5398",
+      "css": [
+        "flex: 1 0 0;",
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Layout, press shift to copy all code",
+        "Copy Typography, press shift to copy all code",
+        "Copy \"国际转诊-影像评估-...\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5400",
+      "layerName": "Frame 652",
+      "parentNodeId": "190:5393",
+      "css": [
+        "display: flex;align-items: flex-start;gap: 8px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top gap: 8",
+        "Copy width: 341",
+        "Copy height: 22",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #4B5563"
+      ]
+    },
+    {
+      "nodeId": "190:5401",
+      "layerName": "咨询到手术：约 14 天 · 广州",
+      "parentNodeId": "190:5400",
+      "css": [
+        "color: #1E3A5F;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 500;line-height: 22px; /* 157.143% */letter-spacing: -0.15px;",
+        "color: #4B5563;font-family: \"PingFang SC\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 22px;letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy \"约 14 天 · 广...\", press shift to copy all code"
+      ]
+    },
+    {
+      "nodeId": "190:5402",
+      "layerName": "Section",
+      "parentNodeId": "190:5302",
+      "css": [
+        "display: flex;padding: 96px 0;flex-direction: column;align-items: center;align-self: stretch;",
+        "background: url(<path-to-image>) lightgray 50% / cover no-repeat, #1E3A5F;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #1E3A5F",
+        "Copy #FFFFFF",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5403",
+      "layerName": "Container:margin",
+      "parentNodeId": "190:5402",
+      "css": [
+        "display: flex;flex-direction: column;align-items: center;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 96",
+        "Copy width: 1440",
+        "Copy height: 92",
+        "Copy parent bottom padding: 96",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5404",
+      "layerName": "Container",
+      "parentNodeId": "190:5403",
+      "css": [
+        "display: inline-grid;width: 1216px;row-gap: 24px;column-gap: 24px;grid-template-rows: repeat(1,fit-content(100%));grid-template-columns: repeat(4,minmax(0,1fr));"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1216",
+        "Copy height: 92",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5405",
+      "layerName": "Container",
+      "parentNodeId": "190:5404",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 286",
+        "Copy height: 92",
+        "Copy distance to right container edge: 930",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5406",
+      "layerName": "Container",
+      "parentNodeId": "190:5405",
+      "css": [
+        "display: flex;padding: 0 47px;justify-content: center;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left padding: 47",
+        "Copy width: 192",
+        "Copy height: 56",
+        "Copy right padding: 47",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5407",
+      "layerName": "500+",
+      "parentNodeId": "190:5406",
+      "css": [
+        "color: #52E8FF;text-align: center;font-family: \"SF Pro\";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5408",
+      "layerName": "Container",
+      "parentNodeId": "190:5405",
+      "css": [
+        "display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 286",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5409",
+      "layerName": "已协助国际患者完成咨询",
+      "parentNodeId": "190:5408",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"SF Pro\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5410",
+      "layerName": "Container",
+      "parentNodeId": "190:5404",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 310",
+        "Copy width: 286",
+        "Copy height: 92",
+        "Copy distance to right container edge: 620",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5411",
+      "layerName": "Container",
+      "parentNodeId": "190:5410",
+      "css": [
+        "display: flex;padding: 0 88px 0 89px;justify-content: center;align-items: center;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left padding: 89",
+        "Copy width: 109",
+        "Copy height: 56",
+        "Copy right padding: 88",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5412",
+      "layerName": "30+",
+      "parentNodeId": "190:5411",
+      "css": [
+        "color: #52E8FF;text-align: center;font-family: \"SF Pro\";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5413",
+      "layerName": "Container",
+      "parentNodeId": "190:5410",
+      "css": [
+        "display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 286",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5414",
+      "layerName": "覆盖国家和地区来源",
+      "parentNodeId": "190:5413",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"SF Pro\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5415",
+      "layerName": "Container",
+      "parentNodeId": "190:5404",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 3 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 620",
+        "Copy width: 286",
+        "Copy height: 92",
+        "Copy distance to right container edge: 310",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5416",
+      "layerName": "Container",
+      "parentNodeId": "190:5415",
+      "css": [
+        "display: flex;padding: 0 65px;justify-content: center;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left padding: 65",
+        "Copy width: 156",
+        "Copy height: 56",
+        "Copy right padding: 65",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5417",
+      "layerName": "2-14",
+      "parentNodeId": "190:5416",
+      "css": [
+        "color: #52E8FF;text-align: center;font-family: \"SF Pro\";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5418",
+      "layerName": "Container",
+      "parentNodeId": "190:5415",
+      "css": [
+        "display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 286",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5419",
+      "layerName": "工作日预约响应参考",
+      "parentNodeId": "190:5418",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"SF Pro\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5420",
+      "layerName": "Container",
+      "parentNodeId": "190:5404",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 4 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 930",
+        "Copy width: 286",
+        "Copy height: 92",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5421",
+      "layerName": "Container",
+      "parentNodeId": "190:5420",
+      "css": [
+        "display: flex;padding: 0 86px;justify-content: center;align-items: center;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left padding: 86",
+        "Copy width: 114",
+        "Copy height: 56",
+        "Copy right padding: 86",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5422",
+      "layerName": "100%",
+      "parentNodeId": "190:5421",
+      "css": [
+        "color: #52E8FF;text-align: center;font-family: \"SF Pro\";font-size: 56px;font-style: normal;font-weight: 700;line-height: 56px; /* 100% */letter-spacing: 0.352px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #52E8FF"
+      ]
+    },
+    {
+      "nodeId": "190:5423",
+      "layerName": "Container",
+      "parentNodeId": "190:5420",
+      "css": [
+        "display: flex;width: 286px;padding-top: 16px;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 286",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5424",
+      "layerName": "费用就诊前书面预估",
+      "parentNodeId": "190:5423",
+      "css": [
+        "color: #FFF;text-align: center;font-family: \"SF Pro\";font-size: 14px;font-style: normal;font-weight: 400;line-height: 20px; /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5425",
+      "layerName": "Rectangle 11",
+      "parentNodeId": "190:5404",
+      "css": [
+        "width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;",
+        "position: absolute;left: 298px;top: 11px;",
+        "opacity: 0.1;background: #FFF;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 11",
+        "Copy distance to left container edge: 298",
+        "Copy width: 1",
+        "Copy height: 70",
+        "Copy distance to right container edge: 917",
+        "Copy distance to bottom container edge: 11",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Position, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5426",
+      "layerName": "Rectangle 12",
+      "parentNodeId": "190:5404",
+      "css": [
+        "width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;",
+        "position: absolute;right: 607px;top: 11px;",
+        "opacity: 0.1;background: #FFF;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 11",
+        "Copy distance to left container edge: 608",
+        "Copy width: 1",
+        "Copy height: 70",
+        "Copy distance to right container edge: 607",
+        "Copy distance to bottom container edge: 11",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Position, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5427",
+      "layerName": "Rectangle 13",
+      "parentNodeId": "190:5404",
+      "css": [
+        "width: 1px;height: 70px;grid-row: 0 / span 1;grid-column: 0 / span 1;",
+        "position: absolute;right: 298px;top: 11px;",
+        "opacity: 0.1;background: #FFF;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 11",
+        "Copy distance to left container edge: 917",
+        "Copy width: 1",
+        "Copy height: 70",
+        "Copy distance to right container edge: 298",
+        "Copy distance to bottom container edge: 11",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Position, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy #FFFFFF"
+      ]
+    },
+    {
+      "nodeId": "190:5428",
+      "layerName": "Frame 657",
+      "parentNodeId": "190:5301",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;gap: 10px;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 456",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy color/azure/34",
+        "Copy #9CA3AF",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5429",
+      "layerName": "Footer",
+      "parentNodeId": "190:5428",
+      "css": [
+        "display: flex;flex-direction: column;align-items: center;align-self: stretch;",
+        "background: #021D2E;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 456",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #021D2E",
+        "Copy color/text/white",
+        "Copy color/azure/34",
+        "Copy #9CA3AF",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5430",
+      "layerName": "Container",
+      "parentNodeId": "190:5429",
+      "css": [
+        "display: flex;width: 1280px;max-width: 1280px;padding: 64px var(--item-spacing-m, 32px);flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 64",
+        "Copy left padding: 32",
+        "Copy width: 1216",
+        "Copy height: 328",
+        "Copy right padding: 32",
+        "Copy bottom padding: 64",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy color/azure/34",
+        "Copy #9CA3AF",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5431",
+      "layerName": "Container",
+      "parentNodeId": "190:5430",
+      "css": [
+        "display: inline-grid;row-gap: 48px;column-gap: 48px;align-self: stretch;grid-template-rows:  247px;grid-template-columns:     268px 268px 268px 268px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 64",
+        "Copy parent left padding: 32",
+        "Copy width: 1216",
+        "Copy height: 247",
+        "Copy parent right padding: 32",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy #9CA3AF",
+        "Copy #2563EB",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5432",
+      "layerName": "Container",
+      "parentNodeId": "190:5431",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 1 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy distance to right container edge: 948",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy #2563EB",
+        "Copy #3B82F6",
+        "Copy #9CA3AF",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5433",
+      "layerName": "Link",
+      "parentNodeId": "190:5432",
+      "css": [
+        "display: flex;align-items: center;gap: var(--item-spacing-xs, 8px);align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 268",
+        "Copy height: 32",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy #2563EB",
+        "Copy #3B82F6"
+      ]
+    },
+    {
+      "nodeId": "190:5434",
+      "layerName": "Container",
+      "parentNodeId": "190:5433",
+      "css": [
+        "display: flex;width: 32px;height: 32px;justify-content: center;align-items: center;",
+        "border-radius: 10px;background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 10",
+        "Copy top right border radius: 10",
+        "Copy width: 32",
+        "Copy height: 32",
+        "Copy bottom left border radius: 10",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #3B82F6",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "190:5435",
+      "layerName": "寰",
+      "parentNodeId": "190:5434",
+      "css": [
+        "color: var(--color-text-white, #FFF);font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "190:5436",
+      "layerName": "Text",
+      "parentNodeId": "190:5433",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 8",
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "190:5437",
+      "layerName": "寰宇云医",
+      "parentNodeId": "190:5436",
+      "css": [
+        "color: var(--color-text-white, #FFF);font-family: \"SF Pro\";font-size: var(--font-size-18, 18px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-28, 28px); /* 155.556% */letter-spacing: -0.439px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "190:5438",
+      "layerName": "Paragraph",
+      "parentNodeId": "190:5432",
+      "css": [
+        "display: flex;width: 268px;height: 39px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 268",
+        "Copy height: 23",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5439",
+      "layerName": "全球患者来华就医首选平台",
+      "parentNodeId": "190:5438",
+      "css": [
+        "color: #D1D5DB;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-22_75, 22.75px); /* 162.5% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5440",
+      "layerName": "Paragraph",
+      "parentNodeId": "190:5432",
+      "css": [
+        "display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 12",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5441",
+      "layerName": "蚂蚁集团技术保障 × 好大夫94万医生",
+      "parentNodeId": "190:5440",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: 19.5px; /* 162.5% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5442",
+      "layerName": "Container",
+      "parentNodeId": "190:5431",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 2 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 316",
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy distance to right container edge: 632",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5443",
+      "layerName": "Heading 4",
+      "parentNodeId": "190:5442",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5444",
+      "layerName": "服务",
+      "parentNodeId": "190:5443",
+      "css": [
+        "color: #D1D5DB;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5445",
+      "layerName": "List",
+      "parentNodeId": "190:5442",
+      "css": [
+        "display: flex;width: 268px;height: 156px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 268",
+        "Copy height: 140",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5446",
+      "layerName": "List Item",
+      "parentNodeId": "190:5445",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5447",
+      "layerName": "疾病中心",
+      "parentNodeId": "190:5446",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5448",
+      "layerName": "List Item",
+      "parentNodeId": "190:5445",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5449",
+      "layerName": "费用对比",
+      "parentNodeId": "190:5448",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5450",
+      "layerName": "List Item",
+      "parentNodeId": "190:5445",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5451",
+      "layerName": "报告体验",
+      "parentNodeId": "190:5450",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5452",
+      "layerName": "List Item",
+      "parentNodeId": "190:5445",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5453",
+      "layerName": "签证办理",
+      "parentNodeId": "190:5452",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5454",
+      "layerName": "List Item",
+      "parentNodeId": "190:5445",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5455",
+      "layerName": "就医步骤",
+      "parentNodeId": "190:5454",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5456",
+      "layerName": "Container",
+      "parentNodeId": "190:5431",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 3 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 632",
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy distance to right container edge: 316",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5457",
+      "layerName": "Heading 4",
+      "parentNodeId": "190:5456",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5458",
+      "layerName": "资源",
+      "parentNodeId": "190:5457",
+      "css": [
+        "color: #D1D5DB;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5459",
+      "layerName": "List",
+      "parentNodeId": "190:5456",
+      "css": [
+        "display: flex;width: 268px;height: 126px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 268",
+        "Copy height: 110",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5460",
+      "layerName": "List Item",
+      "parentNodeId": "190:5459",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5461",
+      "layerName": "患者案例",
+      "parentNodeId": "190:5460",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5462",
+      "layerName": "List Item",
+      "parentNodeId": "190:5459",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5463",
+      "layerName": "保险指南",
+      "parentNodeId": "190:5462",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5464",
+      "layerName": "List Item",
+      "parentNodeId": "190:5459",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5465",
+      "layerName": "就医步骤",
+      "parentNodeId": "190:5464",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5466",
+      "layerName": "List Item",
+      "parentNodeId": "190:5459",
+      "css": [
+        "display: flex;width: 268px;height: 30px;padding-top: 10px;flex-direction: column;align-items: flex-start;flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 10",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5467",
+      "layerName": "关于我们",
+      "parentNodeId": "190:5466",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5468",
+      "layerName": "Container",
+      "parentNodeId": "190:5431",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;grid-row: 1 / span 1;grid-column: 4 / span 1;justify-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to left container edge: 948",
+        "Copy width: 268",
+        "Copy height: 247",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #9CA3AF",
+        "Copy #FFFFFF · 10%",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5469",
+      "layerName": "Heading 4",
+      "parentNodeId": "190:5468",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5470",
+      "layerName": "联系",
+      "parentNodeId": "190:5469",
+      "css": [
+        "color: #D1D5DB;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: 0.55px;text-transform: uppercase;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #D1D5DB"
+      ]
+    },
+    {
+      "nodeId": "190:5471",
+      "layerName": "List",
+      "parentNodeId": "190:5468",
+      "css": [
+        "display: flex;width: 268px;height: 227px;padding-top: 16px;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 16",
+        "Copy width: 268",
+        "Copy height: 211",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #9CA3AF",
+        "Copy #FFFFFF · 10%",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5472",
+      "layerName": "List Item",
+      "parentNodeId": "190:5471",
+      "css": [
+        "display: flex;align-items: center;gap: var(--item-spacing-xs, 8px);align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 16",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5473",
+      "layerName": "Icon",
+      "parentNodeId": "190:5472",
+      "css": [
+        "width: 16px;height: 16px;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M14.6673 4.66675L8.67332 8.48475C8.46991 8.60289 8.23888 8.66512 8.00365 8.66512C7.76843 8.66512 7.53739 8.60289 7.33398 8.48475L1.33398 4.66675\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M13.334 2.66675H2.66732C1.93094 2.66675 1.33398 3.2637 1.33398 4.00008V12.0001C1.33398 12.7365 1.93094 13.3334 2.66732 13.3334H13.334C14.0704 13.3334 14.6673 12.7365 14.6673 12.0001V4.00008C14.6673 3.2637 14.0704 2.66675 13.334 2.66675Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy right gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5474",
+      "layerName": "Vector",
+      "parentNodeId": "190:5473",
+      "css": [
+        "width: 13.333px;height: 3.998px;",
+        "stroke-width: 1.333px;stroke: #2563EB;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"6\" viewBox=\"0 0 15 6\" fill=\"none\"><path d=\"M13.9993 0.666748L8.00535 4.48475C7.80195 4.60289 7.57091 4.66512 7.33568 4.66512C7.10046 4.66512 6.86942 4.60289 6.66602 4.48475L0.666016 0.666748\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 4.67",
+        "Copy distance to left container edge: 1.33",
+        "Copy top border: 1.33",
+        "Copy left border: 1.33",
+        "Copy width: 13.3",
+        "Copy height: 4",
+        "Copy right border: 1.33",
+        "Copy bottom border: 1.33",
+        "Copy distance to right container edge: 1.33",
+        "Copy distance to bottom container edge: 7.33",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5475",
+      "layerName": "Vector",
+      "parentNodeId": "190:5473",
+      "css": [
+        "width: 13.333px;height: 10.667px;",
+        "stroke-width: 1.333px;stroke: #2563EB;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"12\" viewBox=\"0 0 15 12\" fill=\"none\"><path d=\"M12.666 0.666748H1.99935C1.26297 0.666748 0.666016 1.2637 0.666016 2.00008V10.0001C0.666016 10.7365 1.26297 11.3334 1.99935 11.3334H12.666C13.4024 11.3334 13.9993 10.7365 13.9993 10.0001V2.00008C13.9993 1.2637 13.4024 0.666748 12.666 0.666748Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 2.67",
+        "Copy distance to left container edge: 1.33",
+        "Copy top border: 1.33",
+        "Copy left border: 1.33",
+        "Copy width: 13.3",
+        "Copy height: 10.7",
+        "Copy right border: 1.33",
+        "Copy bottom border: 1.33",
+        "Copy distance to right container edge: 1.33",
+        "Copy distance to bottom container edge: 2.67",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5476",
+      "layerName": "Text",
+      "parentNodeId": "190:5472",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 8",
+        "Copy width: 175",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5477",
+      "layerName": "contact@huanyuyunyi.com",
+      "parentNodeId": "190:5476",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5478",
+      "layerName": "List Item",
+      "parentNodeId": "190:5471",
+      "css": [
+        "display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-xs, 8px);flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 12",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5479",
+      "layerName": "Icon",
+      "parentNodeId": "190:5478",
+      "css": [
+        "width: 16px;height: 16px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><g clip-path=\"url(#clip0_190_5479)\"><path d=\"M9.22198 11.0453C9.35967 11.1085 9.51479 11.1229 9.66178 11.0862C9.80877 11.0495 9.93887 10.9638 10.0307 10.8433L10.2673 10.5333C10.3915 10.3677 10.5526 10.2333 10.7377 10.1407C10.9228 10.0481 11.127 9.99992 11.334 9.99992H13.334C13.6876 9.99992 14.0267 10.1404 14.2768 10.3904C14.5268 10.6405 14.6673 10.9796 14.6673 11.3333V13.3333C14.6673 13.6869 14.5268 14.026 14.2768 14.2761C14.0267 14.5261 13.6876 14.6666 13.334 14.6666C10.1514 14.6666 7.09914 13.4023 4.8487 11.1519C2.59827 8.90143 1.33398 5.84918 1.33398 2.66659C1.33398 2.31296 1.47446 1.97382 1.72451 1.72378C1.97456 1.47373 2.3137 1.33325 2.66732 1.33325H4.66732C5.02094 1.33325 5.36008 1.47373 5.61013 1.72378C5.86018 1.97382 6.00065 2.31296 6.00065 2.66659V4.66659C6.00065 4.87358 5.95246 5.07773 5.85989 5.26287C5.76732 5.44801 5.63291 5.60906 5.46732 5.73325L5.15532 5.96725C5.03293 6.0607 4.94666 6.19364 4.91118 6.34349C4.87569 6.49333 4.89317 6.65084 4.96065 6.78925C5.87177 8.63983 7.37027 10.1365 9.22198 11.0453Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><defs><clipPath id=\"clip0_190_5479\"><rect width=\"16\" height=\"16\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy right gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5480",
+      "layerName": "Vector",
+      "parentNodeId": "190:5479",
+      "css": [
+        "width: 13.333px;height: 13.333px;",
+        "stroke-width: 1.333px;stroke: #2563EB;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M8.55402 10.3787C8.6917 10.442 8.84682 10.4564 8.99381 10.4197C9.1408 10.383 9.27091 10.2973 9.36268 10.1767L9.59935 9.86675C9.72355 9.70115 9.88459 9.56675 10.0697 9.47418C10.2549 9.38161 10.459 9.33341 10.666 9.33341H12.666C13.0196 9.33341 13.3588 9.47389 13.6088 9.72394C13.8589 9.97399 13.9993 10.3131 13.9993 10.6667V12.6667C13.9993 13.0204 13.8589 13.3595 13.6088 13.6096C13.3588 13.8596 13.0196 14.0001 12.666 14.0001C9.48342 14.0001 6.43117 12.7358 4.18073 10.4854C1.9303 8.23493 0.666016 5.18268 0.666016 2.00008C0.666016 1.64646 0.806491 1.30732 1.05654 1.05727C1.30659 0.807224 1.64573 0.666748 1.99935 0.666748H3.99935C4.35297 0.666748 4.69211 0.807224 4.94216 1.05727C5.19221 1.30732 5.33268 1.64646 5.33268 2.00008V4.00008C5.33268 4.20707 5.28449 4.41123 5.19192 4.59637C5.09935 4.78151 4.96494 4.94255 4.79935 5.06675L4.48735 5.30075C4.36496 5.3942 4.2787 5.52714 4.24321 5.67698C4.20772 5.82683 4.2252 5.98433 4.29268 6.12275C5.2038 7.97333 6.7023 9.46995 8.55402 10.3787Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.33",
+        "Copy distance to left container edge: 1.33",
+        "Copy top border: 1.33",
+        "Copy left border: 1.33",
+        "Copy width: 13.3",
+        "Copy height: 13.3",
+        "Copy right border: 1.33",
+        "Copy bottom border: 1.33",
+        "Copy distance to right container edge: 1.33",
+        "Copy distance to bottom container edge: 1.33",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5481",
+      "layerName": "Text",
+      "parentNodeId": "190:5478",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy left gap: 8",
+        "Copy width: 133",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5482",
+      "layerName": "+86 400-888-XXXX",
+      "parentNodeId": "190:5481",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5483",
+      "layerName": "List Item",
+      "parentNodeId": "190:5471",
+      "css": [
+        "display: flex;width: 268px;height: 32px;padding-top: var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-xs, 8px);flex-shrink: 0;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 12",
+        "Copy width: 268",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5484",
+      "layerName": "Icon",
+      "parentNodeId": "190:5483",
+      "css": [
+        "width: 16px;height: 16px;flex-shrink: 0;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><g clip-path=\"url(#clip0_190_5484)\"><path d=\"M2.05778 11.6726C2.11496 11.4128 2.09314 11.1419 1.99511 10.8946C1.31296 9.47926 1.15262 7.86845 1.54237 6.34638C1.93213 4.82432 2.84694 3.48882 4.12541 2.57552C5.40387 1.66221 6.96382 1.2298 8.53003 1.35456C10.0962 1.47932 11.5681 2.15324 12.6858 3.25742C13.8036 4.3616 14.4954 5.82509 14.6393 7.38966C14.7832 8.95423 14.3699 10.5193 13.4722 11.8089C12.5746 13.0984 11.2504 14.0295 9.73321 14.4378C8.21602 14.8461 6.60337 14.7054 5.17978 14.0406C4.94613 13.9519 4.69226 13.9307 4.44711 13.9793L2.17178 14.6446C2.06202 14.6738 1.94664 14.6744 1.83658 14.6464C1.72652 14.6184 1.62543 14.5628 1.54289 14.4848C1.46035 14.4068 1.39911 14.309 1.36496 14.2007C1.33082 14.0924 1.3249 13.9772 1.34778 13.866L2.05778 11.6726Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><defs><clipPath id=\"clip0_190_5484\"><rect width=\"16\" height=\"16\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy right gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5485",
+      "layerName": "Vector",
+      "parentNodeId": "190:5484",
+      "css": [
+        "width: 13.333px;height: 13.333px;",
+        "stroke-width: 1.333px;stroke: #2563EB;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M1.38981 11.0059C1.44699 10.7461 1.42517 10.4752 1.32714 10.2279C0.644989 8.81251 0.484647 7.2017 0.874405 5.67964C1.26416 4.15757 2.17898 2.82207 3.45744 1.90877C4.7359 0.995465 6.29585 0.563047 7.86206 0.687808C9.42828 0.81257 10.9001 1.48649 12.0179 2.59067C13.1356 3.69486 13.8275 5.15834 13.9713 6.72291C14.1152 8.28748 13.7019 9.8526 12.8043 11.1421C11.9067 12.4316 10.5824 13.3627 9.06524 13.771C7.54805 14.1793 5.9354 14.0387 4.51181 13.3739C4.27816 13.2852 4.02429 13.2639 3.77914 13.3125L1.50381 13.9779C1.39405 14.007 1.27867 14.0076 1.16861 13.9796C1.05855 13.9517 0.957457 13.8961 0.874921 13.8181C0.792385 13.7401 0.731139 13.6423 0.696993 13.534C0.662848 13.4257 0.656933 13.3104 0.67981 13.1992L1.38981 11.0059Z\" stroke=\"#2563EB\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.33",
+        "Copy distance to left container edge: 1.33",
+        "Copy top border: 1.33",
+        "Copy left border: 1.33",
+        "Copy width: 13.3",
+        "Copy height: 13.3",
+        "Copy right border: 1.33",
+        "Copy bottom border: 1.33",
+        "Copy distance to right container edge: 1.33",
+        "Copy distance to bottom container edge: 1.33",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5486",
+      "layerName": "Text",
+      "parentNodeId": "190:5483",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy left gap: 8",
+        "Copy width: 68",
+        "Copy height: 20",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5487",
+      "layerName": "WhatsApp",
+      "parentNodeId": "190:5486",
+      "css": [
+        "color: #9CA3AF;font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #9CA3AF"
+      ]
+    },
+    {
+      "nodeId": "190:5488",
+      "layerName": "List Item:margin",
+      "parentNodeId": "190:5471",
+      "css": [
+        "display: flex;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 12",
+        "Copy width: 268",
+        "Copy height: 115",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF · 10%",
+        "Copy #2563EB",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5489",
+      "layerName": "List Item",
+      "parentNodeId": "190:5488",
+      "css": [
+        "display: flex;padding-top: var(--item-spacing-12, 12px);flex-direction: column;align-items: flex-start;align-self: stretch;",
+        "border-top: 1px solid rgba(255, 255, 255, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy top border: 1",
+        "Copy top padding: 12",
+        "Copy width: 268",
+        "Copy height: 102",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF · 10%",
+        "Copy #FFFFFF · 10%",
+        "Copy #2563EB",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5490",
+      "layerName": "Paragraph",
+      "parentNodeId": "190:5489",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 12",
+        "Copy width: 268",
+        "Copy height: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5491",
+      "layerName": "24小时客服",
+      "parentNodeId": "190:5490",
+      "css": [
+        "color: #2563EB;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "190:5492",
+      "layerName": "Container:margin",
+      "parentNodeId": "190:5489",
+      "css": [
+        "display: flex;padding-top: var(--item-spacing-6, 6px);flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top padding: 6",
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280",
+        "Copy #FFFFFF · 10%"
+      ]
+    },
+    {
+      "nodeId": "190:5493",
+      "layerName": "Container",
+      "parentNodeId": "190:5492",
+      "css": [
+        "display: flex;width: 80px;height: 80px;justify-content: center;align-items: center;",
+        "border-radius: 10px;background: rgba(255, 255, 255, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy top left border radius: 10",
+        "Copy top right border radius: 10",
+        "Copy width: 80",
+        "Copy height: 80",
+        "Copy bottom left border radius: 10",
+        "Copy bottom right border radius: 10",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF · 10%",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5494",
+      "layerName": "扫码加微信",
+      "parentNodeId": "190:5493",
+      "css": [
+        "color: #6B7280;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5495",
+      "layerName": "Container:margin",
+      "parentNodeId": "190:5430",
+      "css": [
+        "display: flex;padding-top: var(--item-spacing-40, 40px);flex-direction: column;align-items: center;align-self: stretch;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent left padding: 32",
+        "Copy top padding: 40",
+        "Copy width: 1216",
+        "Copy height: 41",
+        "Copy parent right padding: 32",
+        "Copy parent bottom padding: 64",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy #6B7280",
+        "Copy #FFFFFF · 10%"
+      ]
+    },
+    {
+      "nodeId": "190:5496",
+      "layerName": "Container",
+      "parentNodeId": "190:5495",
+      "css": [
+        "display: flex;padding-top: var(--item-spacing-s, 24px);justify-content: space-between;align-items: center;align-self: stretch;",
+        "border-top: 1px solid rgba(255, 255, 255, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 40",
+        "Copy top border: 1",
+        "Copy top padding: 24",
+        "Copy width: 1216",
+        "Copy height: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #FFFFFF · 10%",
+        "Copy color/azure/34",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5497",
+      "layerName": "Paragraph",
+      "parentNodeId": "190:5496",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 24",
+        "Copy width: 254",
+        "Copy height: 16",
+        "Copy right gap: 12",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5498",
+      "layerName": "Copyright 2026 寰宇云医. All rights reserved.",
+      "parentNodeId": "190:5497",
+      "css": [
+        "color: #6B7280;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5499",
+      "layerName": "Container",
+      "parentNodeId": "190:5496",
+      "css": [
+        "display: flex;align-items: center;gap: 16px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 24",
+        "Copy left gap: 12",
+        "Copy width: 132",
+        "Copy height: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5500",
+      "layerName": "Link",
+      "parentNodeId": "190:5499",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5501",
+      "layerName": "隐私政策",
+      "parentNodeId": "190:5500",
+      "css": [
+        "color: #6B7280;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5502",
+      "layerName": "Text",
+      "parentNodeId": "190:5499",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy width: 4",
+        "Copy height: 16",
+        "Copy right gap: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "190:5503",
+      "layerName": "|",
+      "parentNodeId": "190:5502",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "190:5504",
+      "layerName": "Link",
+      "parentNodeId": "190:5499",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 16",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "190:5505",
+      "layerName": "服务条款",
+      "parentNodeId": "190:5504",
+      "css": [
+        "color: #6B7280;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1592",
+      "layerName": "Header",
+      "parentNodeId": "190:5301",
+      "css": [
+        "display: flex;width: 1440px;flex-direction: column;align-items: center;",
+        "position: absolute;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 1440",
+        "Copy height: 64",
+        "Copy distance to bottom container edge: 1758",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Position, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy color/text/white",
+        "Copy 1",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1593",
+      "layerName": "Container",
+      "parentNodeId": "484:1592",
+      "css": [
+        "display: flex;width: 1280px;height: 64px;max-width: 1280px;padding: 0 var(--item-spacing-m, 32px);justify-content: space-between;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left padding: 32",
+        "Copy width: 1216",
+        "Copy height: 64",
+        "Copy right padding: 32",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy color/text/white",
+        "Copy 1",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1594",
+      "layerName": "Link",
+      "parentNodeId": "484:1593",
+      "css": [
+        "display: flex;align-items: center;gap: var(--item-spacing-xs, 8px);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent left padding: 32",
+        "Copy width: 111",
+        "Copy height: 32",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy #1E3A5F",
+        "Copy #2563EB",
+        "Copy #3B82F6"
+      ]
+    },
+    {
+      "nodeId": "484:1595",
+      "layerName": "Container",
+      "parentNodeId": "484:1594",
+      "css": [
+        "display: flex;width: 32px;height: 32px;justify-content: center;align-items: center;",
+        "border-radius: 10px;background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 10",
+        "Copy top right border radius: 10",
+        "Copy width: 32",
+        "Copy height: 32",
+        "Copy bottom left border radius: 10",
+        "Copy bottom right border radius: 10",
+        "Copy right gap: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB",
+        "Copy #3B82F6",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1596",
+      "layerName": "寰",
+      "parentNodeId": "484:1595",
+      "css": [
+        "color: var(--color-text-white, #FFF);font-family: \"SF Pro\";font-size: var(--font-size-14, 14px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-20, 20px); /* 142.857% */letter-spacing: -0.15px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1597",
+      "layerName": "Text",
+      "parentNodeId": "484:1594",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 8",
+        "Copy width: 71",
+        "Copy height: 28",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "484:1598",
+      "layerName": "寰宇云医",
+      "parentNodeId": "484:1597",
+      "css": [
+        "color: #1E3A5F;font-family: \"SF Pro\";font-size: var(--font-size-18, 18px);font-style: normal;font-weight: var(--font-weight-700, 700);line-height: var(--line-height-28, 28px); /* 155.556% */letter-spacing: -0.439px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #1E3A5F"
+      ]
+    },
+    {
+      "nodeId": "484:1599",
+      "layerName": "Navigation",
+      "parentNodeId": "484:1593",
+      "css": [
+        "display: flex;align-items: center;gap: 2px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 817",
+        "Copy height: 28",
+        "Copy parent right padding: 32",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34",
+        "Copy color/text/white",
+        "Copy 1",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1600",
+      "layerName": "Link:margin",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding-right: var(--item-spacing-xs, 8px);align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy width: 80",
+        "Copy height: 28",
+        "Copy right padding: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white",
+        "Copy 1"
+      ]
+    },
+    {
+      "nodeId": "484:1601",
+      "layerName": "Link",
+      "parentNodeId": "484:1600",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) var(--item-spacing-12, 12px);align-items: center;gap: var(--item-spacing-6, 6px);",
+        "border-radius: 10px;background: var(--1, linear-gradient(90deg, #DD6B20 0%, #3B82F6 100%));box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy top left border radius: 10",
+        "Copy top right border radius: 10",
+        "Copy top padding: 6",
+        "Copy left padding: 12",
+        "Copy width: 56",
+        "Copy height: 16",
+        "Copy right padding: 12",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 10",
+        "Copy bottom right border radius: 10",
+        "Copy parent right padding: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy 1",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1602",
+      "layerName": "Icon",
+      "parentNodeId": "484:1601",
+      "css": [
+        "width: 14px;height: 14px;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><g clip-path=\"url(#clip0_484_1602)\"><path d=\"M1.79934 10.2135C1.84937 9.98618 1.83028 9.7491 1.7445 9.53274C1.14762 8.29429 1.00732 6.88483 1.34836 5.55302C1.6894 4.22122 2.48986 3.05266 3.60851 2.25352C4.72716 1.45438 6.09212 1.07601 7.46256 1.18518C8.83299 1.29434 10.1208 1.88402 11.0989 2.85018C12.0769 3.81634 12.6823 5.09689 12.8082 6.46589C12.9341 7.83489 12.5724 9.20437 11.787 10.3327C11.0016 11.461 9.84288 12.2757 8.51534 12.633C7.1878 12.9903 5.77673 12.8672 4.53109 12.2855C4.32664 12.2079 4.1045 12.1893 3.89 12.2318L1.89909 12.814C1.80305 12.8395 1.70209 12.84 1.60579 12.8155C1.50948 12.7911 1.42103 12.7424 1.34881 12.6741C1.27659 12.6059 1.223 12.5203 1.19312 12.4256C1.16324 12.3308 1.15807 12.23 1.17809 12.1327L1.79934 10.2135Z\" stroke=\"white\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><defs><clipPath id=\"clip0_484_1602\"><rect width=\"14\" height=\"14\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy parent left padding: 12",
+        "Copy right gap: 6",
+        "Copy parent bottom padding: 6",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1603",
+      "layerName": "Vector",
+      "parentNodeId": "484:1602",
+      "css": [
+        "width: 11.667px;height: 11.667px;",
+        "stroke-width: 1.167px;stroke: var(--color-text-white, #FFF);",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\"><path d=\"M1.2173 9.62999C1.26734 9.40268 1.24824 9.16561 1.16247 8.94924C0.565586 7.7108 0.425286 6.30133 0.766325 4.96953C1.10736 3.63772 1.90782 2.46916 3.02648 1.67002C4.14513 0.870879 5.51009 0.492514 6.88053 0.60168C8.25096 0.710846 9.53881 1.30053 10.5168 2.26669C11.4949 3.23285 12.1002 4.51339 12.2261 5.88239C12.352 7.25139 11.9904 8.62087 11.205 9.7492C10.4195 10.8775 9.26085 11.6922 7.93331 12.0495C6.60577 12.4068 5.1947 12.2837 3.94905 11.702C3.74461 11.6244 3.52247 11.6058 3.30797 11.6483L1.31705 12.2305C1.22101 12.256 1.12006 12.2565 1.02375 12.232C0.927451 12.2076 0.838996 12.1589 0.766777 12.0906C0.694557 12.0224 0.640968 11.9368 0.61109 11.8421C0.581212 11.7473 0.576037 11.6465 0.596054 11.5492L1.2173 9.62999Z\" stroke=\"white\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.17",
+        "Copy distance to left container edge: 1.17",
+        "Copy top border: 1.17",
+        "Copy left border: 1.17",
+        "Copy width: 11.7",
+        "Copy height: 11.7",
+        "Copy right border: 1.17",
+        "Copy bottom border: 1.17",
+        "Copy distance to right container edge: 1.17",
+        "Copy distance to bottom container edge: 1.17",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1604",
+      "layerName": "Text",
+      "parentNodeId": "484:1601",
+      "css": [
+        "display: flex;flex-direction: column;align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy left gap: 6",
+        "Copy width: 36",
+        "Copy height: 16",
+        "Copy parent right padding: 12",
+        "Copy parent bottom padding: 6",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1605",
+      "layerName": "问阿宁",
+      "parentNodeId": "484:1604",
+      "css": [
+        "color: var(--color-text-white, #FFF);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-600, 600);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy Primitives: Auto (Mode 1)",
+        "Copy Color: Auto (Mode 1)",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/text/white"
+      ]
+    },
+    {
+      "nodeId": "484:1606",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 24",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1607",
+      "layerName": "首页",
+      "parentNodeId": "484:1606",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"PingFang SC\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1608",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 84",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1609",
+      "layerName": "为什么选择中国",
+      "parentNodeId": "484:1608",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"PingFang SC\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1610",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 84",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1611",
+      "layerName": "信任与常见问题",
+      "parentNodeId": "484:1610",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"PingFang SC\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1612",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1613",
+      "layerName": "医疗服务",
+      "parentNodeId": "484:1612",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1614",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 24",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1615",
+      "layerName": "牙科",
+      "parentNodeId": "484:1614",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1616",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1617",
+      "layerName": "中国医院",
+      "parentNodeId": "484:1616",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1618",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;background: rgba(37, 99, 235, 0.10);"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB · 10%",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "484:1619",
+      "layerName": "患者案例",
+      "parentNodeId": "484:1618",
+      "css": [
+        "color: #2563EB;font-family: \"PingFang SC\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 600;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #2563EB"
+      ]
+    },
+    {
+      "nodeId": "484:1620",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1621",
+      "layerName": "保险指南",
+      "parentNodeId": "484:1620",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1622",
+      "layerName": "Link",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) 10px;flex-direction: column;align-items: flex-start;",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 10",
+        "Copy width: 48",
+        "Copy height: 16",
+        "Copy right padding: 10",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy right gap: 2",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1623",
+      "layerName": "关于我们",
+      "parentNodeId": "484:1622",
+      "css": [
+        "color: var(--color-azure-34, #4B5563);font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: 500;line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy color/azure/34"
+      ]
+    },
+    {
+      "nodeId": "484:1624",
+      "layerName": "Container:margin",
+      "parentNodeId": "484:1599",
+      "css": [
+        "display: flex;padding-left: var(--item-spacing-xs, 8px);align-items: flex-start;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy left gap: 2",
+        "Copy left padding: 8",
+        "Copy width: 65",
+        "Copy height: 28",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1625",
+      "layerName": "Button",
+      "parentNodeId": "484:1624",
+      "css": [
+        "display: flex;padding: var(--item-spacing-6, 6px) var(--item-spacing-xs, 8px);align-items: center;gap: var(--item-spacing-xxs, 4px);",
+        "border-radius: 8px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent left padding: 8",
+        "Copy top left border radius: 8",
+        "Copy top right border radius: 8",
+        "Copy top padding: 6",
+        "Copy left padding: 8",
+        "Copy width: 49",
+        "Copy height: 16",
+        "Copy right padding: 8",
+        "Copy bottom padding: 6",
+        "Copy bottom left border radius: 8",
+        "Copy bottom right border radius: 8",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1626",
+      "layerName": "Icon",
+      "parentNodeId": "484:1625",
+      "css": [
+        "width: 14px;height: 14px;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><g clip-path=\"url(#clip0_484_1626)\"><path d=\"M6.99935 12.8334C10.221 12.8334 12.8327 10.2217 12.8327 7.00008C12.8327 3.77842 10.221 1.16675 6.99935 1.16675C3.77769 1.16675 1.16602 3.77842 1.16602 7.00008C1.16602 10.2217 3.77769 12.8334 6.99935 12.8334Z\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M4.66602 7.00008C4.66602 4.82818 5.50149 2.7395 6.99935 1.16675C8.49721 2.7395 9.33268 4.82818 9.33268 7.00008C9.33268 9.17198 8.49721 11.2607 6.99935 12.8334C5.50149 11.2607 4.66602 9.17198 4.66602 7.00008Z\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M1.16602 7H12.8327\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><defs><clipPath id=\"clip0_484_1626\"><rect width=\"14\" height=\"14\" fill=\"white\"/></clipPath></defs></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy parent left padding: 8",
+        "Copy right gap: 4",
+        "Copy parent bottom padding: 6",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1627",
+      "layerName": "Vector",
+      "parentNodeId": "484:1626",
+      "css": [
+        "width: 11.667px;height: 11.667px;",
+        "stroke-width: 1.167px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\"><path d=\"M6.41732 12.2499C9.63898 12.2499 12.2507 9.63825 12.2507 6.41658C12.2507 3.19492 9.63898 0.583252 6.41732 0.583252C3.19566 0.583252 0.583984 3.19492 0.583984 6.41658C0.583984 9.63825 3.19566 12.2499 6.41732 12.2499Z\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.17",
+        "Copy distance to left container edge: 1.17",
+        "Copy top border: 1.17",
+        "Copy left border: 1.17",
+        "Copy width: 11.7",
+        "Copy height: 11.7",
+        "Copy right border: 1.17",
+        "Copy bottom border: 1.17",
+        "Copy distance to right container edge: 1.17",
+        "Copy distance to bottom container edge: 1.17",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1628",
+      "layerName": "Vector",
+      "parentNodeId": "484:1626",
+      "css": [
+        "width: 4.667px;height: 11.667px;",
+        "stroke-width: 1.167px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"13\" viewBox=\"0 0 6 13\" fill=\"none\"><path d=\"M0.583984 6.41658C0.583984 4.24468 1.41945 2.15601 2.91732 0.583252C4.41518 2.15601 5.25065 4.24468 5.25065 6.41658C5.25065 8.58849 4.41518 10.6772 2.91732 12.2499C1.41945 10.6772 0.583984 8.58849 0.583984 6.41658Z\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 1.17",
+        "Copy distance to left container edge: 4.67",
+        "Copy top border: 1.17",
+        "Copy left border: 1.17",
+        "Copy width: 4.67",
+        "Copy height: 11.7",
+        "Copy right border: 1.17",
+        "Copy bottom border: 1.17",
+        "Copy distance to right container edge: 4.67",
+        "Copy distance to bottom container edge: 1.17",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1629",
+      "layerName": "Vector",
+      "parentNodeId": "484:1626",
+      "css": [
+        "width: 11.667px;height: 0;",
+        "stroke-width: 1.167px;stroke: #6B7280;",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"13\" height=\"2\" viewBox=\"0 0 13 2\" fill=\"none\"><path d=\"M0.583984 0.583252H12.2507\" stroke=\"#6B7280\" stroke-width=\"1.16667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy distance to top container edge: 7",
+        "Copy distance to left container edge: 1.17",
+        "Copy top border: 1.17",
+        "Copy left border: 1.17",
+        "Copy width: 11.7",
+        "Copy height: 0",
+        "Copy right border: 1.17",
+        "Copy bottom border: 1.17",
+        "Copy distance to right container edge: 1.17",
+        "Copy distance to bottom container edge: 7",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy Style, press shift to copy all code",
+        "Copy SVG, press shift to copy all code",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1630",
+      "layerName": "Text",
+      "parentNodeId": "484:1625",
+      "css": [
+        "display: flex;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy left gap: 4",
+        "Copy width: 12",
+        "Copy height: 16",
+        "Copy right gap: 4",
+        "Copy parent bottom padding: 6",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1631",
+      "layerName": "🇨🇳",
+      "parentNodeId": "484:1630",
+      "css": [
+        "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: var(--font-size-12, 12px);font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 133.333% */"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1632",
+      "layerName": "Text",
+      "parentNodeId": "484:1625",
+      "css": [
+        "display: flex;flex-direction: column;align-items: center;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy parent top padding: 6",
+        "Copy left gap: 4",
+        "Copy width: 15",
+        "Copy height: 16",
+        "Copy parent right padding: 8",
+        "Copy parent bottom padding: 6",
+        "Copy box-sizing: border-box",
+        "Copy Layout, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    },
+    {
+      "nodeId": "484:1633",
+      "layerName": "ZH",
+      "parentNodeId": "484:1632",
+      "css": [
+        "color: #6B7280;text-align: center;font-family: \"SF Pro\";font-size: 10px;font-style: normal;font-weight: var(--font-weight-400, 400);line-height: var(--line-height-16, 16px); /* 160% */letter-spacing: 0.117px;"
+      ],
+      "properties": [
+        "Copy URL for selected layer",
+        "Copy Typography, press shift to copy all code",
+        "Copy z6ytgaxhvnpyw.ok.kimi.link: Auto (Mode 1)",
+        "Copy #6B7280"
+      ]
+    }
+  ]
+}

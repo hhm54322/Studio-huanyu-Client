@@ -1,0 +1,5426 @@
+{
+  "nodes": [
+    {
+      "nodeId": "144:4707",
+      "selector": ".hospital-page",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4708",
+      "selector": ".hospital-page",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4709",
+      "selector": ".hospital-page",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4710",
+      "selector": ".hospital-hero",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4711",
+      "selector": ".hospital-hero__content",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4712",
+      "selector": ".hospital-hero__copy",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4713",
+      "selector": ".hospital-hero__features",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4714",
+      "selector": ".hospital-hero__features>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4715",
+      "selector": ".hospital-hero__features>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4716",
+      "selector": ".hospital-hero__features>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-hero__features>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4717",
+      "selector": ".hospital-hero__features>span:nth-child(1)>.feature-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4718",
+      "selector": ".hospital-hero__features>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4719",
+      "selector": ".hospital-hero__features>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4720",
+      "selector": ".hospital-hero__features>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-hero__features>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4721",
+      "selector": ".hospital-hero__features>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-hero__features>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4722",
+      "selector": ".hospital-hero__features>span:nth-child(2)>.feature-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4723",
+      "selector": ".hospital-hero__features>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4724",
+      "selector": ".hospital-hero__features>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4725",
+      "selector": ".hospital-hero__features>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-hero__features>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4726",
+      "selector": ".hospital-hero__features>span:nth-child(3)>.feature-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4727",
+      "selector": ".hospital-hero h1",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4728",
+      "selector": ".hospital-hero h1",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4729",
+      "selector": ".hospital-hero p",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4730",
+      "selector": ".hospital-hero p",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4731",
+      "selector": ".hospital-directory",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4732",
+      "selector": ".city-tabs",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4733",
+      "selector": ".city-tabs>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4734",
+      "selector": ".city-tabs>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4735",
+      "selector": ".city-tabs>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4736",
+      "selector": ".city-tabs>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4737",
+      "selector": ".city-tabs>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4738",
+      "selector": ".city-tabs>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4739",
+      "selector": ".city-tabs>button:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4740",
+      "selector": ".city-tabs>button:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4741",
+      "selector": ".city-tabs>button:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4742",
+      "selector": ".city-tabs>button:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4743",
+      "selector": ".city-tabs>button:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4744",
+      "selector": ".city-tabs>button:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4745",
+      "selector": ".city-tabs>button:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4746",
+      "selector": ".city-tabs>button:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4747",
+      "selector": ".city-tabs>button:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4748",
+      "selector": ".hospital-grid",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4749",
+      "selector": ".hospital-grid>article:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4750",
+      "selector": ".hospital-grid>article:nth-child(1)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4751",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:4752",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-image",
+      "implementation": "Badge row consolidated; child coordinates retained"
+    },
+    {
+      "nodeId": "144:4753",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--jci",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4754",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--jci>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4755",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--jci>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-badge--jci>img"
+    },
+    {
+      "nodeId": "144:4756",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--jci>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-badge--jci>img"
+    },
+    {
+      "nodeId": "144:4757",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--jci>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4758",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4759",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4760",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4761",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4762",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4763",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4764",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4765",
+      "selector": ".hospital-grid>article:nth-child(1)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4766",
+      "selector": ".hospital-grid>article:nth-child(1) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4767",
+      "selector": ".hospital-grid>article:nth-child(1) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4768",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4769",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4770",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4771",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4772",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4773",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4774",
+      "selector": ".hospital-grid>article:nth-child(1) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4775",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4776",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4777",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4778",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4779",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4780",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4781",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4782",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4783",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4784",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4785",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4786",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4787",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4788",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4789",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4790",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4791",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4792",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4793",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4794",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4795",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4796",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4797",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4798",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4799",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4800",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4801",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4802",
+      "selector": ".hospital-grid>article:nth-child(1) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4803",
+      "selector": ".hospital-grid>article:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4804",
+      "selector": ".hospital-grid>article:nth-child(2)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4805",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:4806",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:4807",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4808",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4809",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4810",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4811",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4812",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4813",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4814",
+      "selector": ".hospital-grid>article:nth-child(2)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4815",
+      "selector": ".hospital-grid>article:nth-child(2) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4816",
+      "selector": ".hospital-grid>article:nth-child(2) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4817",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4818",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4819",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4820",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4821",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4822",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4823",
+      "selector": ".hospital-grid>article:nth-child(2) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4824",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4825",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4826",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4827",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4828",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4829",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4830",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4831",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4832",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4833",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4834",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4835",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4836",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4837",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4838",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4839",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4840",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4841",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4842",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4843",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4844",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4845",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4846",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4847",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4848",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4849",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4850",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4851",
+      "selector": ".hospital-grid>article:nth-child(2) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4852",
+      "selector": ".hospital-grid>article:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4853",
+      "selector": ".hospital-grid>article:nth-child(3)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4854",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:4855",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:4856",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4857",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4858",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4859",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4860",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4861",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4862",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4863",
+      "selector": ".hospital-grid>article:nth-child(3)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4864",
+      "selector": ".hospital-grid>article:nth-child(3) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4865",
+      "selector": ".hospital-grid>article:nth-child(3) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4866",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4867",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4868",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4869",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4870",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4871",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4872",
+      "selector": ".hospital-grid>article:nth-child(3) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4873",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4874",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4875",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4876",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4877",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4878",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4879",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4880",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4881",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4882",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4883",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4884",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4885",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4886",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4887",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4888",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4889",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4890",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4891",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4892",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4893",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4894",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4895",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4896",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4897",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4898",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4899",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4900",
+      "selector": ".hospital-grid>article:nth-child(3) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4901",
+      "selector": ".hospital-grid>article:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4902",
+      "selector": ".hospital-grid>article:nth-child(4)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4903",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:4904",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:4905",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4906",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4907",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4908",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4909",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4910",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4911",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4912",
+      "selector": ".hospital-grid>article:nth-child(4)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4913",
+      "selector": ".hospital-grid>article:nth-child(4) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4914",
+      "selector": ".hospital-grid>article:nth-child(4) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4915",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4916",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4917",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4918",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4919",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4920",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4921",
+      "selector": ".hospital-grid>article:nth-child(4) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4922",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4923",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4924",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4925",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4926",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4927",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4928",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4929",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4930",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4931",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4932",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4933",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4934",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4935",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4936",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4937",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4938",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4939",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4940",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4941",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4942",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4943",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4944",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4945",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4946",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4947",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4948",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4949",
+      "selector": ".hospital-grid>article:nth-child(4) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4950",
+      "selector": ".hospital-grid>article:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4951",
+      "selector": ".hospital-grid>article:nth-child(5)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4952",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:4953",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:4954",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-image",
+      "implementation": "Badge row consolidated; child coordinates retained"
+    },
+    {
+      "nodeId": "144:4955",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--jci",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4956",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--jci>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4957",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--jci>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-badge--jci>img"
+    },
+    {
+      "nodeId": "144:4958",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--jci>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-badge--jci>img"
+    },
+    {
+      "nodeId": "144:4959",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--jci>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4960",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4961",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4962",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4963",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4964",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4965",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:4966",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4967",
+      "selector": ".hospital-grid>article:nth-child(5)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4968",
+      "selector": ".hospital-grid>article:nth-child(5) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4969",
+      "selector": ".hospital-grid>article:nth-child(5) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4970",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4971",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4972",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4973",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4974",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4975",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4976",
+      "selector": ".hospital-grid>article:nth-child(5) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4977",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4978",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4979",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4980",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4981",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4982",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4983",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:4984",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4985",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4986",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4987",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4988",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4989",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4990",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:4991",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4992",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:4993",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:4994",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4995",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4996",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4997",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4998",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:4999",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5000",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5001",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5002",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5003",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5004",
+      "selector": ".hospital-grid>article:nth-child(5) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5005",
+      "selector": ".hospital-grid>article:nth-child(6)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5006",
+      "selector": ".hospital-grid>article:nth-child(6)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5007",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:5008",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-photo",
+      "implementation": "Consolidated layout/text in .hospital-grid>article:nth-child(6) .hospital-photo"
+    },
+    {
+      "nodeId": "144:5009",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:5010",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5011",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5012",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5013",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5014",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5015",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5016",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5017",
+      "selector": ".hospital-grid>article:nth-child(6)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5018",
+      "selector": ".hospital-grid>article:nth-child(6) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5019",
+      "selector": ".hospital-grid>article:nth-child(6) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5020",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5021",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5022",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5023",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5024",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5025",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5026",
+      "selector": ".hospital-grid>article:nth-child(6) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5027",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5028",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5029",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5030",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5031",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5032",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5033",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5034",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5035",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5036",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5037",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5038",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5039",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5040",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5041",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5042",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5043",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5044",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5045",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5046",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5047",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5048",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5049",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5050",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5051",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5052",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5053",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5054",
+      "selector": ".hospital-grid>article:nth-child(6) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5055",
+      "selector": ".hospital-grid>article:nth-child(7)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5056",
+      "selector": ".hospital-grid>article:nth-child(7)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5057",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:5058",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:5059",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5060",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5061",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5062",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5063",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5064",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5065",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5066",
+      "selector": ".hospital-grid>article:nth-child(7)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5067",
+      "selector": ".hospital-grid>article:nth-child(7) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5068",
+      "selector": ".hospital-grid>article:nth-child(7) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5069",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5070",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5071",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5072",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5073",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5074",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5075",
+      "selector": ".hospital-grid>article:nth-child(7) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5076",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5077",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5078",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5079",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5080",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5081",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5082",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5083",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5084",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5085",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5086",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5087",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5088",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5089",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5090",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5091",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5092",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5093",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5094",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5095",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5096",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5097",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5098",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5099",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5100",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5101",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5102",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5103",
+      "selector": ".hospital-grid>article:nth-child(7) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5104",
+      "selector": ".hospital-grid>article:nth-child(8)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5105",
+      "selector": ".hospital-grid>article:nth-child(8)>.hospital-image",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5106",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:5107",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-photo",
+      "implementation": "Figma image crop wrapper"
+    },
+    {
+      "nodeId": "144:5108",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-photo>img",
+      "implementation": "Original Figma photo"
+    },
+    {
+      "nodeId": "144:5109",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--type",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5110",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--type>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5111",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--location",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5112",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--location>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5113",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5114",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--location>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-badge--location>img"
+    },
+    {
+      "nodeId": "144:5115",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-badge--location>.badge-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5116",
+      "selector": ".hospital-grid>article:nth-child(8)>.hospital-body",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5117",
+      "selector": ".hospital-grid>article:nth-child(8) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5118",
+      "selector": ".hospital-grid>article:nth-child(8) h2",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5119",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5120",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5121",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(1)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5122",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5123",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(2)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5124",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5125",
+      "selector": ".hospital-grid>article:nth-child(8) .specialties>span:nth-child(3)>.specialty-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5126",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5127",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5128",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5129",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5130",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5131",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5132",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>img"
+    },
+    {
+      "nodeId": "144:5133",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(1)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5134",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5135",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5136",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5137",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5138",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5139",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>img"
+    },
+    {
+      "nodeId": "144:5140",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(2)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5141",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5142",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Figma SVG asset"
+    },
+    {
+      "nodeId": "144:5143",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5144",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5145",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5146",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5147",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img",
+      "implementation": "Exported vector primitive in .hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>img"
+    },
+    {
+      "nodeId": "144:5148",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-facts>span:nth-child(3)>.fact-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5149",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5150",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-actions>button:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5151",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-actions>button:nth-child(1)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5152",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-actions>button:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5153",
+      "selector": ".hospital-grid>article:nth-child(8) .hospital-actions>button:nth-child(2)>.button-label",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5154",
+      "selector": ".patient-footer",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5155",
+      "selector": ".patient-footer",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5156",
+      "selector": ".footer-top",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5157",
+      "selector": ".footer-intro",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5158",
+      "selector": ".footer-intro .brand-logo",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5159",
+      "selector": ".footer-intro .brand-logo__mark",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5160",
+      "selector": ".footer-intro .brand-logo__mark",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5161",
+      "selector": ".footer-intro .brand-logo__copy strong",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5162",
+      "selector": ".footer-intro .brand-logo__copy strong",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5163",
+      "selector": ".footer-intro p",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5164",
+      "selector": ".footer-intro p",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5165",
+      "selector": ".footer-intro>small",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5166",
+      "selector": ".footer-intro>small",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5167",
+      "selector": ".footer-column:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5168",
+      "selector": ".footer-column:nth-child(2) h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5169",
+      "selector": ".footer-column:nth-child(2) h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5170",
+      "selector": ".footer-column:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5171",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5172",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5173",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5174",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5175",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5176",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5177",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5178",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5179",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5180",
+      "selector": ".footer-column:nth-child(2)>a:nth-of-type(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5181",
+      "selector": ".footer-column:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5182",
+      "selector": ".footer-column:nth-child(3) h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5183",
+      "selector": ".footer-column:nth-child(3) h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5184",
+      "selector": ".footer-column:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5185",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5186",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5187",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5188",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5189",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5190",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5191",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5192",
+      "selector": ".footer-column:nth-child(3)>a:nth-of-type(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5193",
+      "selector": ".footer-contact",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5194",
+      "selector": ".footer-contact h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5195",
+      "selector": ".footer-contact h3",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5196",
+      "selector": ".footer-contact",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5197",
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5198",
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5199",
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5200",
+      "selector": ".footer-contact a:nth-of-type(1) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5201",
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5202",
+      "selector": ".footer-contact a:nth-of-type(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5203",
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5204",
+      "selector": ".footer-contact a:nth-of-type(2) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5205",
+      "selector": ".footer-contact a:nth-of-type(2) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5206",
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5207",
+      "selector": ".footer-contact a:nth-of-type(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5208",
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5209",
+      "selector": ".footer-contact a:nth-of-type(3) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5210",
+      "selector": ".footer-contact a:nth-of-type(3) img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5211",
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5212",
+      "selector": ".footer-contact a:nth-of-type(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5213",
+      "selector": ".footer-service",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5214",
+      "selector": ".footer-service",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5215",
+      "selector": ".footer-service b",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5216",
+      "selector": ".footer-service b",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5217",
+      "selector": ".footer-service i",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5218",
+      "selector": ".footer-service i",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5219",
+      "selector": ".footer-service i",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5220",
+      "selector": ".footer-bottom",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5221",
+      "selector": ".footer-bottom-row",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5222",
+      "selector": ".footer-bottom-row>span",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5223",
+      "selector": ".footer-bottom-row>span",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5224",
+      "selector": ".footer-bottom-row>div",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5225",
+      "selector": ".footer-bottom button:first-child",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5226",
+      "selector": ".footer-bottom button:first-child",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5227",
+      "selector": ".footer-separator",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5228",
+      "selector": ".footer-separator",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5229",
+      "selector": ".footer-bottom button:last-child",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "144:5230",
+      "selector": ".footer-bottom button:last-child",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1549",
+      "selector": ".patient-header",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1550",
+      "selector": ".header-inner",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1551",
+      "selector": ".header-logo",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1552",
+      "selector": ".header-logo .brand-logo__mark",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1553",
+      "selector": ".header-logo .brand-logo__mark",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1554",
+      "selector": ".header-logo .brand-logo__copy strong",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1555",
+      "selector": ".header-logo .brand-logo__copy strong",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1556",
+      "selector": ".desktop-nav",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1557",
+      "selector": ".ask-aning",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1558",
+      "selector": ".ask-aning",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1559",
+      "selector": ".ask-aning img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1560",
+      "selector": ".ask-aning img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1561",
+      "selector": ".ask-aning",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1562",
+      "selector": ".ask-aning",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1563",
+      "selector": ".desktop-nav>a:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1564",
+      "selector": ".desktop-nav>a:nth-child(1)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1565",
+      "selector": ".desktop-nav>a:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1566",
+      "selector": ".desktop-nav>a:nth-child(2)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1567",
+      "selector": ".desktop-nav>a:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1568",
+      "selector": ".desktop-nav>a:nth-child(3)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1569",
+      "selector": ".desktop-nav>a:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1570",
+      "selector": ".desktop-nav>a:nth-child(4)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1571",
+      "selector": ".desktop-nav>a:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1572",
+      "selector": ".desktop-nav>a:nth-child(5)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1573",
+      "selector": ".desktop-nav>a:nth-child(6)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1574",
+      "selector": ".desktop-nav>a:nth-child(6)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1575",
+      "selector": ".desktop-nav>a:nth-child(7)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1576",
+      "selector": ".desktop-nav>a:nth-child(7)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1577",
+      "selector": ".desktop-nav>a:nth-child(8)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1578",
+      "selector": ".desktop-nav>a:nth-child(8)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1579",
+      "selector": ".desktop-nav>a:nth-child(9)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1580",
+      "selector": ".desktop-nav>a:nth-child(9)",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1581",
+      "selector": ".header-actions",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1582",
+      "selector": ".language-button",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1583",
+      "selector": ".language-button img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1584",
+      "selector": ".language-button img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1585",
+      "selector": ".language-button img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1586",
+      "selector": ".language-button img",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1587",
+      "selector": ".language-flag",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1588",
+      "selector": ".language-flag",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1589",
+      "selector": ".language-button b",
+      "implementation": "DOM"
+    },
+    {
+      "nodeId": "484:1590",
+      "selector": ".language-button b",
+      "implementation": "DOM"
+    }
+  ],
+  "geometry": [
+    {
+      "nodeId": "144:4710",
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 460
+      },
+      "expected": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 460
+      }
+    },
+    {
+      "nodeId": "144:4711",
+      "actual": {
+        "x": 112,
+        "y": 141.5,
+        "width": 1216,
+        "height": 211
+      },
+      "expected": {
+        "x": 112,
+        "y": 141.5,
+        "width": 1216,
+        "height": 211
+      }
+    },
+    {
+      "nodeId": "144:4712",
+      "actual": {
+        "x": 112,
+        "y": 141.5,
+        "width": 644,
+        "height": 211
+      },
+      "expected": {
+        "x": 112,
+        "y": 141.5,
+        "width": 644,
+        "height": 211
+      }
+    },
+    {
+      "nodeId": "144:4713",
+      "actual": {
+        "x": 112,
+        "y": 141.5,
+        "width": 644,
+        "height": 38
+      },
+      "expected": {
+        "x": 112,
+        "y": 141.5,
+        "width": 644,
+        "height": 38
+      }
+    },
+    {
+      "nodeId": "144:4731",
+      "actual": {
+        "x": 0,
+        "y": 460,
+        "width": 1440,
+        "height": 1524
+      },
+      "expected": {
+        "x": 0,
+        "y": 460,
+        "width": 1440,
+        "height": 1524
+      }
+    },
+    {
+      "nodeId": "144:4732",
+      "actual": {
+        "x": 112,
+        "y": 556,
+        "width": 1216,
+        "height": 42
+      },
+      "expected": {
+        "x": 112,
+        "y": 556,
+        "width": 1216,
+        "height": 42
+      }
+    },
+    {
+      "nodeId": "144:4748",
+      "actual": {
+        "x": 112,
+        "y": 598,
+        "width": 1216,
+        "height": 1290
+      },
+      "expected": {
+        "x": 112,
+        "y": 598,
+        "width": 1216,
+        "height": 1290
+      }
+    },
+    {
+      "nodeId": "144:4749",
+      "actual": {
+        "x": 112,
+        "y": 646,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 112,
+        "y": 646,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:4803",
+      "actual": {
+        "x": 938.65625,
+        "y": 646,
+        "width": 389.34375,
+        "height": 398
+      },
+      "expected": {
+        "x": 938.6666870117188,
+        "y": 646,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:4852",
+      "actual": {
+        "x": 112,
+        "y": 1068,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 112,
+        "y": 1068,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:4901",
+      "actual": {
+        "x": 525.328125,
+        "y": 1068,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 525.3333435058594,
+        "y": 1068,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:4950",
+      "actual": {
+        "x": 938.65625,
+        "y": 1068,
+        "width": 389.34375,
+        "height": 398
+      },
+      "expected": {
+        "x": 938.6666870117188,
+        "y": 1068,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:5005",
+      "actual": {
+        "x": 112,
+        "y": 1490,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 112,
+        "y": 1490,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:5055",
+      "actual": {
+        "x": 525.328125,
+        "y": 1490,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 525.3333435058594,
+        "y": 1490,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    },
+    {
+      "nodeId": "144:5104",
+      "actual": {
+        "x": 525.328125,
+        "y": 646,
+        "width": 389.328125,
+        "height": 398
+      },
+      "expected": {
+        "x": 525.3333435058594,
+        "y": 646,
+        "width": 389.3333435058594,
+        "height": 398
+      }
+    }
+  ],
+  "typography": [
+    {
+      "nodeId": "144:4717",
+      "actual": {
+        "text": "专业团队",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "专业团队",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4722",
+      "actual": {
+        "text": "先进设备",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "先进设备",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4726",
+      "actual": {
+        "text": "权威认证",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "权威认证",
+        "fontSize": 14,
+        "lineHeight": 14,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4728",
+      "actual": {
+        "text": "中国顶尖国际医疗资源",
+        "fontSize": 64,
+        "lineHeight": 96,
+        "fontWeight": 600,
+        "color": "rgb(20, 49, 98)"
+      },
+      "expected": {
+        "text": "中国顶尖国际医疗资源",
+        "fontSize": 64,
+        "lineHeight": 96,
+        "fontWeight": 600,
+        "color": "rgb(20, 49, 98)"
+      }
+    },
+    {
+      "nodeId": "144:4730",
+      "actual": {
+        "text": "51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种",
+        "fontSize": 20,
+        "lineHeight": 29,
+        "fontWeight": 400,
+        "color": "rgb(91, 96, 106)"
+      },
+      "expected": {
+        "text": "51家涉外认证医院，覆盖肿瘤/心血管/神经/骨科/慢性病等全病种",
+        "fontSize": 20,
+        "lineHeight": 29,
+        "fontWeight": 400,
+        "color": "rgb(91, 96, 106)"
+      }
+    },
+    {
+      "nodeId": "144:4735",
+      "actual": {
+        "text": "全部",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "全部",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4738",
+      "actual": {
+        "text": "北京",
+        "fontSize": 16,
+        "lineHeight": 18,
+        "fontWeight": 500,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 16,
+        "lineHeight": 18,
+        "fontWeight": 500,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4741",
+      "actual": {
+        "text": "上海",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "上海",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4744",
+      "actual": {
+        "text": "广州",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "广州",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4747",
+      "actual": {
+        "text": "深圳",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "深圳",
+        "fontSize": 16,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4757",
+      "actual": {
+        "text": "JCI",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "JCI",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4759",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:4764",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4767",
+      "actual": {
+        "text": "北京协和医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 600,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北京协和医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 600,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:4770",
+      "actual": {
+        "text": "风湿免疫",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "风湿免疫",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4772",
+      "actual": {
+        "text": "内分泌科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "内分泌科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4774",
+      "actual": {
+        "text": "妇产科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "妇产科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4782",
+      "actual": {
+        "text": "1921",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1921",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4789",
+      "actual": {
+        "text": "2000床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "2000床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4797",
+      "actual": {
+        "text": "56科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "56科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4800",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4802",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4808",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:4813",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4816",
+      "actual": {
+        "text": "中国医学科学院肿瘤医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "中国医学科学院肿瘤医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:4819",
+      "actual": {
+        "text": "肺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "肺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4821",
+      "actual": {
+        "text": "乳腺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "乳腺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4823",
+      "actual": {
+        "text": "结直肠癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "结直肠癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4831",
+      "actual": {
+        "text": "1958",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1958",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4838",
+      "actual": {
+        "text": "2000床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "2000床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4846",
+      "actual": {
+        "text": "40科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "40科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4849",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4851",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4857",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:4862",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4865",
+      "actual": {
+        "text": "北京大学肿瘤医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北京大学肿瘤医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:4868",
+      "actual": {
+        "text": "胃癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "胃癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4870",
+      "actual": {
+        "text": "乳腺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "乳腺癌",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4872",
+      "actual": {
+        "text": "淋巴瘤",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "淋巴瘤",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4880",
+      "actual": {
+        "text": "1976",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1976",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4887",
+      "actual": {
+        "text": "1200床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1200床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4895",
+      "actual": {
+        "text": "28科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "28科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4898",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4900",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4906",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:4911",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4914",
+      "actual": {
+        "text": "北京大学人民医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北京大学人民医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:4917",
+      "actual": {
+        "text": "血液病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "血液病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4919",
+      "actual": {
+        "text": "骨关节病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "骨关节病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4921",
+      "actual": {
+        "text": "胸外科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "胸外科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4929",
+      "actual": {
+        "text": "1918",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1918",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4936",
+      "actual": {
+        "text": "1448床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1448床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4944",
+      "actual": {
+        "text": "52科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "52科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4947",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:4949",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4959",
+      "actual": {
+        "text": "JCI",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "JCI",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4961",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:4966",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:4969",
+      "actual": {
+        "text": "北医三院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北医三院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:4972",
+      "actual": {
+        "text": "生殖医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "生殖医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4974",
+      "actual": {
+        "text": "脊柱外科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "脊柱外科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4976",
+      "actual": {
+        "text": "运动医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "运动医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:4984",
+      "actual": {
+        "text": "1958",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1958",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4991",
+      "actual": {
+        "text": "1891床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1891床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:4999",
+      "actual": {
+        "text": "45科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "45科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5002",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:5004",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5011",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:5016",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5019",
+      "actual": {
+        "text": "中日友好医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "中日友好医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:5022",
+      "actual": {
+        "text": "呼吸与危重症",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "呼吸与危重症",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5024",
+      "actual": {
+        "text": "中西医结合",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "中西医结合",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5026",
+      "actual": {
+        "text": "疼痛医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "疼痛医学",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5034",
+      "actual": {
+        "text": "1984",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1984",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5041",
+      "actual": {
+        "text": "1610床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1610床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5049",
+      "actual": {
+        "text": "54科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "54科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5052",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:5054",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5060",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:5065",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5068",
+      "actual": {
+        "text": "北京安贞医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北京安贞医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 700,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:5071",
+      "actual": {
+        "text": "冠心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "冠心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5073",
+      "actual": {
+        "text": "心脏瓣膜病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "心脏瓣膜病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5075",
+      "actual": {
+        "text": "先心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "先心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5083",
+      "actual": {
+        "text": "1984",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1984",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5090",
+      "actual": {
+        "text": "1500床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1500床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5098",
+      "actual": {
+        "text": "34科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "34科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5101",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:5103",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5110",
+      "actual": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      },
+      "expected": {
+        "text": "三甲/公立",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(55, 65, 81)"
+      }
+    },
+    {
+      "nodeId": "144:5115",
+      "actual": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "北京",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5118",
+      "actual": {
+        "text": "北京阜外医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 600,
+        "color": "rgb(17, 24, 39)"
+      },
+      "expected": {
+        "text": "北京阜外医院",
+        "fontSize": 24,
+        "lineHeight": 36,
+        "fontWeight": 600,
+        "color": "rgb(17, 24, 39)"
+      }
+    },
+    {
+      "nodeId": "144:5121",
+      "actual": {
+        "text": "冠心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "冠心病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5123",
+      "actual": {
+        "text": "心脏瓣膜病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "心脏瓣膜病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5125",
+      "actual": {
+        "text": "先天性心脏病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "先天性心脏病",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5133",
+      "actual": {
+        "text": "1956",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1956",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5140",
+      "actual": {
+        "text": "1500床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "1500床",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5148",
+      "actual": {
+        "text": "36科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "36科室",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5151",
+      "actual": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "查看详情",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "144:5153",
+      "actual": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "预约咨询",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 510,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5160",
+      "actual": {
+        "text": "寰",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "寰",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5162",
+      "actual": {
+        "text": "寰宇云医",
+        "fontSize": 18,
+        "lineHeight": 28,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "寰宇云医",
+        "fontSize": 18,
+        "lineHeight": 28,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "144:5164",
+      "actual": {
+        "text": "全球患者来华就医首选平台",
+        "fontSize": 14,
+        "lineHeight": 22.75,
+        "fontWeight": 400,
+        "color": "rgb(209, 213, 219)"
+      },
+      "expected": {
+        "text": "全球患者来华就医首选平台",
+        "fontSize": 14,
+        "lineHeight": 22.75,
+        "fontWeight": 400,
+        "color": "rgb(209, 213, 219)"
+      }
+    },
+    {
+      "nodeId": "144:5166",
+      "actual": {
+        "text": "蚂蚁集团技术保障 × 好大夫94万医生",
+        "fontSize": 12,
+        "lineHeight": 19.5,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "蚂蚁集团技术保障 × 好大夫94万医生",
+        "fontSize": 12,
+        "lineHeight": 19.5,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5169",
+      "actual": {
+        "text": "服务",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      },
+      "expected": {
+        "text": "服务",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      }
+    },
+    {
+      "nodeId": "144:5172",
+      "actual": {
+        "text": "疾病中心",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "疾病中心",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5174",
+      "actual": {
+        "text": "费用对比",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "费用对比",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5176",
+      "actual": {
+        "text": "报告体验",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "报告体验",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5178",
+      "actual": {
+        "text": "签证办理",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "签证办理",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5180",
+      "actual": {
+        "text": "就医步骤",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "就医步骤",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5183",
+      "actual": {
+        "text": "资源",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      },
+      "expected": {
+        "text": "资源",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      }
+    },
+    {
+      "nodeId": "144:5186",
+      "actual": {
+        "text": "患者案例",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "患者案例",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5188",
+      "actual": {
+        "text": "保险指南",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "保险指南",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5190",
+      "actual": {
+        "text": "就医步骤",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "就医步骤",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5192",
+      "actual": {
+        "text": "关于我们",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "关于我们",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5195",
+      "actual": {
+        "text": "联系",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      },
+      "expected": {
+        "text": "联系",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 590,
+        "color": "rgb(209, 213, 219)"
+      }
+    },
+    {
+      "nodeId": "144:5202",
+      "actual": {
+        "text": "contact@huanyuyunyi.com",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "contact@huanyuyunyi.com",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5207",
+      "actual": {
+        "text": "+86 400-888-XXXX",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "+86 400-888-XXXX",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5212",
+      "actual": {
+        "text": "WhatsApp",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      },
+      "expected": {
+        "text": "WhatsApp",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 400,
+        "color": "rgb(156, 163, 175)"
+      }
+    },
+    {
+      "nodeId": "144:5216",
+      "actual": {
+        "text": "24小时客服",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "24小时客服",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "144:5219",
+      "actual": {
+        "text": "扫码加微信",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "扫码加微信",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5223",
+      "actual": {
+        "text": "Copyright 2026 寰宇云医. All rights reserved.",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "Copyright 2026 寰宇云医. All rights reserved.",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5226",
+      "actual": {
+        "text": "隐私政策",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "隐私政策",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "144:5228",
+      "actual": {
+        "text": "|",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "|",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "144:5230",
+      "actual": {
+        "text": "服务条款",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "服务条款",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "484:1553",
+      "actual": {
+        "text": "寰",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "寰",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "fontWeight": 700,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "484:1555",
+      "actual": {
+        "text": "寰宇云医",
+        "fontSize": 18,
+        "lineHeight": 28,
+        "fontWeight": 700,
+        "color": "rgb(30, 58, 95)"
+      },
+      "expected": {
+        "text": "寰宇云医",
+        "fontSize": 18,
+        "lineHeight": 28,
+        "fontWeight": 700,
+        "color": "rgb(30, 58, 95)"
+      }
+    },
+    {
+      "nodeId": "484:1562",
+      "actual": {
+        "text": "问阿宁 ",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 590,
+        "color": "rgb(255, 255, 255)"
+      },
+      "expected": {
+        "text": "问阿宁",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 590,
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "nodeId": "484:1564",
+      "actual": {
+        "text": "首页",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "首页",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1566",
+      "actual": {
+        "text": "为什么选择中国",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "为什么选择中国",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1568",
+      "actual": {
+        "text": "信任与常见问题",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "信任与常见问题",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 500,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1570",
+      "actual": {
+        "text": "医疗服务",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "医疗服务",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1572",
+      "actual": {
+        "text": "牙科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "牙科",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1574",
+      "actual": {
+        "text": "中国医院",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 600,
+        "color": "rgb(37, 99, 235)"
+      },
+      "expected": {
+        "text": "中国医院",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 600,
+        "color": "rgb(37, 99, 235)"
+      }
+    },
+    {
+      "nodeId": "484:1576",
+      "actual": {
+        "text": "患者案例",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "患者案例",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1578",
+      "actual": {
+        "text": "保险指南",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "保险指南",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1580",
+      "actual": {
+        "text": "关于我们",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      },
+      "expected": {
+        "text": "关于我们",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 510,
+        "color": "rgb(75, 85, 99)"
+      }
+    },
+    {
+      "nodeId": "484:1588",
+      "actual": {
+        "text": "🇨🇳",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "🇨🇳",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    },
+    {
+      "nodeId": "484:1590",
+      "actual": {
+        "text": "ZH",
+        "fontSize": 10,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      },
+      "expected": {
+        "text": "ZH",
+        "fontSize": 10,
+        "lineHeight": 16,
+        "fontWeight": 400,
+        "color": "rgb(107, 114, 128)"
+      }
+    }
+  ]
+}

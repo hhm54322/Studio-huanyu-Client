@@ -1,0 +1,44 @@
+{
+  "sourceFrame": "231:397",
+  "sourceSHA256": "f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb",
+  "nodeCount": 416,
+  "phase": "Figma Layers, native parameters, Dev Mode properties and node mapping locked before Vue integration",
+  "files": [
+    {
+      "name": "layers-2026-09-29.json",
+      "sha256": "4a1771255456af7c2bc983e50d485a5f3729af17392ba2be5653fe013d971d84"
+    },
+    {
+      "name": "dev-mode-2026-09-29.json",
+      "sha256": "baaa44ce9c977bb008ab9ea6ee4248a637f6dd28ce63ec4bf395a3b4515bf093"
+    },
+    {
+      "name": "native-inventory-2026-09-29.json",
+      "sha256": "a564eea19b76dd7420c8b0aa15f92a36c3e5d3067ce03c917d3b0b015223b853"
+    },
+    {
+      "name": "native-parameters-2026-09-29.json",
+      "sha256": "5457bf71053c42c3979d005780234898ff3c8614e53de415061e15ae1cf5a084"
+    },
+    {
+      "name": "native-image-paints-2026-09-29.json",
+      "sha256": "75f2437ef541f9f8631a04df0457ed26f7ff79c6834fa22bded8391e632b0083"
+    },
+    {
+      "name": "node-to-code-2026-09-29.json",
+      "sha256": "3a66177523da06c4c0f8480b7196477e509a0392a6de1da20f2f9dae9ff478c1"
+    },
+    {
+      "name": "source-frame-2026-09-29.html",
+      "sha256": "f8696de97a5124b89ab1bcabeff14f216295861066816479a0b9cc2ee2eb0ed9"
+    },
+    {
+      "name": "dev-styles-2026-09-29.css",
+      "sha256": "1b9770a812bf2a1ee7a3464f30abe9b95fc059959cf680e25ad315d68273c4f4"
+    },
+    {
+      "name": "node-to-code-2026-09-29.json",
+      "sha256": "3a66177523da06c4c0f8480b7196477e509a0392a6de1da20f2f9dae9ff478c1"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "sourceFrame": "231:88",
+  "assets": [
+    {
+      "nodeId": "231:91",
+      "imageHash": "95a7534f58ff374efc9bc43e522f01d1513d25a0",
+      "sha256": "b667c95e045a12c9550f7d169ced2114d3b96f3ac713e37f81adc060f1875d25",
+      "rendered": true,
+      "paint": {
+        "type": "IMAGE",
+        "opacity": 1,
+        "visible": true,
+        "blendMode": "NORMAL",
+        "transform": {
+          "m00": 1,
+          "m01": 0,
+          "m02": -5.685400594757084e-9,
+          "m10": 0,
+          "m11": 0.9583333134651184,
+          "m12": 0.020748978480696678
+        },
+        "image": {
+          "hash": [
+            149,
+            167,
+            83,
+            79,
+            88,
+            255,
+            55,
+            78,
+            252,
+            155,
+            196,
+            62,
+            82,
+            47,
+            1,
+            209,
+            81,
+            61,
+            37,
+            160
+          ],
+          "name": "ChatGPT Image 2026年9月18日 18_11_23"
+        },
+        "imageThumbnail": {
+          "hash": [
+            231,
+            128,
+            232,
+            220,
+            253,
+            15,
+            117,
+            171,
+            38,
+            219,
+            89,
+            95,
+            182,
+            107,
+            109,
+            46,
+            77,
+            94,
+            166,
+            116
+          ],
+          "name": "ChatGPT Image 2026年9月18日 18_11_23"
+        },
+        "animationFrame": 0,
+        "imageScaleMode": "STRETCH",
+        "imageShouldColorManage": true,
+        "rotation": 0,
+        "scale": 0.5,
+        "originalImageWidth": 2172,
+        "originalImageHeight": 724,
+        "thumbHash": [],
+        "altText": ""
+      },
+      "projectPath": "/public/images/figma/dental-source/node-231-91.webp",
+      "export": "Original Figma image pixels; lossless WebP"
+    }
+  ]
+}

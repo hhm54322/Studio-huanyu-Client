@@ -1,0 +1,141 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 5655,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "why-hero",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 757
+        },
+        {
+          "selector": "capability-section",
+          "x": 0,
+          "y": 757,
+          "width": 1440,
+          "height": 1416
+        },
+        {
+          "selector": "cost-section",
+          "x": 0,
+          "y": 2173,
+          "width": 1440,
+          "height": 957.25
+        },
+        {
+          "selector": "wait-section",
+          "x": 0,
+          "y": 3130.25,
+          "width": 1440,
+          "height": 552
+        },
+        {
+          "selector": "national-section",
+          "x": 0,
+          "y": 3682.25,
+          "width": 1440,
+          "height": 512
+        },
+        {
+          "selector": "stories-section",
+          "x": 0,
+          "y": 4194.25,
+          "width": 1440,
+          "height": 593
+        },
+        {
+          "selector": "why-cta",
+          "x": 0,
+          "y": 4787.25,
+          "width": 1440,
+          "height": 412
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 5199.25,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 8515,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "why-hero",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 680
+        },
+        {
+          "selector": "capability-section",
+          "x": 0,
+          "y": 680,
+          "width": 390,
+          "height": 2668
+        },
+        {
+          "selector": "cost-section",
+          "x": 0,
+          "y": 3348,
+          "width": 390,
+          "height": 1039.25
+        },
+        {
+          "selector": "wait-section",
+          "x": 0,
+          "y": 4387.25,
+          "width": 390,
+          "height": 1134
+        },
+        {
+          "selector": "national-section",
+          "x": 0,
+          "y": 5521.25,
+          "width": 390,
+          "height": 632
+        },
+        {
+          "selector": "stories-section",
+          "x": 0,
+          "y": 6153.25,
+          "width": 390,
+          "height": 1099
+        },
+        {
+          "selector": "why-cta",
+          "x": 0,
+          "y": 7252.25,
+          "width": 390,
+          "height": 484
+        },
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 7736.25,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "viewport-tiles"
+    },
+    {
+      "referenceHeight": 5656,
+      "localHeight": 5655,
+      "changedPixelRatio": 0.006370058890558847,
+      "comparison": "native-2x"
+    }
+  ],
+  "errors": []
+}

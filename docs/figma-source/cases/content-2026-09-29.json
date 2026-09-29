@@ -1,0 +1,373 @@
+{
+  "hero": {
+    "src": "/images/figma/case-source/node-190-5303.webp",
+    "paint": {
+      "type": "IMAGE",
+      "opacity": 1,
+      "visible": true,
+      "blendMode": "NORMAL",
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 0.8066858649253845,
+        "m12": 0.13683800399303436
+      },
+      "image": {
+        "hash": [
+          119,
+          217,
+          121,
+          115,
+          111,
+          27,
+          238,
+          186,
+          1,
+          238,
+          107,
+          223,
+          84,
+          141,
+          115,
+          28,
+          208,
+          224,
+          96,
+          193
+        ],
+        "name": "ChatGPT Image 2026年9月15日 16_22_33"
+      },
+      "imageThumbnail": {
+        "hash": [
+          4,
+          8,
+          168,
+          85,
+          43,
+          54,
+          42,
+          254,
+          211,
+          207,
+          9,
+          70,
+          118,
+          215,
+          180,
+          108,
+          1,
+          18,
+          146,
+          46
+        ],
+        "name": "ChatGPT Image 2026年9月15日 16_22_33"
+      },
+      "animationFrame": 0,
+      "imageScaleMode": "STRETCH",
+      "imageShouldColorManage": true,
+      "rotation": 0,
+      "scale": 0.5,
+      "originalImageWidth": 2048,
+      "originalImageHeight": 811,
+      "thumbHash": [],
+      "altText": ""
+    }
+  },
+  "summary": {
+    "src": "/images/figma/case-source/node-190-5402.webp",
+    "paint": {
+      "type": "IMAGE",
+      "opacity": 0.5,
+      "visible": true,
+      "blendMode": "NORMAL",
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "image": {
+        "hash": [
+          236,
+          146,
+          248,
+          147,
+          77,
+          47,
+          146,
+          240,
+          155,
+          146,
+          129,
+          222,
+          243,
+          92,
+          255,
+          95,
+          79,
+          243,
+          204,
+          53
+        ],
+        "name": "ChatGPT Image 2026年9月16日 14_14_09"
+      },
+      "imageThumbnail": {
+        "hash": [
+          109,
+          193,
+          67,
+          28,
+          31,
+          228,
+          251,
+          131,
+          36,
+          143,
+          90,
+          98,
+          198,
+          171,
+          145,
+          207,
+          73,
+          55,
+          207,
+          125
+        ],
+        "name": "ChatGPT Image 2026年9月16日 14_14_09"
+      },
+      "animationFrame": 0,
+      "imageScaleMode": "FILL",
+      "imageShouldColorManage": true,
+      "rotation": 0,
+      "scale": 0.5,
+      "originalImageWidth": 2172,
+      "originalImageHeight": 724,
+      "thumbHash": [],
+      "altText": ""
+    }
+  },
+  "cards": [
+    {
+      "nodeId": "190:5366",
+      "avatar": {
+        "src": "/images/figma/case-source/node-190-5368.webp",
+        "paint": {
+          "type": "IMAGE",
+          "opacity": 1,
+          "visible": true,
+          "blendMode": "NORMAL",
+          "transform": {
+            "m00": 1,
+            "m01": 0,
+            "m02": 0.0038076441269367933,
+            "m10": 0,
+            "m11": 0.740667998790741,
+            "m12": 0.032369110733270645
+          },
+          "image": {
+            "hash": [
+              20,
+              186,
+              149,
+              133,
+              158,
+              99,
+              48,
+              208,
+              32,
+              168,
+              226,
+              134,
+              120,
+              197,
+              42,
+              127,
+              13,
+              107,
+              217,
+              108
+            ],
+            "name": "02_意大利_61岁女"
+          },
+          "imageThumbnail": {
+            "hash": [
+              20,
+              186,
+              149,
+              133,
+              158,
+              99,
+              48,
+              208,
+              32,
+              168,
+              226,
+              134,
+              120,
+              197,
+              42,
+              127,
+              13,
+              107,
+              217,
+              108
+            ],
+            "name": "02_意大利_61岁女"
+          },
+          "animationFrame": 0,
+          "imageScaleMode": "STRETCH",
+          "imageShouldColorManage": true,
+          "rotation": 0,
+          "scale": 0.5,
+          "originalImageWidth": 377,
+          "originalImageHeight": 509,
+          "thumbHash": [],
+          "altText": ""
+        }
+      },
+      "name": "Maria S.",
+      "metadata": "东南亚 · 消化内科 · 多学科诊疗",
+      "title": "消化系统疑难疾病",
+      "rows": [
+        {
+          "nodeId": "190:5378",
+          "text": "患者背景：40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断"
+        },
+        {
+          "nodeId": "190:5380",
+          "text": "诊疗路径：远程会诊-到院检查-MDT讨论-制定方案"
+        },
+        {
+          "nodeId": "190:5382",
+          "text": "咨询到首诊：约 7 天 · 广州"
+        }
+      ],
+      "recommended": false
+    },
+    {
+      "nodeId": "190:5383",
+      "avatar": {
+        "src": "/images/figma/case-source/node-190-5385.webp",
+        "paint": {
+          "type": "IMAGE",
+          "opacity": 1,
+          "visible": true,
+          "blendMode": "NORMAL",
+          "transform": {
+            "m00": 1,
+            "m01": 0,
+            "m02": 0.0011389116989448667,
+            "m10": 0,
+            "m11": 0.7485265135765076,
+            "m12": 0.005785210058093071
+          },
+          "image": {
+            "hash": [
+              76,
+              249,
+              180,
+              123,
+              139,
+              248,
+              89,
+              104,
+              166,
+              0,
+              252,
+              67,
+              161,
+              65,
+              40,
+              4,
+              9,
+              249,
+              27,
+              0
+            ],
+            "name": "01_澳大利亚_52岁男"
+          },
+          "imageThumbnail": {
+            "hash": [
+              76,
+              249,
+              180,
+              123,
+              139,
+              248,
+              89,
+              104,
+              166,
+              0,
+              252,
+              67,
+              161,
+              65,
+              40,
+              4,
+              9,
+              249,
+              27,
+              0
+            ],
+            "name": "01_澳大利亚_52岁男"
+          },
+          "animationFrame": 0,
+          "imageScaleMode": "STRETCH",
+          "imageShouldColorManage": true,
+          "rotation": 0,
+          "scale": 0.5,
+          "originalImageWidth": 381,
+          "originalImageHeight": 509,
+          "thumbHash": [],
+          "altText": ""
+        }
+      },
+      "name": "James T.",
+      "metadata": "南亚 · 脊柱外科 · 手术治疗",
+      "title": "脊柱复杂病变",
+      "rows": [
+        {
+          "nodeId": "190:5397",
+          "text": "患者背景：:50+岁，男性，颈椎病变面临神经压迫险，多地评估手术险较高"
+        },
+        {
+          "nodeId": "190:5399",
+          "text": "诊疗路径：国际转诊-影像评估-手术方案-术后康复"
+        },
+        {
+          "nodeId": "190:5401",
+          "text": "咨询到手术：约 14 天 · 广州"
+        }
+      ],
+      "recommended": true
+    }
+  ],
+  "metrics": [
+    {
+      "nodeId": "190:5405",
+      "value": "500+",
+      "label": "已协助国际患者完成咨询"
+    },
+    {
+      "nodeId": "190:5410",
+      "value": "30+",
+      "label": "覆盖国家和地区来源"
+    },
+    {
+      "nodeId": "190:5415",
+      "value": "2-14",
+      "label": "工作日预约响应参考"
+    },
+    {
+      "nodeId": "190:5420",
+      "value": "100%",
+      "label": "费用就诊前书面预估"
+    }
+  ],
+  "hiddenHtml": "<div data-figma-node=\"190:5306\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:0px;top:0px;width:568px;height:38px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"190:5307\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:0px;top:0px;width:106px;height:38px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"190:5308\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:16px;top:12px;width:14px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;overflow:hidden;\"><div data-figma-node=\"190:5309\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:0.65625px;top:1.2906244993209839px;width:12.6875px;height:11.418750762939453px;box-sizing:border-box;letter-spacing:0;display:none;\"></div></div><div data-figma-node=\"190:5310\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:34px;top:12px;width:56px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;white-space:pre;\">真实案例</div></div><div data-figma-node=\"190:5311\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:116px;top:0px;width:106px;height:38px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"190:5312\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:16px;top:12px;width:14px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;overflow:hidden;\"><div data-figma-node=\"190:5313\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:0.5px;top:0.5px;width:13px;height:13px;box-sizing:border-box;letter-spacing:0;display:none;\"></div></div><div data-figma-node=\"190:5314\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:34px;top:12px;width:56px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;white-space:pre;\">国际患者</div></div><div data-figma-node=\"190:5315\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:232px;top:0px;width:106px;height:38px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"190:5316\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:16px;top:12px;width:14px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;overflow:hidden;\"><div data-figma-node=\"190:5317\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:1px;top:2px;width:12px;height:10px;box-sizing:border-box;letter-spacing:0;display:none;\"></div></div><div data-figma-node=\"190:5318\" style=\"display: flex;align-items: center;gap: 10px;align-self: stretch;;position:absolute;left:34px;top:12px;width:56px;height:14px;box-sizing:border-box;letter-spacing:0;display:none;white-space:pre;\">专业服务</div></div></div><div data-figma-node=\"221:6221\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:0px;top:58px;width:1216px;height:42px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"221:6222\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:0px;top:0px;width:98px;height:42px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"221:6223\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:25px;top:13px;width:32px;height:16px;box-sizing:border-box;letter-spacing:0;display:none;\"><div data-figma-node=\"221:6224\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:0px;top:0px;width:32px;height:16px;box-sizing:border-box;letter-spacing:0;display:none;white-space:pre;\">肿瘤</div></div><div data-figma-node=\"221:6225\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:65px;top:13px;width:16px;height:16px;box-sizing:border-box;letter-spacing:0;display:none;overflow:hidden;\"><div data-figma-node=\"221:6226\" style=\"display: flex;width: 1216px;align-items: flex-start;gap: 16px;;position:absolute;left:4px;top:4px;width:8px;height:8px;box-sizing:border-box;letter-spacing:0;display:none;\"></div></div></div></div>"
+}

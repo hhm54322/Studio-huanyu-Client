@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
-import { ArrowRight, Check, RotateCcw, Search, Sparkles } from 'lucide-vue-next'
+import { Check, Search } from 'lucide-vue-next'
 import CountUpNumber from '@/components/common/CountUpNumber.vue'
+import caseSource from '../../../docs/figma-source/cases/content-2026-09-29.json'
+
+const sourceCards = new Map(caseSource.cards.map((card, index) => [index + 1, card]))
+const sourceIcon = (session: number, node: number) => `/images/figma/case-source/node-${session}-${node}.svg`
+function avatarStyle(id: number) {
+  const t = sourceCards.get(id)!.avatar.paint.transform
+  return { width: `${100 / t.m00}%`, height: `${100 / t.m11}%`, left: `${-100 * t.m02 / t.m00}%`, top: `${-100 * t.m12 / t.m11}%` }
+}
 
 interface StoryCase {
   id: number
@@ -29,9 +37,9 @@ const storyCases: StoryCase[] = [
     duration: 7,
     title: '消化系统疑难疾病',
     background: '40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断',
-    path: '远程会诊 - 到院检查 - MDT讨论 - 制定方案',
+    path: '远程会诊-到院检查-MDT讨论-制定方案',
     timing: '咨询到首诊：约 7 天 · 广州',
-    image: '/images/figma/case-avatar-maria.png',
+    image: caseSource.cards[0]!.avatar.src,
     objectPosition: '50% 50%',
   },
   {
@@ -43,9 +51,9 @@ const storyCases: StoryCase[] = [
     duration: 14,
     title: '脊柱复杂病变',
     background: '50+岁，男性，颈椎病变面临神经压迫风险，多地评估手术风险较高',
-    path: '国际转诊 - 影像评估 - 手术方案 - 术后康复',
+    path: '国际转诊-影像评估-手术方案-术后康复',
     timing: '咨询到手术：约 14 天 · 广州',
-    image: '/images/figma/case-avatar-james.png',
+    image: caseSource.cards[1]!.avatar.src,
     objectPosition: '50% 50%',
     recommended: true,
   },
@@ -62,6 +70,7 @@ const draftFilters = reactive({ specialty: '', region: '', treatment: '', durati
 const activeFilters = reactive({ specialty: '', region: '', treatment: '', duration: '' })
 const matchOpen = ref(false)
 const matchApplied = ref(false)
+const filtersChanged = ref(false)
 const closeButton = ref<HTMLButtonElement | null>(null)
 const matcherDialog = ref<HTMLElement | null>(null)
 let matcherTrigger: HTMLElement | null = null
@@ -79,24 +88,35 @@ const filteredCases = computed(() => storyCases.filter((item) => {
 const canMatch = computed(() => Boolean(matcher.focus))
 
 function applyFilters() {
+  filtersChanged.value = true
   Object.assign(activeFilters, draftFilters)
   matchApplied.value = false
 }
 
 function resetFilters() {
+  filtersChanged.value = true
   Object.assign(draftFilters, { specialty: '', region: '', treatment: '', duration: '' })
   Object.assign(activeFilters, draftFilters)
   matchApplied.value = false
 }
 
-function openMatcher() {
-  matcherTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
+function openMatcher(event?: MouseEvent) {
+  const source = event?.currentTarget
+  matcherTrigger = source instanceof HTMLElement
+    ? source
+    : document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null
   matchOpen.value = true
 }
 
 function closeMatcher() {
   matchOpen.value = false
-  nextTick(() => matcherTrigger?.focus())
+  matcherTrigger?.focus({ preventScroll: true })
+}
+
+function restoreMatcherFocus() {
+  matcherTrigger?.focus({ preventScroll: true })
 }
 
 async function submitMatch() {
@@ -146,17 +166,18 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="case-page">
+    <div class="case-source-hidden" hidden v-html="caseSource.hiddenHtml" />
     <section class="case-hero">
       <div class="case-hero__shape" aria-hidden="true" />
       <div class="hy-container case-hero__content" data-reveal>
-        <span class="hy-kicker">PATIENT STORIES</span>
+        <div class="case-hero__copy">
         <h1>患者真实就医经历</h1>
         <p>按科室、来源地区、治疗类型筛选了解国际患者从咨询到康复的完整路径</p>
         <button class="case-match-button" type="button" @click="openMatcher">
-          <Sparkles class="h-5 w-5" />
-          开始智能匹配
-          <ArrowRight class="h-4 w-4" />
+          <img :src="sourceIcon(190, 5324)" alt="" />
+          <span class="button-label">开始智能匹配</span>
         </button>
+        </div>
       </div>
     </section>
 
@@ -166,33 +187,37 @@ onBeforeUnmount(() => {
           <label>
             <span>科室/病种</span>
             <select v-model="draftFilters.specialty">
-              <option value="">全部科室/病种</option>
+              <option value="">科室/病种</option>
               <option v-for="item in filterOptions.specialty" :key="item" :value="item">{{ item }}</option>
             </select>
+            <span class="filter-arrow"><img :src="sourceIcon(221, 6196)" alt="" /></span>
           </label>
           <label>
             <span>来源地区</span>
             <select v-model="draftFilters.region">
-              <option value="">全部来源地区</option>
+              <option value="">来源地区</option>
               <option v-for="item in filterOptions.region" :key="item" :value="item">{{ item }}</option>
             </select>
+            <span class="filter-arrow"><img :src="sourceIcon(221, 6201)" alt="" /></span>
           </label>
           <label>
             <span>治疗类型</span>
             <select v-model="draftFilters.treatment">
-              <option value="">全部治疗类型</option>
+              <option value="">治疗类型</option>
               <option v-for="item in filterOptions.treatment" :key="item" :value="item">{{ item }}</option>
             </select>
+            <span class="filter-arrow"><img :src="sourceIcon(221, 6206)" alt="" /></span>
           </label>
           <label>
             <span>就诊时长</span>
             <select v-model="draftFilters.duration">
-              <option value="">全部就诊时长</option>
+              <option value="">就诊时长</option>
               <option v-for="item in filterOptions.duration" :key="item" :value="item">{{ item }}</option>
             </select>
+            <span class="filter-arrow"><img :src="sourceIcon(221, 6211)" alt="" /></span>
           </label>
-          <button class="case-filter-submit" type="submit"><Search class="h-4 w-4" />筛选</button>
-          <button class="case-filter-reset" type="button" @click="resetFilters"><RotateCcw class="h-4 w-4" />重置</button>
+          <button class="case-filter-submit" type="submit"><img :src="sourceIcon(221, 6214)" alt="" /><span class="button-label">筛选</span></button>
+          <button class="case-filter-reset" type="button" @click="resetFilters"><img :src="sourceIcon(221, 6218)" alt="" /><span class="button-label">重置</span></button>
         </form>
 
         <Transition name="match-note">
@@ -208,17 +233,19 @@ onBeforeUnmount(() => {
             v-for="(item, index) in filteredCases"
             :key="item.id"
             data-reveal
+            :class="{ 'is-visible': filtersChanged }"
+            :data-figma-node="sourceCards.get(item.id)?.nodeId"
             :style="{ '--reveal-delay': `${index * 90}ms` }"
           >
             <header>
               <div class="case-avatar">
-                <img :src="item.image" :alt="`${item.name} 匿名患者头像`" :style="{ objectPosition: item.objectPosition }" />
+                <img :src="item.image" :alt="`${item.name} 匿名患者头像`" :style="avatarStyle(item.id)" />
               </div>
-              <div>
+              <div class="case-identity">
                 <h2>{{ item.name }}</h2>
                 <p>{{ item.region }} · {{ item.specialty }} · {{ item.treatment }}</p>
               </div>
-              <span v-if="item.recommended">为您推荐</span>
+              <span v-if="item.recommended" class="case-recommendation">为您推荐</span>
             </header>
             <div class="case-card__body">
               <h3>{{ item.title }}</h3>
@@ -242,16 +269,16 @@ onBeforeUnmount(() => {
 
     <section class="case-summary" aria-label="服务数据">
       <div class="hy-container">
-        <div><CountUpNumber value="500+" /><span>已协助国际患者完成咨询</span></div>
-        <div><CountUpNumber value="30+" /><span>覆盖国家和地区来源</span></div>
-        <div><CountUpNumber value="2-14" /><span>工作日预约响应参考</span></div>
-        <div><CountUpNumber value="100%" /><span>费用就诊前书面预估</span></div>
+        <div v-for="metric in caseSource.metrics" :key="metric.nodeId" class="summary-metric">
+          <CountUpNumber :value="metric.value" /><span>{{ metric.label }}</span>
+        </div>
+        <i v-for="index in 3" :key="index" class="summary-divider" aria-hidden="true" />
       </div>
     </section>
 
     <Teleport to="body">
-      <Transition name="matcher">
-        <div v-if="matchOpen" class="matcher-backdrop" @mousedown.self="closeMatcher">
+      <Transition name="matcher" @after-leave="restoreMatcherFocus">
+        <div v-if="matchOpen" class="matcher-backdrop" @mousedown.self.prevent="closeMatcher">
           <section ref="matcherDialog" class="matcher-dialog" role="dialog" aria-modal="true" aria-labelledby="matcher-title">
             <header>
               <div>
@@ -270,6 +297,7 @@ onBeforeUnmount(() => {
                     :key="item"
                     type="button"
                     :class="{ active: matcher.focus === item }"
+                    :aria-pressed="matcher.focus === item"
                     @click="matcher.focus = item"
                   >{{ item }}</button>
                 </div>
@@ -284,6 +312,7 @@ onBeforeUnmount(() => {
                     :key="item"
                     type="button"
                     :class="{ active: matcher.age === item }"
+                    :aria-pressed="matcher.age === item"
                     @click="matcher.age = item"
                   >{{ item }}</button>
                 </div>
@@ -298,6 +327,7 @@ onBeforeUnmount(() => {
                     :key="item"
                     type="button"
                     :class="{ active: matcher.timing === item }"
+                    :aria-pressed="matcher.timing === item"
                     @click="matcher.timing = item"
                   >{{ item }}</button>
                 </div>
@@ -467,6 +497,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   border-radius: 24px;
+  box-shadow: none;
 }
 .matcher-dialog > header {
   position: relative;
@@ -481,7 +512,8 @@ onBeforeUnmount(() => {
   font-size: 32px;
   line-height: 32px;
   font-weight: 600;
-  letter-spacing: .4px;
+  font-family: "PingFang SC", sans-serif;
+  letter-spacing: 0;
   text-align: left;
 }
 .matcher-dialog > header > button {
@@ -516,20 +548,20 @@ onBeforeUnmount(() => {
   border-top: 0;
 }
 .matcher-dialog legend {
-  gap: 9px;
-  color: #203b55;
-  font-size: 24px;
-  line-height: 24px;
+  gap: 8px;
+  color: #1e3a5f;
+  font: 600 24px/24px "PingFang SC", sans-serif;
 }
+.matcher-dialog legend b { background: #dd6b20; font: 700 12px/16px "SF Pro", -apple-system, sans-serif; }
+.matcher-dialog legend em { color: #d0021b; }
 .matcher-dialog fieldset > p {
   margin: 12px 0 0 32px;
   color: #6b7280;
-  font-size: 14px;
-  line-height: 22px;
+  font: 400 14px/22px "PingFang SC", sans-serif;
 }
 .matcher-options,
 .matcher-options--wide {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 24px;
   margin-top: 24px;
   margin-left: 32px;
@@ -547,7 +579,7 @@ onBeforeUnmount(() => {
   outline-offset: -2px;
   background: #f9fafb;
   color: #4b5563;
-  font-size: 16px;
+  font: 400 16px/16px "SF Pro", -apple-system, "PingFang SC", sans-serif;
 }
 .matcher-options button.active {
   outline-color: #2563eb;
@@ -573,7 +605,7 @@ onBeforeUnmount(() => {
   border-radius: 14px;
   padding: 16px 24px;
   background: #dd6b20;
-  font-size: 16px;
+  font: 600 16px/16px "PingFang SC", sans-serif;
 }
 .matcher-dialog > footer button:disabled {
   opacity: 1;
@@ -834,5 +866,118 @@ onBeforeUnmount(() => {
     overflow: visible;
     clip-path: none;
   }
+}
+/* Locked source frame 190:5300, copied after the complete node inventory. */
+.case-page { font-family: "SF Pro", -apple-system, "PingFang SC", sans-serif; }
+.case-hero { padding: 0; }
+.case-hero::before { inset: 0; background: url('/images/figma/case-source/node-190-5303.webp') lightgray 0 -78.03px / 100% 123.964% no-repeat; }
+.case-hero__content {
+  position: relative;
+  inset: auto;
+  display: flex;
+  width: min(1216px, calc(100% - 64px)) !important;
+  height: 235px;
+  margin: 129.5px auto 0;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+.case-hero__content > :not(.case-match-button) { visibility: visible; }
+.case-hero__copy { display: flex; width: 568px; flex-direction: column; align-items: flex-start; gap: 24px; }
+.case-hero h1 { width: 515px; max-width: none; margin: 0; color: #143162; font: 600 64px/96px "PingFang SC", sans-serif; white-space: nowrap; letter-spacing: 0; }
+.case-hero p { width: 627px; max-width: none; margin: 0; color: #5b606a; font: 400 20px/29px "PingFang SC", sans-serif; white-space: nowrap; }
+.case-hero__content .case-match-button {
+  position: static;
+  top: auto;
+  left: auto;
+  display: inline-flex;
+  width: 199px;
+  height: 62px;
+  min-height: 0;
+  margin: 0;
+  padding: 16px 24px;
+  gap: 8px;
+  opacity: 1;
+  border-radius: 14px;
+  background: #1e3a5f;
+  box-shadow: 0 4px 6px -4px rgba(0,0,0,.1);
+  font: 600 20px/30px "PingFang SC", sans-serif;
+  white-space: nowrap;
+}
+.case-match-button > img { width: 24px; height: 24px; flex: none; }
+.case-filters { display: grid; grid-template-columns: repeat(4, 220px) 104px 106px; gap: 16px; }
+.case-filters > label { position: relative; height: 42px; }
+.case-filters label > span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.case-filters select { appearance: none; height: 42px; border: 1px solid #dbdee6; border-radius: 10px; padding: 1px 38px 1px 16px; color: #9ca3af; background: #fff; font: 400 16px/16px "PingFang SC", sans-serif; }
+.case-filters label > .filter-arrow { position: absolute; right: 16px; top: 1.75px; display: flex; width: 20px; height: 38.5px; align-items: center; justify-content: center; pointer-events: none; }
+.filter-arrow img { display: block; width: 10px; height: 6px; }
+.case-filter-submit, .case-filter-reset { height: 42px; min-width: 0; gap: 8px; border-radius: 14px; padding: 16px 24px; font: 500 16px/16px "PingFang SC", sans-serif; }
+.case-filter-submit { border: 0; background: #dd6b20; }
+.case-filter-reset { border: 1px solid #dbdee6; color: #6b7280; background: transparent; box-shadow: 0 4px 6px -4px rgba(0,0,0,.1); }
+.case-filter-submit > img, .case-filter-reset > img { width: 16px; height: 16px; flex: none; }
+.case-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding-top: 48px; }
+.case-grid article { position: relative; height: 340px; padding: 24px; border: 0; border-radius: 24px; background: #f5f6f7; }
+.case-grid header { position: static; width: 220.398px; gap: 12px; height: 60px; padding: 0; align-items: center; }
+.case-avatar { position: relative; width: 60px; height: 60px; border: 0; border-radius: 16px; box-shadow: none; }
+.case-avatar img { position: absolute; object-fit: fill; transform: none; }
+.case-identity { display: flex; width: 148.398px; flex-direction: column; gap: 8px; }
+.case-grid header h2 { margin: 0; color: #1e3a5f; font: 590 18px/18px "SF Pro", -apple-system, sans-serif; }
+.case-grid header p { margin: 0; color: #9ca3af; font: 400 14px/20px "PingFang SC", sans-serif; white-space: nowrap; }
+.case-grid header > .case-recommendation { position: absolute; top: 16px; right: 15.667px; display: block; width: 64px; height: 28px; margin: 0; padding: 8px; border-radius: 8px; background: #03956d; color: #fff; font: 500 12px/12px "PingFang SC", sans-serif; }
+.case-card__body { margin-top: 80px; padding: 0; }
+.case-card__body h3 { height: 40px; margin: 0 0 8px; padding-bottom: 16px; color: #1e3a5f; font: 500 24px/24px "PingFang SC", sans-serif; }
+.case-card__body dl { gap: 8px; }
+.case-card__body dl > div { display: block; color: #4b5563; font: 400 14px/22px "PingFang SC", sans-serif; }
+.case-card__body dt { display: inline; color: #1e3a5f; font-weight: 500; }
+.case-card__body dd { display: inline; }
+.case-summary { position: relative; background: #1e3a5f; }
+.case-summary::before { position: absolute; inset: 0; content: ''; background: url('/images/figma/case-source/node-190-5402.webp') center/cover no-repeat; opacity: .5; }
+.case-summary > .hy-container { position: relative; display: grid; width: min(1216px, calc(100% - 64px)) !important; height: 92px; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; overflow: visible; clip-path: none; }
+.case-summary .summary-metric { height: 92px; padding: 0; border: 0; text-align: center; }
+.case-summary strong { display: block; height: 56px; color: #52e8ff; font: 700 56px/56px "SF Pro", -apple-system, sans-serif; letter-spacing: .352px; white-space: nowrap; }
+.case-summary span { height: 36px; margin: 0; padding-top: 16px; color: #fff; font: 400 14px/20px "SF Pro", -apple-system, "PingFang SC", sans-serif; letter-spacing: -.15px; white-space: nowrap; }
+.summary-divider { position: absolute; top: 11px; width: 1px; height: 70px; background: rgba(255,255,255,.1); }
+.summary-divider:nth-of-type(1) { left: 298px; }
+.summary-divider:nth-of-type(2) { right: 607px; }
+.summary-divider:nth-of-type(3) { right: 298px; }
+@media (max-width: 1300px) {
+  .case-filters { grid-template-columns: repeat(4,minmax(0,1fr)) 104px 106px; }
+}
+@media (max-width: 1000px) {
+  .case-directory { height: auto; }
+  .case-filters { grid-template-columns: repeat(2,minmax(0,1fr)) 104px 106px; }
+  .case-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .summary-divider { display: none; }
+}
+@media (max-width: 650px) {
+  .case-hero { height: 620px; }
+  .case-hero::before { background-color: #eef7fc; background-position: 72% top; background-size: auto 350px; }
+  .case-hero__content { width: calc(100% - 32px) !important; height: auto; margin-top: 350px; }
+  .case-hero__copy { width: 100%; gap: 20px; }
+  .case-hero h1 { width: 100%; font-size: 38px; line-height: 49px; white-space: normal; text-wrap: balance; }
+  .case-hero p { width: 100%; font-size: 14px; line-height: 22px; white-space: normal; }
+  .case-hero__content .case-match-button { width: 199px; height: 62px; min-height: 0; margin: 0; font-size: 20px; }
+  .case-directory { height: auto; padding: 64px 0; }
+  .case-filters { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .case-filters select { font-size: 14px; }
+  .case-grid { grid-template-columns: 1fr; gap: 24px; padding-top: 32px; }
+  .case-grid article { height: auto; min-height: 340px; }
+  .case-identity { max-width: calc(100% - 72px); }
+  .case-grid header p { white-space: normal; }
+  .case-summary { height: auto; padding: 64px 0; }
+  .case-summary > .hy-container { width: calc(100% - 32px) !important; height: auto; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px 16px; }
+  .case-summary strong { font-size: 40px; }
+  .case-summary span { font-size: 12px; white-space: normal; }
+}
+@media (min-width: 651px) and (max-width: 920px) {
+  .matcher-backdrop { padding: 12px; }
+  .matcher-dialog { width: calc(100vw - 24px); height: auto; max-height: calc(100vh - 24px); }
+  .matcher-dialog__body { height: auto; max-height: calc(100vh - 205px); overflow-y: auto; }
+  .matcher-options, .matcher-options--wide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .matcher-dialog > footer { height: auto; }
+}
+@media (hover:none), (prefers-reduced-motion:reduce) {
+  .case-grid article:hover, .case-match-button:hover, .case-filter-submit:hover { transform: none; }
 }
 </style>

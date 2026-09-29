@@ -32,3 +32,51 @@ pnpm-debug.log*
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 vite.config.d.ts
+
+# Figma visual QA comparison runs (keep the canonical evidence directories;
+# historical iterations and temporary overlays are local review artifacts).
+docs/figma-verification/**/tmp/
+docs/figma-verification/**/2026-09-29-r*/
+docs/figma-verification/**/2026-09-29-full*/
+docs/figma-verification/**/2026-09-29-final/
+docs/figma-verification/**/2026-09-29-cost-r*/
+docs/figma-verification/**/2026-09-29-cost-final2/
+docs/figma-verification/**/2026-09-29-cost-final3/
+docs/figma-verification/about/2026-09-29/
+docs/figma-verification/cost/2026-09-29/
+docs/figma-verification/why/2026-09-29/
+docs/figma-verification/equipment/
+
+# One-off local comparison exports; canonical evidence is referenced by the
+# page specs and remains trackable.
+docs/figma-verification/cost/2026-09-29-cost-final4/frame-diff-*.png
+docs/figma-verification/cost/2026-09-29-cost-final4/figma-reference-1440.png
+docs/figma-verification/cost/2026-09-29-cost-final4/figma-section-*.png
+docs/figma-verification/cost/2026-09-29-cost-final4/local-section-*.png
+docs/figma-verification/cost/2026-09-29-cost-final4/overlay.png
+
+# Regenerable visual comparison products inside otherwise canonical runs.
+# Keep the baseline screenshots and JSON evidence referenced by the page specs.
+docs/figma-verification/**/diff*.png
+docs/figma-verification/**/*-diff.png
+docs/figma-verification/**/overlay*.png
+docs/figma-verification/**/*-overlay.png
+docs/figma-verification/**/figma-section-*.png
+docs/figma-verification/**/local-section-*.png
+docs/figma-verification/**/*-section-*.png
+docs/figma-verification/**/ref-*.png
+docs/figma-verification/**/chart-*.png
+docs/figma-verification/**/empty-*.png
+docs/figma-verification/**/hover-*.png
+docs/figma-verification/**/search-*.png
+docs/figma-verification/**/consult-*.png
+docs/figma-verification/**/detail-*.png
+docs/figma-verification/**/interaction-*.png
+docs/figma-verification/**/*-viewport.png
+docs/figma-verification/**/local-cta.png
+docs/figma-verification/**/local-faq.png
+docs/figma-verification/**/local-hero.png
+docs/figma-verification/**/local-tool.png
+
+# Superseded dated runs that are not referenced by any current page spec.
+docs/figma-verification/why-china/2026-09-28/
