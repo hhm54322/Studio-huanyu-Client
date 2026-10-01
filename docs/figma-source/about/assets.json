@@ -8,9 +8,23 @@
       "fit": "cover"
     },
     {
-      "nodeId": "484:2070",
-      "name": "Complex case active image",
-      "projectPath": "/public/images/figma/about-complex-knee.png",
+      "nodeId": "484:2523",
+      "name": "Complex case knee image",
+      "projectPath": "/public/images/figma/about-complex-knee.webp",
+      "fit": "cover",
+      "opacity": 0.15
+    },
+    {
+      "nodeId": "484:2557",
+      "name": "Complex case MRI image",
+      "projectPath": "/public/images/figma/about-complex-mri.webp",
+      "fit": "cover",
+      "opacity": 0.15
+    },
+    {
+      "nodeId": "484:2547",
+      "name": "Complex case care image shared with 484:2537",
+      "projectPath": "/public/images/figma/about-complex-care.webp",
       "fit": "cover",
       "opacity": 0.15
     },

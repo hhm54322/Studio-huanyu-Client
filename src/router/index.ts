@@ -22,13 +22,13 @@ const router = createRouter({
         {
           path: 'cost',
           name: 'patient-cost',
-          component: () => import('@/views/patient/CostGeneratedView.vue'),
+          redirect: { path: '/why-china', hash: '#cost-comparison' },
           meta: { title: '费用对比' },
         },
         {
           path: 'cost-generated',
           name: 'patient-cost-generated',
-          component: () => import('@/views/patient/CostGeneratedView.vue'),
+          redirect: { path: '/why-china', hash: '#cost-comparison' },
           meta: { title: '费用对比生成基线' },
         },
         {
@@ -102,6 +102,12 @@ const router = createRouter({
           name: 'patient-steps',
           component: () => import('@/views/patient/StepView.vue'),
           meta: { title: '就医步骤' },
+        },
+        {
+          path: 'steps/toolkit-detail',
+          name: 'patient-toolkit-detail',
+          component: () => import('@/views/patient/ToolkitDetailView.vue'),
+          meta: { title: '病历翻译与整理工具' },
         },
         {
           path: 'about',

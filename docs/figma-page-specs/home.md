@@ -48,6 +48,55 @@
 
 The complete recursive mapping is `docs/figma-source/home/node-to-code-2026-09-29.json`: 1103 source nodes, including 127 hidden nodes. `dev-mode-2026-09-29.json` contains the node-linked source properties. The table above is a section index, not a substitute for the complete mapping.
 
+### Added state-frame mappings
+
+| Figma Node ID | Figma layer name/type | Parent Node ID | Vue component/element | Dev Mode values copied | Asset/state notes |
+| --- | --- | --- | --- | --- | --- |
+| `143:4035` | `为什么来中国就医-01` frame | `143:45` | `.why-detail-modal` state 01 | `1440 x 1106`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:4220` | `为什么来中国就医-02` frame | `143:45` | `.why-detail-modal` state 02 | `1440 x 1068`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:4316` | `为什么来中国就医-03` frame | `143:45` | `.why-detail-modal` state 03 | `1440 x 1068`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:4084` | `为什么来中国就医-04` frame | `143:45` | `.why-detail-modal` state 04 | `1440 x 952`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:4127` | `为什么来中国就医-05` frame | `143:45` | `.why-detail-modal` state 05 | `1440 x 889`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:4167` | `为什么来中国就医-06` frame | `143:45` | `.why-detail-modal` state 06 | `1440 x 754`, white source frame copied into Vue DOM/CSS | no shipped bitmap; source frame is retained in Figma records |
+| `143:1150` | `我们的实力-02` frame | `143:45` | `.strength-layout__image` state 02 | `1440 x 699`, section source frame | `/public/images/figma/home-source/strength-02-art-exact.webp` |
+| `143:1170` | `我们的实力-03` frame | `143:45` | `.strength-layout__image` state 03 | `1440 x 699`, section source frame | `/public/images/figma/home-source/strength-03-art-exact.webp` |
+
+### Partner marquee correction (2026-09-30)
+
+- The previous `143:853` viewport bitmap included the side gradients and was not a valid looping asset.
+- The replacement baseline is `docs/figma-source/home/partners-baseline.html`; complete group/card/image geometry and image hashes are in `partners-parameters.json` (64 cards, 130 descendants). Native geometry is paired with the existing node-linked Dev Mode CSS, not inferred from screenshots.
+- `143:854` is rendered at `3546 x 472px`; a 24px inter-cycle gap continues the authored card spacing. Two 3570px tiles cover the viewport throughout the loop. Desktop origin is `-1002px` at 1440px viewport width.
+- `143:985` maps to `.partners-marquee::before`, and `143:986` maps to `::after`: fixed 160px gradient layers, `#F5F6F7`, with 25%/75% opaque stops. Neither layer moves with the logos.
+- The old child mappings to `.partners-marquee img:first-child` are retained as flattened-asset ownership; their actual parameters are now rendered in the full group asset instead of a cropped viewport screenshot.
+- Narrow screens use a 1440 x 472 crop of the same Figma group (`partners-mobile-track.webp`) at `viewport / 1440`, while desktop uses the complete 3546px group. Both resources are unfaded; repeating the old faded viewport asset is forbidden. GPU transforms and integer-pixel tile widths prevent subpixel loop seams. Hover pauses; reduced motion holds the Figma source position; the animation returns to an identical cycle boundary.
+- Release raster compression uses quality-90 WebP and a 2560px photo cap; alpha images and text/logo matrices keep native dimensions. Original Figma assets remain unchanged. Prebuild generates `.optimized.webp` companions and a manifest; Vite uses those actual existing public files before bundle hashing. Production uses independent WebP URLs because some CDN nodes ignore query strings on cached PNG URLs. Nginx also retains `Accept` negotiation and original-file fallback for legacy URLs.
+
+### Homepage interaction corrections (2026-09-30)
+
+- `143:128` advantage cards preserve the six-card Figma order and open a same-page detail dialog on the whole card. Hover/focus reveals `了解更多`, while click, Enter, and Space open the same state. Escape, backdrop click, focus trapping, and focus restoration are implemented.
+- `143:81` journey nodes `01` through `04` are rendered as one connected four-node track with the Figma 80px circles, 20px warm outline, and 185px dashed connectors. The restored flow section keeps the source copy and uses same-page smooth scrolling to `#process-stage-01` through `#process-stage-04`; the left rail then updates to the selected stage.
+- `143:827` strength content is a scroll-driven authored-state section. The section title remains fixed in the sticky frame; the left copy is a continuous vertical track of the three authored `596 x 380px` blocks, while the right artwork cross-fades at the three scroll ranges. Desktop uses the Octagos-style pinned reading stage; mobile releases the sticky frame and keeps all three text blocks readable; reduced motion removes the image transition while preserving the scroll sequence.
+- Evidence after this change: local desktop QA verified the six-card dialog, Escape close, four-node flow, and strength state transition at `http://127.0.0.1:5173/`. Build and `audit:figma` passed on 2026-10-01.
+- Flow restoration evidence (2026-10-01): `docs/figma-verification/home/2026-10-01-process/flow-desktop.png` and `flow-geometry.json`; `.home-flow` is `1440 x 516px`, each step is `285 x 176px`, and `scripts/home-interaction-qa.cjs` verifies all four click-to-stage scroll targets at desktop plus mobile overflow.
+
+### Advantage dialog DOM baseline (2026-10-01)
+
+- The six advantage dialogs are implemented as Vue DOM/CSS, not as exported board images. Figma source frames used for node/content verification are `为什么来中国就医-01` (`143:4035`, `1440 x 1106`), `-02` (`143:4220`, `1440 x 1068`), `-03` (`143:4316`, `1440 x 1068`), `-04` (`143:4084`, `1440 x 952`), `-05` (`143:4127`, `1440 x 889`), `-06` (`143:4167`, `1440 x 754`).
+- Shared frame parameters: `Container` overlay `rgba(0,0,0,.50)` + `backdrop-filter: blur(4px)`, centered white modal, 24px radius, 32px internal padding at desktop, and responsive scroll on mobile. Dialog states map to structured `whyDetails` records with explicit Figma copy, table rows, card layout and icon components.
+- State layouts: 01 `cards-2x2`; 02 `table-cards` with a five-row fee table and two cards; 03 `table-cards` with a five-row accompaniment table and two cards; 04 `wide-cards` with one wide card and two lower cards; 05 `wide-cards` with one wide card and two lower cards; 06 `cards-3` with three independent cards.
+- Figma panel measurements recorded from Dev Mode: all states use `896px` outer width, `32px` panel padding and `24px` radius. Inner content heights are 876px (01), 924px (02), 924px (03), 808px (04), 745px (05), and 432px (06); the implementation preserves these state-specific composition proportions while allowing viewport scrolling on small screens.
+- DOM screenshot evidence: `docs/figma-verification/home/2026-10-01-why-dom/why-01-desktop.png`, `why-02-desktop.png`, and `why-06-mobile.png`. The evidence checks the rendered DOM against the corresponding Figma source-frame composition; no `.why-detail-modal__source` image is present.
+- The strength section now has three authored states: main source `143:827`, state 02 `143:1150`, and state 03 `143:1170`. The source title container is `1216 x 79px`; the content container is `1216 x 380px` with `48px` top padding, two `596 x 380px` columns, and `24px` column gap. The left track is `596 x 1140px` (three consecutive `380px` blocks). State 01 text nodes are `143:836`/`143:837` and `143:838`/`143:840`; state 02 and 03 repeat the same authored hierarchy in their own source frames. The right artwork node is `143:842` (`596 x 409px`, `28px` radius); all three states use compressed Figma image exports in `/public/images/figma/home-source/strength-01-art-exact.webp`, `strength-02-art-exact.webp`, and `strength-03-art-exact.webp`.
+- Journey nodes are same-page anchors (`#why-overview`, `#data-section`, `#care-section`, `#home-cta`) and use smooth scrolling with hash updates. They no longer navigate to another route.
+- This correction supersedes the previous hand-authored dialog copy and route-link behavior. Verification evidence: `docs/figma-verification/home/2026-10-01-why-01-local.png`, `docs/figma-verification/home/2026-10-01-flow-anchor-local.png`; `scripts/home-interaction-qa.cjs` passed on 2026-10-01.
+
+### Strength scroll verification (2026-10-01)
+
+- Desktop frame evidence: `docs/figma-verification/home/2026-10-01-strength-01-frame.png`, `2026-10-01-strength-02-frame.png`, and `2026-10-01-strength-03-frame.png` at `1440 x 699px`.
+- Mobile evidence: `docs/figma-verification/home/2026-10-01-strength-390-final.png`; document width remains `390px` with all three text/image blocks readable.
+- Figma source comparisons measured normalized mean pixel error `0.95%` for 01 (the supplied 01 evidence crop), `0.51%` for 02, and `0.53%` for 03; the title and content coordinates remain fixed while the left track translates `0 -> 760px` and the right image cross-fades.
+- Remaining differences: none observed in the verified desktop/mobile states.
+
 ## Page Structure
 
 - `Body` (`143:46`): `1440px` fill x `8806px` hug.
@@ -91,7 +140,7 @@ Section heights total exactly `8350px`, matching `Main Content`.
 
 - Independent frames: `1440 x 754px`; copy parent `1280px`, max-width `1280px`, horizontal padding `32px`, gap `40px`; outer stage horizontal padding `80px`.
 - States 1/2: eyebrow padding `10px 16px`, gap `4px`, icon `14px`; heading/copy gap `24px`; title PingFang SC `52/52px`, 600, `#143162`; subtitle `18/18px`, 400, `#5B606A`.
-- State 1 CTA: `56px` height, `18px 24px` padding, `8px` gap, `14px` radius, `#1E3A5F`; obvious punctuation corrected from `提交病例.3分钟获取方案` to `提交病例 · 3分钟获取方案`.
+- State 1 CTA: `56px` height, `18px 24px` padding, `8px` gap, `14px` radius, `#1E3A5F`; source copy is `提交病例·3分钟获取方案`.
 - State 2 has no CTA. `XXX` is an editable source placeholder, not an invented business metric.
 - State 3: heading/list gap `48px`; list gap `32px`; item gap `12px`; heading icon `20px`, `8px` gap; item heading PingFang SC `20/20px`, 600.
 - The three frames do not contain the shared page Header or assistant. Comparison evidence must distinguish those shell-owned overlays from differences in the Banner itself.
@@ -202,7 +251,8 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 | Banner 2 eyebrow | `143:1230` | `14px` SVG | `/public/images/figma/home-icons/banner-02-eyebrow.svg` |
 | Banner 3 assurance check | `143:1283` | `20px` SVG | `/public/images/figma/home-icons/banner-03-check.svg` |
 | Global care artwork | `143:842` | `100% 103.918%` at `0px -0.5px` | `/public/images/figma/home-global-care-source.png` |
-| Partner logo matrix | `143:853` | Figma image, cover | `/public/images/figma/partners-matrix.png` |
+| Partner logo matrix | `143:854` | Complete Figma group `3546 x 472px`, with 24px loop spacing; no baked-in fade | `/public/images/figma/partners-track.webp` |
+| Partner logo mobile viewport | `143:854` | Same group crop, `1440 x 472px`; no baked-in fade | `/public/images/figma/partners-mobile-track.webp` |
 | Patient story image | `143:218` | Figma image, `154.11% 100%` at `-127.992px 0px` | `/public/images/figma/patient-story.png` |
 | Shanghai hospital image | `143:681` | Figma image, `126.6% 100%` at `-70.681px 0.172px` | `/public/images/figma/hospital-shanghai-design.png` |
 | Beijing hospital image | `143:688` | Figma image, `133.4% 100%` at `-80.805px 0px` | `/public/images/figma/hospital-beijing-design.png` |
@@ -217,7 +267,7 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 | --- | --- | --- | --- | --- |
 | Hero carousel | Figma source frames above | arrows, dots, timed advance; hover pauses | `7000ms`, `0.55s` opacity/scale settle | same arrows/dots; balanced heading wrap; readable background wash; no autoplay for reduced motion |
 | China advantages story | Octagos left-pinned/right-scrolling language | page scroll | sticky rail remains within `143:128` section; cards reveal `0.62s` | natural card list |
-| Partner marquee | Octagos continuous horizontal movement | continuous, hover pause | `55s` linear loop, pause on hover | slower continuous track; disabled for reduced motion |
+| Partner marquee | Octagos continuous horizontal movement | centered source matrix, continuous loop, hover pause | `55s` linear loop across four `1440px` copies; the source matrix stays centered on the viewport and the track pauses on hover | same centered track at `100vw` on mobile; disabled for reduced motion |
 | Section reveal | Octagos restrained section transitions | viewport entry | opacity + `translateY(22px)` + blur, `0.62s` cubic-bezier; no layout drift | static visible content when motion is reduced |
 
 ## Verification
@@ -232,6 +282,18 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 - Remaining differences: none
 
 ## Latest Audit
+
+### Continuous China-care process (2026-10-01)
+
+- Figma source frame: `来华就医流程`, node `143:3691`.
+- The authored process is implemented as one continuous right-hand content stack with one sticky left rail. The existing homepage advantage frame `143:128` is the source baseline for `01 认知`; the current authored process source frames are `143:3692` (`02 评估`), `143:3954` (`03 信任`), and `143:3722` (`04 行动`). The parent flow frame is `143:3691`.
+- Desktop source geometry copied from Dev Mode: the parent content width is `1216px`; the rail group `143:3723` is `220 x 650px` at `left:132px` (the rail's 1440px-frame x coordinate); the right content column `143:3707`/`143:3730` is `802px` wide at `right:112px`, placing it at `x=526px` in the `1440px` frame. The stage backgrounds use `#F5F6F7` across the full viewport.
+- The rail's vertical dashed child is `143:3726`/`143:3727`, `245 x 8px`, rotated `90deg` (one direction is mirrored), with `4px` dashed border and the source gradient; the active number child `143:3728` is a `1:1` circle with `20px` solid `rgba(30,58,95,.10)` border, `#1E3A5F` fill, and `62px` source radius. The Vue rail preserves the `120px` content diameter plus `20px` border (`160px` rendered outer diameter), including the source stroke's `20px` outward extension (`margin-left:-20px`), and positions the rail group at `x=132px` while keeping the content column at `x=526px`.
+- Stage baselines: `01` uses `1440 x 1208px`, `96px` vertical padding, a `389 x 280px` two-column card grid with `24px` gaps; `02` uses the authored `754px` frame with `80px` vertical padding; `03` uses the authored `1148px` frame with `96px` vertical padding; `04` uses the authored disease-card frame with `300px` cards, `24px` padding/radius, `32px` icons, `24px` titles, and `16px / 24px` body text.
+- The four process stages are joined directly with no inter-stage margin, so the `#F5F6F7` source background remains continuous. The left rail uses the source repeating dashed pattern with a vertical mask/gradient that fades at both ends; the mobile rail uses the same treatment at its compact scale.
+- Stage state is derived from the right stack's top edge crossing the desktop reading pivot. The rail number and label therefore remain fixed while scrolling, changing in order `01 认知` -> `02 评估` -> `03 信任` -> `04 行动`. On mobile the rail is released into a compact top status bar and the stack becomes a normal readable list.
+- `02` buttons use the exported Figma icon assets and the authored gradient/outline treatment. The secondary `生成可行性报告` link contains only the document icon and text in the source hierarchy (no arrow). `03` FAQ rows remain independently expandable with the first row open in the source resting state. `04` uses the six exported Figma disease icons from `docs/figma-source/diseases/dev-styles-2026-09-29.css`.
+- Evidence: `docs/figma-verification/home/2026-10-01-process/desktop-full.png`, `desktop-stage-{1,2,3,4}.png`, `mobile-stage-{1,2,3,4}.png`, `mobile-full.png`, and `geometry.json`. `scripts/home-process-qa.cjs` checks all four scroll states, the desktop sticky top edge, rail circle/line/label coordinates, four source-frame heights, right-column placement, and mobile overflow.
 
 - 2026-09-29: `audit-home-source.mjs` passed all 1103 main-frame nodes; three alternate Banner HTML/text-style exports and exact image/icon source IDs are recorded. `home-style-audit.cjs` found zero section text-style differences. Final full-page screenshot comparison ratio is `0.0125029178` at pixel threshold `0.15`, excluding antialiasing; this is a diagnostic rasterization measure, not a substitute for visual review. Desktop geometry is `1440 x 8806px`, matching the source exactly; mobile has no overflow or broken assets. `vue-tsc -b`, direct Vite production compilation, and `git diff --check` passed. Full-site `pnpm run build` is still blocked by missing `/tmp` verification screenshot files referenced by other page specs, not by the homepage.
 - 2026-09-24: Re-read the complete Dev Mode HTML/CSS source after expanding the code panel; verified all twelve section node IDs, authored desktop heights, source assets, carousel timing, reveal motion, and mobile overflow evidence.

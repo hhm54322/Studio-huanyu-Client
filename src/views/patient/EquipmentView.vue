@@ -356,6 +356,8 @@ function statusClass(v: string) {
 
             <!-- 展开按钮 -->
             <button
+              :aria-expanded="expandedId === item.id"
+              :aria-controls="`equipment-detail-${item.id}`"
               class="mt-4 flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#FF8A34]/40 bg-white px-3 py-2.5 text-sm font-semibold text-[#123F67] transition hover:bg-[#EAF6FB]"
               @click="toggleExpand(item.id)"
             >
@@ -368,9 +370,11 @@ function statusClass(v: string) {
             </button>
 
             <!-- 展开详情 -->
+            <Transition name="accordion">
             <div
               v-if="expandedId === item.id"
-              class="mt-4 space-y-5 border-t border-sky-100 pt-5 text-sm"
+              :id="`equipment-detail-${item.id}`"
+              class="equipment-detail accordion-panel mt-4 space-y-5 border-t border-sky-100 pt-5 text-sm"
             >
               <!-- 技术特点 -->
               <div>
@@ -499,6 +503,7 @@ function statusClass(v: string) {
                 </ul>
               </div>
             </div>
+            </Transition>
           </div>
         </article>
       </div>
@@ -876,6 +881,12 @@ function statusClass(v: string) {
   outline: 3px solid rgba(255, 138, 52, .62);
   outline-offset: 3px;
 }
+.equipment-page :deep(.accordion-enter-active),
+.equipment-page :deep(.accordion-leave-active) { display:grid; grid-template-rows:1fr; overflow:hidden; opacity:1; transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.equipment-page :deep(.accordion-enter-from),
+.equipment-page :deep(.accordion-leave-to) { grid-template-rows:0fr; opacity:0; }
+.equipment-detail { min-height:0; overflow:hidden; }
+@media (prefers-reduced-motion: reduce) { .equipment-page :deep(.accordion-enter-active), .equipment-page :deep(.accordion-leave-active) { transition:none; } }
 
 @media (max-width: 700px) {
   .equipment-hero {

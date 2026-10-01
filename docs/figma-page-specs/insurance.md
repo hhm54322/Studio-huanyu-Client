@@ -11,6 +11,19 @@
 - Mobile frame: responsive implementation verified at `390 x 844px`; Figma has no separate mobile source frame
 - Status: verified
 
+## Expanded Figma States (2026-09-30)
+
+| Figma node | State | Implemented UI | Source frame height |
+| --- | --- | --- | ---: |
+| `419:832` | Assessment result beneath the hero form | `.insurance-assessment-result` | 1150px |
+| `419:1118` | Three medical scenarios expanded | `.insurance-scenario-detail` in each card | 1093px |
+| `419:943` | Three reimbursement paths expanded | `.insurance-path-detail` in each card | 1026px |
+
+- `立即评估` now opens or closes the result within `/insurance`; it does not navigate to `/report`.
+- All three scenario cards and all three reimbursement cards expand independently, including their action labels and chevrons. The selected scenario keeps the Figma blue outline.
+- The insurer partner matrix from source node `419:451` uses the same unfaded insurer-card source and fixed edge fade as the homepage partner marquee. Only the cards move; the edge overlays remain fixed. It pauses on hover and remains static under reduced motion.
+- Expanded desktop section heights were checked at 1440px: scenarios 1093px and reimbursement paths 1026px. Assessment expansion keeps the hero at 1150px. Mobile at 390px has no horizontal page overflow.
+
 ## Layer Mapping
 
 The complete, ordered source inventory is stored in `docs/figma-source/insurance/layers.csv`. The complete 798-node mapping to concrete Vue targets is stored in `docs/figma-source/insurance/node-map.csv`; no source row is omitted.
@@ -84,7 +97,7 @@ The complete, ordered source inventory is stored in `docs/figma-source/insurance
 | Online service | `419:687` | SVG 20x20 | `public/images/figma/insurance/Frame.svg` |
 | Email consultation | `419:691` | SVG 20x20 | `public/images/figma/insurance/Icon-8.svg` |
 | Video consultation | `419:696` | SVG 20x20 | `public/images/figma/insurance/Icon-5.svg` |
-| Partner matrix | `419:451` | PNG 1440x472 | `public/images/figma/partners-matrix.png` |
+| Partner matrix | `419:451` (same insurer-card source as home `143:854`) | Unfaded 3570x472 desktop loop; 1440x472 mobile crop | `public/images/figma/partners-track.webp`, `public/images/figma/partners-mobile-track.webp` |
 
 ## Prototype And Motion
 
@@ -92,7 +105,10 @@ The complete, ordered source inventory is stored in `docs/figma-source/insurance
 | --- | --- | --- | --- | --- |
 | Scenario selection | Card state | click, Enter, Space | 280ms `cubic-bezier(.22,1,.36,1)` lift/fill | stacked card state |
 | Reimbursement step | Authored detail state | click marker | immediate data swap; stable 788px stage | compact markers, detail follows |
-| Reimbursement path actions | Existing page flow | direct-pay/material actions focus the matching process step; adviser action opens consultation | smooth scroll, or immediate under reduced motion | same destinations |
+| Assessment result | Figma state `419:832` | click `立即评估` | 420ms accordion; static under reduced motion | result stacks into one column |
+| Scenario details | Figma state `419:1118` | click a scenario card or its action | independent 420ms accordion | stacked cards |
+| Reimbursement path details | Figma state `419:943` | click a path card or its action | independent 420ms accordion | stacked cards |
+| Partner matrix | Figma asset `419:451`, homepage loop pattern | continuous horizontal track, pause on hover; fixed 160px edge gradients | 120s linear; static under reduced motion | viewport-width track with fixed 40px gradients |
 | FAQ accordion | Expanded/collapsed chevrons | click question | shared reveal plus exact state icon | one-column accordion |
 | Card entrance | Octagos reveal vocabulary | viewport entry | shared 620-720ms eased reveal with 70ms stagger | reveal disabled below 768px |
 | Buttons/cards | Octagos hover vocabulary | pointer hover | 240-280ms lift and shadow | no transform on coarse/reduced motion |
@@ -106,8 +122,9 @@ The complete, ordered source inventory is stored in `docs/figma-source/insurance
 - Local mobile screenshot: `docs/figma-verification/insurance/local-mobile-390.png`
 - Post-interaction-fix mobile evidence: `artifacts/interaction-audit/insurance-mobile-517.jpg`
 - Mobile geometry: 390px viewport, 384px body content width, no body overflow, no broken assets; comparison table scroll is intentionally contained inside `.insurance-compare`.
-- Interaction evidence: scenario index 1 activated; step 02 detail rendered; all three reimbursement path actions reached their process/consultation destination; FAQ item 2 expanded; assessment routed to `/report`.
+- Interaction evidence: scenario index 1 activated; step 02 detail rendered; the assessment result, three scenario details, and three reimbursement path details open in place and can remain open independently; FAQ item 2 expanded.
 - Desktop geometry: section sequence `757 + 582 + 788 + 690 + 667 + 791 + 1067 + 412 = 5754px`; page plus shared 456px footer is 6210px versus 6211px source raster rounding.
 - Verification run: `2026-09-29`
 - Latest desktop diff: `docs/figma-verification/insurance/2026-09-29/geometry.json` (`0.72%` changed pixels using native 2x comparison; source height `6212px`, local height `6211px`)
+- Partner marquee correction verified 2026-09-30: `docs/figma-verification/insurance/2026-09-30/partners-{1440,768,390}-{start,mid,seam}.png`. The 1440px resting crop differs from the Figma `419:451` matrix by 0.790% mean pixel value; loop seam difference is 0 at all three widths. No page-level horizontal overflow. Fixed edge fades remain stationary; hover pauses and reduced-motion disables the animation.
 - Remaining differences: none

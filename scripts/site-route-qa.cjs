@@ -2,6 +2,7 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
+const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
 
 const routes = [
   '/', '/about', '/why-china', '/hospitals', '/cases', '/diseases-technologies',
@@ -22,7 +23,7 @@ async function main() {
         page.on('pageerror', error => errors.push(error.message))
         page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
         page.on('response', response => { if (response.status() >= 400) failedResources.push({ url: response.url(), status: response.status() }) })
-        await page.goto(`http://127.0.0.1:5173${route}`, { waitUntil: 'networkidle' })
+        await page.goto(`${origin}${route}`, { waitUntil: 'networkidle' })
         await page.evaluate(() => document.fonts.ready)
         await page.waitForTimeout(250)
         const geometry = await page.evaluate(() => ({
@@ -46,6 +47,10 @@ async function main() {
         assert.equal(geometry.brokenImages.length, 0, `${route}/${width}: broken images`)
         if (route === '/cost' || route === '/cost-generated') {
           assert.ok(geometry.canvasPixels.some(pixelCount => pixelCount > 0), `${route}/${width}: ECharts canvas is blank`)
+          assert.equal(new URL(page.url()).pathname, '/why-china', `${route}/${width}: cost must remain an in-page section`)
+          assert.equal(new URL(page.url()).hash, '#cost-comparison', `${route}/${width}: missing cost section anchor`)
+          assert.equal(await page.locator('.cost-actions button').getAttribute('aria-expanded'), 'true', `${route}/${width}: cost accordion is not expanded`)
+          assert.equal(await page.locator('.cost-detail-card').count(), 8, `${route}/${width}: cost detail cards missing`)
         }
         if (!disabledRoutes.has(route)) assert.equal(geometry.main, true, `${route}/${width}: missing main`)
         assert.deepEqual(errors, [], `${route}/${width}: runtime errors ${JSON.stringify(errors)}`)

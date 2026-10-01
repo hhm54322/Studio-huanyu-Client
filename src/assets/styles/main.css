@@ -249,6 +249,7 @@
 
 .hy-reveal-ready [data-reveal] { opacity: 0; filter: blur(5px); transform: translateY(22px); }
 .hy-reveal-ready [data-reveal].is-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+.hy-reveal-ready [data-reveal][data-reveal-visible="true"] { opacity: 1; filter: blur(0); transform: translateY(0); }
 .hy-page-hero__content[data-reveal].is-visible {
   opacity: var(--hy-hero-content-opacity, 1);
   transform: translate3d(0, var(--hy-hero-content-y, 0), 0);
@@ -334,4 +335,13 @@ body.scroll-locked { position: fixed; width: 100%; overflow: hidden; touch-actio
     filter: none;
     transform: none;
   }
+}
+.accordion-panel > *,
+.insurance-faq-answer > *,
+.visa-faq-answer > *,
+.equipment-detail > *,
+.dental-project-detail > *,
+.report-accordion-panel > *,
+.cost-accordion-shell > * {
+  min-height: 0;
 }

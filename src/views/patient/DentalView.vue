@@ -52,15 +52,44 @@ interface DentalDoctor {
 }
 
 const projects: DentalProject[] = [
-  { id: 'implant', title: '种植牙', price: '¥5,000 起', copy: '单颗/多颗/半口全口，数字化导板种植', image: '/images/equipment/image1.jpeg', icon: '/images/figma/dental-source/icon-implant.png', detail: '检查评估 - 植入手术 -愈合期 - 牙冠修复', duration: '3-6个月', suitable: '单颗/多颗牙缺失，缺牙时间较长者', note: '需进行口腔检查，排除禁忌症' },
-  { id: 'whitening', title: '牙齿美白', price: '¥1,200 起', copy: '冷光美白 / 家庭美白，单次见效', image: '/images/equipment/image4.jpeg', icon: '/images/figma/dental-source/icon-whitening.png', detail: '根据牙齿敏感情况选择诊室或家庭美白方案。', duration: '1-2周', suitable: '希望改善外源性色素和轻度黄牙问题' },
-  { id: 'veneer', title: '牙齿贴面', price: '¥2,800/颗', copy: '全瓷贴面/树脂贴面前牙美学修复', image: '/images/happy-patient.jpg', icon: '/images/figma/dental-source/icon-veneer.png', detail: '通过微创或无创方式改善前牙颜色、形态和轻度排列问题。', duration: '5-10天', suitable: '前牙颜色、形态和轻度间隙问题' },
-  { id: 'aligner', title: '隐形正畸', price: '¥18,000 起', copy: '隐形矫治器/舌侧矫正，远程复诊', image: '/images/doctor-team.jpg', icon: '/images/figma/dental-source/icon-aligner.png', detail: '根据面型、咬合和牙齿移动目标制定分期矫治方案。', duration: '12-24个月', suitable: '希望改善牙列和咬合、重视美观的成人' },
-  { id: 'crown', title: '全瓷牙冠', price: '¥3,500 /颗', copy: '二氧化锆/玻璃陶瓷，颜色自然', image: '/images/patient-case.jpg', icon: '/images/figma/dental-source/icon-crown.png', detail: '针对严重龋坏、缺损或旧修复体，提供美学和功能兼顾的修复。', duration: '7-14天', suitable: '牙体缺损、根管治疗后或需要美学修复者' },
-  { id: 'periodontal', title: '洁牙 / 牙周', price: '¥280 起', copy: '超声波洁牙/牙周系统治疗', image: '/images/equipment/image2.jpeg', icon: '/images/figma/dental-source/icon-periodontal.png', detail: '从基础洁治到牙周系统治疗，帮助控制牙龈出血和牙周炎症。', duration: '1-4次就诊', suitable: '牙龈出血、牙结石或牙周维护需求' },
-  { id: 'root-canal', title: '根管治疗', price: '¥1,200 起', copy: '显微根管/热牙胶充填', image: '/images/equipment/image3.jpeg', icon: '/images/figma/dental-source/icon-root-canal.png', detail: '以显微视野完成感染清除、根管充填和后续牙体保护。', duration: '1-3次就诊', suitable: '牙髓炎、根尖周炎和复杂根管病例' },
-  { id: 'children', title: '儿童齿科', price: '¥200 起', copy: '涂氟/窝沟封闭/早期矫正', image: '/images/hospital-sh.jpg', icon: '/images/figma/dental-source/icon-children.png', detail: '围绕儿童龋齿预防、早期咬合干预和舒适化就诊设计。', duration: '按治疗计划', suitable: '儿童口腔保健及早期矫正需求' },
+  { id: 'implant', title: '种植牙', price: '¥5,000 起', copy: '单颗/多颗/半口全口，数字化导板种植', image: '/images/equipment/image1.jpeg', icon: '/images/figma/dental-source/icon-implant.svg', detail: '检查评估 - 植入手术 -愈合期 - 牙冠修复', duration: '3-6个月', suitable: '单颗/多颗牙缺失，缺牙时间较长者', note: '需进行口腔检查，排除禁忌症' },
+  { id: 'whitening', title: '牙齿美白', price: '¥1,200 起', copy: '冷光美白 / 家庭美白，单次见效', image: '/images/equipment/image4.jpeg', icon: '/images/figma/dental-source/icon-whitening.svg', detail: '根据牙齿敏感情况选择诊室或家庭美白方案。', duration: '1-2周', suitable: '希望改善外源性色素和轻度黄牙问题' },
+  { id: 'veneer', title: '牙齿贴面', price: '¥2,800/颗', copy: '全瓷贴面/树脂贴面前牙美学修复', image: '/images/happy-patient.jpg', icon: '/images/figma/dental-source/icon-veneer.svg', detail: '通过微创或无创方式改善前牙颜色、形态和轻度排列问题。', duration: '5-10天', suitable: '前牙颜色、形态和轻度间隙问题' },
+  { id: 'aligner', title: '隐形正畸', price: '¥18,000 起', copy: '隐形矫治器/舌侧矫正，远程复诊', image: '/images/doctor-team.jpg', icon: '/images/figma/dental-source/icon-aligner.svg', detail: '根据面型、咬合和牙齿移动目标制定分期矫治方案。', duration: '12-24个月', suitable: '希望改善牙列和咬合、重视美观的成人' },
+  { id: 'crown', title: '全瓷牙冠', price: '¥3,500 /颗', copy: '二氧化锆/玻璃陶瓷，颜色自然', image: '/images/patient-case.jpg', icon: '/images/figma/dental-source/icon-crown.svg', detail: '针对严重龋坏、缺损或旧修复体，提供美学和功能兼顾的修复。', duration: '7-14天', suitable: '牙体缺损、根管治疗后或需要美学修复者' },
+  { id: 'periodontal', title: '洁牙 / 牙周', price: '¥280 起', copy: '超声波洁牙/牙周系统治疗', image: '/images/equipment/image2.jpeg', icon: '/images/figma/dental-source/icon-periodontal.svg', detail: '从基础洁治到牙周系统治疗，帮助控制牙龈出血和牙周炎症。', duration: '1-4次就诊', suitable: '牙龈出血、牙结石或牙周维护需求' },
+  { id: 'root-canal', title: '根管治疗', price: '¥1,200 起', copy: '显微根管/热牙胶充填', image: '/images/equipment/image3.jpeg', icon: '/images/figma/dental-source/icon-root-canal.svg', detail: '以显微视野完成感染清除、根管充填和后续牙体保护。', duration: '1-3次就诊', suitable: '牙髓炎、根尖周炎和复杂根管病例' },
+  { id: 'children', title: '儿童齿科', price: '¥200 起', copy: '涂氟/窝沟封闭/早期矫正', image: '/images/hospital-sh.jpg', icon: '/images/figma/dental-source/icon-children.svg', detail: '围绕儿童龋齿预防、早期咬合干预和舒适化就诊设计。', duration: '按治疗计划', suitable: '儿童口腔保健及早期矫正需求' },
 ]
+
+function detailBeforeEnter(element: Element) {
+  const panel = element as HTMLElement
+  panel.style.height = '0px'
+  panel.style.opacity = '0'
+}
+function detailEnter(element: Element) {
+  const panel = element as HTMLElement
+  const height = panel.scrollHeight
+  requestAnimationFrame(() => {
+    panel.style.height = `${height}px`
+    panel.style.opacity = '1'
+  })
+}
+function detailAfterEnter(element: Element) {
+  (element as HTMLElement).style.height = ''
+}
+function detailBeforeLeave(element: Element) {
+  const panel = element as HTMLElement
+  panel.style.height = `${panel.getBoundingClientRect().height}px`
+  panel.style.opacity = '1'
+}
+function detailLeave(element: Element) {
+  const panel = element as HTMLElement
+  requestAnimationFrame(() => {
+    panel.style.height = '0px'
+    panel.style.opacity = '0'
+  })
+}
 
 const doctors: DentalDoctor[] = [
   { id: 4, name: '郑雨容', title: '主任医师/教授', hospital: '上海交通大学医学院附属第九人民医院', city: '上海', experience: '26年经验', languages: ['中文', 'English', 'Русский'], background: '公立三甲 · 种植科', specialty: '擅长复杂种植手术、尤其骨量微弱及即刻种植修复有丰富经验', rating: '5.0', cases: '3,200+', portrait: '/images/figma/expert-shao-zhimin-avatar.png', tags: ['数字化种植', '骨增量'], startingPrice: 28000, bio: '郑雨容，主任医师，种植学科带头人，毕业于上海交通大学医学院，从事口腔种植临床工作26年。擅长复杂种植手术、尤其骨量微弱及即刻种植修复具有丰富经验。', credentials: ['医师执业证书(可查)', '主任医师职称', 'ITI国际口腔种植学会会员', 'DIO种植牙高级教授'] },
@@ -71,7 +100,7 @@ const doctors: DentalDoctor[] = [
 
 const activeStep = ref<DentalStep>(1)
 const selectedProjectId = ref('whitening')
-const expandedProjectId = ref('implant')
+const expandedProjectIds = ref<Set<string>>(new Set(['implant']))
 const filters = ref({ city: '', title: '', experience: '', background: '', language: '', price: '' })
 const appliedFilters = ref({ ...filters.value })
 const sortMode = ref<'recommended' | 'experience' | 'cases' | 'rating' | 'price'>('recommended')
@@ -116,7 +145,13 @@ function setStep(step: DentalStep) {
 
 function chooseProject(project: DentalProject) {
   selectedProjectId.value = project.id
-  expandedProjectId.value = project.id
+  const next = new Set(expandedProjectIds.value)
+  if (next.has(project.id)) next.delete(project.id)
+  else next.add(project.id)
+  expandedProjectIds.value = next
+}
+function isProjectExpanded(projectId: string) {
+  return expandedProjectIds.value.has(projectId)
 }
 
 function resetFilters() {
@@ -246,9 +281,9 @@ onBeforeUnmount(() => {
           <span class="dental-section__counter">{{ projects.length }} 个项目</span>
         </div>
         <div class="dental-project-grid">
-          <button v-for="project in projects" :key="project.id" type="button" class="dental-project-card" :class="{ selected: selectedProjectId === project.id, expanded: expandedProjectId === project.id }" @click="chooseProject(project)">
+          <button v-for="project in projects" :key="project.id" type="button" class="dental-project-card" :class="{ selected: selectedProjectId === project.id, expanded: isProjectExpanded(project.id) }" :aria-expanded="isProjectExpanded(project.id)" :aria-controls="`dental-project-detail-${project.id}`" @click="chooseProject(project)">
             <img class="dental-project-card__icon" :src="project.icon" alt="" aria-hidden="true" />
-            <div class="dental-project-card__content"><h3>{{ project.title }}</h3><p class="dental-project-price"><span>参考价格：</span><strong>{{ project.price.match(/^¥[\d,]+/)?.[0] }}</strong><span>{{ project.price.replace(/^¥[\d,]+/, '') }}</span></p><p>{{ project.copy }}</p><b>查看详情 <ChevronDown class="h-4 w-4" /></b><dl v-if="expandedProjectId === project.id"><div><dt>适用人群：</dt><dd>{{ project.suitable }}</dd></div><div><dt>治疗流程：</dt><dd>{{ project.detail }}</dd></div><div><dt>周期：</dt><dd>{{ project.duration }}</dd></div><div v-if="project.note"><dt>注意事项：</dt><dd>{{ project.note }}</dd></div></dl></div>
+            <div class="dental-project-card__content"><h3>{{ project.title }}</h3><p class="dental-project-price"><span>参考价格：</span><strong>{{ project.price.match(/^¥[\d,]+/)?.[0] }}</strong><span>{{ project.price.replace(/^¥[\d,]+/, '') }}</span></p><p>{{ project.copy }}</p><b>查看详情 <ChevronDown class="h-4 w-4" /></b><Transition name="dental-accordion" @before-enter="detailBeforeEnter" @enter="detailEnter" @after-enter="detailAfterEnter" @before-leave="detailBeforeLeave" @leave="detailLeave"><div v-if="isProjectExpanded(project.id)" class="dental-project-detail-shell"><dl :id="`dental-project-detail-${project.id}`" class="dental-project-detail"><div><dt>适用人群：</dt><dd>{{ project.suitable }}</dd></div><div><dt>治疗流程：</dt><dd>{{ project.detail }}</dd></div><div><dt>周期：</dt><dd>{{ project.duration }}</dd></div><div v-if="project.note"><dt>注意事项：</dt><dd>{{ project.note }}</dd></div></dl></div></Transition></div>
           </button>
         </div>
         <div class="dental-project-next"><button type="button" class="dental-next-button" @click="setStep(2)">下一步 城市与医生匹配 <ArrowRight class="h-4 w-4" /></button></div>
@@ -430,28 +465,39 @@ onBeforeUnmount(() => {
   align-items: start;
 }
 .dental-project-card {
+  height: auto;
   min-height: 286px;
-  justify-content: space-between;
+  overflow: hidden;
+  justify-content: flex-start;
+  gap: 80px;
   border: 0;
   border-radius: 24px;
   padding: 24px;
   background: #f5f6f7;
+  transition: border-color .25s ease, box-shadow .35s ease, background .3s ease;
 }
 .dental-project-card.selected {
   min-height: 290px;
-  border: 2px solid #1a1a1a;
+  outline: 2px solid #1a1a1a;
+  outline-offset: -2px;
   background: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
 }
 .dental-project-card.expanded {
-  min-height: 446px;
+  min-height: 290px;
 }
 .dental-project-card__icon {
   width: 32px;
   height: 32px;
+  flex: 0 0 32px;
+  object-fit: contain;
+  object-position: left top;
+  opacity: 1;
+  background: transparent;
 }
 .dental-project-card__content {
   min-height: 0;
+  flex: none;
 }
 .dental-project-card h3 {
   margin: 0;
@@ -492,6 +538,37 @@ onBeforeUnmount(() => {
 .dental-project-card dl div { display: block; }
 .dental-project-card dt, .dental-project-card dd { display: inline; }
 .dental-project-card dt { color: #1e3a5f; font-weight: 500; }
+.dental-project-detail-shell { min-height: 0; overflow: hidden; }
+.dental-project-card .dental-project-detail {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  height: max-content;
+  align-self: start;
+  overflow: visible;
+  margin: 16px 0 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.dental-project-card .dental-project-detail > div {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+}
+.dental-project-card .dental-project-detail dt,
+.dental-project-card .dental-project-detail dd {
+  font-size: 16px;
+  line-height: 24px;
+}
+.dental-accordion-enter-active,
+.dental-accordion-leave-active { overflow: hidden; transition: height .42s cubic-bezier(.22,1,.36,1), opacity .24s ease; }
+.dental-accordion-enter-from,
+.dental-accordion-leave-to { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .dental-project-card, .dental-accordion-enter-active, .dental-accordion-leave-active { transition: none; } }
 .dental-project-next {
   margin-top: 48px;
 }
@@ -1027,6 +1104,12 @@ onBeforeUnmount(() => {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
   line-height: 14px;
+}
+
+@media (max-width:900px) and (min-width:701px) {
+  .dental-steps__inner { width:calc(100% - 32px); }
+  .dental-steps button { gap:6px; }
+  .dental-steps strong { padding-right:4px; font-size:13px; white-space:nowrap; }
 }
 
 @media (max-width: 900px) {

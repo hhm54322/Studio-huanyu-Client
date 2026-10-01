@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { init, use, type ECharts } from 'echarts/core'
 import { CustomChart } from 'echarts/charts'
 import type { CustomSeriesRenderItem } from 'echarts'
@@ -19,7 +20,13 @@ const medicalCapabilities = [
   { title:'器官移植重症修复', copy:'规范化移植体系，术后长期管理成熟', icon:'/images/figma/why-china-icons/node-143-1448.svg', detail:'由移植、重症、感染与康复团队共同评估，覆盖围术期治疗和长期随访管理。' },
   { title:'罕见病疑难病联合诊疗', copy:'全国专家协作网，专治全球疑难杂症', icon:'/images/figma/why-china-icons/node-143-1461.svg', detail:'通过全国专家协作网络整合检查与既往病史，为复杂和罕见疾病形成清晰诊疗路径。' },
 ]
-const activeCapability = ref(0)
+const expandedCapabilities = ref(new Set([0]))
+function toggleCapability(index: number) {
+  const next = new Set(expandedCapabilities.value)
+  if (next.has(index)) next.delete(index)
+  else next.add(index)
+  expandedCapabilities.value = next
+}
 const comparisonLabels = ['肿瘤手术', '心血管手术', '慢性病年管理', '质子治疗', 'CAR-T', 'PD-1年费用', '化疗(6周期)', '牙科-种植牙', '眼科-白内障']
 // Values in USD thousands, copied from the 54 Figma bar heights at 0.56px per $1K.
 const comparisonSeries = [
@@ -30,7 +37,19 @@ const comparisonSeries = [
   { name: '新加坡', color: '#1D4ED8', values: [45, 52, 16, 105, 275, 80, 32, 2.5, 4.5] },
   { name: '日本', color: '#3B82F6', values: [57, 70, 23, 95, 325, 125, 45, 2.5, 4] },
 ]
+const costDetailCards = [
+  { icon: '/images/figma/cost-heart-bypass.svg', title: '心脏搭桥手术', first: ['较欧美节省', '69%'], second: ['较新马节省', '42%'], copy: '国内三甲手术案例量大，整套手术+住院费用远低于海外。' },
+  { icon: '/images/figma/cost-car-t.svg', title: 'CAR-T细胞免疫治疗', first: ['较欧美节省', '55%'], second: ['较日本节省', '38%'], copy: '国产获批疗法成熟，临床案例充足，大幅降低肿瘤免疫治疗门槛。' },
+  { icon: '/images/figma/cost-pet-ct.svg', title: 'PET-CT全身影像筛查', first: ['较欧美节省', '85%'], second: ['较新马节省', '70%'], copy: '设备与国际标准同步，影像诊断质量一致，检查成本优势突出。' },
+  { icon: '/images/figma/cost-proton.svg', title: '质子重离子肿瘤放疗', first: ['较欧美节省', '53%'], second: ['较日本节省', '41%'], copy: '国内多中心稳定接诊，无需长时间排队等候。' },
+  { icon: '/images/figma/cost-knee.svg', title: '膝关节置换手术', first: ['较欧美节省', '57%'], second: ['较新加坡节省', '36%'], copy: '进口假体+微创机器人手术全套服务，包含基础住院康复。' },
+  { icon: '/images/figma/cost-robot.svg', title: '机器人胃肠肿瘤微创手术', first: ['较欧美节省', '62%'], second: ['较马来西亚节省', '35%'], copy: '达芬奇微创外科，创伤小，术后恢复更快。' },
+  { icon: '/images/figma/cost-tooth.svg', title: 'All-on6半口种植牙', first: ['较新加坡节省', '52%'], second: ['较马来西亚节省', '33%'], copy: '全套含6颗进口种植体+上部固定牙桥，资深口腔外科医生主刀。' },
+  { icon: '/images/figma/cost-tooth.svg', title: '单颗进口种植牙', first: ['较新加坡节省', '48%'], second: ['较马来西亚节省', '29%'], copy: '包含进口植体、基台+全瓷牙冠，诊疗流程规范透明。' },
+]
 const costChartEl = ref<HTMLElement | null>(null)
+const route = useRoute()
+const costDetailsExpanded = ref(route.hash === '#cost-comparison')
 let costChart: ECharts | undefined
 let chartObserver: IntersectionObserver | undefined
 const renderCostBar = (seriesIndex: number): CustomSeriesRenderItem => (_params, api) => {
@@ -95,9 +114,9 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
   <div class="why-page">
     <section class="why-hero"><div class="why-hero__visual" /><div class="hy-container" data-reveal><h1><span>为什么全球患者优先选择</span><br /><span>{{ '   来华就医？' }}</span></h1><p>对比新马日与欧美，中国重症医疗兼具技术、时效与成本优势</p><div class="hero-actions"><button type="button" @click="openConsultation"><img class="source-icon" src="/images/figma/why-china-icons/node-143-1342.svg" alt="" /><span class="button-label">免费咨询</span></button><RouterLink to="/report"><img class="source-icon" src="/images/figma/why-china-icons/node-143-1346.svg" alt="" /><span class="button-label">AI初诊 3分钟生成就医评估报告</span></RouterLink></div></div></section>
 
-    <section class="capability-section"><div class="hy-container capability-layout"><aside data-reveal><h2>中国严肃医疗｜多国对比技术优势</h2><p>在肿瘤、心脑外科、细胞治疗、复杂微创手术等重症领域，中国医院临床体量、手术复杂度、病例积累，全面优于东南亚及部分欧美体系。</p></aside><div class="capability-grid"><article v-for="(item,index) in medicalCapabilities" :key="item.title" data-reveal :class="{ open:index===activeCapability }" :style="{ '--reveal-delay':`${(index%2)*55}ms` }" role="button" tabindex="0" :aria-expanded="index===activeCapability" @click="activeCapability=index" @keydown.enter.prevent="activeCapability=index" @keydown.space.prevent="activeCapability=index"><img class="capability-icon" :src="item.icon" alt="" /><div class="capability-content"><h3>{{ item.title }}</h3><p class="capability-copy">{{ item.copy }}</p><span class="capability-detail-row"><span class="capability-detail-label">查看详情</span><img class="capability-chevron" :class="{ rotated:index!==activeCapability }" src="/images/figma/why-china-icons/node-143-1376.svg" alt="" /></span><div v-if="index===activeCapability" class="capability-expanded"><small>{{ item.detail }}</small></div></div></article></div></div></section>
+    <section class="capability-section" :class="{ 'capability-section--multi-expanded': expandedCapabilities.size > 1 }"><div class="hy-container capability-layout"><aside data-reveal><h2>中国严肃医疗｜多国对比技术优势</h2><p>在肿瘤、心脑外科、细胞治疗、复杂微创手术等重症领域，中国医院临床体量、手术复杂度、病例积累，全面优于东南亚及部分欧美体系。</p></aside><div class="capability-grid"><article v-for="(item,index) in medicalCapabilities" :key="item.title" data-reveal :class="{ open:expandedCapabilities.has(index) }" :style="{ '--reveal-delay':`${(index%2)*55}ms` }" role="button" tabindex="0" :aria-expanded="expandedCapabilities.has(index)" @click="toggleCapability(index)" @keydown.enter.prevent="toggleCapability(index)" @keydown.space.prevent="toggleCapability(index)"><img class="capability-icon" :src="item.icon" alt="" /><div class="capability-content"><h3>{{ item.title }}</h3><p class="capability-copy">{{ item.copy }}</p><span class="capability-detail-row"><span class="capability-detail-label">查看详情</span><img class="capability-chevron" :class="{ rotated:!expandedCapabilities.has(index) }" src="/images/figma/why-china-icons/node-143-1376.svg" alt="" /></span><div v-if="expandedCapabilities.has(index)" class="capability-expanded"><small>{{ item.detail }}</small></div></div></article></div></div></section>
 
-    <section class="cost-section"><div class="hy-container"><header class="section-title" data-reveal><h2>同等医疗质量，中国就医成本全球最优</h2><p>对标新、马、日、欧美，同质医疗效果下，中国整体治疗费用大幅更低</p></header><div class="comparison-content"><div class="comparison-chart-scroll" data-reveal><div ref="costChartEl" class="comparison-chart" role="img" aria-label="九类治疗费用在美国、英国、德国、中国、新加坡和日本的对比柱状图" /></div><div class="saving-tags"><span>心脏搭桥节省69%</span><span>CAR-T细胞免疫治疗节省55%</span><span>PET-CT全身影像筛查节省85%</span><span>质子重离子肿瘤放疗节省53%</span><span>膝关节置换手术节省57%</span></div></div><div class="cost-actions"><RouterLink to="/cost"><span class="button-label">查看更多病种费用对比详情</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1757.svg" alt="" /></RouterLink><RouterLink to="/report"><span class="button-label">提交病历，获取AI个性化精准预算与来华方案</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1761.svg" alt="" /></RouterLink></div><small class="disclaimer">中国是唯一同时具备：顶级重症技术、超快就诊时效、亲民治疗成本的跨境医疗目的地。</small></div></section>
+    <section id="cost-comparison" class="cost-section" :class="{ 'cost-section--expanded': costDetailsExpanded }"><div class="hy-container"><header class="section-title" data-reveal><h2>同等医疗质量，中国就医成本全球最优</h2><p>对标新、马、日、欧美，同质医疗效果下，中国整体治疗费用大幅更低</p></header><div class="comparison-content"><div class="comparison-chart-scroll" data-reveal><div ref="costChartEl" class="comparison-chart" role="img" aria-label="九类治疗费用在美国、英国、德国、中国、新加坡和日本的对比柱状图" /></div><div class="saving-tags"><span>心脏搭桥节省69%</span><span>CAR-T细胞免疫治疗节省55%</span><span>PET-CT全身影像筛查节省85%</span><span>质子重离子肿瘤放疗节省53%</span><span>膝关节置换手术节省57%</span></div></div><div class="cost-actions"><button type="button" :aria-expanded="costDetailsExpanded" aria-controls="why-cost-details" @click="costDetailsExpanded = !costDetailsExpanded"><span class="button-label">查看更多病种费用对比详情</span><img class="source-icon cost-action-chevron" :class="{ 'is-open': costDetailsExpanded }" src="/images/figma/why-china-icons/node-143-1757.svg" alt="" /></button><RouterLink to="/report"><span class="button-label">提交病历，获取AI个性化精准预算与来华方案</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1761.svg" alt="" /></RouterLink></div><small class="disclaimer">中国是唯一同时具备：顶级重症技术、超快就诊时效、亲民治疗成本的跨境医疗目的地。</small><Transition name="cost-details"><div v-show="costDetailsExpanded" id="why-cost-details" class="cost-detail-grid" aria-label="病种费用对比详情"><article v-for="item in costDetailCards" :key="item.title" class="cost-detail-card"><img :src="item.icon" alt="" /><div><h3>{{ item.title }}</h3><p class="cost-detail-metric"><span>{{ item.first[0] }}</span><strong>{{ item.first[1] }}</strong></p><p class="cost-detail-metric"><span>{{ item.second[0] }}</span><strong>{{ item.second[1] }}</strong></p><p class="cost-detail-copy">{{ item.copy }}</p></div></article></div></Transition></div></section>
 
     <section class="wait-section"><div class="hy-container"><header class="section-title" data-reveal><h2>告别超长排队｜中国就医时效碾压全球</h2><p>欧美、日本、新加坡重症排队数月起，中国实现极速接诊，不延误黄金治疗期</p></header><div class="wait-grid"><article v-for="item in waits" :key="item.value" :class="{ highlight:item.highlight }" data-reveal><div v-if="item.highlight" class="wait-highlight-content"><div class="wait-value"><span>最快</span><strong>{{ item.value }}</strong></div><b>完成检查+手术</b></div><strong v-else>{{ item.value }}</strong><p>{{ item.label }}</p></article></div></div></section>
 
@@ -137,6 +156,9 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 .capability-grid { display:grid; width:802.67px; height:1224px; grid-template-columns:repeat(2,389.33px); grid-auto-rows:min-content; align-content:start; column-gap:24px; row-gap:24px; }
 .capability-grid article { position:relative; display:flex; width:389.33px; height:254px; flex-direction:column; align-items:flex-start; align-self:start; border-radius:24px; padding:24px; background:#f5f6f7; cursor:pointer; transition:height .52s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease; }
 .capability-grid article.open { height:390px; }
+.capability-section--multi-expanded,
+.capability-section--multi-expanded .capability-layout,
+.capability-section--multi-expanded .capability-grid { height:auto; }
 .capability-grid article:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(20,49,98,.08); }
 .capability-grid .capability-icon { display:block; width:32px; height:32px; flex:none; }
 .capability-content { width:100%; margin-top:80px; }
@@ -145,16 +167,22 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 .capability-grid .capability-detail-row { display:flex; width:100%; align-items:center; justify-content:space-between; margin-top:16px; color:#9ca3af; font-size:14px; font-weight:500; line-height:14px; }
 .capability-expanded { margin-top:16px; }.capability-grid small { display:block; color:#4b5563; font-size:16px; line-height:24px; }
 .capability-grid .capability-chevron { width:14px; height:14px; transition:transform .3s ease; }.capability-grid .capability-chevron.rotated { transform:rotate(180deg); }
-.cost-section { height:957.260254px; overflow:hidden; padding:96px 0; background:#f5f6f7; }
+.cost-section { min-height:957.260254px; box-sizing:border-box; padding:96px 0; background:#f5f6f7; }
+.cost-section--expanded { height:auto; overflow:visible; }
 .comparison-chart-scroll { width:1216px; margin-top:48px; }
 .comparison-chart { width:1168.02px; height:403.26px; margin-inline:auto; }
 .saving-tags { display:flex; width:1216px; max-width:100%; height:48px; justify-content:flex-start; gap:24px; margin-top:48px; overflow:hidden; mask-image:linear-gradient(to right,transparent 0,transparent 40px,#000 160px,#000 calc(100% - 160px),transparent calc(100% - 40px),transparent 100%); }
 .saving-tags span { display:flex; flex:none; align-items:center; justify-content:center; border-radius:14px; padding:12px 24px; background:#fff; color:#1e3a5f; font-size:16px; line-height:24px; white-space:nowrap; }
 .saving-tags span:nth-child(1) { width:177px; }.saving-tags span:nth-child(2) { width:259px; }.saving-tags span:nth-child(3) { width:268px; }.saving-tags span:nth-child(4) { width:255px; }.saving-tags span:nth-child(5) { width:223px; }
 .cost-actions { display:flex; height:52px; justify-content:center; gap:16px; margin-top:48px; }
-.cost-actions a { display:flex; height:52px; align-items:center; gap:8px; border-radius:14px; padding:18px 24px; background:#dd6b20; color:#fff; font-size:16px; font-weight:600; line-height:16px; white-space:nowrap; box-shadow:0 4px 6px -4px rgba(0,0,0,.1); transition:transform .25s ease,background .25s ease; }
-.cost-actions a:first-child { width:263px; justify-content:center; }.cost-actions a:last-child { width:388px; justify-content:center; background:#1e3a5f; }.cost-actions a:hover { transform:translateY(-2px); background:#dd6b20; }.cost-actions .source-icon { width:16px; height:16px; }
+.cost-actions button,.cost-actions a { display:flex; height:52px; align-items:center; gap:8px; border:0; border-radius:14px; padding:18px 24px; background:#dd6b20; color:#fff; font:600 16px/16px "PingFang SC",sans-serif; white-space:nowrap; box-shadow:0 4px 6px -4px rgba(0,0,0,.1); cursor:pointer; transition:transform .25s ease,background .25s ease; }
+.cost-actions button { width:263px; justify-content:center; }.cost-actions a { width:388px; justify-content:center; background:#1e3a5f; }.cost-actions button:hover,.cost-actions a:hover { transform:translateY(-2px); background:#dd6b20; }.cost-actions .source-icon { width:16px; height:16px; }.cost-action-chevron { transition:transform .3s ease; }.cost-action-chevron.is-open { transform:rotate(180deg); }
 .disclaimer { display:block; margin-top:16px; color:#6b7280; font-size:14px; line-height:22px; text-align:center; }
+.cost-detail-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding-top:32px; }
+.cost-detail-card { display:flex; min-height:308px; flex-direction:column; justify-content:space-between; gap:24px; border-radius:24px; padding:24px; background:#fff; box-sizing:border-box; transition:transform .35s ease,box-shadow .35s ease; }
+.cost-detail-card:hover { transform:translateY(-4px); box-shadow:0 18px 36px rgba(30,58,95,.12); }
+.cost-detail-card>img { width:32px; height:32px; }.cost-detail-card h3 { margin:0 0 20px; color:#1e3a5f; font-size:24px; font-weight:600; line-height:24px; }.cost-detail-card p { margin:0; }.cost-detail-metric { display:flex; justify-content:space-between; gap:16px; color:#6b7280; font-size:16px; line-height:16px; }.cost-detail-metric + .cost-detail-metric { margin-top:12px; }.cost-detail-metric strong { color:#2563eb; font-weight:500; }.cost-detail-copy { margin-top:12px !important; color:#4b5563; font-size:16px; line-height:24px; }
+.cost-details-enter-active,.cost-details-leave-active { max-height:1100px; overflow:hidden; transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .3s ease,transform .4s cubic-bezier(.22,1,.36,1); }.cost-details-enter-from,.cost-details-leave-to { max-height:0; opacity:0; transform:translateY(-12px); }
 .wait-section { height:552px; padding:96px 0; background:#fff; }
 .wait-grid { display:grid; height:232px; grid-template-columns:repeat(3,271px) 331px; gap:24px; margin-top:48px; }
 .wait-grid article { position:relative; display:flex; height:232px; flex-direction:column; align-items:center; justify-content:center; gap:12px; border-radius:14px; padding:48px 24px; background:#f5f6f7; }
@@ -214,15 +242,16 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
   .capability-layout { display:block; }.capability-layout aside { position:static; padding:0 0 40px; text-align:center; }.capability-layout aside h2 { font-size:30px; line-height:1.4; }.capability-layout aside p { font-size:14px; line-height:24px; }
   .capability-grid { display:grid; grid-template-columns:1fr; gap:16px; }.capability-grid article,.capability-grid article.open { height:auto; min-height:250px; }
   .comparison-chart-scroll { margin-top:32px; }
-  .saving-tags { overflow-x:auto; mask-image:none; }.cost-actions,.why-cta>div>div { height:auto; flex-direction:column; }.cost-actions a,.why-cta button,.why-cta a { justify-content:center; }
-  .cost-actions a:first-child,.cost-actions a:last-child { width:100%; height:auto; min-height:52px; white-space:normal; line-height:22px; text-align:center; padding:16px 24px; }
+  .saving-tags { overflow-x:auto; mask-image:none; }.cost-actions,.why-cta>div>div { height:auto; flex-direction:column; }.cost-actions button,.cost-actions a,.why-cta button,.why-cta a { justify-content:center; }
+  .cost-actions button,.cost-actions a { width:100%; height:auto; min-height:52px; white-space:normal; line-height:22px; text-align:center; padding:16px 24px; }
   .cost-actions .button-label { min-width:0; flex:1; white-space:normal; }
+  .cost-detail-grid { grid-template-columns:1fr; }.cost-details-enter-active,.cost-details-leave-active { max-height:3000px; }
   .wait-grid,.story-grid { height:auto; grid-template-columns:1fr; }.wait-grid article { height:190px; }.wait-grid article.highlight>span { top:66px; left:62px; }
   .national-section { min-height:620px; }.national-grid { height:auto; grid-template-columns:1fr 1fr; gap:28px; }.national-grid strong { font-size:40px; }
   .story-grid article { height:auto; min-height:250px; }.story-copy { margin-top:64px; }.why-cta>div { height:auto; }.why-cta h2 { font-size:30px; line-height:38px; }.why-cta small { flex-wrap:wrap; }.why-cta a,.why-cta button { width:100%; }
 }
 @media (prefers-reduced-motion:reduce) {
   .why-page * { transition:none !important; }
-  .capability-grid article:hover,.story-grid article:hover,.why-hero button:hover,.why-hero a:hover,.cost-actions a:hover,.national-section a:hover,.why-cta button:hover,.why-cta a:hover { transform:none; }
+  .capability-grid article:hover,.story-grid article:hover,.why-hero button:hover,.why-hero a:hover,.cost-actions button:hover,.cost-actions a:hover,.national-section a:hover,.why-cta button:hover,.why-cta a:hover { transform:none; }
 }
 </style>

@@ -37,7 +37,9 @@
 | `143:2690` | 数据隐私 / Icon | `143:2638` | privacy `.article-icon` | `32 x 32` | `Icon-3.svg` |
 | `143:2699` | 穆斯林保障 / Frame icon | `143:2638` | Muslim-care `.article-icon` | `32 x 32` | `Frame-1.svg` |
 | `143:2719` | 阅读全文 / Icon | `143:2638` | `.arrow-icon` | `16 x 16` | `Icon-2.svg` |
-| `204:5636` | 来华就医全流程工具包 / Section | `143:2530` | `.toolkit-section` | `1440 x 754`; padding `96 40`; inner `389 + 25 + 802` | sticky desktop copy, natural mobile flow |
+| `204:5636` | 来华就医全流程工具包 / Section (01) | `143:2530` | `.toolkit-section--stage-0` | `1440 x 754`; padding `96 40`; inner `389 + 25 + 802` | initial state; 01 detail link |
+| `204:5813` | 06来华就医全流程-出行中 / Section (02) | `143:2530` | `.toolkit-section--stage-1` | `1440 x 1275`; padding `96 40`; inner `389 + 24.67 + 802` | scroll stage, authored travel source |
+| `204:6013` | 07来华就医全流程-在华&回国 / Section (03) | `143:2530` | `.toolkit-section--stage-2` | `1440 x 754`; padding `96 40`; inner `389 + 24.67 + 802` | scroll stage, authored aftercare source |
 | `204:5652` | 病历翻译 / Frame icon | `204:5636` | first `.tool-icon` | `32 x 32` | `Frame.svg` |
 | `204:5666` | 可行性评估 / Icon | `204:5636` | second `.tool-icon` | `32 x 32` | `Icon-21.svg` |
 | `143:2900` | Final CTA / Section | `143:2530` | `.trust-cta` | `1440 x 412`; padding `96 0`; orange-to-blue 90deg gradient | three business entries |
@@ -58,7 +60,9 @@
 | Hero and assurances | `143:2531` | 1440 | 757 | `1216`, four `286px` columns, `24px` gap | first card `373px`, others `263px` |
 | FAQ | `143:2589` | 1440 | 650.04 | `389px + 25px + 802px` | first row expanded |
 | Articles | `143:2638` | 1440 | 1136 | three `389px` columns and `24px` gaps | card `389 x 256`, radius `24px` |
-| Toolkit | `204:5636` | 1440 | 754 | `389px + 25px + 802px` | cards `389 x 305`, radius `24px` |
+| Toolkit stage 01 | `204:5636` | 1440 | 754 | `389px + 25px + 802px` | cards `389 x 305`, radius `24px` |
+| Toolkit stage 02 | `204:5813` | 1440 | 1275 | `389.33px + 24.67px + 802px` | five cards, three rows, source travel frame |
+| Toolkit stage 03 | `204:6013` | 1440 | 754 | `389.33px + 24.67px + 802px` | two cards, source aftercare frame |
 | CTA | `143:2900` | 1440 | 412 | centered `1216px` | button gap `16px`, height `48px` |
 | Shared footer | `143:2529` | 1440 | 456 | `1216px` | `#021D2E`, `64px` vertical padding |
 
@@ -104,12 +108,24 @@ The complete one-to-one filename, order, size, and Node ID mapping for all 29 ex
 
 | Interaction | Figma/Octagos reference | Trigger | Timing/Easing | Mobile fallback |
 | --- | --- | --- | --- | --- |
-| Assurance cards | Figma expanded/collapsed state | click, Enter, Space | `520ms cubic-bezier(.22,1,.36,1)` height; no page-height shift | single-column accordion |
+| Assurance cards | Figma expanded/collapsed state | click, Enter, Space | `520ms cubic-bezier(.22,1,.36,1)` height; no page-height shift | independent cards; one card does not collapse another |
 | FAQ rows | Figma first-row expanded state | click | `250ms` opacity/translate transition | same keyboard and touch behavior |
+| JCI认证真相阅读全文 | Figma JCI article detail dialog | click 阅读全文; close button, backdrop, or Escape | backdrop fade `240ms`; dialog `340ms cubic-bezier(.22,1,.36,1)` | centered dialog becomes full-width scrollable sheet |
 | Article/tool cards | Octagos restrained depth response | hover/focus | `350ms cubic-bezier(.22,1,.36,1)`, `-5px` only | no required hover |
 | Toolkit copy | Octagos split-section motion | scroll | sticky at desktop section boundary | normal document flow |
+| Toolkit stage switch | Octagos pinned split-section transition | page scroll through toolkit wrapper | `420ms cubic-bezier(.22,1,.36,1)` opacity/translate; boundaries `754px / 2029px` | natural stage flow and no scroll lock |
 | Section entry | Octagos reveal vocabulary | first viewport entry | `620-720ms`; observer unhooks after first reveal | reveal disabled below `768px` |
 | Reduced motion | accessibility fallback | OS preference | transitions reduced and every node visible | same |
+
+### 2026-09-30 Toolkit Scroll Correction
+
+- Source frames `204:5636`, `204:5813`, and `204:6013` remain the three right-hand content stages at authored heights `754 / 1275 / 754px`. Their inner widths remain `389px + 25px + 802px`, and tool cards retain the source `389 x 305px` geometry.
+- The repeated left title/copy in those static frames represents one pinned scroll element in the product. Map it to a single `.toolkit-sticky` child of the full `.toolkit-scroll` wrapper; map each stage heading and card grid to one right-column `.toolkit-section`. This preserves the Figma resting layout without rendering three duplicate left copies.
+- Desktop behavior: the left title/copy stays sticky while all three right stages scroll, then releases at the toolkit wrapper boundary. The document is never scroll-locked. Narrow/mobile viewports use one static left heading followed by the three stages in natural order; reduced motion does not change visibility or scroll behavior.
+- Local post-change check at `1440 x 900`: one `.toolkit-sticky`, three stages at `754 / 1275 / 754px`, left top `340px` while scrolling through all stages, then released at the wrapper end; horizontal overflow `0`; first tool link remains `/steps/toolkit-detail`. At `390 x 844`: one static left heading, three natural-flow stages, horizontal overflow `0`. Focused screenshots: `docs/figma-verification/trust/2026-09-30/stage-01-1440.png`, `stage-02-1440.png`, `stage-03-1440.png`, and `mobile-01-390.png`.
+- `vue-tsc -b`, Vite production build, and `git diff --check` pass. Global `audit:figma` remains blocked by unrelated cases/diseases stale evidence, about full-size source asset, and toolkit-detail source extraction; this targeted scroll correction is not reported as a full-site gate pass.
+- Toolkit boundary spacing correction, 2026-09-30: the single desktop `.toolkit-sticky` now carries `margin-block: 96px`, matching the authored toolkit section padding. At `1440 x 900`, the measured entry gap between the blue section top and the left copy is `96px`, the copy remains pinned through all three stages, and the measured exit gap between the copy bottom and blue section bottom is `96px`. Mobile resets the margin and sticky positioning to static flow; `390px` viewport has zero horizontal overflow.
+- FAQ text-jump correction, 2026-09-30: animate only the answer wrapper's measured height for `380ms`; inner text retains its natural line height and is clipped during the transition. The outgoing answer fades within `120ms` rather than remaining as a compressed gray line. Desktop/mobile switches keep `scrollY` fixed, avoid horizontal overflow, and remain readable with reduced motion. Focused screenshots: `docs/figma-verification/trust/2026-09-30/faq-mid-1440.png`, `faq-final-1440.png`, `faq-mid-390.png`, and `faq-final-390.png`.
 
 ## Verification
 
@@ -119,10 +135,10 @@ The complete one-to-one filename, order, size, and Node ID mapping for all 29 ex
 - Desktop geometry: document `1440 x 4165`; sections `757 / 650.04 / 1136 / 754 / 412`; shared footer `456`; horizontal overflow `0`.
 - Pixel comparison: 2x Figma export normalized to `1440 x 4165`; overall mean absolute RGB difference `4.60 / 255`; section values `6.64 / 6.99 / 2.74 / 5.27 / 3.15 / 2.61` including footer.
 - Mobile geometry: real `390 x 844` viewport; `clientWidth === scrollWidth === 390`; no hidden reveal nodes or broken images.
-- Interaction evidence: assurance state changed `263 -> 373px` without changing document height; FAQ answer changed one-at-a-time; consultation opened, focused `#consult-name`, and closed with Escape; `/report` and `/steps` links resolved.
+- Interaction evidence: assurance cards independently changed `263 -> 373px` without changing document height; FAQ answer changed one-at-a-time; JCI article opened the authored dialog, trapped focus, closed with button/backdrop/Escape, and restored focus to 阅读全文; consultation opened, focused `#consult-name`, and closed with Escape; `/report` and `/steps` links resolved.
 - Consultation submission now posts to `/api/consultations` with request-id deduplication, explicit submitting/error states, and focus restoration after closing the panel.
 - Latest program regression screenshot: `artifacts/program-regression/consultation-success.png`; successful submission moves focus to the completion action, loops focus within the dialog, and restores focus to the opener on close.
 - Shared footer re-check: Figma node `143:1024` contains the authored `80 x 80px` translucent “扫码加微信” placeholder, not a QR bitmap/vector asset. The implementation preserves that authored placeholder and makes email, telephone, and WhatsApp actionable links.
 - Motion evidence: card hover settled at about `translateY(-5px)`; all `19/19` reveal nodes remained visible after scrolling; toolkit copy computed `position: sticky`; reduced-motion state left every reveal node visible with no transform.
-- Verification run: 2026-09-24
+- Verification run: 2026-09-30
 - Remaining differences: none

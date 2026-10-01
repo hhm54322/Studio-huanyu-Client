@@ -1,11 +1,12 @@
 # 费用对比
 
-- Route: `/cost`
-- Figma frame: `查看更多病种费用对比详情`
+- Route: `/why-china#cost-comparison` (in-page expanded state; `/cost` is a compatibility alias)
+- Figma frame/state: `查看更多病种费用对比详情` expanded accordion state inside `为什么选择中国`
 - Node ID: `143:2079`
 - Source baseline HTML: `docs/figma-source/cost/frame.html`
 - Source baseline CSS: `docs/figma-source/cost/styles.txt`
 - Source asset manifest: `docs/figma-source/cost/assets.json`
+- Runtime implementation: the source frame is rendered as the expanded in-page state of `WhyChinaView.vue`; runtime selectors are `.cost-section`, `.comparison-chart`, `.cost-actions`, `.cost-detail-grid`, and `.cost-detail-card`. The `.cost-generated-*` selectors below are retained only as source-baseline names.
 - Source extraction run: 2026-09-24, Figma Dev Mode through `browser-client` and the `iab` design tab
 - Desktop frame: `1440 x 1961.26px` (`143:2079` native size); the supplied Figma export rasterizes to `1440 x 1962px`
 - Responsive QA viewport: `390 x 844`; no dedicated mobile source frame

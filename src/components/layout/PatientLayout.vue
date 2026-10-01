@@ -7,6 +7,7 @@ import PatientHeader from './PatientHeader.vue'
 
 const route = useRoute()
 let observer: IntersectionObserver | null = null
+let contentObserver: MutationObserver | null = null
 let buttonCleanups: Array<() => void> = []
 let scrollMotionFrame = 0
 let routeMotionTimer: number | undefined
@@ -44,10 +45,11 @@ function attachButtonMotion() {
 }
 
 function revealVisibleElements() {
-  const viewportBottom = window.innerHeight * .96
-  document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-visible)').forEach((element) => {
+  const viewportBottom = window.innerHeight
+  document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal-visible="true"])').forEach((element) => {
     const rect = element.getBoundingClientRect()
     if (rect.bottom <= 0 || rect.top >= viewportBottom) return
+    element.setAttribute('data-reveal-visible', 'true')
     element.classList.add('is-visible')
     observer?.unobserve(element)
   })
@@ -55,6 +57,7 @@ function revealVisibleElements() {
 
 function attachRevealAnimations() {
   observer?.disconnect()
+  contentObserver?.disconnect()
   document.documentElement.classList.remove('hy-reveal-ready')
   const revealElements = document.querySelectorAll<HTMLElement>('[data-reveal]')
 
@@ -69,12 +72,26 @@ function attachRevealAnimations() {
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return
+      entry.target.setAttribute('data-reveal-visible', 'true')
       entry.target.classList.add('is-visible')
       observer?.unobserve(entry.target)
     })
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 })
+  }, { rootMargin: '0px', threshold: 0 })
+
+  const observeRevealElements = (root: ParentNode = document) => {
+    root.querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal-visible="true"])').forEach((element) => observer?.observe(element))
+    revealVisibleElements()
+  }
 
   revealElements.forEach((element) => observer?.observe(element))
+  const main = document.querySelector('main')
+  if (main && typeof MutationObserver !== 'undefined') {
+    contentObserver = new MutationObserver((mutations) => {
+      if (!mutations.some((mutation) => mutation.addedNodes.length)) return
+      observeRevealElements(main)
+    })
+    contentObserver.observe(main, { childList: true, subtree: true })
+  }
   revealVisibleElements()
   attachButtonMotion()
 }
@@ -134,6 +151,7 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   observer?.disconnect()
+  contentObserver?.disconnect()
   clearButtonMotion()
   window.removeEventListener('scroll', requestScrollMotion)
   window.removeEventListener('resize', requestScrollMotion)

@@ -1,7 +1,8 @@
 const path = require('node:path')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
 
-const out = path.resolve('docs/figma-verification/dental/2026-09-29')
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/dental/2026-09-29')
+const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
 
 async function capture(page, name) {
   await page.screenshot({ path: path.join(out, name), fullPage: true })
@@ -12,7 +13,7 @@ async function main() {
   try {
     for (const width of [1440, 390]) {
       const page = await browser.newPage({ viewport: { width, height: width === 1440 ? 900 : 844 } })
-      await page.goto('http://127.0.0.1:5173/dental', { waitUntil: 'networkidle' })
+      await page.goto(`${origin}/dental`, { waitUntil: 'networkidle' })
       await page.getByRole('button', { name: /02 城市与医生匹配/ }).click()
       await page.getByRole('button', { name: /了解更多/ }).first().click()
       await page.getByRole('button', { name: '医生简介', exact: true }).click()

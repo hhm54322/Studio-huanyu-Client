@@ -5,11 +5,8 @@ const activeCase = ref(0)
 const complexModalOpen = ref(false)
 const modalCloseButton = ref<HTMLButtonElement | null>(null)
 const complexModal = ref<HTMLElement | null>(null)
-const trustDetailOpen = ref(false)
-const trustDetailCloseButton = ref<HTMLButtonElement | null>(null)
-const trustDetailModal = ref<HTMLElement | null>(null)
+const expandedTrustCards = ref<number[]>([])
 let complexTrigger: HTMLElement | null = null
-let trustTrigger: HTMLElement | null = null
 
 const complexDetail = {
   title: '复杂骨科 · 关节置换',
@@ -45,10 +42,10 @@ const networkCards = [
 ]
 
 const complexCases = [
-  { title: '复杂骨科 · 关节置换', copy: '关节因为骨关节炎、股骨头坏死、类风湿或创伤严重磨损，药物与保守治疗效果有限时，用人工关节替代损坏的关节面，重建活动能力与无痛行走。', icon: '/images/figma/about-icons/Frame-1.svg', nodeId: '484:2093' },
-  { title: '肿瘤 · 多学科诊疗（MDT）', copy: '涉及肿瘤诊断后的第二诊疗意见、治疗方案选择、手术可行性评估，以及治疗后并发症与功能重建。', icon: '/images/figma/about-icons/Frame-6.svg', nodeId: '484:2127' },
-  { title: '慢病与自身免疫 · 个体化长期管理', copy: '糖尿病、高血压、慢阻肺、类风湿关节炎、系统性红斑狼疮、强直性脊柱炎等需要长期、动态调整方案的慢性病与自身免疫性疾病。', icon: '/images/figma/about-icons/Frame-5.svg', nodeId: '484:2107' },
-  { title: '牙科 · 精准种植与美学修复', copy: '缺牙、牙列缺损、牙齿不齐、四环素牙/氟斑牙、牙周病等问题，通过种植、正畸、全瓷冠、贴面等方式恢复功能与美观。', icon: '/images/figma/about-icons/Frame-9.svg', nodeId: '484:2117' },
+  { title: '复杂骨科 · 关节置换', copy: '关节因为骨关节炎、股骨头坏死、类风湿或创伤严重磨损，药物与保守治疗效果有限时，用人工关节替代损坏的关节面，重建活动能力与无痛行走。', icon: '/images/figma/about-icons/Frame-1.svg', background: '/images/figma/about-complex-knee.webp', nodeId: '484:2093' },
+  { title: '肿瘤 · 多学科诊疗（MDT）', copy: '涉及肿瘤诊断后的第二诊疗意见、治疗方案选择、手术可行性评估，以及治疗后并发症与功能重建。', icon: '/images/figma/about-icons/Frame-6.svg', background: '/images/figma/about-complex-mri.webp', nodeId: '484:2127' },
+  { title: '慢病与自身免疫 · 个体化长期管理', copy: '糖尿病、高血压、慢阻肺、类风湿关节炎、系统性红斑狼疮、强直性脊柱炎等需要长期、动态调整方案的慢性病与自身免疫性疾病。', icon: '/images/figma/about-icons/Frame-5.svg', background: '/images/figma/about-complex-care.webp', nodeId: '484:2107' },
+  { title: '牙科 · 精准种植与美学修复', copy: '缺牙、牙列缺损、牙齿不齐、四环素牙/氟斑牙、牙周病等问题，通过种植、正畸、全瓷冠、贴面等方式恢复功能与美观。', icon: '/images/figma/about-icons/Frame-9.svg', background: '/images/figma/about-complex-care.webp', nodeId: '484:2117' },
 ]
 
 const matchingSteps = [
@@ -118,26 +115,19 @@ function closeComplexCase() {
   nextTick(() => complexTrigger?.focus())
 }
 
-async function openTrustDetail() {
-  trustTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
-  trustDetailOpen.value = true
-  await nextTick()
-  trustDetailCloseButton.value?.focus()
-}
-
-function closeTrustDetail() {
-  trustDetailOpen.value = false
-  nextTick(() => trustTrigger?.focus())
+function toggleTrustDetail(index: number) {
+  expandedTrustCards.value = expandedTrustCards.value.includes(index)
+    ? expandedTrustCards.value.filter(item => item !== index)
+    : [...expandedTrustCards.value, index]
 }
 
 function handleComplexModalKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape') {
-    if (trustDetailOpen.value) closeTrustDetail()
-    else if (complexModalOpen.value) closeComplexCase()
+    if (complexModalOpen.value) closeComplexCase()
     return
   }
   if (event.key !== 'Tab') return
-  const container = trustDetailOpen.value ? trustDetailModal.value : complexModalOpen.value ? complexModal.value : null
+  const container = complexModalOpen.value ? complexModal.value : null
   if (!container) return
   const focusable = Array.from(container.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'))
   const first = focusable[0]
@@ -147,8 +137,8 @@ function handleComplexModalKeydown(event: KeyboardEvent) {
   else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
 }
 
-watch([complexModalOpen, trustDetailOpen], ([complexOpen, trustOpen]) => {
-  document.body.style.overflow = complexOpen || trustOpen ? 'hidden' : ''
+watch(complexModalOpen, (complexOpen) => {
+  document.body.style.overflow = complexOpen ? 'hidden' : ''
 })
 
 onMounted(() => window.addEventListener('keydown', handleComplexModalKeydown))
@@ -193,7 +183,7 @@ onUnmounted(() => {
           <h2 id="complex-title">复杂病例，一人一策</h2><p>点击切换，看我们如何为不同情况做个性化方案。</p>
         </header>
         <div class="complex-grid">
-          <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms` }" data-reveal role="button" tabindex="0" @click="activeCase = index" @keydown.enter.prevent="activeCase = index" @keydown.space.prevent="activeCase = index">
+          <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms`, '--complex-image': `url(${item.background})` }" data-reveal role="button" tabindex="0" @click="activeCase = index" @keydown.enter.prevent="activeCase = index" @keydown.space.prevent="activeCase = index">
             <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p>
             <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">阅读全文 <img src="/images/figma/about-icons/Icon-12.svg" alt="" aria-hidden="true" /></button></div>
           </article>
@@ -220,9 +210,10 @@ onUnmounted(() => {
           <h2 id="proof-title">可信度，靠证据不靠形容词</h2><p>主体、隐私、边界——每一项都能被核实</p>
         </header>
         <div class="proof-grid">
-          <article v-for="(item, index) in proofCards" :key="item.title" class="proof-card" data-reveal :style="{ '--reveal-delay': `${index * 65}ms` }">
+          <article v-for="(item, index) in proofCards" :key="item.title" class="proof-card" :class="{ 'proof-card--expanded': expandedTrustCards.includes(index) }" data-reveal :style="{ '--reveal-delay': `${index * 65}ms` }" @click="toggleTrustDetail(index)">
             <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p>
-            <button type="button" aria-label="查看可信度详情" @click="openTrustDetail"><span>查看详情</span><img src="/images/figma/about-icons/Icon-4.svg" alt="" aria-hidden="true" /></button></div>
+            <button type="button" :aria-expanded="expandedTrustCards.includes(index)" :aria-controls="`trust-detail-${index}`" :aria-label="expandedTrustCards.includes(index) ? '收起可信度详情' : '查看可信度详情'"><span>{{ expandedTrustCards.includes(index) ? '收起详情' : '查看详情' }}</span><img src="/images/figma/about-icons/Icon-4.svg" alt="" aria-hidden="true" /></button>
+            <div :id="`trust-detail-${index}`" class="proof-card__detail" :class="{ 'proof-card__detail--open': expandedTrustCards.includes(index) }" :aria-hidden="!expandedTrustCards.includes(index)"><div class="proof-card__detail-inner"><div class="proof-card__detail-heading"><img :src="trustDetailAssets[item.title]?.path || item.icon" :data-figma-node="trustDetailAssets[item.title]?.nodeId" alt="" aria-hidden="true" /><strong>{{ item.title }}</strong></div><p>{{ trustDetailCards[index]?.evidence }}</p></div></div></div>
           </article>
         </div>
       </div>
@@ -249,28 +240,6 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <Transition name="trust-detail">
-      <div v-if="trustDetailOpen" class="trust-detail-backdrop" role="presentation" @click.self="closeTrustDetail">
-        <section ref="trustDetailModal" class="trust-detail-page" role="dialog" aria-modal="true" aria-labelledby="trust-detail-title">
-          <div class="trust-detail-content">
-            <h2 id="trust-detail-title">可信度，靠证据<span class="trust-detail-mobile-break"><br /></span>不靠形容词</h2>
-            <p class="trust-detail-subtitle">主体、隐私、边界——每一项都能被核实</p>
-            <div class="trust-detail-grid">
-              <article v-for="(item, index) in trustDetailCards" :key="item.title" class="trust-detail-card">
-                <img class="trust-detail-card__icon" :src="trustDetailAssets[item.title].path" :data-figma-node="trustDetailAssets[item.title].nodeId" alt="" aria-hidden="true" />
-                <div class="trust-detail-card__body">
-                  <h3>{{ item.title }}</h3>
-                  <p>{{ item.copy }}</p>
-                  <button :ref="el => { if (index === 0) trustDetailCloseButton = el as HTMLButtonElement }" class="trust-detail-card__action" type="button" aria-label="收起可信度详情" @click="closeTrustDetail">查看详情 <img src="/images/figma/about-trust-detail/icon-chevron.svg" alt="" aria-hidden="true" /></button>
-                  <p>{{ item.evidence }}</p>
-                </div>
-              </article>
-            </div>
-            <p class="trust-detail-note">把&quot;该信谁&quot;从玄学，变成可核对的事实</p>
-          </div>
-        </section>
-      </div>
-    </Transition>
   </main>
 </template>
 
@@ -300,9 +269,9 @@ onUnmounted(() => {
 .about-complex .about-section-heading h2 { font-family: 'PingFang MO', 'PingFang SC', sans-serif; line-height: 39px; }
 .network-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; height: 92px; margin-top: 48px; }.network-stat { position: relative; display: flex; flex-direction: column; gap: 16px; align-items: center; min-height: 92px; text-align: center; }.network-stat:not(:first-child)::before { position: absolute; left: -13px; top: 11px; width: 1px; height: 70px; background: #eef1f4; content: ''; }.network-stat strong { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #2563eb; font-size: 56px; font-weight: 700; line-height: 56px; letter-spacing: 0.352px; }.network-stat span { color: #6b7280; font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: -0.15px; }
 .network-cards { display: grid; grid-template-columns: repeat(3,1fr); grid-auto-rows: 248px; gap: 24px; height: 248px; margin-top: 48px; }.network-card, .matching-card { box-sizing: border-box; border-radius: 24px; background: #f5f6f7; }.network-card { display: flex; flex-direction: column; gap: 80px; height: 248px; min-height: 248px; padding: 24px; border: 0; }.network-card svg, .matching-card svg, .proof-card > svg { color: #5e8bff; }.network-card h3, .matching-card h3, .proof-card h3 { margin: 0 0 16px; color: #1e3a5f; font-size: 24px; font-weight: 600; line-height: 24px; letter-spacing: 0; }.network-card p, .matching-card p, .proof-card p { margin: 0; color: #4b5563; font-size: 16px; font-weight: 400; line-height: 24px; }
-.about-complex { min-height: 839px; box-sizing: border-box; padding: 96px 0; background: #1e3a5f; }.complex-grid { display: grid; grid-template-columns: repeat(2,1fr); grid-auto-rows: 248px; gap: 24px; height: 520px; margin-top: 48px; }.complex-card { width: 100%; min-height: 248px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 80px; box-sizing: border-box; border: 0; border-radius: 24px; padding: 24px; background: #0f213e; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color .35s ease, transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease; }.complex-card::before { position: absolute; inset: 0; opacity: 0; background: center / cover no-repeat url('/images/figma/about-complex-knee.png'); content: ''; pointer-events: none; transition: opacity .4s ease; }.complex-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px rgba(4,23,45,.22); }.complex-card--active { background: #0f213e; }.complex-card--knee { justify-content: space-between; gap: 0; }.complex-card--active.complex-card--knee::before { opacity: .15; }.complex-card svg, .complex-card h3, .complex-card p, .complex-card__read { position: relative; z-index: 1; }.complex-card svg { color: #35d5e9; }.complex-card h3 { margin: 0 0 16px; color: #fff; font-size: 24px; font-weight: 600; line-height: 24px; }.complex-card p { margin: 0; color: rgba(255,255,255,.70); font-size: 16px; line-height: 24px; }.complex-card__read { display: inline-flex; align-items: center; gap: 4px; margin-top: 16px; border: 0; padding: 0; background: transparent; color: #dd6b20; font-size: 16px; font-weight: 500; line-height: 16px; cursor: pointer; }.complex-card__read img { color: currentColor; transition: transform .3s ease; }.complex-card:hover .complex-card__read img { transform: translateX(3px); }
+.about-complex { min-height: 839px; box-sizing: border-box; padding: 96px 0; background: #1e3a5f; }.complex-grid { display: grid; grid-template-columns: repeat(2,1fr); grid-auto-rows: 248px; gap: 24px; height: 520px; margin-top: 48px; }.complex-card { width: 100%; min-height: 248px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 80px; box-sizing: border-box; border: 0; border-radius: 24px; padding: 24px; background: #0f213e; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease; }.complex-card::before { position: absolute; inset: 0; opacity: .15; background: center / cover no-repeat var(--complex-image); content: ''; pointer-events: none; }.complex-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px rgba(4,23,45,.22); }.complex-card--knee { justify-content: space-between; gap: 0; }.complex-card svg, .complex-card h3, .complex-card p, .complex-card__read { position: relative; z-index: 1; }.complex-card svg { color: #35d5e9; }.complex-card h3 { margin: 0 0 16px; color: #fff; font-size: 24px; font-weight: 600; line-height: 24px; }.complex-card p { margin: 0; color: rgba(255,255,255,.70); font-size: 16px; line-height: 24px; }.complex-card__read { display: inline-flex; align-items: center; gap: 4px; margin-top: 16px; border: 0; padding: 0; background: transparent; color: #dd6b20; font-size: 16px; font-weight: 500; line-height: 16px; cursor: pointer; }.complex-card__read img { color: currentColor; transition: transform .3s ease; }.complex-card:hover .complex-card__read img { transform: translateX(3px); }
 .matching-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-auto-rows: 248px; gap: 24px; height: 520px; margin-top: 48px; }.matching-card { display: flex; flex-direction: column; gap: 80px; height: 248px; min-height: 248px; padding: 24px; border: 0; border-radius: 24px; transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }.matching-card:hover { transform: translateY(-5px); box-shadow: 0 16px 28px rgba(30,58,95,.08); }
-.proof-grid { display: grid; grid-template-columns: repeat(2,1fr); grid-auto-rows: 302px; gap: 24px; height: 628px; margin-top: 48px; }.proof-card { height: 302px; min-height: 302px; box-sizing: border-box; display: flex; flex-direction: column; gap: 80px; padding: 24px; border: 0; border-radius: 24px; background: #fff; transition: box-shadow .32s ease, transform .32s cubic-bezier(.22,1,.36,1); }.proof-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(30,58,95,.08); }.proof-card:nth-child(4) { justify-content: space-between; gap: 0; }.proof-card button { display: inline-flex; align-items: center; width: 100%; justify-content: space-between; gap: 4px; margin-top: 16px; border: 0; padding: 0; background: transparent; color: #9ca3af; font-size: 14px; font-weight: 500; line-height: 14px; cursor: pointer; }.proof-card button:hover { color: #2563eb; }.proof-card button img { width: 14px; height: 14px; transition: transform .3s cubic-bezier(.22,1,.36,1); }.proof-card button:hover img { transform: translateX(3px); }.proof-card--expanded { box-shadow: 0 14px 28px rgba(30,58,95,.09); }
+.proof-grid { display: grid; grid-template-columns: repeat(2,1fr); grid-auto-rows: minmax(302px, auto); gap: 24px; margin-top: 48px; }.proof-card { min-height: 302px; box-sizing: border-box; display: flex; flex-direction: column; gap: 80px; padding: 24px; border: 0; border-radius: 24px; background: #fff; cursor: pointer; transition: box-shadow .32s ease, transform .32s cubic-bezier(.22,1,.36,1); }.proof-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(30,58,95,.08); }.proof-card:nth-child(4) { justify-content: space-between; gap: 0; }.proof-card button { display: inline-flex; align-items: center; width: 100%; justify-content: space-between; gap: 4px; margin-top: 16px; border: 0; padding: 0; background: transparent; color: #9ca3af; font-size: 14px; font-weight: 500; line-height: 14px; cursor: pointer; }.proof-card button:hover { color: #2563eb; }.proof-card button img { width: 14px; height: 14px; transition: transform .3s cubic-bezier(.22,1,.36,1); }.proof-card button[aria-expanded="true"] img { transform: rotate(180deg); }.proof-card--expanded { box-shadow: 0 14px 28px rgba(30,58,95,.09); }.proof-card__detail { overflow: hidden; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb; }.proof-card__detail-heading { display: flex; align-items: center; gap: 10px; color: #1e3a5f; font-size: 16px; line-height: 24px; }.proof-card__detail-heading img { width: 24px; height: 24px; }.proof-card__detail p { margin-top: 12px; }.trust-accordion-enter-active, .trust-accordion-leave-active { transition: opacity .25s ease, transform .3s cubic-bezier(.22,1,.36,1); }.trust-accordion-enter-from, .trust-accordion-leave-to { opacity: 0; transform: translateY(-8px); }
 .trust-detail-backdrop { position: fixed; inset: 0; z-index: 140; overflow-y: auto; background: #f5f6f7; }
 .trust-detail-page { position: relative; box-sizing: border-box; min-height: 100%; padding: 96px 40px; color: #1e3a5f; }
 .trust-detail-content { width: min(1216px, 100%); min-height: 948px; margin-inline: auto; display: grid; grid-template-rows: 40px 40px 780px 40px; gap: 16px; }
@@ -382,4 +351,9 @@ onUnmounted(() => {
   .complex-detail-path b { width: 24px; align-self: center; text-align: center; }
   .trust-detail-card:nth-child(4) .trust-detail-card__body { margin-top: 40px; }
 }
+.proof-card__detail { display: grid; grid-template-rows: 0fr; margin-top: 0; padding-top: 0; border-top-width: 0; opacity: 0; transition: grid-template-rows .36s cubic-bezier(.22,1,.36,1), margin-top .36s cubic-bezier(.22,1,.36,1), padding-top .36s cubic-bezier(.22,1,.36,1), opacity .24s ease, border-color .24s ease; }
+.proof-card__detail--open { grid-template-rows: 1fr; margin-top: 20px; padding-top: 20px; border-top-width: 1px; opacity: 1; }
+.proof-card__detail-inner { min-height: 0; overflow: hidden; }
+.proof-card { align-self: start; }
+@media (prefers-reduced-motion: reduce) { .proof-card__detail { transition: none; } }
 </style>

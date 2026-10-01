@@ -55,6 +55,7 @@
 | --- | --- | --- |
 | Dental hero | Figma image layer in `231:88`, crop `1440 x 396px` | `/public/images/figma/dental-hero-background.png` |
 | Doctor avatars | Authored doctor card assets in `231:397` | `/public/images/figma/expert-*-avatar.png` |
+| Project icons, ordered implant/whitening/veneer/aligner/crown/periodontal/root canal/children | Dev Mode SVG from `231:130`, `231:151`, `231:168`, `231:185`, `231:202`, `231:218`, `231:236`, `231:254`; each `32 x 32`, transparent background, `#2563EB` vector paint | `/public/images/figma/dental-source/icon-*.svg` |
 
 ## Typography
 
@@ -79,6 +80,7 @@
 | --- | --- | --- | --- | --- |
 | Step switch | Figma prototype | Step button | Short transition | Stacked step rail |
 | Doctor modal | Figma prototype | Detail action | Backdrop fade | Scrollable full-width modal |
+| Project card detail | Figma expanded project state | Click individual card | Outer detail height animates `420ms cubic-bezier(.22,1,.36,1)` while the inner copy keeps its natural height; summary stays at its resting position | Same stable layout at one column; reduced motion removes transition |
 
 ## Verification
 
@@ -94,3 +96,6 @@
 - Latest program regression screenshot: `artifacts/program-regression/dental-upload-success.png`; captured after a real browser multipart upload reached the API and the persisted success state rendered.
 - Remaining differences: none
 - Verification run: 2026-09-29. Re-read Figma source frames `231:88`, `231:397`, `231:815`, `231:1292`, `231:1355`, and `231:1421`; locked 307/416/198/63/66/81 node trees, regenerated source baselines, and verified project/doctor/upload desktop geometry, responsive mobile flow, filters/reset, step transitions, doctor modal tabs, Escape close, body scroll lock, image loading, empty-upload rejection, and reduced-motion fallback. Source screenshot changed-pixel ratios: project 2.71%, doctor 3.76%, upload 2.19% at threshold .15; all authored frame heights match exactly. State evidence: `docs/figma-verification/dental/2026-09-29/state-results.json`.
+- 2026-09-30 icon/accordion correction: Dev Mode SVG code was copied from all eight exact icon nodes listed above, replacing screenshot-derived `32 x 32` PNGs that had an opaque `#F5F6F7` background and clipped strokes. Source SVGs render with zero corner alpha. At `1440` and `390px`, all eight expanded cards display every detail row inside their own bounds with no horizontal overflow. Implant summary title remains at the same `136px` card-relative Y position before/after toggle; authored desktop expanded height remains `446px`. Final focused screenshots: `docs/figma-verification/dental/2026-09-30/expanded-final-1440.png` and `expanded-final-390.png`.
+- Motion check: at `30 / 60 / 100 / 200 / 480ms` after expanding a card, the detail shell grew smoothly while the `dl` kept natural row positions and no adjacent rows overlapped. All eight card details fit at desktop/mobile widths; rapid repeated clicks, SVG loading, reduced-motion reading state, and browser runtime errors were checked. Full-page captures: `docs/figma-verification/dental/2026-09-30/full-1440.png` and `full-390.png`.
+- Latest `1440 x 2384` full-page screenshot versus the existing 2x Figma export normalized to 1x: changed-pixel ratio at RGB max-channel threshold `38` is `1.51%` (prior local image `2.78%`); mean absolute RGB difference is `1.95/255` (prior `3.61/255`). This focused fix improves the comparison but does not establish a site-wide 100% match. Type check and Vite build pass; global Figma gate is still blocked by unrelated cases/diseases evidence and unfinished about/toolkit-detail source records.

@@ -177,7 +177,9 @@ function toggleDetails() {
           <p>中国是唯一同时具备：顶级重症技术、超快就诊时效、亲民治疗成本的跨境医疗目的地。</p>
         </div>
 
-        <div v-show="detailsExpanded" id="cost-detail-grid" class="cost-generated-details" data-figma-node="143:2372">
+        <Transition name="cost-accordion">
+        <div v-if="detailsExpanded" class="cost-accordion-shell">
+        <div id="cost-detail-grid" class="cost-generated-details" data-figma-node="143:2372">
           <article v-for="card in detailCards" :key="card.title" class="cost-detail-card" :data-figma-node="card.node" data-reveal>
             <img class="cost-detail-card__icon" :src="card.icon" :data-figma-node="card.iconNode" alt="" />
             <div class="cost-detail-card__content">
@@ -188,6 +190,8 @@ function toggleDetails() {
             </div>
           </article>
         </div>
+        </div>
+        </Transition>
       </div>
     </section>
   </div>
@@ -220,6 +224,10 @@ function toggleDetails() {
 .cost-generated-button--navy { background: #1e3a5f; }
 .cost-generated-actions p { margin: 16px 0 0; color: #6b7280; font: 14px/22px 'PingFang SC', 'Noto Sans SC', sans-serif; }
 .cost-generated-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-top: 32px; }
+.cost-accordion-enter-active,.cost-accordion-leave-active { display:grid; grid-template-rows:1fr; overflow:hidden; opacity:1; transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1),opacity .26s ease; }
+.cost-accordion-enter-from,.cost-accordion-leave-to { grid-template-rows:0fr; opacity:0; }
+.cost-accordion-shell { min-height:0; overflow:hidden; }
+@media (prefers-reduced-motion: reduce) { .cost-accordion-enter-active, .cost-accordion-leave-active { transition:none; } }
 .cost-detail-card { display: flex; min-height: 308px; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 24px; border-radius: 24px; padding: 24px; background: #fff; box-sizing: border-box; transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
 .cost-detail-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(30,58,95,.12); }
 .cost-detail-card__icon { display: block; width: 32px; height: 32px; }

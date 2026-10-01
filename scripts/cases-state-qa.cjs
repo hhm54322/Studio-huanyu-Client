@@ -3,8 +3,8 @@ const path = require('node:path')
 const assert = require('node:assert/strict')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
 const sharp = require('/tmp/huanyu-visual-qa-tools/node_modules/sharp')
-const out = path.resolve('docs/figma-verification/cases/2026-09-29')
-const url = 'http://127.0.0.1:5173/cases'
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/cases/2026-09-29')
+const url = `${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}/cases`
 
 async function settled(page) {
   await page.waitForFunction(() => {

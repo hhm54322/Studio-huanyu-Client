@@ -371,7 +371,7 @@ const localizedReport = computed(() => {
       {
         name: { zh: '标准面诊包 / Standard', en: 'Standard Video Consultation Package', id: 'Paket Konsultasi Video Standard', ru: 'Стандартный пакет видеоконсультации', mn: 'Стандарт видео зөвлөгөөний багц' },
         subtitle: { zh: '适合希望与专家视频沟通并获得跟进答疑', en: 'Best for expert video discussion and follow-up Q&A', id: 'Cocok untuk konsultasi video ahli dan Q&A lanjutan', ru: 'Для видеоконсультации и последующих вопросов', mn: 'Мэргэжилтэнтэй видео ярилцаж, дараах асуултад тохиромжтой' },
-        price: '$185-$425',
+        price: '$200-$425',
         originalPrice: '￥1,300-3,000',
         badge: { zh: '最受欢迎 / Most Popular', en: 'Most Popular', id: 'Paling populer', ru: 'Самый популярный', mn: 'Хамгийн түгээмэл' },
         cta: { zh: '选择标准包 / Choose Standard', en: 'Choose Standard', id: 'Pilih Standard', ru: 'Выбрать Standard', mn: 'Standard сонгох' },
@@ -519,7 +519,7 @@ const activeProSampleTabDefinition = computed(() => (
 const proSamplePackages = [
   {
     name: '标准面诊包',
-    price: '$185-425',
+    price: '$200-425',
     originalPrice: '¥1,300-3,000',
     summary: '含1次专家1v1视频面诊30分钟',
     badge: '最受欢迎',
@@ -1648,6 +1648,7 @@ const resetWizard = () => {
                 type="button"
                 class="w-full p-4 text-left"
                 :aria-expanded="expandedHospital === hospital.key"
+                :aria-controls="`report-hospital-detail-${hospital.key}`"
                 @click="toggleHospital(hospital.key)"
               >
                 <div class="mb-3 flex items-start justify-between gap-3">
@@ -1706,7 +1707,8 @@ const resetWizard = () => {
                 </div>
               </button>
 
-              <div v-if="expandedHospital === hospital.key" class="border-t border-sky-100 bg-white px-4 pb-4 pt-4">
+              <Transition name="report-accordion">
+              <div v-if="expandedHospital === hospital.key" :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-4 pb-4 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -1719,6 +1721,7 @@ const resetWizard = () => {
                   </div>
                 </div>
               </div>
+              </Transition>
             </article>
           </div>
 
@@ -2341,6 +2344,8 @@ const resetWizard = () => {
             >
               <button
                 class="w-full text-left px-5 py-4 flex items-center justify-between"
+                :aria-expanded="expandedCountry === c.name"
+                :aria-controls="`report-country-detail-${c.name}`"
                 @click="expandedCountry = expandedCountry === c.name ? null : c.name"
               >
                 <div class="flex items-center gap-3">
@@ -2351,7 +2356,8 @@ const resetWizard = () => {
                 </div>
                 <component :is="expandedCountry === c.name ? ChevronUp : ChevronDown" class="h-5 w-5 text-gray-400" />
               </button>
-              <div v-if="expandedCountry === c.name" class="px-5 pb-5 grid md:grid-cols-2 gap-3 text-sm">
+              <Transition name="report-accordion">
+              <div v-if="expandedCountry === c.name" :id="`report-country-detail-${c.name}`" class="report-accordion-panel px-5 pb-5 grid md:grid-cols-2 gap-3 text-sm">
                 <div class="flex items-start gap-2">
                   <DollarSign class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.totalCost') }}：</span>{{ c.fee }}</div>
@@ -2377,6 +2383,7 @@ const resetWizard = () => {
                   <div><span class="font-medium text-gray-700">{{ t('report.followup') }}：</span>{{ c.follow }}</div>
                 </div>
               </div>
+              </Transition>
             </div>
           </div>
         </section>
@@ -2428,6 +2435,7 @@ const resetWizard = () => {
                 type="button"
                 class="w-full p-5 text-left"
                 :aria-expanded="expandedHospital === hospital.key"
+                :aria-controls="`report-hospital-detail-${hospital.key}`"
                 @click="toggleHospital(hospital.key)"
               >
                 <div class="mb-3 flex items-start justify-between gap-3">
@@ -2471,7 +2479,8 @@ const resetWizard = () => {
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
               </button>
-              <div v-if="expandedHospital === hospital.key" class="border-t border-sky-100 bg-white px-5 pb-5 pt-4">
+              <Transition name="report-accordion">
+              <div v-if="expandedHospital === hospital.key" :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-5 pb-5 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -2484,6 +2493,7 @@ const resetWizard = () => {
                   </div>
                 </div>
               </div>
+              </Transition>
             </article>
           </div>
 
@@ -3488,6 +3498,12 @@ const resetWizard = () => {
   font-size: 13px;
   font-weight: 700;
 }
+.report-accordion-enter-active,
+.report-accordion-leave-active { display:grid; grid-template-rows:1fr; overflow:hidden; opacity:1; transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.report-accordion-enter-from,
+.report-accordion-leave-to { grid-template-rows:0fr; opacity:0; }
+.report-accordion-panel { min-height:0; overflow:hidden; }
+@media (prefers-reduced-motion: reduce) { .report-accordion-enter-active, .report-accordion-leave-active { transition:none; } }
 
 .free-report-cost-summary > div {
   min-height: 112px;

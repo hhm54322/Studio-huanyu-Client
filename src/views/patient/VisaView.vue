@@ -407,17 +407,16 @@ const mVisaDiffs = [
                 :class="['w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200', openFaq === index ? 'rotate-180' : '']"
               />
             </button>
-            <div
-              :id="`visa-faq-answer-${index}`"
-              :class="['overflow-hidden transition-all duration-300', openFaq === index ? 'max-h-96' : 'max-h-0']"
-            >
-              <div class="px-5 sm:px-6 pb-5 sm:pb-6 pl-16 sm:pl-[4.5rem]">
-                <div class="rounded-lg p-4 text-sm text-gray-700 leading-relaxed" style="background-color: #F7FBFD">
-                  <span class="font-bold mr-2" style="color: #123F67">A:</span>
-                  {{ faq.answer }}
+            <Transition name="accordion">
+              <div v-if="openFaq === index" :id="`visa-faq-answer-${index}`" class="visa-faq-answer">
+                <div class="px-5 sm:px-6 pb-5 sm:pb-6 pl-16 sm:pl-[4.5rem]">
+                  <div class="rounded-lg p-4 text-sm text-gray-700 leading-relaxed" style="background-color: #F7FBFD">
+                    <span class="font-bold mr-2" style="color: #123F67">A:</span>
+                    {{ faq.answer }}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Transition>
           </div>
         </div>
       </section>
@@ -566,4 +565,10 @@ const mVisaDiffs = [
   outline: 3px solid rgba(255, 138, 52, .62);
   outline-offset: 3px;
 }
+.visa-faq-answer { min-height:0; overflow:hidden; }
+.visa-page :deep(.accordion-enter-active),
+.visa-page :deep(.accordion-leave-active) { display:grid; grid-template-rows:1fr; overflow:hidden; opacity:1; transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.visa-page :deep(.accordion-enter-from),
+.visa-page :deep(.accordion-leave-to) { grid-template-rows:0fr; opacity:0; }
+@media (prefers-reduced-motion: reduce) { .visa-page :deep(.accordion-enter-active), .visa-page :deep(.accordion-leave-active) { transition:none; } }
 </style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { X } from "lucide-vue-next";
 
 const trustAsset = (name: string) => `/images/figma/trust/${name}`;
 
@@ -25,8 +26,42 @@ const assurances = [
     icon: trustAsset("Frame-4.svg"),
   },
 ];
-const activeAssurance = ref(0);
+const expandedAssurances = ref(new Set([0]));
+function toggleAssurance(index: number) {
+  const next = new Set(expandedAssurances.value);
+  if (next.has(index)) next.delete(index);
+  else next.add(index);
+  expandedAssurances.value = next;
+}
 const activeFaq = ref(0);
+function faqBeforeEnter(element: Element) {
+  const panel = element as HTMLElement;
+  panel.style.height = '0px';
+  panel.style.opacity = '0';
+}
+function faqEnter(element: Element) {
+  const panel = element as HTMLElement;
+  const height = panel.scrollHeight;
+  requestAnimationFrame(() => {
+    panel.style.height = `${height}px`;
+    panel.style.opacity = '1';
+  });
+}
+function faqAfterEnter(element: Element) {
+  (element as HTMLElement).style.height = '';
+}
+function faqBeforeLeave(element: Element) {
+  const panel = element as HTMLElement;
+  panel.style.height = `${panel.getBoundingClientRect().height}px`;
+  panel.style.opacity = '1';
+}
+function faqLeave(element: Element) {
+  const panel = element as HTMLElement;
+  requestAnimationFrame(() => {
+    panel.style.height = '0px';
+    panel.style.opacity = '0';
+  });
+}
 const faqs = [
   {
     q: "合作的中国医院是什么等级？是否国际认可？",
@@ -88,6 +123,39 @@ const articles = [
     icon: trustAsset("Frame-1.svg"),
   },
 ];
+const jciModalOpen = ref(false);
+const jciTrigger = ref<HTMLButtonElement | null>(null);
+const jciCloseButton = ref<HTMLButtonElement | null>(null);
+function setJciTrigger(element: any) {
+  jciTrigger.value = element as HTMLButtonElement | null;
+}
+function openJciArticle() {
+  jciModalOpen.value = true;
+  nextTick(() => jciCloseButton.value?.focus());
+}
+function closeJciArticle() {
+  jciModalOpen.value = false;
+  nextTick(() => jciTrigger.value?.focus());
+}
+function handleJciKeydown(event: KeyboardEvent) {
+  if (!jciModalOpen.value) return;
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    closeJciArticle();
+    return;
+  }
+  if (event.key !== 'Tab') return;
+  const dialog = document.getElementById('jci-truth-dialog');
+  if (!dialog) return;
+  const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])')).filter((el) => !el.hasAttribute('disabled'));
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+}
+onMounted(() => document.addEventListener('keydown', handleJciKeydown));
+onBeforeUnmount(() => document.removeEventListener('keydown', handleJciKeydown));
 const tools = [
   {
     title: "病历翻译与整理工具",
@@ -99,6 +167,22 @@ const tools = [
     copy: "了解来华就医的现实条件、预算参考与治疗可能性。提供免费初步摸底与深度专家研判两种选择，辅助你理性做就医决策。",
     icon: trustAsset("Icon-21.svg"),
   },
+];
+const travelTools = [
+  { title: "签证申请清单", copy: "梳理来华医疗签证所需材料、办理流程与时间参考，协助你准备入境就医手续。", icon: "/images/figma/steps-travel-visa.svg", action: false },
+  { title: "免签国家清单", copy: "了解来华就医的现实条件、预算参考与治疗可能性。提供免费初步摸底与深度专家研判两种选择，辅助你理性做就医决策。", icon: "/images/figma/steps-travel-visa-free.svg", action: false },
+  { title: "药品入境规定", copy: "清晰了解个人自用药品入境规范、申报要求与禁限带清单，合规携带常用药物来华，避免入境受阻。", icon: "/images/figma/steps-travel-medicine.svg", action: false },
+  { title: "家属陪同攻略", copy: "完整家属来华陪护指南，包含签证办理、出行住宿、院内陪护规则、双管家全程协助，让家属陪护省心、轻松、无负担。", icon: "/images/figma/steps-travel-family.svg", action: false },
+  { title: "穆斯林患者实操手册", copy: "专属穆斯林患者来华就医全套生活、饮食、信仰、就医礼仪指南，尊重宗教习惯，全程适配清真生活方式。", icon: "/images/figma/steps-travel-muslim.svg", action: false },
+];
+const afterTools = [
+  { title: "就医步骤与就诊流程", copy: "梳理从评估到完成治疗回国的全流程步骤，帮你清晰规划来华就医的每一个环节。", icon: "/images/figma/steps-aftercare-path.svg", action: false },
+  { title: "国际报告与回国随访", copy: "了解来华就医的现实条件、预算参考与治疗可能性。提供免费初步摸底与深度专家研判两种选择，辅助你理性做就医决策。", icon: "/images/figma/steps-aftercare-followup.svg", action: false },
+];
+const toolkitStages = [
+  { heading: "01 出行前 · 决策评估工具", description: "还未确定来华，准备病历、评估可行性", items: tools },
+  { heading: "02 出行中 · 落地办理工具", description: "确认来华，办理入境、药品、陪护等手续", items: travelTools },
+  { heading: "03 在华&回国 · 就诊随访工具", description: "抵达中国就诊，出院回国后的资料与远程服务", items: afterTools },
 ];
 function openConsultation() {
   window.dispatchEvent(new CustomEvent("open-consultation"));
@@ -119,13 +203,13 @@ function openConsultation() {
             v-for="(item, index) in assurances"
             :key="item.title"
             data-reveal
-            :class="{ expanded: index === activeAssurance }"
+            :class="{ expanded: expandedAssurances.has(index) }"
             role="button"
             tabindex="0"
-            :aria-expanded="index === activeAssurance"
-            @click="activeAssurance = index"
-            @keydown.enter.prevent="activeAssurance = index"
-            @keydown.space.prevent="activeAssurance = index"
+            :aria-expanded="expandedAssurances.has(index)"
+            @click="toggleAssurance(index)"
+            @keydown.enter.prevent="toggleAssurance(index)"
+            @keydown.space.prevent="toggleAssurance(index)"
           >
             <img class="assurance-icon" :src="item.icon" alt="" aria-hidden="true" />
             <h2>{{ item.title }}</h2>
@@ -160,6 +244,8 @@ function openConsultation() {
             >
               <button
                 type="button"
+                :aria-expanded="activeFaq === index"
+                :aria-controls="`trust-faq-answer-${index}`"
                 @click="activeFaq = activeFaq === index ? -1 : index"
               >
                 <span>{{ item.q }}</span
@@ -172,10 +258,12 @@ function openConsultation() {
                   "
                   alt=""
                   aria-hidden="true"
-                /></button
-              ><Transition name="faq"
-              ><p v-if="activeFaq === index" v-html="item.a"></p></Transition
-              >
+                /></button>
+              <Transition name="accordion" @before-enter="faqBeforeEnter" @enter="faqEnter" @after-enter="faqAfterEnter" @before-leave="faqBeforeLeave" @leave="faqLeave">
+                <div v-if="activeFaq === index" :id="`trust-faq-answer-${index}`" class="accordion-panel">
+                  <p v-html="item.a"></p>
+                </div>
+              </Transition>
             </article>
           </div>
         </div>
@@ -198,7 +286,15 @@ function openConsultation() {
             <img class="article-icon" :src="item.icon" alt="" aria-hidden="true" />
             <h3>{{ item.title }}</h3>
             <p>{{ item.copy }}</p>
-            <button v-if="item.link" type="button">
+            <button
+              v-if="item.link"
+              :ref="setJciTrigger"
+              type="button"
+              aria-haspopup="dialog"
+              :aria-expanded="jciModalOpen"
+              aria-controls="jci-truth-dialog"
+              @click="openJciArticle"
+            >
               阅读全文<img
                 class="arrow-icon"
                 :src="trustAsset('Icon-2.svg')"
@@ -211,34 +307,74 @@ function openConsultation() {
       </div>
     </section>
 
-    <section class="toolkit-section">
+    <Transition name="jci-dialog">
+      <div
+        v-if="jciModalOpen"
+        class="jci-dialog-backdrop"
+        role="presentation"
+        @click.self="closeJciArticle"
+        @keydown.esc.stop="closeJciArticle"
+      >
+        <section
+          id="jci-truth-dialog"
+          class="jci-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="jci-dialog-title"
+          tabindex="-1"
+        >
+          <button
+            ref="jciCloseButton"
+            class="jci-dialog-close"
+            type="button"
+            aria-label="关闭JCI认证真相"
+            @click="closeJciArticle"
+          >
+            <X :size="16" aria-hidden="true" />
+          </button>
+          <h2 id="jci-dialog-title">JCI认证真相</h2>
+          <p class="jci-dialog-lead">137家JCI认证，院内感染率0.5%仅为欧美一半</p>
+          <div class="jci-dialog-copy">
+            <p>很多海外患者规划来华就医时，首要顾虑：中国医院的医疗标准是否和国际接轨，是否得到全球认可。</p>
+            <p>JCI（Joint Commission International）是国际公认的医疗质量与安全评审体系，执行全球统一标准，不存在国别专属版本。</p>
+            <p>我们合作的医疗机构中，共计137家取得JCI国际认证，在患者安全、诊疗流程、手术质控、院感管理、护理规范上全部对标国际行业要求。</p>
+            <p>公开统计数据显示，这类JCI认证医院院内感染率仅0.5%，对比欧美医院平均1.2%的感染水平，拥有更严格的无菌管控与术后安全体系。</p>
+            <p>从术前评估、手术操作到术后监护，整套诊疗流程完全同步欧美、新加坡等国际医疗规范。对海外患者而言，JCI认证是判断医院正规性、安全性的重要参考依据。</p>
+            <p>JCI认证不是宣传噱头，代表医院的医疗安全体系达到国际统一标准，为跨境就医提供基础安全保障。</p>
+          </div>
+        </section>
+      </div>
+    </Transition>
+
+    <div class="toolkit-scroll" aria-label="来华就医全流程工具包">
       <div class="hy-container toolkit-layout">
-        <aside data-reveal>
+        <aside class="toolkit-sticky">
           <h2>来华就医全流程<br />工具包</h2>
           <p>确认来华就医，获取全套办理模板、清单与流程指引</p>
         </aside>
-        <div>
-          <header>
-            <h3>01 出行前 · 决策评估工具</h3>
-            <p>还未确定来华，准备病历、评估可行性</p>
-          </header>
-          <div class="tool-grid">
-            <article v-for="item in tools" :key="item.title" data-reveal>
-              <img class="tool-icon" :src="item.icon" alt="" aria-hidden="true" />
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.copy }}</p>
-              <RouterLink v-if="item === tools[0]" to="/steps"
-                >阅读全文<img
-                  class="arrow-icon"
-                  :src="trustAsset('Icon-2.svg')"
-                  alt=""
-                  aria-hidden="true"
-              /></RouterLink>
-            </article>
-          </div>
+        <div class="toolkit-stages">
+          <section v-for="(stage, stageIndex) in toolkitStages" :key="stage.heading" class="toolkit-section" :class="`toolkit-section--stage-${stageIndex}`">
+            <header>
+              <h3>{{ stage.heading }}</h3>
+              <p>{{ stage.description }}</p>
+            </header>
+            <div class="tool-grid">
+              <article v-for="(item, itemIndex) in stage.items" :key="item.title" data-reveal>
+                <img class="tool-icon" :src="item.icon" alt="" aria-hidden="true" />
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.copy }}</p>
+                <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">
+                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                </RouterLink>
+                <span v-else-if="(stageIndex === 1 && itemIndex === 0) || (stageIndex === 2 && itemIndex === 0)" class="tool-action-pending" aria-disabled="true">
+                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                </span>
+              </article>
+            </div>
+          </section>
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="trust-cta">
       <div class="hy-container" data-reveal>
@@ -260,7 +396,7 @@ function openConsultation() {
               aria-hidden="true"
             />生成可行性报告</RouterLink
           ><button class="dark" type="button" @click="openConsultation">
-            预约专家面诊 $185起<img
+            预约专家面诊 $200起<img
               class="cta-icon"
               :src="trustAsset('Icon-10.svg')"
               alt=""
@@ -451,17 +587,13 @@ function openConsultation() {
   font-size: 11px;
   line-height: 1.85;
 }
-.faq-enter-active,
-.faq-leave-active {
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-.faq-enter-from,
-.faq-leave-to {
-  opacity: 0;
-  transform: translateY(-5px);
-}
+.accordion-panel { min-height:0; overflow:hidden; }
+.accordion-enter-active,
+.accordion-leave-active { overflow:hidden; transition:height .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.accordion-leave-active { transition-duration:.38s,.12s; }
+.accordion-enter-from,
+.accordion-leave-to { opacity:0; }
+@media (prefers-reduced-motion: reduce) { .accordion-enter-active, .accordion-leave-active { transition:none; } }
 .articles-section {
   padding: 84px 0 98px;
   background: #f4f6f8;
@@ -1028,24 +1160,53 @@ function openConsultation() {
   width: 16px;
   height: 16px;
 }
+.jci-dialog-backdrop { position:fixed; inset:0; z-index:160; display:grid; place-items:center; padding:24px; background:rgba(12,25,42,.56); backdrop-filter:blur(5px); }
+.jci-dialog { position:relative; width:min(650px,100%); max-height:min(620px,calc(100vh - 48px)); overflow:auto; box-sizing:border-box; border-radius:16px; padding:24px; background:#fff; color:#1e3a5f; box-shadow:0 24px 80px rgba(15,33,62,.24); }
+.jci-dialog h2 { margin:0; padding-right:32px; color:#1e3a5f; font-size:26px; font-weight:600; line-height:32px; letter-spacing:.1px; }
+.jci-dialog-lead { margin:4px 0 0; color:#6b7280; font-size:13px; line-height:20px; }
+.jci-dialog-copy { margin-top:22px; color:#4b5563; font-size:13px; line-height:1.85; }
+.jci-dialog-copy p { margin:0 0 10px; }
+.jci-dialog-copy p:last-child { margin-bottom:0; }
+.jci-dialog-close { position:absolute; top:16px; right:16px; display:grid; width:28px; height:28px; place-items:center; border:0; border-radius:50%; background:transparent; color:#1e3a5f; cursor:pointer; transition:background .2s ease,transform .25s ease; }
+.jci-dialog-close:hover { background:#eef4f8; transform:rotate(90deg); }
+.jci-dialog-close:focus-visible { outline:2px solid #2563eb; outline-offset:2px; }
+.jci-dialog-enter-active,.jci-dialog-leave-active { transition:opacity .24s ease; }
+.jci-dialog-enter-active .jci-dialog,.jci-dialog-leave-active .jci-dialog { transition:transform .34s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.jci-dialog-enter-from,.jci-dialog-leave-to { opacity:0; }
+.jci-dialog-enter-from .jci-dialog,.jci-dialog-leave-to .jci-dialog { opacity:0; transform:translateY(14px) scale(.98); }
+.toolkit-scroll {
+  position: relative;
+  background: #1e3a5f;
+}
 .toolkit-section {
+  position: relative;
   display: flex;
   height: 754px;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding: 96px 0;
   background: #1e3a5f;
   color: #fff;
 }
+.toolkit-section--stage-1 { height: 1275px; }
+.toolkit-section--stage-1 .tool-grid { height: 963px; margin-top: 48px; grid-template-rows: repeat(3, 305px); }
+.toolkit-section--stage-1 .tool-grid article { height: 305px; }
+.toolkit-section--stage-2 .tool-grid { height: 304px; margin-top: 48px; }
+.toolkit-section--stage-2 .tool-grid article { height: 304px; }
 .toolkit-layout {
   display: grid;
-  height: 424px;
+  height: auto;
   grid-template-columns: 389px 802px;
   gap: 25px;
+  align-items: start;
 }
-.toolkit-layout > aside {
+.toolkit-stages { min-width: 0; }
+.toolkit-layout > .toolkit-sticky {
   position: sticky;
-  top: 96px;
-  align-self: center;
+  top: max(96px, calc(50vh - 110px));
+  align-self: start;
+  /* Keep the pinned copy inside the authored section padding at both edges. */
+  margin-block: 96px;
   padding: 0;
 }
 .toolkit-layout > aside h2 {
@@ -1064,10 +1225,10 @@ function openConsultation() {
   font-size: 16px;
   line-height: 28px;
 }
-.toolkit-layout > div > header {
+.toolkit-section > header {
   height: 88px;
 }
-.toolkit-layout > div > header h3 {
+.toolkit-section > header h3 {
   margin: 0;
   color: #fff;
   font-size: 32px;
@@ -1075,7 +1236,7 @@ function openConsultation() {
   line-height: 32px;
   letter-spacing: 0.4px;
 }
-.toolkit-layout > div > header p {
+.toolkit-section > header p {
   margin: 16px 0 0;
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
@@ -1140,6 +1301,18 @@ function openConsultation() {
   width: 16px;
   height: 16px;
 }
+.tool-action-pending {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+  color: #dd6b20;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: default;
+}
+.tool-action-pending .arrow-icon { display: block; width: 16px; height: 16px; }
 .trust-cta {
   height: 412px;
   padding: 96px 0;
@@ -1249,6 +1422,17 @@ function openConsultation() {
   width: 12px;
   height: 12px;
 }
+@media (max-width:1199px) and (min-width:701px) {
+  .assurance-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .assurance-grid article { width:100%; min-width:0; }
+  .faq-layout { grid-template-columns:minmax(220px,389px) minmax(0,1fr); }
+  .article-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .article-grid article { width:100%; min-width:0; }
+  .toolkit-layout { grid-template-columns:minmax(220px,389px) minmax(0,1fr); }
+  .toolkit-layout > aside p { width:100%; }
+  .tool-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .tool-grid article { width:100%; min-width:0; }
+}
 @media (max-width: 900px) {
   .trust-page :deep(.hy-container) {
     width: calc(100% - 40px);
@@ -1337,6 +1521,11 @@ function openConsultation() {
     position: static;
     padding: 0 0 40px;
   }
+  .toolkit-layout > .toolkit-sticky {
+    position: static;
+    top: auto;
+    margin-block: 0;
+  }
   .faq-layout aside h2,
   .section-title h2,
   .toolkit-layout > aside h2,
@@ -1364,6 +1553,11 @@ function openConsultation() {
   .toolkit-section {
     display: block;
   }
+  .toolkit-section--stage-1,
+  .toolkit-section--stage-2 { height: auto; }
+  .toolkit-section--stage-1 .tool-grid { height: auto; grid-template-rows: none; }
+  .toolkit-section--stage-1 .tool-grid article { height: 300px; }
+  .toolkit-section--stage-2 .tool-grid { height: auto; }
   .toolkit-layout > aside p {
     width: auto;
   }

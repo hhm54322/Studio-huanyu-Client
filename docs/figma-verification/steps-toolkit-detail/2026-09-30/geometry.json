@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 2909,
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 2453.09375,
+          "width": 1440,
+          "height": 456
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "width": 390,
+      "height": 4753,
+      "scrollWidth": 390,
+      "sections": [
+        {
+          "selector": "patient-footer",
+          "x": 0,
+          "y": 3975.21875,
+          "width": 390,
+          "height": 778.25
+        }
+      ],
+      "brokenImages": [],
+      "captureMethod": "full-page"
+    },
+    {
+      "referenceHeight": 2910,
+      "localHeight": 2909,
+      "changedPixelRatio": 0.009002656527467491,
+      "comparison": "native-2x"
+    }
+  ],
+  "errors": []
+}

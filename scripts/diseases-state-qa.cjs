@@ -2,8 +2,8 @@ const fs = require('node:fs')
 const path = require('node:path')
 const assert = require('node:assert/strict')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
-const out = path.resolve('docs/figma-verification/diseases/2026-09-29')
-const url = 'http://127.0.0.1:5173/diseases-technologies'
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/diseases/2026-09-29')
+const url = `${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}/diseases-technologies`
 async function main() {
   const browser = await chromium.launch({ headless: true })
   try {

@@ -215,7 +215,7 @@ const professionalPackages = [
   {
     name: '标准面诊包',
     nameEn: 'Standard',
-    price: '$185-425',
+    price: '$200-425',
     cny: '约 ¥1,300-3,000',
     tag: '最受欢迎',
     featured: true,

@@ -2,14 +2,15 @@ const fs = require('node:fs/promises')
 const path = require('node:path')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
 
-const out = path.resolve('docs/figma-verification/dental/2026-09-29')
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/dental/2026-09-29')
+const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
 const checks = [];
 (async () => {
   const browser = await chromium.launch({ headless: true })
   try {
   for (const width of [1440, 390]) {
     const page = await browser.newPage({ viewport: { width, height: width === 1440 ? 900 : 844 }, deviceScaleFactor: 1 })
-    await page.goto('http://127.0.0.1:5173/dental', { waitUntil: 'networkidle' })
+    await page.goto(`${origin}/dental`, { waitUntil: 'networkidle' })
     await page.getByRole('button', { name: /02 城市与医生匹配/ }).click()
     await page.waitForTimeout(350)
     const matching = await page.evaluate(() => ({ height: document.documentElement.scrollHeight, scrollWidth: document.documentElement.scrollWidth, cards: document.querySelectorAll('.dental-doctor-card').length, filters: document.querySelectorAll('.dental-filter-bar select').length }))

@@ -24,7 +24,7 @@ Native source: `/Users/hhm/Downloads/寰宇云医.fig`, exported `2026-09-28T21:
 | `143:1299` | `03寰宇云医 - 为什么选择中国` frame | — | `.why-page` | `1440 x 5655px` | Source frame |
 | `143:1301` | `Main Content` auto-layout | `143:1300` | page section flow | `1440 x 5199px` | Header/footer shell-owned |
 | `143:1302` | Hero section | `143:1301` | `.why-hero` | `1440 x 757px`, padding `180px 112px 96px`, gap `60px` | Hero background asset |
-| `143:1353` | Capability container | `143:1301` | `.capability-section` | `1216px` content, 8-card grid | First card expanded |
+| `143:1353` | Capability container | `143:1301` | `.capability-section` | `1216px` content, 8-card grid | First card expanded at rest; each card keeps its own expanded state |
 | `143:1473` | Cost comparison section | `143:1301` | `.cost-section` | `1440 x 957.26px` | Six-country chart and action strip |
 | `143:1766` | Wait-time section | `143:1301` | `.wait-section` | `1440 x 552px`, 4 cards | Fourth card highlighted |
 | `143:1790` | National strength section | `143:1301` | `.national-section` | `1440 x 512px`, full bleed | Background blend asset |
@@ -45,8 +45,8 @@ Native source: `/Users/hhm/Downloads/寰宇云医.fig`, exported `2026-09-28T21:
 | Order | Section | Node ID | Width | Height | Container/Grid | Notes |
 | ---: | --- | --- | ---: | ---: | --- | --- |
 | 1 | Hero | `143:1302` | 1440 | 757 | centered fixed-height stage | exact Figma hero background, HTML copy and CTAs |
-| 2 | 中国严肃医疗能力 | `143:1353` container | 1440 | 1416 | outer grid `1216 x 1224`; `389.33px + 24px + 802.67px`; capability grid 4 rows x 2 columns | sticky left copy; right 2-column capability grid; section padding `96px 40px`; default first card expanded |
-| 3 | 全球费用对比 | `143:1473` | 1440 | 957.26 | `1216px`; heading `1216 x 80`; chart/content `1216 x 547.26` with 48px top padding; lower action strip `1440 x 138` | six-country comparison and editable constants; source 1px stroke paint is hidden and is not rendered |
+| 2 | 中国严肃医疗能力 | `143:1353` container | 1440 | 1416 | outer grid `1216 x 1224`; `389.33px + 24px + 802.67px`; capability grid 4 rows x 2 columns | sticky left copy; right 2-column capability grid; section padding `96px 40px`; default first card expanded, subsequent cards toggle independently |
+| 3 | 全球费用对比 | `143:1473` | 1440 | 957.26 collapsed / content-driven expanded | `1216px`; heading `1216 x 80`; chart/content `1216 x 547.26` with 48px top padding; lower action strip `1440 x 138`; detail grid is an in-place accordion state | six-country comparison and editable constants; source 1px stroke paint is hidden and is not rendered; expanded state reveals eight disease-cost cards without leaving this page |
 | 4 | 全球等待时长 | `143:1766` | 1440 | 552 | `1216px`, 4 columns; section padding top/bottom `96px` | fourth card highlighted |
 | 5 | 国家级医疗实力 | `143:1790` | 1440 | 512 | full-bleed background; `1216px` content; section padding top/bottom `96px` | background image opacity `80%`, multiply blend, fill `#1E3A5F`; four metrics and CTA |
 | 6 | 国际患者反馈 | `143:1824` | 1440 | 593 | `1216px`, 3 columns; section padding top/bottom `96px` | Figma patient portraits and copy |
@@ -93,6 +93,7 @@ All 122 visible HTML text nodes are checked against native font size, line heigh
 | Final CTA actions | `52px` high | `48px` row top padding, `16px` gap, `16px 24px` horizontal/vertical button padding | `14px` radius, `16/16px` semibold text |
 | Saving tags | widths `177/259/268/255/223px`, height `48px` | gap `24px`, padding `12px 24px` | radius `14px`, edge fade `160px` |
 | Cost action buttons | `263 x 52px`, `388 x 52px` | gap `16px`, padding `18px 24px` | radius `14px`, source shadow |
+| Cost detail accordion | `1216px` wide, 3-column grid | top padding `32px`, 24px row/column gap; 8 cards at `389.33 x 308px` | hidden in resting state; expands in place below the disclaimer |
 | National story CTA | `267 x 52px` | gap `8px`, icon `20px` | radius `14px` |
 | Final action buttons | `172 x 52px`, `184 x 52px` | icons `20px`/`16px`, gap `8px` | radius `14px` |
 
@@ -121,15 +122,16 @@ Figma's native vibrance and CSS saturation are different rendering operations. T
 | Interaction | Reference | Trigger | Timing/Easing | Mobile Fallback |
 | --- | --- | --- | --- | --- |
 | Left-fixed/right-scrolling capability layout | Octagos sticky split sections | page scroll | native sticky; no scroll interception | natural one-column card flow |
-| Capability detail expansion | Figma card affordance, Octagos restrained accordion | click or keyboard | `520ms cubic-bezier(.22,1,.36,1)` | same interaction, auto-height cards |
+| Capability detail expansion | Figma card affordance, Octagos restrained accordion | click or keyboard | `520ms cubic-bezier(.22,1,.36,1)` | same interaction, auto-height cards; cards are independent and do not collapse siblings |
 | Cost bars grow from baseline | Octagos dashboard transitions, adapted to this chart | viewport entry | `800ms cubicOut` | complete bars immediately below `768px`, with reduced motion, or without IntersectionObserver |
+| Cost detail accordion | Figma authored expanded/collapsed state, Octagos restrained accordion | click “查看更多病种费用对比详情” | `400ms cubic-bezier(.22,1,.36,1)` content reveal; chevron rotates `300ms` | one-column cards on mobile; same click/keyboard behavior |
 | Section entry | shared Huanyu reveal behavior | viewport entry | opacity/translate reveal | static visible content |
 
 All motion preserves the Figma resting layout and is disabled or simplified for `prefers-reduced-motion`.
 
 Octagos was revisited on `2026-09-29`: slow scrolling, a five-page fast scroll, Skip to Content, Device Volume tab switching, and repeated Fast & Free Setup / Proven EHR Expertise accordion switching. The inspected accordion uses `max-height .2s` and heading `color .2s`; the source also has a sticky dashboard at `91.6667px` and FAQ heading at `122.667px`. Huanyu keeps its own Figma composition and uses the timings in the table rather than copying those source dimensions or the immersive hero.
 
-Consultation buttons use the existing shared dialog with focus lock, Escape close, and trigger focus restoration. CTA routes use `/report`, `/cost`, and `/cases`. Only the first capability has an authored expanded text branch in this source; other expanded descriptions are editable frontend content. No hospital administration or report-generation behavior is changed.
+Consultation buttons use the existing shared dialog with focus lock, Escape close, and trigger focus restoration. CTA routes use `/report` and `/cases`; the cost CTA is an in-page accordion and `/cost` is retained only as a compatibility alias to `/why-china#cost-comparison`. Only the first capability has an authored expanded text branch in this source; other expanded descriptions are editable frontend content. No hospital administration or report-generation behavior is changed.
 
 ## Verification
 

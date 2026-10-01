@@ -50,7 +50,7 @@ async function main() {
       await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 })
       // Capture the authored resting state; animated carousels/marquees must not advance during the baseline diff.
       await page.emulateMedia({ reducedMotion: 'reduce' })
-      await page.goto(`http://127.0.0.1:5173${route}`, { waitUntil: 'networkidle' })
+      await page.goto(`${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}${route}`, { waitUntil: 'networkidle' })
       await page.evaluate(() => document.fonts.ready)
       for (let y = 0; y < await page.evaluate(() => document.documentElement.scrollHeight); y += 600) {
         await page.evaluate(y => scrollTo(0, y), y)

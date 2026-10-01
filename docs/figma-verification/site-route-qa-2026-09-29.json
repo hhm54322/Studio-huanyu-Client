@@ -121,13 +121,13 @@
     {
       "route": "/cost",
       "width": 1440,
-      "finalPath": "/cost",
+      "finalPath": "/why-china",
       "disabled": false,
       "scrollWidth": 1440,
-      "height": 2481,
+      "height": 6659,
       "brokenImages": [],
       "canvasPixels": [
-        48012
+        47176
       ],
       "main": true,
       "errors": [],
@@ -175,13 +175,13 @@
     {
       "route": "/cost-generated",
       "width": 1440,
-      "finalPath": "/cost-generated",
+      "finalPath": "/why-china",
       "disabled": false,
       "scrollWidth": 1440,
-      "height": 2481,
+      "height": 6659,
       "brokenImages": [],
       "canvasPixels": [
-        48012
+        47176
       ],
       "main": true,
       "errors": [],
@@ -232,7 +232,7 @@
       "finalPath": "/",
       "disabled": false,
       "scrollWidth": 390,
-      "height": 13115,
+      "height": 13032,
       "brokenImages": [],
       "canvasPixels": [
         22552,
@@ -338,13 +338,13 @@
     {
       "route": "/cost",
       "width": 390,
-      "finalPath": "/cost",
+      "finalPath": "/why-china",
       "disabled": false,
       "scrollWidth": 390,
-      "height": 4538,
+      "height": 11179,
       "brokenImages": [],
       "canvasPixels": [
-        19242
+        47176
       ],
       "main": true,
       "errors": [],
@@ -392,13 +392,13 @@
     {
       "route": "/cost-generated",
       "width": 390,
-      "finalPath": "/cost-generated",
+      "finalPath": "/why-china",
       "disabled": false,
       "scrollWidth": 390,
-      "height": 4538,
+      "height": 11179,
       "brokenImages": [],
       "canvasPixels": [
-        19242
+        47176
       ],
       "main": true,
       "errors": [],

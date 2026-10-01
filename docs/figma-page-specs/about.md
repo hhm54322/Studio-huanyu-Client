@@ -83,7 +83,9 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 | Asset | Node ID | Export/Fit | Project Path |
 | --- | --- | --- | --- |
 | Hero image layer | `484:1706`, hash `d2a1f870c81a1fc83c1e47406c2b133e` | Figma-native download, cover | `/public/images/figma/about-hero.jpg` |
-| Complex case active image | `484:2070` row 1 / column 1, image hash `7974262c40da8127945be8a53e71db31fb4a2e57` | Figma-native download, cover, opacity `15%` | `/public/images/figma/about-complex-knee.png` |
+| Complex case image, knee | `484:2523`, hash `7974262c40da8127945be8a53e71db31fb4a2e57` | Figma-native 1643x957 PNG; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-knee.webp` |
+| Complex case image, MRI | `484:2557`, hash `a1a67159a2200fdfce4e534412282140812b8fc6` | Figma-native 1643x957 PNG; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-mri.webp` |
+| Complex case image, care | `484:2547`, `484:2537`, hash `cf7dc502020d8d781524bd312afecf6ca40aba06` | Figma-native 1643x957 PNG from `/Users/hhm/Downloads/寰宇云医.fig`; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-care.webp` |
 | CTA image layer | `484:2369`, hash `df3413872355a84f57d6375ec0744d525ad39ca2` | Figma-native download, cover | `/public/images/figma/about-cta-background.png` |
 | Shared header/footer | `484:2459`, `484:2382` | Existing shared components | `src/components/layout/PatientHeader.vue`, `PatientFooter.vue` |
 
@@ -93,7 +95,7 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 | --- | --- | --- | --- | --- |
 | Section reveal | Octagos scroll/reveal vocabulary | viewport entry | opacity + `translateY(22px)` + blur, `0.6s` cubic-bezier, stagger from `--reveal-delay`; no layout drift | static visible content when motion is reduced |
 | Complex case switch | Figma authored card interaction | card click/keyboard | background/image opacity settles in `0.4s`; card hover lift `4px` over `0.42s`; no geometry changes | single-column buttons, same state model |
-| Trust evidence | Figma card affordance | card action | copy-state change in place; card lift `4px` over `0.32s`; no scroll jump | stacked cards with the same expand/collapse control |
+| Trust evidence | Figma card container `484:2314` and sibling card nodes | click anywhere on a card, or activate its detail button by keyboard | copy-state change in place; card lift `4px` over `0.32s`; no scroll jump | stacked cards with the same full-card click target |
 | CTA | Figma `484:1713` | click | opens existing consultation side panel; panel enters from right in `0.38s` cubic-bezier | full-width panel with body scroll lock |
 
 ## Verification
@@ -104,9 +106,11 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 - Detail state reference screenshots: `/Users/hhm/Downloads/复杂病例详情模版.png`, `/Users/hhm/Downloads/可信度详情.png`; local crops and overlays are in `docs/figma-verification/about/2026-09-28/complex-1440.png`, `trust-1440.png`, `complex-overlay.png`, and `trust-overlay.png`; state pixel ratios `1.8526%` and `0.3578%` at threshold `.15` after source geometry, copy, ordering, and asset correction.
 - Interaction evidence: `docs/figma-verification/about/2026-09-28/interactions.json` and `state-comparison.json`; complex/trust desktop and mobile focus containment, scroll lock, Escape close, trigger focus restoration, consultation entry, reduced-motion fallback, and detail scroll crops all passed.
 - Build and lint evidence: `vue-tsc -b`, Vite production build, and `git diff --check` passed on `2026-09-28`; scoped page audit is run separately. The workspace-wide audit/build remains a final all-page gate, not evidence that unreviewed pages match.
-- Verification run: `2026-09-28`
+- Verification run: `2026-09-30`
 - Renderer tolerance: fine text rasterization, one-pixel text baseline differences, and minor intra-line justification spacing remain between Figma and Chromium. These are not missing layouts or assets. Pixel ratios are diagnostic numbers, not a pass criterion; section/state screenshots were reviewed manually.
 - Remaining differences: none
+- Final 2026-09-30 desktop/mobile evidence: `docs/figma-verification/about/2026-09-30/local-1440.png`, `local-390.png`, `geometry.json`, `complex-1440.png`, `complex-390.png`, `proof-closed-1440.png`, `proof-expanded-1440.png`, `proof-expanded-390.png`, and `interactions.json`. The 1440px page and Figma reference are both 4916px high; the native 2x changed-pixel ratio is 0.4409% with no broken assets or horizontal overflow.
+- Trust card click correction, 2026-09-30: fresh desktop/mobile state captures `docs/figma-verification/about/2026-09-30/proof-card-click-1440.png` and `proof-card-click-390.png`. Clicking card title/icon expands, clicking the detail button collapses exactly once, Enter on the focused button reopens, and a second card remains independently open. Both tested viewports have zero horizontal page overflow. `vue-tsc -b`, Vite build, and `git diff --check` pass.
 
 ## 2026-09-28 Current Source Re-extraction
 
@@ -136,3 +140,10 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 - Proof `484:2314`, `484:2329`, `484:2355`: padding 24, icon 32, gap 80, paragraph top padding 16; full authored copy, not summaries. Actions left-aligned with down-chevron at right, 14/14 weight 500 #9CA3AF, top padding 16. Official `484:2342` uses height 302 and space-between.
 - Footer `484:2382`: inner width 1216, 4 columns 268 with gap 48; padding top/bottom 64; top content 247, bottom margin 40, divider then padding 24 and 16px text row. SF Pro: headings/links 14/20, description 14/22.75, subcopy 12/19.5, bottom 12/16.
 - Icons freshly downloaded from this root on 2026-09-28: `/Users/hhm/Downloads/寰宇云医_icon (9).zip`, copied unchanged to `public/images/figma/about-icons/`; exact asset-node mapping recorded in `icons.json`.
+
+## 2026-09-30 Complex Cards And Inline Trust State
+
+- The separately authored complex-cases frame is `484:2501`, `1440 x 839`, blue `#1E3A5F`, `96px` vertical padding. Its card grid is `1216 x 520`, two `596 x 248` columns with `24px` gaps. The four cards have `24px` padding/radius, `#0F213E` fill, source-image overlay at `15%` opacity, and `80px` icon-to-copy gap (first card uses `space-between` to fit its article action).
+- The four source image nodes are: upper-right `484:2557` / hash `a1a67159a2200fdfce4e534412282140812b8fc6`; lower-left `484:2547` and lower-right `484:2537` / shared hash `cf7dc502020d8d781524bd312afecf6ca40aba06`; upper-left `484:2523` / hash `7974262c40da8127945be8a53e71db31fb4a2e57`. Mapped respectively to `.complex-card` positions 2, 3, 4, and 1 in `AboutView.vue`. The original PNGs are embedded in `/Users/hhm/Downloads/寰宇云医.fig` (SHA-256 `f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb`). The page uses exact-source 1192px-wide WebPs at quality 78: knee 22,530B, MRI 20,584B, shared lower image 16,228B; the former 64x50 preview is no longer rendered.
+- Trust source cards remain `484:2314`, `484:2355`, `484:2329`, and `484:2342` in page reading order. Clicking anywhere on each `.proof-card` toggles its own `.proof-card__detail` in place, independently; the visible detail button remains the keyboard-operable control and its click bubbles to the same card handler once. The evidence text and icons come from the existing trust-detail source nodes `484:2593`, `484:2627`, `484:2577`, and `484:2611`. No full-screen trust page is opened and no body scroll lock is applied. The content height opens with a `0fr -> 1fr` grid transition; reduced-motion disables it.
+- Fresh QA: `docs/figma-verification/about/2026-09-30/complex-1440.png`, `complex-390.png`, `proof-closed-1440.png`, `proof-expanded-1440.png`, `proof-expanded-390.png`, and `interactions.json`. Desktop `1440` and mobile `390` passed independent open/close and no horizontal overflow. The complex section was compared to the user-provided separate Figma frame crop `complex-figma-reference.png`; the shared lower image now comes from the full native Figma image, compressed for delivery.

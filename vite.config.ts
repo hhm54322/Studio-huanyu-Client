@@ -4,11 +4,30 @@ import tailwindcss from '@tailwindcss/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from '@vant/auto-import-resolver'
 import { fileURLToPath, URL } from 'node:url'
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 
 const buildVersion = process.env.VITE_APP_VERSION || new Date().toISOString()
 
 const versionPayload = () => JSON.stringify({ version: buildVersion, builtAt: new Date().toISOString() })
+
+const optimizedImagePlugin = (): Plugin => {
+  const urls = new Map<string, string>()
+  return {
+    name: 'huanyu-patient-optimized-images',
+    apply: 'build',
+    enforce: 'pre',
+    buildStart() {
+      const manifest = JSON.parse(readFileSync(fileURLToPath(new URL('./public/image-optimization.json', import.meta.url)), 'utf8'))
+      for (const image of manifest.images) urls.set(image.source, image.optimizedSource)
+    },
+    transform(code, id) {
+      if (!id.includes('/src/views/patient/') && !id.includes('/src/data/') && !id.includes('/docs/figma-source/')) return
+      const updated = code.replace(/\/images\/[A-Za-z0-9_./-]+\.(?:png|jpe?g|webp)(?=["'`)\s])/g,
+        url => urls.get(url) || url)
+      return updated === code ? undefined : { code: updated, map: null }
+    },
+  }
+}
 
 const versionFilePlugin = (): Plugin => ({
   name: 'huanyu-version-file',
@@ -36,6 +55,7 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(buildVersion),
   },
   plugins: [
+    optimizedImagePlugin(),
     vue(),
     tailwindcss(),
     Components({

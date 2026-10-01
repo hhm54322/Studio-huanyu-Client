@@ -1,0 +1,7 @@
+{
+  "sourceFrame": "143:3058",
+  "assets": [
+    { "nodeId": "143:3079", "sourceHash": "7528ef742fc926400ae40cbd57cfcc9b0c57602f", "projectPath": "public/images/figma/toolkit-source-record.webp", "fit": "cover", "dimensions": "409x260", "bytes": 32972 },
+    { "nodeId": "143:3080", "sourceHash": "3c88e52c2ba9c2a34ce56f0cbb161d03405e4b7e", "projectPath": "public/images/figma/toolkit-source-report.webp", "fit": "cover", "dimensions": "409x260", "bytes": 16168 }
+  ]
+}

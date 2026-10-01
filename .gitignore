@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Historical visual/regression captures; never part of the web bundle.
+artifacts/
+
 # Editor & IDE
 .vscode/
 .idea/
@@ -80,3 +83,51 @@ docs/figma-verification/**/local-tool.png
 
 # Superseded dated runs that are not referenced by any current page spec.
 docs/figma-verification/why-china/2026-09-28/
+
+# Full-site regression runs and native comparison exports are regenerable review artifacts.
+docs/figma-verification/production-regression-*/
+docs/figma-verification/*-native/
+
+# Generated compression companions; prebuild recreates these from Figma originals.
+public/images/**/*.optimized.webp
+public/image-optimization.json
+docs/figma-verification/image-compression-2026-09-30/*.png
+docs/figma-verification/partners*-2026-09-30/*.png
+
+# Local-only QA outputs: useful while debugging, but not source or release files.
+# Keep machine-readable geometry/interaction results and the screenshot paths
+# required by the page audits; do not accumulate proof, duplicate, or regression
+# captures in the repository.
+docs/figma-verification/production-*/
+docs/figma-verification/*-regression/
+docs/figma-verification/*-native/
+docs/figma-verification/deployed-cases/
+docs/figma-verification/partners*-2026-09-30/
+docs/figma-verification/image-compression-2026-09-30/
+docs/figma-verification/**/proof-*.png
+docs/figma-verification/**/*-2x.png
+docs/figma-verification/**/figma-section-*.png
+docs/figma-verification/**/local-section-*.png
+docs/figma-verification/**/overlay*.png
+docs/figma-verification/**/*-diff.png
+docs/figma-verification/home/2026-10-01-*.png
+docs/figma-verification/home/2026-10-01-process/*.png
+docs/figma-verification/home/2026-10-01-why-dom/*.png
+docs/figma-verification/about/2026-09-30/figma-reference*.png
+docs/figma-verification/about/2026-09-30/complex-figma-reference.png
+docs/figma-verification/about/2026-09-30/complex-local-scaled.png
+docs/figma-verification/dental/2026-09-30/*.png
+docs/figma-verification/insurance/2026-09-30/*.png
+docs/figma-verification/trust/2026-09-30/*.png
+
+# Local-only source exports kept for rechecking or regeneration, not shipped.
+docs/figma-verification/about/2026-09-30/
+docs/figma-verification/home/2026-10-01-process/
+docs/figma-source/home/partners-unfaded-reference.png
+public/images/figma/about-complex-*.png
+public/images/figma/home-source/*.png
+public/images/figma/home-source/why-*.webp
+public/images/figma/home-source/strength-0[123].webp
+public/images/figma/home-source/strength-0[123]-art.webp
+public/images/figma/partners-matrix.webp
+public/images/figma/dental-source/*.png

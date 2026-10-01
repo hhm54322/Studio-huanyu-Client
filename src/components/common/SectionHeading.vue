@@ -34,5 +34,6 @@ const titleCharacters = computed(() => Array.from(props.title))
 .section-heading--light .hy-kicker { color: #8dd7fa; }
 .motion-text > span { display: inline-block; opacity: .18; filter: blur(7px); transform: translateY(9px); transition: opacity .55s ease, filter .65s ease, transform .65s cubic-bezier(.22, 1, .36, 1); transition-delay: calc(var(--motion-index) * 18ms); }
 .section-heading.is-visible .motion-text > span { opacity: 1; filter: blur(0); transform: translateY(0); }
+.section-heading[data-reveal-visible="true"] .motion-text > span { opacity: 1; filter: blur(0); transform: translateY(0); }
 @media (max-width: 767px), (prefers-reduced-motion: reduce) { .motion-text > span { opacity: 1; filter: none; transform: none; transition: none; } }
 </style>

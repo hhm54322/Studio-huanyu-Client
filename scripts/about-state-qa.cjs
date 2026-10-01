@@ -30,13 +30,14 @@ async function compareDetails(out) {
 }
 
 async function main() {
-  const out = path.resolve('docs/figma-verification/about/2026-09-28')
+  const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/about/2026-09-28')
+  const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
   const browser = await chromium.launch()
   const results = []
   try {
     for (const width of [1440, 390]) {
       const page = await browser.newPage({ viewport: { width, height: width === 1440 ? 1279 : 844 }, deviceScaleFactor: 2 })
-      await page.goto('http://127.0.0.1:5173/about', { waitUntil: 'networkidle' })
+      await page.goto(`${origin}/about`, { waitUntil: 'networkidle' })
       for (const state of ['complex', 'trust']) {
         await page.setViewportSize({ width, height: width === 1440 ? state === 'complex' ? 1279 : 1140 : 844 })
         const trigger = state === 'complex' ? page.getByRole('button', { name: '阅读全文', exact: true }) : page.getByRole('button', { name: '查看可信度详情' }).first()

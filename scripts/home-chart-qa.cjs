@@ -5,7 +5,8 @@ const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwrigh
 const sharp = require('/tmp/huanyu-visual-qa-tools/node_modules/sharp')
 
 async function main() {
-  const output = path.resolve('docs/figma-verification/home/2026-09-28')
+  const output = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/home/2026-09-28')
+  const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
   await fs.mkdir(output, { recursive: true })
   const browser = await chromium.launch({ headless: true })
   try {
@@ -16,7 +17,7 @@ async function main() {
     for (const reducedMotion of ['reduce', 'no-preference']) {
       await page.emulateMedia({ reducedMotion })
       await page.setViewportSize({ width: 1440, height: 900 })
-      await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' })
+      await page.goto(`${origin}/`, { waitUntil: 'domcontentloaded', timeout: 60000 })
       for (const width of [1440, 768, 390, 320]) {
         await page.setViewportSize({ width, height: 900 })
         await page.locator('.data-section').scrollIntoViewIfNeeded()
@@ -46,9 +47,9 @@ async function main() {
         await sharp(screenshot).extract({ left: Math.round(section.x * 2), top: Math.round(section.y * 2), width: Math.round(section.width * 2), height: Math.round(section.height * 2) }).png().toFile(path.join(output, `echarts-${width}-${reducedMotion}.png`))
         results.push({ width, reducedMotion, charts })
       }
-      await page.goto('http://127.0.0.1:5173/about', { waitUntil: 'networkidle' })
+      await page.goto(`${origin}/about`, { waitUntil: 'domcontentloaded', timeout: 60000 })
       assert.equal(await page.locator('.source-chart').count(), 0)
-      await page.goBack({ waitUntil: 'networkidle' })
+      await page.goBack({ waitUntil: 'domcontentloaded', timeout: 60000 })
       await page.waitForFunction(() => document.querySelectorAll('.source-chart canvas').length === 2)
     }
     assert.deepEqual(errors, [])

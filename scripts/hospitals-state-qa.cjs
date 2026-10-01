@@ -2,7 +2,8 @@ const fs = require('node:fs')
 const path = require('node:path')
 const assert = require('node:assert/strict')
 const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
-const out = path.resolve('docs/figma-verification/hospitals/2026-09-29')
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/hospitals/2026-09-29')
+const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
 async function main() {
   const browser = await chromium.launch({ headless:true })
   try {
@@ -11,7 +12,7 @@ async function main() {
     page.on('pageerror',error=>errors.push(error.message))
     for(const width of [1440,1024,768,390]) {
       await page.setViewportSize({width,height:900})
-      await page.goto('http://127.0.0.1:5173/hospitals',{waitUntil:'networkidle'})
+      await page.goto(`${origin}/hospitals`,{waitUntil:'networkidle'})
       await page.waitForTimeout(900)
       assert.equal(await page.locator('.hospital-grid article').count(),8)
       for(const city of ['上海','广州','深圳','全部','北京']) {
@@ -60,11 +61,11 @@ async function main() {
       assert.equal(geometry.broken.length,0)
       for(const attribute of ['mailto:','tel:','https://wa.me/'])assert.ok(await page.locator(`footer a[href^="${attribute}"]`).count())
       await page.locator('.header-logo').click()
-      await page.waitForURL('http://127.0.0.1:5173/')
+      await page.waitForURL(`${origin}/`)
       results.push({...geometry,cityFilters:5,keyboard:true,modalFocusTrap:true,escape:true,focusRestore:true,consultation:true,homeLink:true})
     }
     await page.setViewportSize({width:1440,height:900})
-    await page.goto('http://127.0.0.1:5173/hospitals',{waitUntil:'networkidle'})
+    await page.goto(`${origin}/hospitals`,{waitUntil:'networkidle'})
     const card=page.locator('.hospital-grid article').first()
     await card.scrollIntoViewIfNeeded()
     await page.waitForTimeout(900)

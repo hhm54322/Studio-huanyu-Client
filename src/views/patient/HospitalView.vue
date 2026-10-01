@@ -68,8 +68,8 @@ watch(selectedId, (value) => {
   } else {
     document.body.classList.remove("scroll-locked");
     document.body.style.top = "";
-    window.scrollTo(0, savedScrollY);
-    nextTick(() => modalTrigger?.focus());
+    window.scrollTo({ top: savedScrollY, behavior: "instant" });
+    nextTick(() => modalTrigger?.focus({ preventScroll: true }));
   }
 });
 function closeHospital() { selectedId.value = null; }
@@ -1257,7 +1257,7 @@ function openConsultation() {
   .hospital-hero h1 { width: 100%; font-size: 38px; line-height: 49px; white-space: normal; text-wrap: balance; }
   .hospital-hero p { width: 100%; font-size: 14px; line-height: 22px; white-space: normal; }
   .hospital-body { padding: 20px 24px 24px; }
-  .hospital-body h2 { font-size: 24px; }
+  .hospital-body h2 { font-size: 20px; line-height: 30px; }
   .hospital-facts { gap: 16px; }
   .hospital-grid { padding-top: 0; }
 }
