@@ -135,7 +135,7 @@ This page has no chart. SVGs above are source icons, not chart substitutes.
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/diseases/2026-09-29/figma-1440.png`
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/diseases/2026-09-29/figma-reference-native.png`
 - Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/diseases/2026-09-29/local-1440.png`
 - Local mobile screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/diseases/2026-09-29/local-390.png`
 - Current Figma export: selected144:4380 via iab Export; downloaded `/Users/hhm/Downloads/05寰宇云医 - 疾病中心 (2).png` on2026-09-29. Earlier exports have obsolete card placement and are not final evidence.

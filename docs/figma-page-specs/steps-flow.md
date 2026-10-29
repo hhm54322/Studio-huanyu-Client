@@ -3,11 +3,11 @@
 - Route: `/steps`
 - Figma frames: `06来华就医全流程-出行中`, `07来华就医全流程-在华&回国`
 - Node IDs: `204:5813`, `204:6013`
-- Source baseline HTML: `docs/figma-source/steps/travel.html`
-- Source baseline CSS: `docs/figma-source/steps/travel-styles.txt`
-- Source asset manifest: `docs/figma-source/steps/assets.json`
-- Additional locked source: `docs/figma-source/steps/aftercare.html`, `docs/figma-source/steps/aftercare-styles.txt`
-- Source extraction run: 2026-09-24, Figma Dev Mode through `browser-client` and the `iab` design tab
+- Source baseline HTML: `docs/figma-source/steps/revision-2026-10-29/travel/baseline-2026-10-29.html`
+- Source baseline CSS: `docs/figma-source/steps/revision-2026-10-29/travel/dev-styles-2026-10-29.css`
+- Source asset manifest: `docs/figma-source/steps/revision-2026-10-29/travel/assets-2026-10-29.json`
+- Additional locked source: `docs/figma-source/steps/revision-2026-10-29/aftercare/baseline-2026-10-29.html`, `docs/figma-source/steps/revision-2026-10-29/aftercare/dev-styles-2026-10-29.css`
+- Source extraction run: 2026-10-29T00:06Z, current Figma Design export `寰宇云医 (11).fig`, live browser-client/IAB Layers and Dev Mode cross-check (200/200 + 177/177 nodes)
 - Desktop frames: `1440 x 1275` and `1440 x 754`
 - Responsive QA viewport: `390 x 844`; the two source frames are desktop compositions
 - Status: verified
@@ -33,7 +33,7 @@ The two source frames own the dark `#travel` and `#after` toolkit sections. The 
 | `204:5829`, `204:5830` | Frame / Vector | `204:5828`, `204:5829` | `steps-travel-visa-free.svg` | `32 x 32`, cyan `#52E8FF` | Exact Figma SVG export |
 | `204:5831`, `204:5832`, `204:5833` | Body / Heading 3 / title text | `204:5828`, `204:5831`, `204:5832` | card body and `h4` | title `24/24`, weight `600`, white | Exact copy |
 | `204:5834`, `204:5835` | Copy container / body text | `204:5831`, `204:5834` | card body `p` | top gap `16px`, `16/24`, white `70%` | Exact copy |
-| `204:5836` | 签证申请清单 card | `204:5827` | `travelTools[0]` article | `389 x 304`, padding `24px`, radius `24px`, fill `#0F213E` | Visual grid column 1, row 1; route `/visa` |
+| `204:5836` | 签证申请清单 card | `204:5827` | `travelTools[0]` article | `389 x 304`, padding `24px`, radius `24px`, fill `#0F213E` | Visual grid column 1, row 1; desktop route `/steps/toolkit-detail?article=visa`; mobile remains disabled |
 | `204:5837`, `204:5838`, `204:5839` | Frame / two Vectors | `204:5836`, `204:5837` | `steps-travel-visa.svg` | `32 x 32`, cyan `#52E8FF` | Exact Figma SVG export |
 | `204:5840`, `204:5841`, `204:5842` | Body / Heading 3 / title text | `204:5836`, `204:5840`, `204:5841` | card body and `h4` | title `24/24`, weight `600`, white | Exact copy |
 | `204:5843`, `204:5844` | Copy container / body text | `204:5840`, `204:5843` | card body `p` | top gap `16px`, `16/24`, white `70%` | Exact copy |
@@ -67,7 +67,7 @@ Nodes after `204:5875` are off-frame content outside the visible source composit
 | `204:6023`, `204:6024` | Heading 2 / `03 在华&回国 · 就诊随访工具` | `204:6022`, `204:6023` | `.toolkit-stage__heading h3` | PingFang SC `32/32`, weight `600`, `0.4px`, white | Exact copy |
 | `204:6025`, `204:6026` | Paragraph / stage description | `204:6022`, `204:6025` | `.toolkit-stage__heading p` | top gap `16px`, `16/24`, white `70%` | Exact copy |
 | `204:6027` | Card grid container | `204:6021` | `.toolkit-stage__cards` | width `802px`, columns `389px 389px`, gap `24px`, top gap `48px` | One visual row |
-| `204:6028` | 就医步骤与就诊流程 card | `204:6027` | `afterTools[0]` article | `389 x 304`, padding `24px`, radius `24px`, fill `#0F213E` | Opens consultation panel |
+| `204:6028` | 就医步骤与就诊流程 card | `204:6027` | `afterTools[0]` article | `389 x 304`, padding `24px`, radius `24px`, fill `#0F213E` | Desktop article `/steps/toolkit-detail?article=steps-flow`; mobile remains disabled |
 | `204:6029`, `204:6030`, `204:6031`, `204:6032`, `204:6033` | Frame / Group 618 / three Vectors | `204:6028`, `204:6029`, `204:6030` | `steps-aftercare-path.svg` | `32 x 32`, `1.5px` cyan strokes | Exact Figma SVG export |
 | `204:6034`, `204:6035`, `204:6036` | Body / Heading 3 / title text | `204:6028`, `204:6034`, `204:6035` | card body and `h4` | title `24/24`, weight `600`, white | Exact copy |
 | `204:6037`, `204:6038` | Copy container / body text | `204:6034`, `204:6037` | card body `p` | top gap `16px`, `16/24`, white `70%` | Exact copy |
@@ -129,11 +129,36 @@ Nodes after `204:6052` are off-frame content outside the visible source composit
 | Card reveal | Octagos section-entry vocabulary | IntersectionObserver adds `.is-visible` | Global reveal `520ms cubic-bezier(.22,1,.36,1)` | Same reveal; fully visible without observer |
 | Card hover lift | Octagos restrained card response | Pointer hover | `450ms cubic-bezier(.22,1,.36,1)`, `translateY(-7px)` | No hover dependency |
 | Action arrow response | Octagos directional affordance | Link/button hover | `250ms ease`, `translateX(4px)` | Static arrow |
-| Visa article | Existing business route | Activate `阅读全文` | Vue Router to `/visa` | Same route |
-| Journey article | Existing business entry | Activate `阅读全文` | Dispatch `open-consultation` | Same accessible button |
+| Visa article | Existing Figma article entry | Activate `阅读全文` | Vue Router to `/steps/toolkit-detail?article=visa` | Remains disabled until mobile design confirmed |
+| Journey article | Existing Figma article entry | Activate `阅读全文` | Vue Router to `/steps/toolkit-detail?article=steps-flow` | Remains disabled until mobile design confirmed |
 | Reduced motion | Accessibility contract | `prefers-reduced-motion: reduce` | no card/arrow transition or hover transform | Content visible, transform none |
 
 ## Verification
+
+### Current source and combined scroll composition — 2026-10-29
+
+- Current source comparison `artifacts/figma-source-gate/steps-current-2026-10-29.json` covers `204:5813`, `204:6013` and the current toolkit detail frame `143:3058`; all registered scopes are unchanged against the current official export.
+- Complete current source records, settled Dev Mode code, exact asset manifest, baseline HTML/CSS and node-to-code mapping are in `docs/figma-source/steps/revision-2026-10-29/`. Hidden/off-frame authored nodes remain recorded and are intentionally not rendered.
+- The product composition uses one `.toolkit-stage__copy` sticky element and concatenates the two source right columns. `02` and `03` content remain in source order; the left copy does not duplicate when the right column crosses the stage boundary.
+- Current local evidence: `artifacts/figma-steps-2026-10-29/travel-development-local.png`, `artifacts/figma-steps-2026-10-29/aftercare-development-local.png`, and `artifacts/figma-steps-2026-10-29/development-qa.json`. Source-frame pixel comparisons are `0.750%` travel and `0.362%` aftercare; both are below the 1% acceptance threshold and all rendered node selectors are present.
+- Desktop behavior evidence covers 1024/1440/1920 widths: one sticky title, zero horizontal overflow, no broken images, right-stage scroll boundaries, keyboard article entry and history return. Reduced motion leaves the authored content visible without transform transitions.
+
+### 2026-10-22 签证文章桌面入口
+
+- 仅接入原有`204:5845–5850`阅读全文到`/steps/toolkit-detail?article=visa`，不使用无独立设计页的`/visa`，不改卡片样式或源几何。
+- `scripts/toolkit-entry-qa.cjs`验证改动前后卡片截图/尺寸一致，1024/1440/1920桌面点击、键盘进入、历史返回及文章返回通过；开发和生产preview均通过。
+- 390px与900px保持旧禁用状态，未开始移动端UI更新；证据在`artifacts/figma-toolkit-2026-10-22/entries/`。本记录只验收入口，不取代全页新一轮Figma回归。
+
+### 2026-10-22 就医步骤与就诊流程桌面入口
+
+- 现有卡片`204:6028`及阅读全文`204:6039–6044`接到`/steps/toolkit-detail?article=steps-flow`；不是咨询面板，也不跳无独立设计页。只启用原有操作，不更改静态几何。
+- `scripts/toolkit-entry-qa.cjs --article=steps-flow`在开发及生产preview验证入口启用前后卡片截图/几何差异0%，1024/1440/1920桌面点击、键盘进入、历史返回及文章返回通过。390/900px维持禁用，resize恢复桌面链接。
+- 证据在`artifacts/figma-toolkit-2026-10-22/entries/steps-flow/`；正文逐层规格为`steps-toolkit-steps-flow.md`。此处只验收新增入口，不将历史整页截图当作当前整页复核。
+
+### Responsive regression (2026-10-10)
+
+- Retain the authored toolkit stage geometry; allow visible overflow at the static stage wrapper so the tight source title line-height does not crop glyphs. Card masks and the mobile natural-height layout remain intact.
+- Phone/tablet/desktop screenshots and actual scroll checks are generated under ignored `artifacts/mobile-responsive-2026-10-10/` by `scripts/mobile-responsive-qa.cjs`.
 
 - Figma references: `/Users/hhm/Downloads/06来华就医全流程-出行中 (1).png`, `/Users/hhm/Downloads/07来华就医全流程-在华&回国 (1).png`
 - Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/steps/travel-desktop-1440.png`
@@ -144,3 +169,8 @@ Nodes after `204:6052` are off-frame content outside the visible source composit
 - Interaction check: `/visa` navigation, consultation panel, phase hash, hover lift, and reduced-motion fallback exercised in Playwright
 - Verification run: 2026-09-29; latest source-frame crops measured `0.904%` for travel and `0.818%` for aftercare at 2x, after removing the two browser locator raster rows. The visa card uses the authored `304px + 80px` gap and other travel cards use `305px`.
 - Remaining differences: none
+
+
+### 2026-10-29 exact desktop toolkit cards
+
+The seven desktop cards use the complete already-extracted Design subtrees (`204:5828/5836/5851/5859/5867`, `204:6028/6045`) from `trust/revision-2026-10-29/{travel,aftercare}/source-tree-2026-10-29.json`. This copies all text line/glyph baselines, native fractional geometry, icons and child hierarchy without deriving a CSS offset from screenshots. All 377 native nodes retain their original extraction and immutable locks. The updated concrete desktop mapping is `steps/revision-2026-10-29/{travel,aftercare}/runtime-node-to-code-2026-10-29.json`; it supplements, rather than overwrites, the historical map. Original narrow cards remain unchanged while the mobile design is frozen. The continuous two-stage layout and one sticky title remain the product composition. Only authored visa and steps-flow links are enabled.

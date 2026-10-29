@@ -1,61 +1,72 @@
-# 牙科上传影像资料
+# 牙科 · 上传影像资料
 
+- Route: `/dental` → 步骤03
 - Figma frame: `04寰宇云医 - 牙科 - 上传影像资料`
-- Node ID: `231:815`
-- Source: `/Users/hhm/Downloads/04寰宇云医 - 牙科 - 上传影像资料 (1).png`
-- Desktop frame: `1440 x 1766px`
-- Route/state: `/dental`, step `03 上传影像资料`
-- Source baseline HTML: `docs/figma-source/dental/upload.html`
-- Source baseline CSS: `docs/figma-source/dental/upload-styles.txt`
-- Source asset manifest: `docs/figma-source/dental/upload-assets.json`
-- Geometry: hero `460px`, step rail `164px`, upload workspace `686px`, shared footer `456px`
-- Upload workspace: `918px` content width; `140 x 140px` image dropzone; fields use `52px` height; notes field uses `98px` authored height; orange submit action is `48px` high and centered below.
-- Status: verified
+- Node ID: `2294:8037`
+- Source baseline HTML: `docs/figma-source/dental-revision-2026-10-28/upload/baseline-2026-10-28.html`
+- Source baseline CSS: `docs/figma-source/dental-revision-2026-10-28/upload/dev-styles-2026-10-28.css`
+- Source asset manifest: `docs/figma-source/dental-revision-2026-10-28/assets-2026-10-28.json`
+- Source extraction run: 2026-10-28；官方原生导出、完整Layers及逐节点Dev Mode交叉核对；各状态共198节点。
+- Source SHA256: `915e3f7a3fe7a34c50b40de5f3885c55d15419eaad4b844851292527eed1f583`；baseline `huanyu-2026-10-29.fig`
+- Current source comparison: `artifacts/figma-source-gate/latest-dental.json`；当前官方导出`huanyu-current-2026-10-29.fig`，源比较状态 unchanged。
+- Live connection evidence: current-session `iab` / `figma-connect.mjs`；Design/Layers/Dev Mode验证。
+- Desktop frame: upload 1440.000×1740.000
+- Mobile frame: deferred by user; mobile design freeze remains in effect
+- Status: verified (desktop; mobile deferred by user) — 2026-10-28
 
 ## Layer Mapping
 
-| Figma Node ID | Figma layer | Parent | Vue implementation | Dev Mode values copied | Notes |
-| --- | --- | --- | --- | --- | --- |
-| `231:815` | `04寰宇云医 - 牙科 - 上传影像资料` frame | document | `.dental-page--step-3` | `1440 x 1766` | authored desktop state |
-| `231:815` | step rail | frame | `.dental-steps` | 40px nodes, 64px connectors, 24px labels | step 03 active |
-| `231:815` | upload media | frame | `.dental-upload-media` | label 14px/14px; dropzone `140 x 140`, radius 14 | plus icon is CSS/Vue control |
-| `231:815` | upload form | frame | `.dental-upload-form` | width 918px; inputs 52px, radius 14; notes 98px | budget/time/notes |
-| `231:815` | submit action | frame | `.dental-submit` | height 48px; padding 24px; radius 14; `#DD6B20` | preserves form entry |
+上传区直接展示当前Figma三张照片示例；“照片示例”是行内说明，不能额外打开自编弹窗。预算、到访日期和其他说明由原生控件叠加在对应源框内，输入后隐藏原占位。JPG/PNG/PDF，单份≤10MB，最多5份；至少1份有效文件才能提交。上传文件名、失败提示、重试、提交中和成功状态均可见。
+
+每个源目录均有逐节点`native-inventory`、`native-parameters`、`ui-layers`、`layers-crosscheck`、`dev-mode`、`node-to-code`、`source-tree`和HTML/CSS；13帧总源锁为`baseline-lock-2026-10-28.json`。完整映射按每个Node ID保存在JSON中。
+
+| Node ID | Parent | Concrete owner | Exact source geometry |
+| --- | --- | --- | --- |
+| `2294:8053` | `2294:8047` | `HomeSourceNode.vue` `[data-figma-node="2294:8053"]` | 918.000×66.000; x261.000, y96.000 |
+| `2294:8073` | `2294:8072` | `HomeSourceNode.vue` `[data-figma-node="2294:8073"]` | 918.000×166.000; x0.000, y0.000 |
+| `2294:8078` | `2294:8077` | `HomeSourceNode.vue` `[data-figma-node="2294:8078"]` | 140.000×140.000; x0.000, y0.000 |
+| `2294:8084` | `2294:8083` | `HomeSourceNode.vue` `[data-figma-node="2294:8084"]` | 56.000×14.000; x0.000, y0.000 |
+| `2294:8093` | `2294:8090` | `HomeSourceNode.vue` `[data-figma-node="2294:8093"]` | 447.000×52.000; x0.000, y26.000 |
+| `2294:8099` | `2294:8096` | `HomeSourceNode.vue` `[data-figma-node="2294:8099"]` | 447.000×52.000; x0.000, y26.000 |
+| `2294:8111` | `2294:8108` | `HomeSourceNode.vue` `[data-figma-node="2294:8111"]` | 918.000×98.000; x0.000, y32.000 |
+| `2294:8114` | `2294:8047` | `HomeSourceNode.vue` `[data-figma-node="2294:8114"]` | 216.000×48.000; x612.000, y680.000 |
 
 ## Typography
 
-| Element | Node ID | Font | Size/Line Height | Weight | Color |
-| --- | --- | --- | --- | ---: | --- |
-| Upload label | `231:815` | Upload media | PingFang SC | 14px / 14px | 400 | `#0F172A` |
-| Upload helper | `231:815` | Upload media | SF Pro | 14px / 14px | 400 | `#CBD5E1` |
-| Field label | `231:815` | Upload form | PingFang SC | 14px / 14px | 400 | `#0F172A` / `#1F2937` |
-| Field placeholder | `231:815` | input | Inter | 15.4-16px / 16-24px | 400 | rgba slate 0.50 |
+字体、字号、字重、行高、颜色、富文本run及行基线均使用本状态`dev-mode-2026-10-28.json`和`native-parameters-2026-10-28.json`。文字是DOM，保留Figma原始换行和小数基线，不以图片或截图反推样式。
 
 ## Components And Spacing
 
-| Element | Node ID | W x H | Padding/Gap | Radius/Border/Effect |
-| --- | --- | --- | --- | --- |
-| Dropzone | `231:815` | 140 x 140px | plus icon centered | 14px, 1px `#D1D5DC` |
-| Upload form | `231:815` | 918px content | 24px section gap; 52px fields | white, no shadow |
-
-## Prototype And Motion
-
-| Interaction | Figma/Octagos Reference | Trigger | Timing/Easing | Mobile Fallback |
-| --- | --- | --- | --- | --- |
-| File selection | Figma authored upload state | File input change | Immediate state update | Same input, stacked fields |
-| Submit feedback | Octagos restrained action feedback | Submit | Short opacity/transform | No layout shift |
+页面由`DentalDesktopFlow.vue → DentalSourceCanvas.vue → HomeSourceNode.vue`渲染；详情由`DentalDoctorSourceDialog.vue → HomeSourceNode.vue`渲染。几何、间距、圆角、描边、阴影、图片裁切来自上述锁定源。短屏以视口内滚动保持正文可达。
 
 ## Assets
 
-| Asset | Node ID | Export/Fit | Project Path |
-| --- | --- | --- | --- |
-| Dental upload hero | `231:815` | Cover crop, authored `1440 x 460px` | `/public/images/figma/dental-upload-hero.png` |
+| Asset | Exact Node ID | Project path |
+| --- | --- | --- |
+| Group 623 | `2294:8079` | `/public/images/figma/dental-revision/node-2294-8079.svg` |
+| image | `2294:8105` | `/public/images/figma/dental-revision/node-2294-8105.svg` |
+| Icon | `2294:8160` | `/public/images/figma/dental-revision/node-2294-8160.svg` |
+| Icon | `2294:8166` | `/public/images/figma/dental-revision/node-2294-8166.svg` |
+| Icon | `2294:8171` | `/public/images/figma/dental-revision/node-2294-8171.svg` |
+| Icon | `2294:8203` | `/public/images/figma/dental-revision/node-2294-8203.svg` |
+| Icon | `2294:8227` | `/public/images/figma/dental-revision/node-2294-8227.svg` |
+| source asset | `2294:8040` | `/public/images/figma/dental-revision/image-95a7534f58ff374efc9bc43e522f01d1513d25a0.webp` |
+
+完整125项资源由同源manifest和哈希逐项核验；图片压缩为WebP，图标使用精确透明SVG。
+
+## Prototype And Motion
+
+沿用`POST /api/dental-assessments` multipart契约；项目、预算、日期、说明、文件和意向医生传入接口。提交中及成功后阻止重复提交；重试复用requestId；隔离HTTP桩验证失败/重试及幂等，未向正式系统写入测试病例。
+
+保留180ms按钮反馈，aria-live提示提交进度/错误。 reduced-motion关闭过渡，内容即时可读；不改变Figma静止布局。
 
 ## Verification
-
-- Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 牙科 - 上传影像资料 (1).png`
-- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/dental-upload-1440.png`
-- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/dental-upload-390.png`
-- Upload states: idle, ready, submitting, success, and retryable error feedback are implemented without changing the authored idle geometry. The submit action calls the backend `/api/dental-assessments` multipart endpoint and rejects empty submissions.
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-dental-2026-10-28/visual/upload-reference.png`
+- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-dental-2026-10-28/visual/upload-local.png`
+- Local mobile: deferred by user; this verification covers desktop only
+- Visual evidence: `artifacts/figma-dental-2026-10-28/visual/qa.json`；生产preview `artifacts/figma-dental-2026-10-28/production/visual/qa.json`；状态：upload。DPR2、1440px源宽；nMAE和pixelmatch均须<1%。
+- Behavior evidence: `artifacts/figma-dental-2026-10-28/behavior/behavior-qa.json`、`artifacts/figma-dental-2026-10-28/production/behavior/behavior-qa.json`；1024×600、1440×900、1920×1080。
+- Full-content evidence: 治疗流程01–06、保障十项、机构八图除实际640px滚动视口外，另以完整源面板高度截取内部DOM核验。
+- Source audit: `scripts/audit-dental-revision.mjs`及`scripts/audit-doctors-revision.mjs`；只接受当前13帧、1358节点、125资源及代码修改后的证据。
 - Remaining differences: none
-- Verification run: 2026-09-24. Re-read Dev Mode source frame `231:815`; verified authored desktop geometry `460 / 164 / 686 / 456px`, upload idle/reading/ready/error states, form submission feedback, mobile adaptation, image loading, no horizontal overflow, and reduced-motion fallback.
+- Verification run: 2026-10-28（本地桌面开发及生产preview；未部署外网）

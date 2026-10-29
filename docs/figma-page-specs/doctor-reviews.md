@@ -1,92 +1,71 @@
-# 医生详情 · 患者评价
+# 牙科医生详情 · 患者评价
 
+- Route: `/dental` → 医生详情 → 患者评价
 - Figma frame: `患者评价`
 - Node ID: `231:1421`
-- Source baseline HTML: `docs/figma-source/doctor-reviews/frame.html`
-- Source baseline CSS: `docs/figma-source/doctor-reviews/styles.txt`
-- Source asset manifest: `docs/figma-source/doctor-reviews/assets.json`
-- Source extraction run: 2026-09-24, Dev Mode HTML plus recursively expanded Layers tree
-- Source reference: `/Users/hhm/Downloads/患者评价 (1).png`
-- Desktop authored state: `1440 x 756px`
-- Mobile frame: responsive fallback at `390 x 844px` (no authored mobile modal frame)
-- Entry: `/dental` -> step `02 城市与医生匹配` -> `了解更多` -> `患者评价（128）`
-- Status: verified
+- Source baseline HTML: `docs/figma-source/dental-revision-2026-10-28/reviews/baseline-2026-10-28.html`
+- Source baseline CSS: `docs/figma-source/dental-revision-2026-10-28/reviews/dev-styles-2026-10-28.css`
+- Source asset manifest: `docs/figma-source/dental-revision-2026-10-28/assets-2026-10-28.json`
+- Source extraction run: 2026-10-28；官方原生导出、完整Layers及逐节点Dev Mode交叉核对；各状态共86节点。
+- Source SHA256: `915e3f7a3fe7a34c50b40de5f3885c55d15419eaad4b844851292527eed1f583`；baseline `huanyu-2026-10-29.fig`
+- Current source comparison: `artifacts/figma-source-gate/latest-dental.json`；当前官方导出`huanyu-current-2026-10-29.fig`，源比较状态 unchanged。
+- Live connection evidence: current-session `iab` / `figma-connect.mjs`；Design/Layers/Dev Mode验证。
+- Desktop frame: reviews 1440.000×756.000
+- Mobile frame: deferred by user; mobile design freeze remains in effect
+- Status: verified (desktop; mobile deferred by user) — 2026-10-28
 
 ## Layer Mapping
 
-| Figma Node ID | Figma layer/type | Parent | Vue component/element | Dev Mode values copied | Asset/state notes |
-| --- | --- | --- | --- | --- | --- |
-| `231:1421` | `患者评价` frame | document | modal state root | 1440 x 756 | authored review state |
-| `231:1422` | background page image | `231:1421` | existing `/dental` doctor-match page | 1440 x 1136 at 0,0 | obscured by overlay |
-| `231:1423` | `Container` overlay | `231:1421` | `.dental-modal-backdrop` | 1440 x 756; 40px vertical padding; black 50%; blur 4px | centered dialog |
-| `231:1424` | `Rectangle 17` | `231:1423` | overlay backing geometry | 896 x 600 at x272/y51; radius 24px; `#D9D9D9` | source backing rectangle |
-| `231:1425` | `Frame 631` dialog | `231:1423` | `.dental-doctor-modal--reviews` | 896 x 654; 32px padding; radius 24px; white; vertical Auto Layout | fixed desktop state height |
-| `231:1426`–`231:1428` | close Button / Icon / Vector | `231:1425` | `.dental-modal-close` and exported close SVG | 36px hit area; 8px padding; 20px icon; top/right 16px; blur 8px | focus, click and Escape close |
-| `231:1429`–`231:1432` | `Frame 683`, title containers, `医生详情` | `231:1425` | dialog content and `h2` | 832px inner width; title 32/32px, 600, .4px tracking, `#1E3A5F` | exact title copy |
-| `231:1433`–`231:1440` | doctor header, portrait, identity/name/title | `231:1429` | `.dental-modal-profile` first two groups | 106px high; 32px top padding; 12px outer gap; 60px portrait; 8px detail gap | source order preserved |
-| `231:1441`–`231:1444` | hospital row / Icon / Vector / text | `231:1435` | hospital metadata row | 16px icon; 4px gap; 14/20px, `#9CA3AF` | hospital SVG from source vector |
-| `231:1445`–`231:1448` | experience row / Frame / Vector / text | `231:1435` | experience metadata row | 16px icon; 4px gap; 14/20px, `#9CA3AF` | experience SVG from source vector |
-| `231:1449`–`231:1456` | tab margin, rail, three Buttons and text | `231:1429` | `.dental-modal-tabs` | 24px top; 27px rail; 14/14px; 2px active underline; counts 32/128 | reviews tab active |
-| `231:1457` | first review wrapper | `231:1429` | first review list slot | 832 x 144; 16px top padding | contains first 128px card |
-| `231:1458`–`231:1465` | first card, rating, star/value, title and body | `231:1457` | first review `article` | 832 x 144; 24px padding; 12px gap; radius 24px; `#F3F4F6` | US half-mouth implant review |
-| `231:1466`–`231:1471` | first metadata row / dash / metadata text | `231:1458` | first review `small` | 14/14px; `#9CA3AF`; 17px dash slot | 2025.08 source line |
-| `231:1472` | second review wrapper | `231:1429` | second review list slot | 832 x 144; 16px top padding | contains second 128px card |
-| `231:1473`–`231:1480` | second card, rating, star/value, title and body | `231:1472` | second review `article` | same copied geometry and typography | Australia aligner review |
-| `231:1481`–`231:1486` | second metadata row / dash / metadata text | `231:1473` | second review `small` | 14/14px; `#9CA3AF`; 17px dash slot | 2025.06 source line |
-| `231:1487` | third review wrapper | `231:1429` | third review list slot | 832 x 144; 16px top padding | authored duplicate review retained |
-| `231:1488`–`231:1495` | third card, rating, star/value, title and body | `231:1487` | third review `article` | same copied geometry and typography | authored Australia duplicate |
-| `231:1496`–`231:1501` | third metadata row / dash / metadata text | `231:1488` | third review `small` | 14/14px; `#9CA3AF`; 17px dash slot | 2025.06 source line |
+帧ID沿用231:1421，但当前内部节点、医生和Tab均以新版记录为准，不能因ID未变沿用旧参数。保留源三条评价、评分、来源与日期；第三条完整内容可滚动到达。透明裁切视口不把灰色蒙版绘制到页面上。
+
+每个源目录均有逐节点`native-inventory`、`native-parameters`、`ui-layers`、`layers-crosscheck`、`dev-mode`、`node-to-code`、`source-tree`和HTML/CSS；13帧总源锁为`baseline-lock-2026-10-28.json`。完整映射按每个Node ID保存在JSON中。
+
+| Node ID | Parent | Concrete owner | Exact source geometry |
+| --- | --- | --- | --- |
+| `231:1421` | `source-root` | `DentalDoctorSourceDialog.vue` `[data-figma-node="231:1421"]` | 1440.000×756.000; x33318.000, y4666.000 |
+| `231:1424` | `231:1423` | `DentalDoctorSourceDialog.vue` `.dental-source-dialog__clip[data-figma-node="231:1424"]` | 896.000×640.000; x272.000, y51.000 |
+| `231:1425` | `231:1423` | `HomeSourceNode.vue` `[data-figma-node="231:1425"]` | 896.000×654.000; x272.000, y51.000 |
+| `231:1426` | `231:1425` | `HomeSourceNode.vue` `[data-figma-node="231:1426"]` | 36.000×36.000; x844.000, y16.000 |
+| `231:1432` | `231:1431` | `HomeSourceNode.vue` `[data-figma-node="231:1432"]` | 130.000×32.000; x0.000, y0.000 |
+| `2294:8000` | `2294:7999` | `HomeSourceNode.vue` `[data-figma-node="2294:8000"]` | 54.000×18.000; x0.000, y0.000 |
+| `2294:8014` | `2294:8013` | `HomeSourceNode.vue` `[data-figma-node="2294:8014"]` | 108.000×26.000; x251.000, y0.000 |
+| `231:1461` | `231:1460` | `HomeSourceNode.vue` `[data-figma-node="231:1461"]` | 12.000×10.000; x0.000, y0.000 |
+| `231:1465` | `231:1458` | `HomeSourceNode.vue` `[data-figma-node="231:1465"]` | 784.000×14.000; x24.000, y80.000 |
+| `231:1501` | `231:1500` | `HomeSourceNode.vue` `[data-figma-node="231:1501"]` | 269.000×14.000; x0.000, y0.000 |
 
 ## Typography
 
-| Element | Node ID | Font | Size/Line Height | Weight | Color |
-| --- | --- | --- | --- | ---: | --- |
-| Modal title | `231:1432` | PingFang SC | 32px / 32px | 600 | `#1E3A5F` |
-| Doctor name | `231:1438` | SF Pro | 18px / 18px | 600 | `#1E3A5F` |
-| Tab labels | `231:1452`, `231:1454`, `231:1456` | PingFang SC | 14px / 14px | 500 | inactive `#94A3B8`; active `#2563EB` |
-| Rating glyph | `231:1461`, `231:1476`, `231:1491` | Font Awesome 6 Free | 10px / 10px | 900 | `#F59E0B` |
-| Rating value | `231:1463`, `231:1478`, `231:1493` | PingFang SC | 12px / 12px | 600 | `#F59E0B` |
-| Review title | `231:1464`, `231:1479`, `231:1494` | PingFang SC | 16px / 16px | 500 | `#1E3A5F` |
-| Review body | `231:1465`, `231:1480`, `231:1495` | PingFang SC | 14px / 14px | 400 | `#6B7280` |
-| Review metadata | `231:1471`, `231:1486`, `231:1501` | PingFang SC | 14px / 14px | 400 | `#9CA3AF` |
+字体、字号、字重、行高、颜色、富文本run及行基线均使用本状态`dev-mode-2026-10-28.json`和`native-parameters-2026-10-28.json`。文字是DOM，保留Figma原始换行和小数基线，不以图片或截图反推样式。
 
 ## Components And Spacing
 
-| Element | Node ID | W x H | Padding/Gap | Radius/Border/Effect |
-| --- | --- | --- | --- | --- |
-| Dialog | `231:1425` | 896 x 654px | 32px | 24px radius, white |
-| Tabs | `231:1449`, `231:1450` | 832 x 51px | 24px top | 1px `#F1F5F9` rail, 2px blue active edge |
-| Review wrapper | `231:1457`, `231:1472`, `231:1487` | 832 x 144px | 16px top | no decoration |
-| Review card | `231:1458`, `231:1473`, `231:1488` | 832 x 144px | 24px; 12px vertical gap | 24px radius, `#F3F4F6` |
-| Rating row | `231:1459`, `231:1474`, `231:1489` | stretch x 16px | 4px gap | orange star and value |
+页面由`DentalDesktopFlow.vue → DentalSourceCanvas.vue → HomeSourceNode.vue`渲染；详情由`DentalDoctorSourceDialog.vue → HomeSourceNode.vue`渲染。几何、间距、圆角、描边、阴影、图片裁切来自上述锁定源。短屏以视口内滚动保持正文可达。
 
 ## Assets
 
-| Asset | Node ID | Export/Fit | Project Path |
-| --- | --- | --- | --- |
-| Doctor portrait | `231:1434` | 60 x 60px, cover, radius 16px | `/public/images/figma/expert-shao-zhimin-avatar.png` |
-| Close icon | `231:1427` | 20 x 20px | `/public/images/figma/doctor-modal-close.svg` |
-| Hospital icon | `231:1442` | 16 x 16px | `/public/images/figma/doctor-modal-hospital.svg` |
-| Experience icon | `231:1446` | 16 x 16px | `/public/images/figma/doctor-modal-experience.svg` |
-| Review star | `231:1461`, `231:1476`, `231:1491` | Font Awesome solid glyph rendered as 12 x 12px SVG | `/public/images/figma/doctor-review-star.svg` |
+| Asset | Exact Node ID | Project path |
+| --- | --- | --- |
+| Icon | `231:1427` | `/public/images/figma/dental-revision/node-231-1427.svg` |
+| Icon | `2294:8004` | `/public/images/figma/dental-revision/node-2294-8004.svg` |
+| Frame | `2294:8008` | `/public/images/figma/dental-revision/node-2294-8008.svg` |
+| source asset | `2294:7995` | `/public/images/figma/dental-revision/image-3a358e16a710d3ace711509d018e54023d2a9577.webp` |
+| source asset | `2294:7996` | `/public/images/figma/dental-revision/image-3d917ce08391a294490b64fe755d5643e23f6093.webp` |
+
+完整125项资源由同源manifest和哈希逐项核验；图片压缩为WebP，图标使用精确透明SVG。
 
 ## Prototype And Motion
 
-| Interaction | Figma/Octagos reference | Trigger | Timing/Easing | Mobile fallback |
-| --- | --- | --- | --- | --- |
-| Review tab | Figma authored state | tab click | active underline plus content state | single-line scroll-safe tab rail |
-| Modal open | Figma composition / Octagos motion vocabulary | `了解更多` | backdrop 250ms; dialog 350ms cubic-bezier(.22,1,.36,1) | same state, internal dialog scroll |
-| Modal close | Figma prototype | close, backdrop, Escape | reverse fade/lift | body scroll restored |
-| Reduced motion | accessibility fallback | OS preference | `.01ms`, no lift | same complete content |
+与医生详情共用五Tab、关闭、键盘及焦点/滚动恢复；滚动到底可读最后评价。
+
+切换240ms仅opacity；评价正文不做位移。 reduced-motion关闭过渡，内容即时可读；不改变Figma静止布局。
 
 ## Verification
-
-- Figma reference screenshot: `/Users/hhm/Downloads/患者评价 (1).png`
-- Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-reviews-1440.png`
-- Local mobile screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/dental/2026-09-29/doctor-reviews-390.png`
-- Desktop geometry: viewport `1440 x 756`; dialog `896 x 654` at `(272, 51)`; three authored cards `832 x 144`; the fixed Figma frame intentionally clips the lower part of the third card.
-- Mobile geometry: viewport `390 x 844`; dialog `342 x 720` at `(24, 62)` with internal scrolling; document width remains 390px.
-- Interaction checks: all three tabs switch authored states; close-button focus, Escape and close-button paths restore body scroll; backdrop uses the existing self-click close path.
-- Motion checks: 250ms backdrop fade and 350ms cubic-bezier(.22,1,.36,1) dialog lift retain the fixed resting geometry; reduced-motion fallback remains active.
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-dental-2026-10-28/visual/reviews-reference.png`
+- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-dental-2026-10-28/visual/reviews-local.png`
+- Local mobile: deferred by user; this verification covers desktop only
+- Visual evidence: `artifacts/figma-dental-2026-10-28/visual/qa.json`；生产preview `artifacts/figma-dental-2026-10-28/production/visual/qa.json`；状态：reviews。DPR2、1440px源宽；nMAE和pixelmatch均须<1%。
+- Behavior evidence: `artifacts/figma-dental-2026-10-28/behavior/behavior-qa.json`、`artifacts/figma-dental-2026-10-28/production/behavior/behavior-qa.json`；1024×600、1440×900、1920×1080。
+- Full-content evidence: 治疗流程01–06、保障十项、机构八图除实际640px滚动视口外，另以完整源面板高度截取内部DOM核验。
+- Source audit: `scripts/audit-dental-revision.mjs`及`scripts/audit-doctors-revision.mjs`；只接受当前13帧、1358节点、125资源及代码修改后的证据。
 - Remaining differences: none
-- Verification run: 2026-09-24
+- Verification run: 2026-10-28（本地桌面开发及生产preview；未部署外网）

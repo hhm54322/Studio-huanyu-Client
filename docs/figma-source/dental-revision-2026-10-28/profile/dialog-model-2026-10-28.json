@@ -1,0 +1,39 @@
+{
+  "panel": "2294:7754",
+  "overlay": "2294:7753",
+  "title": "2294:7761",
+  "close": "2294:7755",
+  "referenceOnly": [
+    "2294:7752"
+  ],
+  "component": "DentalDoctorSourceDialog.vue",
+  "tabbed": true,
+  "frame": "2294:7751",
+  "width": 896,
+  "height": 640,
+  "sourceX": 272,
+  "sourceY": 58,
+  "mask": null,
+  "tabs": [
+    {
+      "id": "2294:7781",
+      "text": "医生简介"
+    },
+    {
+      "id": "2294:7783",
+      "text": "治疗流程"
+    },
+    {
+      "id": "2294:7785",
+      "text": "案例集（1）"
+    },
+    {
+      "id": "2294:7787",
+      "text": "患者评价（128）"
+    },
+    {
+      "id": "2294:7988",
+      "text": "在华就诊保障服务（10）"
+    }
+  ]
+}

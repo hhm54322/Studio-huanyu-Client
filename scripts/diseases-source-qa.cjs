@@ -1,21 +1,22 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const assert = require('node:assert/strict')
-const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
+const { chromium } = require(path.join(process.env.HUANYU_QA_TOOLS || '/tmp/huanyu-visual-qa-tools/node_modules', 'playwright'))
 const dir = path.resolve('docs/figma-source/diseases')
-const out = path.resolve('docs/figma-verification/diseases/2026-09-29')
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'artifacts/figma-diseases-2026-10-29')
 const read = name => JSON.parse(fs.readFileSync(path.join(dir, name)))
-const mapping = read('node-to-code-2026-09-29.json')
-const values = new Map(read('native-parameters-2026-09-29.json').nodes.map(n => [n.nodeId, n]))
+const mapping = read('revision-2026-10-29/node-to-code.json')
+const values = new Map(read('revision-2026-10-29/native-current/native-parameters-2026-10-29.json').nodes.map(n => [n.nodeId, n]))
 const dev = new Map(read('dev-mode-2026-09-29.json').nodes.map(n => [n.nodeId, n]))
 async function main() {
-  const browser = await chromium.launch({ headless: true })
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.HUANYU_QA_BROWSER })
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
-    await page.goto('http://127.0.0.1:5173/diseases-technologies', { waitUntil: 'networkidle' })
+    await page.goto(`${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}/diseases-technologies`, { waitUntil: 'networkidle' })
     await page.evaluate(() => document.fonts.ready)
     const evidence = { nodes: [], typography: [], geometry: [], failures: [] }
     for (const node of mapping.nodes) {
+      if (node.id === '1524:2') await page.locator('.desktop-services-trigger').click()
       const element = page.locator(node.selector).first()
       if (!await element.count()) { evidence.failures.push(`${node.id}: missing ${node.selector}`); continue }
       evidence.nodes.push({ nodeId: node.id, selector: node.selector, rendered: node.rendered })
@@ -24,7 +25,7 @@ async function main() {
         continue
       }
       const source = values.get(node.id), p = source.parameters
-      if (p.type === 'TEXT') {
+      if (p.type === 'TEXT' && dev.has(node.id)) {
         const mixed = p.textData.characters.startsWith('合作医院：')
         for (const [index, run] of (mixed ? [null, 'strong'] : [null]).entries()) {
           const locator = run ? element.locator(run) : element
@@ -50,7 +51,7 @@ async function main() {
           evidence.typography.push({ nodeId: node.id, run, actual, expected })
         }
       }
-      if (node.index < 206 && p.type !== 'TEXT' && node.ownerNodeId === node.id) {
+      if ((node.index < 206 || ['484:1526', '1524:22'].includes(node.id)) && p.type !== 'TEXT' && node.ownerNodeId === node.id) {
         const actual = await element.evaluate(el => { const r = el.getBoundingClientRect(); return { x: r.x, y: r.y + scrollY, width: r.width, height: r.height } })
         const expected = { ...source.framePosition, width: p.size.x, height: p.size.y }
         for (const key of ['x', 'y', 'width', 'height']) if (Math.abs(actual[key] - expected[key]) >= .05) evidence.failures.push(`${node.id} ${key}: ${actual[key]} != ${expected[key]}`)

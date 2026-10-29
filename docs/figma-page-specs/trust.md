@@ -3,13 +3,40 @@
 - Route: `/trust`
 - Figma frame: `04寰宇云医 - 信任与常见问题`
 - Node ID: `143:2528`
-- Source baseline HTML: `docs/figma-source/trust/frame.html`
-- Source baseline CSS: `docs/figma-source/trust/styles.txt`
-- Source asset manifest: `docs/figma-source/trust/assets.json`
-- Source extraction run: 2026-09-24, Figma Dev Mode through `browser-client` and the `iab` tab; full Code and Text Styles expanded before capture
+- Source baseline HTML: `docs/figma-source/trust/revision-2026-10-29/baseline-2026-10-29.html`
+- Source baseline CSS: `docs/figma-source/trust/revision-2026-10-29/dev-styles-2026-10-29.css`
+- Source asset manifest: `docs/figma-source/trust/revision-2026-10-29/assets-2026-10-29.json`
+- Source extraction run: 2026-10-29, Figma Design Layers/Dev Mode through `scripts/figma-connect.mjs` and the current-session `iab`; 527 main-frame nodes + 200 travel nodes + 177 aftercare nodes copied and cross-checked
 - Desktop frame: `1440 x 4165.04px`
-- Mobile frame: no separate authored frame; verified responsive adaptation at `390 x 844px`
-- Status: verified
+- Mobile frame: `1592:2608` and related authored mobile states exist; mobile implementation and verification remain deferred by user
+- Status: verified (desktop scope; current evidence below supersedes historical sections)
+
+## Current Desktop Revision — 2026-10-29
+
+- Current official export: `docs/figma-source/huanyu-current-2026-10-29.fig`, exported `2026-10-29T02:13:36.800Z`, SHA-256 `faadce81916f46b9649409adf07a61c18ce718cab17c2035bd8a04acc1458546`. The implementation extraction used `(11).fig`; `artifacts/figma-source-gate/trust-steps-current-latest.json` checks all four implemented roots against the current export, with zero source changes, missing asset bytes and dependency changes.
+- Live connection: verified `2026-10-29T02:46:38.367Z`, current-session IAB browser `15`, tab `1`, Design/Layers/Properties readable. The verified source tab remains marked for handoff.
+- Complete current mapping: `docs/figma-source/trust/revision-2026-10-29/node-to-code-2026-10-29.json` and its `travel/` / `aftercare/` equivalents. Every source node maps to `HomeSourceNode.vue` or its precise asset/visibility owner. `layers-crosscheck-2026-10-29.json` confirms 527/527, 200/200 and 177/177 IDs, hierarchy and sibling order. The tables below describe source sections; legacy class names belong to the historical implementation.
+- Runtime: `TrustView.vue` → `TrustDesktopPage.vue` → `trustFigmaSource.ts`; the copied current tree includes the current CTA node `1582:2002` and `$200起` appointment entry. Source frame `143:2528` is 1440 × 4165.04; adding the authored 1275px travel and 754px aftercare states gives the product a 6194.04px natural page. This composition is documented rather than presented as a separate Figma frame.
+- Sticky composition: one source title `204:5638`, three right-column stages. The repeated title from travel/aftercare source states is intentionally suppressed; one title stays at 165px while within the section, then releases with the source 96px bottom padding. Three widths (1024/1440/1920) pass without duplicate title, horizontal overflow or broken images.
+- Independent full-card assurance and FAQ expansion use height transitions with stable inner text. Eight article cards open their corresponding full-text dialogs, with Escape/backdrop/close, focus trap and focus/scroll restoration. Toolkit links use the real article routes; unavailable destinations remain inactive.
+- Figma reference screenshot: `artifacts/figma-trust-2026-10-29/figma-reference-current.png`; source states: `artifacts/figma-steps-2026-10-29/travel-current.png`, `aftercare-current.png`.
+- Local desktop screenshot: `artifacts/figma-trust-2026-10-29/desktop-full-current.png`; live widths and interaction/motion evidence: `desktop-1024-live.png`, `desktop-1440-live.png`, `desktop-1920-live.png`, `desktop-behavior-qa.json`.
+- Visual report: `artifacts/figma-trust-2026-10-29/desktop-current-qa.json`. Complete main frame through stage 01: pixelmatch 0.109164% / nMAE 0.377349%; appended right stages 02/03: 0.041475% / 0.266730% and 0.033265% / 0.284373%; CTA: 0.327543% / 0.505828%; footer: 0.364888% / 0.360421%. All use DPR2, threshold 0.15, includeAA false and no source-content masking.
+- Eight long-text dialogs: development and production evidence refreshed on 2026-10-29 under `artifacts/figma-content-2026-10-22/`. JCI is compared to the authored desktop dialog; the other seven combine the authored article copy with the copied desktop template. These composition references are not independent Figma desktop frames. All dialogs pass the <1% pixelmatch and nMAE thresholds, keyboard/short-screen and entry/exit/reduced-motion checks.
+- Remaining differences: none in the verified desktop scope. Historical mobile records below are not this revision's acceptance evidence.
+
+### Assurance expansion source — 2026-10-29
+
+- Independent Figma state frame: `Section`, Node ID `143:3624`, `1440 x 757px`. It is the authored expanded-card state for the four assurance cards inside the trust hero, not a separate route.
+- Complete 68-node Layers/Dev Mode extraction and node cross-check are stored under `docs/figma-source/trust/revision-2026-10-29/assurances/` (`native-inventory`, `native-parameters`, `native-image-paints`, `ui-layers`, `dev-mode`).
+- The product keeps one hero and four independent cards. Clicking, Enter, or Space toggles only the selected card; the source card remains at `262px` collapsed. Expanded heights copied from the source state are: enterprise `374px`, hospital `350px`, direct connection `374px`, rights `374px`.
+- Exact expanded copy is wired in `TrustDesktopPage.vue`: enterprise registration and global network; authorised hospitals; direct hospital/expert connection without intermediaries; visa, cooling-off, refund and breach protection.
+- The source frame was checked in the live IAB Design/Inspect tab at `2026-10-29T03:56:05.854Z`; the current full-file source comparison reports no node, dependency, asset, or text changes. The candidate is represented in the existing `/trust` assurance interaction and does not add a new navigation entry.
+- Runtime mapping: `assurances/runtime-mapping-2026-10-29.json` maps all 68 state nodes to their exact live DOM/SVG owners. The three newly inserted detail subtrees are `143:3644`, `143:3658`, and `143:3672`; existing enterprise detail `143:2552` is reused. Every owner is checked in the rendered expanded state.
+- Final live connection verified at `2026-10-29T04:17:32.333Z`, current-session IAB browser `6`, tab `1`, selected node `143:3624`. Official export `(15).fig`, exported `2026-10-29T04:13:37.943Z`, SHA-256 `eeea92097b4af6cde607e4b99947e17b0878384a49775042bc4edbfe0fe44fc2`, is compared against each extraction's original export by `final-trust-source-2026-10-29.json` and `final-trust-assurances-source-2026-10-29.json`. All 32,630 file nodes are unchanged; no missing image/vector bytes or dependency changes.
+- Development and production evidence: `artifacts/figma-trust-2026-10-29/{development,production}-assurances-qa.json`. Complete four-card crop versus the official DPR2 PNG: pixelmatch `0.163484%`, nMAE `0.595532%`, no masks. Exact copy, 374/350/374/374px heights, independent click/Enter/Space, stable inner-text geometry, reduced motion, and scroll stability pass in both builds.
+- Card and FAQ state belongs to `TrustView.vue` and is passed through models to the desktop renderer. A responsive branch remount, including Chromium's temporary 1px viewport during full-page capture, preserves the visitor's expanded items. The regression explicitly crosses the branch boundary and checks all four cards plus FAQ state after returning to desktop.
+- Full page/state and behavior evidence has also been refreshed after this change: `desktop-current-qa.json`, `desktop-behavior-qa.json`, and their `production-` counterparts. `scripts/audit-trust-revision.mjs`, included in `audit:figma`, now validates 972 source nodes, locks, live owners, <1% source comparisons, three desktop widths and state retention.
 
 ## Layer Mapping
 

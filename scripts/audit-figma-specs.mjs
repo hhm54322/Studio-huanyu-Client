@@ -8,6 +8,20 @@ const files = (await readdir(specsDir)).filter((file) => file.endsWith('.md') &&
 const deliveryFiles = files.filter((file) => file !== 'compliance-audit.md' && file !== 'cost-generated-experiment.md')
 const errors = []
 
+if (!requestedFiles.size || requestedFiles.has('about.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-about-revision.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('about.md: current hierarchy, revised source lock/mapping/assets, screenshots, desktop behavior/motion or evidence freshness failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('about-specialties.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-about-specialties.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('about-specialties.md: three newly authored complex-case detail frames, exact mappings, screenshots or behavior failed')
+}
+
 if (!requestedFiles.size || requestedFiles.has('home.md')) {
   const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-home-source.mjs')], { encoding: 'utf8' })
   if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
@@ -24,8 +38,52 @@ if (!requestedFiles.size || requestedFiles.has('why-china.md')) {
 
 console.log('Figma-first gate: source inventory -> Dev Mode parameters -> node mapping -> implementation -> evidence')
 
+if (!requestedFiles.size || requestedFiles.has('steps-toolkit-detail.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-content-revision.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('steps-toolkit-detail.md: content source lock, mapping, desktop screenshot, behavior/motion or evidence freshness failed')
+}
+
+for (const [file, key] of [['steps-toolkit-assessment.md', 'assessment'], ['steps-toolkit-visa.md', 'visa'], ['steps-toolkit-medication-entry.md', 'medication-entry'], ['steps-toolkit-companions.md', 'companions'], ['steps-toolkit-muslim.md', 'muslim'], ['steps-toolkit-steps-flow.md', 'steps-flow']]) {
+  if (requestedFiles.size && !requestedFiles.has(file)) continue
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-toolkit-articles.mjs'), key], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push(`${file}: source/template locks, per-node CSS/mapping, authored copy, screenshots, behavior/motion or evidence freshness failed`)
+}
+
+if (!requestedFiles.size || requestedFiles.has('trust-article.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-content-revision.mjs'), '--trust'], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('trust-article.md: dialog source lock, mapping, screenshot, keyboard/motion or evidence freshness failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('trust.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-trust-revision.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('trust.md: current source locks, expanded-state mappings, desktop screenshots or interaction/state retention evidence failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('trust-cost-doctor-articles.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-trust-article-variants.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('trust-cost-doctor-articles.md: source/template locks, per-node mapping, authored copy, source exports, desktop composition or behavior/freshness failed')
+}
+
+for (const [file, key] of [['trust-medicine-article.md', 'medicine'], ['trust-infection-article.md', 'infection'], ['trust-rights-article.md', 'rights'], ['trust-privacy-article.md', 'privacy'], ['trust-muslim-article.md', 'muslim']]) {
+  if (requestedFiles.size && !requestedFiles.has(file)) continue
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-trust-safety-articles.mjs'), key], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push(`${file}: per-article source locks, exact mapping, copy, screenshots, desktop behavior/motion or freshness failed`)
+}
+
 if (!requestedFiles.size || requestedFiles.has('hospitals.md')) {
-  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-hospitals-source.mjs')], { encoding: 'utf8' })
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-hospitals-revision.mjs')], { encoding: 'utf8' })
   if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
   if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
   if (sourceAudit.status !== 0) errors.push('hospitals.md: source coverage, exact mapping, source lock or verification evidence failed')
@@ -45,11 +103,25 @@ if (!requestedFiles.size || requestedFiles.has('diseases.md')) {
   if (sourceAudit.status !== 0) errors.push('diseases.md: complete source lock, live node checks or final state evidence failed')
 }
 
-if (!requestedFiles.size || requestedFiles.has('dental.md')) {
-  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-dental-source.mjs')], { encoding: 'utf8' })
+if (!requestedFiles.size || ['dental.md','dental-upload.md','dental-institution.md'].some(file => requestedFiles.has(file))) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-dental-revision.mjs')], { encoding: 'utf8' })
   if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
   if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
-  if (sourceAudit.status !== 0) errors.push('dental.md: complete source lock, live state checks or final evidence failed')
+  if (sourceAudit.status !== 0) errors.push('dental.md/dental-upload.md: revision source lock, per-node mapping, <1% screenshot comparison, behavior/motion or evidence freshness failed')
+}
+
+if (!requestedFiles.size || ['doctor-experts.md','doctor-profile.md','doctor-treatment.md','doctor-cases.md','doctor-reviews.md','doctor-services.md','dental-institution.md'].some(file => requestedFiles.has(file))) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-doctors-revision.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('doctor details: exact source mapping, screenshots, keyboard/motion or evidence freshness failed')
+}
+
+if (!requestedFiles.size || requestedFiles.has('physicians.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-physicians-revision.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('physicians.md: current Figma source, complete Layers/Dev Mode mapping, desktop screenshot or behavior evidence failed')
 }
 
 for (const file of deliveryFiles) {

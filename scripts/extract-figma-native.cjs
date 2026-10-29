@@ -5,10 +5,15 @@ const { inflateRawSync } = require('node:zlib')
 
 const args = process.argv.slice(2)
 const discoverOnly = args.includes('--discover')
-const positional = args.filter((arg) => arg !== '--discover')
+const dateIndex = args.indexOf('--date')
+const extractionDate = dateIndex < 0 ? '2026-09-29' : args[dateIndex + 1]
+if (!/^\d{4}-\d{2}-\d{2}$/.test(extractionDate || '')) {
+  throw new Error('--date requires YYYY-MM-DD')
+}
+const positional = args.filter((arg, index) => arg !== '--discover' && index !== dateIndex && (dateIndex < 0 || index !== dateIndex + 1))
 const [file, frameId, destination, dependencyDirectory] = positional
 if (!file || !frameId || !destination || !dependencyDirectory) {
-  throw new Error('Usage: node scripts/extract-figma-native.cjs <file.fig> <frame-id> <output-dir> <parser-node_modules> [--discover]')
+  throw new Error('Usage: node scripts/extract-figma-native.cjs <file.fig> <frame-id> <output-dir> <parser-node_modules> [--discover] [--date YYYY-MM-DD]')
 }
 const UZIP = require(path.join(dependencyDirectory, 'uzip'))
 const { decompress } = require(path.join(dependencyDirectory, 'fzstd'))
@@ -58,13 +63,16 @@ function walk(node, level = 0, parentNodeId = null, siblingOrder = 0, visible = 
     if (paint.type !== 'IMAGE' || !paint.image?.hash) continue
     const hash = Buffer.from(paint.image.hash).toString('hex')
     const image = archive[`images/${hash}`]
-    if (!image) throw new Error(`Missing image ${hash} for ${nodeId}`)
-    imageAssets.push({ nodeId, imageHash: hash, sha256: createHash('sha256').update(image).digest('hex'), rendered: visible && paint.visible !== false, paint })
+    if (!image) {
+      imageAssets.push({ nodeId, imageHash: hash, sha256: null, rendered: visible && paint.visible !== false, paint, availability: 'unresolved' })
+      continue
+    }
+    imageAssets.push({ nodeId, imageHash: hash, sha256: createHash('sha256').update(image).digest('hex'), rendered: visible && paint.visible !== false, paint, availability: 'current-export' })
   }
   descendants.forEach((child, index) => walk(child, level + 1, nodeId, index, visible, framePosition, hiddenBy))
 }
 walk(nodes.get(frameId))
-const previousPath = path.join(destination, 'layers-2026-09-29.json')
+const previousPath = path.join(destination, `layers-${extractionDate}.json`)
 const legacyLayersPath = path.join(destination, 'layers.csv')
 let previous = fs.existsSync(previousPath) ? JSON.parse(fs.readFileSync(previousPath)).nodes : null
 if (!previous && fs.existsSync(legacyLayersPath)) {
@@ -94,6 +102,7 @@ if (previous) {
 fs.mkdirSync(destination, { recursive: true })
 function save(name, value) { fs.writeFileSync(path.join(destination, name), JSON.stringify(value, (_, val) => ArrayBuffer.isView(val) ? Array.from(val) : val, 2) + '\n') }
 const metadata = {
+  extractionDate,
   sourceFrame: frameId,
   sourceFile: path.resolve(file),
   sourceSHA256: createHash('sha256').update(bytes).digest('hex'),
@@ -102,7 +111,7 @@ const metadata = {
   nodeCount: inventory.length,
   layersCrossCheck: Boolean(previous),
 }
-save('native-inventory-2026-09-29.json', { ...metadata, nodes: inventory })
-save('native-parameters-2026-09-29.json', { ...metadata, nodes: parameters })
-save('native-image-paints-2026-09-29.json', { ...metadata, assets: imageAssets })
+save(`native-inventory-${extractionDate}.json`, { ...metadata, nodes: inventory })
+save(`native-parameters-${extractionDate}.json`, { ...metadata, nodes: parameters })
+save(`native-image-paints-${extractionDate}.json`, { ...metadata, assets: imageAssets })
 console.log(JSON.stringify({ ...metadata, visible: inventory.filter((node) => node.rendered).length, hidden: inventory.filter((node) => !node.rendered).length, imageAssets: imageAssets.length, layersMismatch: previous ? mismatch.length : null }, null, 2))

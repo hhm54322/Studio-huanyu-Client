@@ -4111,6 +4111,23 @@ const resetWizard = () => {
   outline-offset: 3px;
 }
 
+@media (max-width: 900px) {
+  .collection-page input,
+  .collection-page select,
+  .collection-page textarea {
+    font-size: 16px;
+  }
+  .pro-report-header,
+  .pro-report-body { padding-inline:20px; }
+  .pro-report-meta-grid { height:auto; min-height:0; gap:12px; }
+  .pro-report-meta-grid > div { flex-direction:column; gap:2px; }
+  .pro-report-meta-grid strong { overflow:visible; white-space:normal; overflow-wrap:anywhere; text-overflow:clip; }
+  .pro-pathology-panel { height:auto; min-height:0; }
+  .pro-package-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .pro-upgrade-cta { height:auto; min-height:0; grid-template-columns:1fr; padding:24px; }
+  .pro-upgrade-actions { flex-wrap:wrap; }
+}
+
 @media (max-width: 640px) {
   .free-report-page {
     width: calc(100% - 24px);

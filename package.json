@@ -5,10 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "expert:dev": "vite --config expert-review/vite.config.ts",
+    "expert:build": "vue-tsc --noEmit -p expert-review/tsconfig.json && vite build --config expert-review/vite.config.ts",
     "audit:figma": "node scripts/audit-figma-specs.mjs",
     "audit:figma:home-source": "node scripts/audit-home-source.mjs",
+    "audit:figma:changes": "node scripts/figma-source-gate.cjs",
+    "test:figma-source-gate": "node --test scripts/figma-source-gate.test.cjs",
     "prebuild": "pnpm run audit:figma && node scripts/optimize-release-images.mjs",
     "build": "vue-tsc -b && vite build",
+    "build:app": "node scripts/optimize-release-images.mjs && vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,0 +1,2832 @@
+{
+  "sourceFrame": "143:4127",
+  "sourceSHA256": "0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c",
+  "root": {
+    "id": "143:4127",
+    "name": "为什么来中国就医-05",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 906,
+    "x": 5230,
+    "y": 3459,
+    "visible": true,
+    "css": "width: 1440px;\nheight: 906px;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:906px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "width: 1440px;\nheight: 906px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:906px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "143:4128",
+        "name": "01寰宇云医 - 首页 1",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 1440,
+        "height": 1455,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-0224e4e757269f3c0b395ce111f40ed7f846cee1.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-0224e4e757269f3c0b395ce111f40ed7f846cee1.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;",
+        "text": "",
+        "children": []
+      },
+      {
+        "id": "143:4129",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 906,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:906px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:906px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:4130",
+            "name": "Frame 631",
+            "type": "FRAME",
+            "width": 896,
+            "height": 826,
+            "x": 272,
+            "y": 40,
+            "visible": true,
+            "css": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nposition:absolute;left:272px;top:40px;right:auto;bottom:auto;width:896px;height:826px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:4131",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 36,
+                "height": 36,
+                "x": 844,
+                "y": 16,
+                "visible": true,
+                "css": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4132",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 20,
+                    "height": 20,
+                    "x": 8,
+                    "y": 8,
+                    "visible": true,
+                    "css": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:8px;top:8px;",
+                    "layoutCss": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+                    "text": "",
+                    "svg": "/images/figma/home-revision/node-143-4132.svg",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "143:4134",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 832,
+                "height": 700,
+                "x": 32,
+                "y": 94,
+                "visible": true,
+                "css": "display: inline-grid;\npadding-top: 24px;\nrow-gap: 16px;\ncolumn-gap: 16px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nposition:absolute;left:32px;top:94px;right:auto;bottom:auto;width:832px;height:700px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: inline-grid;\npadding-top: 24px;\nrow-gap: 16px;\ncolumn-gap: 16px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4135",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 230,
+                    "x": 0,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 2;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:832px;height:230px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 2;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4136",
+                        "name": "Frame",
+                        "type": "FRAME",
+                        "width": 32,
+                        "height": 32,
+                        "x": 24,
+                        "y": 24,
+                        "visible": true,
+                        "css": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                        "layoutCss": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-143-4136.svg",
+                        "children": []
+                      },
+                      {
+                        "id": "143:4138",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 784,
+                        "height": 110,
+                        "x": 24,
+                        "y": 96,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:784px;height:110px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4139",
+                            "name": "Heading 3",
+                            "type": "FRAME",
+                            "width": 784,
+                            "height": 22,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:784px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4140",
+                                "name": "中西医结合的发展成熟度",
+                                "type": "TEXT",
+                                "width": 784,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:784px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                "text": "中西医结合的发展成熟度",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4141",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 784,
+                            "height": 88,
+                            "x": 0,
+                            "y": 22,
+                            "visible": true,
+                            "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:784px;height:88px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4142",
+                                "name": "Handpicked for exclusive Pegasus Program for secur",
+                                "type": "TEXT",
+                                "width": 784,
+                                "height": 72,
+                                "x": 0,
+                                "y": 16,
+                                "visible": true,
+                                "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:784px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:72px;white-space:pre-wrap;",
+                                "text": "中医结合是中国医学体系的重要组成部分，已有超过60年的系统化发展历史。国家层面设立了中医结合一级学科、中医结合医院、国家重点专科，并在肿瘤、心血管、消化、呼吸、老年病、康复医学等领域形成了标准化诊疗指南。中国中医结合学会及多家三甲中医院、综合医院中医科共同推动了这一体系的国际化与规范化。",
+                                "textLines": [
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:16.27853px;top:0;"
+                                      },
+                                      {
+                                        "text": "结",
+                                        "css": ";position:absolute;left:32.55706px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:48.8356px;top:0;"
+                                      },
+                                      {
+                                        "text": "是",
+                                        "css": ";position:absolute;left:65.11413px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:81.39266px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:97.6712px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:113.94973px;top:0;"
+                                      },
+                                      {
+                                        "text": "学",
+                                        "css": ";position:absolute;left:130.22826px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": ";position:absolute;left:146.50679px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": ";position:absolute;left:162.78532px;top:0;"
+                                      },
+                                      {
+                                        "text": "的",
+                                        "css": ";position:absolute;left:179.06386px;top:0;"
+                                      },
+                                      {
+                                        "text": "重",
+                                        "css": ";position:absolute;left:195.34239px;top:0;"
+                                      },
+                                      {
+                                        "text": "要",
+                                        "css": ";position:absolute;left:211.62093px;top:0;"
+                                      },
+                                      {
+                                        "text": "组",
+                                        "css": ";position:absolute;left:227.89946px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": ";position:absolute;left:244.17799px;top:0;"
+                                      },
+                                      {
+                                        "text": "部",
+                                        "css": ";position:absolute;left:260.45651px;top:0;"
+                                      },
+                                      {
+                                        "text": "分",
+                                        "css": ";position:absolute;left:276.73505px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:293.01358px;top:0;"
+                                      },
+                                      {
+                                        "text": "已",
+                                        "css": ";position:absolute;left:309.29211px;top:0;"
+                                      },
+                                      {
+                                        "text": "有",
+                                        "css": ";position:absolute;left:325.57065px;top:0;"
+                                      },
+                                      {
+                                        "text": "超",
+                                        "css": ";position:absolute;left:341.84918px;top:0;"
+                                      },
+                                      {
+                                        "text": "过",
+                                        "css": ";position:absolute;left:358.12772px;top:0;"
+                                      },
+                                      {
+                                        "text": "6",
+                                        "css": ";position:absolute;left:374.40625px;top:0;"
+                                      },
+                                      {
+                                        "text": "0",
+                                        "css": ";position:absolute;left:384px;top:0;"
+                                      },
+                                      {
+                                        "text": "年",
+                                        "css": ";position:absolute;left:393.59375px;top:0;"
+                                      },
+                                      {
+                                        "text": "的",
+                                        "css": ";position:absolute;left:409.87228px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": ";position:absolute;left:426.15082px;top:0;"
+                                      },
+                                      {
+                                        "text": "统",
+                                        "css": ";position:absolute;left:442.42935px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:458.70789px;top:0;"
+                                      },
+                                      {
+                                        "text": "发",
+                                        "css": ";position:absolute;left:474.98642px;top:0;"
+                                      },
+                                      {
+                                        "text": "展",
+                                        "css": ";position:absolute;left:491.26495px;top:0;"
+                                      },
+                                      {
+                                        "text": "历",
+                                        "css": ";position:absolute;left:507.54349px;top:0;"
+                                      },
+                                      {
+                                        "text": "史",
+                                        "css": ";position:absolute;left:523.82202px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:540.10052px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:556.37909px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:572.65759px;top:0;"
+                                      },
+                                      {
+                                        "text": "层",
+                                        "css": ";position:absolute;left:588.93616px;top:0;"
+                                      },
+                                      {
+                                        "text": "面",
+                                        "css": ";position:absolute;left:605.21466px;top:0;"
+                                      },
+                                      {
+                                        "text": "设",
+                                        "css": ";position:absolute;left:621.49323px;top:0;"
+                                      },
+                                      {
+                                        "text": "立",
+                                        "css": ";position:absolute;left:637.77173px;top:0;"
+                                      },
+                                      {
+                                        "text": "了",
+                                        "css": ";position:absolute;left:654.05029px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:670.3288px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:686.60736px;top:0;"
+                                      },
+                                      {
+                                        "text": "结",
+                                        "css": ";position:absolute;left:702.88586px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:719.16443px;top:0;"
+                                      },
+                                      {
+                                        "text": "一",
+                                        "css": ";position:absolute;left:735.44293px;top:0;"
+                                      },
+                                      {
+                                        "text": "级",
+                                        "css": ";position:absolute;left:751.7215px;top:0;"
+                                      },
+                                      {
+                                        "text": "学",
+                                        "css": ";position:absolute;left:768px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000000000005,
+                                    "css": "display:block;position:absolute;left:0px;top:0px;width:783.99866px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "科",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "结",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "重",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "点",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "专",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "科",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "并",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      },
+                                      {
+                                        "text": "在",
+                                        "css": ";position:absolute;left:272px;top:0;"
+                                      },
+                                      {
+                                        "text": "肿",
+                                        "css": ";position:absolute;left:288px;top:0;"
+                                      },
+                                      {
+                                        "text": "瘤",
+                                        "css": ";position:absolute;left:304px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:320px;top:0;"
+                                      },
+                                      {
+                                        "text": "心",
+                                        "css": ";position:absolute;left:336px;top:0;"
+                                      },
+                                      {
+                                        "text": "血",
+                                        "css": ";position:absolute;left:352px;top:0;"
+                                      },
+                                      {
+                                        "text": "管",
+                                        "css": ";position:absolute;left:368px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:384px;top:0;"
+                                      },
+                                      {
+                                        "text": "消",
+                                        "css": ";position:absolute;left:400px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:416px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:432px;top:0;"
+                                      },
+                                      {
+                                        "text": "呼",
+                                        "css": ";position:absolute;left:448px;top:0;"
+                                      },
+                                      {
+                                        "text": "吸",
+                                        "css": ";position:absolute;left:464px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:480px;top:0;"
+                                      },
+                                      {
+                                        "text": "老",
+                                        "css": ";position:absolute;left:496px;top:0;"
+                                      },
+                                      {
+                                        "text": "年",
+                                        "css": ";position:absolute;left:512px;top:0;"
+                                      },
+                                      {
+                                        "text": "病",
+                                        "css": ";position:absolute;left:528px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:544px;top:0;"
+                                      },
+                                      {
+                                        "text": "康",
+                                        "css": ";position:absolute;left:560px;top:0;"
+                                      },
+                                      {
+                                        "text": "复",
+                                        "css": ";position:absolute;left:576px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:592px;top:0;"
+                                      },
+                                      {
+                                        "text": "学",
+                                        "css": ";position:absolute;left:608px;top:0;"
+                                      },
+                                      {
+                                        "text": "等",
+                                        "css": ";position:absolute;left:624px;top:0;"
+                                      },
+                                      {
+                                        "text": "领",
+                                        "css": ";position:absolute;left:640px;top:0;"
+                                      },
+                                      {
+                                        "text": "域",
+                                        "css": ";position:absolute;left:656px;top:0;"
+                                      },
+                                      {
+                                        "text": "形",
+                                        "css": ";position:absolute;left:672px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": ";position:absolute;left:688px;top:0;"
+                                      },
+                                      {
+                                        "text": "了",
+                                        "css": ";position:absolute;left:704px;top:0;"
+                                      },
+                                      {
+                                        "text": "标",
+                                        "css": ";position:absolute;left:720px;top:0;"
+                                      },
+                                      {
+                                        "text": "准",
+                                        "css": ";position:absolute;left:736px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:752px;top:0;"
+                                      },
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:768px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000228881836,
+                                    "css": "display:block;position:absolute;left:0px;top:24px;width:784px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "指",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "南",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "结",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "学",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "会",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "及",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "多",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "三",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "甲",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:272px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:288px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:304px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:320px;top:0;"
+                                      },
+                                      {
+                                        "text": "综",
+                                        "css": ";position:absolute;left:336px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:352px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:368px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:384px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:400px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:416px;top:0;"
+                                      },
+                                      {
+                                        "text": "科",
+                                        "css": ";position:absolute;left:432px;top:0;"
+                                      },
+                                      {
+                                        "text": "共",
+                                        "css": ";position:absolute;left:448px;top:0;"
+                                      },
+                                      {
+                                        "text": "同",
+                                        "css": ";position:absolute;left:464px;top:0;"
+                                      },
+                                      {
+                                        "text": "推",
+                                        "css": ";position:absolute;left:480px;top:0;"
+                                      },
+                                      {
+                                        "text": "动",
+                                        "css": ";position:absolute;left:496px;top:0;"
+                                      },
+                                      {
+                                        "text": "了",
+                                        "css": ";position:absolute;left:512px;top:0;"
+                                      },
+                                      {
+                                        "text": "这",
+                                        "css": ";position:absolute;left:528px;top:0;"
+                                      },
+                                      {
+                                        "text": "一",
+                                        "css": ";position:absolute;left:544px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": ";position:absolute;left:560px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": ";position:absolute;left:576px;top:0;"
+                                      },
+                                      {
+                                        "text": "的",
+                                        "css": ";position:absolute;left:592px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:608px;top:0;"
+                                      },
+                                      {
+                                        "text": "际",
+                                        "css": ";position:absolute;left:624px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:640px;top:0;"
+                                      },
+                                      {
+                                        "text": "与",
+                                        "css": ";position:absolute;left:656px;top:0;"
+                                      },
+                                      {
+                                        "text": "规",
+                                        "css": ";position:absolute;left:672px;top:0;"
+                                      },
+                                      {
+                                        "text": "范",
+                                        "css": ";position:absolute;left:688px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:704px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:720px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.759998321533203,
+                                    "css": "display:block;position:absolute;left:0px;top:48px;width:736px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  }
+                                ],
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4143",
+                    "name": "Frame 642",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 430,
+                    "x": 0,
+                    "y": 270,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 832px;\njustify-content: space-between;\nalign-items: center;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\nposition:absolute;left:0px;top:270px;right:auto;bottom:auto;width:832px;height:430px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 832px;\njustify-content: space-between;\nalign-items: center;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4144",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 408,
+                        "height": 430,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 408px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:408px;height:430px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 408px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4145",
+                            "name": "Frame",
+                            "type": "FRAME",
+                            "width": 32,
+                            "height": 32,
+                            "x": 24,
+                            "y": 24,
+                            "visible": true,
+                            "css": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                            "layoutCss": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-143-4145.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "143:4147",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 310,
+                            "x": 24,
+                            "y": 96,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:360px;height:310px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4148",
+                                "name": "Heading 3",
+                                "type": "FRAME",
+                                "width": 360,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4149",
+                                    "name": "特色康养方案",
+                                    "type": "TEXT",
+                                    "width": 360,
+                                    "height": 22,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                    "text": "特色康养方案",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4150",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 360,
+                                "height": 288,
+                                "x": 0,
+                                "y": 22,
+                                "visible": true,
+                                "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:360px;height:288px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4151",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 360,
+                                    "height": 272,
+                                    "x": 0,
+                                    "y": 16,
+                                    "visible": true,
+                                    "css": "align-self: stretch;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:360px;height:272px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 24px;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:272px;white-space:pre-wrap;",
+                                    "text": "我们为患者提供的治疗后康养方案，由中医结合专家团队制定，主要包括：\n术后中医调理：针灸、艾灸、推拿、中药汤剂辅助术后恢复，减轻疼痛、改善睡眠、促进伤口愈合。\n肿瘤康复管理：化疗/放疗后的中药扶正、免疫调节、营养支持、疲劳综合征管理。\n慢性病中医结合管理：高血压、糖尿病、骨关节病、心脑血管病等长期用药+中医体质调理。\n亚健康调理：针对高管、企业家群体的高压状态，提供睡眠、免疫、代谢、抗衰老等定向调理方案。",
+                                    "textRuns": [
+                                      {
+                                        "text": "我们为患者提供的治疗后康养方案，由中医结合专家团队制定，主要包括：\n",
+                                        "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "术后中医调理：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "针灸、艾灸、推拿、中药汤剂辅助术后恢复，减轻疼痛、改善睡眠、促进伤口愈合。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "肿瘤康复管理：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "化疗/放疗后的中药扶正、免疫调节、营养支持、疲劳综合征管理。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "慢性病中医结合管理：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "高血压、糖尿病、骨关节病、心脑血管病等长期用药+中医体质调理。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "亚健康调理：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "针对高管、企业家群体的高压状态，提供睡眠、免疫、代谢、抗衰老等定向调理方案。",
+                                        "css": "letter-spacing:0px"
+                                      }
+                                    ],
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "我们为患者提供的治疗后康养方案，由中医结合专家团队制定，主要包括：",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "术后中医调理：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "针灸、艾灸、推拿、中药汤剂辅助术后恢复，减轻疼痛、改善睡眠、促进伤口愈合。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "肿瘤康复管理：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "化疗/放疗后的中药扶正、免疫调节、营养支持、疲劳综合征管理。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "慢性病中医结合管理：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "高血压、糖尿病、骨关节病、心脑血管病等长期用药+中医体质调理。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "亚健康调理：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "针对高管、企业家群体的高压状态，提供睡眠、免疫、代谢、抗衰老等定向调理方案。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "我",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "们",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "为",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "患",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "者",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "提",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "供",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "的",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "治",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "后",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "养",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "方",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "案",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "由",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "结",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "合",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "专",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760000000000005,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "家",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "团",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "队",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "制",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "定",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "主",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "要",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "包",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "括",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#4b5563;font-family:\"PingFang SC\";font-weight:400;letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760000228881836,
+                                        "css": "display:block;position:absolute;left:0px;top:24px;width:176px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "术",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "后",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "针",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "灸",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "艾",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "灸",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "推",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "拿",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "药",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "汤",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "剂",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "辅",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "助",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759998321533203,
+                                        "css": "display:block;position:absolute;left:0px;top:56px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "术",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "后",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "恢",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "减",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "轻",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "疼",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "痛",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "改",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "善",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "睡",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "眠",
+                                            "css": "letter-spacing:0px;position:absolute;left:208px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:224px;top:0;"
+                                          },
+                                          {
+                                            "text": "促",
+                                            "css": "letter-spacing:0px;position:absolute;left:240px;top:0;"
+                                          },
+                                          {
+                                            "text": "进",
+                                            "css": "letter-spacing:0px;position:absolute;left:256px;top:0;"
+                                          },
+                                          {
+                                            "text": "伤",
+                                            "css": "letter-spacing:0px;position:absolute;left:272px;top:0;"
+                                          },
+                                          {
+                                            "text": "口",
+                                            "css": "letter-spacing:0px;position:absolute;left:288px;top:0;"
+                                          },
+                                          {
+                                            "text": "愈",
+                                            "css": "letter-spacing:0px;position:absolute;left:304px;top:0;"
+                                          },
+                                          {
+                                            "text": "合",
+                                            "css": "letter-spacing:0px;position:absolute;left:320px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:336px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.76000213623047,
+                                        "css": "display:block;position:absolute;left:0px;top:80px;width:352px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "肿",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "瘤",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:33.6px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:50.4px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:67.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:84px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:100.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "化",
+                                            "css": "letter-spacing:0px;position:absolute;left:117.6px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "letter-spacing:0px;position:absolute;left:134.39999px;top:0;"
+                                          },
+                                          {
+                                            "text": "/",
+                                            "css": "letter-spacing:0px;position:absolute;left:151.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "放",
+                                            "css": "letter-spacing:0px;position:absolute;left:159.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "后",
+                                            "css": "letter-spacing:0px;position:absolute;left:192.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "的",
+                                            "css": "letter-spacing:0px;position:absolute;left:209.60001px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:226.39999px;top:0;"
+                                          },
+                                          {
+                                            "text": "药",
+                                            "css": "letter-spacing:0px;position:absolute;left:243.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "扶",
+                                            "css": "letter-spacing:0px;position:absolute;left:260px;top:0;"
+                                          },
+                                          {
+                                            "text": "正",
+                                            "css": "letter-spacing:0px;position:absolute;left:276.79999px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:293.60001px;top:0;"
+                                          },
+                                          {
+                                            "text": "免",
+                                            "css": "letter-spacing:0px;position:absolute;left:310.39999px;top:0;"
+                                          },
+                                          {
+                                            "text": "疫",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.20001px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760009765625,
+                                        "css": "display:block;position:absolute;left:0px;top:112px;width:359.99976px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "节",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "营",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "养",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "支",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "持",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "疲",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "劳",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "综",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "合",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "征",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:208px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:224px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760009765625,
+                                        "css": "display:block;position:absolute;left:0px;top:136px;width:240px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "慢",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "性",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:17.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "病",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:34.4px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:51.6px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:68.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "结",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:86px;top:0;"
+                                          },
+                                          {
+                                            "text": "合",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:103.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:120.4px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:137.60001px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:154.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "高",
+                                            "css": "letter-spacing:0px;position:absolute;left:172px;top:0;"
+                                          },
+                                          {
+                                            "text": "血",
+                                            "css": "letter-spacing:0px;position:absolute;left:189.2px;top:0;"
+                                          },
+                                          {
+                                            "text": "压",
+                                            "css": "letter-spacing:0px;position:absolute;left:206.39999px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:223.60001px;top:0;"
+                                          },
+                                          {
+                                            "text": "糖",
+                                            "css": "letter-spacing:0px;position:absolute;left:240.8px;top:0;"
+                                          },
+                                          {
+                                            "text": "尿",
+                                            "css": "letter-spacing:0px;position:absolute;left:258px;top:0;"
+                                          },
+                                          {
+                                            "text": "病",
+                                            "css": "letter-spacing:0px;position:absolute;left:275.20001px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:292.39999px;top:0;"
+                                          },
+                                          {
+                                            "text": "骨",
+                                            "css": "letter-spacing:0px;position:absolute;left:309.60001px;top:0;"
+                                          },
+                                          {
+                                            "text": "关",
+                                            "css": "letter-spacing:0px;position:absolute;left:326.79999px;top:0;"
+                                          },
+                                          {
+                                            "text": "节",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:168.00002px;width:360.00024px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "病",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "心",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "脑",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "血",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "病",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "等",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "长",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "用",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "药",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "+",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:201.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:217.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "体",
+                                            "css": "letter-spacing:0px;position:absolute;left:233.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "质",
+                                            "css": "letter-spacing:0px;position:absolute;left:249.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:265.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:281.6875px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:297.6875px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:192.00002px;width:313.6875px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "亚",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "健",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "针",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "对",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "高",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "企",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "业",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "家",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "群",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "体",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "的",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "高",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "压",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "状",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "态",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:224.00002px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "提",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "供",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "睡",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "眠",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "免",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "疫",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "代",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "谢",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "抗",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "衰",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "老",
+                                            "css": "letter-spacing:0px;position:absolute;left:208px;top:0;"
+                                          },
+                                          {
+                                            "text": "等",
+                                            "css": "letter-spacing:0px;position:absolute;left:224px;top:0;"
+                                          },
+                                          {
+                                            "text": "定",
+                                            "css": "letter-spacing:0px;position:absolute;left:240px;top:0;"
+                                          },
+                                          {
+                                            "text": "向",
+                                            "css": "letter-spacing:0px;position:absolute;left:256px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:272px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:288px;top:0;"
+                                          },
+                                          {
+                                            "text": "方",
+                                            "css": "letter-spacing:0px;position:absolute;left:304px;top:0;"
+                                          },
+                                          {
+                                            "text": "案",
+                                            "css": "letter-spacing:0px;position:absolute;left:320px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:336px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:248.00002px;width:352px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4152",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 408,
+                        "height": 430,
+                        "x": 424,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 408px;\nheight: 430px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:424px;top:0px;right:auto;bottom:auto;width:408px;height:430px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 408px;\nheight: 430px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4153",
+                            "name": "Frame",
+                            "type": "FRAME",
+                            "width": 32,
+                            "height": 32,
+                            "x": 24,
+                            "y": 24,
+                            "visible": true,
+                            "css": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                            "layoutCss": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-143-4153.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "143:4157",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 278,
+                            "x": 24,
+                            "y": 96,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:360px;height:278px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4158",
+                                "name": "Heading 3",
+                                "type": "FRAME",
+                                "width": 360,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4159",
+                                    "name": "相比纯西医治疗的独特价值",
+                                    "type": "TEXT",
+                                    "width": 360,
+                                    "height": 22,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                    "text": "相比纯西医治疗的独特价值",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4160",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 360,
+                                "height": 256,
+                                "x": 0,
+                                "y": 22,
+                                "visible": true,
+                                "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:360px;height:256px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4161",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 360,
+                                    "height": 240,
+                                    "x": 0,
+                                    "y": 16,
+                                    "visible": true,
+                                    "css": "align-self: stretch;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:360px;height:240px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 24px; /* 150% */\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:240px;white-space:pre-wrap;",
+                                    "text": "全周期干预：医解决急性期、关键期问题，中医和康复医学覆盖恢复期、稳定期，降低复发和再入院风险。\n副作用管理：中医药和康复疗法可有效缓解放化疗后恶心、乏力、免疫力下降等症状。\n个体化方案：中医强调辨证论治，根据患者体质、病程、季节等因素定制调理方案。\n成本可控：康养调理疗程灵活，费用透明，适合高净值人群长期健康管理需求。",
+                                    "textRuns": [
+                                      {
+                                        "text": "全周期干预：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "医解决急性期、关键期问题，中医和康复医学覆盖恢复期、稳定期，降低复发和再入院风险。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "副作用管理：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "中医药和康复疗法可有效缓解放化疗后恶心、乏力、免疫力下降等症状。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "个体化方案：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "中医强调辨证论治，根据患者体质、病程、季节等因素定制调理方案。\n",
+                                        "css": "letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "成本可控：",
+                                        "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "康养调理疗程灵活，费用透明，适合高净值人群长期健康管理需求。",
+                                        "css": "letter-spacing:0px"
+                                      }
+                                    ],
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "全周期干预：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "医解决急性期、关键期问题，中医和康复医学覆盖恢复期、稳定期，降低复发和再入院风险。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "副作用管理：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "中医药和康复疗法可有效缓解放化疗后恶心、乏力、免疫力下降等症状。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "个体化方案：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "中医强调辨证论治，根据患者体质、病程、季节等因素定制调理方案。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:8px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "成本可控：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px"
+                                          },
+                                          {
+                                            "text": "康养调理疗程灵活，费用透明，适合高净值人群长期健康管理需求。",
+                                            "css": "letter-spacing:0px"
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "全",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "周",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "干",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "预",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "解",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "决",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "急",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "性",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "关",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "键",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "问",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "题",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "和",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760000000000005,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "康",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "学",
+                                            "css": "letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "覆",
+                                            "css": "letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "盖",
+                                            "css": "letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "恢",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "稳",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "定",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "降",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "低",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "发",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "和",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "再",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "入",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "院",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760000228881836,
+                                        "css": "display:block;position:absolute;left:0px;top:24px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "风",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "险",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759998321533203,
+                                        "css": "display:block;position:absolute;left:0px;top:48px;width:48px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "副",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "作",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "用",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "药",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "和",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "复",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "法",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "可",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "有",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "效",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "缓",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "解",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "放",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "化",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.76000213623047,
+                                        "css": "display:block;position:absolute;left:0px;top:80px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "后",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "恶",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "心",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "乏",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "力",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "免",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "疫",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "力",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "下",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "降",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "等",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "症",
+                                            "css": "letter-spacing:0px;position:absolute;left:208px;top:0;"
+                                          },
+                                          {
+                                            "text": "状",
+                                            "css": "letter-spacing:0px;position:absolute;left:224px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:240px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.76000213623047,
+                                        "css": "display:block;position:absolute;left:0px;top:104px;width:256px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "个",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "体",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "化",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "方",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "案",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "中",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "医",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "强",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "辨",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "证",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "论",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "治",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "根",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "据",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "患",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "者",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "体",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "质",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.760009765625,
+                                        "css": "display:block;position:absolute;left:0px;top:136px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "病",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "程",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "、",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "季",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "节",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "等",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "因",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "素",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "定",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "制",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "方",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          },
+                                          {
+                                            "text": "案",
+                                            "css": "letter-spacing:0px;position:absolute;left:208px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:224px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:160.00002px;width:240px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "成",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "本",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                          },
+                                          {
+                                            "text": "可",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                          },
+                                          {
+                                            "text": "控",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                          },
+                                          {
+                                            "text": "：",
+                                            "css": "color:#1e3a5f;font-family:\"PingFang SC\";font-weight:500;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                          },
+                                          {
+                                            "text": "养",
+                                            "css": "letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                          },
+                                          {
+                                            "text": "调",
+                                            "css": "letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                          },
+                                          {
+                                            "text": "疗",
+                                            "css": "letter-spacing:0px;position:absolute;left:147.42857px;top:0;"
+                                          },
+                                          {
+                                            "text": "程",
+                                            "css": "letter-spacing:0px;position:absolute;left:163.80952px;top:0;"
+                                          },
+                                          {
+                                            "text": "灵",
+                                            "css": "letter-spacing:0px;position:absolute;left:180.19048px;top:0;"
+                                          },
+                                          {
+                                            "text": "活",
+                                            "css": "letter-spacing:0px;position:absolute;left:196.57143px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:212.95238px;top:0;"
+                                          },
+                                          {
+                                            "text": "费",
+                                            "css": "letter-spacing:0px;position:absolute;left:229.33333px;top:0;"
+                                          },
+                                          {
+                                            "text": "用",
+                                            "css": "letter-spacing:0px;position:absolute;left:245.71428px;top:0;"
+                                          },
+                                          {
+                                            "text": "透",
+                                            "css": "letter-spacing:0px;position:absolute;left:262.09525px;top:0;"
+                                          },
+                                          {
+                                            "text": "明",
+                                            "css": "letter-spacing:0px;position:absolute;left:278.4762px;top:0;"
+                                          },
+                                          {
+                                            "text": "，",
+                                            "css": "letter-spacing:0px;position:absolute;left:294.85715px;top:0;"
+                                          },
+                                          {
+                                            "text": "适",
+                                            "css": "letter-spacing:0px;position:absolute;left:311.2381px;top:0;"
+                                          },
+                                          {
+                                            "text": "合",
+                                            "css": "letter-spacing:0px;position:absolute;left:327.61905px;top:0;"
+                                          },
+                                          {
+                                            "text": "高",
+                                            "css": "letter-spacing:0px;position:absolute;left:344px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:192.00002px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "净",
+                                            "css": "letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                          },
+                                          {
+                                            "text": "值",
+                                            "css": "letter-spacing:0px;position:absolute;left:16px;top:0;"
+                                          },
+                                          {
+                                            "text": "人",
+                                            "css": "letter-spacing:0px;position:absolute;left:32px;top:0;"
+                                          },
+                                          {
+                                            "text": "群",
+                                            "css": "letter-spacing:0px;position:absolute;left:48px;top:0;"
+                                          },
+                                          {
+                                            "text": "长",
+                                            "css": "letter-spacing:0px;position:absolute;left:64px;top:0;"
+                                          },
+                                          {
+                                            "text": "期",
+                                            "css": "letter-spacing:0px;position:absolute;left:80px;top:0;"
+                                          },
+                                          {
+                                            "text": "健",
+                                            "css": "letter-spacing:0px;position:absolute;left:96px;top:0;"
+                                          },
+                                          {
+                                            "text": "康",
+                                            "css": "letter-spacing:0px;position:absolute;left:112px;top:0;"
+                                          },
+                                          {
+                                            "text": "管",
+                                            "css": "letter-spacing:0px;position:absolute;left:128px;top:0;"
+                                          },
+                                          {
+                                            "text": "理",
+                                            "css": "letter-spacing:0px;position:absolute;left:144px;top:0;"
+                                          },
+                                          {
+                                            "text": "需",
+                                            "css": "letter-spacing:0px;position:absolute;left:160px;top:0;"
+                                          },
+                                          {
+                                            "text": "求",
+                                            "css": "letter-spacing:0px;position:absolute;left:176px;top:0;"
+                                          },
+                                          {
+                                            "text": "。",
+                                            "css": "letter-spacing:0px;position:absolute;left:192px;top:0;"
+                                          }
+                                        ],
+                                        "baseline": 17.759994506835938,
+                                        "css": "display:block;position:absolute;left:0px;top:216.00002px;width:208px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "143:4162",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 832,
+                "height": 62,
+                "x": 32,
+                "y": 32,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nposition:absolute;left:32px;top:32px;right:auto;bottom:auto;width:832px;height:62px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4163",
+                    "name": "Heading 2",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 32,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4164",
+                        "name": "康养特色 · 中西结合",
+                        "type": "TEXT",
+                        "width": 298,
+                        "height": 32,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:298px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:298px;height:32px;white-space:pre;",
+                        "text": "康养特色 · 中西结合",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4165",
+                    "name": "Paragraph",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 30,
+                    "x": 0,
+                    "y": 32,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:832px;height:30px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4166",
+                        "name": "中西医结合+术后康养调理，全周期健康管理",
+                        "type": "TEXT",
+                        "width": 275,
+                        "height": 22,
+                        "x": 0,
+                        "y": 8,
+                        "visible": true,
+                        "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:275px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:275px;height:22px;white-space:pre;",
+                        "text": "中西医结合+术后康养调理，全周期健康管理",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,767 @@
+{
+  "radar": {
+    "nodeId": "1528:437",
+    "width": 256.9697265625,
+    "height": 241.7998046875,
+    "texts": [
+      {
+        "nodeId": "1528:453",
+        "x": 105.48486328125,
+        "y": 0,
+        "width": 44,
+        "height": 13,
+        "text": "治疗费用",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:454",
+        "x": 214.9697265625,
+        "y": 50.2001953125,
+        "width": 33,
+        "height": 13,
+        "text": "治愈率",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:455",
+        "x": 212.9697265625,
+        "y": 146.60009765625,
+        "width": 44,
+        "height": 13,
+        "text": "等待时间",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:456",
+        "x": 105.48486328125,
+        "y": 196.7998046875,
+        "width": 44,
+        "height": 13,
+        "text": "技术水平",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:457",
+        "x": 0,
+        "y": 146.60000610351562,
+        "width": 44,
+        "height": 13,
+        "text": "服务质量",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:458",
+        "x": 0,
+        "y": 50.20000457763672,
+        "width": 44,
+        "height": 13,
+        "text": "语言支持",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:463",
+        "x": 136.14523363113403,
+        "y": 100.39970397949219,
+        "width": 7,
+        "height": 12,
+        "text": "0",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "lineHeight": 12,
+        "fill": "#9ca3af",
+        "rotation": -1.0471975434247853
+      },
+      {
+        "nodeId": "1528:465",
+        "x": 155.28439235687256,
+        "y": 89.34970092773438,
+        "width": 13,
+        "height": 12,
+        "text": "25",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "lineHeight": 12,
+        "fill": "#9ca3af",
+        "rotation": -1.0471975434247853
+      },
+      {
+        "nodeId": "1528:467",
+        "x": 174.42355632781982,
+        "y": 78.2997055053711,
+        "width": 13,
+        "height": 12,
+        "text": "50",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "lineHeight": 12,
+        "fill": "#9ca3af",
+        "rotation": -1.0471975434247853
+      },
+      {
+        "nodeId": "1528:469",
+        "x": 193.56271648406982,
+        "y": 67.24970245361328,
+        "width": 12,
+        "height": 12,
+        "text": "75",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "lineHeight": 12,
+        "fill": "#9ca3af",
+        "rotation": -1.0471975434247853
+      },
+      {
+        "nodeId": "1528:471",
+        "x": 212.70187664031982,
+        "y": 56.19970703125,
+        "width": 18,
+        "height": 12,
+        "text": "100",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "lineHeight": 12,
+        "fill": "#9ca3af",
+        "rotation": -1.0471975434247853
+      },
+      {
+        "nodeId": "1528:481",
+        "x": 67.48486328125,
+        "y": 229.7998046875,
+        "width": 24,
+        "height": 12,
+        "text": "中国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 12,
+        "lineHeight": 12,
+        "fill": "#2563eb",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:484",
+        "x": 125.48486328125,
+        "y": 229.7998046875,
+        "width": 24,
+        "height": 12,
+        "text": "美国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 12,
+        "lineHeight": 12,
+        "fill": "#1e3a5f",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:487",
+        "x": 183.48486328125,
+        "y": 229.7998046875,
+        "width": 24,
+        "height": 12,
+        "text": "德国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 12,
+        "lineHeight": 12,
+        "fill": "#c9a84c",
+        "rotation": 0
+      }
+    ],
+    "center": [
+      127.48486328125,
+      105.4000015258789
+    ],
+    "radius": 88.4000015258789,
+    "legendSymbols": [
+      {
+        "nodeId": "1528:480",
+        "x": 49.48486328125,
+        "y": 230.5498046875,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#2563eb"
+      },
+      {
+        "nodeId": "1528:483",
+        "x": 107.48486328125,
+        "y": 230.5498046875,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#1e3a5f"
+      },
+      {
+        "nodeId": "1528:486",
+        "x": 165.48486328125,
+        "y": 230.5498046875,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#c9a84c"
+      }
+    ]
+  },
+  "cost": {
+    "nodeId": "1528:491",
+    "width": 319,
+    "height": 202.1005859375,
+    "texts": [
+      {
+        "nodeId": "1528:514",
+        "x": 25.812962412834167,
+        "y": 156.10038825216907,
+        "width": 44,
+        "height": 15,
+        "text": "心脏搭桥",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:517",
+        "x": 75.179692029953,
+        "y": 156.10029094105994,
+        "width": 44,
+        "height": 15,
+        "text": "肿瘤手术",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:520",
+        "x": 124.54593694210052,
+        "y": 156.10029094105994,
+        "width": 44,
+        "height": 15,
+        "text": "关节置换",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:523",
+        "x": 173.91152942180634,
+        "y": 156.10029094105994,
+        "width": 44,
+        "height": 15,
+        "text": "脊柱手术",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:526",
+        "x": 230.35779309272766,
+        "y": 156.10029094105994,
+        "width": 33,
+        "height": 15,
+        "text": "种植牙",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:529",
+        "x": 272.6442310810089,
+        "y": 156.10029094105994,
+        "width": 44,
+        "height": 15,
+        "text": "牙齿矫正",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 15,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:535",
+        "x": 14.678674697875977,
+        "y": 148.85923767089844,
+        "width": 4.2574687004089355,
+        "height": 7.906734466552734,
+        "text": "0",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 7.906734466552734,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:538",
+        "x": 3.864063262939453,
+        "y": 111.15035247802734,
+        "width": 14,
+        "height": 13,
+        "text": "30",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:541",
+        "x": 3.864063262939453,
+        "y": 73.44100952148438,
+        "width": 14,
+        "height": 13,
+        "text": "60",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:544",
+        "x": 3.864063262939453,
+        "y": 35.732120513916016,
+        "width": 14,
+        "height": 13,
+        "text": "90",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:547",
+        "x": -0.999969482421875,
+        "y": 0,
+        "width": 19,
+        "height": 13,
+        "text": "120",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "lineHeight": 13,
+        "fill": "#6b7280",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:611",
+        "x": 73.5,
+        "y": 191.6005859375,
+        "width": 22,
+        "height": 10,
+        "text": "中国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 10,
+        "fill": "#2563eb",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:614",
+        "x": 129.5,
+        "y": 191.1005859375,
+        "width": 22,
+        "height": 11,
+        "text": "美国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 11,
+        "fill": "#1e3a5f",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:617",
+        "x": 185.5,
+        "y": 191.1005859375,
+        "width": 22,
+        "height": 11,
+        "text": "德国",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 11,
+        "fill": "#c9a84c",
+        "rotation": 0
+      },
+      {
+        "nodeId": "1528:620",
+        "x": 241.5,
+        "y": 191.1005859375,
+        "width": 22,
+        "height": 11,
+        "text": "日本",
+        "fontFamily": "PingFang SC",
+        "fontSize": 11,
+        "lineHeight": 11,
+        "fill": "#94a3b8",
+        "rotation": 0
+      }
+    ],
+    "grid": {
+      "x": 23.801856994628906,
+      "y": 2.338697671890259,
+      "width": 296.19818115234375,
+      "height": 150.83616638183594
+    },
+    "barWidth": 7.906727313995361,
+    "barGap": "30.76923077%",
+    "lines": [
+      {
+        "nodeId": "1528:495",
+        "x": 23.801926463733253,
+        "y": 153.17454361915588,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:496",
+        "x": 23.801926463733253,
+        "y": 115.46565079689026,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:497",
+        "x": 23.801926463733253,
+        "y": 77.75675797462463,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:498",
+        "x": 23.801926463733253,
+        "y": 40.04741883277893,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:499",
+        "x": 23.801856994628906,
+        "y": 2.338697671890259,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:501",
+        "x": 48.48515510559082,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:502",
+        "x": 97.85138702392578,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:503",
+        "x": 147.21761322021484,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:504",
+        "x": 196.58429718017578,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:505",
+        "x": 245.9502944946289,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:506",
+        "x": 295.31653594970703,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:507",
+        "x": 23.801856994628906,
+        "y": 2.338697671890259,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:508",
+        "x": 319.9999771118164,
+        "y": 2.338528162697912,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#e5e7eb",
+        "lineWidth": 1,
+        "lineDash": [
+          3,
+          3
+        ]
+      },
+      {
+        "nodeId": "1528:510",
+        "x": 23.801856994628906,
+        "y": 153.17471313476562,
+        "width": 296.19818115234375,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:513",
+        "x": 48.484760761260986,
+        "y": 153.17451851254737,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:516",
+        "x": 97.85171747207642,
+        "y": 153.17442120143824,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:519",
+        "x": 147.2179627418518,
+        "y": 153.17442120143824,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:522",
+        "x": 196.58355379104614,
+        "y": 153.17442120143824,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:525",
+        "x": 245.95034456253052,
+        "y": 153.17442120143824,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:528",
+        "x": 295.31625604629517,
+        "y": 153.17442120143824,
+        "width": 0,
+        "height": 3.649261951446533,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:531",
+        "x": 23.801856994628906,
+        "y": 2.338697671890259,
+        "width": 0,
+        "height": 150.83616638183594,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:534",
+        "x": 20.152517795562744,
+        "y": 153.17457008361816,
+        "width": 3.649258613586426,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:537",
+        "x": 20.152603149414062,
+        "y": 115.46578025817871,
+        "width": 3.649258613586426,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:540",
+        "x": 20.152603149414062,
+        "y": 77.75702095031738,
+        "width": 3.649258613586426,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:543",
+        "x": 20.152603149414062,
+        "y": 40.047773361206055,
+        "width": 3.649258613586426,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      },
+      {
+        "nodeId": "1528:546",
+        "x": 20.152584075927734,
+        "y": 2.338697671890259,
+        "width": 3.649258613586426,
+        "height": 0,
+        "stroke": "#666666",
+        "lineWidth": 1,
+        "lineDash": []
+      }
+    ],
+    "legendSymbols": [
+      {
+        "nodeId": "1528:610",
+        "x": 55.5,
+        "y": 191.3505859375,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#2563eb"
+      },
+      {
+        "nodeId": "1528:613",
+        "x": 111.5,
+        "y": 191.3505859375,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#1e3a5f"
+      },
+      {
+        "nodeId": "1528:616",
+        "x": 167.5,
+        "y": 191.3505859375,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#c9a84c"
+      },
+      {
+        "nodeId": "1528:619",
+        "x": 223.5,
+        "y": 191.3505859375,
+        "width": 14,
+        "height": 10.5,
+        "fill": "#94a3b8"
+      }
+    ]
+  }
+}

@@ -14,24 +14,35 @@ const panel = ref<HTMLElement | null>(null)
 const successButton = ref<HTMLButtonElement | null>(null)
 let requestId = ''
 let returnFocus: HTMLElement | null = null
+let previousOverflow = '', previousScrollBehavior = '', openingScroll = 0
 
 const newRequestId = () => crypto.randomUUID()
 
 function openPanel() {
+  if (open.value) return
   returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
+  previousOverflow = document.body.style.overflow
+  previousScrollBehavior = document.documentElement.style.scrollBehavior
+  openingScroll = window.scrollY
+  document.documentElement.style.scrollBehavior = 'auto'
+  window.scrollTo({ top: openingScroll, behavior: 'instant' })
   open.value = true
   submitted.value = false
   submitting.value = false
   submitError.value = ''
   requestId = newRequestId()
   document.body.style.overflow = 'hidden'
-  nextTick(() => document.querySelector<HTMLInputElement>('#consult-name')?.focus())
+  nextTick(() => document.querySelector<HTMLInputElement>('#consult-name')?.focus({ preventScroll: true }))
 }
 
 function closePanel() {
   open.value = false
-  document.body.style.overflow = ''
-  nextTick(() => returnFocus?.focus())
+  document.body.style.overflow = previousOverflow
+  nextTick(() => {
+    returnFocus?.focus({ preventScroll: true })
+    if (window.scrollY !== openingScroll) window.scrollTo({ top: openingScroll, behavior: 'instant' })
+    document.documentElement.style.scrollBehavior = previousScrollBehavior
+  })
 }
 
 async function submit() {
@@ -74,7 +85,10 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('open-consultation', openPanel)
   window.removeEventListener('keydown', onKeydown)
-  document.body.style.overflow = ''
+  if (open.value) {
+    document.body.style.overflow = previousOverflow
+    document.documentElement.style.scrollBehavior = previousScrollBehavior
+  }
 })
 </script>
 
@@ -118,7 +132,7 @@ onUnmounted(() => {
 .consult-float { position: fixed; right: 22px; bottom: max(22px, env(safe-area-inset-bottom)); z-index: 45; display: flex; height: 52px; align-items: center; gap: 8px; border: 0; border-radius: 26px; padding: 0 20px; background: var(--hy-orange); color: #fff; font-size: 14px; font-weight: 750; box-shadow: 0 14px 34px rgba(10, 52, 82, .2), 0 8px 22px rgba(255, 138, 52, .3); cursor: pointer; transition: transform .25s ease, box-shadow .25s ease; }
 .consult-float:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(10, 52, 82, .24), 0 10px 26px rgba(255, 138, 52, .35); }
 .consult-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; justify-content: flex-end; background: rgba(4, 28, 46, .48); backdrop-filter: blur(6px); }
-.consult-panel { position: relative; width: min(100%, 500px); min-height: 100%; overflow-y: auto; padding: 70px 52px 44px; background: #fff; box-shadow: -20px 0 60px rgba(5, 38, 63, .18); }
+.consult-panel { position: relative; width: min(100%, 500px); min-height:0; height:100%; max-height:100dvh; overflow-y: auto; padding: 70px 52px 44px; background: #fff; box-shadow: -20px 0 60px rgba(5, 38, 63, .18); }
 .consult-close { position: absolute; top: 24px; right: 24px; display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--hy-line); border-radius: 50%; background: #fff; color: var(--hy-navy); cursor: pointer; }
 .consult-panel h2 { margin: 16px 0 10px; color: var(--hy-navy-deep); font-size: 34px; line-height: 1.25; font-weight: 760; }
 .consult-panel > p, .consult-success p { margin: 0; color: var(--hy-muted); line-height: 1.8; }
@@ -136,5 +150,6 @@ onUnmounted(() => {
 .consult-enter-active .consult-panel, .consult-leave-active .consult-panel { transition: transform .38s cubic-bezier(.22, 1, .36, 1); }
 .consult-enter-from, .consult-leave-to { opacity: 0; }
 .consult-enter-from .consult-panel, .consult-leave-to .consult-panel { transform: translateX(100%); }
-@media (max-width: 640px) { .consult-float { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); width: 48px; height: 48px; justify-content: center; padding: 0; } .consult-float span { display: none; } .consult-panel { padding: 68px 24px 32px; } .consult-panel h2 { font-size: 29px; } }
+@media (max-width: 640px) { .consult-float { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); width: 48px; height: 48px; justify-content: center; padding: 0; } .consult-float span { display: none; } .consult-panel { min-height:0; height:100%; max-height:100dvh; padding: 68px 24px 32px; } .consult-panel h2 { font-size: 29px; } .consult-form input,.consult-form textarea { font-size:16px; } }
+@media (max-width:900px) { .consult-form input,.consult-form textarea { font-size:16px; } }
 </style>

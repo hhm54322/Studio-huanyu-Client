@@ -1,0 +1,352 @@
+{
+  "sourceFrame": "2294:7631",
+  "sourceSHA256": "915e3f7a3fe7a34c50b40de5f3885c55d15419eaad4b844851292527eed1f583",
+  "root": {
+    "id": "2294:7631",
+    "name": "上海牙科机构",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 756,
+    "x": 33325,
+    "y": 6469,
+    "visible": true,
+    "css": "width: 1440px;\nheight: 756px;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:756px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "width: 1440px;\nheight: 756px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:756px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "2294:7632",
+        "name": "04寰宇云医 - 信任与常见问题 1",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 1440,
+        "height": 1136,
+        "x": 0,
+        "y": -9.094947017729282e-13,
+        "visible": true,
+        "css": "width: 1440px;\nheight: 1136px;\naspect-ratio: 90/71;\nbackground: url(/artifacts/figma-content-2026-10-28/reference-background-2294-7632.png) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1136px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 1440px;\nheight: 1136px;\naspect-ratio: 90/71;\nbackground: url(/artifacts/figma-content-2026-10-28/reference-background-2294-7632.png) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1136px;",
+        "text": "",
+        "children": []
+      },
+      {
+        "id": "2294:7633",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 837,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: flex-start;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:837px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;border-radius:24px;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: flex-start;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:837px;overflow:hidden;border-radius:24px;",
+        "text": "",
+        "children": [
+          {
+            "id": "2294:7634",
+            "name": "Rectangle 17",
+            "type": "ROUNDED_RECTANGLE",
+            "width": 896,
+            "height": 640,
+            "x": 272,
+            "y": 58,
+            "visible": false,
+            "css": "width: 896px;\nheight: 640px;\nposition: absolute;\nleft: 272px;\ntop: 58px;\nborder-radius: 24px;\nbackground: #D9D9D9;\nposition:absolute;left:272px;top:58px;right:auto;bottom:auto;width:896px;height:640px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;display:none;",
+            "layoutCss": "width: 896px;\nheight: 640px;\nposition: absolute;\nleft: 272px;\ntop: 58px;\nborder-radius: 24px;\nbackground: #D9D9D9;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:272px;top:58px;right:auto;bottom:auto;width:896px;height:640px;display:none;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "2294:7635",
+            "name": "Frame 631",
+            "type": "FRAME",
+            "width": 896,
+            "height": 640,
+            "x": 272,
+            "y": 58,
+            "visible": true,
+            "css": "display: grid;\nwidth: 896px;\nheight: 640px;\npadding: 32px;\ngrid-template-rows: repeat(1,minmax(0,1fr));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nposition: absolute;\nleft: 272px;\ntop: 58px;\nborder-radius: 24px;\nbackground: #FFF;\nposition:absolute;left:272px;top:58px;right:auto;bottom:auto;width:896px;height:640px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: grid;\nwidth: 896px;\nheight: 640px;\npadding: 32px;\ngrid-template-rows: repeat(1,minmax(0,1fr));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nposition: absolute;\nleft: 272px;\ntop: 58px;\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:272px;top:58px;right:auto;bottom:auto;width:896px;height:640px;",
+            "text": "",
+            "children": [
+              {
+                "id": "2294:7636",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 36,
+                "height": 36,
+                "x": 844,
+                "y": 16,
+                "visible": true,
+                "css": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "2294:7637",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 20,
+                    "height": 20,
+                    "x": 8,
+                    "y": 8,
+                    "visible": true,
+                    "css": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:8px;top:8px;",
+                    "layoutCss": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+                    "text": "",
+                    "svg": "/images/figma/dental-revision/node-2294-7637.svg",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "2294:7639",
+                "name": "Frame 683",
+                "type": "FRAME",
+                "width": 832,
+                "height": 709.3333129882812,
+                "x": 32,
+                "y": 32,
+                "visible": true,
+                "css": "display: flex;\nwidth: 832px;\nflex-direction: column;\nalign-items: flex-start;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\nposition:absolute;left:32px;top:32px;right:auto;bottom:auto;width:832px;height:709.33331px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 832px;\nflex-direction: column;\nalign-items: flex-start;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "2294:7640",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 32,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nheight: 32px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nheight: 32px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "2294:7641",
+                        "name": "Heading 2",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 32,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "2294:7642",
+                            "name": "上海牙科机构",
+                            "type": "TEXT",
+                            "width": 194,
+                            "height": 32,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:194px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:194px;height:32px;white-space:pre;",
+                            "text": "上海牙科机构",
+                            "textLines": [
+                              {
+                                "runs": [
+                                  {
+                                    "text": "上海牙科机构",
+                                    "css": ""
+                                  }
+                                ],
+                                "baseline": 27.52000000000001,
+                                "css": "display:block;position:absolute;left:0.01123px;top:0px;width:193.97754px;height:44.8px;line-height:44.8px;white-space:pre;text-align:left;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "2294:7681",
+                    "name": "Paragraph",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 100,
+                    "x": 0,
+                    "y": 32,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 28px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:832px;height:100px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 28px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "2294:7682",
+                        "name": "博鳌超级医院（博鳌恒大国际医院的前身之一，现为独立运营实体）成立于2018年，是海南博鳌乐城国际医疗",
+                        "type": "TEXT",
+                        "width": 848,
+                        "height": 72,
+                        "x": 0,
+                        "y": 28,
+                        "visible": true,
+                        "css": "width: 848px;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:28px;right:auto;bottom:auto;width:848px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                        "layoutCss": "width: 848px;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:72px;white-space:pre-wrap;",
+                        "text": "门诊环境优雅舒适，采用现代化专科设计。设有7间独立封闭式数字化诊室，保障私密与安静。配备高配置数字化治疗台、进口CT机及牙片机、牙周治疗仪与先进消毒设备。严格划分污染区、消毒区、无菌区，实行“一人一机一消毒”。提供一流就诊环境与售后保健，支持中英文沟通，为国际患者打造安心体验。",
+                        "textLines": [
+                          {
+                            "runs": [
+                              {
+                                "text": "门诊环境优雅舒适，采用现代化专科设计。设有7间独立封闭式数字化诊室，保障私密与安静。配备高配置数字化治疗",
+                                "css": ""
+                              }
+                            ],
+                            "baseline": 17.760000000000005,
+                            "css": "display:block;position:absolute;left:0px;top:0px;width:817.08008px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "台、进口CT机及牙片机、牙周治疗仪与先进消毒设备。严格划分污染区、消毒区、无菌区，实行“一人一机一消毒”。提供",
+                                "css": ""
+                              }
+                            ],
+                            "baseline": 17.760000228881836,
+                            "css": "display:block;position:absolute;left:0px;top:24px;width:846.61328px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "一流就诊环境与售后保健，支持中英文沟通，为国际患者打造安心体验。",
+                                "css": ""
+                              }
+                            ],
+                            "baseline": 17.759998321533203,
+                            "css": "display:block;position:absolute;left:0px;top:48px;width:507.33789px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "2294:7683",
+                    "name": "Frame 697",
+                    "type": "FRAME",
+                    "width": 848,
+                    "height": 577.3333129882812,
+                    "x": 0,
+                    "y": 132,
+                    "visible": true,
+                    "css": "display: inline-grid;\nwidth: 848px;\npadding-top: 24px;\nrow-gap: 10px;\ncolumn-gap: 24px;\ngrid-template-rows: repeat(3,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\ngrid-auto-flow: row;\nposition:absolute;left:0px;top:132px;right:auto;bottom:auto;width:848px;height:577.33331px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: inline-grid;\nwidth: 848px;\npadding-top: 24px;\nrow-gap: 10px;\ncolumn-gap: 24px;\ngrid-template-rows: repeat(3,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\ngrid-auto-flow: row;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "2294:7684",
+                        "name": "86f8c982447e4cf7a3f7d550b6c1b306 1",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 0,
+                        "y": 24,
+                        "visible": true,
+                        "css": "align-self: stretch;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-893c418170167a8725c98fe9581d931d4c076cf9.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "align-self: stretch;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-893c418170167a8725c98fe9581d931d4c076cf9.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:266.66666px;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7685",
+                        "name": "a5800cad5fce38559b8cbb157cc86c6c 1",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177,
+                        "x": 290.6666564941406,
+                        "y": 24,
+                        "visible": true,
+                        "css": "height: 177px;\nalign-self: start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-ce4242f16958a48a5dbb96fe6e3029858e10d53c.webp) 50% / cover no-repeat;\nposition:absolute;left:290.66666px;top:24px;right:auto;bottom:auto;width:266.66666px;height:177px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "height: 177px;\nalign-self: start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-ce4242f16958a48a5dbb96fe6e3029858e10d53c.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:266.66666px;height:177px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7686",
+                        "name": "98072f298e3740b7b1acb000abde8a32 1",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 581.3333129882812,
+                        "y": 24,
+                        "visible": true,
+                        "css": "height: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-f472d7c65eb823cc0e491ed4c44aa44b47d83dc0.webp) 50% / cover no-repeat;\nposition:absolute;left:581.33331px;top:24px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "height: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: url(/images/figma/dental-revision/image-f472d7c65eb823cc0e491ed4c44aa44b47d83dc0.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:266.66666px;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7687",
+                        "name": "98072f298e3740b7b1acb000abde8a32 5",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 0,
+                        "y": 211.77777099609375,
+                        "visible": true,
+                        "css": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-dcbae7dc2fe5ea99c5967c5d24d4e6e582808717.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:211.77777px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-dcbae7dc2fe5ea99c5967c5d24d4e6e582808717.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7688",
+                        "name": "98072f298e3740b7b1acb000abde8a32 3",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 290.6666564941406,
+                        "y": 211.77777099609375,
+                        "visible": true,
+                        "css": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-060aea075dd627ed9ce0ad14c433fb397eca50ee.webp) -28.559px -11.208px / 120.254% 108.563% no-repeat;\nposition:absolute;left:290.66666px;top:211.77777px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-060aea075dd627ed9ce0ad14c433fb397eca50ee.webp) -28.559px -11.208px / 120.254% 108.563% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7689",
+                        "name": "98072f298e3740b7b1acb000abde8a32 4",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 581.3333129882812,
+                        "y": 211.77777099609375,
+                        "visible": true,
+                        "css": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-0ef03740389d5b9922eb888ef8ef315368a723a1.webp) -27.039px -11.487px / 120.109% 108.432% no-repeat;\nposition:absolute;left:581.33331px;top:211.77777px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-0ef03740389d5b9922eb888ef8ef315368a723a1.webp) -27.039px -11.487px / 120.109% 108.432% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "2294:7690",
+                        "name": "98072f298e3740b7b1acb000abde8a32 2",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 266.6666564941406,
+                        "height": 177.77777099609375,
+                        "x": 0,
+                        "y": 399.5555419921875,
+                        "visible": true,
+                        "css": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-49dd12d16e40fac81e1dd29303030cfc2099ccb2.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:399.55554px;right:auto;bottom:auto;width:266.66666px;height:177.77777px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "width: 266.667px;\nheight: 177.778px;\naspect-ratio: 3/2;\ngrid-row: span 1;\ngrid-column: span 1;\nbackground: url(/images/figma/dental-revision/image-49dd12d16e40fac81e1dd29303030cfc2099ccb2.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:177.77777px;",
+                        "text": "",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -3,13 +3,34 @@
 - Route: `/hospitals`
 - Figma frame: `07寰宇云医 - 中国医院`
 - Node ID: `144:4707`
-- Source baseline HTML: `docs/figma-source/hospitals/source-frame-2026-09-29.html`
-- Source baseline CSS: `docs/figma-source/hospitals/dev-styles-2026-09-29.css`
-- Source asset manifest: `docs/figma-source/hospitals/assets.json`
-- Source extraction run: `2026-09-29`, parent-first Layers and Dev Mode extraction
+- Source baseline HTML: `docs/figma-source/hospitals/baseline-2026-10-20.html`，各详情状态同名文件位于对应子目录
+- Source baseline CSS: `docs/figma-source/hospitals/dev-styles-2026-10-20.css`
+- Source asset manifest: `docs/figma-source/hospitals/assets-2026-10-20.json`
+- Source extraction run: `2026-10-20`，最新官方原生导出、UI Layers、逐节点 Dev Mode 三方核对
 - Desktop frame: `1440 x 2440px`
-- Mobile frame: no dedicated Figma frame; responsive adaptation verified at `390px`
-- Status: verified
+- Mobile frame: `1620:581`, 375×4223（网站根 `1620:582`，不含设备容器）
+- Status: verified (desktop; mobile deferred by user)
+
+用户于2026-10-20暂停移动端开发与验收（设计未定稿）。本次继续执行的范围仅为桌面列表、详情、事件和动效；移动源锁保留，不宣称移动完成。
+
+## 当前批次 — 2026-10-20
+
+本节覆盖下方旧版verified与“无独立手机帧”的历史结论。官方导出 `/Users/hhm/Downloads/寰宇云医 (2).fig`，时间 `2026-10-20T23:36:07.569Z`，SHA256 `29d97343e7e947187db27918706dc9b16c2f7886e08cf2dba453ed1a83bfb1bc`。本轮医院共22个源集，目录 `sources-2026-10-20.json`。静态参数提取和源锁完成前不改Vue/CSS。
+
+| 范围 | 桌面源 | 手机源 | 接入边界 |
+| --- | --- | --- | --- |
+| 医院列表 | `144:4707`，625节点 | `1620:581`，567原生节点 | 独立卡片顺序/尺寸/文字，不用桌面缩小；保留城市筛选及咨询 |
+| 普通医院详情 | 既有真实医院数据及详情行为 | `1626:277`、`1626:402`、`1626:476` | 本人医院信息；纠正源稿协和英文误写曜影的明显错误，不混用曜影专属介绍 |
+| 上海曜影首屏与菜单 | `1487:5`、`1487:119` | `1620:1878`、`1620:2024`、`1620:2126` | 专属医院数据，滚动固定菜单；关闭后焦点与页面位置恢复 |
+| 曜影六内容 | `1487:232/412/572/717/883/1037` | `1620:1165/1309/1428/1534/1661/1777` | 医院概况、科室中心、国际服务、医疗实力、院区网点、认证荣誉；图表用ECharts |
+
+在线新稿新增医院/中国医生入口 `1741:5732`（子节点 `1741:5735/5736/5733/5734`），已重新导出真实源文件而非沿用10月19日原生副本。“中国医生”的完整页面源在本项源范围外，后续医生批次绑定；不能擅自给它复制医院内容。
+
+22组源集的Layers、逐节点Dev Mode、原生参数全部齐全（共3719原生节点），已生成原始HTML/CSS、370条资源映射、完整Node-to-DOM映射和哈希锁。雷达图的逐节点路径与文字参数纳入锁，接入ECharts而非图表SVG。桌面列表、详情首屏、六个详情分区及其交互/动效已完成并通过本批次门禁；移动端设计尚未定稿，保留已提取源文件但暂停开发和验收。下方2026-09-29记录仅为历史。
+
+## Customer mobile-density correction — 2026-10-10
+
+There is no independent phone frame. The desktop card geometry, source crops, badge records and node mapping below remain authoritative. Up to 650px, the directory uses natural card/body height, a proportional cover image with height `clamp(128px, 38vw, 164px)`, 16px body padding, 18/27px hospital names and wrapping specialties/facts. Both card actions have 44px height. The location badge is anchored 12px above the image's lower edge rather than retaining its desktop Y coordinate. The mobile hero uses a 520px stage, a 290px proportional image region and 32/42px text; these are explicit responsive adaptations to the customer's oversized-phone-layout feedback. Evidence is stored locally in ignored `artifacts/mobile-feedback-2026-10-10/`; modal details, city filters and consultation behavior are retained.
 
 ## Source Gate
 
@@ -103,10 +124,22 @@ Octagos was actively inspected through scrolling, Device Volume tabs and accordi
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/Downloads/07寰宇云医 - 中国医院 (4).png`
-- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/hospitals/2026-09-29/local-1440.png`
-- Local mobile screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/hospitals/2026-09-29/local-390.png`
-- Verification run: `2026-09-29`
+### Desktop current-source recheck — 2026-10-29
+
+Latest source `/Users/hhm/Downloads/寰宇云医 (10).fig` was compared with the actual `2026-10-20` implementation source `(2).fig`. `artifacts/figma-source-gate/current-hospitals-2026-10-29.json` reports all nine desktop roots unchanged: list, initial detail, pinned menu and six content tabs. New/removed source frames and dependency changes were also inspected; only mobile hospital states changed outside this desktop scope.
+
+Fresh local desktop captures and behavior/motion runs are archived under `artifacts/figma-hospitals-2026-10-29/`, with `rerun-provenance.json` recording the original QA output directory. List hero/directory/footer normalized RGB error is `0.9452/0.7037/0.2719%`; detail initial state `0.7965%`; six complete tabs `0.7798/0.5661/0.5754/0.4992/0.7898/0.5849%`. All are below 1%. Five city filters, real hospital selection, six tab source owners, keyboard, consultation handoff, Escape/backdrop/focus/scroll restoration pass at 1024/1440/1920. Short 600/754px screens, reveal/hover, dialog/tab motion and reduced-motion pass. No runtime errors, broken images or horizontal overflow. Mobile remains deferred.
+
+- Current desktop verification: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-hospitals-2026-10-20/list-qa.json`, `detail-qa.json`, `behavior-qa.json`, `motion-qa.json`
+- Desktop screenshot gate: list hero/directory/footer and detail opening state plus all six content sections are each below 1% nMAE.
+- Desktop interaction gate: 1024/1440/1920 city filters, 52/15/11/6/9 directory counts, real hospital mapping, six tabs, gallery, focus trap, Escape/backdrop close, scroll restoration, consultation transfer, header dropdown/language menu and contact links.
+- Desktop motion gate: card reveal/hover, dialog fade/lift, tab fade, sticky tab boundary, short 600px/754px viewport, and reduced-motion fallback.
+- Mobile geometry: deferred by user; mobile Figma design is not final, so no mobile implementation or acceptance is claimed in this batch.
+
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-hospitals-2026-10-20/hospitals-figma.png`
+- Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-hospitals-2026-10-20/list-1440-local.png`
+- Local mobile: deferred by user; older mobile screenshots below are historical and do not constitute current acceptance.
+- Verification run: `2026-10-20`, final evidence written `2026-10-21T04:04:46Z`; desktop scope only.
 - Remaining differences: none
 - Accepted minor rendering tolerance: glyph antialiasing/tracking and subpixel image sampling; not mathematical pixel identity. Mobile is adaptation, not comparison against a nonexistent authored mobile frame.
 - Evidence directory: `docs/figma-verification/hospitals/2026-09-29/`; source and local hero/directory/footer crops personally reviewed. Desktop pixelmatch changedPixelRatio: 0.0151073 (threshold0.15, AA excluded); this metric is not a fidelity percentage.

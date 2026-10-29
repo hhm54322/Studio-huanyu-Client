@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import BrandLogo from '@/components/common/BrandLogo.vue'
+import { useRoute } from 'vue-router'
+import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
+import { homeFigmaActions } from '@/data/homeFigmaActions'
+const route = useRoute()
 withDefaults(defineProps<{ contactIcons?: string[] }>(), { contactIcons: () => ['/images/figma/about-icons/Icon-9.svg', '/images/figma/about-icons/Icon-6.svg', '/images/figma/about-icons/Icon-10.svg'] })
 const serviceLinks = [{ label:'疾病中心',path:'/diseases-technologies' },{ label:'费用对比',path:'/cost' },{ label:'报告体验',path:'/report' },{ label:'签证办理',path:'/visa' },{ label:'就医步骤',path:'/steps' }]
 const resourceLinks = [{ label:'患者案例',path:'/cases' },{ label:'保险指南',path:'/insurance' },{ label:'就医步骤',path:'/steps' },{ label:'关于我们',path:'/about' }]
 </script>
 <template>
-  <footer class="patient-footer" data-figma-node="484:2382">
+  <HomeFigmaSection v-if="route.path === '/'" desktop-id="1412:6672" mobile-id="1528:806" label="网站页脚" :actions="homeFigmaActions" />
+  <footer v-else class="patient-footer" data-figma-node="484:2382">
     <div class="footer-top hy-container">
       <div class="footer-intro"><BrandLogo light compact /><p>全球患者来华就医首选平台</p><small>蚂蚁集团技术保障 × 好大夫94万医生</small></div>
       <div class="footer-column"><h3>服务</h3><RouterLink v-for="item in serviceLinks" :key="item.label" :to="item.path">{{ item.label }}</RouterLink></div>

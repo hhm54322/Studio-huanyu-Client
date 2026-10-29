@@ -1,133 +1,231 @@
-# Dependencies
+# Dependencies and generated application bundles
 node_modules/
+**/dist/
 
-# Build output
-dist/
+# Local verification evidence, raw design exports and one-off demos.
+# Runtime Figma modules are explicitly allowed below; do not blanket-ignore them.
+/artifacts/
+/docs/figma-verification/**
+!/docs/figma-verification/*.md
+/docs/figma-revision-inventory-*.json
+/prototypes/**
+!/prototypes/**/
+# The formal review app reuses these three renderers/styles from the prototype.
+!/prototypes/expert-review/FreeReportPreview.vue
+!/prototypes/expert-review/ProfessionalReportPreview.vue
+!/prototypes/expert-review/workbench.css
+# Backend workflow tests also load this de-identified report fixture.
+!/prototypes/expert-review/samples.json
+/docs/figma-source/**
+!/docs/figma-source/**/
+!/docs/figma-source/about/specialties-revision-2026-10-29/chronic/source-tree-2026-10-29.json
+!/docs/figma-source/about/specialties-revision-2026-10-29/dental/source-tree-2026-10-29.json
+!/docs/figma-source/about/specialties-revision-2026-10-29/oncology/source-tree-2026-10-29.json
+!/docs/figma-source/cases/content-2026-09-29.json
+!/docs/figma-source/content-revision/toolkit/source-tree-2026-10-21.json
+!/docs/figma-source/dental-revision-2026-10-28/cases/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/cases/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/doctor-card/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/institution-scroll/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/institution-scroll/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/institution/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/matching-card-consumption-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/matching/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/profile/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/profile/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/project/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/reviews/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/reviews/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/services-scroll/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/services-scroll/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/services/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/treatment-scroll/dialog-model-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/treatment-scroll/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/treatment/source-tree-2026-10-28.json
+!/docs/figma-source/dental-revision-2026-10-28/upload/source-tree-2026-10-28.json
+!/docs/figma-source/diseases/content-2026-09-29.json
+!/docs/figma-source/diseases/dev-styles-2026-09-29.css
+!/docs/figma-source/home/chart-spec-2026-10-19.json
+!/docs/figma-source/home/chart-spec-mobile-2026-10-19.json
+!/docs/figma-source/home/experts/dialog-sources-2026-10-19.json
+!/docs/figma-source/home/hero-01/source-tree-2026-10-19.json
+!/docs/figma-source/home/hero-02/source-tree-2026-10-19.json
+!/docs/figma-source/home/hero-03/source-tree-2026-10-19.json
+!/docs/figma-source/home/journey-states/source-tree-2026-10-19.json
+!/docs/figma-source/home/navigation-mobile-language/source-tree-2026-10-19.json
+!/docs/figma-source/home/navigation-mobile/source-tree-2026-10-19.json
+!/docs/figma-source/home/revision-2026-10-28/hero/source-tree-2026-10-28.json
+!/docs/figma-source/home/source-tree-2026-10-19.json
+!/docs/figma-source/home/source-tree-mobile-2026-10-19.json
+!/docs/figma-source/home/story-02/source-tree-2026-10-19.json
+!/docs/figma-source/home/story-03/source-tree-2026-10-19.json
+!/docs/figma-source/home/story-mobile/source-tree-2026-10-19.json
+!/docs/figma-source/home/strength-02/source-tree-2026-10-19.json
+!/docs/figma-source/home/strength-03/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-01/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-02/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-03/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-04/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-05/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-06/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-01/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-02/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-03/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-04/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-05/source-tree-2026-10-19.json
+!/docs/figma-source/home/why-mobile-06/source-tree-2026-10-19.json
+!/docs/figma-source/hospitals/detail-desktop/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/detail-mobile-all/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/detail-mobile-scroll/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/detail-mobile/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/list-mobile/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/menu-desktop/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/menu-mobile-scroll/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/menu-mobile/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-1/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-2/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-3/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-4/chart-spec-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-4/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-5/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-desktop-6/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-1/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-2/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-3/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-4/chart-spec-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-4/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-5/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/section-mobile-6/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/source-tree-2026-10-20.json
+!/docs/figma-source/hospitals/yaoying-mobile/source-tree-2026-10-20.json
+!/docs/figma-source/physicians/revision-2026-10-29/source-tree-2026-10-29.json
+!/docs/figma-source/toolkit-revision/assessment/desktop-variant-2026-10-22.json
+!/docs/figma-source/toolkit-revision/companions/desktop-variant-2026-10-22.json
+!/docs/figma-source/toolkit-revision/medication-entry/desktop-variant-2026-10-22.json
+!/docs/figma-source/toolkit-revision/muslim/desktop-variant-2026-10-22.json
+!/docs/figma-source/toolkit-revision/steps-flow/desktop-variant-2026-10-22.json
+!/docs/figma-source/toolkit-revision/visa/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-articles-revision/cost/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-articles-revision/doctor/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-content-revision/trust/dialog-model-2026-10-21.json
+!/docs/figma-source/trust-content-revision/trust/source-tree-2026-10-21.json
+!/docs/figma-source/trust-safety-revision/infection/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-safety-revision/medicine/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-safety-revision/muslim/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-safety-revision/privacy/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust-safety-revision/rights/desktop-variant-2026-10-22.json
+!/docs/figma-source/trust/revision-2026-10-29/aftercare/source-tree-2026-10-29.json
+!/docs/figma-source/trust/revision-2026-10-29/assurances/source-tree-2026-10-29.json
+!/docs/figma-source/trust/revision-2026-10-29/source-tree-2026-10-29.json
+!/docs/figma-source/trust/revision-2026-10-29/travel/source-tree-2026-10-29.json
 
-# Historical visual/regression captures; never part of the web bundle.
-artifacts/
+# Source-only image exports used by local Figma baseline/QA, not current views.
+/public/images/figma/doctor-revision/
+/public/images/figma/insurance-revision/
+/public/images/figma/toolkit-revision/
+/public/images/figma/trust-articles-revision/
+/public/images/figma/trust-safety-revision/
+/public/images/figma/diseases/
+/public/images/figma/home-source/
+/public/images/figma/home-revision/logo-2326-8518.png
+/public/images/figma/about-complex-*.png
+/public/images/figma/partners-matrix.webp
 
-# Editor & IDE
+# Legacy exports and pitch-deck artwork with no application consumers.
+# Keep active page icon/image families versioned, including dynamic paths.
+/public/images/figma/case-avatar-james.png
+/public/images/figma/case-avatar-maria.png
+/public/images/figma/content-revision/image-3c88e52c2ba9c2a34ce56f0cbb161d03405e4b7e.webp
+/public/images/figma/content-revision/image-7528ef742fc926400ae40cbd57cfcc9b0c57602f.webp
+/public/images/figma/cost-arrow-right.svg
+/public/images/figma/cost-chevron-up.svg
+/public/images/figma/cost-legend-china.svg
+/public/images/figma/cost-legend-germany.svg
+/public/images/figma/cost-legend-japan.svg
+/public/images/figma/cost-legend-singapore.svg
+/public/images/figma/cost-legend-uk.svg
+/public/images/figma/cost-legend-us.svg
+/public/images/figma/dental-doctor-main.png
+/public/images/figma/dental-project-main.png
+/public/images/figma/disease-hero-background.png
+/public/images/figma/expert-li-jin.png
+/public/images/figma/expert-shao-zhimin.png
+/public/images/figma/expert-wu-yilong.png
+/public/images/figma/expert-zhang-junting.png
+/public/images/figma/global-care.png
+/public/images/figma/home-global-care-source.png
+/public/images/figma/home-medical-capability.svg
+/public/images/figma/home-treatment-cost.svg
+/public/images/figma/hospital-card-01.png
+/public/images/figma/hospital-card-02.png
+/public/images/figma/hospital-card-03.png
+/public/images/figma/hospital-card-04.png
+/public/images/figma/hospital-card-05.png
+/public/images/figma/hospital-card-06.png
+/public/images/figma/hospital-card-07.png
+/public/images/figma/hospital-card-08.png
+/public/images/figma/hospital-directory-hero.png
+/public/images/figma/hospital-huaxi.png
+/public/images/figma/hospital-shanghai.png
+/public/images/figma/partner-afspa.png
+/public/images/figma/partner-allianz.png
+/public/images/figma/partner-buma.png
+/public/images/figma/partner-cigna.png
+/public/images/figma/partner-citic.png
+/public/images/figma/partner-cpic.png
+/public/images/figma/partner-euro-center.png
+/public/images/figma/partner-fosun.png
+/public/images/figma/partner-generali.png
+/public/images/figma/partner-metlife.png
+/public/images/figma/partner-sompo.png
+/public/images/figma/partner-surego.png
+/public/images/figma/partners-matrix.png
+/public/images/figma/partners-mobile-track.webp
+/public/images/figma/patient-story.png
+/public/images/figma/trust-hero-background.png
+/public/images/figma/trust/hero-composite-reference.png
+/public/images/figma/why-china-hero-background.png
+/public/images/figma/why-china-national-background.png
+/public/images/figma/why-story-europe.png
+/public/images/figma/why-story-malaysia.png
+/public/images/figma/why-story-singapore.png
+/public/images/hospital/api-integration.jpg
+/public/images/hospital/dashboard-demo.jpg
+/public/images/hospital/global-patients.jpg
+/public/images/hospital/hero-hospital.jpg
+/public/images/page-banners/about-mobile.jpg
+/public/images/page-banners/about-pc.jpg
+/public/images/page-banners/journey-mobile.jpg
+/public/images/page-banners/journey-pc.jpg
+/public/images/page-banners/steps-mobile.jpg
+/public/images/video-consult.jpg
+
+# Prebuild recreates compression companions from the versioned originals.
+/public/images/**/*.optimized.webp
+/public/image-optimization.json
+
+# Local environment, uploaded/exported data, logs and caches
+tmp/
+temp/
+.cache/
+*.fig
+.env
+.env.*.local
+.env.local
+logs/
+*.log
+exports/
+uploads/
+*.tsbuildinfo
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+vite.config.d.ts
+
+# OS and editor files
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Environment (local overrides)
-.env.local
-.env.*.local
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Vite temp
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-vite.config.d.ts
-
-# Figma visual QA comparison runs (keep the canonical evidence directories;
-# historical iterations and temporary overlays are local review artifacts).
-docs/figma-verification/**/tmp/
-docs/figma-verification/**/2026-09-29-r*/
-docs/figma-verification/**/2026-09-29-full*/
-docs/figma-verification/**/2026-09-29-final/
-docs/figma-verification/**/2026-09-29-cost-r*/
-docs/figma-verification/**/2026-09-29-cost-final2/
-docs/figma-verification/**/2026-09-29-cost-final3/
-docs/figma-verification/about/2026-09-29/
-docs/figma-verification/cost/2026-09-29/
-docs/figma-verification/why/2026-09-29/
-docs/figma-verification/equipment/
-
-# One-off local comparison exports; canonical evidence is referenced by the
-# page specs and remains trackable.
-docs/figma-verification/cost/2026-09-29-cost-final4/frame-diff-*.png
-docs/figma-verification/cost/2026-09-29-cost-final4/figma-reference-1440.png
-docs/figma-verification/cost/2026-09-29-cost-final4/figma-section-*.png
-docs/figma-verification/cost/2026-09-29-cost-final4/local-section-*.png
-docs/figma-verification/cost/2026-09-29-cost-final4/overlay.png
-
-# Regenerable visual comparison products inside otherwise canonical runs.
-# Keep the baseline screenshots and JSON evidence referenced by the page specs.
-docs/figma-verification/**/diff*.png
-docs/figma-verification/**/*-diff.png
-docs/figma-verification/**/overlay*.png
-docs/figma-verification/**/*-overlay.png
-docs/figma-verification/**/figma-section-*.png
-docs/figma-verification/**/local-section-*.png
-docs/figma-verification/**/*-section-*.png
-docs/figma-verification/**/ref-*.png
-docs/figma-verification/**/chart-*.png
-docs/figma-verification/**/empty-*.png
-docs/figma-verification/**/hover-*.png
-docs/figma-verification/**/search-*.png
-docs/figma-verification/**/consult-*.png
-docs/figma-verification/**/detail-*.png
-docs/figma-verification/**/interaction-*.png
-docs/figma-verification/**/*-viewport.png
-docs/figma-verification/**/local-cta.png
-docs/figma-verification/**/local-faq.png
-docs/figma-verification/**/local-hero.png
-docs/figma-verification/**/local-tool.png
-
-# Superseded dated runs that are not referenced by any current page spec.
-docs/figma-verification/why-china/2026-09-28/
-
-# Full-site regression runs and native comparison exports are regenerable review artifacts.
-docs/figma-verification/production-regression-*/
-docs/figma-verification/*-native/
-
-# Generated compression companions; prebuild recreates these from Figma originals.
-public/images/**/*.optimized.webp
-public/image-optimization.json
-docs/figma-verification/image-compression-2026-09-30/*.png
-docs/figma-verification/partners*-2026-09-30/*.png
-
-# Local-only QA outputs: useful while debugging, but not source or release files.
-# Keep machine-readable geometry/interaction results and the screenshot paths
-# required by the page audits; do not accumulate proof, duplicate, or regression
-# captures in the repository.
-docs/figma-verification/production-*/
-docs/figma-verification/*-regression/
-docs/figma-verification/*-native/
-docs/figma-verification/deployed-cases/
-docs/figma-verification/partners*-2026-09-30/
-docs/figma-verification/image-compression-2026-09-30/
-docs/figma-verification/**/proof-*.png
-docs/figma-verification/**/*-2x.png
-docs/figma-verification/**/figma-section-*.png
-docs/figma-verification/**/local-section-*.png
-docs/figma-verification/**/overlay*.png
-docs/figma-verification/**/*-diff.png
-docs/figma-verification/home/2026-10-01-*.png
-docs/figma-verification/home/2026-10-01-process/*.png
-docs/figma-verification/home/2026-10-01-why-dom/*.png
-docs/figma-verification/about/2026-09-30/figma-reference*.png
-docs/figma-verification/about/2026-09-30/complex-figma-reference.png
-docs/figma-verification/about/2026-09-30/complex-local-scaled.png
-docs/figma-verification/dental/2026-09-30/*.png
-docs/figma-verification/insurance/2026-09-30/*.png
-docs/figma-verification/trust/2026-09-30/*.png
-
-# Local-only source exports kept for rechecking or regeneration, not shipped.
-docs/figma-verification/about/2026-09-30/
-docs/figma-verification/home/2026-10-01-process/
-docs/figma-source/home/partners-unfaded-reference.png
-public/images/figma/about-complex-*.png
-public/images/figma/home-source/*.png
-public/images/figma/home-source/why-*.webp
-public/images/figma/home-source/strength-0[123].webp
-public/images/figma/home-source/strength-0[123]-art.webp
-public/images/figma/partners-matrix.webp
-public/images/figma/dental-source/*.png

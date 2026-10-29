@@ -1,5 +1,10 @@
 # 保险指南
 
+## 2026-10-29 主帧与展开态文案核对
+
+- 主帧标题 `419:259` 为“三条报销路径”；路径展开帧 `419:946` 为“保险报销三条路径”。两者沿用各自源参数（40px/40px、600、`#1E3A5F`），分别映射到 `.insurance-paths h2` 的收起/展开状态。
+- 依据已留存的主帧 `native-parameters-2026-09-29.json` 与展开帧逐节点 `dev-mode-2026-10-29.json`，先记录状态差异再调整 Vue；不得用整页平均像素差掩盖文案缺失。
+
 - Route: `/insurance`
 - Figma frame: `保险指南`
 - Node ID: `419:31`
@@ -10,6 +15,20 @@
 - Desktop frame: `1440 x 6211px`
 - Mobile frame: responsive implementation verified at `390 x 844px`; Figma has no separate mobile source frame
 - Status: verified
+
+## Desktop revision source — 2026-10-29
+
+- Current live Design connection verified through the bundled browser-client and IAB, file `s6gMozOqPBJFujindYruwb`; current source downloaded as `/Users/hhm/Downloads/寰宇云医 (11).fig` at 2026-10-28T23:44:46.838Z. Full current-scope comparison is `artifacts/figma-source-gate/insurance-current-2026-10-29.json` and reports unchanged `419:31`, `419:832`, `419:943`, and `419:1118`.
+- Assessment `419:832`, scenario expansion `419:1118`, and path expansion `419:943` have complete parent-first Layers and Dev Mode records in `docs/figma-source/insurance/revision-2026-10-29/`. The native discovery files remain marked provisional; the separate Layers cross-check records contain the actual UI cross-check.
+- Hidden paragraphs `419:947/948` and `419:1124/1125` stay hidden. Presence in a source export is not visibility.
+- Assessment: 1440×1150, image fill 132.937%×128.299% at −237.171/−92.103; form 1008px with 24px columns; result `419:899` 1008×388 with 32px padding and 1px border; columns 459×208.
+- Scenarios: 1440×1093; cards `419:1128/1153/1179` are 389.333px wide and 813/741/789px high, 24px padding, 80px icon/body gap. Detail blocks use 16px padding and 16px/24px text; notes use DM Sans 14px/21px.
+- Paths: 1440×1026; cards `419:950/1006/1062` are 389.333×746, 24px padding/gap; action includes 16px top padding and 14px text; body starts at y586, fact grid at y742. Fact cells are 162.667×74 with 16px padding, 8px inner gap, 20px/20px weight 600 value and 14px/14px label.
+- Desktop verification passed in development and production. Mobile source and implementation remain deferred by user.
+
+## Mobile correction — 2026-10-10
+
+The comparison's 680px minimum-width ancestor was clipped by the patient shell, despite document scrollWidth equaling the viewport. Up to 700px it is now a fluid four-column table with wrapping 14px cells; the heading and note stay inside the same page gutters. Up to 900px scenario/path cards stack and sections grow with their copy/expanded content, avoiding tablet fixed-height clipping. Mobile partner imagery keeps the full source track at 50% scale (1785 x 236px tiles), with fixed edge fades; it is no longer reduced to a whole desktop matrix inside one phone width. Source node IDs, source content and desktop geometry remain unchanged. Phone/tablet evidence and expanded states are captured under ignored `artifacts/mobile-responsive-2026-10-10/`.
 
 ## Expanded Figma States (2026-09-30)
 
@@ -115,6 +134,12 @@ The complete, ordered source inventory is stored in `docs/figma-source/insurance
 | Reduced motion | accessibility fallback | media query | all added transitions disabled | complete static layout |
 
 ## Verification
+
+### Current desktop source and behavior re-check — 2026-10-29
+
+- Current Figma reference export: `artifacts/figma-insurance-2026-10-29/figma-reference-current.png`; local desktop evidence: `artifacts/figma-insurance-2026-10-29/development-full.png` and `production-full.png`. Native 2x development comparison is `0.791162%` changed pixels / `0.853607%` nMAE; production is `0.783759%` / `0.855038%`, after the permitted one-pixel fractional page-bottom normalization. Reports: `development-qa.json`, `production-qa.json`.
+- The current expanded-state references remain the authored Figma frames `419:832`, `419:1118`, and `419:943`. Local captures are `development-assessment.png`, `development-scenarios.png`, and `development-paths.png`; changed-pixel ratios are `0.581%`, `0.622%`, and `0.446%`, with nMAE `0.921%`, `0.929%`, and `0.786%` respectively.
+- Desktop behavior passed at 1440px: assessment expands and closes in place; all three scenario cards and all three reimbursement cards independently expand from the card surface; FAQ rows use the authored accordion state; the partner track continuously loops, keeps fixed edge fades, pauses on hover and stops under reduced motion. No broken images or horizontal overflow; runtime errors `0`.
 
 - Figma reference screenshot: `docs/figma-verification/insurance/figma-desktop-419-31.png`
 - Local desktop screenshot: `docs/figma-verification/insurance/desktop-section-01.png`

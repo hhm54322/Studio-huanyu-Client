@@ -6,10 +6,25 @@
 - Source baseline HTML: `docs/figma-source/about/frame.html`
 - Source baseline CSS: `docs/figma-source/about/styles.txt`
 - Source asset manifest: `docs/figma-source/about/assets.json`
-- Source extraction run: `2026-09-24 Dev Mode HTML/CSS expansion from node 484:1703`
+- Source extraction run: existing complete `484:1703` HTML/CSS plus 2026-09-28 expanded 798-row record; current 792-row Layers/native regression and full 67-node `484:2501` Dev Mode extraction in batch 2026-10-22. The partial optional page-wide Dev reread is diagnostic only, not a replacement complete extraction.
 - Desktop frame: `1440 x 4916px`, vertical Auto Layout, hug height
-- Mobile frame: responsive adaptation of the desktop source; no separate mobile frame exists in this Figma page
-- Status: verified
+- Mobile frame: existing responsive adaptation; new mobile development and acceptance deferred by user
+- Status: verified — desktop regression; mobile acceptance deferred by user
+
+## Current Source Scope — 2026-10-23
+
+The main page source remains `484:1703`, but the user explicitly selected the independently authored complex-case frame `484:2501` for that section. `484:2070` is only its position in the old full-page frame. The current comparison replaces that slot with the actual export of `484:2501`; the composite is documented as a combination of two real Figma exports, never described as an independent Figma frame.
+
+- Main page: all 792 current Layers rows were expanded and cross-checked against the latest official `.fig`, including 378 rendered and 414 hidden nodes. Existing complete HTML/CSS remains the unchanged sections' source baseline. Six removed old article-action nodes `484:2100`–`484:2105` are the only IDs missing relative to the 798-row older extraction; there are no new main-page IDs. The separately authored frame still contains the article action.
+- Revised complex section: `docs/figma-source/about/complex-revision/` records all 67 nodes, 54 rendered and 13 hidden, with parent/sibling order, exact native parameters, per-selection Dev CSS/SVG, and concrete Vue selectors. Each rendered node was selected and allowed 250ms to settle before copying. The static HTML/CSS, assets and node mapping were locked before editing Vue.
+- Complex detail: all 91 current Layers/Dev nodes of `484:2646` were rechecked. Existing `complex-detail.html` and `detail-native-css-2026-09-28.json` remain the static implementation baseline; the current actual Figma export is used for renewed comparison. Its panel `484:2649` is 896×1199 at x272/y40.
+- Official native file SHA256: `8e274b299ca9208685e984e7cdb8b87ae5487c66e2c5103350e1118afc73a56d`. Current Layers/native reports and the 91-node detail reread are retained under ignored `artifacts/figma-regression-2026-10-22/about/`. The optional 402-row page-wide Dev reread in that folder is incomplete diagnostic data and is not used as completion evidence.
+
+The current section source takes precedence over the historical node/image notes below. No main-page structure, backend, administration UI or report-generation behavior was redesigned in this regression.
+
+## Mobile correction — 2026-10-10
+
+The desktop-source hierarchy is retained. The narrow-screen hero CTA stays centered with its centered source copy; the earlier `align-items: end` incorrectly pushed the action to the right. Expanded proof content wraps long registry URLs within the card. Mobile verification covers 320/390/430px, tablet 768px and complex-case dialog/proof accordion states. Local evidence: ignored `artifacts/mobile-responsive-2026-10-10/`.
 
 ## Layer Mapping
 
@@ -21,7 +36,8 @@
 | `484:1707` | `Frame 74` auto-layout frame | `484:1706` | `.about-hero__content` | `1216 x 274px`; centered | Inner text column is `772px`; parent gap to CTA is `60px` |
 | `484:1713` | `Link` CTA | `484:1706` | `.about-hero > .about-primary-button` | padding `16px 24px`, radius `14px`, background `#DD6B20`, parent top gap `60px` | Opens existing consultation panel |
 | `484:1718` | Network section | `484:1705` | `.about-network` | `1440 x 708px`, padding `96px`, gap `48px` | Metrics and 3 cards |
-| `484:2070` | Complex cases section | `484:1705` | `.about-complex` | `1440 x 839px`, padding `96px`, background `#1E3A5F` | Card nodes `484:2092`, `484:2106`, `484:2116`, `484:2126` |
+| `484:2070` | Original complex-section slot | `484:1705` | `.about-complex` position | `1440 x 839px`, y1465 | Replaced by user-selected independent source `484:2501` |
+| `484:2501` | Current complex-cases section | independent source | `.about-complex` | `1440 x 839px`, padding `96px`, background `#1E3A5F` | Full 67-node concrete map: `complex-revision/node-to-code-2026-10-22.json` |
 | `484:2243` | Matching workflow section | `484:1705` | `.about-matching` | Dev Mode `1440 x 648px` content, section padding `96px`; visible current workflow branch | Current visible section; child content `484:2244`, grid wrapper `484:2251` |
 | `484:2137` | Hidden legacy comparison section | `484:1705` | not rendered | Dev Mode `1440 x 576px` content; hidden legacy branch | Do not implement as a visible section |
 | `484:2305` | Trust section | `484:1705` | `.about-proof` | `1440 x 948px`, padding `96px`, background `#F5F6F7` | Four trust cards |
@@ -83,9 +99,11 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 | Asset | Node ID | Export/Fit | Project Path |
 | --- | --- | --- | --- |
 | Hero image layer | `484:1706`, hash `d2a1f870c81a1fc83c1e47406c2b133e` | Figma-native download, cover | `/public/images/figma/about-hero.jpg` |
-| Complex case image, knee | `484:2523`, hash `7974262c40da8127945be8a53e71db31fb4a2e57` | Figma-native 1643x957 PNG; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-knee.webp` |
-| Complex case image, MRI | `484:2557`, hash `a1a67159a2200fdfce4e534412282140812b8fc6` | Figma-native 1643x957 PNG; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-mri.webp` |
-| Complex case image, care | `484:2547`, `484:2537`, hash `cf7dc502020d8d781524bd312afecf6ca40aba06` | Figma-native 1643x957 PNG from `/Users/hhm/Downloads/寰宇云医.fig`; 1192px wide compressed WebP, cover, opacity `15%` | `/public/images/figma/about-complex-care.webp` |
+| Complex case image, knee | `484:2523`, hash `7974262c40da8127945be8a53e71db31fb4a2e57` | Native paint; width cap1192, WebP quality82, source15% alpha baked once; CSS cover | `public/images/figma/about-revision/image-484-2523-alpha.webp` |
+| Complex case image, MRI | `484:2557`, hash `a1a67159a2200fdfce4e534412282140812b8fc6` | Same delivery parameters, exact selected paint | `public/images/figma/about-revision/image-484-2557-alpha.webp` |
+| Complex case image, care | `484:2547`, hash `cf7dc502020d8d781524bd312afecf6ca40aba06` | Same delivery parameters; separate authored gradient | `public/images/figma/about-revision/image-484-2547-alpha.webp` |
+| Complex case image, dental | `484:2537`, hash `d7855bf39889dffd0c1949ace7f19773ad14464d` | Dental's own native paint, not care's image; separate authored gradient | `public/images/figma/about-revision/image-484-2537-alpha.webp` |
+| Current complex icons and article arrow | `484:2524`, `484:2558`, `484:2548`, `484:2538`, `484:2534` | Exact per-node Dev SVG; card icons32×32, arrow16×16 | `public/images/figma/about-revision/node-484-<id>.svg`; exact files/hashes in `complex-revision/assets-2026-10-22.json` |
 | CTA image layer | `484:2369`, hash `df3413872355a84f57d6375ec0744d525ad39ca2` | Figma-native download, cover | `/public/images/figma/about-cta-background.png` |
 | Shared header/footer | `484:2459`, `484:2382` | Existing shared components | `src/components/layout/PatientHeader.vue`, `PatientFooter.vue` |
 
@@ -100,17 +118,19 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/Downloads/04寰宇云医 - 关于我们 (3).png`
-- Local desktop screenshot: `docs/figma-verification/about/2026-09-28/local-1440.png`; route `http://127.0.0.1:5173/about`; measured document height `4916px`, `scrollWidth === innerWidth`; changed-pixel ratio `1.0902%` at threshold `.15`, dominated by browser text rasterization/anti-aliasing.
-- Local mobile screenshot: `docs/figma-verification/about/2026-09-28/local-390.png`; `390 x 844`, measured document height `7727px`, `scrollWidth === innerWidth`.
-- Detail state reference screenshots: `/Users/hhm/Downloads/复杂病例详情模版.png`, `/Users/hhm/Downloads/可信度详情.png`; local crops and overlays are in `docs/figma-verification/about/2026-09-28/complex-1440.png`, `trust-1440.png`, `complex-overlay.png`, and `trust-overlay.png`; state pixel ratios `1.8526%` and `0.3578%` at threshold `.15` after source geometry, copy, ordering, and asset correction.
-- Interaction evidence: `docs/figma-verification/about/2026-09-28/interactions.json` and `state-comparison.json`; complex/trust desktop and mobile focus containment, scroll lock, Escape close, trigger focus restoration, consultation entry, reduced-motion fallback, and detail scroll crops all passed.
-- Build and lint evidence: `vue-tsc -b`, Vite production build, and `git diff --check` passed on `2026-09-28`; scoped page audit is run separately. The workspace-wide audit/build remains a final all-page gate, not evidence that unreviewed pages match.
-- Verification run: `2026-09-30`
-- Renderer tolerance: fine text rasterization, one-pixel text baseline differences, and minor intra-line justification spacing remain between Figma and Chromium. These are not missing layouts or assets. Pixel ratios are diagnostic numbers, not a pass criterion; section/state screenshots were reviewed manually.
+- Figma reference screenshot: `artifacts/figma-regression-2026-10-22/about/about-figma.png`
+- Current complex-section Figma export: `artifacts/figma-regression-2026-10-22/about/complex/complex-figma.png`; detail export: `artifacts/figma-regression-2026-10-22/about/complex-detail/complex-detail-figma.png`.
+- Documented two-source comparison: `artifacts/figma-regression-2026-10-22/about/about-user-specified-source-composite.png`; original page plus the user-selected independent section, no scaling or screenshot-inferred parameters.
+- Local desktop screenshot: `artifacts/figma-regression-2026-10-22/about/about-production-local.png`; development: `about-final-local.png` in the same directory. Both are native2× captures, document1440×4916, no broken images or horizontal overflow.
+- Local mobile: deferred by user. Earlier September/October mobile checks are historical only, not current mobile acceptance.
+- Verification run: `2026-10-23`; batch2026-10-22, logs retain real UTC timestamps. Source/local images for all seven sections and the complete detail panel were personally reviewed, including proof, contact CTA and footer.
+- Metrics: pixelmatch threshold0.15, includeAA=false, and normalized mean absolute RGB error (nMAE). Neither source nor local image is resized to improve a score; every section must independently satisfy both <1%, not just the full-page average.
+- Development whole page: pixelmatch0.4607263% / nMAE0.5325333%; production whole page: 0.4587380% / 0.5842531%. Complex section: 0.8379685% / 0.8556074%; independently rendered static baseline: 0.3248949% / 0.5913385%; detail panel: 0.6506538% / 0.9270326%. All seven sections pass both metrics. Reports: `final-qa.json`, `production-qa.json`.
+- Desktop behavior: development and production at1024×600, 1440×900 and1920×900; article Enter-open, close/Esc/backdrop, Tab/Shift+Tab loop, background lock, original scroll/focus restoration, short-screen40px safe area and internal scroll, four independent full-card accordions, two consultation entries and contact links passed. Nested article-button keyboard events no longer get swallowed by the parent card.
+- Motion: Octagos inspected through the in-app browser's repeated reading/navigation scrolls. Existing subtle reveals are retained; real accordion interpolation at0/120/360ms keeps text width548px, detail entry at0/140/380ms moves18px→0 without resting-layout drift; reduced-motion remains fully readable. Reports: `development-behavior-qa.json`, `production-behavior-qa.json`.
+- Scoped machine gate: `node scripts/audit-figma-specs.mjs about.md` checks complete current Layers, the67-node source lock/Dev copy/mapping/assets,91-node detail review, actual Vue owner existence, fresh development/production screenshots, independent section geometry, both <1% metrics, behavior and motion. A change to page/shared code, assets or QA scripts requires actual reruns, not timestamp edits.
+- Production verification uses a locally built preview, not the external site. No deployment, commit or push is part of this batch; a successful scoped gate is not a claim that the all-page prebuild has passed.
 - Remaining differences: none
-- Final 2026-09-30 desktop/mobile evidence: `docs/figma-verification/about/2026-09-30/local-1440.png`, `local-390.png`, `geometry.json`, `complex-1440.png`, `complex-390.png`, `proof-closed-1440.png`, `proof-expanded-1440.png`, `proof-expanded-390.png`, and `interactions.json`. The 1440px page and Figma reference are both 4916px high; the native 2x changed-pixel ratio is 0.4409% with no broken assets or horizontal overflow.
-- Trust card click correction, 2026-09-30: fresh desktop/mobile state captures `docs/figma-verification/about/2026-09-30/proof-card-click-1440.png` and `proof-card-click-390.png`. Clicking card title/icon expands, clicking the detail button collapses exactly once, Enter on the focused button reopens, and a second card remains independently open. Both tested viewports have zero horizontal page overflow. `vue-tsc -b`, Vite build, and `git diff --check` pass.
 
 ## 2026-09-28 Current Source Re-extraction
 
@@ -142,6 +162,8 @@ Hero copy: `把你的病情 交给最适合接住它的那双手`.
 - Icons freshly downloaded from this root on 2026-09-28: `/Users/hhm/Downloads/寰宇云医_icon (9).zip`, copied unchanged to `public/images/figma/about-icons/`; exact asset-node mapping recorded in `icons.json`.
 
 ## 2026-09-30 Complex Cards And Inline Trust State
+
+Historical record; the2026-10-23 current section extraction/assets/verification above supersede its shared-lower-image claim and old screenshot acceptance.
 
 - The separately authored complex-cases frame is `484:2501`, `1440 x 839`, blue `#1E3A5F`, `96px` vertical padding. Its card grid is `1216 x 520`, two `596 x 248` columns with `24px` gaps. The four cards have `24px` padding/radius, `#0F213E` fill, source-image overlay at `15%` opacity, and `80px` icon-to-copy gap (first card uses `space-between` to fit its article action).
 - The four source image nodes are: upper-right `484:2557` / hash `a1a67159a2200fdfce4e534412282140812b8fc6`; lower-left `484:2547` and lower-right `484:2537` / shared hash `cf7dc502020d8d781524bd312afecf6ca40aba06`; upper-left `484:2523` / hash `7974262c40da8127945be8a53e71db31fb4a2e57`. Mapped respectively to `.complex-card` positions 2, 3, 4, and 1 in `AboutView.vue`. The original PNGs are embedded in `/Users/hhm/Downloads/寰宇云医.fig` (SHA-256 `f46e9364d764719ef3534683e7a8ab3289f0d4dda20e10292373fcb7a18d74eb`). The page uses exact-source 1192px-wide WebPs at quality 78: knee 22,530B, MRI 20,584B, shared lower image 16,228B; the former 64x50 preview is no longer rendered.

@@ -2,13 +2,14 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { init, use, type ECharts } from 'echarts/core'
-import { CustomChart } from 'echarts/charts'
+import { BarChart, CustomChart } from 'echarts/charts'
 import type { CustomSeriesRenderItem } from 'echarts'
 import { GraphicComponent, GridComponent, LegendComponent, TooltipComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 import { whyChinaBarPositions } from '@/data/whyChinaChartGeometry'
+import { useAutoplayCarousel } from '@/composables/useAutoplayCarousel'
 
-use([CustomChart, GraphicComponent, GridComponent, LegendComponent, TooltipComponent, CanvasRenderer])
+use([BarChart, CustomChart, GraphicComponent, GridComponent, LegendComponent, TooltipComponent, CanvasRenderer])
 
 const medicalCapabilities = [
   { title:'肿瘤MDT综合诊疗', copy:'疑难复发肿瘤多学科联合方案，临床量全球第一', icon:'/images/figma/why-china-icons/node-143-1363.svg', detail:'新马轻症处理成熟，但复发难治、晚期肿瘤方案薄弱；日本方案保守、欧美费用极高。中国拥有全球最大肿瘤临床病例库，常规MDT多学科会诊，靶向、免疫、介入、手术综合方案更灵活、个体化更强。' },
@@ -52,6 +53,8 @@ const route = useRoute()
 const costDetailsExpanded = ref(route.hash === '#cost-comparison')
 let costChart: ECharts | undefined
 let chartObserver: IntersectionObserver | undefined
+let chartResizeObserver: ResizeObserver | undefined
+let costChartSize = ''
 const renderCostBar = (seriesIndex: number): CustomSeriesRenderItem => (_params, api) => {
   const categoryIndex = Number(api.value(0))
   const value = Number(api.value(1))
@@ -62,8 +65,25 @@ const renderCostBar = (seriesIndex: number): CustomSeriesRenderItem => (_params,
   const radius = Math.min(4, height / 2)
   return { type: 'rect', shape: { x, y: top, width, height, r: [radius, radius, 0, 0] }, style: { fill: comparisonSeries[seriesIndex]?.color }, transition: ['shape'] }
 }
-onMounted(() => {
+function renderComparisonChart() {
   if (!costChartEl.value) return
+  chartObserver?.disconnect()
+  costChart?.dispose()
+  costChartSize = `${costChartEl.value.clientWidth}:${window.innerWidth <= 900}`
+  if (window.innerWidth <= 900) {
+    costChart = init(costChartEl.value, undefined, { renderer: 'canvas' })
+    costChart.setOption({
+      animation: false,
+      color: comparisonSeries.map(item => item.color),
+      grid: { top: 72, bottom: 36, left: 108, right: 16 },
+      legend: { top: 0, left: 'center', itemWidth: 12, itemHeight: 9, itemGap: 14, textStyle: { fontSize: 12 }, selectedMode: false },
+      xAxis: { type: 'value', max: 600, interval: 200, axisLabel: { fontSize: 11, formatter: (value: number) => value ? `$${value}K` : '0' }, splitLine: { lineStyle: { color: '#E0E1E1' } } },
+      yAxis: { type: 'category', inverse: true, data: comparisonLabels, axisTick: { show: false }, axisLabel: { fontSize: 11, width: 92, overflow: 'break' } },
+      tooltip: { trigger: 'axis', confine: true, valueFormatter: (value: number) => `$${value}K` },
+      series: comparisonSeries.map(item => ({ type: 'bar', name: item.name, data: item.values, barMaxWidth: 6, itemStyle: { borderRadius: [0, 2, 2, 0] } })),
+    })
+    return
+  }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const animateChart = !reducedMotion && window.innerWidth >= 768 && typeof IntersectionObserver !== 'undefined'
   costChart = init(costChartEl.value, undefined, { renderer: 'canvas', width: 1168.02, height: 403.26 })
@@ -88,8 +108,15 @@ onMounted(() => {
     }, { threshold: 0.15 })
     chartObserver.observe(costChartEl.value)
   }
+}
+onMounted(() => {
+  renderComparisonChart()
+  chartResizeObserver = new ResizeObserver(() => {
+    if (`${costChartEl.value?.clientWidth}:${window.innerWidth <= 900}` !== costChartSize) renderComparisonChart()
+  })
+  if (costChartEl.value) chartResizeObserver.observe(costChartEl.value)
 })
-onBeforeUnmount(() => { chartObserver?.disconnect(); costChart?.dispose() })
+onBeforeUnmount(() => { chartObserver?.disconnect(); chartResizeObserver?.disconnect(); costChart?.dispose() })
 const waits = [
   { value:'30–180天', label:'欧美平均就诊等待' },
   { value:'21–90天', label:'日本/新加坡公立医院' },
@@ -107,6 +134,8 @@ const stories = [
   { quote:'对比本地报价，来华完成种植修复，节省大量费用，医生沟通顺畅', meta:'马来西亚患者· All-on6半口种植', image:'/images/figma/why-story-malaysia-source-2x.png' },
   { quote:'欧美等待半年，国内绿色通道快速安排手术，术后恢复良好', meta:'欧美患者· 心外科手术', image:'/images/figma/why-story-europe-source-2x.png' },
 ]
+const storyRoot = ref<HTMLElement | null>(null)
+const { activeIndex: storyIndex, select: selectStory, paused: storiesPaused, togglePause: toggleStoriesPaused, enabled: mobileStories } = useAutoplayCarousel(storyRoot, stories.length, { media: '(max-width: 700px)' })
 function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consultation')) }
 </script>
 
@@ -122,7 +151,12 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 
     <section class="national-section"><div class="hy-container" data-reveal><header><h2>国家级医疗实力 · 权威机构背书</h2><p>依托国内庞大三甲医疗体系，众多国际认证医疗机构，已服务全球百万国际患者</p></header><div class="national-grid"><div v-for="item in nationalStats" :key="item.value"><strong>{{ item.value }}</strong><span>{{ item.label }}</span></div></div><RouterLink to="/cases"><span class="button-label">查看更多各国患者完整故事</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1821.svg" alt="" /></RouterLink></div></section>
 
-    <section class="stories-section"><div class="hy-container"><header class="section-title" data-reveal><h2>新/马/日/欧美患者真实就医反馈</h2><p>来自各国患者真实就诊经历，客观记录来华治疗全过程</p></header><div class="story-grid"><article v-for="item in stories" :key="item.quote" data-reveal><img :src="item.image" alt="国际患者" /><div class="story-copy"><blockquote>{{ item.quote }}</blockquote><small class="story-meta"><span class="story-dash">—</span><span class="story-meta-label">{{ item.meta }}</span></small></div></article></div></div></section>
+    <section class="stories-section"><div class="hy-container"><header class="section-title" data-reveal><h2>新/马/日/欧美患者真实就医反馈</h2><p>来自各国患者真实就诊经历，客观记录来华治疗全过程</p></header>
+      <div ref="storyRoot" class="story-carousel" role="region" aria-label="国际患者反馈" @keydown.left.prevent="selectStory(storyIndex - 1)" @keydown.right.prevent="selectStory(storyIndex + 1)">
+        <div class="story-grid"><article v-for="(item, index) in stories" :key="item.quote" :class="{ 'story-card--active': storyIndex === index }" :aria-hidden="mobileStories && storyIndex !== index" :inert="mobileStories && storyIndex !== index" data-reveal><img :src="item.image" alt="国际患者" /><div class="story-copy"><blockquote>{{ item.quote }}</blockquote><small class="story-meta"><span class="story-dash">—</span><span class="story-meta-label">{{ item.meta }}</span></small></div></article></div>
+        <div class="story-carousel__controls"><div><button v-for="(_, index) in stories" :key="index" type="button" :aria-label="`查看第${index + 1}条患者反馈`" :aria-pressed="storyIndex === index" @click="selectStory(index)"><span :class="{ active: storyIndex === index }" /></button></div><button type="button" :aria-label="storiesPaused ? '播放患者反馈' : '暂停患者反馈'" :aria-pressed="storiesPaused" @click="toggleStoriesPaused">{{ storiesPaused ? '播放' : '暂停' }}</button></div>
+      </div>
+    </div></section>
 
     <section class="why-cta"><div class="hy-container" data-reveal><h2>想知道你的病情是否适合来华治疗？</h2><p>提交病历，AI自动生成专属来华就医可行性报告</p><div class="cta-actions"><RouterLink to="/report"><span class="button-label">立即提交病历</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1922.svg" alt="" /></RouterLink><button type="button" @click="openConsultation"><span class="button-label">免费一对一咨询</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1927.svg" alt="" /></button></div><small><span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1934.svg" alt="" /><span class="feature-label">适配科室</span></span><span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1934.svg" alt="" /><span class="feature-label">推荐医院</span></span><span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1934.svg" alt="" /><span class="feature-label">治疗方案参考</span></span><span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1934.svg" alt="" /><span class="feature-label">预估预算</span></span><span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1934.svg" alt="" /><span class="feature-label">就诊周期规划</span></span></small></div></section>
   </div>
@@ -169,6 +203,9 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 .capability-grid .capability-chevron { width:14px; height:14px; transition:transform .3s ease; }.capability-grid .capability-chevron.rotated { transform:rotate(180deg); }
 .cost-section { min-height:957.260254px; box-sizing:border-box; padding:96px 0; background:#f5f6f7; }
 .cost-section--expanded { height:auto; overflow:visible; }
+.cost-section--expanded .section-title h2 { letter-spacing:.3955078125px; }
+.cost-detail-card h3 { letter-spacing:-.439453125px; }
+.cost-detail-card .cost-detail-copy { letter-spacing:-.150390625px; }
 .comparison-chart-scroll { width:1216px; margin-top:48px; }
 .comparison-chart { width:1168.02px; height:403.26px; margin-inline:auto; }
 .saving-tags { display:flex; width:1216px; max-width:100%; height:48px; justify-content:flex-start; gap:24px; margin-top:48px; overflow:hidden; mask-image:linear-gradient(to right,transparent 0,transparent 40px,#000 160px,#000 calc(100% - 160px),transparent calc(100% - 40px),transparent 100%); }
@@ -203,6 +240,7 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 .national-section a { display:inline-flex; width:267px; height:52px; align-items:center; gap:8px; border-radius:14px; padding:0 24px; background:#dd6b20; color:#fff; font-family:"PingFang SC",sans-serif; font-size:16px; font-weight:600; line-height:16px; transition:transform .25s ease; }.national-section a:hover { transform:translateY(-2px); }.national-section a .source-icon { width:20px; height:20px; }
 .stories-section { height:593px; padding:96px 0; background:#fff; }
 .story-grid { display:grid; height:273px; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.story-carousel__controls { display:none; }
 .story-grid article { display:flex; height:273px; flex-direction:column; align-items:flex-start; border-radius:24px; padding:24px; background:#f5f6f7; transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease; }.story-grid article:hover { transform:translateY(-5px); box-shadow:0 18px 40px rgba(20,49,98,.08); }
 .story-grid img { width:60px; height:60px; border-radius:16px; object-fit:cover; }
 .story-copy { width:100%; margin-top:80px; }.story-grid blockquote { margin:0; color:#1e3a5f; font-size:16px; font-weight:500; line-height:24px; }.story-meta { display:flex; margin-top:16px; color:#9ca3af; font-family:"DM Sans",sans-serif; font-size:14px; line-height:21px; }.story-dash { width:17px; flex:none; }
@@ -231,6 +269,9 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
   .wait-grid { height:auto; grid-template-columns:repeat(2,minmax(0,1fr)); }
   .national-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
   .comparison-chart-scroll { max-width:100%; overflow-x:auto; }
+  .comparison-chart { width:100%; height:680px; }
+  .saving-tags { width:100%; height:auto; flex-wrap:wrap; gap:12px; overflow:visible; mask-image:none; }
+  .saving-tags span:nth-child(n) { width:auto; max-width:100%; padding:10px 12px; font-size:13px; white-space:normal; }
 }
 @media (max-width:700px) {
   .why-page :deep(.hy-container) { width:calc(100% - 32px); }
@@ -248,9 +289,20 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
   .cost-detail-grid { grid-template-columns:1fr; }.cost-details-enter-active,.cost-details-leave-active { max-height:3000px; }
   .wait-grid,.story-grid { height:auto; grid-template-columns:1fr; }.wait-grid article { height:190px; }.wait-grid article.highlight>span { top:66px; left:62px; }
   .national-section { min-height:620px; }.national-grid { height:auto; grid-template-columns:1fr 1fr; gap:28px; }.national-grid strong { font-size:40px; }
-  .story-grid article { height:auto; min-height:250px; }.story-copy { margin-top:64px; }.why-cta>div { height:auto; }.why-cta h2 { font-size:30px; line-height:38px; }.why-cta small { flex-wrap:wrap; }.why-cta a,.why-cta button { width:100%; }
+  .story-grid { gap:0; }
+  .story-grid article { grid-area:1 / 1; height:auto; min-height:0; visibility:hidden; opacity:0; transform:translateX(12px); pointer-events:none; transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1),visibility .5s; }
+  .story-grid article.story-card--active { visibility:visible; opacity:1; transform:none; pointer-events:auto; }
+  .story-copy { margin-top:24px; }
+  .story-carousel__controls { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:12px; }
+  .story-carousel__controls>div { display:flex; gap:8px; }
+  .story-carousel__controls button { display:grid; min-width:32px; height:36px; place-items:center; border:0; padding:0; background:none; color:#6b7280; font-size:13px; cursor:pointer; }
+  .story-carousel__controls>button { padding:0 12px; }
+  .story-carousel__controls span { width:10px; height:10px; border-radius:999px; background:#d1d5db; }
+  .story-carousel__controls span.active { width:32px; background:#dd6b20; }
+  .why-cta>div { height:auto; }.why-cta h2 { font-size:30px; line-height:38px; }.why-cta small { flex-wrap:wrap; }.why-cta a,.why-cta button { width:100%; }
 }
 @media (prefers-reduced-motion:reduce) {
+  .story-grid article { transition:none; }
   .why-page * { transition:none !important; }
   .capability-grid article:hover,.story-grid article:hover,.why-hero button:hover,.why-hero a:hover,.cost-actions button:hover,.cost-actions a:hover,.national-section a:hover,.why-cta button:hover,.why-cta a:hover { transform:none; }
 }

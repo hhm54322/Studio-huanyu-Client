@@ -1,0 +1,719 @@
+{
+  "sourceFrame": "1742:6014",
+  "sourceSHA256": "b81bbd3eb95eb33a7a2db2d313f7f6e326e24ce2ad5a1c6c5e82d618308d081e",
+  "root": {
+    "id": "1742:6014",
+    "name": "牙科 · 精准种植与美学修复",
+    "type": "FRAME",
+    "width": 896,
+    "height": 290,
+    "x": 46131,
+    "y": 4618,
+    "visible": true,
+    "css": "display: flex;\nwidth: 896px;\npadding: 32px;\nflex-direction: column;\nalign-items: flex-start;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:896px;height:290px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+    "layoutCss": "display: flex;\nwidth: 896px;\npadding: 32px;\nflex-direction: column;\nalign-items: flex-start;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+    "text": "",
+    "children": [
+      {
+        "id": "1742:6015",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 832,
+        "height": 226,
+        "x": 32,
+        "y": 32,
+        "visible": true,
+        "css": "display: inline-grid;\nrow-gap: 24px;\ncolumn-gap: 24px;\nalign-self: stretch;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\nposition:absolute;left:32px;top:32px;right:auto;bottom:auto;width:832px;height:226px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: inline-grid;\nrow-gap: 24px;\ncolumn-gap: 24px;\nalign-self: stretch;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+        "text": "",
+        "children": [
+          {
+            "id": "1742:6016",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 261.3333435058594,
+            "height": 226,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:261.33334px;height:226px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:261.33334px;",
+            "text": "",
+            "children": [
+              {
+                "id": "1742:6056",
+                "name": "Frame",
+                "type": "FRAME",
+                "width": 32,
+                "height": 32,
+                "x": 24,
+                "y": 24,
+                "visible": true,
+                "css": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                "layoutCss": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                "text": "",
+                "svg": "/images/figma/about-specialties-revision/node-1742-6056.svg",
+                "children": []
+              },
+              {
+                "id": "1742:6019",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 213.33334350585938,
+                "height": 106,
+                "x": 24,
+                "y": 96,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:213.33334px;height:106px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1742:6020",
+                    "name": "Heading 3",
+                    "type": "FRAME",
+                    "width": 141,
+                    "height": 18,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:141px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:141px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6021",
+                        "name": "数字化种植全流程",
+                        "type": "TEXT",
+                        "width": 141,
+                        "height": 18,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:141px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:141px;height:18px;white-space:pre;",
+                        "text": "数字化种植全流程",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1742:6022",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 213.33334350585938,
+                    "height": 88,
+                    "x": 0,
+                    "y": 18,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:18px;right:auto;bottom:auto;width:213.33334px;height:88px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6023",
+                        "name": "Handpicked for exclusive Pegasus Program for secur",
+                        "type": "TEXT",
+                        "width": 213.33334350585938,
+                        "height": 72,
+                        "x": 0,
+                        "y": 16,
+                        "visible": true,
+                        "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:213.33334px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                        "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:72px;white-space:pre-wrap;",
+                        "text": "CBCT 三维重建 + 种植导板 + 即刻负重，术前即可看到模拟效果。",
+                        "textLines": [
+                          {
+                            "runs": [
+                              {
+                                "text": "C",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "B",
+                                "css": ";position:absolute;left:11.64063px;top:0;"
+                              },
+                              {
+                                "text": "C",
+                                "css": ";position:absolute;left:22.46875px;top:0;"
+                              },
+                              {
+                                "text": "T",
+                                "css": ";position:absolute;left:34.10938px;top:0;"
+                              },
+                              {
+                                "text": " ",
+                                "css": ";position:absolute;left:44.01563px;top:0;"
+                              },
+                              {
+                                "text": "三",
+                                "css": ";position:absolute;left:49.39627px;top:0;"
+                              },
+                              {
+                                "text": "维",
+                                "css": ";position:absolute;left:65.44878px;top:0;"
+                              },
+                              {
+                                "text": "重",
+                                "css": ";position:absolute;left:81.5013px;top:0;"
+                              },
+                              {
+                                "text": "建",
+                                "css": ";position:absolute;left:97.55383px;top:0;"
+                              },
+                              {
+                                "text": " ",
+                                "css": ";position:absolute;left:113.60634px;top:0;"
+                              },
+                              {
+                                "text": "+",
+                                "css": ";position:absolute;left:118.98698px;top:0;"
+                              },
+                              {
+                                "text": " ",
+                                "css": ";position:absolute;left:128.67448px;top:0;"
+                              },
+                              {
+                                "text": "种",
+                                "css": ";position:absolute;left:134.05513px;top:0;"
+                              },
+                              {
+                                "text": "植",
+                                "css": ";position:absolute;left:150.10765px;top:0;"
+                              },
+                              {
+                                "text": "导",
+                                "css": ";position:absolute;left:166.16016px;top:0;"
+                              },
+                              {
+                                "text": "板",
+                                "css": ";position:absolute;left:182.21268px;top:0;"
+                              },
+                              {
+                                "text": " ",
+                                "css": ";position:absolute;left:198.2652px;top:0;"
+                              },
+                              {
+                                "text": "+",
+                                "css": ";position:absolute;left:203.64584px;top:0;"
+                              },
+                              {
+                                "text": " ",
+                                "css": ";position:absolute;left:213.33334px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000000000005,
+                            "css": "display:block;position:absolute;left:0px;top:0px;width:218.6615px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "即",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "刻",
+                                "css": ";position:absolute;left:16.44444px;top:0;"
+                              },
+                              {
+                                "text": "负",
+                                "css": ";position:absolute;left:32.88889px;top:0;"
+                              },
+                              {
+                                "text": "重",
+                                "css": ";position:absolute;left:49.33334px;top:0;"
+                              },
+                              {
+                                "text": "，",
+                                "css": ";position:absolute;left:65.77778px;top:0;"
+                              },
+                              {
+                                "text": "术",
+                                "css": ";position:absolute;left:82.22223px;top:0;"
+                              },
+                              {
+                                "text": "前",
+                                "css": ";position:absolute;left:98.66667px;top:0;"
+                              },
+                              {
+                                "text": "即",
+                                "css": ";position:absolute;left:115.11111px;top:0;"
+                              },
+                              {
+                                "text": "可",
+                                "css": ";position:absolute;left:131.55556px;top:0;"
+                              },
+                              {
+                                "text": "看",
+                                "css": ";position:absolute;left:148px;top:0;"
+                              },
+                              {
+                                "text": "到",
+                                "css": ";position:absolute;left:164.44446px;top:0;"
+                              },
+                              {
+                                "text": "模",
+                                "css": ";position:absolute;left:180.8889px;top:0;"
+                              },
+                              {
+                                "text": "拟",
+                                "css": ";position:absolute;left:197.33334px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000228881836,
+                            "css": "display:block;position:absolute;left:0px;top:24px;width:213.33331px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "效",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "果",
+                                "css": ";position:absolute;left:16px;top:0;"
+                              },
+                              {
+                                "text": "。",
+                                "css": ";position:absolute;left:32px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.759998321533203,
+                            "css": "display:block;position:absolute;left:0px;top:48px;width:48px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1742:6024",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 261.3333435058594,
+            "height": 226,
+            "x": 570.6666870117188,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nheight: 226px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 3 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:570.66669px;top:0px;right:auto;bottom:auto;width:261.33334px;height:226px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nheight: 226px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 3 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:261.33334px;",
+            "text": "",
+            "children": [
+              {
+                "id": "1742:6047",
+                "name": "Frame",
+                "type": "FRAME",
+                "width": 32,
+                "height": 32,
+                "x": 24,
+                "y": 24,
+                "visible": true,
+                "css": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                "layoutCss": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                "text": "",
+                "svg": "/images/figma/about-specialties-revision/node-1742-6047.svg",
+                "children": []
+              },
+              {
+                "id": "1742:6027",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 213.33334350585938,
+                "height": 82,
+                "x": 24,
+                "y": 96,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:213.33334px;height:82px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1742:6028",
+                    "name": "Heading 3",
+                    "type": "FRAME",
+                    "width": 141,
+                    "height": 18,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:141px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:141px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6029",
+                        "name": "美学修复体系成熟",
+                        "type": "TEXT",
+                        "width": 141,
+                        "height": 18,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:141px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:141px;height:18px;white-space:pre;",
+                        "text": "美学修复体系成熟",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1742:6030",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 213.33334350585938,
+                    "height": 64,
+                    "x": 0,
+                    "y": 18,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:18px;right:auto;bottom:auto;width:213.33334px;height:64px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6031",
+                        "name": "Handpicked for exclusive Pegasus Program for secur",
+                        "type": "TEXT",
+                        "width": 213.33334350585938,
+                        "height": 48,
+                        "x": 0,
+                        "y": 16,
+                        "visible": true,
+                        "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:213.33334px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                        "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                        "text": "全瓷冠、贴面、嵌体的材料与工艺已与国际接轨。",
+                        "textLines": [
+                          {
+                            "runs": [
+                              {
+                                "text": "全",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "瓷",
+                                "css": ";position:absolute;left:16.44444px;top:0;"
+                              },
+                              {
+                                "text": "冠",
+                                "css": ";position:absolute;left:32.88889px;top:0;"
+                              },
+                              {
+                                "text": "、",
+                                "css": ";position:absolute;left:49.33334px;top:0;"
+                              },
+                              {
+                                "text": "贴",
+                                "css": ";position:absolute;left:65.77778px;top:0;"
+                              },
+                              {
+                                "text": "面",
+                                "css": ";position:absolute;left:82.22223px;top:0;"
+                              },
+                              {
+                                "text": "、",
+                                "css": ";position:absolute;left:98.66667px;top:0;"
+                              },
+                              {
+                                "text": "嵌",
+                                "css": ";position:absolute;left:115.11111px;top:0;"
+                              },
+                              {
+                                "text": "体",
+                                "css": ";position:absolute;left:131.55556px;top:0;"
+                              },
+                              {
+                                "text": "的",
+                                "css": ";position:absolute;left:148px;top:0;"
+                              },
+                              {
+                                "text": "材",
+                                "css": ";position:absolute;left:164.44446px;top:0;"
+                              },
+                              {
+                                "text": "料",
+                                "css": ";position:absolute;left:180.8889px;top:0;"
+                              },
+                              {
+                                "text": "与",
+                                "css": ";position:absolute;left:197.33334px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000000000005,
+                            "css": "display:block;position:absolute;left:0px;top:0px;width:213.33331px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "工",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "艺",
+                                "css": ";position:absolute;left:16px;top:0;"
+                              },
+                              {
+                                "text": "已",
+                                "css": ";position:absolute;left:32px;top:0;"
+                              },
+                              {
+                                "text": "与",
+                                "css": ";position:absolute;left:48px;top:0;"
+                              },
+                              {
+                                "text": "国",
+                                "css": ";position:absolute;left:64px;top:0;"
+                              },
+                              {
+                                "text": "际",
+                                "css": ";position:absolute;left:80px;top:0;"
+                              },
+                              {
+                                "text": "接",
+                                "css": ";position:absolute;left:96px;top:0;"
+                              },
+                              {
+                                "text": "轨",
+                                "css": ";position:absolute;left:112px;top:0;"
+                              },
+                              {
+                                "text": "。",
+                                "css": ";position:absolute;left:128px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000228881836,
+                            "css": "display:block;position:absolute;left:0px;top:24px;width:144px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1742:6032",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 261.3333435058594,
+            "height": 226,
+            "x": 285.3333435058594,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nheight: 226px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nalign-self: start;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:285.33334px;top:0px;right:auto;bottom:auto;width:261.33334px;height:226px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nheight: 226px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nalign-self: start;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:261.33334px;",
+            "text": "",
+            "children": [
+              {
+                "id": "1742:6052",
+                "name": "Icon",
+                "type": "FRAME",
+                "width": 32,
+                "height": 32,
+                "x": 24,
+                "y": 24,
+                "visible": true,
+                "css": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                "layoutCss": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                "text": "",
+                "svg": "/images/figma/about-specialties-revision/node-1742-6052.svg",
+                "children": []
+              },
+              {
+                "id": "1742:6037",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 213.33334350585938,
+                "height": 82,
+                "x": 24,
+                "y": 96,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:213.33334px;height:82px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1742:6038",
+                    "name": "Heading 3",
+                    "type": "FRAME",
+                    "width": 159,
+                    "height": 18,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:159px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:159px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6039",
+                        "name": "费用明显低于欧美日",
+                        "type": "TEXT",
+                        "width": 159,
+                        "height": 18,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:159px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:159px;height:18px;white-space:pre;",
+                        "text": "费用明显低于欧美日",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1742:6040",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 213.33334350585938,
+                    "height": 64,
+                    "x": 0,
+                    "y": 18,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:18px;right:auto;bottom:auto;width:213.33334px;height:64px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1742:6041",
+                        "name": "Handpicked for exclusive Pegasus Program for secur",
+                        "type": "TEXT",
+                        "width": 213.33334350585938,
+                        "height": 48,
+                        "x": 0,
+                        "y": 16,
+                        "visible": true,
+                        "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:213.33334px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                        "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                        "text": "同等材料与技术水平下，种植、正畸费用通常显著更低。",
+                        "textLines": [
+                          {
+                            "runs": [
+                              {
+                                "text": "同",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "等",
+                                "css": ";position:absolute;left:17.93939px;top:0;"
+                              },
+                              {
+                                "text": "材",
+                                "css": ";position:absolute;left:35.87879px;top:0;"
+                              },
+                              {
+                                "text": "料",
+                                "css": ";position:absolute;left:53.81818px;top:0;"
+                              },
+                              {
+                                "text": "与",
+                                "css": ";position:absolute;left:71.75758px;top:0;"
+                              },
+                              {
+                                "text": "技",
+                                "css": ";position:absolute;left:89.69698px;top:0;"
+                              },
+                              {
+                                "text": "术",
+                                "css": ";position:absolute;left:107.63637px;top:0;"
+                              },
+                              {
+                                "text": "水",
+                                "css": ";position:absolute;left:125.57577px;top:0;"
+                              },
+                              {
+                                "text": "平",
+                                "css": ";position:absolute;left:143.51515px;top:0;"
+                              },
+                              {
+                                "text": "下",
+                                "css": ";position:absolute;left:161.45456px;top:0;"
+                              },
+                              {
+                                "text": "，",
+                                "css": ";position:absolute;left:179.39395px;top:0;"
+                              },
+                              {
+                                "text": "种",
+                                "css": ";position:absolute;left:197.33334px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000000000005,
+                            "css": "display:block;position:absolute;left:0px;top:0px;width:213.33331px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          },
+                          {
+                            "runs": [
+                              {
+                                "text": "植",
+                                "css": ";position:absolute;left:0px;top:0;"
+                              },
+                              {
+                                "text": "、",
+                                "css": ";position:absolute;left:16px;top:0;"
+                              },
+                              {
+                                "text": "正",
+                                "css": ";position:absolute;left:32px;top:0;"
+                              },
+                              {
+                                "text": "畸",
+                                "css": ";position:absolute;left:48px;top:0;"
+                              },
+                              {
+                                "text": "费",
+                                "css": ";position:absolute;left:64px;top:0;"
+                              },
+                              {
+                                "text": "用",
+                                "css": ";position:absolute;left:80px;top:0;"
+                              },
+                              {
+                                "text": "通",
+                                "css": ";position:absolute;left:96px;top:0;"
+                              },
+                              {
+                                "text": "常",
+                                "css": ";position:absolute;left:112px;top:0;"
+                              },
+                              {
+                                "text": "显",
+                                "css": ";position:absolute;left:128px;top:0;"
+                              },
+                              {
+                                "text": "著",
+                                "css": ";position:absolute;left:144px;top:0;"
+                              },
+                              {
+                                "text": "更",
+                                "css": ";position:absolute;left:160px;top:0;"
+                              },
+                              {
+                                "text": "低",
+                                "css": ";position:absolute;left:176px;top:0;"
+                              },
+                              {
+                                "text": "。",
+                                "css": ";position:absolute;left:192px;top:0;"
+                              }
+                            ],
+                            "baseline": 17.760000228881836,
+                            "css": "display:block;position:absolute;left:0px;top:24px;width:208px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

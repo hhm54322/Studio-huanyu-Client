@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from "vue";
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import {
@@ -11,6 +11,11 @@ import BrandLogo from "@/components/common/BrandLogo.vue";
 import { useAppStore } from "@/stores/app";
 import { useScroll } from "@/composables/useScroll";
 import type { Locale } from "@/stores/app";
+import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
+import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
+import MedicalServicesMenu from '@/components/layout/MedicalServicesMenu.vue'
+import { homeFigmaActions } from '@/data/homeFigmaActions'
+import { homeDesktopNodes, homeMobileNodes } from '@/data/homeFigmaSource'
 
 const route = useRoute();
 withDefaults(defineProps<{ consultationIcon?: string; languageIcon?: string }>(), { consultationIcon: '/images/figma/about-icons/Icon.svg', languageIcon: '/images/figma/about-icons/Icon-8.svg' });
@@ -19,6 +24,77 @@ const appStore = useAppStore();
 const { scrolled } = useScroll(18);
 const menuOpen = ref(false);
 const langOpen = ref(false);
+const serviceMenuOpen = ref(false);
+const desktopServicesOpen = ref(false);
+const headerWidth = ref(typeof window === 'undefined' ? 1440 : window.innerWidth);
+let desktopServicesTimer: ReturnType<typeof setTimeout> | undefined;
+const desktopServicesStyle = computed(() => {
+  const scale = Math.min(1, headerWidth.value / 1440)
+  return { left:`calc(50% + ${(830 - 720) * scale}px)`, top:`${72 * scale}px`, transform:`scale(${scale})` }
+});
+async function navigateDesktopServices(event: KeyboardEvent) {
+  if (!(event.target as HTMLElement).closest('[data-figma-node="1523:95"], .desktop-services-trigger')) return
+  if (event.key !== 'ArrowDown' && !(event.key === 'Tab' && !event.shiftKey && desktopServicesOpen.value)) return
+  event.preventDefault()
+  desktopServicesOpen.value = true
+  await nextTick()
+  document.querySelector<HTMLElement>('#home-services-menu a, #desktop-services-menu a')?.focus({ preventScroll:true })
+}
+function resizeHeader() { headerWidth.value = window.innerWidth }
+function closeDesktopServices() {
+  clearTimeout(desktopServicesTimer)
+  desktopServicesTimer = setTimeout(() => { desktopServicesOpen.value = false }, 100)
+}
+function enterDesktopServices(event: Event) {
+  if ((event.target as HTMLElement).closest('[data-figma-node="1523:95"], .desktop-services-trigger, .home-desktop-services, .desktop-services-popover')) {
+    clearTimeout(desktopServicesTimer)
+    desktopServicesOpen.value = true
+  } else closeDesktopServices()
+}
+function leaveDesktopFocus(event: FocusEvent) {
+  if (!(event.relatedTarget as HTMLElement | null)?.closest('[data-figma-node="1523:95"], .desktop-services-trigger, .home-desktop-services, .desktop-services-popover')) closeDesktopServices()
+}
+const mobileMenuActions = {
+  '1555:424': { href: '/', label: '首页' },
+  '1555:428': { href: '/why-china', label: '为什么选择中国' },
+  '1555:431': { href: '/trust', label: '信任与常见问题' },
+  '1555:434': { action: 'mobile-services', label: '医疗服务' },
+  '1555:439': { href: '/dental', label: '牙科' },
+  '1555:442': { href: '/hospitals', label: '中国医院' },
+  '1555:445': { href: '/cases', label: '患者案例' },
+  '1555:448': { href: '/insurance', label: '保险指南' },
+  '1555:451': { href: '/about', label: '关于我们' },
+};
+const mobileExpandedActions = {
+  '1555:502': { href: '/', label: '首页' },
+  '1555:505': { href: '/why-china', label: '为什么选择中国' },
+  '1555:508': { href: '/trust', label: '信任与常见问题' },
+  '1555:511': { action: 'mobile-services-close', label: '收起医疗服务' },
+  '1555:517': { action: 'pending', label: '健康体检' },
+  '1555:520': { action: 'pending', label: '专科诊疗' },
+  '1555:523': { action: 'pending', label: '中医康养' },
+  '1555:526': { action: 'pending', label: '细胞治疗' },
+  '1555:529': { href: '/dental', label: '牙科' },
+  '1555:532': { href: '/hospitals', label: '中国医院' },
+  '1555:535': { href: '/cases', label: '患者案例' },
+  '1555:538': { href: '/insurance', label: '保险指南' },
+  '1555:541': { href: '/about', label: '关于我们' },
+};
+const mobileLanguageActions = {
+  '1555:503': { href: '/', label: '首页' },
+  '1555:506': { href: '/why-china', label: '为什么选择中国' },
+  '1555:509': { href: '/trust', label: '信任与常见问题' },
+  '1555:512': { href: '/diseases-technologies', label: '医疗服务' },
+  '1555:518': { action: 'pending', label: '健康体检' },
+  '1555:521': { action: 'pending', label: '专科诊疗' },
+  '1555:524': { action: 'pending', label: '中医康养' },
+  '1555:527': { action: 'pending', label: '细胞治疗' },
+  '1555:530': { href: '/dental', label: '牙科' },
+  '1555:533': { href: '/hospitals', label: '中国医院' },
+  '1555:536': { href: '/cases', label: '患者案例' },
+  '1555:539': { href: '/insurance', label: '保险指南' },
+  '1555:542': { href: '/about', label: '关于我们' },
+};
 
 const navItems = [
   { name: "首页", path: "/" },
@@ -54,33 +130,85 @@ function openConsultation() {
   window.dispatchEvent(new CustomEvent("open-consultation"));
   menuOpen.value = false;
 }
+function onHomeAction(action:string) {
+  if (action === 'desktop-services') {
+    clearTimeout(desktopServicesTimer)
+    desktopServicesOpen.value = true
+  }
+  if (action === 'menu') {
+    menuOpen.value = !menuOpen.value
+    if (!menuOpen.value) serviceMenuOpen.value = false
+  }
+  if (action === 'language') langOpen.value = !langOpen.value
+  if (action === 'consultation') openConsultation()
+}
+function onMobileSourceAction(action:string) {
+  if (action === 'mobile-services') {
+    serviceMenuOpen.value = true
+    return
+  }
+  if (action === 'mobile-services-close') {
+    serviceMenuOpen.value = false
+    return
+  }
+  if (action === 'pending') return
+}
 
 function closeOutside(event: MouseEvent) {
-  if (!(event.target as HTMLElement).closest(".language-control"))
+  if (!(event.target as HTMLElement).closest('.language-control, [data-figma-node="1412:6782"], [data-figma-node="1523:110"], .home-language-menu'))
     langOpen.value = false;
+}
+function onHeaderKeydown(event:KeyboardEvent) {
+  if (event.key !== 'Escape') return
+  if (desktopServicesOpen.value) {
+    clearTimeout(desktopServicesTimer)
+    desktopServicesOpen.value = false
+    document.querySelector<HTMLButtonElement>('[data-figma-node="1523:95"], .desktop-services-trigger')?.focus({ preventScroll:true })
+    desktopServicesOpen.value = false
+  }
+  if (menuOpen.value) {
+    menuOpen.value = false
+    serviceMenuOpen.value = false
+    document.querySelector<HTMLButtonElement>('[data-figma-node="1528:123"], .menu-button')?.focus({preventScroll:true})
+  }
+  if (langOpen.value) {
+    langOpen.value = false
+    document.querySelector<HTMLButtonElement>('[data-figma-node="1523:110"], [data-figma-node="1412:6782"], .language-button')?.focus({preventScroll:true})
+  }
 }
 
 watch(
   () => route.fullPath,
   () => {
     menuOpen.value = false;
+    serviceMenuOpen.value = false;
     langOpen.value = false;
+    desktopServicesOpen.value = false;
   },
 );
 
-onMounted(() => document.addEventListener("click", closeOutside));
-onUnmounted(() => document.removeEventListener("click", closeOutside));
+onMounted(() => { document.addEventListener('click', closeOutside); document.addEventListener('keydown', onHeaderKeydown); window.addEventListener('resize', resizeHeader) });
+onUnmounted(() => { document.removeEventListener('click', closeOutside); document.removeEventListener('keydown', onHeaderKeydown); window.removeEventListener('resize', resizeHeader); clearTimeout(desktopServicesTimer) });
 </script>
 
 <template>
   <header
     class="patient-header"
+    @pointerover="enterDesktopServices"
+    @pointerleave="closeDesktopServices"
+    @focusin="enterDesktopServices"
+    @focusout="leaveDesktopFocus"
+    @keydown="navigateDesktopServices"
     :class="{
       'patient-header--scrolled': scrolled,
       'patient-header--open': menuOpen,
     }"
   >
-    <div class="header-inner">
+    <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" label="主导航" :actions="homeFigmaActions" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
+    <div v-if="route.path === '/' && headerWidth > 700 && desktopServicesOpen" id="home-services-menu" class="home-desktop-services" :style="desktopServicesStyle">
+      <HomeSourceNode :node="homeDesktopNodes.get('1524:26')!" root :actions="homeFigmaActions" />
+    </div>
+    <div v-if="route.path !== '/'" class="header-inner">
       <RouterLink to="/" class="header-logo" aria-label="寰宇云医首页"
         ><BrandLogo compact
       /></RouterLink>
@@ -90,7 +218,17 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
       <nav class="desktop-nav" aria-label="主导航">
         <template v-for="item in navItems" :key="item.name">
           <RouterLink
-            v-if="item.path"
+            v-if="item.name === '医疗服务'"
+            :to="item.path"
+            class="desktop-services-trigger"
+            :class="{ active: route.path === item.path, 'desktop-services-trigger--disease': route.path === '/diseases-technologies' }"
+            aria-haspopup="true"
+            :aria-expanded="desktopServicesOpen"
+            aria-controls="desktop-services-menu"
+            @click.stop.prevent="desktopServicesOpen = true"
+          >{{ item.name }}<span v-if="route.path === '/diseases-technologies'" class="disease-services-chevron" data-figma-node="1524:22" aria-hidden="true"><img src="/images/figma/disease-source/node-1524-23.svg" data-figma-node="1524:23" alt="" /></span></RouterLink>
+          <RouterLink
+            v-else-if="item.path"
             :to="item.path"
             :class="{ active: route.path === item.path }"
             >{{ item.name }}</RouterLink
@@ -135,8 +273,23 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
         </button>
       </div>
     </div>
+    <Transition name="dropdown">
+      <div v-if="route.path !== '/' && desktopServicesOpen && headerWidth > 700" id="desktop-services-menu" class="desktop-services-popover">
+        <MedicalServicesMenu />
+      </div>
+    </Transition>
+    <Transition name="dropdown">
+      <div v-if="route.path === '/' && langOpen" class="language-menu home-language-menu" @click.stop>
+        <button v-for="language in languages" :key="language.code" type="button" @click="switchLang(language.code)">
+          <span>{{ language.label }}</span><Check v-if="locale === language.code" class="h-4 w-4" />
+        </button>
+      </div>
+    </Transition>
+    <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/'" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" aria-label="移动端导航">
+      <HomeSourceNode :node="homeMobileNodes.get(serviceMenuOpen ? '1555:500' : '1555:422')!" root :actions="serviceMenuOpen ? mobileExpandedActions : mobileMenuActions" @activate="onMobileSourceAction" />
+    </div></Transition>
     <Transition name="mobile-menu"
-      ><div v-if="menuOpen" class="mobile-nav">
+      ><div v-if="menuOpen && route.path !== '/'" class="mobile-nav">
         <nav aria-label="移动端导航">
           <template v-for="item in navItems" :key="item.name"
             ><RouterLink v-if="item.path" :to="item.path">{{
@@ -168,6 +321,26 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
     background 0.3s ease,
     box-shadow 0.3s ease;
 }
+.home-source-header { pointer-events:auto; background:transparent!important; overflow:visible; }
+.patient-header--scrolled .home-source-header { background:rgba(255,255,255,.96)!important; }
+.patient-header:has(.home-source-header) { height:64px; }
+.home-language-menu { position:absolute; top:calc(100% + 8px); right:max(24px,calc((100vw - 1216px)/2)); pointer-events:auto; }
+.desktop-services-popover { position:absolute; z-index:61; top:72px; left:calc(50% + 110px); pointer-events:auto; }
+.home-desktop-services { position:absolute; z-index:1; width:111px; height:149px; transform-origin:top left; pointer-events:auto; }
+.mobile-source-menu { position:absolute; top:52px; left:50%; z-index:59; width:min(375px,100vw); height:497px; max-height:calc(100dvh - 52px); overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain; transform:translateX(-50%); background:#fff; box-shadow:0 16px 28px rgba(30,58,95,.08); pointer-events:auto; }
+.mobile-source-menu--expanded { height:717px; }
+.mobile-source-menu :deep(.home-source-node--root) { width:100%!important; height:497px!important; overflow:hidden; background:#fff; font-family:'PingFang SC',sans-serif; }
+.mobile-source-menu--expanded :deep(.home-source-node--root) { height:717px!important; }
+.mobile-source-menu :deep([data-figma-node="1555:424"]),
+.mobile-source-menu :deep([data-figma-node="1555:428"]),
+.mobile-source-menu :deep([data-figma-node="1555:431"]),
+.mobile-source-menu :deep([data-figma-node="1555:434"]),
+.mobile-source-menu :deep([data-figma-node="1555:439"]),
+.mobile-source-menu :deep([data-figma-node="1555:442"]),
+.mobile-source-menu :deep([data-figma-node="1555:445"]),
+.mobile-source-menu :deep([data-figma-node="1555:448"]),
+.mobile-source-menu :deep([data-figma-node="1555:451"]) { cursor:pointer; }
+@media (max-width:700px) { .patient-header:has(.home-source-header) { height:52px; } }
 .header-inner {
   width: min(1280px, calc(100% - 48px));
   height: 64px;
@@ -265,12 +438,41 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
 }
 .desktop-nav > a:hover,
 .desktop-nav > a.active,
-.desktop-nav > button:hover {
+.desktop-nav > button:hover,
+.desktop-nav > button.active {
   color: #2563eb;
 }
-.desktop-nav > a.active {
+.desktop-nav > a.active,
+.desktop-nav > .desktop-services-trigger.active {
   background: rgba(37, 99, 235, 0.1);
   font-weight: 600;
+}
+.desktop-nav > .desktop-services-trigger--disease {
+  width: 84px;
+  padding: 6px 8px 6px 10px;
+  align-items: flex-start;
+  gap: 2px;
+}
+.patient-header:has(.desktop-services-trigger--disease) { background: #fff; }
+.patient-header:has(.desktop-services-trigger--disease) .language-button { width: 65px; }
+.patient-header:has(.desktop-services-trigger--disease) .ask-aning { margin-right: 10px; }
+.patient-header:has(.desktop-services-trigger--disease) .header-actions { margin-left: 10px; }
+.disease-services-chevron {
+  position: relative;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+.disease-services-chevron img {
+  position: absolute;
+  left: 3.4px;
+  top: 5.4px;
+  width: 10px;
+  height: 5px;
+  max-width: none;
 }
 .header-actions {
   display: flex;
@@ -451,6 +653,9 @@ onUnmounted(() => document.removeEventListener("click", closeOutside));
   }
   .ask-aning {
     display: none;
+  }
+  .header-actions {
+    margin-left: auto;
   }
 }
 </style>

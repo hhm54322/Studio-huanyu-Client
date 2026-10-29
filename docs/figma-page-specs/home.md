@@ -2,16 +2,145 @@
 
 - Route: `/`
 - Figma frame: `01寰宇云医 - 首页`
-- Node ID: `143:45`
-- Source baseline HTML: `docs/figma-source/home/frame-2026-09-28.html`
-- Source baseline CSS: `docs/figma-source/home/styles-2026-09-28.txt`
-- Source asset manifest: `docs/figma-source/home/assets.json`
-- Source extraction run: `2026-09-29; layers-2026-09-29.json; dev-mode-2026-09-29.json; node-to-code-2026-09-29.json`; independent Banner source HTML/CSS is stored as `banner-01`, `banner-02`, `banner-03` under `docs/figma-source/home/`.
-- Desktop frame: `1440 x 8806px`
-- Mobile frame: responsive adaptation of the desktop source; no separate mobile frame exists in this Figma page
-- Status: verified
+- Node ID: `1412:5682`; mobile `1528:115`
+- Source baseline HTML: `docs/figma-source/home/baseline-2026-10-19.html`、`baseline-mobile-2026-10-19.html`
+- Source baseline CSS: `docs/figma-source/home/dev-styles-2026-10-19.css`、`dev-styles-mobile-2026-10-19.css`
+- Source asset manifest: `docs/figma-source/home/assets-2026-10-19.json`，对应 `public/images/figma/home-revision/`
+- Source extraction run: `2026-10-19`，官方原生导出与UI Layers/逐节点Dev Mode交叉核验；主帧基线锁为 `baseline-lock-2026-10-19.json`；2026-10-28/29 以当前官方导出复核全部已接入源帧。
+- Desktop frame: `1440 x 8921px`
+- Mobile frame: 外容器 `1528:115` 为375×7652px；网站本体 `1528:116` 为375×7566.0625px
+- Status: verified — 2026-10-28 desktop source/state verification; mobile deferred by user
+
+### 当前桌面源稿与验收 — 2026-10-28
+
+当前独立首屏 `1523:31`（1440×754，89节点）已完整提取 Layers/Dev Mode 并接入；长页及原有桌面状态经完整官方源比较无变化。交付前最新官方导出为 `docs/figma-source/huanyu-current-2026-10-29.fig`（导出时间2026-10-28T19:56:21.274Z，SHA-256 `dd25ba88e97467ac8803951a3aebe3596f13f8e69c41ed30f5988b5408a40353`）；首页相关源帧逐节点比较 unchanged。Logo `2326:8518` 已使用准确选中导出资源。
+
+当前代码后的八组桌面核验已通过：hero/page/states/dialogs/experts/interactions/site/behavior，证据位于 `artifacts/figma-home-2026-10-28/`。主帧13分区、补充9状态、六详情与15专家状态均为nMAE和pixelmatch双指标<1%。1024/1440/1920检验菜单hover/键盘、语言、固定助手、咨询开关、FAQ独立展开、焦点恢复、无横溢出；ECharts、滚动联动、轮播暂停及reduced-motion通过。完整源与证据门禁 `scripts/audit-current-home.mjs` 已通过。手机继续冻结；未部署。下文为按日期保留的历史过程，不能覆盖本节当前结论。
+
+### 最新交接：按用户要求回到商业发展计划 — 2026-10-23
+
+- 本轮六卡整卡/hover/focus及15个专家标签的实现、截图与行为已核验。最后人工复核发现图表透明父层继承问题，已按下方源参数修复，不进入下一页。
+- 修复后重新执行类型检查、直接Vite生产构建及diff检查，全部通过；开发/生产preview重新截取13个主帧分区，双指标均<1%（两环境最高nMAE0.8774723%、pixelmatch0.7429469%）。费用图分区开发为0.5727888%/0.4634244%，生产为0.5092852%/0.3647476%（nMAE/pixelmatch），已亲自复看，透明文案不再显示。证据：`artifacts/figma-regression-2026-10-23/home/{development,production}/page/qa.json`。
+- 关于我们联合专项通过；首页专项源参数/层级/透明度检查通过，但按证据时效规则拦截旧的`development/states`报告。最终改动后只重跑了整页13分区，不把此前9补充状态、弹窗及行为报告冒充最新代码后的全量通过。恢复时须真实重跑两环境states/site/behavior/dialogs/experts/expert-motion/interactions，再跑联合门禁；不修改时间戳或放松检查。
+- 移动端仍暂停。未改后端、医院管理或报告生成，未提交、推送或部署。下一页仍为`/why-china`，首页最终专项通过后才能进入。
+
+### 当前桌面回归：卡片交互补齐 — 2026-10-23
+
+本轮按用户要求只做桌面；手机开发/验收继续暂停。主帧1138层已从当前Figma Layers全量展开交叉核对；30组桌面源共3237节点与最新官方`.fig`逐参数、矢量blob实际SHA256和图片字节比较均无变化，沿用完整已锁定Dev基线，不以截图估算新值。
+
+当前六卡片`1412:5795/5810/5819/5827/5835/5844`整卡按钮已接对应六详情。补齐用户明确要求的hover/focus展示详情入口：源稿第一卡`1412:5799`是含入口的120px内容块，其他五卡是88px内容块；使用原差值32px作交互位移。入口完整复用`1412:5804`（341×32，顶padding16，gap4）、文字`1412:5806`（16px/16px，500，#2563EB）和精确SVG`1412:5807`（16×16），不新增推测样式或替代图标。其余五卡的入口用同源组件replica呈现，保留其原有文字和尺寸；静止态不显示入口，hover/键盘focus时出现。Figma整页第一卡显示的是展开示意态，截图核验显式悬停第一卡，不把交互态差异改成静态布局偏移。
+
+具体运行映射：卡片 → `HomeView.vue` 的六整卡源按钮；内容`1412:5799/5814/5822/5830/5839/5848` → 各自源DOM；入口`1412:5804` → 第一卡源DOM，其余五卡由`HomeSourceNode`复用同一真实源节点并设replica，不伪造新Figma ID。淡入/位移使用既有Octagos式opacity/transform语言，300ms、cubic-bezier(.22,1,.36,1)，reduced-motion立即切换，卡片外框不移动。
+
+本段为实现前的交互参数记录；最终截图和专项门禁记录在后续本日回归段，不以上述计划代替完成证据。
+
+### 图表父层透明度修正 — 2026-10-23
+
+截图人工复核发现费用图中多出文字“脊柱手术”。逐层核对 Figma Design/Dev Mode 与锁定原生参数：文字 `1412:6312` 为 SF Pro 12/18px、#1C1917；父层 `1412:6311`、`1412:6310`、`1412:6309` 的原生 opacity 均为0。现有图表转换只复制了文字自身参数，遗漏父层透明度。本次保留全部原生参数与节点映射，以相对 ECharts owner 的完整祖先链计算每个图表图元的有效透明度；不删除该源节点、不凭截图隐藏文字。仅重生成桌面派生 chart-spec 及对应派生文件哈希，移动源不改。修复与定向截图通过后暂停开发，回到商业发展计划；不据历史证据宣称新一轮首页全量门禁完成。
+
+### 专家详情源锁与接入记录 — 2026-10-21
+
+本次先完成源提取和静态基线再改 Vue。四位专家桌面15状态、手机15状态及柳光宇手机任职滚动状态，共31源集、2,117个逐节点 Layers/Dev Mode 记录，位于 `docs/figma-source/home/experts/<name>/`。每一源集含 `native-inventory`、`native-parameters`、`native-image-paints`、`ui-layers`、`dev-mode`、`source-tree`、`node-to-code`、`layers-crosscheck`、`baseline.html`、`dev-styles.css` 和 `dialog-model`（日期2026-10-19）。完整源锁由 `scripts/build-home-revision.cjs` 更新，聚合面板源文件 `experts/dialog-sources-2026-10-19.json` 只用于机械转换，不重新编写内容/样式。
+
+| 首页卡片顺序 | 专家 | 桌面源状态 | 手机源状态 | 标签数 |
+| --- | --- | --- | --- | --- |
+| 1 | 徐宇 | `1432:7917/8267/8688` | `1552:39/166/377` | 3 |
+| 2 | 周莉莉 | `1432:7741/7980/8329/8558` | `1552:104/216/318/438` | 4 |
+| 3 | 柳光宇 | `1432:7801/8082/8386`、`1455:672` | `1556:581/701/883/991`；任职滚动态 `1648:1878` | 4 |
+| 4 | 陈疾忤 | `1432:7861/8194/8443/8625` | `1556:643/815/942/1058` | 4 |
+
+静态映射：`Frame 631` → `HomeExpertDialog.vue > HomeSourceNode`；原生根帧和全屏 Container → 同一原生dialog/遮罩；根节点的“信任页”截图和手机dragger是设计演示背景/设备装饰，不进入网站DOM。面板内每个子节点都按自己的ID映射，不以整张源截图代替。实际Figma头像和图标保持原填充/裁切，压缩为WebP或原生SVG。桌面面板宽896px、圆角24px、padding32px；手机宽343px、圆角20px、padding16px；各状态原始高度保存在对应 `dialog-model`，不统一硬套高度。偏离375px的手机宽度使用原Auto Layout转换的流式排版，不压缩字体/头像比例。
+
+交互接入：卡片打开本人专业擅长；切换标签保留弹窗并更新本人源树；左右键/Home/End切换标签，Escape、关闭按钮和遮罩关闭；使用原生dialog并显式处理Tab首尾循环，关闭后恢复原触发点并保持页面滚动位置。柳光宇任职手机稿包含独立固定头部/可滚动正文版本，按实际源层级处理。90个标签/视口组合及额外短屏滚动态已通过截图、焦点锁定/恢复、关闭路径和滚动恢复回归；专家状态已验收。
+
+### 当前批次验收进展 — 2026-10-21
+
+本页已按新版 Figma `1412:5682`（桌面）与 `1528:116`（手机网站根）完成主帧逐节点源锁、Dev Mode 参数复制、Node-to-Vue 映射与截图检查。当前源锁包含56个源集、5,667个原生节点、484个锁定文件和609项资源；图表由 ECharts 绘制，图片使用真实 Figma 图源并压缩为 WebP。四位专家的31个桌面/手机标签源状态已逐一接入并核验。
+
+- 交互：Hero 四状态、流程 01–04 定位、为什么来中国就医六状态弹窗、患者故事五状态轮播、FAQ 独立展开、咨询弹窗、语言/移动菜单、页脚联系方式均通过键盘、Escape、焦点恢复、触摸和关闭路径检查。
+- 动效：Hero/故事淡入、实力左侧连续滚动与右图淡入淡出、合作伙伴无缝滚动；悬停/聚焦暂停，`prefers-reduced-motion` 停止自动切换并保留可读静态状态。
+- 截图：桌面13个、手机17个源分区均在1%以内（桌面最高0.8775%，手机最高0.9215%）；专家桌面15状态最高0.4354%、手机15状态最高0.6732%、额外短屏滚动态0.7568%。指标为RGB归一化平均绝对误差nMAE，不等同于变化像素比例。六种视口（1440/768/430/390/375/320）无页面错误、横向溢出或断图。
+- 门禁证据：`artifacts/figma-2026-10-19/site/qa.json`、`page/qa.json`、`behavior/qa.json`、`dialogs/qa.json`、`experts/qa.json`；新版源审计：`scripts/audit-home-revision.mjs`。
+- Figma reference screenshot: `artifacts/figma-2026-10-19/page/1440-1412-5685-figma.png`
+- Local desktop screenshot: `artifacts/figma-2026-10-19/page/1440-1412-5685-local.png`
+- Local mobile screenshot: `artifacts/figma-2026-10-19/page/375-1528-127-local.png`
+- Verification run: `2026-10-28`（最新官方源复核；桌面验收，移动端按用户要求暂缓）
+- Remaining differences: none
+
+以下“暂停交接”和旧版 `143:45` 内容保留为历史记录，不作为当前验收状态。
+
+### 恢复开发：患者故事轮播接线 — 2026-10-20
+
+静态初始状态继续使用桌面 `1412:5853` / 手机 `1528:360` 的完整源树，不重新设计布局。桌面图片 `1466:843`、内容 `1412:5863`、标签 `1412:5866`、正文 `1412:5868`、结果 `1412:5875`、署名 `1412:5891`、入口 `1412:5892`、五个圆点 `1412:5898`–`1412:5902`；手机对应 `1528:365` / `1528:372` / `1528:375` / `1528:376` / `1528:382` / `1528:385` / `1528:386` / `1528:367`–`1528:371`。所有静态值引用现有锁定的 Dev Mode / source-tree，不从截图补样式。
+
+轮播仅替换数据字段，初始为当前新西兰 CAR-T 源内容。其余四条使用已接入页面的 Figma 内容：`cases/content-2026-09-29.json` 的 `190:5366`（Maria S.）、`190:5383`（James T.），及 `why-china` 页面原稿的新加坡肿瘤、马来西亚牙科反馈。对应原始图片沿用其已记录图源，按比例 cover，不关联不相符的患者肖像，不添加疗效/费用承诺。CAR-T 入口打开 `1407:8` / `1543:42`；其他入口去现有病例或来源页面，绝不重复打开 CAR-T 详情。
+
+交互：可见时每6.5秒切换；五个源圆点、左右键、横向手势可选；hover、focus、touch、后台标签暂停；提供键盘可见的暂停控件；reduced-motion 停止自动轮播并取消淡入淡出。切换使用 opacity，不改变静态分区几何。此记录是接线计划，最终截图与行为通过前不改 `verified`。
+
+## 当前改版批次 — 2026-10-19
+
+以下旧版 `143:45` 的参数与截图是历史记录，不是本轮新版验收证据。
+
+### 暂停交接 — 2026-10-20
+
+按用户要求暂停开发，先完成商业计划。本轮改动全部保留，未提交、未部署；首页整体尚未验收完成。
+
+- 已修复源文本的段间距、精确行布局、单边描边与 SF Pro 回退，以及弹窗小屏表格、标题、步骤编号和故事图片布局。
+- `artifacts/figma-2026-10-19/dialogs/qa.json`（`2026-10-20T14:37:21.073Z`）：六组 why 弹窗及故事弹窗在1440/375宽的局部截图 nMAE 均低于1%，桌面最高0.790%、手机最高0.581%。320/375/390/430/768/1440宽无脚本错误或弹窗横向溢出，关闭后滚动位置保持。局部结果不代表整页通过。
+- 流程02–04局部桌面对比为0.099%/0.777%/0.332%，实力三状态为0.307%/0.259%/0.243%。相关新版源树及实现已接入，下方旧进展中“流程02–04仍为旧DOM”的描述已被本交接更新。
+- 恢复时先复看最后一轮320/390/430等自适应弹窗截图，再核验 Hero 各状态、手机导航、合作伙伴滚动、故事轮播及真实交互动效。最后完成整页桌面/手机截图、生产构建和门禁，不能直接沿用局部通过结论。
+
+- 当前桌面完整源帧：`1412:5682`，`1440 × 8921px`；主体 `1412:5684`，`1440 × 8465px`。
+- 当前手机完整源帧：`1528:115`，`375 × 7652px`。已存在独立手机设计，不再使用“无手机源帧”的旧结论。
+- 官方来源：通过 Figma `File → Save local copy…` 导出的 `/Users/hhm/Downloads/寰宇云医.fig`，导出时间 `2026-10-19T08:48:03.302Z`，SHA-256 `0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c`。
+- 桌面递归目录/参数/图片填充：`docs/figma-source/home/native-{inventory,parameters,image-paints}-2026-10-19.json`，1138 个节点，其中985个可见、153个隐藏，135条图片填充。
+- 手机递归目录/参数/图片填充：`docs/figma-source/home/native-{inventory,parameters,image-paints}-mobile-2026-10-19.json`，764 个节点，其中762个可见、2个隐藏，43条图片填充。
+- 便于检索的精简目录：`native-node-index-2026-10-19.json`、`native-node-index-mobile-2026-10-19.json`，含父节点、同级顺序、显隐、尺寸、坐标和文字；不是UI Layers交叉核验证明。
+- 当前阶段：主帧的UI Layers、逐节点Dev Mode/CSS、HTML/CSS基线及Vue映射已生成。桌面1138个原生节点与UI目录一致；手机764个原生节点与UI目录一致，额外16个UI设备装饰节点不属于网站。独立核验结果见两份 `layers-crosscheck*-2026-10-19.json`。原始导出中的 `layersCrossCheck: false` 保留为提取时状态，不篡改历史字段。
+- 例外口径：源稿中的 `$185起` 不覆盖用户后续明确要求的专家面诊 `$200`；手机稿里的系统状态栏、网页容器导航、底部手势条不是网站组件，不复制进网页DOM。
+- 首页主分区及首页Header/Footer已经接入 `HomeSourceNode.vue` / `HomeFigmaSection.vue` 的真实节点DOM；图表保留ECharts。未修改后端、管理端及报告生成行为，尚未发布。
+
+### 当前实现及核验状态（续）
+
+- 完整递归映射：`node-to-code-2026-10-19.json`、`node-to-code-mobile-2026-10-19.json`；运行时每个源元素带 `data-figma-node`。985个桌面可见节点、748个手机网站可见节点分别由Vue DOM、精确SVG或ECharts负责。
+- 手机01–04已分别使用源帧366/720/742/462px结构；医院、专家、疾病与陪伴卡片为原生横滑。FAQ可独立展开，语言菜单及Escape关闭已经接线，仍需完成最终状态截图与回归。
+- 图片由原始Figma图源压缩为WebP（quality 90、最长边2048）；保留Dev Mode裁切、原生镜像矩阵及图片填充自身的30%/50%透明度，不把整块节点一起透明化。
+- 正在处理：ECharts手机几何/图例、320px内部文字截断、图源裁切差异，以及流程02–04、实力其他状态的完整Dev Mode补录和接入。
+- 桌面流程02–04目前仍保留旧DOM；Hero其他状态、故事轮播、实力滚动与合作伙伴滚动尚未完成新版核验。不能据主帧已映射就声称整个首页已完成。
+- 阶段性本地截图在忽略目录 `artifacts/figma-2026-10-19/`；目前不是最终验收证据。最新类型检查通过，但整页<1%、全部交互/动效及生产门禁尚未通过。
+
+### 新版桌面分区目录
+
+| 顺序 | 分区 | Node ID | 尺寸 | 已确认变化 |
+| ---: | --- | --- | --- | --- |
+| 1 | Hero | `1412:5685` | 1440×754 | 独立新源绑定，仍有真实患者声音状态 |
+| 2 | 来华就医流程 | `1412:5718` | 1440×516 | 01–04入口保留用户已确认的站内定位逻辑 |
+| 3 | 为什么来中国就医 | `1412:5765` | 1440×1208 | 六卡片与状态继续逐节点核对 |
+| 4 | 患者故事 | `1412:5853` | 1440×720 | 首个故事改为新西兰CAR-T病例，图片和详情入口需一起更新 |
+| 5 | 就医全程陪伴 | `1412:6019` | 1440×544 | 保留就诊前、中、后三阶段 |
+| 6 | 陪你走全程的人 | `1412:6055` | 1440×596 | 医疗管家、陪诊翻译、医学顾问、海外协调 |
+| 7 | 中国医疗数据优势 | `1412:6092` | 1440×740 | 继续使用ECharts，不以导出图代替图表 |
+| 8 | 权威合作医院 | `1412:6313` | 1440×703 | 四家合作医院 |
+| 9 | 权威专家团队 | `1412:6350` | 1440×647 | 徐宇、周莉莉、柳光宇、陈疾忤替换旧专家内容；旧分区高667px |
+| 10 | 我们的实力 | `1442:343` | 1440×834 | 整页内分区高834px，旧基线699px；保留另两状态再核对滚动实现 |
+| 11 | 合作伙伴 | `1412:6495` | 1440×791 | 新实例下继续核对完整未虚化图源与固定边缘渐隐 |
+| 12 | 末尾CTA | `1412:6635` | 1440×412 | 面诊价格按用户明确要求保留200美元 |
+| 13 | 页脚 | `1412:6672` | 1440×456 | 与手机514px页脚分别绑定 |
+| 14 | 页头（覆盖层） | `1412:6749` | 1440×64 | 与手机52px导航分别绑定 |
+
+上述分区索引不是完整Node-to-Vue映射。新版完成前，不能引用下方历史的 `Remaining differences: none`。
+
+## Mobile adaptation correction — 2026-10-10
+
+The source remains the desktop hierarchy and node-linked parameters above; there is no independent mobile source frame. Mobile rules are responsive adaptations, not new Figma measurements. Up to 700px, hospital image node `143:681` and its three siblings retain their source square crop in a two-column grid, with 16px gaps/radii, 16/24px titles and 13/20px descriptions. This responds to the customer's oversized-phone-card feedback; full hospital names remain readable. Patient stories use a proportional 4:3 image capped at 240px, natural text height, 20px padding and a non-wrapping CTA. Up to 900px, ECharts renders the same recorded country/medical data at the available width and a 280px reading height, with 11px labels and wrapping legends instead of shrinking a desktop canvas. Desktop chart coordinates remain unchanged. Resize observation updates charts after viewport/container changes. Mobile partner logos keep their source proportions in 1785 x 236px loop tiles with fixed edge fades, matching the insurance-page adaptation. Verification is generated locally under ignored `artifacts/mobile-responsive-2026-10-10/`.
+
+### Customer-requested case autoplay
+
+The static story (`143:209`, image `143:218`, content `143:219`, controls `143:257`–`143:260`) retains its desktop geometry and M·A copy at the initial state. The other two slides reuse the already implemented Maria S. and James T. patient-case source content and portraits recorded in `docs/figma-source/cases/content-2026-09-29.json`; their descriptions are case backgrounds, not invented patient quotations or treatment outcomes. Image/content/dots change together every 6.5 seconds while the section is visible. Dot selection and horizontal touch swipe work manually. Hover, keyboard focus, touch interaction, background tabs and reduced motion pause automatic changes. Slides share a grid row so different copy lengths cannot move the following section. Between 701px and 1199px, the image/content columns use a 34:66 ratio with the existing 24px gap and natural shared height (at least 400px); the bottom row wraps and the CTA never wraps its label. Up to 900px the content padding is 24px and quote type is 20/30px. These behavior and responsive sizes are explicit customer adaptations, not new desktop Figma parameters.
 
 ## Layer Mapping
+
+The strength section uses a natural-flow list of all three authored text/image states up to 900px, avoiding the desktop fixed reading window on tablets. Its section spacing is applied once; all imagery remains proportional.
 
 | Figma Node ID | Figma layer name/type | Parent Node ID | Vue component/element | Dev Mode values copied | Asset/state notes |
 | --- | --- | --- | --- | --- | --- |
@@ -297,3 +426,14 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 
 - 2026-09-29: `audit-home-source.mjs` passed all 1103 main-frame nodes; three alternate Banner HTML/text-style exports and exact image/icon source IDs are recorded. `home-style-audit.cjs` found zero section text-style differences. Final full-page screenshot comparison ratio is `0.0125029178` at pixel threshold `0.15`, excluding antialiasing; this is a diagnostic rasterization measure, not a substitute for visual review. Desktop geometry is `1440 x 8806px`, matching the source exactly; mobile has no overflow or broken assets. `vue-tsc -b`, direct Vite production compilation, and `git diff --check` passed. Full-site `pnpm run build` is still blocked by missing `/tmp` verification screenshot files referenced by other page specs, not by the homepage.
 - 2026-09-24: Re-read the complete Dev Mode HTML/CSS source after expanding the code panel; verified all twelve section node IDs, authored desktop heights, source assets, carousel timing, reveal motion, and mobile overflow evidence.
+
+## 2026-10-28 desktop source refresh
+
+- Scope: desktop only, per current user instruction; mobile source is frozen.
+- Live source: `1523:31` (1440 × 754), IAB session `01a0bebd-b6f9-7fd3-bf5a-b79501589b80`, browser `3`, tab `1`, verified 2026-10-28T16:10:40Z through `scripts/figma-connect.mjs`.
+- The long page and existing separate states are unchanged by the native full-file comparison. The separate first screen has 89 current nodes, all cross-checked through Layers and copied from Dev Mode before integration.
+- Parameter files / full mapping / static HTML: `docs/figma-source/home/revision-2026-10-28/hero/`, date `2026-10-28`. Build lock is at its parent. New logo `2326:8518` is the selected Figma 2× crop, compressed to WebP, not a replacement logo.
+- Runtime mapping: `1523:33` → `HomeHeroSection`; `1523:75` → `PatientHeader`; `1524:26` → header hover/focus submenu; `1523:119` → body-teleported fixed assistant at right 24 / bottom 24, 158 × 44. Descendants render through `HomeSourceNode`; every ID has a concrete ownership entry.
+- Green design annotations: cards/FAQ initially collapsed; blue detail links appear on hover/focus only; non-action cards have no hover treatment. These instructions override the expanded example state in static frames.
+- Existing API/report generation remains unchanged. Assistant dispatches the existing consultation event. Specialty menu points to the existing disease service route; categories without designed destinations remain non-navigating.
+- Status: verified desktop; source locks and eight current QA groups passed; mobile deferred by user.

@@ -1,4 +1,25 @@
 <script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import ContentArticleCanvas from '@/components/common/ContentArticleCanvas.vue'
+import { toolkitArticles } from '@/data/contentFigmaSource'
+const route = useRoute()
+const router = useRouter()
+const article = computed(() => typeof route.query.article === 'string' && toolkitArticles[route.query.article] ? route.query.article : undefined)
+watch(() => route.query.article, value => {
+  // Unknown article keys must not silently display an unrelated article.
+  if (value && (typeof value !== 'string' || !toolkitArticles[value])) void router.replace({ path: route.path })
+}, { immediate: true })
+watch(article, key => { document.title = `${key ? toolkitArticles[key]!.title : '病历翻译与整理工具'} | 寰宇云医` }, { immediate: true })
+const viewportWidth = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
+watch([article, viewportWidth], ([key, width]) => {
+  // New content is desktop-only until the user confirms the mobile design.
+  // Never show the translation article under another article's URL.
+  if (key && width <= 900) void router.replace('/trust')
+}, { immediate: true })
+const updateViewport = () => { viewportWidth.value = window.innerWidth }
+onMounted(() => window.addEventListener('resize', updateViewport, { passive: true }))
+onBeforeUnmount(() => window.removeEventListener('resize', updateViewport))
 const sections = [
   { label: '来华就医可行性评估', id: 'assessment' },
   { label: '签证申请清单', id: 'visa' },
@@ -62,7 +83,8 @@ const bottomLines = [
 </script>
 
 <template>
-  <div class="toolkit-detail-page" data-page="steps-toolkit-detail">
+  <ContentArticleCanvas v-if="viewportWidth > 900" :key="article || 'translation'" source="toolkit" :article="article" :width="viewportWidth" />
+  <div v-else class="toolkit-detail-page" data-page="steps-toolkit-detail">
     <div class="toolkit-detail-shell">
       <article class="toolkit-detail-article">
         <RouterLink class="toolkit-detail-back" to="/trust" data-figma-node="143:3065"><span aria-hidden="true">‹</span> 返回信任与常见问题</RouterLink>

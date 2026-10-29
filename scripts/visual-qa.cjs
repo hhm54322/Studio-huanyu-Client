@@ -38,15 +38,15 @@ async function captureBaseline(page, destination, geometry) {
 async function main() {
   const [name = 'about', route = '/about', reference] = process.argv.slice(2)
   const runDate = process.env.HUANYU_QA_DATE || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })
-  const out = path.resolve('docs/figma-verification', name, runDate)
+  const out = process.env.HUANYU_QA_OUT ? path.resolve(process.env.HUANYU_QA_OUT) : path.resolve('docs/figma-verification', name, runDate)
   await fs.mkdir(out, { recursive: true })
-  const browser = await chromium.launch({ headless: true })
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.HUANYU_QA_BROWSER })
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 })
     const errors = []
     page.on('pageerror', error => errors.push(error.message))
     const results = []
-    for (const width of [1440, 390]) {
+    for (const width of (process.env.HUANYU_QA_WIDTHS || '1440,390').split(',').map(Number)) {
       await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 })
       // Capture the authored resting state; animated carousels/marquees must not advance during the baseline diff.
       await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -58,6 +58,12 @@ async function main() {
       }
       await page.evaluate(() => scrollTo(0, 0))
       await page.waitForTimeout(1200)
+      if (process.env.HUANYU_QA_OPEN_SERVICES === '1' && width === 1440) {
+        await page.locator('.desktop-services-trigger').click()
+        await page.locator('#desktop-services-menu').waitFor({ state: 'visible' })
+        await page.mouse.move(0, 0)
+        await page.waitForTimeout(350)
+      }
       const geometry = await page.evaluate(() => ({
         width: innerWidth,
         height: document.documentElement.scrollHeight,
@@ -107,6 +113,7 @@ async function main() {
       await sharp(diff, { raw: { width: 1440, height, channels: 4 } }).png().toFile(path.join(out, 'diff.png'))
       let measuredChanged = changed
       let measuredPixels = 1440 * height
+      let measuredA = a, measuredB = b
       if (nativeReference) {
         const nativeLocal = path.join(out, 'local-1440-2x.png')
         const nativeMeta = await sharp(nativeRef).metadata()
@@ -116,9 +123,16 @@ async function main() {
         const nativeB = await sharp(nativeLocal).extend({ bottom: nativeHeight - localNativeMeta.height, background: '#00ffff' }).ensureAlpha().raw().toBuffer()
         measuredChanged = pixelmatch(nativeA, nativeB, null, nativeMeta.width, nativeHeight, { threshold: 0.15, includeAA: false })
         measuredPixels = nativeMeta.width * nativeHeight
+        measuredA = nativeA
+        measuredB = nativeB
       }
+      let absoluteError = 0
+      for (let pixel = 0; pixel < measuredA.length; pixel += 4) {
+        for (let channel = 0; channel < 3; channel++) absoluteError += Math.abs(measuredA[pixel + channel] - measuredB[pixel + channel])
+      }
+      const nMAE = absoluteError / (measuredPixels * 3 * 255)
       await sharp(ref).extend({ bottom: height - refMeta.height, background: '#ff00ff' }).composite([{ input: await sharp(local).ensureAlpha(0.5).toBuffer(), blend: 'over' }]).png().toFile(path.join(out, 'overlay.png'))
-      results.push({ referenceHeight: refMeta.height, localHeight: localMeta.height, changedPixelRatio: measuredChanged / measuredPixels, comparison: nativeReference ? 'native-2x' : '1440-css-pixels' })
+      results.push({ referenceHeight: refMeta.height, localHeight: localMeta.height, changedPixelRatio: measuredChanged / measuredPixels, nMAE, comparison: nativeReference ? 'native-2x' : '1440-css-pixels' })
       for (const [index, section] of results[0].sections.entries()) {
         const top = Math.round(section.y)
         const sectionHeight = Math.min(Math.round(section.height), refMeta.height - top)

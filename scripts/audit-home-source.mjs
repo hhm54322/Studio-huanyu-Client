@@ -56,3 +56,5 @@ if (invalidDevMode.length) console.error(`Misattributed Dev Mode records (${inva
 if (invalidAssets.length) console.error(`Asset IDs absent from Layers: ${invalidAssets.map((asset) => asset.nodeId).join(', ')}`)
 if (missingSupplementalBaselines.length) console.error(`Missing supplemental Banner source: ${missingSupplementalBaselines.join(', ')}`)
 if (missingCss.length || missingMapping.length || invalidDevMode.length || invalidAssets.length || missingSupplementalBaselines.length) process.exitCode = 1
+
+if (/Node ID: `1412:5682`/.test(spec)) await import('./audit-home-revision.mjs')

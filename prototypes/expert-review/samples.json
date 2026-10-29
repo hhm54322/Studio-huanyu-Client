@@ -1,0 +1,2597 @@
+{
+  "professional": {
+    "id": "REAL-UPLOAD-PRO-PREVIEW",
+    "date": "2026年06月16日",
+    "title": "右侧乳腺癌术后复查，疑似复发/转移需确认 来华就医专业评估报告",
+    "subtitle": "Professional China Medical Travel Assessment",
+    "patientSnapshot": {
+      "patient": "***",
+      "profile": "female；Malaysia；***",
+      "primaryNeed": "右侧乳腺癌术后复查，上传病理、PET/CT、骨扫描、影像和检查报告图片，想确认是否存在复发或转移信号，以及下一步来华就医评估和治疗路径。；就医诉求：寻求第二诊疗意见；期望治疗时间：1-3个月",
+      "diagnosisStatus": "右侧乳腺癌术后复查，疑似复发/转移需确认；上传资料中包含病理、PET/CT和复查影像，需按原始资料复核分期和转移情况",
+      "dataCompleteness": 69,
+      "uploadedFiles": [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.jpg",
+        "5.jpg",
+        "6.jpg",
+        "7.jpg"
+      ],
+      "parsedFiles": [
+        {
+          "file": "1.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：医学资料；2024-08-29；Kesan:Asymetrikal density suspek maligna di kwadran superolateral kanan(BIRADS 4)；Kesan:Lesi solid suspek maligna di kwadran lateral kanan(BIRADS 4).Lesi solid benigna periareofa；kwadran inferior kiri(BIRADS 2)."
+        },
+        {
+          "file": "2.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：病理/免疫组化报告；2024-09-20；Impression:；NOTE:Mammography and other imaging investigations may not reveal 10-15%of cancers.In all cases the clinical；Few enlarged right axiilary lymph nodesee Shottysubcetimeterodnthexa."
+        },
+        {
+          "file": "3.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：PET/CT全身扫描；2026-04-14；IMPRESSIONS；Right breast carcinoma status post operation and chemoradiotherapy.；The brain shows no abnormal FDG-avid focus(brain metastases are better resolved with MRI in"
+        },
+        {
+          "file": "4.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：骨扫描/骨显像"
+        },
+        {
+          "file": "5.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：医学资料；dr.***,M.Sc.；dr.***.Sp.Rad (K)；Kesan Kardiomegal Tidak tampak kelainan pada paru."
+        },
+        {
+          "file": "6.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：PET/CT全身扫描；2026-04-14；Right breast carcinoma status post surgery(2025)and chemoradiotherapy.PET/CT scan for；Two small FDG avid lymph nodes at the right subpectoral region measuring up to 0.9 cm with；Multiple small FDG avid lymph nodes at the mediastinal paratracheal,pre and subcarinal"
+        },
+        {
+          "file": "7.jpg",
+          "status": "parsed",
+          "summary": "结构化识别：病理/免疫组化报告；2024-09-06；Suspek carcinoma mamma dextra T2N1Mx；Invasive carcinoma of no special type(NST).；Luminal B-like(HER2 negative)breast carcinoma"
+        }
+      ]
+    },
+    "executiveSummary": [
+      "主诉：右侧乳腺癌术后复查，疑似复发/转移需确认",
+      "关键指标：BIRADS 4/5、PET/CT 骨骼/淋巴结/肝脏高代谢、Ki-67 70% 提示高增殖活性",
+      "来华价值：获取第二诊疗意见以优化系统治疗路径，尤其针对疑似转移灶的精准评估",
+      "治疗目标：快速确认复发/转移状态，启动个体化系统治疗（内分泌/化疗/靶向），同步管理骨/肝风险",
+      "资料缺口：TNM 分期完整报告缺失；原手术病理未上传；近期骨扫描/肝功能/血常规未提供；基因检测未提及"
+    ],
+    "diagnosticConclusion": {
+      "finalImpression": "基于上传资料，本例高度怀疑乳腺癌术后复发或转移性病变，需结合原始影像和病理复核",
+      "severityInterpretation": "高优先级：PET/CT 显示多部位高代谢（骨、淋巴结、肝、肺），结合 Ki-67 70% 和 HER2-，提示可能为转移性乳腺癌",
+      "indicatorInterpretations": [
+        {
+          "indicator": "BIRADS 4/5：影像学提示可疑恶性，需活检确认",
+          "value": "见资料",
+          "interpretation": "BIRADS 4/5：影像学提示可疑恶性，需活检确认"
+        },
+        {
+          "indicator": "SUVmax 9.2：FDG 高摄取可能反映转移活性，但需排除炎症等",
+          "value": "见资料",
+          "interpretation": "SUVmax 9.2：FDG 高摄取可能反映转移活性，但需排除炎症等"
+        },
+        {
+          "indicator": "Ki-67 70%：高增殖指数，预示侵袭性强，需紧急评估",
+          "value": "见资料",
+          "interpretation": "Ki-67 70%：高增殖指数，预示侵袭性强，需紧急评估"
+        },
+        {
+          "indicator": "HER2-：排除抗 HER2 靶向治疗选项",
+          "value": "见资料",
+          "interpretation": "HER2-：排除抗 HER2 靶向治疗选项"
+        }
+      ],
+      "evidenceBasis": [
+        "来自 2026-04-14 PET/CT 骨/肝/淋巴结高代谢",
+        "2024-09-06 病理显示 Luminal B-like",
+        "既往治疗后状态"
+      ]
+    },
+    "clinicalAssessment": {
+      "workingDiagnosis": "右侧乳腺癌术后，疑似局部复发/远处转移",
+      "severity": "中高危：多部位可疑转移线索（骨/肝/肺），需 48 小时内专科评估",
+      "keyFindings": [
+        "病理：Invasive carcinoma NST, Luminal B-like (HER2-), Ki-67 70%",
+        "影像：Mammo BIRADS 4, PET/CT 骨骼/淋巴结/肝脏/肺部 FDG 阳性",
+        "既往：2025 年手术+放化疗，但未提供具体方案细节",
+        "无 TNM 分期完整报告",
+        "无基因检测 (如 BRCA) 或近期实验室检查"
+      ],
+      "redFlags": [
+        "骨转移可能：骨痛、病理性骨折风险",
+        "肝转移可能：黄疸、腹水、肝功能异常",
+        "淋巴结转移：可能影响治疗范围",
+        "肺部结节：需排除转移或新发肿瘤",
+        "急症症状：骨痛、呼吸困难、黄疸应立即当地处理"
+      ],
+      "missingMaterials": [
+        "TNM 分期完整报告",
+        "原始手术病理报告 (2025 年)",
+        "基因检测 (如 BRCA1/2)",
+        "近期骨扫描/肝功能/血常规",
+        "原病理切片 (用于 IHC 复核)"
+      ],
+      "decisionQuestions": [
+        "是否需活检确认转移灶受体状态 (ER/PR/HER2/Ki-67)？",
+        "既往放化疗方案细节是否完整？",
+        "有无骨痛、肝区不适或呼吸症状？",
+        "是否已做骨扫描/CT 排除其他原因？",
+        "分子分型是否支持内分泌治疗优先？"
+      ]
+    },
+    "treatmentPathway": {
+      "goal": "确认复发/转移状态，制定系统治疗 (如内分泌+CDK4/6、化疗、骨保护) 并管理并发症",
+      "phases": [
+        {
+          "phase": "资料复核",
+          "timeline": "立即",
+          "actions": [
+            "提交所有 DICOM 原片",
+            "整理病理/IHC 报告",
+            "提供既往治疗清单"
+          ],
+          "output": "MDT 评估报告 (肿瘤内科+影像科+外科)"
+        },
+        {
+          "phase": "初步治疗启动",
+          "timeline": "1-2 周内",
+          "actions": [
+            "根据 MDT 决定一线方案 (如芳香化酶抑制剂+CDK4/6 或化疗)"
+          ],
+          "output": "个体化治疗计划书"
+        },
+        {
+          "phase": "长期管理",
+          "timeline": "持续随访",
+          "actions": [
+            "定期骨扫描/CT",
+            "监测骨痛/肝功能",
+            "调整方案基于疗效"
+          ],
+          "output": "随访方案及并发症预防计划"
+        }
+      ]
+    },
+    "prognosisComparison": {
+      "positioning": "本节基于上传资料识别到的乳腺癌复发/转移线索，聚焦疾病阶段、系统治疗窗口、骨相关事件风险和随访基线。",
+      "metrics": [
+        {
+          "metric": "疾病阶段",
+          "currentRisk": "资料提示骨骼、肝脏、肺部等部位存在疑似复发或转移信号（如PET显示骨/肝高代谢灶）",
+          "chinaReference": "中国肿瘤中心可通过病理复核、原始影像和MDT确认转移性乳腺癌治疗路径",
+          "note": "报告阶段不替代医生诊断，但该信号应作为最高优先级处理"
+        },
+        {
+          "metric": "系统治疗窗口",
+          "currentRisk": "若确认为HR+/HER2-转移性乳腺癌，治疗重点通常转向系统治疗和疗效评估",
+          "chinaReference": "可评估内分泌联合CDK4/6抑制剂、化疗、骨保护和局部姑息治疗组合",
+          "note": "具体方案取决于既往治疗、内脏危象、肝功能和患者体力状态"
+        },
+        {
+          "metric": "骨相关事件风险",
+          "currentRisk": "骨转移线索提示疼痛、骨折或脊髓压迫风险需要主动管理",
+          "chinaReference": "可同步安排骨保护药物、止痛、放疗或骨科/放疗科会诊评估",
+          "note": "尤其关注脊柱、骨盆、髋臼等承重部位"
+        }
+      ],
+      "conclusion": "该类病例的关键不是单纯寻找医院，而是整合病理受体状态、影像进展、既往治疗和当前症状形成系统治疗决策，并建立跨境随访闭环"
+    },
+    "technologyAdvantages": [
+      {
+        "technology": "AI 影像分析：快速识别 BIRADS 4/5 和 SUVmax 异常，提升可疑病灶检出率",
+        "value": "AI 影像分析：快速识别 BIRADS 4/5 和 SUVmax 异常，提升可疑病灶检出率",
+        "applicability": "需结合当前资料和医生预审确认适用性"
+      },
+      {
+        "technology": "多模态整合：结合病理 (Luminal B)、PET/CT (骨/肝转移线索) 和既往治疗，优化决策",
+        "value": "多模态整合：结合病理 (Luminal B)、PET/CT (骨/肝转移线索) 和既往治疗，优化决策",
+        "applicability": "需结合当前资料和医生预审确认适用性"
+      },
+      {
+        "technology": "远程 MDT：跨北京/上海/广州 专家协作，1-3 天内提供第二意见",
+        "value": "远程 MDT：跨北京/上海/广州 专家协作，1-3 天内提供第二意见",
+        "applicability": "需结合当前资料和医生预审确认适用性"
+      }
+    ],
+    "costBreakdown": {
+      "currencyNote": "说明中国医院通常按人民币收费，并给出1 USD≈7.2 RMB参考；费用因治疗强度、药物品牌、住院天数、汇率、保险和城市而波动",
+      "medical": {
+        "title": "核心医疗费用",
+        "total": "¥31,320-¥141,602（约$4,350-$19,667）",
+        "items": [
+          {
+            "item": "病理复核与免疫组化确认",
+            "cost": "¥3,600-¥12,000（约$500-$1,667）",
+            "note": "基于上传病理报告，需确认ER/PR/HER2状态和Luminal分型；转移灶需讨论再活检"
+          },
+          {
+            "item": "PET/CT原片复核与补充检查",
+            "cost": "¥8,640-¥28,800（约$1,200-$4,000）",
+            "note": "包括影像会诊、必要时肝脏增强MRI/CT、头颅增强MRI（有脑转移线索时）和骨扫描复核；骨转移风险需评估"
+          },
+          {
+            "item": "转移灶活检与分子检测",
+            "cost": "¥10,080-¥36,000（约$1,400-$5,000）",
+            "note": "若新发转移灶需穿刺活检；讨论PIK3CA、ESR1、BRCA等检测"
+          },
+          {
+            "item": "内分泌治疗初评与CDK4/6抑制剂启动",
+            "cost": "¥9,000-¥64,800（约$1,250-$9,000）",
+            "note": "HR+/HER2-常见方案；国产/进口药选择影响月费用，需医生确认"
+          }
+        ]
+      },
+      "services": {
+        "title": "配套服务费用",
+        "total": "¥20,880-¥59,040（约$2,900-$8,200）",
+        "items": [
+          {
+            "item": "病历整理与医学翻译",
+            "cost": "¥2,880-¥8,640（约$400-$1,200）",
+            "note": "将多语言资料转为结构化报告；翻译需专业医学术语"
+          },
+          {
+            "item": "专家预审与医院对接",
+            "cost": "¥5,760-¥18,000（约$800-$2,500）",
+            "note": "根据资料匹配科室和医生；减少无效等待"
+          },
+          {
+            "item": "全程陪诊与国际协调",
+            "cost": "¥8,640-¥21,600（约$1,200-$3,000）",
+            "note": "覆盖首诊安排、检查协调和跨语言沟通；适合复杂病例"
+          },
+          {
+            "item": "远程随访与方案调整",
+            "cost": "¥3,600-¥10,800（约$500-$1,500）",
+            "note": "治疗后跟踪疗效和副作用；支持回国后管理"
+          }
+        ]
+      },
+      "living": {
+        "title": "生活费用",
+        "total": "¥15,120-¥45,720（约$2,100-$6,350）",
+        "items": [
+          {
+            "item": "国际往返机票",
+            "cost": "¥4,320-¥12,960（约$600-$1,800）",
+            "note": "按出发地、季节浮动；紧急时可考虑直飞"
+          },
+          {
+            "item": "医疗签证与邀请函",
+            "cost": "¥1,080-¥3,600（约$150-$500）",
+            "note": "签证材料需医院邀请函；建议提前准备"
+          },
+          {
+            "item": "在华住宿",
+            "cost": "¥6,480-¥19,440（约$900-$2,700）",
+            "note": "按城市和天数浮动；北京/上海较高"
+          },
+          {
+            "item": "餐饮交通与日常支持",
+            "cost": "¥3,240-¥9,720（约$450-$1,350）",
+            "note": "按停留天数和陪同人数调整；紧急时预留应急预算"
+          }
+        ]
+      },
+      "grandTotal": "¥67,320-¥246,362（约$9,350-$34,217）",
+      "volatilityNote": "上述为初步评估费用；实际因具体方案、药物选择和住院天数变化大；完整费用需医生面诊后确认"
+    },
+    "countryComparison": [
+      {
+        "flag": "🇨🇳",
+        "country": "中国",
+        "cost": "$15,000 - $28,000",
+        "waitTime": "资料完整后优先加急预审；急症需先当地处理",
+        "strengths": "乳腺癌专科资源丰富，MDT团队成熟；适合快速评估复发/转移和治疗路径",
+        "limitations": "需提前准备完整英文/中文病历；最终方案以面诊为准",
+        "fitScore": 90,
+        "recommended": true
+      },
+      {
+        "flag": "🇲🇾",
+        "country": "马来西亚",
+        "cost": "$12,000 - $32,000",
+        "waitTime": "1-3周",
+        "strengths": "本地化服务好，语言无障碍；适合初步评估和简单复查",
+        "limitations": "复杂转移病例资源有限；跨境随访便利性一般",
+        "fitScore": 80
+      },
+      {
+        "flag": "🇸🇬",
+        "country": "新加坡",
+        "cost": "$30,000 - $70,000",
+        "waitTime": "1-3周",
+        "strengths": "亚洲高水平医疗，双语环境；适合东南亚患者就近评估",
+        "limitations": "部分高端药需自费；费用较高",
+        "fitScore": 75
+      },
+      {
+        "flag": "🇺🇸",
+        "country": "美国",
+        "cost": "$80,000 - $180,000",
+        "waitTime": "2-8周",
+        "strengths": "新药和临床试验可及性强；精准医疗先进",
+        "limitations": "流程复杂；跨境随访成本高",
+        "fitScore": 70
+      },
+      {
+        "flag": "🇨🇦",
+        "country": "加拿大",
+        "cost": "$45,000 - $100,000",
+        "waitTime": "公立等待长；私立资源有限",
+        "strengths": "医疗规范高；适合简单复查",
+        "limitations": "国际患者通道少；语言可能障碍",
+        "fitScore": 65
+      }
+    ],
+    "hospitalRecommendations": [
+      {
+        "city": "上海",
+        "hospital": "复旦大学附属肿瘤医院",
+        "department": "乳腺肿瘤内科/MDT",
+        "whyFit": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+        "preparation": "提交PET/CT DICOM、病理报告、手术记录；确认是否需再活检",
+        "matchScore": 92
+      },
+      {
+        "city": "北京",
+        "hospital": "中国医学科学院肿瘤医院",
+        "department": "乳腺肿瘤中心",
+        "whyFit": "适合疑难病例如多灶复发、HER2状态不明；国家级平台可处理复杂检测",
+        "preparation": "整理完整治疗史和最新检查；预审时说明紧急需求",
+        "matchScore": 90
+      },
+      {
+        "city": "广州",
+        "hospital": "中山大学肿瘤防治中心",
+        "department": "乳腺肿瘤科",
+        "whyFit": "适合华南患者就近评估；资源丰富且费用相对适中；可衔接后续治疗",
+        "preparation": "提供区域和预算范围；讨论是否需短期住院",
+        "matchScore": 85
+      }
+    ],
+    "itinerary": [
+      {
+        "dayRange": "D-10至D-3",
+        "stage": "远程资料预审",
+        "tasks": [
+          "上传所有影像和报告",
+          "整理病史时间线",
+          "医生初步判断是否需要紧急处理"
+        ]
+      },
+      {
+        "dayRange": "D-2至D0",
+        "stage": "确认行程与预算",
+        "tasks": [
+          "锁定医院和日期",
+          "准备签证和保险",
+          "确认住宿和翻译"
+        ]
+      },
+      {
+        "dayRange": "D1-D5",
+        "stage": "抵华建档与初检",
+        "tasks": [
+          "国际部登记",
+          "乳腺肿瘤首诊",
+          "完成血常规、肝肾功能等基础检查"
+        ]
+      },
+      {
+        "dayRange": "D6-D14",
+        "stage": "MDT与方案确认",
+        "tasks": [
+          "多学科会诊",
+          "决定活检或分子检测",
+          "制定首阶段治疗计划"
+        ]
+      },
+      {
+        "dayRange": "D15-D21+",
+        "stage": "启动治疗或回国衔接",
+        "tasks": [
+          "如适合开始治疗",
+          "整理出院计划",
+          "安排回国后随访"
+        ]
+      }
+    ],
+    "servicePlan": [
+      {
+        "service": "病历翻译与整合",
+        "value": "将病理、影像报告等转为医院可读格式"
+      },
+      {
+        "service": "专家预审",
+        "value": "根据资料匹配专家，减少现场等待"
+      },
+      {
+        "service": "医院协调",
+        "value": "预约检查、床位和跨科室沟通"
+      },
+      {
+        "service": "签证与行程支持",
+        "value": "协助准备医疗邀请函和行程安排"
+      },
+      {
+        "service": "费用与保险协助",
+        "value": "提供费用明细和保险预授权指导"
+      }
+    ],
+    "paymentAndInsurance": [
+      "核心医疗、增值服务、生活费用分开预估",
+      "联系医院确认支付方式",
+      "商业保险覆盖范围需提前核实",
+      "准备人民币/美元支付方案"
+    ],
+    "risksAndDisclaimers": [
+      "资料不完整：可能影响诊断准确性，需补充关键检查",
+      "医生最终确认：所有建议需主治医师签字，跨境方案需本地化调整",
+      "费用波动：不同医院/方案费用差异大 (如 CDK4/6 月费 1-3 万人民币)",
+      "跨境急症：骨痛、呼吸困难等应先当地急诊处理，避免延误"
+    ],
+    "nextSteps": [
+      "如有骨痛、呼吸困难、黄疸或发热，立即当地急诊并携带 PET/CT 报告",
+      "整理上传文件：病理报告 (2024-09-06)、PET/CT DICOM 原片、既往手术/放化疗记录",
+      "发起北京/上海/广州乳腺肿瘤 MDT 远程会诊 (附中文摘要)",
+      "准备中文/英文摘要：用于国际专家快速理解病情",
+      "评估来华时间：优先 1-2 周内初诊，避开急性期"
+    ],
+    "tabs": [
+      {
+        "key": "records",
+        "label": "上传资料解读",
+        "labelEn": "Medical Records",
+        "icon": "FileSearch",
+        "summary": "已基于上传病理、影像和PET/CT资料整理出乳腺癌术后复发/转移方向的核心结论、时间线和下一步复核重点。",
+        "blocks": [
+          {
+            "type": "notice",
+            "title": "核心资料结论",
+            "description": "基于上传资料，本例高度怀疑乳腺癌术后复发或转移性病变，需结合原始影像和病理复核",
+            "tone": "highlight",
+            "items": [
+              "高优先级：PET/CT 显示多部位高代谢（骨、淋巴结、肝、肺），结合 Ki-67 70% 和 HER2-，提示可能为转移性乳腺癌",
+              "病理：Invasive carcinoma NST, Luminal B-like (HER2-), Ki-67 70%",
+              "影像：Mammo BIRADS 4, PET/CT 骨骼/淋巴结/肝脏/肺部 FDG 阳性",
+              "既往：2025 年手术+放化疗，但未提供具体方案细节",
+              "无 TNM 分期完整报告",
+              "无基因检测 (如 BRCA) 或近期实验室检查",
+              "如有骨痛、呼吸困难、黄疸或发热，立即当地急诊并携带 PET/CT 报告"
+            ]
+          },
+          {
+            "type": "timeline",
+            "title": "病情时间线",
+            "description": "按资料中的日期和报告类型排序，帮助医生快速理解病情变化。",
+            "timeline": [
+              {
+                "time": "日期待确认",
+                "title": "医学资料 · 影像检查发现",
+                "description": "dr.***,M.Sc.",
+                "items": [
+                  "来源：5.jpg"
+                ]
+              },
+              {
+                "time": "日期待确认",
+                "title": "医学资料 · 影像检查发现",
+                "description": "dr.***.Sp.Rad (K)",
+                "items": [
+                  "来源：5.jpg"
+                ]
+              },
+              {
+                "time": "2024-08-29",
+                "title": "医学资料 · 影像检查发现",
+                "description": "dr.***,M.Sc.",
+                "items": [
+                  "来源：1.jpg"
+                ]
+              },
+              {
+                "time": "2024-08-29",
+                "title": "医学资料 · 影像检查发现",
+                "description": "Tampak asymetrikan density tepi ireguler di kwadran superolateral kanan ukuran 4.7 x 2.1 cm.",
+                "items": [
+                  "来源：1.jpg",
+                  "BIRADS：4"
+                ]
+              },
+              {
+                "time": "2024-08-29",
+                "title": "医学资料 · 影像检查发现",
+                "description": "Kesan:Asymetrikal density suspek maligna di kwadran superolateral kanan(BIRADS 4)",
+                "items": [
+                  "来源：1.jpg",
+                  "BIRADS：4"
+                ]
+              },
+              {
+                "time": "2024-08-29",
+                "title": "医学资料 · 影像检查发现",
+                "description": "Tampak lesi hipoekhoik tepi ireguler di kwadran lateral kanan diameter 32.6 mm.Tampak lesi",
+                "items": [
+                  "来源：1.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-06",
+                "title": "病理/免疫组化报告 · 影像检查发现",
+                "description": "dr.***,M.Sc.,",
+                "items": [
+                  "来源：7.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-06",
+                "title": "病理/免疫组化报告 · 影像检查发现",
+                "description": "dr.***,Sp.PA.,MPH",
+                "items": [
+                  "来源：7.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-06",
+                "title": "病理/免疫组化报告 · 病理与分子指标",
+                "description": "Invasive carcinoma of no special type(NST).",
+                "items": [
+                  "来源：7.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-06",
+                "title": "病理/免疫组化报告 · 病理与分子指标",
+                "description": "-Grade 2(skor tubulus:3,inti:2,mitosis:2,total skor =7).",
+                "items": [
+                  "来源：7.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-20",
+                "title": "病理/免疫组化报告 · 诊断/检查结论",
+                "description": "Impression:",
+                "items": [
+                  "来源：2.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-20",
+                "title": "病理/免疫组化报告 · 影像检查发现",
+                "description": "A spiculated high density lesion is seen in the RiGHT upper outer quadrant",
+                "items": [
+                  "来源：2.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-20",
+                "title": "病理/免疫组化报告 · 影像检查发现",
+                "description": "Few enlarged right axiilary lymph nodesee Shottysubcetimeterodnthexa.",
+                "items": [
+                  "来源：2.jpg"
+                ]
+              },
+              {
+                "time": "2024-09-20",
+                "title": "病理/免疫组化报告 · 影像检查发现",
+                "description": "Highly suspicious RIGHT breast lesion.Suggest US and HPE correlation to exclude malignancy BIRADS 5.",
+                "items": [
+                  "来源：2.jpg",
+                  "BIRADS：5"
+                ]
+              },
+              {
+                "time": "2026-04-14",
+                "title": "PET/CT全身扫描 · 诊断/检查结论",
+                "description": "IMPRESSIONS",
+                "items": [
+                  "来源：3.jpg"
+                ]
+              },
+              {
+                "time": "2026-04-14",
+                "title": "PET/CT全身扫描 · 复发/转移或进展线索",
+                "description": "The brain shows no abnormal FDG-avid focus(brain metastases are better resolved with MRI in",
+                "items": [
+                  "来源：3.jpg",
+                  "脑/中枢神经：未见明确转移"
+                ]
+              },
+              {
+                "time": "2026-04-14",
+                "title": "PET/CT全身扫描 · 复发/转移或进展线索",
+                "description": "Multiple FDG avid bone metastases in the C3 T12,L4 vertebrae,bilateral ribs,bilateral ilium,",
+                "items": [
+                  "来源：3.jpg",
+                  "骨骼：提示转移"
+                ]
+              },
+              {
+                "time": "2026-04-14",
+                "title": "PET/CT全身扫描 · 复发/转移或进展线索",
+                "description": "Multiple hypermetabolic liver metastases.",
+                "items": [
+                  "来源：3.jpg",
+                  "肝脏：提示转移"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "cards",
+            "title": "上传资料分项识别",
+            "cards": [
+              {
+                "title": "医学资料",
+                "subtitle": "2024-08-29",
+                "value": "置信度 88%",
+                "description": "Kesan:Asymetrikal density suspek maligna di kwadran superolateral kanan(BIRADS 4)；Kesan:Lesi solid suspek maligna di kwadran lateral kanan(BIRADS 4).Lesi solid benigna periareofa；kwadran inferior kiri(BIRADS 2).",
+                "detail": "来源文件：1.jpg",
+                "tone": "highlight"
+              },
+              {
+                "title": "病理/免疫组化报告",
+                "subtitle": "2024-09-20",
+                "value": "置信度 96%",
+                "description": "Few enlarged right axiilary lymph nodesee Shottysubcetimeterodnthexa.；BIRADS 2:Benign finding that does not require any further imaging；BIRADS 3:Probably benign-e.g.well-circumscribed mass-requires short term follow-up imaging",
+                "detail": "来源文件：2.jpg",
+                "tone": "highlight"
+              },
+              {
+                "title": "PET/CT全身扫描",
+                "subtitle": "2026-04-14",
+                "value": "置信度 96%",
+                "description": "The brain shows no abnormal FDG-avid focus(brain metastases are better resolved with MRI in；Multiple FDG avid bone metastases in the C3 T12,L4 vertebrae,bilateral ribs,bilateral ilium,；Multiple hypermetabolic metastatic lymph nodes at right subpectoral region and",
+                "detail": "来源文件：3.jpg",
+                "tone": "highlight"
+              },
+              {
+                "title": "骨扫描/骨显像",
+                "subtitle": "4.jpg",
+                "value": "置信度 38%",
+                "description": "未识别到明确医学结论，需人工复核原件。",
+                "detail": "来源文件：4.jpg",
+                "tone": "warning"
+              },
+              {
+                "title": "医学资料",
+                "subtitle": "5.jpg",
+                "value": "置信度 56%",
+                "description": "dr.***,M.Sc.；dr.***.Sp.Rad (K)；Kesan Kardiomegal Tidak tampak kelainan pada paru.",
+                "detail": "来源文件：5.jpg",
+                "tone": "warning"
+              },
+              {
+                "title": "PET/CT全身扫描",
+                "subtitle": "2026-04-14",
+                "value": "置信度 96%",
+                "description": "Two small FDG avid lymph nodes at the right subpectoral region measuring up to 0.9 cm with；Multiple small FDG avid lymph nodes at the mediastinal paratracheal,pre and subcarinal；Right breast carcinoma status post surgery(2025)and chemoradiotherapy.PET/CT scan for",
+                "detail": "来源文件：6.jpg",
+                "tone": "highlight"
+              },
+              {
+                "title": "病理/免疫组化报告",
+                "subtitle": "2024-09-06",
+                "value": "置信度 96%",
+                "description": "Luminal B-like(HER2 negative)breast carcinoma；Suspek carcinoma mamma dextra T2N1Mx；Invasive carcinoma of no special type(NST).",
+                "detail": "来源文件：7.jpg",
+                "tone": "highlight"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "title": "关键指标与证据",
+            "table": {
+              "columns": [
+                "指标/部位",
+                "当前识别",
+                "证据来源"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "BIRADS",
+                    "4",
+                    "1.jpg：Kesan:Asymetrikal density suspek maligna di kwadran superolateral kanan(BIRADS 4)"
+                  ]
+                },
+                {
+                  "cells": [
+                    "BIRADS",
+                    "5",
+                    "2.jpg：Highly suspicious RIGHT breast lesion.Suggest US and HPE correlation to exclude malignancy BIRADS 5."
+                  ]
+                },
+                {
+                  "cells": [
+                    "SUVmax",
+                    "9.2",
+                    "3.jpg：3.0 x 5.3 cm in size with SUVmax 9.2,could be a chain of multiple enlarged lymph nodes."
+                  ]
+                },
+                {
+                  "cells": [
+                    "SUVmax",
+                    "2.6",
+                    "6.jpg：region.Diffuse right breast skin thickening with low-grade metabolic activity,SUVmax 2.6 ?Post"
+                  ]
+                },
+                {
+                  "cells": [
+                    "HER2",
+                    "negative)breast carcinoma",
+                    "7.jpg：Luminal B-like(HER2 negative)breast carcinoma"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Ki-67",
+                    "Positif(70%tumor).",
+                    "7.jpg：Ki67 Positif(70%tumor)."
+                  ]
+                },
+                {
+                  "cells": [
+                    "分子分型",
+                    "Luminal B",
+                    "7.jpg：Luminal B-like(HER2 negative)breast carcinoma"
+                  ]
+                },
+                {
+                  "cells": [
+                    "骨骼",
+                    "提示转移/高代谢病灶",
+                    "Multiple FDG avid bone metastases in the C3 T12"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "淋巴结",
+                    "提示转移/高代谢病灶",
+                    "Multiple hypermetabolic metastatic lymph nodes at right subpectoral region and"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "肝脏",
+                    "提示转移/高代谢病灶",
+                    "Multiple hypermetabolic liver metastases."
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "肺部",
+                    "可疑或需排除",
+                    "Right lung upper lobe ametabolic pleural-based nodule suspicious of metastases."
+                  ],
+                  "highlight": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "pathology",
+        "label": "核心病理诊断",
+        "labelEn": "Core Pathology",
+        "icon": "Microscope",
+        "summary": "围绕用户提交的诊断、病理、影像、基因和上传资料做核心医学解读。",
+        "blocks": [
+          {
+            "type": "summary",
+            "title": "最终诊断/工作方向",
+            "metrics": [
+              {
+                "label": "诊断/方向",
+                "value": "右侧乳腺癌术后，疑似局部复发/远处转移",
+                "detail": "基于上传资料，本例高度怀疑乳腺癌术后复发或转移性病变，需结合原始影像和病理复核",
+                "tone": "highlight"
+              },
+              {
+                "label": "严重程度",
+                "value": "中高危：多部位可疑转移线索（骨/肝/肺），需 48 小时内专科评估",
+                "detail": "高优先级：PET/CT 显示多部位高代谢（骨、淋巴结、肝、肺），结合 Ki-67 70% 和 HER2-，提示可能为转移性乳腺癌",
+                "tone": "default"
+              },
+              {
+                "label": "资料完整度",
+                "value": "69/100",
+                "detail": "已上传 7 个文件"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "title": "核心指标解读",
+            "table": {
+              "columns": [
+                "指标",
+                "当前信息",
+                "专业解读"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "BIRADS 4/5：影像学提示可疑恶性，需活检确认",
+                    "见资料",
+                    "BIRADS 4/5：影像学提示可疑恶性，需活检确认"
+                  ]
+                },
+                {
+                  "cells": [
+                    "SUVmax 9.2：FDG 高摄取可能反映转移活性，但需排除炎症等",
+                    "见资料",
+                    "SUVmax 9.2：FDG 高摄取可能反映转移活性，但需排除炎症等"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Ki-67 70%：高增殖指数，预示侵袭性强，需紧急评估",
+                    "见资料",
+                    "Ki-67 70%：高增殖指数，预示侵袭性强，需紧急评估"
+                  ]
+                },
+                {
+                  "cells": [
+                    "HER2-：排除抗 HER2 靶向治疗选项",
+                    "见资料",
+                    "HER2-：排除抗 HER2 靶向治疗选项"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "list",
+            "title": "本报告依据",
+            "items": [
+              "来自 2026-04-14 PET/CT 骨/肝/淋巴结高代谢",
+              "2024-09-06 病理显示 Luminal B-like",
+              "既往治疗后状态"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "assessment",
+        "label": "病情综合评估",
+        "labelEn": "Comprehensive Assessment",
+        "icon": "Activity",
+        "summary": "把病情严重程度、短期风险、缺失材料和关键决策问题合并评估。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "综合评估",
+            "cards": [
+              {
+                "title": "工作诊断",
+                "value": "右侧乳腺癌术后，疑似局部复发/远处转移",
+                "description": "基于上传资料，本例高度怀疑乳腺癌术后复发或转移性病变，需结合原始影像和病理复核"
+              },
+              {
+                "title": "严重程度",
+                "value": "中高危：多部位可疑转移线索（骨/肝/肺），需 48 小时内专科评估",
+                "description": "高优先级：PET/CT 显示多部位高代谢（骨、淋巴结、肝、肺），结合 Ki-67 70% 和 HER2-，提示可能为转移性乳腺癌",
+                "tone": "default"
+              },
+              {
+                "title": "治疗窗口",
+                "value": "若确认为HR+/HER2-转移性乳腺癌，治疗重点通常转向系统治疗和疗效评估",
+                "description": "本节基于上传资料识别到的乳腺癌复发/转移线索，聚焦疾病阶段、系统治疗窗口、骨相关事件风险和随访基线。"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "title": "预后/决策参考对比",
+            "table": {
+              "columns": [
+                "指标",
+                "当前风险",
+                "中国方案参考",
+                "说明"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "疾病阶段",
+                    "资料提示骨骼、肝脏、肺部等部位存在疑似复发或转移信号（如PET显示骨/肝高代谢灶）",
+                    "中国肿瘤中心可通过病理复核、原始影像和MDT确认转移性乳腺癌治疗路径",
+                    "报告阶段不替代医生诊断，但该信号应作为最高优先级处理"
+                  ]
+                },
+                {
+                  "cells": [
+                    "系统治疗窗口",
+                    "若确认为HR+/HER2-转移性乳腺癌，治疗重点通常转向系统治疗和疗效评估",
+                    "可评估内分泌联合CDK4/6抑制剂、化疗、骨保护和局部姑息治疗组合",
+                    "具体方案取决于既往治疗、内脏危象、肝功能和患者体力状态"
+                  ]
+                },
+                {
+                  "cells": [
+                    "骨相关事件风险",
+                    "骨转移线索提示疼痛、骨折或脊髓压迫风险需要主动管理",
+                    "可同步安排骨保护药物、止痛、放疗或骨科/放疗科会诊评估",
+                    "尤其关注脊柱、骨盆、髋臼等承重部位"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "cards",
+            "title": "资料缺口与关键问题",
+            "cards": [
+              {
+                "title": "关键发现",
+                "description": "病理：Invasive carcinoma NST, Luminal B-like (HER2-), Ki-67 70%；影像：Mammo BIRADS 4, PET/CT 骨骼/淋巴结/肝脏/肺部 FDG 阳性；既往：2025 年手术+放化疗，但未提供具体方案细节；无 TNM 分期完整报告"
+              },
+              {
+                "title": "需补充材料",
+                "description": "TNM分期资料"
+              },
+              {
+                "title": "关键决策问题",
+                "description": "病理类型、受体状态和分期是否完整？；是否适合保乳、全切或先行新辅助治疗？；术后是否需要化疗、放疗、内分泌或靶向治疗？"
+              },
+              {
+                "title": "风险信号",
+                "description": "当前资料未显示明确急症信号，仍需医生确认。",
+                "tone": "default"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "treatment",
+        "label": "治疗路径方案",
+        "labelEn": "Treatment Pathway",
+        "icon": "Stethoscope",
+        "summary": "按专业报告路径呈现，强调先复核资料再确认治疗。",
+        "blocks": [
+          {
+            "type": "notice",
+            "title": "治疗总目标",
+            "description": "确认复发/转移状态，制定系统治疗 (如内分泌+CDK4/6、化疗、骨保护) 并管理并发症",
+            "tone": "highlight"
+          },
+          {
+            "type": "timeline",
+            "title": "治疗路径阶段",
+            "timeline": [
+              {
+                "time": "立即",
+                "title": "资料复核",
+                "description": "阶段输出：MDT 评估报告 (肿瘤内科+影像科+外科)",
+                "items": [
+                  "提交所有 DICOM 原片",
+                  "整理病理/IHC 报告",
+                  "提供既往治疗清单"
+                ]
+              },
+              {
+                "time": "1-2 周内",
+                "title": "初步治疗启动",
+                "description": "阶段输出：个体化治疗计划书",
+                "items": [
+                  "根据 MDT 决定一线方案 (如芳香化酶抑制剂+CDK4/6 或化疗)"
+                ]
+              },
+              {
+                "time": "持续随访",
+                "title": "长期管理",
+                "description": "阶段输出：随访方案及并发症预防计划",
+                "items": [
+                  "定期骨扫描/CT",
+                  "监测骨痛/肝功能",
+                  "调整方案基于疗效"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "cost",
+        "label": "费用明细",
+        "labelEn": "Cost Breakdown",
+        "icon": "DollarSign",
+        "summary": "拆分核心医疗、配套服务和在华生活费用，形成可核对的三类费用结构。",
+        "blocks": [
+          {
+            "type": "notice",
+            "title": "费用说明",
+            "description": "说明中国医院通常按人民币收费，并给出1 USD≈7.2 RMB参考；费用因治疗强度、药物品牌、住院天数、汇率、保险和城市而波动",
+            "tone": "warning",
+            "items": [
+              "上述为初步评估费用；实际因具体方案、药物选择和住院天数变化大；完整费用需医生面诊后确认"
+            ]
+          },
+          {
+            "type": "table",
+            "title": "核心医疗费用",
+            "table": {
+              "columns": [
+                "项目",
+                "费用",
+                "说明"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "病理复核与免疫组化确认",
+                    "¥3,600-¥12,000（约$500-$1,667）",
+                    "基于上传病理报告，需确认ER/PR/HER2状态和Luminal分型；转移灶需讨论再活检"
+                  ]
+                },
+                {
+                  "cells": [
+                    "PET/CT原片复核与补充检查",
+                    "¥8,640-¥28,800（约$1,200-$4,000）",
+                    "包括影像会诊、必要时肝脏增强MRI/CT、头颅增强MRI（有脑转移线索时）和骨扫描复核；骨转移风险需评估"
+                  ]
+                },
+                {
+                  "cells": [
+                    "转移灶活检与分子检测",
+                    "¥10,080-¥36,000（约$1,400-$5,000）",
+                    "若新发转移灶需穿刺活检；讨论PIK3CA、ESR1、BRCA等检测"
+                  ]
+                },
+                {
+                  "cells": [
+                    "内分泌治疗初评与CDK4/6抑制剂启动",
+                    "¥9,000-¥64,800（约$1,250-$9,000）",
+                    "HR+/HER2-常见方案；国产/进口药选择影响月费用，需医生确认"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "table",
+            "title": "配套服务费用",
+            "table": {
+              "columns": [
+                "项目",
+                "费用",
+                "说明"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "病历整理与医学翻译",
+                    "¥2,880-¥8,640（约$400-$1,200）",
+                    "将多语言资料转为结构化报告；翻译需专业医学术语"
+                  ]
+                },
+                {
+                  "cells": [
+                    "专家预审与医院对接",
+                    "¥5,760-¥18,000（约$800-$2,500）",
+                    "根据资料匹配科室和医生；减少无效等待"
+                  ]
+                },
+                {
+                  "cells": [
+                    "全程陪诊与国际协调",
+                    "¥8,640-¥21,600（约$1,200-$3,000）",
+                    "覆盖首诊安排、检查协调和跨语言沟通；适合复杂病例"
+                  ]
+                },
+                {
+                  "cells": [
+                    "远程随访与方案调整",
+                    "¥3,600-¥10,800（约$500-$1,500）",
+                    "治疗后跟踪疗效和副作用；支持回国后管理"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "table",
+            "title": "生活费用",
+            "table": {
+              "columns": [
+                "项目",
+                "费用",
+                "说明"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "国际往返机票",
+                    "¥4,320-¥12,960（约$600-$1,800）",
+                    "按出发地、季节浮动；紧急时可考虑直飞"
+                  ]
+                },
+                {
+                  "cells": [
+                    "医疗签证与邀请函",
+                    "¥1,080-¥3,600（约$150-$500）",
+                    "签证材料需医院邀请函；建议提前准备"
+                  ]
+                },
+                {
+                  "cells": [
+                    "在华住宿",
+                    "¥6,480-¥19,440（约$900-$2,700）",
+                    "按城市和天数浮动；北京/上海较高"
+                  ]
+                },
+                {
+                  "cells": [
+                    "餐饮交通与日常支持",
+                    "¥3,240-¥9,720（约$450-$1,350）",
+                    "按停留天数和陪同人数调整；紧急时预留应急预算"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "summary",
+            "title": "全流程综合总费用",
+            "metrics": [
+              {
+                "label": "综合预估总费用",
+                "value": "¥67,320-¥246,362（约$9,350-$34,217）",
+                "detail": "上述为初步评估费用；实际因具体方案、药物选择和住院天数变化大；完整费用需医生面诊后确认",
+                "tone": "highlight"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "advanced",
+        "label": "前沿新技术新药物",
+        "labelEn": "Advanced Tech & Drugs",
+        "icon": "Atom",
+        "summary": "根据病种和资料状态推荐可能相关的中国前沿技术、药物或服务能力。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "前沿技术/服务优势",
+            "cards": [
+              {
+                "title": "AI 影像分析：快速识别 BIRADS 4/5 和 SUVmax 异常，提升可疑病灶检出率",
+                "description": "AI 影像分析：快速识别 BIRADS 4/5 和 SUVmax 异常，提升可疑病灶检出率",
+                "detail": "需结合当前资料和医生预审确认适用性"
+              },
+              {
+                "title": "多模态整合：结合病理 (Luminal B)、PET/CT (骨/肝转移线索) 和既往治疗，优化决策",
+                "description": "多模态整合：结合病理 (Luminal B)、PET/CT (骨/肝转移线索) 和既往治疗，优化决策",
+                "detail": "需结合当前资料和医生预审确认适用性"
+              },
+              {
+                "title": "远程 MDT：跨北京/上海/广州 专家协作，1-3 天内提供第二意见",
+                "description": "远程 MDT：跨北京/上海/广州 专家协作，1-3 天内提供第二意见",
+                "detail": "需结合当前资料和医生预审确认适用性"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "title": "相关技术与服务要点",
+            "items": []
+          }
+        ]
+      },
+      {
+        "key": "comparison",
+        "label": "8国全维度对比",
+        "labelEn": "8-Country Comparison",
+        "icon": "Globe",
+        "summary": "按用户选择地区、病种和资料完整度生成多国家/地区诊疗方案对比。",
+        "blocks": [
+          {
+            "type": "table",
+            "title": "国家诊疗方案对比",
+            "table": {
+              "columns": [
+                "国家/地区",
+                "费用",
+                "等待",
+                "优势",
+                "限制",
+                "匹配度"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "🇨🇳 中国",
+                    "$15,000 - $28,000",
+                    "资料完整后优先加急预审；急症需先当地处理",
+                    "乳腺癌专科资源丰富，MDT团队成熟；适合快速评估复发/转移和治疗路径",
+                    "需提前准备完整英文/中文病历；最终方案以面诊为准",
+                    "90/100"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "🇲🇾 马来西亚",
+                    "$12,000 - $32,000",
+                    "1-3周",
+                    "本地化服务好，语言无障碍；适合初步评估和简单复查",
+                    "复杂转移病例资源有限；跨境随访便利性一般",
+                    "80/100"
+                  ],
+                  "highlight": false
+                },
+                {
+                  "cells": [
+                    "🇸🇬 新加坡",
+                    "$30,000 - $70,000",
+                    "1-3周",
+                    "亚洲高水平医疗，双语环境；适合东南亚患者就近评估",
+                    "部分高端药需自费；费用较高",
+                    "75/100"
+                  ],
+                  "highlight": false
+                },
+                {
+                  "cells": [
+                    "🇺🇸 美国",
+                    "$80,000 - $180,000",
+                    "2-8周",
+                    "新药和临床试验可及性强；精准医疗先进",
+                    "流程复杂；跨境随访成本高",
+                    "70/100"
+                  ],
+                  "highlight": false
+                },
+                {
+                  "cells": [
+                    "🇨🇦 加拿大",
+                    "$45,000 - $100,000",
+                    "公立等待长；私立资源有限",
+                    "医疗规范高；适合简单复查",
+                    "国际患者通道少；语言可能障碍",
+                    "65/100"
+                  ],
+                  "highlight": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "label": "21天行程规划",
+        "labelEn": "21-Day Itinerary",
+        "icon": "Calendar",
+        "summary": "根据当前病种、紧急程度和治疗周期生成可执行来华时间线。",
+        "blocks": [
+          {
+            "type": "timeline",
+            "title": "来华行程规划",
+            "timeline": [
+              {
+                "time": "D-10至D-3",
+                "title": "远程资料预审",
+                "items": [
+                  "上传所有影像和报告",
+                  "整理病史时间线",
+                  "医生初步判断是否需要紧急处理"
+                ]
+              },
+              {
+                "time": "D-2至D0",
+                "title": "确认行程与预算",
+                "items": [
+                  "锁定医院和日期",
+                  "准备签证和保险",
+                  "确认住宿和翻译"
+                ]
+              },
+              {
+                "time": "D1-D5",
+                "title": "抵华建档与初检",
+                "items": [
+                  "国际部登记",
+                  "乳腺肿瘤首诊",
+                  "完成血常规、肝肾功能等基础检查"
+                ]
+              },
+              {
+                "time": "D6-D14",
+                "title": "MDT与方案确认",
+                "items": [
+                  "多学科会诊",
+                  "决定活检或分子检测",
+                  "制定首阶段治疗计划"
+                ]
+              },
+              {
+                "time": "D15-D21+",
+                "title": "启动治疗或回国衔接",
+                "items": [
+                  "如适合开始治疗",
+                  "整理出院计划",
+                  "安排回国后随访"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "similarCases",
+        "label": "相似患者案例",
+        "labelEn": "Similar Cases",
+        "icon": "Users",
+        "summary": "展示可合规解释的相似案例匹配框架，不编造真实患者故事。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "相似患者案例匹配",
+            "description": "正式案例展示需要可核验来源或患者授权；当前阶段展示匹配口径和后续人工复核方式。",
+            "cards": [
+              {
+                "title": "相似病例参考原则",
+                "subtitle": "乳腺癌",
+                "description": "优先匹配诊断方向、分期/严重程度、既往治疗、关键指标和当前诉求相近的病例；当前报告不展示未经核验的真实患者姓名或疗效承诺。",
+                "tone": "warning"
+              },
+              {
+                "title": "可参考的病例维度",
+                "description": "资料完整度 69/100；重点比较病理类型、受体状态和分期是否完整？、是否适合保乳、全切或先行新辅助治疗？。"
+              },
+              {
+                "title": "进入专业人工复核后",
+                "description": "可由医疗顾问基于授权资料进一步匹配公开案例、医院病例经验或专家团队经验，并标注来源。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "topDoctors",
+        "label": "专家推荐TOP10",
+        "labelEn": "Top 10 Doctors",
+        "icon": "Stethoscope",
+        "summary": "展示专家匹配画像和核验要求，未接入医生排班前不编造医生身份。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "专家推荐 Top10 画像",
+            "description": "不编造医生姓名。进入正式预审后需由医院/合作平台核验医生、排班、号源和擅长方向。",
+            "cards": [
+              {
+                "title": "专家画像 #1：主责首诊专家",
+                "subtitle": "复旦大学附属肿瘤医院 · 乳腺肿瘤内科/MDT",
+                "value": "优先匹配",
+                "description": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "优先方向",
+                "tone": "highlight"
+              },
+              {
+                "title": "专家画像 #2：MDT牵头专家",
+                "subtitle": "中国医学科学院肿瘤医院 · 乳腺肿瘤中心",
+                "value": "优先匹配",
+                "description": "适合疑难病例如多灶复发、HER2状态不明；国家级平台可处理复杂检测",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "优先方向",
+                "tone": "highlight"
+              },
+              {
+                "title": "专家画像 #3：手术/介入评估专家",
+                "subtitle": "中山大学肿瘤防治中心 · 乳腺肿瘤科",
+                "value": "优先匹配",
+                "description": "适合华南患者就近评估；资源丰富且费用相对适中；可衔接后续治疗",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "优先方向",
+                "tone": "highlight"
+              },
+              {
+                "title": "专家画像 #4：影像复核专家",
+                "subtitle": "复旦大学附属肿瘤医院 · 乳腺肿瘤内科/MDT",
+                "value": "备选匹配",
+                "description": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #5：病理/实验室复核专家",
+                "subtitle": "中国医学科学院肿瘤医院 · 乳腺肿瘤中心",
+                "value": "备选匹配",
+                "description": "适合疑难病例如多灶复发、HER2状态不明；国家级平台可处理复杂检测",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #6：药物治疗专家",
+                "subtitle": "中山大学肿瘤防治中心 · 乳腺肿瘤科",
+                "value": "备选匹配",
+                "description": "适合华南患者就近评估；资源丰富且费用相对适中；可衔接后续治疗",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #7：康复管理专家",
+                "subtitle": "复旦大学附属肿瘤医院 · 乳腺肿瘤内科/MDT",
+                "value": "备选匹配",
+                "description": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #8：国际医疗协调专家",
+                "subtitle": "中国医学科学院肿瘤医院 · 乳腺肿瘤中心",
+                "value": "备选匹配",
+                "description": "适合疑难病例如多灶复发、HER2状态不明；国家级平台可处理复杂检测",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #9：随访复诊专家",
+                "subtitle": "中山大学肿瘤防治中心 · 乳腺肿瘤科",
+                "value": "备选匹配",
+                "description": "适合华南患者就近评估；资源丰富且费用相对适中；可衔接后续治疗",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              },
+              {
+                "title": "专家画像 #10：保险材料审核顾问",
+                "subtitle": "复旦大学附属肿瘤医院 · 乳腺肿瘤内科/MDT",
+                "value": "备选匹配",
+                "description": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+                "detail": "正式医生姓名、号源和排班需在患者授权后通过医院/合作平台核验，报告阶段不编造医生身份。",
+                "tag": "备选方向",
+                "tone": "default"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "service",
+        "label": "专属服务包",
+        "labelEn": "Service Package",
+        "icon": "Headset",
+        "summary": "展示专业版专属服务包、支付保险协助和跨境执行支持。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "专属服务包",
+            "cards": [
+              {
+                "title": "病历翻译与整合",
+                "description": "将病理、影像报告等转为医院可读格式"
+              },
+              {
+                "title": "专家预审",
+                "description": "根据资料匹配专家，减少现场等待"
+              },
+              {
+                "title": "医院协调",
+                "description": "预约检查、床位和跨科室沟通"
+              },
+              {
+                "title": "签证与行程支持",
+                "description": "协助准备医疗邀请函和行程安排"
+              },
+              {
+                "title": "费用与保险协助",
+                "description": "提供费用明细和保险预授权指导"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "title": "支付与保险保障",
+            "items": [
+              "核心医疗、增值服务、生活费用分开预估",
+              "联系医院确认支付方式",
+              "商业保险覆盖范围需提前核实",
+              "准备人民币/美元支付方案"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "risk",
+        "label": "风险与预后",
+        "labelEn": "Risk & Prognosis",
+        "icon": "ShieldAlert",
+        "summary": "用审慎方式表达风险与预后参考，不承诺疗效。",
+        "blocks": [
+          {
+            "type": "list",
+            "title": "诊疗与跨境风险提示",
+            "items": [
+              "资料不完整：可能影响诊断准确性，需补充关键检查",
+              "医生最终确认：所有建议需主治医师签字，跨境方案需本地化调整",
+              "费用波动：不同医院/方案费用差异大 (如 CDK4/6 月费 1-3 万人民币)",
+              "跨境急症：骨痛、呼吸困难等应先当地急诊处理，避免延误"
+            ]
+          },
+          {
+            "type": "notice",
+            "title": "预后参考结论",
+            "description": "该类病例的关键不是单纯寻找医院，而是整合病理受体状态、影像进展、既往治疗和当前症状形成系统治疗决策，并建立跨境随访闭环",
+            "tone": "warning"
+          }
+        ]
+      },
+      {
+        "key": "hospitals",
+        "label": "推荐医院Top 3",
+        "labelEn": "Top Hospitals",
+        "icon": "Hospital",
+        "summary": "基于当前疾病方向、资料完整度和预审问题推荐医院。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "推荐医院 Top 3",
+            "cards": [
+              {
+                "title": "复旦大学附属肿瘤医院",
+                "subtitle": "上海 · 乳腺肿瘤内科/MDT",
+                "value": "匹配度 92/100",
+                "description": "适合乳腺癌术后复发评估、转移灶确认和系统治疗选择；MDT团队强，能快速整合PET/CT和病理",
+                "detail": "提交PET/CT DICOM、病理报告、手术记录；确认是否需再活检",
+                "tag": "#1",
+                "tone": "highlight"
+              },
+              {
+                "title": "中国医学科学院肿瘤医院",
+                "subtitle": "北京 · 乳腺肿瘤中心",
+                "value": "匹配度 90/100",
+                "description": "适合疑难病例如多灶复发、HER2状态不明；国家级平台可处理复杂检测",
+                "detail": "整理完整治疗史和最新检查；预审时说明紧急需求",
+                "tag": "#2",
+                "tone": "default"
+              },
+              {
+                "title": "中山大学肿瘤防治中心",
+                "subtitle": "广州 · 乳腺肿瘤科",
+                "value": "匹配度 85/100",
+                "description": "适合华南患者就近评估；资源丰富且费用相对适中；可衔接后续治疗",
+                "detail": "提供区域和预算范围；讨论是否需短期住院",
+                "tag": "#3",
+                "tone": "default"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "next",
+        "label": "就诊流程",
+        "labelEn": "Next Steps",
+        "icon": "Footprints",
+        "summary": "把专业报告转化为下一步可执行流程。",
+        "blocks": [
+          {
+            "type": "timeline",
+            "title": "就诊流程",
+            "timeline": [
+              {
+                "time": "Step 1",
+                "title": "如有骨痛、呼吸困难、黄疸或发热，立即当地急诊并携带 PET/CT 报告"
+              },
+              {
+                "time": "Step 2",
+                "title": "整理上传文件：病理报告 (2024-09-06)、PET/CT DICOM 原片、既往手术/放化疗记录"
+              },
+              {
+                "time": "Step 3",
+                "title": "发起北京/上海/广州乳腺肿瘤 MDT 远程会诊 (附中文摘要)"
+              },
+              {
+                "time": "Step 4",
+                "title": "准备中文/英文摘要：用于国际专家快速理解病情"
+              },
+              {
+                "time": "Step 5",
+                "title": "评估来华时间：优先 1-2 周内初诊，避开急性期"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "title": "质量提示",
+            "items": [
+              "已记录用户意图：就医诉求：寻求第二诊疗意见；期望治疗时间：1-3个月。报告路径、资料清单和下一步应围绕该意图调整。",
+              "按1-3个月窗口安排资料翻译、医院预审、预算确认、签证和治疗前准备，允许先完善关键检查后再出行。",
+              "资料中出现骨转移/可疑骨转移线索，需评估疼痛、骨折风险、脊髓压迫风险，并考虑骨保护治疗。",
+              "资料中出现肝转移/可疑肝转移线索，需结合肝功能、肿瘤负荷和系统治疗方案尽快评估。",
+              "资料中出现淋巴结转移/高代谢线索，需结合全身分期判断治疗范围。",
+              "资料中出现肺部结节或可疑转移线索，需结合薄层CT和随访变化排除转移或第二原发。",
+              "资料缺口影响精确费用",
+              "紧急度需优先",
+              "保险状态待定",
+              "医疗模型已补充关键章节：预后和管理价值对比。"
+            ]
+          }
+        ]
+      }
+    ],
+    "qualityFlags": [
+      "已记录用户意图：就医诉求：寻求第二诊疗意见；期望治疗时间：1-3个月。报告路径、资料清单和下一步应围绕该意图调整。",
+      "按1-3个月窗口安排资料翻译、医院预审、预算确认、签证和治疗前准备，允许先完善关键检查后再出行。",
+      "资料中出现骨转移/可疑骨转移线索，需评估疼痛、骨折风险、脊髓压迫风险，并考虑骨保护治疗。",
+      "资料中出现肝转移/可疑肝转移线索，需结合肝功能、肿瘤负荷和系统治疗方案尽快评估。",
+      "资料中出现淋巴结转移/高代谢线索，需结合全身分期判断治疗范围。",
+      "资料中出现肺部结节或可疑转移线索，需结合薄层CT和随访变化排除转移或第二原发。",
+      "资料缺口影响精确费用",
+      "紧急度需优先",
+      "保险状态待定",
+      "医疗模型已补充关键章节：预后和管理价值对比。"
+    ],
+    "generatedBy": "llm"
+  },
+  "free": {
+    "id": "REAL-UPLOAD-FREE-PREVIEW",
+    "date": "2026年6月",
+    "subtitle": "来华就医可行性预审报告",
+    "disease": "乳腺癌",
+    "treatment": "基于您描述的右侧乳腺癌术后复查情况，当前信息不足以直接制定具体治疗方案，因为缺少关键资料如病理报告、免疫组化结果、近期影像学检查（乳腺超声/钼靶/MRI）和分期评估记录。建议优先补充这些资料，由乳腺肿瘤专科医生进行第二意见评估。重点包括：病理类型、分期、受体状态（ER/PR/HER2）、既往手术、化疗、放疗和内分泌治疗记录，以确定是否需要调整手术范围、辅助治疗或随访计划。所有建议均需医生结合完整资料后确认，避免过早承诺治疗细节。",
+    "need": "右侧乳腺癌术后复查，想了解来华就医评估、治疗路径、费用和准备材料。\n就医诉求：寻求第二诊疗意见；期望治疗时间：1-3个月",
+    "countries": [
+      {
+        "flag": "🇨🇳",
+        "name": "中国（推荐）",
+        "fee": "￥32,400（约$4,499）",
+        "wait": "7-21天",
+        "tech": "乳腺癌多学科诊疗成熟",
+        "service": "国际医疗部全程协助",
+        "visa": "可协助医疗邀请函",
+        "follow": "围绕第二意见建立随访提醒",
+        "recommended": true
+      },
+      {
+        "flag": "🇲🇾",
+        "name": "马来西亚",
+        "fee": "￥32,400（约$4,499）",
+        "wait": "1-3周",
+        "tech": "性价比高，部分专科先进",
+        "service": "英文/中文服务友好",
+        "visa": "入境便利",
+        "follow": "中文/英文随访支持较好",
+        "recommended": true
+      },
+      {
+        "flag": "🇺🇸",
+        "name": "美国",
+        "fee": "$80,000 - $180,000",
+        "wait": "2-8周",
+        "tech": "新药和临床试验可及性强",
+        "service": "国际患者服务成熟",
+        "visa": "B1/B2签证需面签",
+        "follow": "跨境随访便利性一般",
+        "recommended": false
+      }
+    ],
+    "score": 88,
+    "advantages": [
+      {
+        "label": "当前主诉高度匹配",
+        "value": "乳腺癌术后复查方向明确，中国医院处理经验丰富"
+      },
+      {
+        "label": "下一步关键判断",
+        "value": "需先确认病理报告和免疫组化以决定治疗"
+      },
+      {
+        "label": "费用与效率平衡",
+        "value": "初步评估成本较低，等待时间短"
+      }
+    ],
+    "concerns": [
+      {
+        "concern": "资料完整性影响判断",
+        "solution": "请补充病理报告、免疫组化、近期影像和既往治疗记录"
+      },
+      {
+        "concern": "排除急性风险",
+        "solution": "当前无急症迹象，但医生面诊前需确认无新发症状"
+      },
+      {
+        "concern": "语言沟通障碍",
+        "solution": "建议安排医学翻译确保信息准确"
+      },
+      {
+        "concern": "治疗连续性",
+        "solution": "明确回国后随访计划，包括远程选项"
+      },
+      {
+        "concern": "费用波动",
+        "solution": "最终费用取决于检查结果和治疗方案，建议预审后确认"
+      }
+    ],
+    "hospitals": [
+      {
+        "city": "上海",
+        "name": "复旦大学附属肿瘤医院",
+        "reason": "肿瘤专科优势明显，乳腺肿瘤多学科诊疗经验丰富，能高效处理术后复查和第二意见需求",
+        "englishName": "Fudan University Shanghai Cancer Center",
+        "department": "乳腺肿瘤多学科团队(MDT)",
+        "matchScore": 95,
+        "rankLabel": "国家肿瘤重点专科，乳腺癌诊疗中心",
+        "tags": [
+          "肿瘤专科",
+          "乳腺癌MDT",
+          "国际患者服务"
+        ],
+        "internationalPatients": "具备国际患者协调服务，接待大量海外患者",
+        "waitTime": "3-5个工作日",
+        "detailItems": [
+          {
+            "label": "适配理由",
+            "value": "贴合当前病种（乳腺癌术后）和主诉（寻求第二诊疗意见评估）"
+          },
+          {
+            "label": "建议科室",
+            "value": "乳腺肿瘤多学科会诊(MDT)"
+          },
+          {
+            "label": "预审重点",
+            "value": "病理类型与分期；受体状态(ER/PR/HER2)；既往手术/放化疗细节；当前复查具体需求"
+          },
+          {
+            "label": "需准备资料",
+            "value": "病理报告和免疫组化；乳腺超声/钼靶/MRI；既往治疗记录；近期血液检查"
+          }
+        ],
+        "preparation": "请先整理完整医疗记录，包括病理、影像和既往治疗史，并明确具体疑问点"
+      },
+      {
+        "city": "北京",
+        "name": "北京协和医院",
+        "reason": "综合疑难病例处理能力强，国际医疗服务经验较好，适合复杂情况的第二意见",
+        "englishName": "Peking Union Medical College Hospital",
+        "department": "多学科会诊(MDT)",
+        "matchScore": 90,
+        "rankLabel": "全国综合医院排名前列，疑难重症能力强",
+        "tags": [
+          "综合医院",
+          "MDT平台",
+          "国际医疗"
+        ],
+        "internationalPatients": "国际患者服务完善，有专门团队处理海外患者需求",
+        "waitTime": "5-7个工作日",
+        "detailItems": [
+          {
+            "label": "适配理由",
+            "value": "贴合当前主诉（寻求第二意见）和复杂病例需求"
+          },
+          {
+            "label": "建议科室",
+            "value": "乳腺外科联合肿瘤科多学科团队(MDT)"
+          },
+          {
+            "label": "预审重点",
+            "value": "确认病理分期；评估是否需要调整方案；术后随访计划；语言沟通需求"
+          },
+          {
+            "label": "需准备资料",
+            "value": "完整病理报告；影像学检查；既往治疗记录；当前症状描述"
+          }
+        ],
+        "preparation": "建议提前翻译关键病历，并列出具体疑问点以提高预审效率"
+      },
+      {
+        "city": "北京",
+        "name": "北京大学人民医院",
+        "reason": "乳腺外科实力强，保乳和综合治疗路径成熟，适合术后方案比选",
+        "englishName": "Peking University People's Hospital",
+        "department": "乳腺外科",
+        "matchScore": 88,
+        "rankLabel": "乳腺外科国家重点学科",
+        "tags": [
+          "乳腺外科强",
+          "第二意见",
+          "微创手术"
+        ],
+        "internationalPatients": "有国际患者服务通道，可提供翻译和协调",
+        "waitTime": "4-6个工作日",
+        "detailItems": [
+          {
+            "label": "适配理由",
+            "value": "贴合当前病种（乳腺癌）和主诉（术后复查评估）"
+          },
+          {
+            "label": "建议科室",
+            "value": "乳腺外科或肿瘤科"
+          },
+          {
+            "label": "预审重点",
+            "value": "手术范围是否合适；是否需要新辅助治疗；术后辅助方案选择；随访频率"
+          },
+          {
+            "label": "需准备资料",
+            "value": "手术记录；病理报告；免疫组化；近期影像；既往治疗细节"
+          }
+        ],
+        "preparation": "请准备好所有相关检查报告，特别是病理和影像，以供专家详细分析"
+      }
+    ],
+    "plan": {
+      "direction": "围绕‘寻求第二诊疗意见’组织诊疗路径和专家预审问题 -> 按‘1-3个月’倒排资料补全、专家预审和出行准备 -> 回应用户就医诉求：寻求第二诊疗意见 -> 按期望治疗时间‘1-3个月’调整预审节奏和出行建议",
+      "duration": "预计在华停留14-28天；如需放化疗，可分阶段来华或远程随访",
+      "totalCost": "￥32,400（约$4,499）",
+      "breakdown": [
+        {
+          "item": "术前检查与病理复核",
+          "cost": "$800-$1,800"
+        },
+        {
+          "item": "乳腺手术及住院",
+          "cost": "$7,000-$13,000"
+        },
+        {
+          "item": "辅助治疗初期费用",
+          "cost": "$3,000-$7,000"
+        },
+        {
+          "item": "翻译、陪诊与就医协调",
+          "cost": "$1,200-$2,500"
+        },
+        {
+          "item": "住宿与生活",
+          "cost": "$2,000-$4,000"
+        }
+      ],
+      "costBreakdown": {
+        "currencyNote": "按预审估算汇率约 ￥7.2 = $1 折算，最终以医院报价和付款日汇率为准",
+        "coreMedical": {
+          "title": "核心医疗评估费用",
+          "subtotal": "￥14,400（~$2,000）",
+          "items": [
+            {
+              "item": "乳腺专科第二意见会诊",
+              "cost": "￥4,500（~$625）",
+              "note": "包括初诊评估和方案讨论"
+            },
+            {
+              "item": "影像学复查（超声/MRI）",
+              "cost": "￥3,750（~$521）",
+              "note": "针对术后区域监测"
+            },
+            {
+              "item": "病理报告复核",
+              "cost": "￥2,250（~$313）",
+              "note": "如果已有报告需专家确认"
+            },
+            {
+              "item": "多学科会诊（MDT）",
+              "cost": "￥4,900（~$681）",
+              "note": "针对复杂决策"
+            }
+          ],
+          "tip": "费用基于上海/北京三甲医院标准；实际可能因检查深度和医院等级浮动"
+        },
+        "supportServices": {
+          "title": "配套服务费用",
+          "subtotal": "￥7,000（~$972）",
+          "items": [
+            {
+              "item": "医疗资料翻译与整理",
+              "cost": "￥1,600（~$222）",
+              "note": "英文报告转中文"
+            },
+            {
+              "item": "医院预约与预审协调",
+              "cost": "￥2,000（~$278）",
+              "note": "包括挂号、初筛"
+            },
+            {
+              "item": "陪诊与医学口译",
+              "cost": "￥1,500（~$208）",
+              "note": "每次就诊陪同"
+            },
+            {
+              "item": "远程复诊协调",
+              "cost": "￥1,800（~$250）",
+              "note": "如果需要后续随访"
+            }
+          ],
+          "tip": "服务费用因复杂度和时间浮动；高端服务可选"
+        },
+        "living": {
+          "title": "生活费用",
+          "subtotal": "￥11,000（~$1,528）",
+          "items": [
+            {
+              "item": "住宿（中等酒店）",
+              "cost": "￥4,000（~$556）",
+              "note": "14-28天"
+            },
+            {
+              "item": "市内交通",
+              "cost": "￥1,500（~$208）",
+              "note": "包括机场接送"
+            },
+            {
+              "item": "餐饮与日常开销",
+              "cost": "￥4,000（~$556）",
+              "note": "按中等标准"
+            },
+            {
+              "item": "签证/保险/备用金",
+              "cost": "￥1,500（~$208）",
+              "note": "含紧急医疗险"
+            }
+          ],
+          "tip": "费用基于14-28天停留；长期治疗需额外预算"
+        },
+        "summary": {
+          "formula": "核心医疗￥14,400 + 配套服务￥7,000 + 生活费用￥11,000 = ￥32,400（约$4,499）",
+          "chinaTotal": "￥32,400（约$4,499）",
+          "referenceCountry": "Malaysia",
+          "referenceCost": "$22,000",
+          "savingsPercent": 80,
+          "savingsText": "vs 本国治疗$22,000 = 节省80%/Save 80%"
+        }
+      }
+    },
+    "packages": [
+      {
+        "name": "基础评估包 / Basic",
+        "subtitle": "乳腺癌术后第二意见初步评估",
+        "price": "$56",
+        "originalPrice": "￥399",
+        "icon": "FileText",
+        "highlight": false,
+        "features": [
+          "资料初步审核",
+          "治疗路径概述",
+          "医院方向建议"
+        ],
+        "featureDetails": [
+          {
+            "label": "至少6项明细",
+            "status": "included"
+          },
+          {
+            "label": "治疗路径初步判断",
+            "status": "included"
+          },
+          {
+            "label": "医院匹配建议",
+            "status": "included"
+          },
+          {
+            "label": "费用区间提示",
+            "status": "included"
+          },
+          {
+            "label": "不含视频面诊",
+            "status": "excluded"
+          },
+          {
+            "label": "不含指定专家预约",
+            "status": "excluded"
+          },
+          {
+            "label": "资料初步审核",
+            "status": "included"
+          },
+          {
+            "label": "治疗路径概述",
+            "status": "included"
+          },
+          {
+            "label": "医院方向建议",
+            "status": "included"
+          }
+        ],
+        "footnote": "基于您描述的右侧乳腺癌术后复查情况"
+      },
+      {
+        "name": "标准面诊包 / Standard",
+        "subtitle": "乳腺癌术后第二意见视频咨询",
+        "price": "$185-$425",
+        "originalPrice": "￥1,300-3,000",
+        "icon": "Video",
+        "highlight": true,
+        "features": [
+          "专家视频面诊",
+          "病历资料整理",
+          "医院匹配建议"
+        ],
+        "featureDetails": [
+          {
+            "label": "专家视频面诊",
+            "status": "emphasis"
+          },
+          {
+            "label": "病历资料整理",
+            "status": "included"
+          },
+          {
+            "label": "医院匹配建议",
+            "status": "included"
+          },
+          {
+            "label": "费用与时间线复核",
+            "status": "included"
+          },
+          {
+            "label": "面诊后答疑",
+            "status": "emphasis"
+          },
+          {
+            "label": "不含MDT多学科会诊",
+            "status": "excluded"
+          }
+        ],
+        "footnote": "结合您提供的术后复查需求"
+      },
+      {
+        "name": "深度面诊包 / Premium",
+        "subtitle": "乳腺癌术后多方案深度分析",
+        "price": "$425-$1,400",
+        "originalPrice": "￥3,000-10,000",
+        "icon": "MessageSquare",
+        "highlight": false,
+        "features": [
+          "MDT多学科会诊",
+          "多医院方案比较",
+          "指定专家预约协调"
+        ],
+        "featureDetails": [
+          {
+            "label": "MDT多学科会诊",
+            "status": "emphasis"
+          },
+          {
+            "label": "多医院方案比较",
+            "status": "included"
+          },
+          {
+            "label": "指定专家预约协调",
+            "status": "included"
+          },
+          {
+            "label": "VIP号源预留评估",
+            "status": "included"
+          },
+          {
+            "label": "治疗路径深度分析",
+            "status": "included"
+          },
+          {
+            "label": "出行前资料清单",
+            "status": "included"
+          }
+        ],
+        "footnote": "针对复杂第二意见需求"
+      }
+    ],
+    "advancedCare": {
+      "context": "用户为马来西亚籍乳腺癌术后患者，寻求第二诊疗意见以确认治疗路径",
+      "currencyNote": "汇率和报价说明",
+      "therapies": [
+        {
+          "name": "第二诊疗意见专家会诊",
+          "category": "诊断复核",
+          "recommendationLevel": "优先评估",
+          "summary": "快速验证手术方案可行性和优化建议",
+          "applicableFor": "术后患者希望获得独立专家评估",
+          "mechanism": "由多学科团队审查现有资料提供新视角",
+          "chinaAccess": "上海/北京三甲医院可2-4周内安排",
+          "estimatedCost": "￥2,000 - ￥5,000（$278 - $694）",
+          "referenceCost": "$500 - $1,500",
+          "advantage": "中国专家经验更丰富，等待时间短于部分国家",
+          "evidence": "基于NCCN指南推荐多学科会诊",
+          "limitations": "不保证改变原方案，需结合本地医生意见",
+          "nextStep": "提供完整病历后启动预审",
+          "tags": [
+            "second_opinion",
+            "breast_cancer"
+          ]
+        }
+      ],
+      "drugCostComparison": {
+        "title": "药品费用对比 - 同等疗效候选方案",
+        "basis": "比较内分泌治疗药物如他莫昔芬、阿那曲唑的仿制药与原研药价格",
+        "summary": "中国仿制药价格显著低于国际参考价；生物类似药可选",
+        "items": [
+          {
+            "drugName": "他莫昔芬",
+            "drugClass": "内分泌治疗",
+            "chinaOption": "国产仿制药（集采）: ￥10/片；原研: ￥50/片",
+            "referenceOption": "美国原研药: $50/片",
+            "chinaCost": "￥10（~$1.39）",
+            "referenceCost": "$50",
+            "efficacyEquivalence": "仿制药与原研药生物等效性经国家药监局认证",
+            "savingInsight": "中国仿制药节省约80%费用",
+            "eligibility": "需确认ER/PR阳性状态",
+            "note": "具体选择需医生根据病理结果决定"
+          },
+          {
+            "drugName": "阿那曲唑",
+            "drugClass": "芳香化酶抑制剂",
+            "chinaOption": "国产仿制药: ￥15/片",
+            "referenceOption": "欧洲原研药: €30/片",
+            "chinaCost": "￥15（~$2.08）",
+            "referenceCost": "€30",
+            "efficacyEquivalence": "仿制药与原研药疗效相似",
+            "savingInsight": "中国方案大幅降低药费",
+            "eligibility": "适用于绝经后ER+乳腺癌",
+            "note": "需确认患者绝经状态"
+          }
+        ],
+        "note": "不替代处方，需医生确认适应证和可及性"
+      },
+      "newDrugCureAssessment": {
+        "headline": "是否有新药可治愈?",
+        "answer": "必须医学审慎，不能承诺治愈",
+        "summary": "当前标准治疗无法保证治愈；新药研究针对特定基因突变",
+        "items": [
+          {
+            "name": "CDK4/6抑制剂（用于晚期三阴性乳腺癌）",
+            "type": "靶向治疗",
+            "applicableFor": "HER2阴性且高Ki-67患者",
+            "evidence": "临床试验显示延长无进展生存期，但非治愈",
+            "chinaAvailability": "部分新药已纳入医保，需检测确认",
+            "potentialRole": "控制疾病进展，延长生存期",
+            "limitations": "不适用于早期术后辅助治疗；可能产生耐药性",
+            "nextStep": "进行基因检测（如BRCA）后评估"
+          }
+        ],
+        "ctaItems": [
+          "建议补充ER/PR/HER2/BRCA基因检测报告",
+          "提供完整病理分期以匹配临床试验"
+        ]
+      },
+      "disclaimer": "本报告基于有限信息生成；实际费用和治疗方案需由医生根据完整检查结果确定；寰宇云医不提供医疗保证"
+    },
+    "highlights": [
+      "乳腺外科病例量大，经验丰富",
+      "病理与影像复核效率高",
+      "综合治疗路径成熟",
+      "围绕‘寻求第二诊疗意见’做专家人工复核",
+      "优先核对病理报告和影像资料后再出行",
+      "费用按检查、治疗等阶段拆分"
+    ],
+    "paymentAndInsurance": [
+      "建议先按医院正式报价确认费用",
+      "国际商业保险需确认中国医院是否在网络内",
+      "准备诊断证明、治疗计划、费用预估、发票和翻译件"
+    ],
+    "disclaimer": "本报告为基于用户提交信息和平台知识库生成的来华就医可行性预审，不构成诊断、处方或最终治疗建议。最终方案需以执业医生面诊、检查结果和医院正式意见为准。",
+    "generatedBy": "llm",
+    "layoutSections": [
+      {
+        "key": "cost",
+        "label": "全球该疾病费用对比",
+        "labelEn": "Global Cost Comparison",
+        "icon": "Globe",
+        "summary": "费用为预估区间，需结合病情、检查结果、医院报价和治疗强度复核。",
+        "blocks": [
+          {
+            "type": "summary",
+            "title": "费用节省与预算定位",
+            "metrics": [
+              {
+                "label": "中国预估总费用",
+                "value": "￥32,400（约$4,499）",
+                "detail": "预计在华停留14-28天；如需放化疗，可分阶段来华或远程随访",
+                "tone": "highlight"
+              },
+              {
+                "label": "可行性评分",
+                "value": "88/100",
+                "detail": "乳腺癌"
+              },
+              {
+                "label": "主要诉求",
+                "value": "右侧乳腺癌术后复查，想了解来华就医评估、治疗路径、费用和准备材料。\n就医诉求：寻求第二诊疗意见；",
+                "detail": "期望治疗时间：1-3个月"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "title": "国家/地区费用、等待和服务对比",
+            "table": {
+              "columns": [
+                "国家/地区",
+                "费用",
+                "等待",
+                "技术重点",
+                "服务",
+                "随访"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "🇨🇳 中国（推荐）",
+                    "￥32,400（约$4,499）",
+                    "7-21天",
+                    "乳腺癌多学科诊疗成熟",
+                    "国际医疗部全程协助",
+                    "围绕第二意见建立随访提醒"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "🇲🇾 马来西亚",
+                    "￥32,400（约$4,499）",
+                    "1-3周",
+                    "性价比高，部分专科先进",
+                    "英文/中文服务友好",
+                    "中文/英文随访支持较好"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "🇺🇸 美国",
+                    "$80,000 - $180,000",
+                    "2-8周",
+                    "新药和临床试验可及性强",
+                    "国际患者服务成熟",
+                    "跨境随访便利性一般"
+                  ],
+                  "highlight": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "technology",
+        "label": "全球治疗价值对比",
+        "labelEn": "Global Treatment Value Comparison",
+        "icon": "Sparkles",
+        "summary": "以下对比仅作预审参考，最终以医生面诊、资料复核和医院正式方案为准。",
+        "blocks": [
+          {
+            "type": "table",
+            "title": "全维度价值对比",
+            "table": {
+              "columns": [
+                "方案",
+                "技术/能力",
+                "国际患者服务",
+                "后续管理"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "🇨🇳 中国（推荐）",
+                    "乳腺癌多学科诊疗成熟",
+                    "国际医疗部全程协助",
+                    "围绕第二意见建立随访提醒"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "🇲🇾 马来西亚",
+                    "性价比高，部分专科先进",
+                    "英文/中文服务友好",
+                    "中文/英文随访支持较好"
+                  ],
+                  "highlight": true
+                },
+                {
+                  "cells": [
+                    "🇺🇸 美国",
+                    "新药和临床试验可及性强",
+                    "国际患者服务成熟",
+                    "跨境随访便利性一般"
+                  ],
+                  "highlight": false
+                }
+              ]
+            }
+          },
+          {
+            "type": "list",
+            "title": "本例需要重点核对的医疗能力",
+            "items": [
+              "回应用户就医诉求：寻求第二诊疗意见",
+              "按期望治疗时间“1-3个月”调整预审节奏和出行建议",
+              "明确病理、分期和既往治疗后再比较治疗方案"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "outcome",
+        "label": "我们为什么推荐中国",
+        "labelEn": "Why China Is Worth Considering",
+        "icon": "TrendingUp",
+        "summary": "本节仅做风险和决策参考，不承诺治愈率或具体治疗结果。",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "中国方案的核心优势",
+            "cards": [
+              {
+                "title": "当前主诉高度匹配",
+                "description": "乳腺癌术后复查方向明确，中国医院处理经验丰富",
+                "tone": "default"
+              },
+              {
+                "title": "下一步关键判断",
+                "description": "需先确认病理报告和免疫组化以决定治疗",
+                "tone": "default"
+              },
+              {
+                "title": "费用与效率平衡",
+                "description": "初步评估成本较低，等待时间短",
+                "tone": "default"
+              }
+            ]
+          },
+          {
+            "type": "notice",
+            "title": "适用前提与医学审慎提示",
+            "description": "当前信息未显示明确急症信号，但仍需由医生结合检查确认风险等级。",
+            "items": [
+              "不要把科室标签直接当成诊断；必须说明仍需医生结合检查确认。",
+              "治疗建议必须体现“先评估/确认关键问题，再决定治疗”的顺序。",
+              "费用、周期和医院推荐必须围绕用户主诉，不要机械复用通用模板。",
+              "乳腺肿瘤场景需围绕病理类型、分期、受体状态、HER2、Ki-67、既往治疗和保乳/全切/系统治疗决策。"
+            ],
+            "tone": "warning"
+          }
+        ]
+      },
+      {
+        "key": "feasibility",
+        "label": "风险里程碑：同样治疗，价格差异大",
+        "labelEn": "Risk Milestones & Cost Difference",
+        "icon": "FileText",
+        "blocks": [
+          {
+            "type": "summary",
+            "title": "预算、风险和决策窗口",
+            "metrics": [
+              {
+                "label": "中国预估总费用",
+                "value": "￥32,400（约$4,499）",
+                "detail": "预计在华停留14-28天；如需放化疗，可分阶段来华或远程随访",
+                "tone": "highlight"
+              },
+              {
+                "label": "可行性评分",
+                "value": "88/100",
+                "detail": "具备较高预审价值",
+                "tone": "highlight"
+              },
+              {
+                "label": "匹配方向",
+                "value": "乳腺癌",
+                "detail": "基于您描述的右侧乳腺癌术后复查情况，当前信息不足以直接制定具体治疗方案，因为缺少关键资料如病理报告、免疫组化结果、近期影像学检查（乳腺超声/钼靶/MRI）和分期评估记录。建议优先补充这些资料，由乳腺肿瘤专科医生进行第二意见评估。重点包括：病"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "title": "费用明细预估",
+            "table": {
+              "columns": [
+                "项目",
+                "预估区间"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "术前检查与病理复核",
+                    "$800-$1,800"
+                  ]
+                },
+                {
+                  "cells": [
+                    "乳腺手术及住院",
+                    "$7,000-$13,000"
+                  ]
+                },
+                {
+                  "cells": [
+                    "辅助治疗初期费用",
+                    "$3,000-$7,000"
+                  ]
+                },
+                {
+                  "cells": [
+                    "翻译、陪诊与就医协调",
+                    "$1,200-$2,500"
+                  ]
+                },
+                {
+                  "cells": [
+                    "住宿与生活",
+                    "$2,000-$4,000"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "table",
+            "title": "主要风险与应对方式",
+            "table": {
+              "columns": [
+                "顾虑",
+                "解决方案"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "资料完整性影响判断",
+                    "请补充病理报告、免疫组化、近期影像和既往治疗记录"
+                  ]
+                },
+                {
+                  "cells": [
+                    "排除急性风险",
+                    "当前无急症迹象，但医生面诊前需确认无新发症状"
+                  ]
+                },
+                {
+                  "cells": [
+                    "语言沟通障碍",
+                    "建议安排医学翻译确保信息准确"
+                  ]
+                },
+                {
+                  "cells": [
+                    "治疗连续性",
+                    "明确回国后随访计划，包括远程选项"
+                  ]
+                },
+                {
+                  "cells": [
+                    "费用波动",
+                    "最终费用取决于检查结果和治疗方案，建议预审后确认"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "next",
+        "label": "未来就诊与需要资料",
+        "labelEn": "Preparation Materials & Next Steps",
+        "icon": "Footprints",
+        "blocks": [
+          {
+            "type": "timeline",
+            "title": "就诊前准备节奏",
+            "timeline": [
+              {
+                "time": "Step 1",
+                "title": "补充资料：病理报告和免疫组化、乳腺超声/钼靶/MRI、分期检查资料、既往手术、化疗、放疗和内分泌治疗记录"
+              },
+              {
+                "time": "Step 2",
+                "title": "核心医学判断：回应用户就医诉求：寻求第二诊疗意见"
+              },
+              {
+                "time": "Step 3",
+                "title": "确认预算、保险预授权要求和希望来华城市。"
+              },
+              {
+                "time": "Step 4",
+                "title": "进入专业版后上传原始资料，由系统生成更完整的专家预审和行程方案。"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "title": "建议优先补充的资料",
+            "items": [
+              "病理报告和免疫组化",
+              "乳腺超声/钼靶/MRI",
+              "分期检查资料",
+              "既往手术、化疗、放疗和内分泌治疗记录"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "payment",
+        "label": "支付与保险准备",
+        "labelEn": "Payment & Insurance Preparation",
+        "icon": "Shield",
+        "summary": "本节为预算和保险沟通清单，不构成保险报销承诺。",
+        "blocks": [
+          {
+            "type": "notice",
+            "title": "支付与保险确认清单",
+            "description": "来华前建议先确认支付路径、预授权材料和理赔口径，避免抵达后因材料不齐影响预约或结算。",
+            "items": [
+              "建议先按医院正式报价确认费用",
+              "国际商业保险需确认中国医院是否在网络内",
+              "准备诊断证明、治疗计划、费用预估、发票和翻译件"
+            ],
+            "tone": "warning"
+          }
+        ]
+      },
+      {
+        "key": "upgrade",
+        "label": "获取包含个人病情的专业评估",
+        "labelEn": "Upgrade for a Personalized Professional Report",
+        "icon": "Sparkles",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "专业评估服务包",
+            "cards": [
+              {
+                "title": "基础评估包 / Basic",
+                "subtitle": "乳腺癌术后第二意见初步评估",
+                "value": "$56",
+                "description": "至少6项明细；治疗路径初步判断；医院匹配建议；费用区间提示；不含视频面诊；不含指定专家预约；资料初步审核；治疗路径概述；医院方向建议",
+                "detail": "基于您描述的右侧乳腺癌术后复查情况",
+                "tone": "default"
+              },
+              {
+                "title": "标准面诊包 / Standard",
+                "subtitle": "乳腺癌术后第二意见视频咨询",
+                "value": "$185-$425",
+                "description": "专家视频面诊；病历资料整理；医院匹配建议；费用与时间线复核；面诊后答疑；不含MDT多学科会诊",
+                "detail": "结合您提供的术后复查需求",
+                "tone": "highlight"
+              },
+              {
+                "title": "深度面诊包 / Premium",
+                "subtitle": "乳腺癌术后多方案深度分析",
+                "value": "$425-$1,400",
+                "description": "MDT多学科会诊；多医院方案比较；指定专家预约协调；VIP号源预留评估；治疗路径深度分析；出行前资料清单",
+                "detail": "针对复杂第二意见需求",
+                "tone": "default"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "title": "升级后重点补强",
+            "items": [
+              "乳腺外科病例量大，经验丰富",
+              "病理与影像复核效率高",
+              "综合治疗路径成熟",
+              "围绕‘寻求第二诊疗意见’做专家人工复核",
+              "优先核对病理报告和影像资料后再出行",
+              "补充病理报告和免疫组化后，可进一步完善费用区间、治疗先后顺序和出行安排。",
+              "补充乳腺超声/钼靶/MRI后，可进一步完善费用区间、治疗先后顺序和出行安排。",
+              "补充分期检查资料后，可进一步完善费用区间、治疗先后顺序和出行安排。",
+              "专业版会围绕“回应用户就医诉求：寻求第二诊疗意见”进行医生复核前的结构化预审。"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

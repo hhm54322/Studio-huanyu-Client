@@ -1,0 +1,23 @@
+{
+  "panel": "2294:7635",
+  "overlay": "2294:7633",
+  "title": "2294:7642",
+  "close": "2294:7636",
+  "referenceOnly": [
+    "2294:7632"
+  ],
+  "component": "DentalInstitutionSourceDialog.vue",
+  "frame": "2294:7631",
+  "width": 896,
+  "height": 640,
+  "sourceX": 272,
+  "sourceY": 58,
+  "mask": {
+    "id": "2294:7634",
+    "x": 0,
+    "y": 0,
+    "width": 896,
+    "height": 640,
+    "radius": 24
+  }
+}

@@ -1,18 +1,18 @@
 const assert = require('node:assert/strict')
 const fs = require('node:fs/promises')
 const path = require('node:path')
-const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
+const { chromium } = require(path.join(process.env.HUANYU_QA_TOOLS || '/Users/hhm/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules', 'playwright'))
 
 async function main() {
   const directory = path.resolve('docs/figma-source/why-china')
-  const mapping = JSON.parse(await fs.readFile(path.join(directory, 'node-to-code-2026-09-29.json'), 'utf8'))
+  const mapping = JSON.parse(await fs.readFile(path.join(directory, 'node-to-code-2026-10-29.json'), 'utf8'))
   const source = JSON.parse(await fs.readFile(path.join(directory, 'native-parameters-2026-09-29.json'), 'utf8'))
   const byId = new Map(source.nodes.map((node) => [node.nodeId,node]))
-  const browser = await chromium.launch({headless:true})
+  const browser = await chromium.launch({headless:true,executablePath:process.env.HUANYU_QA_BROWSER || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'})
   try {
     const page = await browser.newPage({viewport:{width:1440,height:900}})
     await page.emulateMedia({reducedMotion:'reduce'})
-    await page.goto('http://127.0.0.1:5173/why-china',{waitUntil:'networkidle'})
+    await page.goto(`${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174'}/why-china`,{waitUntil:'networkidle'})
     await page.evaluate(() => document.fonts.ready)
     for(let y=0;y<5700;y+=600) { await page.evaluate(y=>scrollTo(0,y),y); await page.waitForTimeout(80) }
     await page.evaluate(()=>scrollTo(0,0))
@@ -74,7 +74,9 @@ async function main() {
       effects.push({nodeId,expected,actual})
     }
     const result={frame:mapping.sourceFrame,parameters:source.nodes.length,nodes,geometry,effects,typography}
-    await fs.writeFile(path.resolve('docs/figma-verification/why-china/2026-09-29/source-map-results.json'),JSON.stringify(result,null,2)+'\n')
+    const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/why-china/2026-09-29')
+    await fs.mkdir(out,{recursive:true})
+    await fs.writeFile(path.join(out,'source-map-results.json'),JSON.stringify(result,null,2)+'\n')
     console.log(`${nodes.length} exact node mappings resolved; ${geometry.length} geometry, ${effects.length} shadow and ${typography.length} typography checks passed`)
   }finally{await browser.close()}
 }

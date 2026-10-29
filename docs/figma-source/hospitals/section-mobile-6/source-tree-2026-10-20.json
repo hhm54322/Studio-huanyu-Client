@@ -1,0 +1,1540 @@
+{
+  "sourceFrame": "1620:1777",
+  "sourceSHA256": "29d97343e7e947187db27918706dc9b16c2f7886e08cf2dba453ed1a83bfb1bc",
+  "root": {
+    "id": "1620:1777",
+    "name": "06中国医院-03上海曜影医院-08认证荣誉",
+    "type": "FRAME",
+    "width": 375,
+    "height": 1086,
+    "x": 21623,
+    "y": 3213,
+    "visible": true,
+    "css": "width: 375px;\nheight: 1086px;\nbackground: url(/images/figma/hospital-revision/image-48eb7bb4589543a8c9a0b762522565820a722e1a.webp) 0px 0.018px / 100% 150.625% no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:375px;height:1086px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "width: 375px;\nheight: 1086px;\nbackground: url(/images/figma/hospital-revision/image-48eb7bb4589543a8c9a0b762522565820a722e1a.webp) 0px 0.018px / 100% 150.625% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:1086px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "1620:1778",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 375,
+        "height": 1004,
+        "x": 0,
+        "y": 82,
+        "visible": true,
+        "css": "display: flex;\nwidth: 375px;\npadding: 16px 0 36px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nposition:absolute;left:0px;top:82px;right:auto;bottom:auto;width:375px;height:1004px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 375px;\npadding: 16px 0 36px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:82px;right:auto;bottom:auto;width:375px;height:1004px;",
+        "text": "",
+        "children": [
+          {
+            "id": "1620:1779",
+            "name": "03全部内容-01医院概况",
+            "type": "FRAME",
+            "width": 343,
+            "height": 952,
+            "x": 16,
+            "y": 16,
+            "visible": true,
+            "css": "display: flex;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nborder-radius: 24px;\nbackground: #FFF;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:343px;height:952px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:343px;",
+            "text": "",
+            "children": [
+              {
+                "id": "1620:1780",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 343,
+                "height": 121,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "display: flex;\nheight: 121px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:343px;height:121px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nheight: 121px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:121px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1620:1781",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 343,
+                    "height": 120,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 343px;\nheight: 120px;\nposition: absolute;\nborder-radius: 16px 16px 0 0;\nbackground: linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.20) 50%, rgba(0, 0, 0, 0.00) 100%), url(/images/figma/hospital-revision/image-f1972df36f977ba4874c46f337d63baf5ae72f81.webp) 0px -35.794px / 100% 190.556% no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:343px;height:120px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 343px;\nheight: 120px;\nposition: absolute;\nborder-radius: 16px 16px 0 0;\nbackground: linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.20) 50%, rgba(0, 0, 0, 0.00) 100%), url(/images/figma/hospital-revision/image-f1972df36f977ba4874c46f337d63baf5ae72f81.webp) 0px -35.794px / 100% 190.556% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:343px;height:120px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "1620:1782",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 164,
+                    "height": 36,
+                    "x": 16,
+                    "y": 69,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 16px;\nbottom: 16px;\nposition:absolute;left:16px;top:69px;right:auto;bottom:auto;width:164px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 16px;\nbottom: 16px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:16px;top:69px;right:auto;bottom:auto;width:164px;height:36px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1783",
+                        "name": "上海曜影医院",
+                        "type": "TEXT",
+                        "width": 97,
+                        "height": 16,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nletter-spacing: 0.07px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:97px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nletter-spacing: 0.07px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:97px;height:16px;white-space:pre;",
+                        "text": "上海曜影医院",
+                        "children": []
+                      },
+                      {
+                        "id": "1620:1784",
+                        "name": "博鳌超级医院（博鳌恒大国际医院的前身之一，现为独立运营实体）成立于2018年，是海南博鳌乐城国际医疗",
+                        "type": "TEXT",
+                        "width": 164,
+                        "height": 12,
+                        "x": 0,
+                        "y": 24,
+                        "visible": true,
+                        "css": "color: rgba(255, 255, 255, 0.80);\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 12px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:164px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: rgba(255, 255, 255, 0.80);\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 12px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:164px;height:12px;white-space:pre;",
+                        "text": "Shanghai SinoUnited Hospital",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1620:1785",
+                    "name": "Button",
+                    "type": "FRAME",
+                    "width": 24,
+                    "height": 24,
+                    "x": 303,
+                    "y": 16,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 24px;\nheight: 24px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\naspect-ratio: 1/1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.20);\nbackdrop-filter: blur(8px);\nposition:absolute;left:303px;top:16px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 24px;\nheight: 24px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\naspect-ratio: 1/1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.20);\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:303px;top:16px;right:auto;bottom:auto;width:24px;height:24px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1786",
+                        "name": "Vector",
+                        "type": "VECTOR",
+                        "width": 8,
+                        "height": 8,
+                        "x": 8,
+                        "y": 8,
+                        "visible": true,
+                        "css": "width: 8px;\nheight: 8px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nstroke-width: 1.667px;\nstroke: #FFF;\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:8px;height:8px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;background-image:none;background:none;opacity:1;transform:none;width:8px;height:8px;left:8px;top:8px;",
+                        "layoutCss": "width: 8px;\nheight: 8px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nstroke-width: 1.667px;\nstroke: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:8px;background:none;opacity:1;transform:none;width:8px;height:8px;",
+                        "text": "",
+                        "svg": "/images/figma/hospital-revision/node-1620-1786.svg",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1620:1787",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 343,
+                "height": 831,
+                "x": 0,
+                "y": 121,
+                "visible": true,
+                "css": "display: flex;\nheight: 831px;\npadding: 16px 16px 86px 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:121px;right:auto;bottom:auto;width:343px;height:831px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nheight: 831px;\npadding: 16px 16px 86px 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1620:1788",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 311,
+                    "height": 76,
+                    "x": 16,
+                    "y": 16,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 311px;\npadding: 2px 0 2px 10px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 4px;\nborder-left: 2px solid #2563EB;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:311px;height:76px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 311px;\npadding: 2px 0 2px 10px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 4px;\nborder-left: 2px solid #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1789",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 299,
+                        "height": 36,
+                        "x": 12,
+                        "y": 2,
+                        "visible": true,
+                        "css": "display: flex;\nalign-items: center;\ngap: 10px;\nalign-self: stretch;\nposition:absolute;left:10px;top:2px;right:auto;bottom:auto;width:299px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nalign-items: center;\ngap: 10px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1790",
+                            "name": "\"在此，开启您的希望与疗愈之旅。'曜影'意味着生命、温暖和希望。高品质医疗，Beyond Your Expectations.\"",
+                            "type": "TEXT",
+                            "width": 299,
+                            "height": 36,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "flex: 1 0 0;\ncolor: #111827;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 150% */\nletter-spacing: -0.312px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:299px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                            "layoutCss": "flex: 1 0 0;\ncolor: #111827;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 18px; /* 150% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:299px;height:36px;white-space:pre-wrap;",
+                            "text": "\"在此，开启您的希望与疗愈之旅。'曜影'意味着生命、温暖和希望。高品质医疗，Beyond Your Expectations.\"",
+                            "textLines": [
+                              {
+                                "runs": [
+                                  {
+                                    "text": "\"在此，开启您的希望与疗愈之旅。'曜影'意味着生命、温",
+                                    "css": ""
+                                  }
+                                ],
+                                "baseline": 13.319999999999993,
+                                "css": "display:block;position:absolute;left:0px;top:0px;width:292.48438px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                              },
+                              {
+                                "runs": [
+                                  {
+                                    "text": "暖和希望。高品质医疗，Beyond Your Expectations.\"",
+                                    "css": ""
+                                  }
+                                ],
+                                "baseline": 13.319999694824219,
+                                "css": "display:block;position:absolute;left:0px;top:18px;width:281.90625px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1620:1791",
+                        "name": "Bold Text",
+                        "type": "FRAME",
+                        "width": 299,
+                        "height": 32,
+                        "x": 12,
+                        "y": 42,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:10px;top:42px;right:auto;bottom:auto;width:299px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1792",
+                            "name": "— 史浩颖 · 博士，曜影医疗创始人兼CEO / 上海曜影医院院长 · 心内科专家",
+                            "type": "TEXT",
+                            "width": 299,
+                            "height": 32,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "align-self: stretch;color:#4b5563;font-family:\"PingFang SC\";font-size:10px;font-weight:400;line-height:16px;text-align:left;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:299px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                            "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 160% */\ncolor: #9CA3AF;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px;color:#4b5563;font-family:\"PingFang SC\";font-size:10px;font-weight:400;line-height:16px;text-align:left;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:32px;white-space:pre-wrap;",
+                            "text": "— 史浩颖 · 博士，曜影医疗创始人兼CEO / 上海曜影医院院长 · 心内科专家",
+                            "textRuns": [
+                              {
+                                "text": "— 史浩颖 · 博士",
+                                "css": ""
+                              },
+                              {
+                                "text": "，曜影医疗创始人兼CEO / 上海曜影医院院长 · 心内科专家",
+                                "css": "color:#9ca3af"
+                              }
+                            ],
+                            "textLines": [
+                              {
+                                "runs": [
+                                  {
+                                    "text": "— 史浩颖 · 博士",
+                                    "css": ""
+                                  },
+                                  {
+                                    "text": "，曜影医疗创始人兼CEO / 上海曜影医院院长 · ",
+                                    "css": "color:#9ca3af"
+                                  }
+                                ],
+                                "baseline": 11.599999999999994,
+                                "css": "display:block;position:absolute;left:0px;top:0px;width:289.61914px;height:16px;line-height:16px;white-space:pre;text-align:left;"
+                              },
+                              {
+                                "runs": [
+                                  {
+                                    "text": "心内科专家",
+                                    "css": "color:#9ca3af"
+                                  }
+                                ],
+                                "baseline": 11.600000381469727,
+                                "css": "display:block;position:absolute;left:0px;top:16px;width:50px;height:16px;line-height:16px;white-space:pre;text-align:left;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1620:1793",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 311,
+                    "height": 184,
+                    "x": 16,
+                    "y": 92,
+                    "visible": true,
+                    "css": "display: inline-grid;\nwidth: 311px;\npadding-top: 16px;\nrow-gap: 12px;\ncolumn-gap: 12px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\nborder-radius: 24px;\nposition:absolute;left:16px;top:92px;right:auto;bottom:auto;width:311px;height:184px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: inline-grid;\nwidth: 311px;\npadding-top: 16px;\nrow-gap: 12px;\ncolumn-gap: 12px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\nborder-radius: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1794",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 149.5,
+                        "height": 78,
+                        "x": 0,
+                        "y": 16,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:149.5px;height:78px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1795",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 67.75,
+                            "y": 12,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:67.75px;top:12px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:67.75px;top:12px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/hospital-revision/node-1620-1795.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1800",
+                            "name": "成立年份",
+                            "type": "TEXT",
+                            "width": 40,
+                            "height": 10,
+                            "x": 54.75,
+                            "y": 34,
+                            "visible": true,
+                            "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nposition:absolute;left:54.75px;top:34px;right:auto;bottom:auto;width:40px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:40px;height:10px;white-space:pre;",
+                            "text": "成立年份",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1801",
+                            "name": "2022",
+                            "type": "TEXT",
+                            "width": 36,
+                            "height": 14,
+                            "x": 56.75,
+                            "y": 52,
+                            "visible": true,
+                            "css": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:56.75px;top:52px;right:auto;bottom:auto;width:36px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:36px;height:14px;white-space:pre;",
+                            "text": "2022",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1620:1802",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 149.5,
+                        "height": 78,
+                        "x": 161.5,
+                        "y": 16,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nposition:absolute;left:161.5px;top:16px;right:auto;bottom:auto;width:149.5px;height:78px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1803",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 67.75,
+                            "y": 12,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:67.75px;top:12px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:67.75px;top:12px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/hospital-revision/node-1620-1803.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1808",
+                            "name": "开放床位",
+                            "type": "TEXT",
+                            "width": 40,
+                            "height": 10,
+                            "x": 54.75,
+                            "y": 34,
+                            "visible": true,
+                            "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nposition:absolute;left:54.75px;top:34px;right:auto;bottom:auto;width:40px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:40px;height:10px;white-space:pre;",
+                            "text": "开放床位",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1809",
+                            "name": "40",
+                            "type": "TEXT",
+                            "width": 19,
+                            "height": 14,
+                            "x": 65.25,
+                            "y": 52,
+                            "visible": true,
+                            "css": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:65.25px;top:52px;right:auto;bottom:auto;width:19px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:19px;height:14px;white-space:pre;",
+                            "text": "40",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1620:1810",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 149.5,
+                        "height": 78,
+                        "x": 0,
+                        "y": 106,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nposition:absolute;left:0px;top:106px;right:auto;bottom:auto;width:149.5px;height:78px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1811",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 67.75,
+                            "y": 12,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:67.75px;top:12px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:67.75px;top:12px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/hospital-revision/node-1620-1811.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1817",
+                            "name": "临床科室",
+                            "type": "TEXT",
+                            "width": 40,
+                            "height": 10,
+                            "x": 54.75,
+                            "y": 34,
+                            "visible": true,
+                            "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nposition:absolute;left:54.75px;top:34px;right:auto;bottom:auto;width:40px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:40px;height:10px;white-space:pre;",
+                            "text": "临床科室",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1818",
+                            "name": "30+",
+                            "type": "TEXT",
+                            "width": 28,
+                            "height": 14,
+                            "x": 60.75,
+                            "y": 52,
+                            "visible": true,
+                            "css": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:60.75px;top:52px;right:auto;bottom:auto;width:28px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:28px;height:14px;white-space:pre;",
+                            "text": "30+",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1620:1819",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 149.5,
+                        "height": 78,
+                        "x": 161.5,
+                        "y": 106,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 2 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nposition:absolute;left:161.5px;top:106px;right:auto;bottom:auto;width:149.5px;height:78px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 12px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 8px;\ngrid-row: 2 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 10px;\nbackground: #EFF6FF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1820",
+                            "name": "Frame",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 67.75,
+                            "y": 12,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:67.75px;top:12px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:67.75px;top:12px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/hospital-revision/node-1620-1820.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1823",
+                            "name": "急诊住院",
+                            "type": "TEXT",
+                            "width": 40,
+                            "height": 10,
+                            "x": 54.75,
+                            "y": 34,
+                            "visible": true,
+                            "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nposition:absolute;left:54.75px;top:34px;right:auto;bottom:auto;width:40px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 10px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:40px;height:10px;white-space:pre;",
+                            "text": "急诊住院",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1824",
+                            "name": "24h",
+                            "type": "TEXT",
+                            "width": 27,
+                            "height": 14,
+                            "x": 61.25,
+                            "y": 52,
+                            "visible": true,
+                            "css": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:61.25px;top:52px;right:auto;bottom:auto;width:27px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #1D4ED8;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:27px;height:14px;white-space:pre;",
+                            "text": "24h",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1620:1825",
+                    "name": "Mask group",
+                    "type": "FRAME",
+                    "width": 311,
+                    "height": 47,
+                    "x": 16,
+                    "y": 276,
+                    "visible": true,
+                    "css": "width: 311px;\nheight: 47px;\nflex-shrink: 0;\nposition:absolute;left:16px;top:276px;right:auto;bottom:auto;width:311px;height:47px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                    "layoutCss": "width: 311px;\nheight: 47px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:47px;overflow:hidden;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1826",
+                        "name": "Rectangle 306",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 311,
+                        "height": 47,
+                        "x": 0,
+                        "y": 0,
+                        "visible": false,
+                        "css": "width: 311px;\nheight: 47px;\nbackground: #FFF;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:311px;height:47px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;display:none;",
+                        "layoutCss": "width: 311px;\nheight: 47px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:311px;height:47px;display:none;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "1620:1827",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 394,
+                        "height": 47,
+                        "x": -83,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: inline-flex;\npadding-top: 24px;\nalign-items: flex-start;\nborder-bottom: 1px solid #F1F5F9;\nposition:absolute;left:-83px;top:0px;right:auto;bottom:auto;width:394px;height:47px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: inline-flex;\npadding-top: 24px;\nalign-items: flex-start;\nborder-bottom: 1px solid #F1F5F9;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-83px;top:0px;right:auto;bottom:auto;width:394px;height:47px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1828",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 69,
+                            "height": 22,
+                            "x": 0,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:69px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1829",
+                                "name": "医院概况",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "医院概况",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1830",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 69,
+                            "height": 22,
+                            "x": 69,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nposition:absolute;left:69px;top:24px;right:auto;bottom:auto;width:69px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1831",
+                                "name": "科室中心",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "科室中心",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1832",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 69,
+                            "height": 22,
+                            "x": 138,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nposition:absolute;left:138px;top:24px;right:auto;bottom:auto;width:69px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1833",
+                                "name": "国际服务",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "国际服务",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1834",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 69,
+                            "height": 22,
+                            "x": 207,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nposition:absolute;left:207px;top:24px;right:auto;bottom:auto;width:69px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1835",
+                                "name": "医疗实力",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "医疗实力",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1836",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 69,
+                            "height": 22,
+                            "x": 276,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nposition:absolute;left:276px;top:24px;right:auto;bottom:auto;width:69px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 0 20px 10px 0;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1837",
+                                "name": "院区网点",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #94A3B8;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "院区网点",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1838",
+                            "name": "Button",
+                            "type": "FRAME",
+                            "width": 49,
+                            "height": 22,
+                            "x": 345,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding-bottom: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-bottom: 2px solid #2563EB;\nposition:absolute;left:345px;top:24px;right:auto;bottom:auto;width:49px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-bottom: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-bottom: 2px solid #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1839",
+                                "name": "认证荣誉",
+                                "type": "TEXT",
+                                "width": 49,
+                                "height": 12,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #2563EB;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:49px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #2563EB;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: 0.064px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:49px;height:12px;white-space:pre;",
+                                "text": "认证荣誉",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1620:1840",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 311,
+                    "height": 438,
+                    "x": 16,
+                    "y": 323,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 24px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px;\nposition:absolute;left:16px;top:323px;right:auto;bottom:auto;width:311px;height:438px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 24px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1841",
+                        "name": "Heading 4",
+                        "type": "FRAME",
+                        "width": 311,
+                        "height": 38,
+                        "x": 0,
+                        "y": 24,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:311px;height:38px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1842",
+                            "name": "认证与荣誉",
+                            "type": "TEXT",
+                            "width": 69,
+                            "height": 14,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "color: #111827;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:69px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #111827;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 14px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:69px;height:14px;white-space:pre;",
+                            "text": "认证与荣誉",
+                            "children": []
+                          },
+                          {
+                            "id": "1620:1843",
+                            "name": "资质与行业认可，构成可核验的信任基础",
+                            "type": "TEXT",
+                            "width": 311,
+                            "height": 16,
+                            "x": 0,
+                            "y": 22,
+                            "visible": true,
+                            "css": "align-self: stretch;\ncolor: #9CA3AF;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 160% */\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:311px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "align-self: stretch;\ncolor: #9CA3AF;\nfont-family: \"PingFang SC\";\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 160% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:16px;white-space:pre;",
+                            "text": "资质与行业认可，构成可核验的信任基础",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1620:1844",
+                        "name": "Frame 711",
+                        "type": "FRAME",
+                        "width": 311,
+                        "height": 376,
+                        "x": 0,
+                        "y": 62,
+                        "visible": true,
+                        "css": "display: inline-grid;\nwidth: 311px;\npadding-top: 16px;\nrow-gap: 12px;\ncolumn-gap: 12px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-auto-flow: row;\nposition:absolute;left:0px;top:62px;right:auto;bottom:auto;width:311px;height:376px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: inline-grid;\nwidth: 311px;\npadding-top: 16px;\nrow-gap: 12px;\ncolumn-gap: 12px;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-auto-flow: row;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1845",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 149.5,
+                            "height": 174,
+                            "x": 0,
+                            "y": 16,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:149.5px;height:174px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1846",
+                                "name": "Frame",
+                                "type": "FRAME",
+                                "width": 20,
+                                "height": 20,
+                                "x": 16,
+                                "y": 16,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 20px;\nheight: 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                                "layoutCss": "display: flex;\nwidth: 20px;\nheight: 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;overflow:hidden;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1847",
+                                    "name": "Vector",
+                                    "type": "VECTOR",
+                                    "width": 18,
+                                    "height": 16,
+                                    "x": 1,
+                                    "y": 2,
+                                    "visible": true,
+                                    "css": "width: 18px;\nheight: 16px;\nflex-shrink: 0;\naspect-ratio: 9/8;\nstroke-width: 1.7px;\nstroke: #2563EB;\nposition:absolute;left:1px;top:2px;right:auto;bottom:auto;width:18px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;background-image:none;background:none;opacity:1;transform:none;width:18px;height:16px;left:1px;top:2px;",
+                                    "layoutCss": "width: 18px;\nheight: 16px;\nflex-shrink: 0;\naspect-ratio: 9/8;\nstroke-width: 1.7px;\nstroke: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:16px;background:none;opacity:1;transform:none;width:18px;height:16px;",
+                                    "text": "",
+                                    "svg": "/images/figma/hospital-revision/node-1620-1847.svg",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1620:1848",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 117.5,
+                                "height": 102,
+                                "x": 16,
+                                "y": 56,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nposition:absolute;left:16px;top:56px;right:auto;bottom:auto;width:117.5px;height:102px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1849",
+                                    "name": "上海首批国际 医疗旅游试点基地",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 44,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:117.5px;height:44px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:44px;white-space:pre-wrap;",
+                                    "text": "上海首批国际\n医疗旅游试点基地",
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "上海首批国际",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:0px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "医疗旅游试点基地",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "上海首批国际",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.04000000000002,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:81.80273px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "医疗旅游试点基地",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.040000915527344,
+                                        "css": "display:block;position:absolute;left:0px;top:22px;width:108.92383px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1620:1850",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 54,
+                                    "x": 0,
+                                    "y": 48,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:48px;right:auto;bottom:auto;width:117.5px;height:54px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:54px;white-space:pre-wrap;",
+                                    "text": "面向国际患者提供高品质医疗服务的定点试点机构",
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "面向国际患者提供高",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999999999993,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "品质医疗服务的定点",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:18px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "试点机构",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:36px;width:47.54883px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1851",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 149.5,
+                            "height": 174,
+                            "x": 161.5,
+                            "y": 16,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nposition:absolute;left:161.5px;top:16px;right:auto;bottom:auto;width:149.5px;height:174px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1852",
+                                "name": "Icon",
+                                "type": "FRAME",
+                                "width": 20,
+                                "height": 20,
+                                "x": 16,
+                                "y": 16,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 3px 5px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\naspect-ratio: 1/1;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                                "layoutCss": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 3px 5px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;overflow:hidden;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1853",
+                                    "name": "Vector",
+                                    "type": "VECTOR",
+                                    "width": 12,
+                                    "height": 16,
+                                    "x": 4,
+                                    "y": 2,
+                                    "visible": true,
+                                    "css": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 3px 5px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\naspect-ratio: 1/1;\nposition:absolute;left:4px;top:2px;right:auto;bottom:auto;width:12px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 3px 5px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:16px;",
+                                    "text": "",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1620:1854",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 117.5,
+                                "height": 102,
+                                "x": 16,
+                                "y": 56,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nposition:absolute;left:16px;top:56px;right:auto;bottom:auto;width:117.5px;height:102px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1855",
+                                    "name": "非公医疗机构 3A五星",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 44,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:117.5px;height:44px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:44px;white-space:pre-wrap;",
+                                    "text": "非公医疗机构\n3A五星",
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "非公医疗机构",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:0px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "3A五星",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "非公医疗机构",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.04000000000002,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:81.80273px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "3A五星",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.040000915527344,
+                                        "css": "display:block;position:absolute;left:0px;top:22px;width:44.57813px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1620:1856",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 54,
+                                    "x": 0,
+                                    "y": 48,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:48px;right:auto;bottom:auto;width:117.5px;height:54px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:54px;white-space:pre-wrap;",
+                                    "text": "国内社会办医领域最高等级认证，含信用与能力双维度",
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "国内社会办医领域最",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999999999993,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "高等级认证，含信用",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:18px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "与能力双维度",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:36px;width:71.24805px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1857",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 149.5,
+                            "height": 174,
+                            "x": 0,
+                            "y": 202,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nposition:absolute;left:0px;top:202px;right:auto;bottom:auto;width:149.5px;height:174px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1858",
+                                "name": "Frame",
+                                "type": "FRAME",
+                                "width": 20,
+                                "height": 20,
+                                "x": 16,
+                                "y": 16,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 4px 2px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                                "layoutCss": "display: flex;\nwidth: 20px;\nheight: 20px;\npadding: 4px 2px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;overflow:hidden;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1859",
+                                    "name": "Group 602",
+                                    "type": "FRAME",
+                                    "width": 15.55555534362793,
+                                    "height": 14.000000953674316,
+                                    "x": 2.222222328186035,
+                                    "y": 2.999999523162842,
+                                    "visible": true,
+                                    "css": "width: 15.556px;\nheight: 14px;\nflex-shrink: 0;\naspect-ratio: 10/9;\nposition:absolute;left:2.22222px;top:3px;right:auto;bottom:auto;width:15.55556px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:15.55556px;height:14px;left:2.22222px;top:3px;",
+                                    "layoutCss": "width: 15.556px;\nheight: 14px;\nflex-shrink: 0;\naspect-ratio: 10/9;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:15.55556px;height:14px;",
+                                    "text": "",
+                                    "svg": "/images/figma/hospital-revision/node-1620-1859.svg",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1620:1862",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 117.5,
+                                "height": 102,
+                                "x": 16,
+                                "y": 56,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nposition:absolute;left:16px;top:56px;right:auto;bottom:auto;width:117.5px;height:102px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1863",
+                                    "name": "Mayo Clinic 深度合作",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 44,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:117.5px;height:44px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:44px;white-space:pre-wrap;",
+                                    "text": "Mayo Clinic\n深度合作",
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "Mayo Clinic",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:0px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "深度合作",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "Mayo Clinic",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.04000000000002,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:74.19141px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "深度合作",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.040000915527344,
+                                        "css": "display:block;position:absolute;left:0px;top:22px;width:54.68164px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1620:1864",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 54,
+                                    "x": 0,
+                                    "y": 48,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:48px;right:auto;bottom:auto;width:117.5px;height:54px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:54px;white-space:pre-wrap;",
+                                    "text": "医院建设、专科发展、质量管理多方面汲取150余年经验",
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "医院建设、专科发",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999999999993,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:94.94727px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "展、质量管理多方面",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:18px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "汲取150余年经验",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:36px;width:90.00391px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1620:1865",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 149.5,
+                            "height": 174,
+                            "x": 161.5,
+                            "y": 202,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nposition:absolute;left:161.5px;top:202px;right:auto;bottom:auto;width:149.5px;height:174px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 20px;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nborder-radius: 20px;\nbackground: #F7F9FB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:149.5px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1620:1866",
+                                "name": "Icon",
+                                "type": "FRAME",
+                                "width": 20,
+                                "height": 20,
+                                "x": 16,
+                                "y": 16,
+                                "visible": true,
+                                "css": "width: 20px;\nheight: 20px;\naspect-ratio: 1/1;\nposition:absolute;left:16px;top:16px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:16px;top:16px;",
+                                "layoutCss": "width: 20px;\nheight: 20px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+                                "text": "",
+                                "svg": "/images/figma/hospital-revision/node-1620-1866.svg",
+                                "children": []
+                              },
+                              {
+                                "id": "1620:1870",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 117.5,
+                                "height": 102,
+                                "x": 16,
+                                "y": 56,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nposition:absolute;left:16px;top:56px;right:auto;bottom:auto;width:117.5px;height:102px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1620:1871",
+                                    "name": "国家信息安全 三级等保",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 44,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:117.5px;height:44px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 157.143% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:44px;white-space:pre-wrap;",
+                                    "text": "国家信息安全\n三级等保",
+                                    "textParagraphs": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "国家信息安全",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;margin-bottom:0px;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "三级等保",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "css": "display:block;"
+                                      }
+                                    ],
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "国家信息安全",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.04000000000002,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:81.80273px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "三级等保",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 16.040000915527344,
+                                        "css": "display:block;position:absolute;left:0px;top:22px;width:54.68164px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1620:1872",
+                                    "name": "Handpicked for exclusive Pegasus Program for secur",
+                                    "type": "TEXT",
+                                    "width": 117.5,
+                                    "height": 54,
+                                    "x": 0,
+                                    "y": 48,
+                                    "visible": true,
+                                    "css": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:48px;right:auto;bottom:auto;width:117.5px;height:54px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                    "layoutCss": "align-self: stretch;\ncolor: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:54px;white-space:pre-wrap;",
+                                    "text": "非银行机构的最高级认证，覆盖身份鉴别、审计与备份",
+                                    "textLines": [
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "非银行机构的最高级",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999999999993,
+                                        "css": "display:block;position:absolute;left:0px;top:0px;width:106.79688px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "认证，覆盖身份鉴",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:18px;width:94.94727px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      },
+                                      {
+                                        "runs": [
+                                          {
+                                            "text": "别、审计与备份",
+                                            "css": ""
+                                          }
+                                        ],
+                                        "baseline": 13.319999694824219,
+                                        "css": "display:block;position:absolute;left:0px;top:36px;width:83.09766px;height:18px;line-height:18px;white-space:pre;text-align:left;"
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1620:1873",
+                "name": "Container:margin",
+                "type": "FRAME",
+                "width": 343,
+                "height": 68,
+                "x": 0,
+                "y": 884,
+                "visible": true,
+                "css": "display: flex;\nwidth: 343px;\npadding: 16px 0;\nflex-direction: column;\nalign-items: center;\nposition: absolute;\nbottom: 0;\nborder-radius: 0 0 24px 24px;\nbackground: #FFF;\nposition:absolute;left:0px;top:884px;right:auto;bottom:auto;width:343px;height:68px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 343px;\npadding: 16px 0;\nflex-direction: column;\nalign-items: center;\nposition: absolute;\nbottom: 0;\nborder-radius: 0 0 24px 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:884px;right:auto;bottom:auto;width:343px;height:68px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1620:1874",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 343,
+                    "height": 36,
+                    "x": 0,
+                    "y": 16,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 343px;\npadding: 0 16px;\nalign-items: flex-start;\ngap: 12px;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:343px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 343px;\npadding: 0 16px;\nalign-items: flex-start;\ngap: 12px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1620:1875",
+                        "name": "Link",
+                        "type": "FRAME",
+                        "width": 311,
+                        "height": 36,
+                        "x": 16,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 12px 0;\njustify-content: center;\nalign-items: center;\ngap: 8px;\nflex: 1 0 0;\nalign-self: stretch;\nborder-radius: 10px;\nbackground: #DD6B20;\nposition:absolute;left:16px;top:0px;right:auto;bottom:auto;width:311px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 12px 0;\njustify-content: center;\nalign-items: center;\ngap: 8px;\nflex: 1 0 0;\nalign-self: stretch;\nborder-radius: 10px;\nbackground: #DD6B20;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:311px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1620:1876",
+                            "name": "预约咨询",
+                            "type": "TEXT",
+                            "width": 48,
+                            "height": 12,
+                            "x": 131.5,
+                            "y": 12,
+                            "visible": true,
+                            "css": "color: #FFF;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: -0.312px;\nposition:absolute;left:131.5px;top:12px;right:auto;bottom:auto;width:48px;height:12px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #FFF;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 12px; /* 100% */\nletter-spacing: -0.312px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:12px;white-space:pre;",
+                            "text": "预约咨询",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1620:1877",
+        "name": "dragger",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 135,
+        "height": 4,
+        "x": 120,
+        "y": 1074,
+        "visible": true,
+        "css": "width: 135px;\nheight: 4px;\nborder-radius: 5px;\nbackground: #FFF;\nposition:absolute;left:120px;top:1074px;right:auto;bottom:auto;width:135px;height:4px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 135px;\nheight: 4px;\nborder-radius: 5px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:120px;top:1074px;right:auto;bottom:auto;width:135px;height:4px;",
+        "text": "",
+        "children": []
+      }
+    ]
+  }
+}

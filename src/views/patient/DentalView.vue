@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   ArrowRight,
   CheckCircle2,
@@ -15,7 +15,15 @@ import {
   Star,
   UploadCloud,
 } from 'lucide-vue-next'
+import { dentalCurrentDoctors, dentalStepRails } from '@/data/dentalFigmaSource'
 import { createDentalAssessment, getSubmissionErrorMessage } from '@/services/patientSubmissions'
+const DentalDoctorSourceDialog=defineAsyncComponent(()=>import('@/components/common/DentalDoctorSourceDialog.vue'))
+const DentalDesktopFlow=defineAsyncComponent(()=>import('@/components/common/DentalDesktopFlow.vue'))
+const desktopDoctors=ref(typeof window!=='undefined'&&window.innerWidth>700)
+const desktopWidth=ref(typeof window!=='undefined'?window.innerWidth:1440)
+function updateDoctorViewport(){desktopWidth.value=window.innerWidth;desktopDoctors.value=window.innerWidth>700}
+onMounted(()=>window.addEventListener('resize',updateDoctorViewport,{passive:true}))
+onBeforeUnmount(()=>window.removeEventListener('resize',updateDoctorViewport))
 
 type DentalStep = 1 | 2 | 3
 
@@ -105,6 +113,9 @@ const filters = ref({ city: '', title: '', experience: '', background: '', langu
 const appliedFilters = ref({ ...filters.value })
 const sortMode = ref<'recommended' | 'experience' | 'cases' | 'rating' | 'price'>('recommended')
 const selectedDoctor = ref<DentalDoctor | null>(null)
+const desktopDoctorTab=ref(0)
+const institutionOpen=ref(false)
+const quoteDoctorId=ref<number|null>(null)
 const doctorTab = ref<'profile' | 'cases' | 'reviews'>('profile')
 const modalCloseButton = ref<HTMLButtonElement | null>(null)
 const uploadFiles = ref<File[]>([])
@@ -117,12 +128,12 @@ const modalPanel = ref<HTMLElement | null>(null)
 let assessmentRequestId = crypto.randomUUID()
 
 const filteredDoctors = computed(() => {
-  const filtered = doctors.filter((doctor) => {
+  const filtered = (desktopDoctors.value?dentalCurrentDoctors:doctors).filter((doctor) => {
     const current = appliedFilters.value
     if (current.city && doctor.city !== current.city) return false
     if (current.title && !doctor.title.includes(current.title)) return false
-    if (current.experience === '20年以上' && !doctor.experience.includes('26')) return false
-    if (current.experience === '10-20年' && !doctor.experience.includes('18')) return false
+    if (current.experience === '20年以上' && Number(doctor.experience.match(/\d+/)?.[0]||0)<20) return false
+    if (current.experience === '10-20年' && (Number(doctor.experience.match(/\d+/)?.[0]||0)<10||Number(doctor.experience.match(/\d+/)?.[0]||0)>20)) return false
     if (current.background && !doctor.background.includes(current.background)) return false
     if (current.language && !doctor.languages.includes(current.language)) return false
     if (current.price === '¥10,000 以下' && doctor.startingPrice > 10000) return false
@@ -140,7 +151,7 @@ const filteredDoctors = computed(() => {
 
 function setStep(step: DentalStep) {
   activeStep.value = step
-  nextTick(() => document.querySelector('.dental-workspace')?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  nextTick(() => document.querySelector(desktopDoctors.value?`[data-figma-node="${dentalStepRails[step-1]}"]`:'.dental-workspace')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth', block: 'start' }))
 }
 
 function chooseProject(project: DentalProject) {
@@ -167,6 +178,7 @@ function openDoctor(doctor: DentalDoctor) {
   modalTrigger.value = document.activeElement instanceof HTMLButtonElement ? document.activeElement : null
   selectedDoctor.value = doctor
   doctorTab.value = 'profile'
+  desktopDoctorTab.value=0
 }
 
 function closeDoctor() {
@@ -210,7 +222,7 @@ async function submitForm() {
   uploadStatus.value = 'submitting'
   submitError.value = ''
   try {
-    await createDentalAssessment({ requestId: assessmentRequestId, projectId: selectedProjectId.value, budget: form.value.budget, visitTime: form.value.visitTime, notes: form.value.notes }, uploadFiles.value)
+    await createDentalAssessment({ requestId: assessmentRequestId, projectId: selectedProjectId.value, budget: form.value.budget, visitTime: form.value.visitTime, notes: quoteDoctorId.value?`意向医生：${dentalCurrentDoctors.find(doctor=>doctor.id===quoteDoctorId.value)?.name}。${form.value.notes}`:form.value.notes }, uploadFiles.value)
     submitted.value = true
     uploadStatus.value = 'success'
   } catch (error) {
@@ -225,7 +237,8 @@ function contactSupport() {
 
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && selectedDoctor.value) closeDoctor()
-  if (event.key !== 'Tab' || !selectedDoctor.value || !modalPanel.value) return
+  if (event.key !== 'Tab' || !selectedDoctor.value) return
+  if (!modalPanel.value) return
   const focusable = Array.from(modalPanel.value.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'))
   const first = focusable[0]
   const last = focusable[focusable.length - 1]
@@ -235,6 +248,7 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 watch(selectedDoctor, async (doctor) => {
+  if(desktopDoctors.value)return
   document.body.style.overflow = doctor ? 'hidden' : ''
   if (doctor) {
     window.addEventListener('keydown', handleKeydown)
@@ -253,7 +267,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="dental-page" :class="`dental-page--step-${activeStep}`">
+  <DentalDesktopFlow v-if="desktopDoctors" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="institutionOpen=true" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
+  <div v-else class="dental-page" :class="`dental-page--step-${activeStep}`">
     <section class="dental-hero" :class="`dental-hero--step-${activeStep}`">
       <div class="dental-hero__backdrop" />
       <div class="hy-container dental-hero__content" data-reveal>
@@ -331,7 +346,7 @@ onBeforeUnmount(() => {
 
     <Teleport to="body">
       <Transition name="dental-modal">
-        <div v-if="selectedDoctor" class="dental-modal-backdrop" @click.self="closeDoctor">
+        <div v-if="selectedDoctor&&!desktopDoctors" class="dental-modal-backdrop" @click.self="closeDoctor">
           <section ref="modalPanel" class="dental-doctor-modal" :class="`dental-doctor-modal--${doctorTab}`" role="dialog" aria-modal="true" aria-label="医生详情">
             <button ref="modalCloseButton" type="button" class="dental-modal-close" aria-label="关闭医生详情" @click="closeDoctor"><img src="/images/figma/doctor-modal-close.svg" alt="" /></button>
             <h2>医生详情</h2>
@@ -345,6 +360,8 @@ onBeforeUnmount(() => {
       </Transition>
     </Teleport>
   </div>
+  <DentalDoctorSourceDialog v-if="institutionOpen&&desktopDoctors" institution @close="institutionOpen=false" />
+  <DentalDoctorSourceDialog v-if="selectedDoctor&&desktopDoctors" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
 </template>
 
 <style scoped>
@@ -1118,7 +1135,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .dental-page {
     margin-top: -64px;
   }
@@ -1152,6 +1169,8 @@ onBeforeUnmount(() => {
   .dental-hero p {
     visibility: visible;
   }
+  .dental-hero h1 { max-width:100%; font-size:34px; line-height:1.3; }
+  .dental-hero p { font-size:14px; line-height:22px; }
   .dental-steps {
     height: auto;
     position: sticky;
@@ -1167,6 +1186,7 @@ onBeforeUnmount(() => {
     padding: 20px 0;
   }
   .dental-step-connector { display: none; }
+  .dental-steps strong { padding-left:12px; font-size:18px; line-height:24px; white-space:normal; }
   .dental-steps__inner::before {
     top: 38px;
   }
@@ -1204,11 +1224,25 @@ onBeforeUnmount(() => {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .dental-modal-tabs {
-    gap: 12px;
+    height:auto;
+    gap: 8px;
   }
   .dental-modal-tabs button {
-    flex-shrink: 0;
+    flex:1;
+    min-width:0;
+    height:auto;
+    line-height:22px;
+    white-space:normal;
   }
+  .dental-modal-backdrop { padding:12px; }
+  .dental-doctor-modal { padding:28px 20px; max-height:calc(100dvh - 24px); }
+  .dental-modal-profile__portrait { flex:none; }
+  .dental-modal-profile__details { min-width:0; }
+  .dental-modal-profile__identity { flex-wrap:wrap; }
+  .dental-modal-profile h3,.dental-modal-profile p { line-height:24px; }
+  .dental-modal-list article { min-width:0; }
+  .dental-modal-list img { object-fit:contain; }
+  .dental-filter-bar select,.dental-upload-form select,.dental-upload-form textarea { font-size:16px; }
   .dental-modal-list article {
     min-height: 0;
   }

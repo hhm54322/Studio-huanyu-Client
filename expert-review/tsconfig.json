@@ -1,0 +1,1 @@
+{"extends":"../tsconfig.json","include":["./**/*.ts","./**/*.vue","../prototypes/expert-review/ProfessionalReportPreview.vue","../prototypes/expert-review/FreeReportPreview.vue","../env.d.ts"],"references":[]}

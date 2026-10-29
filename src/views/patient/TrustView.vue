@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { X } from "lucide-vue-next";
+import TrustArticleDialog from '@/components/common/TrustArticleDialog.vue';
+import TrustDesktopPage from '@/components/common/TrustDesktopPage.vue';
+
+const desktopArticle = ref(typeof window === 'undefined' || window.innerWidth > 900);
+function updateArticleViewport() {
+  const desktop = window.innerWidth > 900;
+  // Do not swap a desktop article for the frozen mobile JCI dialog on resize.
+  if (desktop !== desktopArticle.value) jciModalOpen.value = false;
+  desktopArticle.value = desktop;
+}
+onMounted(() => window.addEventListener('resize', updateArticleViewport, { passive: true }));
+onBeforeUnmount(() => window.removeEventListener('resize', updateArticleViewport));
 
 const trustAsset = (name: string) => `/images/figma/trust/${name}`;
 
@@ -27,6 +39,7 @@ const assurances = [
   },
 ];
 const expandedAssurances = ref(new Set([0]));
+const desktopExpandedFaq = ref(new Set([0]));
 function toggleAssurance(index: number) {
   const next = new Set(expandedAssurances.value);
   if (next.has(index)) next.delete(index);
@@ -85,60 +98,72 @@ const articles = [
     title: "JCI认证真相",
     copy: "137家JCI认证，院内感染率0.5%仅为欧美一半",
     icon: trustAsset("Icon-6.svg"),
-    link: true,
+    article: 'jci' as const,
   },
   {
     title: "费用低的原因",
     copy: "便宜≠低质，5大成本结构差异",
     icon: trustAsset("Icon-9.svg"),
+    article: 'cost' as const,
   },
   {
     title: "医生资质揭秘",
     copy: "98.7%海外培训，3-5倍手术量",
     icon: trustAsset("Frame-2.svg"),
+    article: 'doctor' as const,
   },
   {
     title: "药品安全说明",
-    copy: "一细胞一码，全链路可追溯",
+    copy: "一药一码，全链路可追溯",
     icon: trustAsset("Icon-8.svg"),
+    article: 'medicine' as const,
   },
   {
     title: "感染控制数据",
     copy: "0.5% vs 欧美1.2%，4大核心支柱",
     icon: trustAsset("Icon-7.svg"),
+    article: 'infection' as const,
   },
   {
     title: "权益保障解读",
     copy: "82%调解成功率，5重保障",
     icon: trustAsset("Icon-12.svg"),
+    article: 'rights' as const,
   },
   {
     title: "数据隐私合规",
     copy: "GDPR/HIPAA双合规",
     icon: trustAsset("Icon-3.svg"),
+    article: 'privacy' as const,
   },
   {
     title: "穆斯林患者就医保障",
     copy: "清真饮食·礼拜空间·隐私保护·斋月适配，全流程尊重伊斯兰信仰",
     icon: trustAsset("Frame-1.svg"),
+    article: 'muslim' as const,
   },
 ];
 const jciModalOpen = ref(false);
+type TrustArticle = 'jci' | 'cost' | 'doctor' | 'medicine' | 'infection' | 'rights' | 'privacy' | 'muslim';
+const activeArticle = ref<TrustArticle>('jci');
 const jciTrigger = ref<HTMLButtonElement | null>(null);
 const jciCloseButton = ref<HTMLButtonElement | null>(null);
+const lastArticleTrigger = ref<HTMLElement | null>(null);
 function setJciTrigger(element: any) {
   jciTrigger.value = element as HTMLButtonElement | null;
 }
-function openJciArticle() {
+function openJciArticle(article: TrustArticle, event?: Event) {
+  activeArticle.value = article;
+  if (event?.currentTarget instanceof HTMLElement) lastArticleTrigger.value = event.currentTarget;
   jciModalOpen.value = true;
-  nextTick(() => jciCloseButton.value?.focus());
+  if (!desktopArticle.value) nextTick(() => jciCloseButton.value?.focus());
 }
 function closeJciArticle() {
   jciModalOpen.value = false;
-  nextTick(() => jciTrigger.value?.focus());
+  nextTick(() => (lastArticleTrigger.value || jciTrigger.value)?.focus({ preventScroll: true }));
 }
 function handleJciKeydown(event: KeyboardEvent) {
-  if (!jciModalOpen.value) return;
+  if (!jciModalOpen.value || desktopArticle.value) return;
   if (event.key === 'Escape') {
     event.preventDefault();
     closeJciArticle();
@@ -190,7 +215,8 @@ function openConsultation() {
 </script>
 
 <template>
-  <div class="trust-page">
+  <TrustDesktopPage v-if="desktopArticle" v-model:expanded-assurances="expandedAssurances" v-model:expanded-faq="desktopExpandedFaq" />
+  <div v-else class="trust-page">
     <section class="trust-hero">
       <div class="trust-hero__media" />
       <div class="hy-container">
@@ -281,19 +307,25 @@ function openConsultation() {
             v-for="(item, index) in articles"
             :key="item.title"
             data-reveal
+            :class="{ 'article-card--interactive': Boolean(item.article && desktopArticle) }"
+            :role="item.article && desktopArticle ? 'button' : undefined"
+            :tabindex="item.article && desktopArticle ? 0 : undefined"
+            @click="item.article && desktopArticle ? openJciArticle(item.article, $event) : undefined"
+            @keydown.enter.prevent="item.article && desktopArticle ? openJciArticle(item.article, $event) : undefined"
+            @keydown.space.prevent="item.article && desktopArticle ? openJciArticle(item.article, $event) : undefined"
             :style="{ '--reveal-delay': `${(index % 3) * 55}ms` }"
           >
             <img class="article-icon" :src="item.icon" alt="" aria-hidden="true" />
             <h3>{{ item.title }}</h3>
             <p>{{ item.copy }}</p>
             <button
-              v-if="item.link"
-              :ref="setJciTrigger"
+              v-if="item.article && (desktopArticle || item.article === 'jci')"
+              :ref="item.article === 'jci' ? setJciTrigger : undefined"
               type="button"
               aria-haspopup="dialog"
-              :aria-expanded="jciModalOpen"
-              aria-controls="jci-truth-dialog"
-              @click="openJciArticle"
+              :aria-expanded="jciModalOpen && activeArticle === item.article"
+              :aria-controls="item.article === 'jci' ? 'jci-truth-dialog' : `trust-${item.article}-dialog`"
+              @click.stop="openJciArticle(item.article, $event)"
             >
               阅读全文<img
                 class="arrow-icon"
@@ -307,9 +339,10 @@ function openConsultation() {
       </div>
     </section>
 
+    <TrustArticleDialog v-if="jciModalOpen && desktopArticle" :key="activeArticle" :article="activeArticle" @close="closeJciArticle" />
     <Transition name="jci-dialog">
       <div
-        v-if="jciModalOpen"
+        v-if="jciModalOpen && !desktopArticle"
         class="jci-dialog-backdrop"
         role="presentation"
         @click.self="closeJciArticle"
@@ -364,6 +397,12 @@ function openConsultation() {
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.copy }}</p>
                 <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">
+                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                </RouterLink>
+                <RouterLink v-else-if="desktopArticle && stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">
+                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                </RouterLink>
+                <RouterLink v-else-if="desktopArticle && stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">
                   阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
                 <span v-else-if="(stageIndex === 1 && itemIndex === 0) || (stageIndex === 2 && itemIndex === 0)" class="tool-action-pending" aria-disabled="true">
@@ -878,7 +917,7 @@ function openConsultation() {
 .trust-hero__media {
   position: absolute;
   inset: 0;
-  background: url("/images/figma/trust/hero-source.png") center/cover no-repeat;
+  background: url("/images/figma/trust-revision/image-1cad4aafdde78f96dcd68f1213e753d0159e037c-alpha-40.webp") center/cover no-repeat;
   opacity: 0.4;
 }
 .trust-hero > .hy-container {
@@ -1119,6 +1158,11 @@ function openConsultation() {
   transform: translateY(-5px);
   box-shadow: 0 18px 40px rgba(20, 49, 98, 0.08);
 }
+.article-grid article.article-card--interactive { cursor: pointer; }
+.article-grid article.article-card--interactive:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
 .article-grid .article-icon {
   display: block;
   width: 32px;
@@ -1316,7 +1360,10 @@ function openConsultation() {
 .trust-cta {
   height: 412px;
   padding: 96px 0;
-  background: linear-gradient(90deg, #dd6b20 0%, #3b82f6 100%);
+  background:
+    url("/images/figma/trust-revision/image-b02b00b13404aaeacc90675658ce003e1bac4cbf-alpha-50.webp") 50% / cover no-repeat,
+    linear-gradient(90deg, #dd6b20 0%, #3b82f6 100%);
+  background-blend-mode: multiply, normal;
   color: #fff;
   text-align: center;
 }

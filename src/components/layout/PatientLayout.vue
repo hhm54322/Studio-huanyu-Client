@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ConsultationPanel from '@/components/common/ConsultationPanel.vue'
 import PatientFooter from './PatientFooter.vue'
 import PatientHeader from './PatientHeader.vue'
 
 const route = useRoute()
+const homeMobile = ref(typeof window !== 'undefined' && window.innerWidth <= 700)
+const articleDesktop = ref(typeof window === 'undefined' || window.innerWidth > 900)
+const sourceArticle = computed(() => articleDesktop.value && route.path === '/steps/toolkit-detail')
+const sourceDirectory = computed(() => ['/hospitals', '/doctors'].includes(route.path))
+const sourceTrust = computed(() => articleDesktop.value && route.path === '/trust')
+function updateHomeViewport() {
+  homeMobile.value = window.innerWidth <= 700
+  articleDesktop.value = window.innerWidth > 900
+}
 let observer: IntersectionObserver | null = null
 let contentObserver: MutationObserver | null = null
 let buttonCleanups: Array<() => void> = []
@@ -145,11 +154,13 @@ watch(() => route.fullPath, async () => {
 })
 
 onMounted(() => {
+  window.addEventListener('resize', updateHomeViewport, { passive:true })
   window.addEventListener('scroll', requestScrollMotion, { passive: true })
   window.addEventListener('resize', requestScrollMotion)
   scheduleRouteMotion()
 })
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateHomeViewport)
   observer?.disconnect()
   contentObserver?.disconnect()
   clearButtonMotion()
@@ -163,27 +174,33 @@ onBeforeUnmount(() => {
 <template>
   <div
     class="patient-shell min-h-screen flex flex-col"
+    :data-figma-node="route.path === '/' ? homeMobile ? '1528:116' : '1412:5682' : undefined"
     :class="{
       'patient-shell--disease': route.path === '/diseases-technologies',
       'patient-shell--trust': route.path === '/trust',
+      'patient-shell--source-article': sourceArticle,
       'patient-shell--about': route.path === '/about',
       'patient-shell--home': route.path === '/',
       'patient-shell--why-china': route.path === '/why-china',
-      'patient-shell--hospitals': route.path === '/hospitals',
+      'patient-shell--hospitals': sourceDirectory,
       'patient-shell--cases': route.path === '/cases',
       'patient-shell--dental': route.path === '/dental',
       'patient-shell--insurance': route.path === '/insurance',
       'patient-shell--cost': route.path === '/cost' || route.path === '/cost-generated',
     }"
   >
-    <PatientHeader :consultation-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1559.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1602.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1516.svg' : undefined" :language-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1583.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1626.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1540.svg' : undefined" />
+    <div class="patient-shell__body" :data-figma-node="route.path === '/' && !homeMobile ? '1412:5683' : undefined">
+    <PatientHeader v-if="!sourceArticle && !sourceDirectory && !sourceTrust && (route.path !== '/dental' || homeMobile)" :consultation-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1559.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1602.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1516.svg' : undefined" :language-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1583.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1626.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1540.svg' : undefined" />
     <main class="flex-1"><RouterView /></main>
-    <PatientFooter :contact-icons="route.path === '/hospitals' ? [5198, 5204, 5209].map(id => `/images/figma/hospital-source/node-144-${id}.svg`) : route.path === '/cases' ? [5473, 5479, 5484].map(id => `/images/figma/case-source/node-190-${id}.svg`) : route.path === '/diseases-technologies' ? [4630, 4636, 4641].map(id => `/images/figma/disease-source/node-144-${id}.svg`) : undefined" />
+    <PatientFooter v-if="!sourceArticle && !sourceDirectory && !sourceTrust && (route.path !== '/dental' || homeMobile)" :contact-icons="route.path === '/hospitals' ? [5198, 5204, 5209].map(id => `/images/figma/hospital-source/node-144-${id}.svg`) : route.path === '/cases' ? [5473, 5479, 5484].map(id => `/images/figma/case-source/node-190-${id}.svg`) : route.path === '/diseases-technologies' ? [4630, 4636, 4641].map(id => `/images/figma/disease-source/node-144-${id}.svg`) : undefined" />
     <ConsultationPanel />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.patient-shell__body { display:contents; }
+.patient-shell--source-article :deep(.consult-float) { display:none; }
 .patient-shell--disease :deep(.footer-intro .brand-logo__mark) { font-size:14px; font-weight:700; line-height:20px; letter-spacing:0; }
 .patient-shell--disease :deep(.footer-intro .brand-logo__copy strong) { font-weight:700; line-height:28px; }
 .patient-shell--disease :deep(.footer-column h3),

@@ -1,0 +1,384 @@
+{
+  "sourceFrame": "143:1190",
+  "sourceSHA256": "0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c",
+  "root": {
+    "id": "143:1190",
+    "name": "banner-01",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 754,
+    "x": -690,
+    "y": 2187,
+    "visible": true,
+    "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:754px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "143:1191",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 754,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\nalign-items: flex-start;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\nalign-items: flex-start;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1192",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 1440,
+            "height": 754,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:1193",
+                "name": "Image",
+                "type": "FRAME",
+                "width": 1440,
+                "height": 754,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "width: 1440px;\nheight: 754px;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                "layoutCss": "width: 1440px;\nheight: 754px;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;overflow:hidden;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:1194",
+                    "name": "ChatGPT Image 2026年9月3日 11_05_52 2",
+                    "type": "ROUNDED_RECTANGLE",
+                    "width": 1440.715087890625,
+                    "height": 757,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 1440.715px;\nheight: 757px;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-e6943845ef940b49542de39f92651cdf9d9b7980.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 1440.715px;\nheight: 757px;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-e6943845ef940b49542de39f92651cdf9d9b7980.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "143:1195",
+                    "name": "Rectangle 5",
+                    "type": "ROUNDED_RECTANGLE",
+                    "width": 1290,
+                    "height": 754,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 1290px;\nheight: 754px;\nbackground: linear-gradient(90deg, #EBF3F8 -18.3%, rgba(235, 243, 248, 0.00) 100%);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1290px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 1290px;\nheight: 754px;\nbackground: linear-gradient(90deg, #EBF3F8 -18.3%, rgba(235, 243, 248, 0.00) 100%);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1290px;height:754px;",
+                    "text": "",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "143:1196",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 1280,
+                "height": 280,
+                "x": 80,
+                "y": 237,
+                "visible": true,
+                "css": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nposition:absolute;left:80px;top:237px;right:auto;bottom:auto;width:1280px;height:280px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:1197",
+                    "name": "Text",
+                    "type": "FRAME",
+                    "width": 161,
+                    "height": 34,
+                    "x": 32,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 4px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:32px;top:0px;right:auto;bottom:auto;width:161px;height:34px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 4px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:161px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:1198",
+                        "name": "Frame",
+                        "type": "FRAME",
+                        "width": 14,
+                        "height": 14,
+                        "x": 16,
+                        "y": 10,
+                        "visible": true,
+                        "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:16px;top:10px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:16px;top:10px;",
+                        "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-143-1198.svg",
+                        "children": []
+                      },
+                      {
+                        "id": "143:1201",
+                        "name": "来华就医首选平台",
+                        "type": "TEXT",
+                        "width": 111,
+                        "height": 14,
+                        "x": 34,
+                        "y": 10,
+                        "visible": true,
+                        "css": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:34px;top:10px;right:auto;bottom:auto;width:111px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:111px;height:14px;white-space:pre;",
+                        "text": "来华就医首选平台",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:1202",
+                    "name": "Heading 1",
+                    "type": "FRAME",
+                    "width": 730,
+                    "height": 94,
+                    "x": 32,
+                    "y": 74,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nposition:absolute;left:32px;top:74px;right:auto;bottom:auto;width:730px;height:94px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:1203",
+                        "name": "让全球患者安心赴华就医",
+                        "type": "TEXT",
+                        "width": 576,
+                        "height": 52,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:576px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:576px;height:52px;white-space:pre;",
+                        "text": "让全球患者安心赴华就医",
+                        "children": []
+                      },
+                      {
+                        "id": "143:1204",
+                        "name": "从首份病历到回国复查，全程有人替你安排。",
+                        "type": "TEXT",
+                        "width": 352,
+                        "height": 18,
+                        "x": 0,
+                        "y": 76,
+                        "visible": true,
+                        "css": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:76px;right:auto;bottom:auto;width:352px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:352px;height:18px;white-space:pre;",
+                        "text": "从首份病历到回国复查，全程有人替你安排。",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:1205",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 259,
+                    "height": 72,
+                    "x": 32,
+                    "y": 208,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 32px;\nposition:absolute;left:32px;top:208px;right:auto;bottom:auto;width:259px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 32px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:259px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:1206",
+                        "name": "Link",
+                        "type": "FRAME",
+                        "width": 259,
+                        "height": 56,
+                        "x": 0,
+                        "y": 16,
+                        "visible": true,
+                        "css": "display: flex;\nheight: 56px;\npadding: 18px 24px;\nalign-items: center;\ngap: 8px;\nborder-radius: 14px;\nbackground: linear-gradient(0deg, #1E3A5F 0%, #1E3A5F 100%), #DD6B20;\nbox-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:259px;height:56px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nheight: 56px;\npadding: 18px 24px;\nalign-items: center;\ngap: 8px;\nborder-radius: 14px;\nbackground: linear-gradient(0deg, #1E3A5F 0%, #1E3A5F 100%), #DD6B20;\nbox-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:259px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:1207",
+                            "name": "提交病例 · 3分钟获取方案",
+                            "type": "TEXT",
+                            "width": 187,
+                            "height": 16,
+                            "x": 24,
+                            "y": 20,
+                            "visible": true,
+                            "css": "color: #FFF;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:24px;top:20px;right:auto;bottom:auto;width:187px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                            "layoutCss": "color: #FFF;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:187px;height:16px;white-space:pre;",
+                            "text": "提交病例 · 3分钟获取方案",
+                            "children": []
+                          },
+                          {
+                            "id": "143:1208",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 16,
+                            "height": 16,
+                            "x": 219,
+                            "y": 20,
+                            "visible": true,
+                            "css": "width: 16px;\nheight: 16px;\nposition:absolute;left:219px;top:20px;right:auto;bottom:auto;width:16px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:16px;height:16px;left:219px;top:20px;",
+                            "layoutCss": "width: 16px;\nheight: 16px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:16px;overflow:hidden;background:none;opacity:1;transform:none;width:16px;height:16px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-143-1208.svg",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "143:1211",
+        "name": "Button",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "x": 24,
+        "y": 353,
+        "visible": true,
+        "css": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1212",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 24,
+            "height": 24,
+            "x": 12,
+            "y": 12,
+            "visible": true,
+            "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+            "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+            "text": "",
+            "svg": "/images/figma/home-revision/node-143-1212.svg",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "143:1214",
+        "name": "Button",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "x": 1416,
+        "y": 353,
+        "visible": true,
+        "css": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+        "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1215",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 24,
+            "height": 24,
+            "x": 12,
+            "y": 12,
+            "visible": true,
+            "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+            "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+            "text": "",
+            "svg": "/images/figma/home-revision/node-143-1215.svg",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "143:1217",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 86,
+        "height": 10,
+        "x": 677,
+        "y": 720,
+        "visible": true,
+        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nposition:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1218",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 32,
+            "height": 10,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1219",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 40,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:40px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1220",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 58,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:58px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1221",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 76,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:76px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}

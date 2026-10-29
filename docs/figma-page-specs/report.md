@@ -126,6 +126,11 @@ Direct exports are byte-preserved. Figma returned `Failed to export` for six par
 
 ## Verification
 
+### Mobile correction (2026-10-10)
+
+- Keep the authored desktop form and report states; up to 900px inputs/selects/textarea use 16px text to avoid iOS focus zoom. Professional report headers/body retain 20px side gutters; metadata wraps in natural-height rows, pathology cards grow with their content, packages use fluid columns and upgrade actions wrap. No report-generation behavior or API contract changes.
+- Phone/tablet form and authored report states are checked by `scripts/mobile-responsive-qa.cjs`; screenshots and measured results are stored in ignored `artifacts/mobile-responsive-2026-10-10/`.
+
 - Figma reference screenshots: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/artifacts/figma-report/input-reference.png`, `free-report-reference.png`, `free-expanded-reference.png`, `paid-report-reference-canvas.png`
 - Local desktop screenshot: `/Users/hhm/Desktop/1024Clients/huanyu/Studio-huanyu-Client/artifacts/report/input-desktop-1440.png`
 - Additional desktop states: `free-desktop-1440.png`, `free-expanded-desktop-1440.png`, `paid-desktop-1440.png`

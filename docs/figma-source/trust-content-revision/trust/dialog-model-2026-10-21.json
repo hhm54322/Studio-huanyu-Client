@@ -1,0 +1,16 @@
+{
+  "panel": "143:4209",
+  "overlay": "143:4208",
+  "close": "143:4210",
+  "title": "143:4215",
+  "description": "143:4217",
+  "body": "143:4218",
+  "referenceOnly": [
+    "143:4207"
+  ],
+  "frame": "143:4206",
+  "width": 896,
+  "height": 450,
+  "sourceX": 272,
+  "sourceY": 152
+}

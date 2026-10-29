@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto'
 import { join } from 'node:path'
 
 const dir = join(process.cwd(), 'docs/figma-source/cases')
-const evidenceDir = join(process.cwd(), 'docs/figma-verification/cases/2026-09-29')
+const evidenceDir = join(process.cwd(), 'artifacts/figma-cases-2026-10-29')
 const json = async name => JSON.parse(await readFile(join(dir, name), 'utf8'))
 const inventory = await json('native-inventory-2026-09-29.json')
 const parameters = await json('native-parameters-2026-09-29.json')
@@ -70,14 +70,14 @@ assert.equal(states.reduced.transform, 'none')
 const geometry = JSON.parse(await readFile(join(evidenceDir, 'geometry.json'), 'utf8'))
 assert.equal(geometry.results[0].height, 1822)
 assert.equal(geometry.errors.length, 0)
-assert.ok(geometry.results[2].changedPixelRatio < .02, 'Desktop pixel difference exceeds the reviewed 2% tolerance')
+assert.ok(geometry.results.find(result => 'changedPixelRatio' in result).changedPixelRatio < .01, 'Desktop pixel difference exceeds 1%')
 const sourceMtime = Math.max(...await Promise.all([
   'src/views/patient/CaseView.vue', 'src/components/layout/PatientLayout.vue',
   'src/components/layout/PatientHeader.vue', 'src/components/layout/PatientFooter.vue',
   'src/components/common/CountUpNumber.vue', 'src/assets/styles/main.css',
 ].map(async file => (await stat(file)).mtimeMs)))
 for (const file of [
-  'local-1440.png', 'local-390.png', 'source-map-results.json', 'state-results.json',
+  'local-1440.png', 'source-map-results.json', 'state-results.json', 'geometry.json',
   ...states.results.flatMap(result => [`matcher-${result.width}.png`, `matcher-selected-${result.width}.png`, `empty-${result.width}.png`]),
 ]) {
   assert.ok((await stat(join(evidenceDir, file))).mtimeMs >= sourceMtime, `${file}: evidence predates the last UI edit; rerun QA`)

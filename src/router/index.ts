@@ -56,6 +56,12 @@ const router = createRouter({
           meta: { title: '中国医院' },
         },
         {
+          path: 'doctors',
+          name: 'patient-doctors',
+          component: () => import('@/views/patient/PhysicianView.vue'),
+          meta: { title: '中国医生' },
+        },
+        {
           path: 'report',
           name: 'patient-report',
           component: () => import('@/views/patient/ReportView.vue'),

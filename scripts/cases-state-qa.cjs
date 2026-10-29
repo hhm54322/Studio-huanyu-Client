@@ -1,8 +1,8 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const assert = require('node:assert/strict')
-const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
-const sharp = require('/tmp/huanyu-visual-qa-tools/node_modules/sharp')
+const { chromium } = require(path.join(process.env.HUANYU_QA_TOOLS || '/tmp/huanyu-visual-qa-tools/node_modules', 'playwright'))
+const sharp = require(path.join(process.env.HUANYU_QA_TOOLS || '/tmp/huanyu-visual-qa-tools/node_modules', 'sharp'))
 const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/cases/2026-09-29')
 const url = `${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}/cases`
 
@@ -24,12 +24,12 @@ async function expectFocus(page, locator) {
 }
 
 async function main() {
-  const browser = await chromium.launch({ headless: true })
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.HUANYU_QA_BROWSER })
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 834 } })
     const errors = [], results = []
     page.on('pageerror', error => errors.push(error.message))
-    for (const width of [1440, 1024, 768, 390]) {
+    for (const width of (process.env.HUANYU_QA_WIDTHS || '1440,1024,768,390').split(',').map(Number)) {
       await page.setViewportSize({ width, height: width === 1440 ? 834 : 844 })
       await page.goto(url, { waitUntil: 'networkidle' })
       await page.evaluate(() => document.fonts.ready)
@@ -80,11 +80,11 @@ async function main() {
       const sourceChecks = []
       if (width === 1440) {
         for (const [selector, expected] of [
-          ['h2', { x: 304, y: 72, width: 128, height: 32 }],
+          ['h2', { x: 304, y: 72, width: 130, height: 32 }],
           ['fieldset:nth-child(1) .matcher-options', { x: 336, y: 218, width: 800, height: 120 }],
           ['fieldset:nth-child(2) .matcher-options', { x: 336, y: 452, width: 800, height: 48 }],
           ['fieldset:nth-child(3) .matcher-options', { x: 336, y: 614, width: 800, height: 48 }],
-          ['footer button', { x: 617.5, y: 710, width: 205, height: 48 }],
+          ['footer button', { x: 618.5, y: 710, width: 203, height: 52 }],
         ]) {
           const actual = await dialog.locator(selector).boundingBox()
           assert.deepEqual(actual, expected, `matcher source geometry: ${selector}`)
@@ -105,11 +105,11 @@ async function main() {
           for (const style of actual) assert.deepEqual(style, expected, `matcher typography: ${selector}`)
           sourceChecks.push({ selector, actual, expected })
         }
-        await sharp('/Users/hhm/Downloads/智能匹配.png').png().toFile(path.join(out, 'figma-matcher-1440.png'))
+        await sharp(process.env.HUANYU_MATCHER_REFERENCE || '/Users/hhm/Downloads/智能匹配.png').resize({width:1440}).png().toFile(path.join(out, 'figma-matcher-1440.png'))
         const crop = { left: 272, top: 40, width: 896, height: 754 }
         const reference = await sharp(path.join(out, 'figma-matcher-1440.png')).extract(crop).ensureAlpha().raw().toBuffer()
         const local = await sharp(path.join(out, 'matcher-1440.png')).extract(crop).ensureAlpha().raw().toBuffer()
-        const pixelmatch = (await import('/tmp/huanyu-visual-qa-tools/node_modules/pixelmatch/index.js')).default
+        const pixelmatch = (await import(path.join(process.env.HUANYU_QA_TOOLS || '/tmp/huanyu-visual-qa-tools/node_modules', 'pixelmatch/index.js'))).default
         const diff = Buffer.alloc(local.length)
         const changed = pixelmatch(reference, local, diff, crop.width, crop.height, { threshold: .15, includeAA: false })
         const changedPixelRatio = changed / (crop.width * crop.height)

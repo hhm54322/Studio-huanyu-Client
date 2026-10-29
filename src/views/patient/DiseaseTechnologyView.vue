@@ -40,7 +40,7 @@ onBeforeUnmount(() => cardObserver?.disconnect())
         <section class="disease-hero" data-figma-node="144:4383">
           <div class="disease-hero__content" data-figma-node="144:4384" data-reveal>
             <div class="disease-hero__copy" data-figma-node="144:4385">
-              <div data-figma-node="144:4386"><h1 data-figma-node="144:4387">疾病中心</h1></div>
+              <div data-figma-node="144:4386"><h1 data-figma-node="144:4387">专科诊疗</h1></div>
               <div data-figma-node="144:4388"><p data-figma-node="144:4389">按疾病查找治疗方案，获取权威专家建议</p></div>
             </div>
           </div>

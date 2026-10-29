@@ -100,7 +100,7 @@ All 32 SVG/photo asset rows and source IDs are in the manifest.
 
 ## Verification
 
-- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cases/2026-09-29/figma-1440.png`
+- Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cases/2026-09-29/figma-reference-native.png`
 - Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cases/2026-09-29/local-1440.png`
 - Local mobile screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/cases/2026-09-29/local-390.png`
 - Verification run: 2026-09-29; final screenshots regenerated after the last UI edit and personally reviewed with section crops, overlay and diff.
@@ -112,3 +112,7 @@ All 32 SVG/photo asset rows and source IDs are in the manifest.
 - Compilation: `pnpm exec vue-tsc -b` and `pnpm exec vite build` pass. `git diff --check` passes.
 - Completion gate: source inventory, exact Dev Mode mapping, current-page desktop/mobile state QA, screenshot comparison, type checking and production build pass. Other page specifications are audited independently and do not change this page's evidence.
 - Remaining differences: none
+
+## Latest desktop revision — 2026-10-29
+
+The current official export and live Design node `190:5550` retain the matcher hierarchy. Re-read source typography and native baseline coordinates before applying browser line-box alignment: title `190:5559` is 130×32, tracking .3955078125 and baseline 27.52000046; question texts `190:5565/5589/5607` use tracking -.3125 and baseline 20.63999939; helper text uses baseline 16.04000092. Option labels use SF Pro 16/16, tracking -.150390625 and baseline13.6875. The submit button `190:5621` is203×52 at618.5/710; text `190:5622` is127×16 at642.5/728, baseline13.76000023. Labels remain native DOM text; line-box offsets are calculated from these source baselines against the browser's measured baseline. No screenshot-derived offsets are used. Latest reference: `artifacts/figma-cases-2026-10-29/matcher-reference-2x.png`.

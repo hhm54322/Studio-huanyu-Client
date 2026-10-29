@@ -11,6 +11,12 @@
 - Mobile frame: no dedicated frame found; implemented as a responsive adaptation of the desktop source
 - Status: verified
 
+## Mobile correction — 2026-10-10
+
+No mobile source frame exists. The desktop chart retains the recorded 54 bars and their native coordinates. Up to 900px, the same nine treatments/six countries use a full-width horizontal ECharts comparison, 680px high, with wrapping 12px legend and readable 11px category labels. Savings tags wrap into natural-height rows instead of clipping off screen. Resize observation regenerates the correct chart layout. Narrow-screen cost-detail accordion cards and the consultation/report actions remain intact. Evidence is local under ignored `artifacts/mobile-responsive-2026-10-10/`.
+
+Customer follow-up: the three existing patient-feedback cards (`143:1824`, source portraits/copy listed below) become a single visible, automatically advancing carousel up to 700px. Their authored images and text are retained; desktop still shows the three-card source grid. Mobile cards share one grid row and natural maximum height, with 24px portrait-to-copy spacing, working dots and a pause control. Every 6.5 seconds the selected card changes with a 500ms opacity/transform transition; horizontal swipe selects a card, vertical scrolling remains native. Visibility, hover/focus/touch, background-tab and reduced-motion pauses use the same carousel behavior as the homepage. This is the customer's requested mobile behavior, not a new Figma static measurement.
+
 ## Layer Mapping
 
 The complete 778-node map is `docs/figma-source/why-china/node-to-code-2026-09-29.json`. Every node has an exact Node ID, parent, sibling order, own/effective visibility, and a concrete Vue/DOM selector or ECharts owner. The 111 hidden nodes identify the exact hidden ancestor that excludes them. Layout-only wrappers are consolidated into their specified semantic elements; SVG descendants map to their exported asset element.
@@ -134,6 +140,19 @@ Octagos was revisited on `2026-09-29`: slow scrolling, a five-page fast scroll, 
 Consultation buttons use the existing shared dialog with focus lock, Escape close, and trigger focus restoration. CTA routes use `/report` and `/cases`; the cost CTA is an in-page accordion and `/cost` is retained only as a compatibility alias to `/why-china#cost-comparison`. Only the first capability has an authored expanded text branch in this source; other expanded descriptions are editable frontend content. No hospital administration or report-generation behavior is changed.
 
 ## Verification
+
+### Current-source recheck — 2026-10-29
+
+- Current official export: `/Users/hhm/Downloads/寰宇云医 (10).fig`
+- Current-source comparison report: `artifacts/figma-source-gate/current-why-china-2026-10-29.json`
+- Compared against the locked extraction for `143:1299`; scope result: `unchanged` (`778` source nodes before/current).
+- Full-file additions/removals and shared dependency changes were scanned; unrelated new frames were not adopted as this page's source.
+- Rerun source/Dev Mode QA: `artifacts/figma-why-china-2026-10-29-rerun/source-map-results.json` (`778` mappings, `23` geometry, `6` effects, `122` typography checks passed).
+- Rerun state QA: `scripts/why-china-state-qa.cjs` at `1440/1024/1920`; output `artifacts/figma-why-china-2026-10-29-rerun/interaction-results.json`. All independent capability toggles, cost expansion/compatibility route, consultation keyboard/focus, case navigation, ECharts entry and reduced-motion checks passed; no broken assets, console errors or overflow.
+- Current Figma export vs fresh local screenshot: `artifacts/figma-why-china-2026-10-29-rerun/current-visual.json`; `0.62966%` changed pixels (pixelmatch `.15`, antialiasing excluded), `0.77371%` normalized mean RGB error. Figma `2880×11311`, local `2880×11310`; source fractional frame height accounts for the last raster row. Both images were padded only at the bottom to compare the full canvas.
+- Current screenshot pair: `figma-current-2x.png` and `local-1440-2x.png` in the same evidence directory. Full-page comparison reviewed personally; no material static differences. Mobile remains deferred by the user.
+
+The current source did not change this page's registered frame, so no Vue/CSS baseline change was introduced in this pass. The page remains subject to the existing desktop/mobile and interaction evidence below.
 
 - Figma reference screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/why-china/2026-09-29/figma-source-2x.png`
 - Local desktop screenshot: `/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/docs/figma-verification/why-china/2026-09-29/local-1440.png`

@@ -1,0 +1,325 @@
+{
+  "sourceFrame": "143:1222",
+  "sourceSHA256": "0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c",
+  "root": {
+    "id": "143:1222",
+    "name": "banner-02",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 754,
+    "x": 790,
+    "y": 2187,
+    "visible": true,
+    "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:754px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "143:1223",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 754,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\nalign-items: flex-start;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\nalign-items: flex-start;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1224",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 1440,
+            "height": 754,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:1225",
+                "name": "Image",
+                "type": "FRAME",
+                "width": 1440,
+                "height": 754,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "width: 1440px;\nheight: 754px;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                "layoutCss": "width: 1440px;\nheight: 754px;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;overflow:hidden;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:1226",
+                    "name": "ChatGPT Image 2026年9月3日 11_05_52 2",
+                    "type": "ROUNDED_RECTANGLE",
+                    "width": 1440.715087890625,
+                    "height": 757,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 1440.715px;\nheight: 757px;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-bf051a6a37847ac5b7d2876d61da043bccb92fa7.webp) -259.305px 0px / 131.392% 100% no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 1440.715px;\nheight: 757px;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-bf051a6a37847ac5b7d2876d61da043bccb92fa7.webp) -259.305px 0px / 131.392% 100% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "143:1227",
+                    "name": "Rectangle 5",
+                    "type": "ROUNDED_RECTANGLE",
+                    "width": 1440,
+                    "height": 754,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 1440px;\nheight: 754px;\nbackground: linear-gradient(90deg, #EBF3F8 -18.3%, rgba(235, 243, 248, 0.00) 100%);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 1440px;\nheight: 754px;\nbackground: linear-gradient(90deg, #EBF3F8 -18.3%, rgba(235, 243, 248, 0.00) 100%);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;",
+                    "text": "",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "143:1228",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 1280,
+                "height": 168,
+                "x": 80,
+                "y": 293,
+                "visible": true,
+                "css": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nposition:absolute;left:80px;top:293px;right:auto;bottom:auto;width:1280px;height:168px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:1229",
+                    "name": "Text",
+                    "type": "FRAME",
+                    "width": 120,
+                    "height": 34,
+                    "x": 32,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 4px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:32px;top:0px;right:auto;bottom:auto;width:120px;height:34px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 4px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:120px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:1230",
+                        "name": "Frame",
+                        "type": "FRAME",
+                        "width": 14,
+                        "height": 14,
+                        "x": 16,
+                        "y": 10,
+                        "visible": true,
+                        "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:16px;top:10px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:16px;top:10px;",
+                        "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-143-1230.svg",
+                        "children": []
+                      },
+                      {
+                        "id": "143:1236",
+                        "name": "用数据说话",
+                        "type": "TEXT",
+                        "width": 70,
+                        "height": 14,
+                        "x": 34,
+                        "y": 10,
+                        "visible": true,
+                        "css": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:34px;top:10px;right:auto;bottom:auto;width:70px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:70px;height:14px;white-space:pre;",
+                        "text": "用数据说话",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:1237",
+                    "name": "Heading 1",
+                    "type": "FRAME",
+                    "width": 730,
+                    "height": 94,
+                    "x": 32,
+                    "y": 74,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nposition:absolute;left:32px;top:74px;right:auto;bottom:auto;width:730px;height:94px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:1238",
+                        "name": "8000+个家庭已陪伴赴华就医",
+                        "type": "TEXT",
+                        "width": 682,
+                        "height": 52,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:682px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:682px;height:52px;white-space:pre;",
+                        "text": "8000+个家庭已陪伴赴华就医",
+                        "children": []
+                      },
+                      {
+                        "id": "143:1239",
+                        "name": "覆盖肿瘤、齿科、康养、心脑血管等专科，每月新增XXX个家庭",
+                        "type": "TEXT",
+                        "width": 491,
+                        "height": 18,
+                        "x": 0,
+                        "y": 76,
+                        "visible": true,
+                        "css": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:76px;right:auto;bottom:auto;width:491px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:491px;height:18px;white-space:pre;",
+                        "text": "覆盖肿瘤、齿科、康养、心脑血管等专科，每月新增XXX个家庭",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "143:1240",
+        "name": "Button",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "x": 24,
+        "y": 353,
+        "visible": true,
+        "css": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1241",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 24,
+            "height": 24,
+            "x": 12,
+            "y": 12,
+            "visible": true,
+            "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+            "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+            "text": "",
+            "svg": "/images/figma/home-revision/node-143-1241.svg",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "143:1243",
+        "name": "Button",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "x": 1416,
+        "y": 353,
+        "visible": true,
+        "css": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+        "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1244",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 24,
+            "height": 24,
+            "x": 12,
+            "y": 12,
+            "visible": true,
+            "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+            "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+            "text": "",
+            "svg": "/images/figma/home-revision/node-143-1244.svg",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "143:1246",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 86,
+        "height": 10,
+        "x": 677,
+        "y": 720,
+        "visible": true,
+        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nposition:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:1247",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1248",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 32,
+            "height": 10,
+            "x": 18,
+            "y": 0,
+            "visible": true,
+            "css": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nposition:absolute;left:18px;top:0px;right:auto;bottom:auto;width:32px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1249",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 58,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:58px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          },
+          {
+            "id": "143:1250",
+            "name": "Button",
+            "type": "FRAME",
+            "width": 10,
+            "height": 10,
+            "x": 76,
+            "y": 0,
+            "visible": true,
+            "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:76px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}

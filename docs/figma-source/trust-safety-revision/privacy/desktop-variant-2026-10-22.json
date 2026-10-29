@@ -1,0 +1,406 @@
+{
+  "key": "privacy",
+  "articleFrame": "1595:3533",
+  "templateFrame": "143:4206",
+  "sourceSHA256": "8e274b299ca9208685e984e7cdb8b87ae5487c66e2c5103350e1118afc73a56d",
+  "templateSHA256": "29d97343e7e947187db27918706dc9b16c2f7886e08cf2dba453ed1a83bfb1bc",
+  "title": "数据隐私合规",
+  "description": "GDPR/HIPAA双合规",
+  "body": "海外患者十分重视个人病历、健康数据的隐私安全，尤其来自欧盟、东南亚地区的患者，对数据保护有着严格要求。\n我们严格遵循GDPR、HIPAA两大国际数据保护规范，对海外患者的医疗数据实施分级保护：\n• 患者病历、检查影像、个人身份信息，仅授权的医疗人员可以访问；\n• 未经患者书面许可，不会向第三方泄露、出售患者健康数据；\n• 患者有权申请调取、导出自己完整的医疗记录；\n• 医疗数据存储、传输采取加密技术，防范数据泄露风险。\n当患者需要把病历资料用于回国复诊、保险理赔时，我们会按照患者的要求，提供合规的电子或纸质报告，全程保障数据安全。\n对标国际数据保护规则，保障海外患者个人健康信息安全可控。",
+  "copyCorrections": [],
+  "mobileUI": "deferred by user",
+  "geometry": "PC template fit-content Auto Layout; content-derived height, not a separate authored PC article frame",
+  "model": {
+    "panel": "143:4209",
+    "overlay": "143:4208",
+    "close": "143:4210",
+    "title": "143:4215",
+    "description": "143:4217",
+    "body": "143:4218",
+    "referenceOnly": [
+      "143:4207"
+    ],
+    "frame": "143:4206",
+    "width": 896,
+    "height": 450,
+    "sourceX": 272,
+    "sourceY": 152
+  },
+  "root": {
+    "id": "143:4209",
+    "name": "Frame 631",
+    "type": "FRAME",
+    "width": 896,
+    "height": 450,
+    "x": 0,
+    "y": 0,
+    "visible": true,
+    "css": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;;left:0;top:0;",
+    "layoutCss": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(2,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+    "text": "",
+    "children": [
+      {
+        "id": "143:4210",
+        "name": "Button",
+        "type": "FRAME",
+        "width": 36,
+        "height": 36,
+        "x": 844,
+        "y": 16,
+        "visible": true,
+        "css": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:4211",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 20,
+            "height": 20,
+            "x": 8,
+            "y": 8,
+            "visible": true,
+            "css": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:8px;top:8px;",
+            "layoutCss": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+            "text": "",
+            "svg": "/images/figma/trust-content-revision/node-143-4211.svg",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "143:4213",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 832,
+        "height": 62,
+        "x": 32,
+        "y": 32,
+        "visible": true,
+        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:4214",
+            "name": "Heading 2",
+            "type": "FRAME",
+            "width": 832,
+            "height": 32,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:4215",
+                "name": "JCI认证真相",
+                "type": "TEXT",
+                "width": 180,
+                "height": 32,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:180px;height:32px;white-space:pre;;width:max-content;",
+                "layoutCss": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:180px;height:32px;white-space:pre;;width:max-content;",
+                "text": "数据隐私合规",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "143:4216",
+            "name": "Paragraph",
+            "type": "FRAME",
+            "width": 832,
+            "height": 30,
+            "x": 0,
+            "y": 32,
+            "visible": true,
+            "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:4217",
+                "name": "137家JCI认证，院内感染率0.5%仅为欧美一半",
+                "type": "TEXT",
+                "width": 287,
+                "height": 22,
+                "x": 0,
+                "y": 8,
+                "visible": true,
+                "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:287px;height:22px;white-space:pre;;width:max-content;",
+                "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:287px;height:22px;white-space:pre;;width:max-content;",
+                "text": "GDPR/HIPAA双合规",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "143:4218",
+        "name": "Frame 654",
+        "type": "FRAME",
+        "width": 832,
+        "height": 324,
+        "x": 32,
+        "y": 94,
+        "visible": true,
+        "css": "display: inline-flex;\npadding-top: 24px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+        "layoutCss": "display: inline-flex;\npadding-top: 24px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:4219",
+            "name": "Handpicked for exclusive Pegasus Program for secur",
+            "type": "TEXT",
+            "width": 832,
+            "height": 300,
+            "x": 0,
+            "y": 24,
+            "visible": true,
+            "css": "width: 832px;\ncolor: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:300px;white-space:pre-wrap;;height:auto;",
+            "layoutCss": "width: 832px;\ncolor: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:300px;white-space:pre-wrap;;height:auto;",
+            "text": "海外患者十分重视个人病历、健康数据的隐私安全，尤其来自欧盟、东南亚地区的患者，对数据保护有着严格要求。\n我们严格遵循GDPR、HIPAA两大国际数据保护规范，对海外患者的医疗数据实施分级保护：\n• 患者病历、检查影像、个人身份信息，仅授权的医疗人员可以访问；\n• 未经患者书面许可，不会向第三方泄露、出售患者健康数据；\n• 患者有权申请调取、导出自己完整的医疗记录；\n• 医疗数据存储、传输采取加密技术，防范数据泄露风险。\n当患者需要把病历资料用于回国复诊、保险理赔时，我们会按照患者的要求，提供合规的电子或纸质报告，全程保障数据安全。\n对标国际数据保护规则，保障海外患者个人健康信息安全可控。",
+            "children": [],
+            "textParagraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "海外患者十分重视个人病历、健康数据的隐私安全，尤其来自欧盟、东南亚地区的患者，对数据保护有着严格要求。",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "我们严格遵循GDPR、HIPAA两大国际数据保护规范，对海外患者的医疗数据实施分级保护：",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "• 患者病历、检查影像、个人身份信息，仅授权的医疗人员可以访问；",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "• 未经患者书面许可，不会向第三方泄露、出售患者健康数据；",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "• 患者有权申请调取、导出自己完整的医疗记录；",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "• 医疗数据存储、传输采取加密技术，防范数据泄露风险。",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "当患者需要把病历资料用于回国复诊、保险理赔时，我们会按照患者的要求，提供合规的电子或纸质报告，全程保障数据安全。",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;margin-bottom:12px;"
+              },
+              {
+                "runs": [
+                  {
+                    "text": "对标国际数据保护规则，保障海外患者个人健康信息安全可控。",
+                    "css": ""
+                  }
+                ],
+                "css": "display:block;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "contentMapping": [
+    {
+      "nodeId": "1595:3533",
+      "parentNodeId": null,
+      "siblingOrder": 0,
+      "name": "03信任与常见问题-04信任深度长文-07",
+      "ownerNodeId": "143:4206",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4206\"]",
+      "component": "TrustArticleDialog.vue",
+      "reason": "Native dialog ownership; source background screenshot not shipped"
+    },
+    {
+      "nodeId": "1595:3534",
+      "parentNodeId": "1595:3533",
+      "siblingOrder": 0,
+      "name": "Container",
+      "ownerNodeId": "143:4208",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4208\"]",
+      "component": "TrustArticleDialog.vue",
+      "reason": "PC backdrop, padding40, blur4"
+    },
+    {
+      "nodeId": "1595:3535",
+      "parentNodeId": "1595:3534",
+      "siblingOrder": 0,
+      "name": "Frame 631",
+      "ownerNodeId": "143:4209",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4209\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC template fit-content grid: width896, padding32, radius24"
+    },
+    {
+      "nodeId": "1595:3536",
+      "parentNodeId": "1595:3535",
+      "siblingOrder": 0,
+      "name": "Button",
+      "ownerNodeId": "143:4210",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4210\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC close control36"
+    },
+    {
+      "nodeId": "1595:3537",
+      "parentNodeId": "1595:3536",
+      "siblingOrder": 0,
+      "name": "Icon",
+      "ownerNodeId": "143:4211",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4211\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "Original PC close SVG20"
+    },
+    {
+      "nodeId": "1595:3538",
+      "parentNodeId": "1595:3537",
+      "siblingOrder": 0,
+      "name": "Vector",
+      "ownerNodeId": "143:4211",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4211\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "Exact original PC SVG path owner"
+    },
+    {
+      "nodeId": "1595:3539",
+      "parentNodeId": "1595:3535",
+      "siblingOrder": 1,
+      "name": "Container",
+      "ownerNodeId": "143:4218",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4218\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC content Auto Layout: top padding24"
+    },
+    {
+      "nodeId": "1595:3540",
+      "parentNodeId": "1595:3539",
+      "siblingOrder": 0,
+      "name": "Handpicked for exclusive Pegasus Program for secur",
+      "ownerNodeId": "143:4219",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4219\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "Full authored body: PC16/24, paragraph spacing12"
+    },
+    {
+      "nodeId": "1595:3541",
+      "parentNodeId": "1595:3535",
+      "siblingOrder": 2,
+      "name": "Container",
+      "ownerNodeId": "143:4213",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4213\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC header group"
+    },
+    {
+      "nodeId": "1595:3542",
+      "parentNodeId": "1595:3541",
+      "siblingOrder": 0,
+      "name": "Heading 2",
+      "ownerNodeId": "143:4214",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4214\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC heading container"
+    },
+    {
+      "nodeId": "1595:3543",
+      "parentNodeId": "1595:3542",
+      "siblingOrder": 0,
+      "name": "数据隐私合规",
+      "ownerNodeId": "143:4215",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4215\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "Authored title: PC32/32 semibold"
+    },
+    {
+      "nodeId": "1595:3544",
+      "parentNodeId": "1595:3541",
+      "siblingOrder": 1,
+      "name": "Paragraph",
+      "ownerNodeId": "143:4216",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4216\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "PC description container: top padding8"
+    },
+    {
+      "nodeId": "1595:3545",
+      "parentNodeId": "1595:3544",
+      "siblingOrder": 0,
+      "name": "GDPR/HIPAA双合规",
+      "ownerNodeId": "143:4217",
+      "rendered": true,
+      "selector": "[data-figma-node=\"143:4217\"]",
+      "component": "HomeSourceNode.vue",
+      "reason": "Authored description: PC14/22"
+    },
+    {
+      "nodeId": "1595:3546",
+      "parentNodeId": "1595:3533",
+      "siblingOrder": 1,
+      "name": "dragger",
+      "ownerNodeId": null,
+      "rendered": false,
+      "selector": null,
+      "component": null,
+      "reason": "Device home indicator; not website content"
+    }
+  ]
+}

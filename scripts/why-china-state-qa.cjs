@@ -1,18 +1,19 @@
 const assert = require('node:assert/strict')
 const fs = require('node:fs/promises')
 const path = require('node:path')
-const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
+const { chromium } = require(path.join(process.env.HUANYU_QA_TOOLS || '/Users/hhm/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules', 'playwright'))
 
 async function main() {
   const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/why-china/2026-09-29')
   const origin = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'
   await fs.mkdir(out, { recursive: true })
-  const browser = await chromium.launch({ headless: true })
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.HUANYU_QA_BROWSER || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' })
   const results = []
   const errors = []
   const failedResources = []
   try {
-    for (const width of [1440, 1024, 768, 390]) {
+    const widths=(process.env.HUANYU_QA_WIDTHS || '1440,1024,768,390').split(',').map(Number)
+    for (const width of widths) {
       const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 })
       page.on('pageerror', error => errors.push(error.message))
       page.on('console', message => {
@@ -101,13 +102,15 @@ async function main() {
       await page.close()
     }
     const motion = []
-    for (const [width, reducedMotion] of [[1440, 'no-preference'], [1440, 'reduce'], [390, 'no-preference']]) {
+    for (const [width, reducedMotion] of [[1440, 'no-preference'], [1440, 'reduce'], ...(widths.includes(390) ? [[390, 'no-preference']] : [])]) {
       const page = await browser.newPage({ viewport: { width, height: 900 } })
       page.on('pageerror', error => errors.push(error.message))
       await page.emulateMedia({ reducedMotion })
-      await page.goto(`${origin}/why-china`, { waitUntil: 'domcontentloaded', timeout: 60000 })
+      await page.goto(`${origin}/why-china`, { waitUntil: 'networkidle', timeout: 60000 })
       await page.waitForSelector('.capability-grid article', { timeout: 30000 })
-      const sample = () => page.locator('.comparison-chart canvas').evaluate(canvas => [...canvas.getContext('2d').getImageData(563, 120, 1, 1).data])
+      // The narrow chart is horizontal and only 358px wide at 390px. Sample
+      // an interior US bar in each actual chart, never outside its canvas.
+      const sample = () => page.locator('.comparison-chart canvas').evaluate((canvas, point) => [...canvas.getContext('2d').getImageData(point[0], point[1], 1, 1).data], width > 900 ? [563,120] : [120,85])
       const before = await sample()
       if (width === 1440 && reducedMotion === 'no-preference') assert.equal(before[3], 0)
       else assert.equal(before[3], 255)

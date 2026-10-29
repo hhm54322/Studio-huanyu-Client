@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import HomeSourceNode, { type HomeSourceNodeData } from '@/components/common/HomeSourceNode.vue'
+import oncologySource from '../../../docs/figma-source/about/specialties-revision-2026-10-29/oncology/source-tree-2026-10-29.json'
+import chronicSource from '../../../docs/figma-source/about/specialties-revision-2026-10-29/chronic/source-tree-2026-10-29.json'
+import dentalSource from '../../../docs/figma-source/about/specialties-revision-2026-10-29/dental/source-tree-2026-10-29.json'
 
 const activeCase = ref(0)
 const complexModalOpen = ref(false)
@@ -7,6 +11,9 @@ const modalCloseButton = ref<HTMLButtonElement | null>(null)
 const complexModal = ref<HTMLElement | null>(null)
 const expandedTrustCards = ref<number[]>([])
 let complexTrigger: HTMLElement | null = null
+const specialtyRoots = [null, oncologySource.root, chronicSource.root, dentalSource.root] as (HomeSourceNodeData | null)[]
+const specialtySource = computed(() => specialtyRoots[activeCase.value] ?? null)
+let previousBodyOverflow = ''
 
 const complexDetail = {
   title: '复杂骨科 · 关节置换',
@@ -42,10 +49,10 @@ const networkCards = [
 ]
 
 const complexCases = [
-  { title: '复杂骨科 · 关节置换', copy: '关节因为骨关节炎、股骨头坏死、类风湿或创伤严重磨损，药物与保守治疗效果有限时，用人工关节替代损坏的关节面，重建活动能力与无痛行走。', icon: '/images/figma/about-icons/Frame-1.svg', background: '/images/figma/about-complex-knee.webp', nodeId: '484:2093' },
-  { title: '肿瘤 · 多学科诊疗（MDT）', copy: '涉及肿瘤诊断后的第二诊疗意见、治疗方案选择、手术可行性评估，以及治疗后并发症与功能重建。', icon: '/images/figma/about-icons/Frame-6.svg', background: '/images/figma/about-complex-mri.webp', nodeId: '484:2127' },
-  { title: '慢病与自身免疫 · 个体化长期管理', copy: '糖尿病、高血压、慢阻肺、类风湿关节炎、系统性红斑狼疮、强直性脊柱炎等需要长期、动态调整方案的慢性病与自身免疫性疾病。', icon: '/images/figma/about-icons/Frame-5.svg', background: '/images/figma/about-complex-care.webp', nodeId: '484:2107' },
-  { title: '牙科 · 精准种植与美学修复', copy: '缺牙、牙列缺损、牙齿不齐、四环素牙/氟斑牙、牙周病等问题，通过种植、正畸、全瓷冠、贴面等方式恢复功能与美观。', icon: '/images/figma/about-icons/Frame-9.svg', background: '/images/figma/about-complex-care.webp', nodeId: '484:2117' },
+  { title: '复杂骨科 · 关节置换', copy: '关节因为骨关节炎、股骨头坏死、类风湿或创伤严重磨损，药物与保守治疗效果有限时，用人工关节替代损坏的关节面，重建活动能力与无痛行走。', icon: '/images/figma/about-revision/node-484-2524.svg', background: '/images/figma/about-complex-knee.webp', desktopBackground: '/images/figma/about-revision/image-484-2523-alpha.webp', nodeId: '484:2524' },
+  { title: '肿瘤 · 多学科诊疗（MDT）', copy: '涉及肿瘤诊断后的第二诊疗意见、治疗方案选择、手术可行性评估，以及治疗后并发症与功能重建。', icon: '/images/figma/about-revision/node-484-2558.svg', background: '/images/figma/about-complex-mri.webp', desktopBackground: '/images/figma/about-revision/image-484-2557-alpha.webp', nodeId: '484:2558' },
+  { title: '慢病与自身免疫 · 个体化长期管理', copy: '糖尿病、高血压、慢阻肺、类风湿关节炎、系统性红斑狼疮、强直性脊柱炎等需要长期、动态调整方案的慢性病与自身免疫性疾病。', icon: '/images/figma/about-revision/node-484-2548.svg', background: '/images/figma/about-complex-care.webp', desktopBackground: '/images/figma/about-revision/image-484-2547-alpha.webp', nodeId: '484:2548' },
+  { title: '牙科 · 精准种植与美学修复', copy: '缺牙、牙列缺损、牙齿不齐、四环素牙/氟斑牙、牙周病等问题，通过种植、正畸、全瓷冠、贴面等方式恢复功能与美观。', icon: '/images/figma/about-revision/node-484-2538.svg', background: '/images/figma/about-complex-care.webp', desktopBackground: '/images/figma/about-revision/image-484-2537-alpha.webp', nodeId: '484:2538' },
 ]
 
 const matchingSteps = [
@@ -103,7 +110,7 @@ function openConsultation() {
 
 async function openComplexCase(index: number) {
   activeCase.value = index
-  if (index !== 0) return
+  if (index !== 0 && window.innerWidth <= 900) return
   complexTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
   complexModalOpen.value = true
   await nextTick()
@@ -112,7 +119,7 @@ async function openComplexCase(index: number) {
 
 function closeComplexCase() {
   complexModalOpen.value = false
-  nextTick(() => complexTrigger?.focus())
+  nextTick(() => complexTrigger?.focus({ preventScroll: true }))
 }
 
 function toggleTrustDetail(index: number) {
@@ -138,13 +145,16 @@ function handleComplexModalKeydown(event: KeyboardEvent) {
 }
 
 watch(complexModalOpen, (complexOpen) => {
-  document.body.style.overflow = complexOpen ? 'hidden' : ''
+  if (complexOpen) {
+    previousBodyOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+  } else document.body.style.overflow = previousBodyOverflow
 })
 
 onMounted(() => window.addEventListener('keydown', handleComplexModalKeydown))
 onUnmounted(() => {
   window.removeEventListener('keydown', handleComplexModalKeydown)
-  document.body.style.overflow = ''
+  if (complexModalOpen.value) document.body.style.overflow = previousBodyOverflow
 })
 </script>
 
@@ -183,9 +193,9 @@ onUnmounted(() => {
           <h2 id="complex-title">复杂病例，一人一策</h2><p>点击切换，看我们如何为不同情况做个性化方案。</p>
         </header>
         <div class="complex-grid">
-          <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms`, '--complex-image': `url(${item.background})` }" data-reveal role="button" tabindex="0" @click="activeCase = index" @keydown.enter.prevent="activeCase = index" @keydown.space.prevent="activeCase = index">
+          <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms`, '--complex-image': `url(${item.background})`, '--complex-desktop-image': `url(${item.desktopBackground})` }" data-reveal role="button" tabindex="0" @click="openComplexCase(index)" @keydown.enter.self.prevent="openComplexCase(index)" @keydown.space.self.prevent="openComplexCase(index)">
             <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p>
-            <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">阅读全文 <img src="/images/figma/about-icons/Icon-12.svg" alt="" aria-hidden="true" /></button></div>
+            <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">阅读全文 <img src="/images/figma/about-revision/node-484-2534.svg" alt="" aria-hidden="true" /></button></div>
           </article>
         </div>
       </div>
@@ -228,14 +238,17 @@ onUnmounted(() => {
 
     <Transition name="complex-detail">
       <div v-if="complexModalOpen" class="complex-detail-backdrop" role="presentation" @click.self="closeComplexCase">
-        <section ref="complexModal" class="complex-detail-modal" role="dialog" aria-modal="true" aria-labelledby="complex-detail-title">
+        <section ref="complexModal" class="complex-detail-modal" :class="{ 'complex-detail-modal--specialty': specialtySource }" role="dialog" aria-modal="true" :aria-labelledby="specialtySource ? undefined : 'complex-detail-title'" :aria-label="specialtySource ? complexCases[activeCase]?.title : undefined">
           <button ref="modalCloseButton" class="complex-detail-close" type="button" aria-label="关闭复杂病例详情" @click="closeComplexCase"><img src="/images/figma/about-complex/icon-close.svg" alt="" aria-hidden="true" /></button>
+          <HomeSourceNode v-if="specialtySource" :node="specialtySource" root />
+          <template v-else>
           <div class="complex-detail-row complex-detail-row--title"><h2 id="complex-detail-title">{{ complexDetail.title }}</h2></div>
           <section class="complex-detail-row"><h3>1、疾病是什么？</h3><p>{{ complexDetail.disease }}</p></section>
           <section class="complex-detail-row complex-detail-row--trust"><h3>2、中国为什么做得好（信任核心）</h3><p class="complex-detail-trust-copy"><span v-for="paragraph in complexDetail.trustIntro.split('\n')" :key="paragraph">{{ paragraph }}</span><strong>{{ complexDetail.trustLead }}</strong></p><div class="complex-detail-capabilities"><article v-for="capability in complexDetail.capabilities" :key="capability.title"><img :src="capability.asset" :data-figma-node="capability.nodeId" alt="" aria-hidden="true" /><div><h4>{{ capability.title }}</h4><p>{{ capability.copy }}</p></div></article></div></section>
           <section class="complex-detail-row"><h3>3、我们能解决什么？</h3><div class="complex-detail-solutions"><span v-for="solution in complexDetail.solutions" :key="solution">{{ solution }}</span></div></section>
           <section class="complex-detail-row"><h3>4、典型治疗路径</h3><div class="complex-detail-path"><template v-for="(step, index) in complexDetail.path" :key="step"><span>{{ step }}</span><b v-if="index < complexDetail.path.length - 1" aria-hidden="true">→</b></template></div></section>
           <section class="complex-detail-row"><h3>5、适合谁来</h3><p>{{ complexDetail.suitable }}</p></section>
+          </template>
         </section>
       </div>
     </Transition>
@@ -300,6 +313,7 @@ onUnmounted(() => {
 @media (max-width: 560px) { .about-content { width: calc(100% - 40px); }.about-hero { min-height: 608px; align-items: end; justify-content: flex-end; gap: 24px; padding: 0 20px 68px; background-position: 66% center; }.about-hero__content, .about-hero__copy { width: 100%; margin-top: 0; }.about-hero-mobile-break { display: block; }.about-hero h1 { width: min(100%, 340px); max-width: 100%; margin-inline: auto; font-size: 32px; line-height: 1.34; white-space: normal !important; overflow-wrap: anywhere; word-break: break-all; }.about-hero p { font-size: 14px; }.about-primary-button { min-height: 46px; }.about-section-heading h2 { max-width: 100%; margin-inline: auto; font-size: 30px; line-height: 1.2; overflow-wrap: anywhere; word-break: break-all; }.about-section-heading p { font-size: 13px; }.network-stats { height: auto; grid-template-columns: repeat(2,1fr); gap: 20px 0; margin-top: 34px; }.network-stat { min-height: 70px; }.network-stat:nth-child(3) { border-left: 0; }.network-stat strong { font-size: 34px; }.network-cards, .complex-grid, .matching-grid, .proof-grid { grid-template-columns: 1fr; margin-top: 34px; }.network-card, .matching-card { min-height: auto; }.network-card h3, .matching-card h3 { margin-top: 24px; }.complex-card { min-height: 0; }.proof-card { min-height: 0; }.about-cta { min-height: 368px; background-position: 58% center; }.about-cta h2 { font-size: 29px; }.about-cta p { font-size: 13px; }.complex-detail-backdrop { padding: 12px; align-items: end; }.complex-detail-modal { width: 100%; max-height: calc(100vh - 24px); gap: 24px; border-radius: 20px 20px 0 0; padding: 28px 20px 24px; }.complex-detail-capabilities { grid-template-columns: 1fr; gap: 12px; }.complex-detail-capabilities article { min-height: 0; padding: 18px; }.complex-detail-capabilities h4 { margin-top: 14px; }.complex-detail-solutions { grid-template-columns: 1fr; gap: 8px; }.complex-detail-path { align-items: stretch; flex-direction: column; }.complex-detail-path b { transform: rotate(90deg); line-height: 10px; }.complex-detail-path span { width: 100%; }.complex-detail-row h3 { font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .about-primary-button, .about-primary-button::before, .about-primary-button svg, .complex-card, .complex-card::after, .complex-card__read img, .matching-card, .proof-card, .proof-card button svg, .complex-detail-enter-active, .complex-detail-leave-active, .complex-detail-enter-active .complex-detail-modal, .complex-detail-leave-active .complex-detail-modal, .complex-detail-close { transition: none; } }
 @media (max-width: 560px) { .complex-detail-modal { height: auto; grid-template-rows: none; } }
+@media (max-width: 560px) { .about-hero { align-items:center; } }
 @media (max-width: 900px) {
   .network-card, .matching-card, .complex-card, .proof-card { gap: 40px; }
   .complex-card--knee, .proof-card:nth-child(4) { gap: 40px; }
@@ -354,6 +368,18 @@ onUnmounted(() => {
 .proof-card__detail { display: grid; grid-template-rows: 0fr; margin-top: 0; padding-top: 0; border-top-width: 0; opacity: 0; transition: grid-template-rows .36s cubic-bezier(.22,1,.36,1), margin-top .36s cubic-bezier(.22,1,.36,1), padding-top .36s cubic-bezier(.22,1,.36,1), opacity .24s ease, border-color .24s ease; }
 .proof-card__detail--open { grid-template-rows: 1fr; margin-top: 20px; padding-top: 20px; border-top-width: 1px; opacity: 1; }
 .proof-card__detail-inner { min-height: 0; overflow: hidden; }
+@media (max-width:900px) {
+  .proof-card__detail-inner { min-width:0; }
+  .proof-card__detail p { overflow-wrap:anywhere; }
+}
 .proof-card { align-self: start; }
 @media (prefers-reduced-motion: reduce) { .proof-card__detail { transition: none; } }
+/* Separately authored desktop frame 484:2501; mobile layout remains frozen. */
+@media (min-width: 901px) {
+  .complex-detail-modal--specialty { padding: 0; gap: 0; border-radius: 0; overflow: visible; }
+  .complex-detail-modal--specialty > .complex-detail-close { top: -40px; right: 0; background: #fff; }
+  .about-complex .about-section-heading p { letter-spacing: -0.312px; }
+  .complex-card::before { opacity: 1; background-image: var(--complex-desktop-image); }
+  .complex-card:nth-child(3)::after, .complex-card:nth-child(4)::after { position: absolute; inset: 0; pointer-events: none; content: ''; background: linear-gradient(86deg, #102649 1.35%, rgba(17, 40, 75, 0) 89.61%); }
+}
 </style>

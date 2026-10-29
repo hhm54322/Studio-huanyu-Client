@@ -1,0 +1,2115 @@
+{
+  "sourceFrame": "1407:5",
+  "sourceSHA256": "0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c",
+  "root": {
+    "id": "1407:5",
+    "name": "患者故事 · 真实见证",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 756,
+    "x": -690,
+    "y": 4669,
+    "visible": true,
+    "css": "width: 1440px;\nheight: 756px;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:756px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "width: 1440px;\nheight: 756px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:756px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "1407:6",
+        "name": "01寰宇云医 - 首页 1",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 1440,
+        "height": 1455,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-6fff347cafaff4f54077b300090968d8fbfa72a6.webp) 0px -0.105px / 100% 118.213% no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-6fff347cafaff4f54077b300090968d8fbfa72a6.webp) 0px -0.105px / 100% 118.213% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;",
+        "text": "",
+        "children": []
+      },
+      {
+        "id": "1407:7",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 756,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\nheight: 756px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:756px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 756px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:756px;",
+        "text": "",
+        "children": [
+          {
+            "id": "1407:8",
+            "name": "Frame 631",
+            "type": "FRAME",
+            "width": 896,
+            "height": 650,
+            "x": 272,
+            "y": 53,
+            "visible": true,
+            "css": "display: flex;\nwidth: 896px;\nheight: 650px;\npadding: 32px;\nflex-direction: column;\nalign-items: flex-start;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #FFF;\nposition:absolute;left:272px;top:53px;right:auto;bottom:auto;width:896px;height:650px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 896px;\nheight: 650px;\npadding: 32px;\nflex-direction: column;\nalign-items: flex-start;\nflex-shrink: 0;\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "1407:9",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 36,
+                "height": 36,
+                "x": 844,
+                "y": 16,
+                "visible": true,
+                "css": "display: flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1407:10",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 20,
+                    "height": 20,
+                    "x": 8,
+                    "y": 8,
+                    "visible": true,
+                    "css": "display: flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                    "layoutCss": "display: flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:20px;height:20px;overflow:hidden;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1407:11",
+                        "name": "Vector",
+                        "type": "VECTOR",
+                        "width": 10,
+                        "height": 10,
+                        "x": 5,
+                        "y": 5,
+                        "visible": true,
+                        "css": "width: 10px;\nheight: 10px;\nstroke-width: 1.667px;\nstroke: #1E3A5F;\nposition:absolute;left:5px;top:5px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;background-image:none;background:none;opacity:1;transform:none;width:10px;height:10px;left:5px;top:5px;",
+                        "layoutCss": "width: 10px;\nheight: 10px;\nstroke-width: 1.667px;\nstroke: #1E3A5F;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:5px;top:5px;right:auto;bottom:auto;width:10px;height:10px;background:none;opacity:1;transform:none;width:10px;height:10px;left:5px;top:5px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-1407-11.svg",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1407:12",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 832,
+                "height": 62,
+                "x": 32,
+                "y": 32,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:32px;top:32px;right:auto;bottom:auto;width:832px;height:62px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1407:13",
+                    "name": "Heading 2",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 32,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1407:14",
+                        "name": "新西兰 Michael W.｜非霍奇金淋巴瘤 CAR-T治疗",
+                        "type": "TEXT",
+                        "width": 725,
+                        "height": 32,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:725px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:725px;height:32px;white-space:pre;",
+                        "text": "新西兰 Michael W.｜非霍奇金淋巴瘤 CAR-T治疗",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1407:15",
+                    "name": "Paragraph",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 30,
+                    "x": 0,
+                    "y": 32,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:832px;height:30px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1407:16",
+                        "name": "从新西兰求医，到在上海接受CAR-T治疗、肿瘤完全缓解的全过程",
+                        "type": "TEXT",
+                        "width": 410,
+                        "height": 22,
+                        "x": 0,
+                        "y": 8,
+                        "visible": true,
+                        "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:410px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:410px;height:22px;white-space:pre;",
+                        "text": "从新西兰求医，到在上海接受CAR-T治疗、肿瘤完全缓解的全过程",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1407:17",
+                "name": "Frame 693",
+                "type": "FRAME",
+                "width": 832,
+                "height": 556,
+                "x": 32,
+                "y": 94,
+                "visible": true,
+                "css": "display: flex;\nheight: 556px;\npadding-top: 24px;\nalign-items: flex-start;\ngap: 24px;\nflex-shrink: 0;\nalign-self: stretch;\nposition:absolute;left:32px;top:94px;right:auto;bottom:auto;width:832px;height:556px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nheight: 556px;\npadding-top: 24px;\nalign-items: flex-start;\ngap: 24px;\nflex-shrink: 0;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1407:18",
+                    "name": "Frame 692",
+                    "type": "FRAME",
+                    "width": 404,
+                    "height": 500,
+                    "x": 0,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 404px;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:404px;height:500px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 404px;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1407:19",
+                        "name": "Frame 691",
+                        "type": "FRAME",
+                        "width": 404,
+                        "height": 270,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nheight: 270px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 10px;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:270px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nheight: 270px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 10px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1407:20",
+                            "name": "d602d9897a0a03b944e15587ed192e53 1",
+                            "type": "ROUNDED_RECTANGLE",
+                            "width": 404,
+                            "height": 269.3333435058594,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "height: 269.333px;\nflex-shrink: 0;\nalign-self: stretch;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:269.33334px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "height: 269.333px;\nflex-shrink: 0;\nalign-self: stretch;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:269.33334px;",
+                            "text": "",
+                            "children": []
+                          },
+                          {
+                            "id": "1466:858",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 104,
+                            "height": 10,
+                            "x": 150,
+                            "y": 243,
+                            "visible": true,
+                            "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 150px;\nbottom: 17px;\nposition:absolute;left:150px;top:243px;right:auto;bottom:auto;width:104px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 150px;\nbottom: 17px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:150px;top:243px;right:auto;bottom:auto;width:104px;height:10px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1466:859",
+                                "name": "Button",
+                                "type": "FRAME",
+                                "width": 32,
+                                "height": 10,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                                "text": "",
+                                "children": []
+                              },
+                              {
+                                "id": "1466:860",
+                                "name": "Button",
+                                "type": "FRAME",
+                                "width": 10,
+                                "height": 10,
+                                "x": 40,
+                                "y": 0,
+                                "visible": true,
+                                "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nposition:absolute;left:40px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                                "text": "",
+                                "children": []
+                              },
+                              {
+                                "id": "1466:861",
+                                "name": "Button",
+                                "type": "FRAME",
+                                "width": 10,
+                                "height": 10,
+                                "x": 58,
+                                "y": 0,
+                                "visible": true,
+                                "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nposition:absolute;left:58px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                                "text": "",
+                                "children": []
+                              },
+                              {
+                                "id": "1466:862",
+                                "name": "Button",
+                                "type": "FRAME",
+                                "width": 10,
+                                "height": 10,
+                                "x": 76,
+                                "y": 0,
+                                "visible": true,
+                                "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nposition:absolute;left:76px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                                "text": "",
+                                "children": []
+                              },
+                              {
+                                "id": "1466:863",
+                                "name": "Button",
+                                "type": "FRAME",
+                                "width": 10,
+                                "height": 10,
+                                "x": 94,
+                                "y": 0,
+                                "visible": true,
+                                "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nposition:absolute;left:94px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(255, 255, 255, 0.20);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                                "text": "",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1407:21",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 404,
+                        "height": 230,
+                        "x": 0,
+                        "y": 270,
+                        "visible": true,
+                        "css": "display: flex;\npadding-top: 24px;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:270px;right:auto;bottom:auto;width:404px;height:230px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding-top: 24px;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1407:22",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 404,
+                            "height": 206,
+                            "x": 0,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex: 1 0 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:404px;height:206px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\nflex: 1 0 0;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:404px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1407:23",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 356,
+                                "height": 158,
+                                "x": 24,
+                                "y": 24,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:356px;height:158px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:24",
+                                    "name": "Heading 3",
+                                    "type": "FRAME",
+                                    "width": 356,
+                                    "height": 22,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:356px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:25",
+                                        "name": "患者背景",
+                                        "type": "TEXT",
+                                        "width": 356,
+                                        "height": 22,
+                                        "x": 0,
+                                        "y": 0,
+                                        "visible": true,
+                                        "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:356px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                        "text": "患者背景",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:26",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 356,
+                                    "height": 136,
+                                    "x": 0,
+                                    "y": 22,
+                                    "visible": true,
+                                    "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:356px;height:136px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:27",
+                                        "name": "Handpicked for exclusive Pegasus Program for secur",
+                                        "type": "TEXT",
+                                        "width": 356,
+                                        "height": 120,
+                                        "x": 0,
+                                        "y": 16,
+                                        "visible": true,
+                                        "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:356px;height:120px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                        "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:120px;white-space:pre-wrap;",
+                                        "text": "Michael，25岁，来自新西兰，确诊非霍奇金淋巴瘤。在奥克兰当地完成多轮化疗、放疗及免疫治疗，病情未受控制。当地医生推荐CAR-T细胞疗法，但澳大利亚医院报价高达60万美元，超出家庭承受能力。",
+                                        "textLines": [
+                                          {
+                                            "runs": [
+                                              {
+                                                "text": "M",
+                                                "css": ";position:absolute;left:0px;top:0;"
+                                              },
+                                              {
+                                                "text": "i",
+                                                "css": ";position:absolute;left:14.10938px;top:0;"
+                                              },
+                                              {
+                                                "text": "c",
+                                                "css": ";position:absolute;left:18.20313px;top:0;"
+                                              },
+                                              {
+                                                "text": "h",
+                                                "css": ";position:absolute;left:26.95313px;top:0;"
+                                              },
+                                              {
+                                                "text": "a",
+                                                "css": ";position:absolute;left:35.84375px;top:0;"
+                                              },
+                                              {
+                                                "text": "e",
+                                                "css": ";position:absolute;left:44.78125px;top:0;"
+                                              },
+                                              {
+                                                "text": "l",
+                                                "css": ";position:absolute;left:53.65625px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:57.42188px;top:0;"
+                                              },
+                                              {
+                                                "text": "2",
+                                                "css": ";position:absolute;left:73.88379px;top:0;"
+                                              },
+                                              {
+                                                "text": "5",
+                                                "css": ";position:absolute;left:83.47754px;top:0;"
+                                              },
+                                              {
+                                                "text": "岁",
+                                                "css": ";position:absolute;left:93.07129px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:109.5332px;top:0;"
+                                              },
+                                              {
+                                                "text": "来",
+                                                "css": ";position:absolute;left:125.99512px;top:0;"
+                                              },
+                                              {
+                                                "text": "自",
+                                                "css": ";position:absolute;left:142.45703px;top:0;"
+                                              },
+                                              {
+                                                "text": "新",
+                                                "css": ";position:absolute;left:158.91895px;top:0;"
+                                              },
+                                              {
+                                                "text": "西",
+                                                "css": ";position:absolute;left:175.38086px;top:0;"
+                                              },
+                                              {
+                                                "text": "兰",
+                                                "css": ";position:absolute;left:191.84277px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:208.30469px;top:0;"
+                                              },
+                                              {
+                                                "text": "确",
+                                                "css": ";position:absolute;left:224.7666px;top:0;"
+                                              },
+                                              {
+                                                "text": "诊",
+                                                "css": ";position:absolute;left:241.22852px;top:0;"
+                                              },
+                                              {
+                                                "text": "非",
+                                                "css": ";position:absolute;left:257.69043px;top:0;"
+                                              },
+                                              {
+                                                "text": "霍",
+                                                "css": ";position:absolute;left:274.15234px;top:0;"
+                                              },
+                                              {
+                                                "text": "奇",
+                                                "css": ";position:absolute;left:290.61426px;top:0;"
+                                              },
+                                              {
+                                                "text": "金",
+                                                "css": ";position:absolute;left:307.07617px;top:0;"
+                                              },
+                                              {
+                                                "text": "淋",
+                                                "css": ";position:absolute;left:323.53809px;top:0;"
+                                              },
+                                              {
+                                                "text": "巴",
+                                                "css": ";position:absolute;left:340px;top:0;"
+                                              }
+                                            ],
+                                            "baseline": 17.760000000000005,
+                                            "css": "display:block;position:absolute;left:0px;top:0px;width:356px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                          },
+                                          {
+                                            "runs": [
+                                              {
+                                                "text": "瘤",
+                                                "css": ";position:absolute;left:0px;top:0;"
+                                              },
+                                              {
+                                                "text": "。",
+                                                "css": ";position:absolute;left:17px;top:0;"
+                                              },
+                                              {
+                                                "text": "在",
+                                                "css": ";position:absolute;left:34px;top:0;"
+                                              },
+                                              {
+                                                "text": "奥",
+                                                "css": ";position:absolute;left:51px;top:0;"
+                                              },
+                                              {
+                                                "text": "克",
+                                                "css": ";position:absolute;left:68px;top:0;"
+                                              },
+                                              {
+                                                "text": "兰",
+                                                "css": ";position:absolute;left:85px;top:0;"
+                                              },
+                                              {
+                                                "text": "当",
+                                                "css": ";position:absolute;left:102px;top:0;"
+                                              },
+                                              {
+                                                "text": "地",
+                                                "css": ";position:absolute;left:119px;top:0;"
+                                              },
+                                              {
+                                                "text": "完",
+                                                "css": ";position:absolute;left:136px;top:0;"
+                                              },
+                                              {
+                                                "text": "成",
+                                                "css": ";position:absolute;left:153px;top:0;"
+                                              },
+                                              {
+                                                "text": "多",
+                                                "css": ";position:absolute;left:170px;top:0;"
+                                              },
+                                              {
+                                                "text": "轮",
+                                                "css": ";position:absolute;left:187px;top:0;"
+                                              },
+                                              {
+                                                "text": "化",
+                                                "css": ";position:absolute;left:204px;top:0;"
+                                              },
+                                              {
+                                                "text": "疗",
+                                                "css": ";position:absolute;left:221px;top:0;"
+                                              },
+                                              {
+                                                "text": "、",
+                                                "css": ";position:absolute;left:238px;top:0;"
+                                              },
+                                              {
+                                                "text": "放",
+                                                "css": ";position:absolute;left:255px;top:0;"
+                                              },
+                                              {
+                                                "text": "疗",
+                                                "css": ";position:absolute;left:272px;top:0;"
+                                              },
+                                              {
+                                                "text": "及",
+                                                "css": ";position:absolute;left:289px;top:0;"
+                                              },
+                                              {
+                                                "text": "免",
+                                                "css": ";position:absolute;left:306px;top:0;"
+                                              },
+                                              {
+                                                "text": "疫",
+                                                "css": ";position:absolute;left:323px;top:0;"
+                                              },
+                                              {
+                                                "text": "治",
+                                                "css": ";position:absolute;left:340px;top:0;"
+                                              }
+                                            ],
+                                            "baseline": 17.760000228881836,
+                                            "css": "display:block;position:absolute;left:0px;top:24px;width:356px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                          },
+                                          {
+                                            "runs": [
+                                              {
+                                                "text": "疗",
+                                                "css": ";position:absolute;left:0px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:16.90809px;top:0;"
+                                              },
+                                              {
+                                                "text": "病",
+                                                "css": ";position:absolute;left:33.81618px;top:0;"
+                                              },
+                                              {
+                                                "text": "情",
+                                                "css": ";position:absolute;left:50.72427px;top:0;"
+                                              },
+                                              {
+                                                "text": "未",
+                                                "css": ";position:absolute;left:67.63235px;top:0;"
+                                              },
+                                              {
+                                                "text": "受",
+                                                "css": ";position:absolute;left:84.54044px;top:0;"
+                                              },
+                                              {
+                                                "text": "控",
+                                                "css": ";position:absolute;left:101.44853px;top:0;"
+                                              },
+                                              {
+                                                "text": "制",
+                                                "css": ";position:absolute;left:118.35662px;top:0;"
+                                              },
+                                              {
+                                                "text": "。",
+                                                "css": ";position:absolute;left:135.26471px;top:0;"
+                                              },
+                                              {
+                                                "text": "当",
+                                                "css": ";position:absolute;left:152.17279px;top:0;"
+                                              },
+                                              {
+                                                "text": "地",
+                                                "css": ";position:absolute;left:169.08089px;top:0;"
+                                              },
+                                              {
+                                                "text": "医",
+                                                "css": ";position:absolute;left:185.98897px;top:0;"
+                                              },
+                                              {
+                                                "text": "生",
+                                                "css": ";position:absolute;left:202.89706px;top:0;"
+                                              },
+                                              {
+                                                "text": "推",
+                                                "css": ";position:absolute;left:219.80515px;top:0;"
+                                              },
+                                              {
+                                                "text": "荐",
+                                                "css": ";position:absolute;left:236.71324px;top:0;"
+                                              },
+                                              {
+                                                "text": "C",
+                                                "css": ";position:absolute;left:253.62132px;top:0;"
+                                              },
+                                              {
+                                                "text": "A",
+                                                "css": ";position:absolute;left:265.26196px;top:0;"
+                                              },
+                                              {
+                                                "text": "R",
+                                                "css": ";position:absolute;left:275.77759px;top:0;"
+                                              },
+                                              {
+                                                "text": "-",
+                                                "css": ";position:absolute;left:286.59009px;top:0;"
+                                              },
+                                              {
+                                                "text": "T",
+                                                "css": ";position:absolute;left:296.27759px;top:0;"
+                                              },
+                                              {
+                                                "text": "细",
+                                                "css": ";position:absolute;left:306.18384px;top:0;"
+                                              },
+                                              {
+                                                "text": "胞",
+                                                "css": ";position:absolute;left:323.09192px;top:0;"
+                                              },
+                                              {
+                                                "text": "疗",
+                                                "css": ";position:absolute;left:340px;top:0;"
+                                              }
+                                            ],
+                                            "baseline": 17.759998321533203,
+                                            "css": "display:block;position:absolute;left:0px;top:48px;width:355.99988px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                          },
+                                          {
+                                            "runs": [
+                                              {
+                                                "text": "法",
+                                                "css": ";position:absolute;left:0px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:16.04062px;top:0;"
+                                              },
+                                              {
+                                                "text": "但",
+                                                "css": ";position:absolute;left:32.08125px;top:0;"
+                                              },
+                                              {
+                                                "text": "澳",
+                                                "css": ";position:absolute;left:48.12188px;top:0;"
+                                              },
+                                              {
+                                                "text": "大",
+                                                "css": ";position:absolute;left:64.1625px;top:0;"
+                                              },
+                                              {
+                                                "text": "利",
+                                                "css": ";position:absolute;left:80.20313px;top:0;"
+                                              },
+                                              {
+                                                "text": "亚",
+                                                "css": ";position:absolute;left:96.24375px;top:0;"
+                                              },
+                                              {
+                                                "text": "医",
+                                                "css": ";position:absolute;left:112.28438px;top:0;"
+                                              },
+                                              {
+                                                "text": "院",
+                                                "css": ";position:absolute;left:128.325px;top:0;"
+                                              },
+                                              {
+                                                "text": "报",
+                                                "css": ";position:absolute;left:144.36563px;top:0;"
+                                              },
+                                              {
+                                                "text": "价",
+                                                "css": ";position:absolute;left:160.40625px;top:0;"
+                                              },
+                                              {
+                                                "text": "高",
+                                                "css": ";position:absolute;left:176.44687px;top:0;"
+                                              },
+                                              {
+                                                "text": "达",
+                                                "css": ";position:absolute;left:192.4875px;top:0;"
+                                              },
+                                              {
+                                                "text": "6",
+                                                "css": ";position:absolute;left:208.52812px;top:0;"
+                                              },
+                                              {
+                                                "text": "0",
+                                                "css": ";position:absolute;left:218.12187px;top:0;"
+                                              },
+                                              {
+                                                "text": "万",
+                                                "css": ";position:absolute;left:227.71562px;top:0;"
+                                              },
+                                              {
+                                                "text": "美",
+                                                "css": ";position:absolute;left:243.75626px;top:0;"
+                                              },
+                                              {
+                                                "text": "元",
+                                                "css": ";position:absolute;left:259.79688px;top:0;"
+                                              },
+                                              {
+                                                "text": "，",
+                                                "css": ";position:absolute;left:275.83749px;top:0;"
+                                              },
+                                              {
+                                                "text": "超",
+                                                "css": ";position:absolute;left:291.87811px;top:0;"
+                                              },
+                                              {
+                                                "text": "出",
+                                                "css": ";position:absolute;left:307.91876px;top:0;"
+                                              },
+                                              {
+                                                "text": "家",
+                                                "css": ";position:absolute;left:323.95938px;top:0;"
+                                              },
+                                              {
+                                                "text": "庭",
+                                                "css": ";position:absolute;left:340px;top:0;"
+                                              }
+                                            ],
+                                            "baseline": 17.76000213623047,
+                                            "css": "display:block;position:absolute;left:0px;top:72px;width:355.99988px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                          },
+                                          {
+                                            "runs": [
+                                              {
+                                                "text": "承",
+                                                "css": ";position:absolute;left:0px;top:0;"
+                                              },
+                                              {
+                                                "text": "受",
+                                                "css": ";position:absolute;left:16px;top:0;"
+                                              },
+                                              {
+                                                "text": "能",
+                                                "css": ";position:absolute;left:32px;top:0;"
+                                              },
+                                              {
+                                                "text": "力",
+                                                "css": ";position:absolute;left:48px;top:0;"
+                                              },
+                                              {
+                                                "text": "。",
+                                                "css": ";position:absolute;left:64px;top:0;"
+                                              }
+                                            ],
+                                            "baseline": 17.76000213623047,
+                                            "css": "display:block;position:absolute;left:0px;top:96px;width:80px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                          }
+                                        ],
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1407:28",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 404,
+                    "height": 532,
+                    "x": 428,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 404px;\nheight: 532px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nposition:absolute;left:428px;top:24px;right:auto;bottom:auto;width:404px;height:532px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                    "layoutCss": "display: flex;\nwidth: 404px;\nheight: 532px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;overflow:hidden;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1407:29",
+                        "name": "Rectangle 25",
+                        "type": "ROUNDED_RECTANGLE",
+                        "width": 404,
+                        "height": 532,
+                        "x": 0,
+                        "y": 0,
+                        "visible": false,
+                        "css": "width: 404px;\nheight: 532px;\nposition: absolute;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:532px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;display:none;",
+                        "layoutCss": "width: 404px;\nheight: 532px;\nposition: absolute;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:532px;display:none;",
+                        "text": "",
+                        "children": []
+                      },
+                      {
+                        "id": "1407:30",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 404,
+                        "height": 778,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px 24px 0 0;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:778px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px 24px 0 0;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1407:31",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 356,
+                            "height": 22,
+                            "x": 24,
+                            "y": 24,
+                            "visible": true,
+                            "css": "display: flex;\nalign-items: center;\ngap: 12px;\nalign-self: stretch;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:356px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nalign-items: center;\ngap: 12px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1407:32",
+                                "name": "Heading 2",
+                                "type": "FRAME",
+                                "width": 109,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:109px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:109px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:33",
+                                    "name": "治疗全流程",
+                                    "type": "TEXT",
+                                    "width": 109,
+                                    "height": 22,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:109px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:109px;height:22px;white-space:pre;",
+                                    "text": "治疗全流程",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1407:34",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 356,
+                            "height": 708,
+                            "x": 24,
+                            "y": 46,
+                            "visible": true,
+                            "css": "display: flex;\npadding-top: 28px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:46px;right:auto;bottom:auto;width:356px;height:708px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-top: 28px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1407:35",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 356,
+                                "height": 200,
+                                "x": 0,
+                                "y": 28,
+                                "visible": true,
+                                "css": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:28px;right:auto;bottom:auto;width:356px;height:200px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:36",
+                                    "name": "Heading 3",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 32,
+                                    "x": 42,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:0px;right:auto;bottom:auto;width:314px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:37",
+                                        "name": "前期远程评估",
+                                        "type": "TEXT",
+                                        "width": 108,
+                                        "height": 32,
+                                        "x": 0,
+                                        "y": 0,
+                                        "visible": true,
+                                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:108px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:108px;height:32px;white-space:pre;",
+                                        "text": "前期远程评估",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:38",
+                                    "name": "List",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 144,
+                                    "x": 42,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:32px;right:auto;bottom:auto;width:314px;height:144px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:39",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 24,
+                                        "x": 0,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:314px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:40",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:41",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:42",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 288,
+                                            "height": 24,
+                                            "x": 14,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:14px;top:0px;right:auto;bottom:auto;width:288px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:288px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:43",
+                                                "name": "患者上传全部海外病历、影像与检验报告",
+                                                "type": "TEXT",
+                                                "width": 288,
+                                                "height": 24,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:288px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                                "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:288px;height:24px;white-space:pre;",
+                                                "text": "患者上传全部海外病历、影像与检验报告",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1407:44",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 56,
+                                        "x": 0,
+                                        "y": 32,
+                                        "visible": true,
+                                        "css": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:314px;height:56px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:45",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:46",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:47",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 300,
+                                            "height": 48,
+                                            "x": 14,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:14px;top:8px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:300px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:48",
+                                                "name": "平台安排血液专家团队进行会诊，评估是否适合来华CAR-T治疗",
+                                                "type": "TEXT",
+                                                "width": 300,
+                                                "height": 48,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                                                "text": "平台安排血液专家团队进行会诊，评估是否适合来华CAR-T治疗",
+                                                "textLines": [
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "平台安排血液专家团队进行会诊，评估是",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000000000005,
+                                                    "css": "display:block;position:absolute;left:0px;top:0px;width:288px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "否适合来华CAR-T治疗",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000228881836,
+                                                    "css": "display:block;position:absolute;left:0px;top:24px;width:164.5625px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  }
+                                                ],
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1407:49",
+                                        "name": "List Item:margin",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 56,
+                                        "x": 0,
+                                        "y": 88,
+                                        "visible": true,
+                                        "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:88px;right:auto;bottom:auto;width:314px;height:56px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:50",
+                                            "name": "List Item",
+                                            "type": "FRAME",
+                                            "width": 314,
+                                            "height": 48,
+                                            "x": 0,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:314px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:51",
+                                                "name": "Text:margin",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 24,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                                "text": "",
+                                                "children": [
+                                                  {
+                                                    "id": "1407:52",
+                                                    "name": "Text",
+                                                    "type": "FRAME",
+                                                    "width": 6,
+                                                    "height": 6,
+                                                    "x": 0,
+                                                    "y": 9,
+                                                    "visible": true,
+                                                    "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                    "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                    "text": "",
+                                                    "children": []
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "id": "1407:53",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 300,
+                                                "height": 48,
+                                                "x": 14,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:14px;top:0px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:300px;",
+                                                "text": "",
+                                                "children": [
+                                                  {
+                                                    "id": "1407:54",
+                                                    "name": "提供完整治疗方案、周期预估、协助办理医疗签证、机票住宿等一站式安排",
+                                                    "type": "TEXT",
+                                                    "width": 300,
+                                                    "height": 48,
+                                                    "x": 0,
+                                                    "y": 0,
+                                                    "visible": true,
+                                                    "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                    "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                                                    "text": "提供完整治疗方案、周期预估、协助办理医疗签证、机票住宿等一站式安排",
+                                                    "textLines": [
+                                                      {
+                                                        "runs": [
+                                                          {
+                                                            "text": "提供完整治疗方案、周期预估、协助办理",
+                                                            "css": ""
+                                                          }
+                                                        ],
+                                                        "baseline": 17.760000000000005,
+                                                        "css": "display:block;position:absolute;left:0px;top:0px;width:288px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                      },
+                                                      {
+                                                        "runs": [
+                                                          {
+                                                            "text": "医疗签证、机票住宿等一站式安排",
+                                                            "css": ""
+                                                          }
+                                                        ],
+                                                        "baseline": 17.760000228881836,
+                                                        "css": "display:block;position:absolute;left:0px;top:24px;width:240px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                      }
+                                                    ],
+                                                    "children": []
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:55",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 2,
+                                    "height": 168,
+                                    "x": 16,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "width: 2px;\nheight: 168px;\nposition: absolute;\nleft: 16px;\nbottom: 0;\nbackground: #DBEAFE;\nposition:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:168px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "width: 2px;\nheight: 168px;\nposition: absolute;\nleft: 16px;\nbottom: 0;\nbackground: #DBEAFE;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:168px;",
+                                    "text": "",
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1407:56",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 32,
+                                    "height": 32,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:57",
+                                        "name": "01",
+                                        "type": "TEXT",
+                                        "width": 19,
+                                        "height": 16,
+                                        "x": 6.5,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "color: #FFF;\ntext-align: center;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nposition:absolute;left:6.5px;top:8px;right:auto;bottom:auto;width:19px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #FFF;\ntext-align: center;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:19px;height:16px;white-space:pre;",
+                                        "text": "01",
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1407:58",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 356,
+                                "height": 232,
+                                "x": 0,
+                                "y": 228,
+                                "visible": true,
+                                "css": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:228px;right:auto;bottom:auto;width:356px;height:232px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:59",
+                                    "name": "Heading 3",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 32,
+                                    "x": 42,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:0px;right:auto;bottom:auto;width:314px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:60",
+                                        "name": "来华诊疗全过程",
+                                        "type": "TEXT",
+                                        "width": 126,
+                                        "height": 32,
+                                        "x": 0,
+                                        "y": 0,
+                                        "visible": true,
+                                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:126px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:126px;height:32px;white-space:pre;",
+                                        "text": "来华诊疗全过程",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:61",
+                                    "name": "List",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 176,
+                                    "x": 42,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:32px;right:auto;bottom:auto;width:314px;height:176px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:62",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 24,
+                                        "x": 0,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:314px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:63",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:64",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:65",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 240,
+                                            "height": 24,
+                                            "x": 14,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:14px;top:0px;right:auto;bottom:auto;width:240px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:240px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:66",
+                                                "name": "抵达上海，入院完善全套复查评估",
+                                                "type": "TEXT",
+                                                "width": 240,
+                                                "height": 24,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:240px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                                "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:240px;height:24px;white-space:pre;",
+                                                "text": "抵达上海，入院完善全套复查评估",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1407:67",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 56,
+                                        "x": 0,
+                                        "y": 32,
+                                        "visible": true,
+                                        "css": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:314px;height:56px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:68",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:69",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:70",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 300,
+                                            "height": 48,
+                                            "x": 14,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:14px;top:8px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:300px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:71",
+                                                "name": "采集自身T免疫细胞，实验室进行基因改造制备CAR-T细胞",
+                                                "type": "TEXT",
+                                                "width": 300,
+                                                "height": 48,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                                                "text": "采集自身T免疫细胞，实验室进行基因改造制备CAR-T细胞",
+                                                "textLines": [
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "采集自身T免疫细胞，实验室进行基因改造",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000000000005,
+                                                    "css": "display:block;position:absolute;left:0px;top:0px;width:297.90625px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "制备CAR-T细胞",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000228881836,
+                                                    "css": "display:block;position:absolute;left:0px;top:24px;width:116.5625px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  }
+                                                ],
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1407:72",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 56,
+                                        "x": 0,
+                                        "y": 88,
+                                        "visible": true,
+                                        "css": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:88px;right:auto;bottom:auto;width:314px;height:56px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:73",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:74",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:75",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 300,
+                                            "height": 48,
+                                            "x": 14,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:14px;top:8px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:300px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:76",
+                                                "name": "CAR-T细胞回输告知观察，医护团队持续监测副作用",
+                                                "type": "TEXT",
+                                                "width": 300,
+                                                "height": 48,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:300px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:48px;white-space:pre-wrap;",
+                                                "text": "CAR-T细胞回输告知观察，医护团队持续监测副作用",
+                                                "textLines": [
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "CAR-T细胞回输告知观察，医护团队持续",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000000000005,
+                                                    "css": "display:block;position:absolute;left:0px;top:0px;width:292.5625px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "监测副作用",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000228881836,
+                                                    "css": "display:block;position:absolute;left:0px;top:24px;width:80px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  }
+                                                ],
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1407:77",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 32,
+                                        "x": 0,
+                                        "y": 144,
+                                        "visible": true,
+                                        "css": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:144px;right:auto;bottom:auto;width:314px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\npadding-top: 8px;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:78",
+                                            "name": "Text:margin",
+                                            "type": "FRAME",
+                                            "width": 6,
+                                            "height": 24,
+                                            "x": 0,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nheight: 24px;\nalign-items: center;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:6px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nheight: 24px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:6px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:79",
+                                                "name": "Text",
+                                                "type": "FRAME",
+                                                "width": 6,
+                                                "height": 6,
+                                                "x": 0,
+                                                "y": 9,
+                                                "visible": true,
+                                                "css": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:9px;right:auto;bottom:auto;width:6px;height:6px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                                "layoutCss": "width: 6px;\nheight: 6px;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:6px;",
+                                                "text": "",
+                                                "children": []
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "id": "1407:80",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 176,
+                                            "height": 24,
+                                            "x": 14,
+                                            "y": 8,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:14px;top:8px;right:auto;bottom:auto;width:176px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:176px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:81",
+                                                "name": "治疗后定期复查评估疗效",
+                                                "type": "TEXT",
+                                                "width": 176,
+                                                "height": 24,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:176px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                                "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:176px;height:24px;white-space:pre;",
+                                                "text": "治疗后定期复查评估疗效",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:82",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 2,
+                                    "height": 206,
+                                    "x": 16,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "width: 2px;\nheight: 206px;\nposition: absolute;\nleft: 16px;\nbottom: -6px;\nbackground: #DBEAFE;\nposition:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:206px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "width: 2px;\nheight: 206px;\nposition: absolute;\nleft: 16px;\nbottom: -6px;\nbackground: #DBEAFE;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:206px;",
+                                    "text": "",
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1407:83",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 32,
+                                    "height": 32,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:84",
+                                        "name": "02",
+                                        "type": "TEXT",
+                                        "width": 19,
+                                        "height": 16,
+                                        "x": 6.5,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "color: #FFF;\ntext-align: center;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nposition:absolute;left:6.5px;top:8px;right:auto;bottom:auto;width:19px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #FFF;\ntext-align: center;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:19px;height:16px;white-space:pre;",
+                                        "text": "02",
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1407:85",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 356,
+                                "height": 136,
+                                "x": 0,
+                                "y": 460,
+                                "visible": true,
+                                "css": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:460px;right:auto;bottom:auto;width:356px;height:136px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding: 0 0 24px 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:86",
+                                    "name": "Heading 3",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 32,
+                                    "x": 42,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:0px;right:auto;bottom:auto;width:314px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:87",
+                                        "name": "治疗结果",
+                                        "type": "TEXT",
+                                        "width": 72,
+                                        "height": 32,
+                                        "x": 0,
+                                        "y": 0,
+                                        "visible": true,
+                                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:72px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:72px;height:32px;white-space:pre;",
+                                        "text": "治疗结果",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:88",
+                                    "name": "List",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 80,
+                                    "x": 42,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:32px;right:auto;bottom:auto;width:314px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:89",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 72,
+                                        "x": 0,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:90",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 314,
+                                            "height": 72,
+                                            "x": 0,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:314px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:91",
+                                                "name": "淋巴瘤达到完全缓解，病灶消失。Michael在治疗10余天后身体状态逐步恢复，顺利出院。",
+                                                "type": "TEXT",
+                                                "width": 314,
+                                                "height": 72,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:72px;white-space:pre-wrap;",
+                                                "text": "淋巴瘤达到完全缓解，病灶消失。Michael在治疗10余天后身体状态逐步恢复，顺利出院。",
+                                                "textLines": [
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "淋巴瘤达到完全缓解，病灶消失。Michael在",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000000000005,
+                                                    "css": "display:block;position:absolute;left:0px;top:0px;width:313.42188px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "治疗10余天后身体状态逐步恢复，顺利出",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000228881836,
+                                                    "css": "display:block;position:absolute;left:0px;top:24px;width:288.01563px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "院。",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.759998321533203,
+                                                    "css": "display:block;position:absolute;left:0px;top:48px;width:32px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  }
+                                                ],
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:92",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 32,
+                                    "height": 32,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:93",
+                                        "name": "03",
+                                        "type": "TEXT",
+                                        "width": 19,
+                                        "height": 16,
+                                        "x": 6.5,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "color: #FFF;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nposition:absolute;left:6.5px;top:8px;right:auto;bottom:auto;width:19px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #FFF;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:19px;height:16px;white-space:pre;",
+                                        "text": "03",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:94",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 2,
+                                    "height": 116,
+                                    "x": 16,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "width: 2px;\nheight: 116px;\nposition: absolute;\nleft: 16px;\nbottom: -12px;\nbackground: #DBEAFE;\nposition:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:116px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "width: 2px;\nheight: 116px;\nposition: absolute;\nleft: 16px;\nbottom: -12px;\nbackground: #DBEAFE;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:16px;top:32px;right:auto;bottom:auto;width:2px;height:116px;",
+                                    "text": "",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1407:95",
+                                "name": "Container",
+                                "type": "FRAME",
+                                "width": 356,
+                                "height": 112,
+                                "x": 0,
+                                "y": 596,
+                                "visible": true,
+                                "css": "display: flex;\npadding-left: 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:596px;right:auto;bottom:auto;width:356px;height:112px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\npadding-left: 42px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1407:96",
+                                    "name": "Heading 3",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 32,
+                                    "x": 42,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:0px;right:auto;bottom:auto;width:314px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:97",
+                                        "name": "患者真实评价",
+                                        "type": "TEXT",
+                                        "width": 108,
+                                        "height": 32,
+                                        "x": 0,
+                                        "y": 0,
+                                        "visible": true,
+                                        "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:108px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 177.778% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:108px;height:32px;white-space:pre;",
+                                        "text": "患者真实评价",
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:98",
+                                    "name": "List",
+                                    "type": "FRAME",
+                                    "width": 314,
+                                    "height": 80,
+                                    "x": 42,
+                                    "y": 32,
+                                    "visible": true,
+                                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:42px;top:32px;right:auto;bottom:auto;width:314px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:99",
+                                        "name": "List Item",
+                                        "type": "FRAME",
+                                        "width": 314,
+                                        "height": 72,
+                                        "x": 0,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                        "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                                        "text": "",
+                                        "children": [
+                                          {
+                                            "id": "1407:100",
+                                            "name": "Text",
+                                            "type": "FRAME",
+                                            "width": 314,
+                                            "height": 72,
+                                            "x": 0,
+                                            "y": 0,
+                                            "visible": true,
+                                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nflex: 1 0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:314px;",
+                                            "text": "",
+                                            "children": [
+                                              {
+                                                "id": "1407:101",
+                                                "name": "\"如果放在十到十五年前，我根本没有这样的治疗选择。在中国治疗，和经验丰富的专科医生沟通，让人心里踏实。\"",
+                                                "type": "TEXT",
+                                                "width": 314,
+                                                "height": 72,
+                                                "x": 0,
+                                                "y": 0,
+                                                "visible": true,
+                                                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:314px;height:72px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:72px;white-space:pre-wrap;",
+                                                "text": "\"如果放在十到十五年前，我根本没有这样的治疗选择。在中国治疗，和经验丰富的专科医生沟通，让人心里踏实。\"",
+                                                "textLines": [
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "\"如果放在十到十五年前，我根本没有这样的",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000000000005,
+                                                    "css": "display:block;position:absolute;left:0px;top:0px;width:310.82813px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "治疗选择。在中国治疗，和经验丰富的专科",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.760000228881836,
+                                                    "css": "display:block;position:absolute;left:0px;top:24px;width:304px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  },
+                                                  {
+                                                    "runs": [
+                                                      {
+                                                        "text": "医生沟通，让人心里踏实。\"",
+                                                        "css": ""
+                                                      }
+                                                    ],
+                                                    "baseline": 17.759998321533203,
+                                                    "css": "display:block;position:absolute;left:0px;top:48px;width:198.82813px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                                  }
+                                                ],
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1407:102",
+                                    "name": "Container",
+                                    "type": "FRAME",
+                                    "width": 32,
+                                    "height": 32,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                    "layoutCss": "display: flex;\nwidth: 32px;\nheight: 32px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nborder-radius: 9999px;\nbackground: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:32px;height:32px;",
+                                    "text": "",
+                                    "children": [
+                                      {
+                                        "id": "1407:103",
+                                        "name": "04",
+                                        "type": "TEXT",
+                                        "width": 19,
+                                        "height": 16,
+                                        "x": 6.5,
+                                        "y": 8,
+                                        "visible": true,
+                                        "css": "color: #FFF;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nposition:absolute;left:6.5px;top:8px;right:auto;bottom:auto;width:19px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                        "layoutCss": "color: #FFF;\nfont-family: \"Noto Sans SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 16px; /* 100% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:19px;height:16px;white-space:pre;",
+                                        "text": "04",
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2672 @@
+{
+  "sourceFrame": "143:4220",
+  "sourceSHA256": "0bfad9ab064870007faeecf686ebf19bb5d5ccecb7bfb8259947d2ca7965917c",
+  "root": {
+    "id": "143:4220",
+    "name": "为什么来中国就医-02",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 1012,
+    "x": 790,
+    "y": 3459,
+    "visible": true,
+    "css": "width: 1440px;\nheight: 1012px;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1012px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+    "layoutCss": "width: 1440px;\nheight: 1012px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:1012px;overflow:hidden;",
+    "text": "",
+    "children": [
+      {
+        "id": "143:4221",
+        "name": "01寰宇云医 - 首页 1",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 1440,
+        "height": 1455,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-0224e4e757269f3c0b395ce111f40ed7f846cee1.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 1440px;\nheight: 1455px;\naspect-ratio: 96/97;\nbackground: url(/images/figma/home-revision/image-0224e4e757269f3c0b395ce111f40ed7f846cee1.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1455px;",
+        "text": "",
+        "children": []
+      },
+      {
+        "id": "143:4222",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 1012,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1012px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\npadding: 40px 0;\njustify-content: center;\nalign-items: center;\nbackground: rgba(0, 0, 0, 0.50);\nbackdrop-filter: blur(4px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:1012px;",
+        "text": "",
+        "children": [
+          {
+            "id": "143:4223",
+            "name": "Frame 631",
+            "type": "FRAME",
+            "width": 896,
+            "height": 932,
+            "x": 272,
+            "y": 40,
+            "visible": true,
+            "css": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(3,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nposition:absolute;left:272px;top:40px;right:auto;bottom:auto;width:896px;height:932px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: inline-grid;\nwidth: 896px;\npadding: 32px;\nflex-shrink: 0;\ngrid-template-rows: repeat(3,fit-content(100%));\ngrid-template-columns: repeat(1,minmax(0,1fr));\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "143:4224",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 36,
+                "height": 36,
+                "x": 844,
+                "y": 16,
+                "visible": true,
+                "css": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nposition:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: inline-flex;\nheight: 36px;\npadding: 8px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: 0 / span 1;\ngrid-column: 0 / span 1;\nposition: absolute;\nright: 16px;\ntop: 16px;\nborder-radius: 9999px;\nbackdrop-filter: blur(8px);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:844px;top:16px;right:auto;bottom:auto;width:36px;height:36px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4225",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 20,
+                    "height": 20,
+                    "x": 8,
+                    "y": 8,
+                    "visible": true,
+                    "css": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nposition:absolute;left:8px;top:8px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:8px;top:8px;",
+                    "layoutCss": "width: 20px;\nheight: 20px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+                    "text": "",
+                    "svg": "/images/figma/home-revision/node-143-4225.svg",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "143:4227",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 832,
+                "height": 398,
+                "x": 32,
+                "y": 502,
+                "visible": true,
+                "css": "display: inline-grid;\npadding-top: 24px;\nrow-gap: 16px;\ncolumn-gap: 16px;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-row: 3 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nposition:absolute;left:32px;top:502px;right:auto;bottom:auto;width:832px;height:398px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: inline-grid;\npadding-top: 24px;\nrow-gap: 16px;\ncolumn-gap: 16px;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(2,minmax(0,1fr));\ngrid-row: 3 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4228",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 408,
+                    "height": 374,
+                    "x": 0,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\nheight: 374px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:408px;height:374px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nheight: 374px;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:408px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4229",
+                        "name": "Icon",
+                        "type": "FRAME",
+                        "width": 32,
+                        "height": 32,
+                        "x": 24,
+                        "y": 24,
+                        "visible": true,
+                        "css": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                        "layoutCss": "width: 32px;\nheight: 32px;\nflex-shrink: 0;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-143-4229.svg",
+                        "children": []
+                      },
+                      {
+                        "id": "143:4233",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 360,
+                        "height": 182,
+                        "x": 24,
+                        "y": 96,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:360px;height:182px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4234",
+                            "name": "Heading 3",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 22,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4235",
+                                "name": "费用构成全透明",
+                                "type": "TEXT",
+                                "width": 360,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                "text": "费用构成全透明",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4236",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 160,
+                            "x": 0,
+                            "y": 22,
+                            "visible": true,
+                            "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:360px;height:160px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4237",
+                                "name": "Handpicked for exclusive Pegasus Program for secur",
+                                "type": "TEXT",
+                                "width": 360,
+                                "height": 144,
+                                "x": 0,
+                                "y": 16,
+                                "visible": true,
+                                "css": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:360px;height:144px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px; /* 150% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:144px;white-space:pre-wrap;",
+                                "text": "患者来华前即可收到完整费用清单，涵盖:医院诊疗费、手术费、住院费、药品费;视频会诊费、病历翻译费;医疗签证、机票、住宿、接送机、本地交通;陪诊翻译、医疗管家服务、术后随访。无隐藏收费，无中途加价。每一项费用对应具体服务节点，患者及家属可在出发前确认全部预算。",
+                                "textLines": [
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "患",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "者",
+                                        "css": ";position:absolute;left:16.18722px;top:0;"
+                                      },
+                                      {
+                                        "text": "来",
+                                        "css": ";position:absolute;left:32.37444px;top:0;"
+                                      },
+                                      {
+                                        "text": "华",
+                                        "css": ";position:absolute;left:48.56166px;top:0;"
+                                      },
+                                      {
+                                        "text": "前",
+                                        "css": ";position:absolute;left:64.74889px;top:0;"
+                                      },
+                                      {
+                                        "text": "即",
+                                        "css": ";position:absolute;left:80.9361px;top:0;"
+                                      },
+                                      {
+                                        "text": "可",
+                                        "css": ";position:absolute;left:97.12333px;top:0;"
+                                      },
+                                      {
+                                        "text": "收",
+                                        "css": ";position:absolute;left:113.31055px;top:0;"
+                                      },
+                                      {
+                                        "text": "到",
+                                        "css": ";position:absolute;left:129.49777px;top:0;"
+                                      },
+                                      {
+                                        "text": "完",
+                                        "css": ";position:absolute;left:145.68498px;top:0;"
+                                      },
+                                      {
+                                        "text": "整",
+                                        "css": ";position:absolute;left:161.87221px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:178.05943px;top:0;"
+                                      },
+                                      {
+                                        "text": "用",
+                                        "css": ";position:absolute;left:194.24666px;top:0;"
+                                      },
+                                      {
+                                        "text": "清",
+                                        "css": ";position:absolute;left:210.43387px;top:0;"
+                                      },
+                                      {
+                                        "text": "单",
+                                        "css": ";position:absolute;left:226.62109px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:242.80832px;top:0;"
+                                      },
+                                      {
+                                        "text": "涵",
+                                        "css": ";position:absolute;left:258.99554px;top:0;"
+                                      },
+                                      {
+                                        "text": "盖",
+                                        "css": ";position:absolute;left:275.18277px;top:0;"
+                                      },
+                                      {
+                                        "text": ":",
+                                        "css": ";position:absolute;left:291.36996px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:295.43832px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:311.62555px;top:0;"
+                                      },
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:327.81277px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000000000005,
+                                    "css": "display:block;position:absolute;left:0px;top:0px;width:360.00009px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:16.18722px;top:0;"
+                                      },
+                                      {
+                                        "text": "手",
+                                        "css": ";position:absolute;left:32.37444px;top:0;"
+                                      },
+                                      {
+                                        "text": "术",
+                                        "css": ";position:absolute;left:48.56166px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:64.74889px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:80.9361px;top:0;"
+                                      },
+                                      {
+                                        "text": "住",
+                                        "css": ";position:absolute;left:97.12333px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:113.31055px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:129.49777px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:145.68498px;top:0;"
+                                      },
+                                      {
+                                        "text": "药",
+                                        "css": ";position:absolute;left:161.87221px;top:0;"
+                                      },
+                                      {
+                                        "text": "品",
+                                        "css": ";position:absolute;left:178.05943px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:194.24666px;top:0;"
+                                      },
+                                      {
+                                        "text": ";",
+                                        "css": ";position:absolute;left:210.43387px;top:0;"
+                                      },
+                                      {
+                                        "text": "视",
+                                        "css": ";position:absolute;left:214.50223px;top:0;"
+                                      },
+                                      {
+                                        "text": "频",
+                                        "css": ";position:absolute;left:230.68945px;top:0;"
+                                      },
+                                      {
+                                        "text": "会",
+                                        "css": ";position:absolute;left:246.87668px;top:0;"
+                                      },
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:263.0639px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:279.25113px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:295.43832px;top:0;"
+                                      },
+                                      {
+                                        "text": "病",
+                                        "css": ";position:absolute;left:311.62555px;top:0;"
+                                      },
+                                      {
+                                        "text": "历",
+                                        "css": ";position:absolute;left:327.81277px;top:0;"
+                                      },
+                                      {
+                                        "text": "翻",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000228881836,
+                                    "css": "display:block;position:absolute;left:0px;top:24px;width:360.00009px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "译",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:15.99349px;top:0;"
+                                      },
+                                      {
+                                        "text": ";",
+                                        "css": ";position:absolute;left:31.98698px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:36.05534px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:52.04883px;top:0;"
+                                      },
+                                      {
+                                        "text": "签",
+                                        "css": ";position:absolute;left:68.04232px;top:0;"
+                                      },
+                                      {
+                                        "text": "证",
+                                        "css": ";position:absolute;left:84.0358px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:100.0293px;top:0;"
+                                      },
+                                      {
+                                        "text": "机",
+                                        "css": ";position:absolute;left:116.02279px;top:0;"
+                                      },
+                                      {
+                                        "text": "票",
+                                        "css": ";position:absolute;left:132.01628px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:148.00977px;top:0;"
+                                      },
+                                      {
+                                        "text": "住",
+                                        "css": ";position:absolute;left:164.00325px;top:0;"
+                                      },
+                                      {
+                                        "text": "宿",
+                                        "css": ";position:absolute;left:179.99675px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:195.99023px;top:0;"
+                                      },
+                                      {
+                                        "text": "接",
+                                        "css": ";position:absolute;left:211.98372px;top:0;"
+                                      },
+                                      {
+                                        "text": "送",
+                                        "css": ";position:absolute;left:227.97722px;top:0;"
+                                      },
+                                      {
+                                        "text": "机",
+                                        "css": ";position:absolute;left:243.9707px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:259.9642px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": ";position:absolute;left:275.95767px;top:0;"
+                                      },
+                                      {
+                                        "text": "地",
+                                        "css": ";position:absolute;left:291.95117px;top:0;"
+                                      },
+                                      {
+                                        "text": "交",
+                                        "css": ";position:absolute;left:307.94467px;top:0;"
+                                      },
+                                      {
+                                        "text": "通",
+                                        "css": ";position:absolute;left:323.93814px;top:0;"
+                                      },
+                                      {
+                                        "text": ";",
+                                        "css": ";position:absolute;left:339.93164px;top:0;"
+                                      },
+                                      {
+                                        "text": "陪",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.759998321533203,
+                                    "css": "display:block;position:absolute;left:0px;top:48px;width:360.00021px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "翻",
+                                        "css": ";position:absolute;left:16.38095px;top:0;"
+                                      },
+                                      {
+                                        "text": "译",
+                                        "css": ";position:absolute;left:32.76191px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:49.14286px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:65.52381px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:81.90476px;top:0;"
+                                      },
+                                      {
+                                        "text": "管",
+                                        "css": ";position:absolute;left:98.28571px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:114.66666px;top:0;"
+                                      },
+                                      {
+                                        "text": "服",
+                                        "css": ";position:absolute;left:131.04762px;top:0;"
+                                      },
+                                      {
+                                        "text": "务",
+                                        "css": ";position:absolute;left:147.42857px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:163.80952px;top:0;"
+                                      },
+                                      {
+                                        "text": "术",
+                                        "css": ";position:absolute;left:180.19048px;top:0;"
+                                      },
+                                      {
+                                        "text": "后",
+                                        "css": ";position:absolute;left:196.57143px;top:0;"
+                                      },
+                                      {
+                                        "text": "随",
+                                        "css": ";position:absolute;left:212.95238px;top:0;"
+                                      },
+                                      {
+                                        "text": "访",
+                                        "css": ";position:absolute;left:229.33333px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:245.71428px;top:0;"
+                                      },
+                                      {
+                                        "text": "无",
+                                        "css": ";position:absolute;left:262.09525px;top:0;"
+                                      },
+                                      {
+                                        "text": "隐",
+                                        "css": ";position:absolute;left:278.4762px;top:0;"
+                                      },
+                                      {
+                                        "text": "藏",
+                                        "css": ";position:absolute;left:294.85715px;top:0;"
+                                      },
+                                      {
+                                        "text": "收",
+                                        "css": ";position:absolute;left:311.2381px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:327.61905px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.76000213623047,
+                                    "css": "display:block;position:absolute;left:0px;top:72px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "无",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:16.38095px;top:0;"
+                                      },
+                                      {
+                                        "text": "途",
+                                        "css": ";position:absolute;left:32.76191px;top:0;"
+                                      },
+                                      {
+                                        "text": "加",
+                                        "css": ";position:absolute;left:49.14286px;top:0;"
+                                      },
+                                      {
+                                        "text": "价",
+                                        "css": ";position:absolute;left:65.52381px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:81.90476px;top:0;"
+                                      },
+                                      {
+                                        "text": "每",
+                                        "css": ";position:absolute;left:98.28571px;top:0;"
+                                      },
+                                      {
+                                        "text": "一",
+                                        "css": ";position:absolute;left:114.66666px;top:0;"
+                                      },
+                                      {
+                                        "text": "项",
+                                        "css": ";position:absolute;left:131.04762px;top:0;"
+                                      },
+                                      {
+                                        "text": "费",
+                                        "css": ";position:absolute;left:147.42857px;top:0;"
+                                      },
+                                      {
+                                        "text": "用",
+                                        "css": ";position:absolute;left:163.80952px;top:0;"
+                                      },
+                                      {
+                                        "text": "对",
+                                        "css": ";position:absolute;left:180.19048px;top:0;"
+                                      },
+                                      {
+                                        "text": "应",
+                                        "css": ";position:absolute;left:196.57143px;top:0;"
+                                      },
+                                      {
+                                        "text": "具",
+                                        "css": ";position:absolute;left:212.95238px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": ";position:absolute;left:229.33333px;top:0;"
+                                      },
+                                      {
+                                        "text": "服",
+                                        "css": ";position:absolute;left:245.71428px;top:0;"
+                                      },
+                                      {
+                                        "text": "务",
+                                        "css": ";position:absolute;left:262.09525px;top:0;"
+                                      },
+                                      {
+                                        "text": "节",
+                                        "css": ";position:absolute;left:278.4762px;top:0;"
+                                      },
+                                      {
+                                        "text": "点",
+                                        "css": ";position:absolute;left:294.85715px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:311.2381px;top:0;"
+                                      },
+                                      {
+                                        "text": "患",
+                                        "css": ";position:absolute;left:327.61905px;top:0;"
+                                      },
+                                      {
+                                        "text": "者",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.76000213623047,
+                                    "css": "display:block;position:absolute;left:0px;top:96px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "及",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:15.84961px;top:0;"
+                                      },
+                                      {
+                                        "text": "属",
+                                        "css": ";position:absolute;left:31.69922px;top:0;"
+                                      },
+                                      {
+                                        "text": "可",
+                                        "css": ";position:absolute;left:47.54883px;top:0;"
+                                      },
+                                      {
+                                        "text": "在",
+                                        "css": ";position:absolute;left:63.39844px;top:0;"
+                                      },
+                                      {
+                                        "text": "出",
+                                        "css": ";position:absolute;left:79.24805px;top:0;"
+                                      },
+                                      {
+                                        "text": "发",
+                                        "css": ";position:absolute;left:95.09766px;top:0;"
+                                      },
+                                      {
+                                        "text": "前",
+                                        "css": ";position:absolute;left:110.94727px;top:0;"
+                                      },
+                                      {
+                                        "text": "确",
+                                        "css": ";position:absolute;left:126.79688px;top:0;"
+                                      },
+                                      {
+                                        "text": "认",
+                                        "css": ";position:absolute;left:142.64648px;top:0;"
+                                      },
+                                      {
+                                        "text": "全",
+                                        "css": ";position:absolute;left:158.49609px;top:0;"
+                                      },
+                                      {
+                                        "text": "部",
+                                        "css": ";position:absolute;left:174.3457px;top:0;"
+                                      },
+                                      {
+                                        "text": "预",
+                                        "css": ";position:absolute;left:190.19531px;top:0;"
+                                      },
+                                      {
+                                        "text": "算",
+                                        "css": ";position:absolute;left:206.04492px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:221.89453px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.76000213623047,
+                                    "css": "display:block;position:absolute;left:0px;top:120.00001px;width:237.89453px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  }
+                                ],
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4238",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 408,
+                    "height": 374,
+                    "x": 424,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nposition:absolute;left:424px;top:24px;right:auto;bottom:auto;width:408px;height:374px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 40px;\ngrid-row: 1 / span 1;\ngrid-column: 2 / span 1;\njustify-self: stretch;\nborder-radius: 24px;\nbackground: #F5F6F7;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:408px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4239",
+                        "name": "Frame",
+                        "type": "FRAME",
+                        "width": 32,
+                        "height": 32,
+                        "x": 24,
+                        "y": 24,
+                        "visible": true,
+                        "css": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:32px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:32px;height:32px;left:24px;top:24px;",
+                        "layoutCss": "width: 32px;\nheight: 32px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:32px;overflow:hidden;background:none;opacity:1;transform:none;width:32px;height:32px;",
+                        "text": "",
+                        "svg": "/images/figma/home-revision/node-143-4239.svg",
+                        "children": []
+                      },
+                      {
+                        "id": "143:4241",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 360,
+                        "height": 254,
+                        "x": 24,
+                        "y": 96,
+                        "visible": true,
+                        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:24px;top:96px;right:auto;bottom:auto;width:360px;height:254px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4242",
+                            "name": "Heading 3",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 22,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4243",
+                                "name": "为何能实现高品质低价格",
+                                "type": "TEXT",
+                                "width": 360,
+                                "height": 22,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:360px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                                "text": "为何能实现高品质低价格",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4244",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 360,
+                            "height": 232,
+                            "x": 0,
+                            "y": 22,
+                            "visible": true,
+                            "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:22px;right:auto;bottom:auto;width:360px;height:232px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4245",
+                                "name": "Handpicked for exclusive Pegasus Program for secur",
+                                "type": "TEXT",
+                                "width": 360,
+                                "height": 216,
+                                "x": 0,
+                                "y": 16,
+                                "visible": true,
+                                "css": "align-self: stretch;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:360px;height:216px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                                "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 24px; /* 150% */\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 24px;color:#4b5563;font-family:\"PingFang SC\";font-size:16px;font-weight:400;line-height:24px;text-align:justify;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:216px;white-space:pre-wrap;",
+                                "text": "规模化医疗体系：中国医院接诊量大，设备、耗材、药品采购规模化，单位成本显著降低。\n医保与公立体系支撑：公立医院运营成本由国家基础设施和医保体系分摊，诊疗定价更可控。\n本土供应链成熟：从高端医疗器械到生物制药，中国本土产业链完善，减少了进口溢价。\n汇率与生活成本优势：来华就医期间的住宿、餐饮、交通等综合生活成本低于欧美主要城市。",
+                                "textRuns": [
+                                  {
+                                    "text": "规模化医疗体系：",
+                                    "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                  },
+                                  {
+                                    "text": "中国医院接诊量大，设备、耗材、药品采购规模化，单位成本显著降低。\n",
+                                    "css": ""
+                                  },
+                                  {
+                                    "text": "医保与公立体系支撑",
+                                    "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                  },
+                                  {
+                                    "text": "：公立医院运营成本由国家基础设施和医保体系分摊，诊疗定价更可控。\n",
+                                    "css": ""
+                                  },
+                                  {
+                                    "text": "本土供应链成熟：",
+                                    "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                  },
+                                  {
+                                    "text": "从高端医疗器械到生物制药，中国本土产业链完善，减少了进口溢价。\n",
+                                    "css": ""
+                                  },
+                                  {
+                                    "text": "汇率与生活成本优势：",
+                                    "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                  },
+                                  {
+                                    "text": "来华就医期间的住宿、餐饮、交通等综合生活成本低于欧美主要城市。",
+                                    "css": ""
+                                  }
+                                ],
+                                "textParagraphs": [
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "规模化医疗体系：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "中国医院接诊量大，设备、耗材、药品采购规模化，单位成本显著降低。",
+                                        "css": ""
+                                      }
+                                    ],
+                                    "css": "display:block;margin-bottom:8px;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "医保与公立体系支撑",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "：公立医院运营成本由国家基础设施和医保体系分摊，诊疗定价更可控。",
+                                        "css": ""
+                                      }
+                                    ],
+                                    "css": "display:block;margin-bottom:8px;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "本土供应链成熟：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "从高端医疗器械到生物制药，中国本土产业链完善，减少了进口溢价。",
+                                        "css": ""
+                                      }
+                                    ],
+                                    "css": "display:block;margin-bottom:8px;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "汇率与生活成本优势：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px"
+                                      },
+                                      {
+                                        "text": "来华就医期间的住宿、餐饮、交通等综合生活成本低于欧美主要城市。",
+                                        "css": ""
+                                      }
+                                    ],
+                                    "css": "display:block;"
+                                  }
+                                ],
+                                "textLines": [
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "规",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "模",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:17.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:34.4px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:51.6px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:68.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:86px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:103.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:120.4px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:137.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:154.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:172px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:189.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "接",
+                                        "css": ";position:absolute;left:206.39999px;top:0;"
+                                      },
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:223.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "量",
+                                        "css": ";position:absolute;left:240.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "大",
+                                        "css": ";position:absolute;left:258px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:275.20001px;top:0;"
+                                      },
+                                      {
+                                        "text": "设",
+                                        "css": ";position:absolute;left:292.39999px;top:0;"
+                                      },
+                                      {
+                                        "text": "备",
+                                        "css": ";position:absolute;left:309.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:326.79999px;top:0;"
+                                      },
+                                      {
+                                        "text": "耗",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000000000005,
+                                    "css": "display:block;position:absolute;left:0px;top:0px;width:360.00024px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "材",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "药",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "品",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "采",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "购",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "规",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "模",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "化",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "单",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "位",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "显",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "著",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "降",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      },
+                                      {
+                                        "text": "低",
+                                        "css": ";position:absolute;left:272px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:288px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760000228881836,
+                                    "css": "display:block;position:absolute;left:0px;top:24px;width:304px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "医",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "保",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                      },
+                                      {
+                                        "text": "与",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                      },
+                                      {
+                                        "text": "公",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                      },
+                                      {
+                                        "text": "立",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                      },
+                                      {
+                                        "text": "支",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                      },
+                                      {
+                                        "text": "撑",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:131.04762px;top:0;"
+                                      },
+                                      {
+                                        "text": "：",
+                                        "css": ";position:absolute;left:147.42857px;top:0;"
+                                      },
+                                      {
+                                        "text": "公",
+                                        "css": ";position:absolute;left:163.80952px;top:0;"
+                                      },
+                                      {
+                                        "text": "立",
+                                        "css": ";position:absolute;left:180.19048px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:196.57143px;top:0;"
+                                      },
+                                      {
+                                        "text": "院",
+                                        "css": ";position:absolute;left:212.95238px;top:0;"
+                                      },
+                                      {
+                                        "text": "运",
+                                        "css": ";position:absolute;left:229.33333px;top:0;"
+                                      },
+                                      {
+                                        "text": "营",
+                                        "css": ";position:absolute;left:245.71428px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": ";position:absolute;left:262.09525px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": ";position:absolute;left:278.4762px;top:0;"
+                                      },
+                                      {
+                                        "text": "由",
+                                        "css": ";position:absolute;left:294.85715px;top:0;"
+                                      },
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:311.2381px;top:0;"
+                                      },
+                                      {
+                                        "text": "家",
+                                        "css": ";position:absolute;left:327.61905px;top:0;"
+                                      },
+                                      {
+                                        "text": "基",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.759998321533203,
+                                    "css": "display:block;position:absolute;left:0px;top:56px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "础",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "设",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "施",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "和",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "保",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "体",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "系",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "分",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "摊",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "诊",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "定",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "价",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "更",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "可",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      },
+                                      {
+                                        "text": "控",
+                                        "css": ";position:absolute;left:272px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:288px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.76000213623047,
+                                    "css": "display:block;position:absolute;left:0px;top:80px;width:304px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "本",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "土",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:16.38095px;top:0;"
+                                      },
+                                      {
+                                        "text": "供",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:32.76191px;top:0;"
+                                      },
+                                      {
+                                        "text": "应",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:49.14286px;top:0;"
+                                      },
+                                      {
+                                        "text": "链",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:65.52381px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:81.90476px;top:0;"
+                                      },
+                                      {
+                                        "text": "熟",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:98.28571px;top:0;"
+                                      },
+                                      {
+                                        "text": "：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:114.66666px;top:0;"
+                                      },
+                                      {
+                                        "text": "从",
+                                        "css": ";position:absolute;left:131.04762px;top:0;"
+                                      },
+                                      {
+                                        "text": "高",
+                                        "css": ";position:absolute;left:147.42857px;top:0;"
+                                      },
+                                      {
+                                        "text": "端",
+                                        "css": ";position:absolute;left:163.80952px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:180.19048px;top:0;"
+                                      },
+                                      {
+                                        "text": "疗",
+                                        "css": ";position:absolute;left:196.57143px;top:0;"
+                                      },
+                                      {
+                                        "text": "器",
+                                        "css": ";position:absolute;left:212.95238px;top:0;"
+                                      },
+                                      {
+                                        "text": "械",
+                                        "css": ";position:absolute;left:229.33333px;top:0;"
+                                      },
+                                      {
+                                        "text": "到",
+                                        "css": ";position:absolute;left:245.71428px;top:0;"
+                                      },
+                                      {
+                                        "text": "生",
+                                        "css": ";position:absolute;left:262.09525px;top:0;"
+                                      },
+                                      {
+                                        "text": "物",
+                                        "css": ";position:absolute;left:278.4762px;top:0;"
+                                      },
+                                      {
+                                        "text": "制",
+                                        "css": ";position:absolute;left:294.85715px;top:0;"
+                                      },
+                                      {
+                                        "text": "药",
+                                        "css": ";position:absolute;left:311.2381px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:327.61905px;top:0;"
+                                      },
+                                      {
+                                        "text": "中",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760009765625,
+                                    "css": "display:block;position:absolute;left:0px;top:112px;width:359.99997px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "国",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "土",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "产",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "业",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "链",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "完",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "善",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "，",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "减",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "少",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "了",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "进",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "口",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "溢",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "价",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.760009765625,
+                                    "css": "display:block;position:absolute;left:0px;top:136px;width:272px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "汇",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "率",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:17.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "与",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:34.4px;top:0;"
+                                      },
+                                      {
+                                        "text": "生",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:51.6px;top:0;"
+                                      },
+                                      {
+                                        "text": "活",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:68.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:86px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:103.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "优",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:120.4px;top:0;"
+                                      },
+                                      {
+                                        "text": "势",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:137.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "：",
+                                        "css": "color:#1e3a5f;font-size:16px;font-family:\"PingFang SC\";font-weight:500;line-height:24px;letter-spacing:0px;position:absolute;left:154.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "来",
+                                        "css": ";position:absolute;left:172px;top:0;"
+                                      },
+                                      {
+                                        "text": "华",
+                                        "css": ";position:absolute;left:189.2px;top:0;"
+                                      },
+                                      {
+                                        "text": "就",
+                                        "css": ";position:absolute;left:206.39999px;top:0;"
+                                      },
+                                      {
+                                        "text": "医",
+                                        "css": ";position:absolute;left:223.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "期",
+                                        "css": ";position:absolute;left:240.8px;top:0;"
+                                      },
+                                      {
+                                        "text": "间",
+                                        "css": ";position:absolute;left:258px;top:0;"
+                                      },
+                                      {
+                                        "text": "的",
+                                        "css": ";position:absolute;left:275.20001px;top:0;"
+                                      },
+                                      {
+                                        "text": "住",
+                                        "css": ";position:absolute;left:292.39999px;top:0;"
+                                      },
+                                      {
+                                        "text": "宿",
+                                        "css": ";position:absolute;left:309.60001px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:326.79999px;top:0;"
+                                      },
+                                      {
+                                        "text": "餐",
+                                        "css": ";position:absolute;left:344px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.759994506835938,
+                                    "css": "display:block;position:absolute;left:0px;top:168.00002px;width:360.00024px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  },
+                                  {
+                                    "runs": [
+                                      {
+                                        "text": "饮",
+                                        "css": ";position:absolute;left:0px;top:0;"
+                                      },
+                                      {
+                                        "text": "、",
+                                        "css": ";position:absolute;left:16px;top:0;"
+                                      },
+                                      {
+                                        "text": "交",
+                                        "css": ";position:absolute;left:32px;top:0;"
+                                      },
+                                      {
+                                        "text": "通",
+                                        "css": ";position:absolute;left:48px;top:0;"
+                                      },
+                                      {
+                                        "text": "等",
+                                        "css": ";position:absolute;left:64px;top:0;"
+                                      },
+                                      {
+                                        "text": "综",
+                                        "css": ";position:absolute;left:80px;top:0;"
+                                      },
+                                      {
+                                        "text": "合",
+                                        "css": ";position:absolute;left:96px;top:0;"
+                                      },
+                                      {
+                                        "text": "生",
+                                        "css": ";position:absolute;left:112px;top:0;"
+                                      },
+                                      {
+                                        "text": "活",
+                                        "css": ";position:absolute;left:128px;top:0;"
+                                      },
+                                      {
+                                        "text": "成",
+                                        "css": ";position:absolute;left:144px;top:0;"
+                                      },
+                                      {
+                                        "text": "本",
+                                        "css": ";position:absolute;left:160px;top:0;"
+                                      },
+                                      {
+                                        "text": "低",
+                                        "css": ";position:absolute;left:176px;top:0;"
+                                      },
+                                      {
+                                        "text": "于",
+                                        "css": ";position:absolute;left:192px;top:0;"
+                                      },
+                                      {
+                                        "text": "欧",
+                                        "css": ";position:absolute;left:208px;top:0;"
+                                      },
+                                      {
+                                        "text": "美",
+                                        "css": ";position:absolute;left:224px;top:0;"
+                                      },
+                                      {
+                                        "text": "主",
+                                        "css": ";position:absolute;left:240px;top:0;"
+                                      },
+                                      {
+                                        "text": "要",
+                                        "css": ";position:absolute;left:256px;top:0;"
+                                      },
+                                      {
+                                        "text": "城",
+                                        "css": ";position:absolute;left:272px;top:0;"
+                                      },
+                                      {
+                                        "text": "市",
+                                        "css": ";position:absolute;left:288px;top:0;"
+                                      },
+                                      {
+                                        "text": "。",
+                                        "css": ";position:absolute;left:304px;top:0;"
+                                      }
+                                    ],
+                                    "baseline": 17.759994506835938,
+                                    "css": "display:block;position:absolute;left:0px;top:192.00002px;width:320px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                                  }
+                                ],
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "143:4246",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 832,
+                "height": 62,
+                "x": 32,
+                "y": 32,
+                "visible": true,
+                "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nposition:absolute;left:32px;top:32px;right:auto;bottom:auto;width:832px;height:62px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\ngrid-row: 1 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4247",
+                    "name": "Heading 2",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 32,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4248",
+                        "name": "费用优势 · 高性价比",
+                        "type": "TEXT",
+                        "width": 298,
+                        "height": 32,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:298px;height:32px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #1E3A5F;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 32px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 32px; /* 100% */\nletter-spacing: 0.396px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:298px;height:32px;white-space:pre;",
+                        "text": "费用优势 · 高性价比",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4249",
+                    "name": "Paragraph",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 30,
+                    "x": 0,
+                    "y": 32,
+                    "visible": true,
+                    "css": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:832px;height:30px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-top: 8px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4250",
+                        "name": "同等治疗方案，费用比欧美低40-70%，清单事先说清",
+                        "type": "TEXT",
+                        "width": 335,
+                        "height": 22,
+                        "x": 0,
+                        "y": 8,
+                        "visible": true,
+                        "css": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nposition:absolute;left:0px;top:8px;right:auto;bottom:auto;width:335px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:335px;height:22px;white-space:pre;",
+                        "text": "同等治疗方案，费用比欧美低40-70%，清单事先说清",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "143:4251",
+                "name": "Container:margin",
+                "type": "FRAME",
+                "width": 832,
+                "height": 408,
+                "x": 32,
+                "y": 94,
+                "visible": true,
+                "css": "display: flex;\npadding-top: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 16px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nposition:absolute;left:32px;top:94px;right:auto;bottom:auto;width:832px;height:408px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\npadding-top: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 16px;\ngrid-row: 2 / span 1;\ngrid-column: 1 / span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:832px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "143:4252",
+                    "name": "Heading 3",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 22,
+                    "x": 0,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:24px;right:auto;bottom:auto;width:832px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4253",
+                        "name": "常见治疗项目的中外费用对比：",
+                        "type": "TEXT",
+                        "width": 832,
+                        "height": 22,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:832px;height:22px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "align-self: stretch;\ncolor: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 22px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 22px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:22px;white-space:pre;",
+                        "text": "常见治疗项目的中外费用对比：",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4254",
+                    "name": "Table",
+                    "type": "FRAME",
+                    "width": 832,
+                    "height": 316,
+                    "x": 0,
+                    "y": 62,
+                    "visible": true,
+                    "css": "display: flex;\nheight: 316px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px;\nborder: 1px solid #F3F4F6;\nposition:absolute;left:0px;top:62px;right:auto;bottom:auto;width:832px;height:316px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                    "layoutCss": "display: flex;\nheight: 316px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nalign-self: stretch;\nborder-radius: 24px;\nborder: 1px solid #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:316px;overflow:hidden;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "143:4255",
+                        "name": "Table Header",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 52,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 52px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nbackground: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);\nposition:absolute;left:-1px;top:-1px;right:auto;bottom:auto;width:832px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 52px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nbackground: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:-1px;right:auto;bottom:auto;width:832px;height:52px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4256",
+                            "name": "Frame 632",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 207.5px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 207.5px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4257",
+                                "name": "项目",
+                                "type": "TEXT",
+                                "width": 32,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:32px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:32px;height:16px;white-space:pre;",
+                                "text": "项目",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4258",
+                            "name": "Frame 636",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4259",
+                                "name": "Header Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nalign-items: center;\nflex-shrink: 0;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nalign-items: center;\nflex-shrink: 0;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4260",
+                                    "name": "中国参考费用",
+                                    "type": "TEXT",
+                                    "width": 151,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "flex: 1 0 0;\ncolor: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:151px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "flex: 1 0 0;\ncolor: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:151px;height:16px;white-space:pre;",
+                                    "text": "中国参考费用",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4261",
+                                "name": "Frame 633",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4262",
+                                    "name": "美国参考费用",
+                                    "type": "TEXT",
+                                    "width": 96,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:96px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:96px;height:16px;white-space:pre;",
+                                    "text": "美国参考费用",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4263",
+                                "name": "Frame 634",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 10px 20px;\nalign-items: center;\ngap: 10px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4264",
+                                    "name": "欧洲参考费用",
+                                    "type": "TEXT",
+                                    "width": 96,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:96px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:96px;height:16px;white-space:pre;",
+                                    "text": "欧洲参考费用",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4265",
+                        "name": "Table Row",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 52,
+                        "x": 0,
+                        "y": 52,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 52px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nbackground: rgba(249, 250, 251, 0.09);\nposition:absolute;left:-1px;top:51px;right:auto;bottom:auto;width:832px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 52px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nbackground: rgba(249, 250, 251, 0.09);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:51px;right:auto;bottom:auto;width:832px;height:52px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4266",
+                            "name": "Frame 635",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\ngap: 10px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\ngap: 10px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4267",
+                                "name": "冠状动脉搭桥手术",
+                                "type": "TEXT",
+                                "width": 127,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:127px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:127px;height:16px;white-space:pre;",
+                                "text": "冠状动脉搭桥手术",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4268",
+                            "name": "Frame 638",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4269",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4270",
+                                    "name": "$15,000-30,000",
+                                    "type": "TEXT",
+                                    "width": 121,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:121px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:121px;height:16px;white-space:pre;",
+                                    "text": "$15,000-30,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4271",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4272",
+                                    "name": "$80,000-200,000",
+                                    "type": "TEXT",
+                                    "width": 134,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:134px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:134px;height:16px;white-space:pre;",
+                                    "text": "$80,000-200,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4273",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4274",
+                                    "name": "$40,000-80,000",
+                                    "type": "TEXT",
+                                    "width": 124,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:124px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:124px;height:16px;white-space:pre;",
+                                    "text": "$40,000-80,000",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4275",
+                        "name": "Table Row",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 53,
+                        "x": 0,
+                        "y": 104,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nposition:absolute;left:-1px;top:103px;right:auto;bottom:auto;width:832px;height:53px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:103px;right:auto;bottom:auto;width:832px;height:53px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4276",
+                            "name": "Frame 635",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4277",
+                                "name": "肿瘤综合治疗（化疗/靶向/免疫）",
+                                "type": "TEXT",
+                                "width": 238,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:238px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:238px;height:16px;white-space:pre;",
+                                "text": "肿瘤综合治疗（化疗/靶向/免疫）",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4278",
+                            "name": "Frame 637",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: grid;\nwidth: 573px;\nheight: 52px;\nflex-shrink: 0;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\ngrid-auto-flow: row;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: grid;\nwidth: 573px;\nheight: 52px;\nflex-shrink: 0;\ngrid-template-rows: repeat(1,fit-content(100%));\ngrid-template-columns: repeat(3,minmax(0,1fr));\ngrid-auto-flow: row;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4279",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:191px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4280",
+                                    "name": "$20,000-50,000/疗程",
+                                    "type": "TEXT",
+                                    "width": 160,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:160px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:160px;height:16px;white-space:pre;",
+                                    "text": "$20,000-50,000/疗程",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4281",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:191px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4282",
+                                    "name": "$100,000-300,000+",
+                                    "type": "TEXT",
+                                    "width": 151,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:151px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:151px;height:16px;white-space:pre;",
+                                    "text": "$100,000-300,000+",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4283",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngrid-row: span 1;\ngrid-column: span 1;\njustify-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:191px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4284",
+                                    "name": "$60,000-150,000",
+                                    "type": "TEXT",
+                                    "width": 131,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:131px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:131px;height:16px;white-space:pre;",
+                                    "text": "$60,000-150,000",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4285",
+                        "name": "Table Row",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 53,
+                        "x": 0,
+                        "y": 157,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nposition:absolute;left:-1px;top:156px;right:auto;bottom:auto;width:832px;height:53px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:156px;right:auto;bottom:auto;width:832px;height:53px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4286",
+                            "name": "Frame 635",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4287",
+                                "name": "试管婴儿（IVF）单周期",
+                                "type": "TEXT",
+                                "width": 167,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:167px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:167px;height:16px;white-space:pre;",
+                                "text": "试管婴儿（IVF）单周期",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4288",
+                            "name": "Frame 639",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4289",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4290",
+                                    "name": "$4,000-8,000",
+                                    "type": "TEXT",
+                                    "width": 105,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:105px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:105px;height:16px;white-space:pre;",
+                                    "text": "$4,000-8,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4291",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4292",
+                                    "name": "$15,000-30,000",
+                                    "type": "TEXT",
+                                    "width": 121,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:121px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:121px;height:16px;white-space:pre;",
+                                    "text": "$15,000-30,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4293",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4294",
+                                    "name": "$8,000-15,000",
+                                    "type": "TEXT",
+                                    "width": 111,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:111px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:111px;height:16px;white-space:pre;",
+                                    "text": "$8,000-15,000",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4295",
+                        "name": "Table Row",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 53,
+                        "x": 0,
+                        "y": 210,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nposition:absolute;left:-1px;top:209px;right:auto;bottom:auto;width:832px;height:53px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:209px;right:auto;bottom:auto;width:832px;height:53px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4296",
+                            "name": "Frame 635",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4297",
+                                "name": "髋关节/膝关节置换",
+                                "type": "TEXT",
+                                "width": 135,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:135px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:135px;height:16px;white-space:pre;",
+                                "text": "髋关节/膝关节置换",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4298",
+                            "name": "Frame 640",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4299",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4300",
+                                    "name": "$6,000-12,000",
+                                    "type": "TEXT",
+                                    "width": 112,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:112px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:112px;height:16px;white-space:pre;",
+                                    "text": "$6,000-12,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4301",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4302",
+                                    "name": "$40,000-70,000",
+                                    "type": "TEXT",
+                                    "width": 123,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:123px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:123px;height:16px;white-space:pre;",
+                                    "text": "$40,000-70,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4303",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4304",
+                                    "name": "$25,000-45,000",
+                                    "type": "TEXT",
+                                    "width": 124,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:124px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:124px;height:16px;white-space:pre;",
+                                    "text": "$25,000-45,000",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "143:4305",
+                        "name": "Table Row",
+                        "type": "FRAME",
+                        "width": 832,
+                        "height": 53,
+                        "x": 0,
+                        "y": 263,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nposition:absolute;left:-1px;top:262px;right:auto;bottom:auto;width:832px;height:53px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 832px;\nheight: 53px;\npadding-top: 1px;\njustify-content: center;\nalign-items: flex-start;\ngap: 51.5px;\nflex-shrink: 0;\nborder-top: 1px solid #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-1px;top:262px;right:auto;bottom:auto;width:832px;height:53px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "143:4306",
+                            "name": "Frame 635",
+                            "type": "FRAME",
+                            "width": 207.5,
+                            "height": 52,
+                            "x": 0,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nheight: 52px;\npadding: 20px;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:207.5px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4307",
+                                "name": "质子重离子放疗",
+                                "type": "TEXT",
+                                "width": 112,
+                                "height": 16,
+                                "x": 20,
+                                "y": 18,
+                                "visible": true,
+                                "css": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:112px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #1E3A5F;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:112px;height:16px;white-space:pre;",
+                                "text": "质子重离子放疗",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "143:4308",
+                            "name": "Frame 641",
+                            "type": "FRAME",
+                            "width": 573,
+                            "height": 52,
+                            "x": 259,
+                            "y": 1,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nposition:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 573px;\nalign-items: center;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:259px;top:0px;right:auto;bottom:auto;width:573px;height:52px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "143:4309",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4310",
+                                    "name": "$15,000-30,000",
+                                    "type": "TEXT",
+                                    "width": 121,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:121px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:121px;height:16px;white-space:pre;",
+                                    "text": "$15,000-30,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4311",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 191,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:191px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4312",
+                                    "name": "$80,000-150,000",
+                                    "type": "TEXT",
+                                    "width": 131,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:131px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:131px;height:16px;white-space:pre;",
+                                    "text": "$80,000-150,000",
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "143:4313",
+                                "name": "Table Cell",
+                                "type": "FRAME",
+                                "width": 191,
+                                "height": 52,
+                                "x": 382,
+                                "y": 0,
+                                "visible": true,
+                                "css": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nposition:absolute;left:382px;top:0px;right:auto;bottom:auto;width:191px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nwidth: 191px;\nheight: 52px;\npadding: 16px 20px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "143:4314",
+                                    "name": "$50,000-100,000",
+                                    "type": "TEXT",
+                                    "width": 131,
+                                    "height": 16,
+                                    "x": 20,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:20px;top:18px;right:auto;bottom:auto;width:131px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #6B7280;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:131px;height:16px;white-space:pre;",
+                                    "text": "$50,000-100,000",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "143:4315",
+                    "name": "注:以上数据为行业公开区间参考，实际费用因医院、方案、个体病情而异。提交病例后我们将提供个性化清单。",
+                    "type": "TEXT",
+                    "width": 683,
+                    "height": 14,
+                    "x": 0,
+                    "y": 394,
+                    "visible": true,
+                    "css": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:394px;right:auto;bottom:auto;width:683px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                    "layoutCss": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:683px;height:14px;white-space:pre;",
+                    "text": "注:以上数据为行业公开区间参考，实际费用因医院、方案、个体病情而异。提交病例后我们将提供个性化清单。",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

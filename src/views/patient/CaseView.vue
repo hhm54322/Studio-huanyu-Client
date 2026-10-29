@@ -87,6 +87,31 @@ const filteredCases = computed(() => storyCases.filter((item) => {
 
 const canMatch = computed(() => Boolean(matcher.focus))
 
+async function alignMatcherText() {
+  await nextTick()
+  await document.fonts.ready
+  const dialog = matcherDialog.value
+  if (!dialog || window.innerWidth <= 650) return
+  const sourceBaselines: [string, number][] = [
+    ['legend > span', 20.6399993896],
+    ['fieldset > p', 16.0400009155],
+    ['.matcher-option-label', 13.6875],
+    ['.matcher-submit-label', 13.7600002289],
+  ]
+  for (const [selector, expected] of sourceBaselines) {
+    for (const element of dialog.querySelectorAll<HTMLElement>(selector)) {
+      element.style.transform = ''
+      const marker = document.createElement('span')
+      marker.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline;'
+      element.append(marker)
+      const scale = element.offsetHeight ? element.getBoundingClientRect().height / element.offsetHeight : 1
+      const actual = (marker.getBoundingClientRect().top - element.getBoundingClientRect().top) / (scale || 1)
+      marker.remove()
+      element.style.transform = `translateY(${expected - actual}px)`
+    }
+  }
+}
+
 function applyFilters() {
   filtersChanged.value = true
   Object.assign(activeFilters, draftFilters)
@@ -153,6 +178,7 @@ watch(matchOpen, async (open) => {
     window.addEventListener('keydown', handleKeydown)
     await nextTick()
     closeButton.value?.focus()
+    await alignMatcherText()
   } else {
     window.removeEventListener('keydown', handleKeydown)
   }
@@ -289,7 +315,7 @@ onBeforeUnmount(() => {
 
             <div class="matcher-dialog__body">
               <fieldset>
-                  <legend><b>1</b><span>您主要关注哪类健康问题?<em>*</em></span></legend>
+                  <legend><b>1</b><span>您主要关注哪类健康问题? <em>*</em></span></legend>
                 <p>选择大类即可，无需填写具体病情</p>
                 <div class="matcher-options matcher-options--wide">
                   <button
@@ -299,7 +325,7 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.focus === item }"
                     :aria-pressed="matcher.focus === item"
                     @click="matcher.focus = item"
-                  >{{ item }}</button>
+                  ><span class="matcher-option-label">{{ item }}</span></button>
                 </div>
               </fieldset>
 
@@ -314,12 +340,12 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.age === item }"
                     :aria-pressed="matcher.age === item"
                     @click="matcher.age = item"
-                  >{{ item }}</button>
+                  ><span class="matcher-option-label">{{ item }}</span></button>
                 </div>
               </fieldset>
 
               <fieldset>
-                  <legend><b>3</b><span>您计划在哪个时间段就医?</span></legend>
+                  <legend><b>2</b><span>您计划在哪个时间段就医?</span></legend>
                 <p>选择您方便就诊的时段，便于我们提前为您安排与准备</p>
                 <div class="matcher-options">
                   <button
@@ -329,14 +355,14 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.timing === item }"
                     :aria-pressed="matcher.timing === item"
                     @click="matcher.timing = item"
-                  >{{ item }}</button>
+                  ><span class="matcher-option-label">{{ item }}</span></button>
                 </div>
               </fieldset>
             </div>
 
             <footer>
               <button type="button" :disabled="!canMatch" @click="submitMatch">
-                为我推荐相似病例 <img src="/images/figma/smart-match-arrow.svg" alt="" />
+                <span class="matcher-submit-label">为我推荐相似病例</span><img src="/images/figma/smart-match-arrow.svg" alt="" />
               </button>
             </footer>
           </section>
@@ -422,6 +448,8 @@ onBeforeUnmount(() => {
 .matcher-options button { position: relative; display: flex; min-height: 48px; align-items: center; justify-content: center; gap: 6px; border: 1px solid #e1e7eb; border-radius: 7px; background: #f8f9fa; color: #455b6b; font-size: 13px; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
 .matcher-options button svg { width: 0; opacity: 0; transition: width .2s ease, opacity .2s ease; }
 .matcher-options button:hover { border-color: #b8d9e8; background: #f2f9fc; color: var(--hy-blue); transform: translateY(-1px); }
+.matcher-option-label { display:block; height:16px; line-height:16px; white-space:nowrap; }
+.matcher-submit-label { display:block; flex:none; width:127px; height:16px; line-height:16px; white-space:nowrap; }
 .matcher-options button.active { border-color: var(--hy-blue); background: #eaf6fb; color: #136f9e; font-weight: 750; }
 .matcher-options button.active svg { width: 16px; opacity: 1; }
 .matcher-dialog > footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid #e8eef1; padding: 20px 34px; background: #fafcfd; }
@@ -513,8 +541,9 @@ onBeforeUnmount(() => {
   line-height: 32px;
   font-weight: 600;
   font-family: "PingFang SC", sans-serif;
-  letter-spacing: 0;
-  text-align: left;
+  letter-spacing: .3955078125px;
+  width: 130px;
+  text-align: center;
 }
 .matcher-dialog > header > button {
   position: absolute;
@@ -551,9 +580,10 @@ onBeforeUnmount(() => {
   gap: 8px;
   color: #1e3a5f;
   font: 600 24px/24px "PingFang SC", sans-serif;
+  letter-spacing: -.3125px;
 }
 .matcher-dialog legend b { background: #dd6b20; font: 700 12px/16px "SF Pro", -apple-system, sans-serif; }
-.matcher-dialog legend em { color: #d0021b; }
+.matcher-dialog legend em { margin-left: 0; color: #d0021b; }
 .matcher-dialog fieldset > p {
   margin: 12px 0 0 32px;
   color: #6b7280;
@@ -573,16 +603,15 @@ onBeforeUnmount(() => {
 .matcher-options button {
   height: 48px;
   min-height: 48px;
-  border: 0;
+  border: 2px solid #f3f4f6;
   border-radius: 14px;
-  outline: 2px solid #f3f4f6;
-  outline-offset: -2px;
   background: #f9fafb;
   color: #4b5563;
   font: 400 16px/16px "SF Pro", -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: -.150390625px;
 }
 .matcher-options button.active {
-  outline-color: #2563eb;
+  border-color: #2563eb;
   background: #eff6ff;
   color: #2563eb;
 }
@@ -594,7 +623,7 @@ onBeforeUnmount(() => {
   flex: none;
   justify-content: center;
   border-top: 0;
-  padding: 48px 32px 36px;
+  padding: 48px 32px 32px;
   background: #fff;
 }
 .matcher-dialog > footer button {
@@ -606,6 +635,11 @@ onBeforeUnmount(() => {
   padding: 16px 24px;
   background: #dd6b20;
   font: 600 16px/16px "PingFang SC", sans-serif;
+  letter-spacing: -.150390625px;
+  width: 203px;
+  height: 52px;
+  min-height: 52px;
+  white-space: nowrap;
 }
 .matcher-dialog > footer button:disabled {
   opacity: 1;

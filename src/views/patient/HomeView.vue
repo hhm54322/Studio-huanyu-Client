@@ -1,13 +1,26 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { init, use, type ECharts } from 'echarts/core'
 import { BarChart, RadarChart } from 'echarts/charts'
-import { GraphicComponent, GridComponent } from 'echarts/components'
+import { GraphicComponent, GridComponent, LegendComponent, RadarComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 import { Award, Building2, ChartNoAxesCombined, CircleDollarSign, FileText, Globe2, HeartHandshake, Languages, ListFilter, Plane, ScanLine, ShieldCheck, Stethoscope, Trophy } from 'lucide-vue-next'
 import type { Component, ComponentPublicInstance } from 'vue'
+import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
+import HomeStrengthSection from '@/components/common/HomeStrengthSection.vue'
+import HomePartnersSection from '@/components/common/HomePartnersSection.vue'
+import HomePatientStories from '@/components/common/HomePatientStories.vue'
+import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
+import HomeHeroSection from '@/components/common/HomeHeroSection.vue'
+import HomeSourceDialog from '@/components/common/HomeSourceDialog.vue'
+import { homeFigmaActions } from '@/data/homeFigmaActions'
+import { homeDesktopNodes, homeSourceText } from '@/data/homeFigmaSource'
+import desktopChartSource from '../../../docs/figma-source/home/chart-spec-2026-10-19.json'
+import mobileChartSource from '../../../docs/figma-source/home/chart-spec-mobile-2026-10-19.json'
 
-use([BarChart, RadarChart, GraphicComponent, GridComponent, CanvasRenderer])
+use([BarChart, RadarChart, GraphicComponent, GridComponent, LegendComponent, RadarComponent, CanvasRenderer])
+const HomeExpertDialog=defineAsyncComponent(()=>import('@/components/common/HomeExpertDialog.vue'))
+const selectedExpert=ref<number|null>(null)
 
 type HeroSlide = {
   eyebrow?: string
@@ -65,8 +78,60 @@ const processDiseases = [
 ]
 const processSection = ref<HTMLElement | null>(null)
 const processStageRefs = ref<HTMLElement[]>([])
+const homeWidth = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
+const journeyScale = computed(() => Math.min(1, homeWidth.value / 1440))
+const whyCards = ['1412:5795','1412:5810','1412:5819','1412:5827','1412:5835','1412:5844']
+const whyCopyNodes = ['1412:5799','1412:5814','1412:5822','1412:5830','1412:5839','1412:5848']
+const whyMoreSource = homeDesktopNodes.get('1412:5804')!
+const whyCardAttributes = Object.fromEntries([
+  ...whyCards.map((id,index) => [id,{ 'data-home-why-card':index,'aria-haspopup':'dialog' }]),
+  ...whyCopyNodes.map((id,index) => [id,{ 'data-home-why-copy':index }]),
+])
+function resizeHomepage() { homeWidth.value = window.innerWidth; updateProcessState() }
 const activeProcessIndex = ref(0)
-const openProcessFaq = ref(0)
+const expandedDesktopFaqs = ref(new Set<number>())
+const desktopFaqRows = ['1401:296','1401:306','1401:313','1401:320','1401:327','1401:334','1401:341','1401:348']
+const desktopFaqButtons = ['1401:297','1401:307','1401:314','1401:321','1401:328','1401:335','1401:342','1401:349']
+const desktopFaqArrows = ['1401:300','1401:310','1401:317','1401:324','1401:331','1401:338','1401:345','1401:352']
+const mobileFaqRows = ['1528:260','1528:269','1528:275','1528:281','1528:287','1528:293','1528:299','1528:305']
+const mobileFaqButtons = ['1528:261','1528:270','1528:276','1528:282','1528:288','1528:294','1528:300','1528:306']
+const mobileFaqArrows = ['1528:264','1528:273','1528:279','1528:285','1528:291','1528:297','1528:303','1528:309']
+const expandedMobileFaqs = ref(new Set<number>())
+const journeyActions = {
+  ...homeFigmaActions,
+  '1401:40': { action:'consultation', label:'免费问阿宁' },
+  '1401:44': { href:'/report', label:'生成可行性报告' },
+  '1401:269': { href:'/diseases-technologies', label:'查看全部疾病' },
+  '1401:274': { href:'/cases', label:'查看全部案例' },
+  '1401:356': { href:'/trust', label:'查看完整20个FAQ' },
+  ...Object.fromEntries(desktopFaqButtons.map((id,index) => [id,{action:`desktop-faq:${index}`}])),
+  ...Object.fromEntries(['1401:64','1401:77','1401:88','1401:98','1401:108','1401:120'].map(id=>[id,{href:id==='1401:108'?'/dental':'/diseases-technologies'}])),
+  ...Object.fromEntries(mobileFaqButtons.map((id,index) => [id,{action:`faq:${index}`}]))
+}
+const mobileFaqAttributes = computed(() => Object.fromEntries(mobileFaqButtons.map((id,index) => [id,{
+  'aria-expanded': expandedMobileFaqs.value.has(index),
+  'aria-controls': `home-faq-answer-${index}`
+}])))
+const mobileFaqStyles = computed(() => Object.fromEntries([
+  ...mobileFaqRows.map(id => [id,'width:100%;']),
+  ...mobileFaqArrows.map((id,index) => [id,`transition:transform .3s ease;transform:rotate(${expandedMobileFaqs.value.has(index) ? 180 : 0}deg);`])
+]))
+const desktopFaqAttributes = computed(() => Object.fromEntries(desktopFaqButtons.map((id,index) => [id,{
+  'aria-expanded': expandedDesktopFaqs.value.has(index),
+  'aria-controls': `home-desktop-faq-answer-${index}`
+}])))
+const desktopFaqStyles = computed(() => Object.fromEntries([
+  ['1401:289','height:auto!important;'],
+  ['1401:295','display:flex;flex-direction:column;width:100%;'],
+  ...desktopFaqRows.map(id => [id,'width:100%;']),
+  ...desktopFaqArrows.map((id,index) => [id,`transition:transform .3s ease;transform:rotate(${expandedDesktopFaqs.value.has(index) === (index === 0) ? 0 : 180}deg);`])
+]))
+function toggleMobileFaq(index:number) {
+  const next = new Set(expandedMobileFaqs.value)
+  if (next.has(index)) next.delete(index)
+  else next.add(index)
+  expandedMobileFaqs.value = next
+}
 function setProcessStageRef(el: Element | ComponentPublicInstance | null, index: number) {
   if (el instanceof HTMLElement) processStageRefs.value[index] = el
 }
@@ -84,9 +149,14 @@ function scrollToProcessStep(index: number) {
   if (!stage) return
   const headerOffset = window.matchMedia('(max-width: 700px)').matches ? 88 : 104
   const top = Math.max(0, stage.getBoundingClientRect().top + window.scrollY - headerOffset)
-  window.scrollTo({ top, behavior: 'smooth' })
+  window.scrollTo({ top, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
 }
-function toggleProcessFaq(index: number) { openProcessFaq.value = openProcessFaq.value === index ? -1 : index }
+function toggleDesktopFaq(index:number) {
+  const next = new Set(expandedDesktopFaqs.value)
+  if (next.has(index)) next.delete(index)
+  else next.add(index)
+  expandedDesktopFaqs.value = next
+}
 const whyItems = [
   { title: '医疗水平 · 国际领先', copy: '三甲医院手术量与临床经验位居全球前列，多专科国际领先', icon: '/images/figma/home-icons/Icon-19.svg', nodeId: '143:152' },
   { title: '费用优势 · 高性价比', copy: '同等治疗方案，费用比欧美低40-70%，清单事先说清', icon: '/images/figma/home-icons/Icon-17.svg', nodeId: '143:167' },
@@ -138,25 +208,48 @@ const whyDetails: WhyDetail[] = [
 ]
 const whyModalOpen = ref(false)
 const selectedWhyIndex = ref(0)
-const whyModalClose = ref<HTMLButtonElement | null>(null)
 let whyModalTrigger: HTMLElement | null = null
+const storyModalOpen = ref(false)
+let storyModalTrigger: HTMLElement | null = null
+const whyDesktopFrames = ['143:4035','143:4220','143:4316','143:4084','143:4127','143:4167']
+const whyMobileFrames = ['1541:1003','1541:1048','1541:1146','1541:1211','1541:1252','1541:1290']
+const whyDesktopPanels = ['143:4038','143:4223','143:4319','143:4087','143:4130','143:4170']
+const whyMobilePanels = ['1541:1005','1541:1050','1541:1148','1541:1213','1541:1254','1541:1292']
+const whyDesktopTitles = ['143:4081','143:4248','143:4342','143:4122','143:4164','143:4203']
+const whyMobileTitles = ['1541:1044','1541:1142','1541:1207','1541:1248','1541:1286','1541:1322']
+const whyCloseNodes = ['143:4039','143:4224','143:4320','143:4088','143:4131','143:4171']
+const whyMobileCloseNodes = ['1541:1006','1541:1051','1541:1149','1541:1214','1541:1255','1541:1293']
+const whySourceActions = Object.fromEntries([
+  ...whyCloseNodes.map(id => [id, { action:'why:close', label:'关闭详情' }]),
+  ...whyMobileCloseNodes.map(id => [id, { action:'why:close', label:'关闭详情' }]),
+])
+const storySourceActions = {
+  '1414:7342': { action:'story:close', label:'关闭详情' },
+  '1407:9': { action:'story:close', label:'关闭详情' },
+  '1543:43': { action:'story:close', label:'关闭详情' },
+}
 function openWhyDetail(index: number, event?: Event) {
   selectedWhyIndex.value = index
   whyModalTrigger = event?.currentTarget instanceof HTMLElement ? event.currentTarget : null
   whyModalOpen.value = true
-  document.body.style.overflow = 'hidden'
-  nextTick(() => whyModalClose.value?.focus())
 }
 function closeWhyDetail() {
   whyModalOpen.value = false
-  document.body.style.overflow = ''
   nextTick(() => whyModalTrigger?.focus({ preventScroll: true }))
 }
+function openStoryDetail(event?: Event) {
+  storyModalTrigger = event?.currentTarget instanceof HTMLElement ? event.currentTarget : null
+  storyModalOpen.value = true
+}
+function closeStoryDetail() {
+  storyModalOpen.value = false
+  nextTick(() => storyModalTrigger?.focus({ preventScroll: true }))
+}
 function onWhyModalKeydown(event: KeyboardEvent) {
-  if (!whyModalOpen.value) return
-  if (event.key === 'Escape') { event.preventDefault(); closeWhyDetail(); return }
+  if (!whyModalOpen.value && !storyModalOpen.value) return
+  if (event.key === 'Escape') { event.preventDefault(); whyModalOpen.value ? closeWhyDetail() : closeStoryDetail(); return }
   if (event.key !== 'Tab') return
-  const panel = document.querySelector<HTMLElement>('.why-detail-modal__panel')
+  const panel = document.querySelector<HTMLElement>('.home-source-dialog[open]')
   if (!panel) return
   const focusable = Array.from(panel.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])')).filter((el) => !el.hasAttribute('disabled'))
   if (!focusable.length) return
@@ -173,27 +266,6 @@ function scrollHomeTo(event: MouseEvent, anchor: string) {
   target?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' })
 }
 
-const strengthStates = [
-  { title: '八千多个海外患者的生命与健康托付', copy: '来自全球80+国家和地区的患者选择信赖我们', image: '/images/figma/home-global-care-source.png', source: '/images/figma/home-source/strength-01-art-exact.webp', nodeId: '143:827' },
-  { title: '来华就医的最后一公里解决方案', copy: '从决策到康复，每一个环节都为您精心安排', image: '/images/figma/home-source/strength-02-art-exact.webp', source: '/images/figma/home-source/strength-02-art-exact.webp', nodeId: '143:1150' },
-  { title: '来华就医的最后一公里解决方案', copy: '从决策到康复，每一个环节都为您精心安排', image: '/images/figma/home-source/strength-03-art-exact.webp', source: '/images/figma/home-source/strength-03-art-exact.webp', nodeId: '143:1170' },
-]
-const strengthSection = ref<HTMLElement | null>(null)
-const activeStrengthIndex = ref(0)
-const strengthTrackOffset = ref(0)
-function updateStrengthState() {
-  if (!strengthSection.value || window.matchMedia('(max-width: 700px)').matches) {
-    strengthTrackOffset.value = 0
-    activeStrengthIndex.value = 0
-    return
-  }
-  const rect = strengthSection.value.getBoundingClientRect()
-  const stickyHeight = 699
-  const travel = Math.max(1, rect.height - stickyHeight)
-  const progress = Math.min(1, Math.max(0, (64 - rect.top) / travel))
-  strengthTrackOffset.value = progress * (380 * (strengthStates.length - 1))
-  activeStrengthIndex.value = Math.min(strengthStates.length - 1, Math.floor(progress * strengthStates.length))
-}
 const careSteps = [
   { no: '1', title: '就诊前', copy: '病历评估 · 视频会诊 · 行程规划', icon: ScanLine },
   { no: '2', title: '就诊中', copy: '落地接送 · 入院陪同 · 院中管家', icon: Building2 },
@@ -233,6 +305,8 @@ const radarChartEl = ref<HTMLElement | null>(null)
 const costChartEl = ref<HTMLElement | null>(null)
 let radarChart: ECharts | undefined
 let costChart: ECharts | undefined
+let chartObserver: ResizeObserver | undefined
+let chartSize = ''
 
 const radarIndicators = [
   { name: '治疗费用', max: 100 },
@@ -248,72 +322,73 @@ const radarSeries = [
   { name: '德国 Germany', value: [50, 55, 88, 93, 65, 90], color: '#C9A84C', fill: 'rgba(201,168,76,.15)' },
 ]
 
-function chartLegend(xs: number[], y: number, fontSize: number, japan = false) {
-  const items = japan ? [...radarSeries, { name: '日本 Japan', color: '#94A3B8' }] : radarSeries
-  return items.flatMap((item, index) => [
-    { type: 'rect', silent: true, shape: { x: xs[index], y: y + (fontSize === 12 ? 5.09 : 3.85), width: 14, height: 10.5 }, style: { fill: item.color } },
-    { type: 'text', silent: true, x: xs[index]! + 18, y, style: { text: item.name, fill: item.color, fontFamily: '"SF Pro", "PingFang SC", sans-serif', fontSize, lineHeight: fontSize * 1.5, verticalAlign: 'top' } },
-  ])
-}
-
 function initCharts() {
   if (!radarChartEl.value || !costChartEl.value) return
   radarChart?.dispose()
   costChart?.dispose()
-  // Render in Figma's coordinate space; CSS scales the complete chart on narrow screens.
-  radarChart = init(radarChartEl.value, undefined, { renderer: 'canvas', width: 542, height: 300 })
-  costChart = init(costChartEl.value, undefined, { renderer: 'canvas', width: 542, height: 300 })
+  // Mobile has its own authored chart, not a percentage-scaled desktop option.
+  const source = window.matchMedia('(max-width: 700px)').matches ? mobileChartSource : desktopChartSource
+  const graphics = (chart: typeof source.radar | typeof source.cost) => [
+    ...chart.texts.map(label => ({
+      type: 'group', x: label.x, y: label.y, rotation: label.rotation, silent: true,
+      children: [{ type: 'text', style: {
+        text: label.text, fill: label.fill, opacity: 'opacity' in label ? Number(label.opacity) : 1, fontFamily: `"${label.fontFamily}", "PingFang SC", sans-serif`,
+        fontSize: label.fontSize, lineHeight: label.height, verticalAlign: 'top',
+      } }],
+    })),
+    ...chart.legendSymbols.map(symbol => ({
+      type: 'rect', silent: true, shape: { x: symbol.x, y: symbol.y, width: symbol.width, height: symbol.height },
+      style: { fill: symbol.fill, opacity: 'opacity' in symbol ? Number(symbol.opacity) : 1 },
+    })),
+  ]
+  const devicePixelRatio = Math.max(2, window.devicePixelRatio || 1)
+  radarChart = init(radarChartEl.value, undefined, { renderer: 'canvas', width: source.radar.width, height: source.radar.height, devicePixelRatio })
+  costChart = init(costChartEl.value, undefined, { renderer: 'canvas', width: source.cost.width, height: source.cost.height, devicePixelRatio })
   radarChart.setOption({
     animation: false,
     radar: {
-      center: [271, 150],
-      radius: 88.4,
-      startAngle: 90,
-      splitNumber: 4,
-      shape: 'polygon',
-      indicator: radarIndicators,
+      center: source.radar.center, radius: source.radar.radius,
+      startAngle: 90, splitNumber: 4, shape: 'polygon', indicator: radarIndicators,
       axisName: { show: false },
       axisLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
       splitLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
       splitArea: { areaStyle: { color: ['transparent'] } },
     },
     series: [{
-      type: 'radar',
-      symbol: 'none',
-      silent: true,
-      data: radarSeries.map((item) => ({ value: item.value, name: item.name, lineStyle: { color: item.color, width: 2 }, areaStyle: { color: item.fill, opacity: 1 } })),
+      type: 'radar', symbol: 'none', silent: true,
+      data: radarSeries.map(item => ({
+        value: item.value, name: item.name, lineStyle: { color: item.color, width: 2 },
+        areaStyle: { color: item.fill, opacity: 1 },
+      })),
     }],
-    graphic: [
-      ...[
-        { text: '治疗费用', x: 249, y: 42.6 },
-        { text: '治愈率', x: 354.48, y: 90.8 },
-        { text: '等待时间', x: 354.48, y: 187.2 },
-        { text: '技术水平', x: 249, y: 235.4 },
-        { text: '服务质量', x: 143.52, y: 187.2 },
-        { text: '语言支持', x: 143.52, y: 90.8 },
-      ].map((label) => ({ type: 'text', silent: true, x: label.x, y: label.y, style: { text: label.text, fill: '#374151', fontFamily: 'Inter, sans-serif', fontSize: 11, verticalAlign: 'top' } })),
-      ...[0, 25, 50, 75, 100].map((value, index) => ({ type: 'text', silent: true, x: 279.66 + index * 19.14, y: 145 - index * 11.05, rotation: -Math.PI / 3, style: { text: String(value), fill: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontSize: 10, verticalAlign: 'top' } })),
-      ...chartLegend([134.09, 221.71, 301.67], 277, 12),
-    ],
+    graphic: graphics(source.radar),
   })
+  const grid = source.cost.grid
   costChart.setOption({
     animation: false,
-    grid: { left: 50, right: 5, top: 5, bottom: 47 },
-    xAxis: { type: 'category', data: costs.map((item) => item.label), axisLine: { lineStyle: { color: '#666666' } }, axisTick: { alignWithLabel: true, length: 6 }, axisLabel: { color: '#374151', fontFamily: 'Inter, sans-serif', fontSize: 11, interval: 0, margin: 5 }, splitLine: { show: false } },
-    yAxis: { type: 'value', max: 120, interval: 30, axisLine: { show: true, lineStyle: { color: '#666666' } }, axisTick: { show: true, length: 6 }, axisLabel: { color: '#6B7280', fontFamily: 'Inter, sans-serif', fontSize: 11 }, splitLine: { lineStyle: { color: '#E5E7EB', type: [3, 3] } } },
+    grid: { left: grid.x, top: grid.y, width: grid.width, height: grid.height },
+    // Axes/labels/ticks are graphic primitives at their actual Figma positions;
+    // the bars and coordinate system remain a genuine ECharts data series.
+    xAxis: { type: 'category', data: costs.map(item => item.label), show: false },
+    yAxis: { type: 'value', min: 0, max: 120, show: false },
     series: [
-      { name: '中国 China', type: 'bar', silent: true, barWidth: 13, barGap: '30.76923077%', itemStyle: { color: '#2563EB', borderRadius: [4, 4, 0, 0] }, data: costs.map((item) => item.china) },
-      { name: '美国 USA', type: 'bar', silent: true, barWidth: 13, itemStyle: { color: '#1E3A5F', borderRadius: [4, 4, 0, 0] }, data: costs.map((item) => item.usa) },
-      { name: '德国 Germany', type: 'bar', silent: true, barWidth: 13, itemStyle: { color: '#C9A84C', borderRadius: [4, 4, 0, 0] }, data: costs.map((item) => item.germany) },
-      { name: '日本 Japan', type: 'bar', silent: true, barWidth: 13, itemStyle: { color: '#94A3B8', borderRadius: [4, 4, 0, 0] }, data: costs.map((item) => item.japan) },
-    ],
+      { name: '中国', field: 'china', color: '#2563EB' }, { name: '美国', field: 'usa', color: '#1E3A5F' },
+      { name: '德国', field: 'germany', color: '#C9A84C' }, { name: '日本', field: 'japan', color: '#94A3B8' },
+    ].map(item => ({
+      name: item.name, type: 'bar', silent: true, barWidth: source.cost.barWidth, barGap: source.cost.barGap,
+      itemStyle: { color: item.color, borderRadius: source.cost.width < 542 ? [2.4328, 2.4328, 0, 0] : [4, 4, 0, 0] },
+      data: costs.map(cost => cost[item.field as 'china' | 'usa' | 'germany' | 'japan']),
+    })),
     graphic: [
-      ...[50, 90.5835, 171.75, 252.917, 334.083, 415.25, 496.417, 537].map((x) => ({ type: 'line', silent: true, z: -1, shape: { x1: x, y1: 5, x2: x, y2: 253 }, style: { stroke: '#E5E7EB', lineWidth: 1, lineDash: [3, 3] } })),
-      ...chartLegend([91.59, 174.63, 250.52, 350.74], 283, 11, true),
+      ...source.cost.lines.map(line => ({
+        type: 'line', silent: true, z: -1,
+        shape: { x1: line.x, y1: line.y, x2: line.x + line.width, y2: line.y + line.height },
+        style: { stroke: line.stroke, lineWidth: line.lineWidth, lineDash: line.lineDash, opacity: 'opacity' in line ? Number(line.opacity) : 1 },
+      })),
+      ...graphics(source.cost),
     ],
   })
 }
-
 function disposeCharts() {
   radarChart?.dispose()
   costChart?.dispose()
@@ -321,185 +396,147 @@ function disposeCharts() {
   costChart = undefined
 }
 function openConsultation() { window.dispatchEvent(new CustomEvent('open-consultation')) }
+function activateFigmaAction(action:string, event:MouseEvent) {
+  const [name, value] = action.split(':')
+  if (name === 'consultation') openConsultation()
+  else if (name === 'doctor') selectedExpert.value=Number(value)
+  else if (name === 'process') scrollToProcessStep(Number(value))
+  else if (name === 'why' && value === 'close') closeWhyDetail()
+  else if (name === 'why') openWhyDetail(Number(value), event)
+  else if (name === 'faq') toggleMobileFaq(Number(value))
+  else if (name === 'desktop-faq') toggleDesktopFaq(Number(value))
+  else if (name === 'hero') goHero(value === 'previous' ? heroIndex.value - 1 : value === 'next' ? heroIndex.value + 1 : Number(value))
+  else if (name === 'story' && value === 'close') closeStoryDetail()
+  else if (name === 'story') openStoryDetail(event)
+}
+watch([radarChartEl, costChartEl], () => nextTick(() => {
+  if (radarChartEl.value && costChartEl.value) initCharts()
+}))
 onMounted(() => {
   startHeroTimer()
-  nextTick(initCharts)
+  nextTick(() => {
+    chartObserver = new ResizeObserver(() => {
+      const size = `${radarChartEl.value?.clientWidth}:${costChartEl.value?.clientWidth}:${window.innerWidth <= 700}`
+      if (size === chartSize) return
+      chartSize = size
+      initCharts()
+    })
+    if (radarChartEl.value) chartObserver.observe(radarChartEl.value)
+    if (costChartEl.value) chartObserver.observe(costChartEl.value)
+  })
   window.addEventListener('keydown', onWhyModalKeydown)
-  window.addEventListener('scroll', updateStrengthState, { passive: true })
   window.addEventListener('scroll', updateProcessState, { passive: true })
-  updateStrengthState()
+  window.addEventListener('resize', resizeHomepage, { passive: true })
   updateProcessState()
 })
 onBeforeUnmount(() => {
   stopHeroTimer()
+  chartObserver?.disconnect()
   disposeCharts()
   window.removeEventListener('keydown', onWhyModalKeydown)
-  window.removeEventListener('scroll', updateStrengthState)
   window.removeEventListener('scroll', updateProcessState)
+  window.removeEventListener('resize', resizeHomepage)
   document.body.style.overflow = ''
 })
 </script>
 
 <template>
-  <div class="home-page">
-    <section class="home-hero" @mouseenter="stopHeroTimer" @mouseleave="startHeroTimer">
-      <Transition name="hero-image" mode="out-in"><img :key="heroSlide.image" class="home-hero__image" :class="{ 'home-hero__image--source': heroIndex !== 3 }" :src="heroSlide.image" :alt="heroSlide.title" /></Transition>
-      <div class="home-hero__wash" :class="{ 'home-hero__wash--first': heroIndex === 0, 'home-hero__wash--assurance': heroIndex === 2, 'home-hero__wash--patient': heroIndex === 3 }" />
-      <button type="button" class="home-hero__arrow home-hero__arrow--left" aria-label="上一张" @click="goHero(heroIndex - 1)"><img src="/images/figma/home-icons/Icon-22.svg" alt="" aria-hidden="true" /></button>
-      <button type="button" class="home-hero__arrow home-hero__arrow--right" aria-label="下一张" @click="goHero(heroIndex + 1)"><img src="/images/figma/home-icons/Icon-22.svg" alt="" aria-hidden="true" /></button>
-      <div class="hy-container home-hero__inner">
-        <Transition name="hero-copy" mode="out-in">
-          <div :key="heroIndex" class="home-hero__copy" :class="{ 'home-hero__copy--simple': heroIndex < 2, 'home-hero__copy--assurance': heroIndex === 2 }">
-            <span v-if="heroSlide.eyebrow" class="home-hero__eyebrow"><img :src="heroSlide.eyebrowIcon" alt="" aria-hidden="true" />{{ heroSlide.eyebrow }}</span>
-            <div class="home-hero__heading"><h1>{{ heroSlide.title }}</h1><p v-if="heroSlide.copy">{{ heroSlide.copy }}</p></div>
-            <div v-if="heroSlide.bullets" class="home-hero__bullets"><div v-for="bullet in heroSlide.bullets" :key="bullet.title"><strong><img src="/images/figma/home-icons/banner-03-check.svg" alt="" aria-hidden="true" />{{ bullet.title }}</strong><p>{{ bullet.copy }}</p></div></div>
-            <span v-if="heroSlide.meta" class="home-hero__meta">{{ heroSlide.meta }}</span>
-            <div v-if="heroSlide.action && heroSlide.link" class="home-hero__button-wrap"><RouterLink :to="heroSlide.link" class="home-hero__button">{{ heroSlide.action }}<img :src="heroSlide.actionIcon" alt="" aria-hidden="true" /></RouterLink></div>
-          </div>
-        </Transition>
-      </div>
-      <div class="home-hero__controls"><button v-for="(_, index) in heroSlides" :key="index" type="button" :class="{ active: heroIndex === index }" :aria-label="`第${index + 1}张`" @click="goHero(index)" /></div>
-      <button type="button" class="home-hero__assistant" @click="openConsultation"><img src="/images/figma/home-icons/node-143-1146.svg" alt="" />问问寰宇小助手</button>
-    </section>
+  <div class="home-page" :data-figma-node="homeWidth>700 ? '1412:5684' : undefined">
+    <HomeHeroSection class="home-source-hero" @activate="activateFigmaAction" />
 
-    <section class="home-flow" aria-labelledby="home-flow-title">
-      <div class="hy-container">
-        <header class="home-flow__heading">
-          <h2 id="home-flow-title">来华就医流程</h2>
-          <p>点击步骤卡片跳转到对应页面</p>
-        </header>
-        <div class="home-flow__line">
-          <div class="home-flow__progress" aria-hidden="true" />
-          <a
-            v-for="(step, index) in flowSteps"
-            :id="`home-flow-step-${step.no}`"
-            :key="step.no"
-            class="home-flow__step"
-            :href="`#process-stage-${step.no}`"
-            @click.prevent="scrollToProcessStep(index)"
-          >
-            <span>{{ step.no }}</span>
-            <strong>{{ step.label }}</strong>
-            <small>{{ step.title }}</small>
-          </a>
+    <HomeFigmaSection desktop-id="1412:5718" mobile-id="1528:148" label="来华就医流程" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+
+    <div ref="processSection" class="home-source-journey">
+      <template v-if="homeWidth <= 700">
+        <div v-for="(sourceId, index) in ['1528:184', '1528:223', '1528:252', '1528:316']" :id="`process-stage-${flowSteps[index]!.no}`" :key="sourceId" :ref="el => setProcessStageRef(el, index)">
+          <HomeFigmaSection class="journey-mobile-source" desktop-id="1412:5765" :mobile-id="sourceId" :label="`来华就医·${flowSteps[index]!.label}`" :actions="journeyActions" :styles="mobileFaqStyles" :attributes="mobileFaqAttributes" @activate="activateFigmaAction">
+            <template #after="{ node }">
+              <div v-if="mobileFaqRows.includes(node.id)" :id="`home-faq-answer-${mobileFaqRows.indexOf(node.id)}`" class="home-source-faq-answer" :class="{ 'is-open':expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id)) }" :inert="!expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id))" :aria-hidden="!expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id))">
+                <div><div class="home-source-faq-answer__copy"><strong v-if="processFaqs[mobileFaqRows.indexOf(node.id)]!.lead">{{ processFaqs[mobileFaqRows.indexOf(node.id)]!.lead }}</strong><p>{{ processFaqs[mobileFaqRows.indexOf(node.id)]!.answer }}</p></div></div>
+              </div>
+            </template>
+          </HomeFigmaSection>
+        </div>
+      </template>
+      <div v-else class="journey-desktop" :style="{ '--journey-scale': journeyScale }">
+        <div id="process-stage-01" :ref="el => setProcessStageRef(el, 0)">
+          <HomeFigmaSection desktop-id="1412:5765" label="来华就医·认知" :actions="homeFigmaActions" :attributes="whyCardAttributes" :hidden="['1412:5780']" @activate="activateFigmaAction">
+            <template #after="{ node }">
+              <div v-if="whyCopyNodes.indexOf(node.id)>0" class="home-why-card__more" :style="{left:`${whyMoreSource.x}px`,top:`${whyMoreSource.y}px`,width:`${whyMoreSource.width}px`,height:`${whyMoreSource.height}px`}" aria-hidden="true">
+                <HomeSourceNode :node="whyMoreSource" root replica />
+              </div>
+            </template>
+          </HomeFigmaSection>
+        </div>
+        <div v-for="(sourceId, index) in ['1401:18','1401:281','1401:49']" :id="`process-stage-${flowSteps[index+1]!.no}`" :key="sourceId" :ref="el => setProcessStageRef(el, index+1)">
+          <HomeFigmaSection :desktop-id="sourceId" :label="`来华就医·${flowSteps[index+1]!.label}`" :hidden="['1401:26','1401:282','1401:50','1401:303']" :flow-roots="['1401:289']" :content-height-id="sourceId === '1401:281' ? '1401:289' : undefined" :actions="journeyActions" :styles="desktopFaqStyles" :attributes="desktopFaqAttributes" @activate="activateFigmaAction">
+            <template #after="{ node }">
+              <div v-if="desktopFaqRows.includes(node.id)" :id="`home-desktop-faq-answer-${desktopFaqRows.indexOf(node.id)}`" class="home-source-faq-answer" :class="{ 'is-open':expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id)) }" :inert="!expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id))" :aria-hidden="!expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id))">
+                <div><HomeSourceNode :node="homeDesktopNodes.get('1401:303')!" root fluid :hidden="processFaqs[desktopFaqRows.indexOf(node.id)]!.lead ? [] : ['1401:304']" :texts="{ '1401:304': processFaqs[desktopFaqRows.indexOf(node.id)]!.lead || '', '1401:305': processFaqs[desktopFaqRows.indexOf(node.id)]!.answer }" :styles="{ '1401:305':'height:auto!important;white-space:pre-wrap;' }" /></div>
+              </div>
+            </template>
+          </HomeFigmaSection>
+        </div>
+        <div class="journey-desktop__rail-lane">
+          <aside class="journey-desktop__rail" aria-label="当前流程阶段">
+            <HomeSourceNode :node="homeDesktopNodes.get('1412:5780')!" root :texts="{ '1412:5782': flowSteps[activeProcessIndex]!.label, '1412:5786': flowSteps[activeProcessIndex]!.no }" />
+          </aside>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section ref="processSection" class="home-process" aria-labelledby="home-process-title">
-      <header class="home-process__heading hy-container">
-        <h2 id="home-process-title">来华就医流程</h2>
-      </header>
-      <div class="home-process__body hy-container">
-        <aside class="home-process__rail" aria-label="当前流程阶段">
-          <div class="home-process__rail-line" aria-hidden="true" />
-          <div class="home-process__rail-node"><strong>{{ flowSteps[activeProcessIndex]!.no }}</strong></div>
-          <span>{{ flowSteps[activeProcessIndex]!.label }}</span>
-        </aside>
-        <div class="home-process__stack">
-          <div :id="`process-stage-${step.no}`" class="home-process__stage" v-for="(step, index) in flowSteps" :key="step.no" :ref="el => setProcessStageRef(el, index)" :data-stage="step.no">
-            <div class="home-process__content">
-          <template v-if="index === 0">
-            <h3>为什么来中国就医？</h3>
-            <p class="home-process__subtitle">不只是选我们，是选这个医疗体系本身的价值</p>
-            <div class="home-process__why-grid">
-              <article v-for="(item, itemIndex) in whyItems" :key="item.title" role="button" tabindex="0" @click="openWhyDetail(itemIndex, $event)" @keydown.enter.prevent="openWhyDetail(itemIndex, $event)" @keydown.space.prevent="openWhyDetail(itemIndex, $event)">
-                <img :src="item.icon" :alt="`${item.title}图标`" />
-                <div><h4>{{ item.title }}</h4><p>{{ item.copy }}</p></div>
-              </article>
-            </div>
-          </template>
-          <template v-else-if="index === 1">
-            <h3>3分钟获取个性化来华就医可行性报告</h3>
-            <p class="home-process__subtitle">3分钟获取个性化来华就医可行性报告</p>
-            <div class="home-process__actions"><button type="button" class="home-process__primary" @click="openConsultation"><img src="/images/figma/home-icons/node-143-996.svg" alt="" aria-hidden="true" />免费问阿宁</button><RouterLink to="/report" class="home-process__secondary"><img src="/images/figma/home-icons/node-143-1000.svg" alt="" aria-hidden="true" />生成可行性报告</RouterLink></div>
-          </template>
-          <template v-else-if="index === 2">
-            <h3>来华就医，您可能最关心的8个问题</h3>
-            <p class="home-process__subtitle">点击卡片查看详细解答</p>
-            <div class="home-process__faq">
-              <button v-for="(faq, faqIndex) in processFaqs" :key="faq.question" type="button" :class="{ open: openProcessFaq === faqIndex }" @click="toggleProcessFaq(faqIndex)"><span>{{ faq.question }}</span><span aria-hidden="true">⌄</span><strong v-if="openProcessFaq === faqIndex && faq.lead">{{ faq.lead }}</strong><p v-if="openProcessFaq === faqIndex">{{ faq.answer }}</p></button>
-            </div>
-            <button type="button" class="home-process__primary home-process__faq-cta" @click="openConsultation">查看完整20个FAQ <span aria-hidden="true">→</span></button>
-          </template>
-          <template v-else>
-            <h3>按疾病查找治疗方案</h3>
-            <p class="home-process__subtitle">覆盖12大核心病种，每种疾病都有详细的中国治疗方案</p>
-            <div class="home-process__disease-grid">
-                <RouterLink v-for="disease in processDiseases" :key="disease.name" :to="disease.path">
-                <img :src="disease.icon" :alt="`${disease.name}图标`" /><strong>{{ disease.name }}</strong><small>合作医院：<b>{{ disease.hospitals }}</b></small><p>{{ disease.cases }}</p><p>{{ disease.feature }}</p>
-              </RouterLink>
-            </div>
-            <div class="home-process__actions"><RouterLink to="/diseases-technologies" class="home-process__primary">查看全部疾病 <span aria-hidden="true">→</span></RouterLink><RouterLink to="/cases" class="home-process__secondary">查看全部案例 <span aria-hidden="true">→</span></RouterLink></div>
-            <p class="home-process__note">也可提交病历，由医疗顾问匹配适合的医院</p>
-          </template>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <HomePatientStories id="patient-story" @activate="activateFigmaAction" />
+    <HomeFigmaSection id="care-section" desktop-id="1412:6019" mobile-id="1528:391" label="就医全程陪伴" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6055" mobile-id="1528:412" label="陪你走全程的人" />
+    <HomeFigmaSection id="data-section" desktop-id="1412:6092" mobile-id="1528:429" label="中国医疗数据优势">
+      <template #radar><div ref="radarChartEl" class="revision-chart" role="img" aria-label="中国、美国、德国医疗能力雷达图" /></template>
+      <template #cost><div ref="costChartEl" class="revision-chart" role="img" aria-label="治疗费用对比" /></template>
+    </HomeFigmaSection>
+    <HomeFigmaSection desktop-id="1412:6313" mobile-id="1528:621" label="权威合作医院" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6350" mobile-id="1528:656" label="权威专家团队" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeStrengthSection />
+    <HomePartnersSection />
+    <HomeFigmaSection id="home-cta" desktop-id="1412:6635" mobile-id="1528:771" label="开启来华就医之旅" :actions="homeFigmaActions" :texts="{ '1412:6652': '预约专家面诊 $200起' }" @activate="activateFigmaAction" />
 
-    <section id="patient-story" class="patient-story"><div class="hy-container"><header class="section-title" data-reveal><h2>患者故事 · 真实见证</h2><p>来自全球患者的真实反馈与感恩</p></header><div class="patient-story__card" data-reveal><div class="patient-story__image"><img src="/images/figma/patient-story.png" alt="国际患者康复故事" /><span><i /><i class="active" /><i /></span></div><div class="patient-story__content"><div class="patient-story__top"><b>节省50%</b><blockquote>“天坛医院的张俊廷教授给了我第二次生命。从确诊到手术仅用了5天，术后3年无复发。”</blockquote><div class="patient-story__details"><p><img src="/images/figma/home-icons/node-143-227.svg" alt="" />术后3年无复发</p><p><img src="/images/figma/home-icons/node-143-233.svg" alt="" />北京天坛医院</p></div></div><div class="patient-story__bottom"><small><span>— M·A</span>, 35岁 · 俄罗斯 · 脊髓肿瘤</small><RouterLink to="/cases">了解更多<img src="/images/figma/home-icons/node-143-254.svg" alt="" /></RouterLink></div></div></div></div></section>
-
-    <section id="care-section" class="care-section"><div class="hy-container"><header class="section-title" data-reveal><h2>就医全程陪伴</h2><p>点击任意步骤，看下一步我们要替你做什么</p></header><div class="care-grid"><RouterLink v-for="step in careSteps" :key="step.no" to="/steps" data-reveal><span>{{ step.no }}</span><h3>{{ step.title }}</h3><p>{{ step.copy }}</p></RouterLink></div></div></section>
-
-    <section class="team-section"><div class="hy-container"><header class="section-title" data-reveal><h2>陪你走全程的人</h2><p>公司直属团队，非外包、可追溯</p></header><div class="team-grid"><article v-for="person in team" :key="person.title" data-reveal><span class="team-grid__image" role="img" :aria-label="person.title" :style="{ backgroundImage: `url(${person.image})`, backgroundSize: person.imageSize, backgroundPosition: person.imagePosition }" /><h3>{{ person.title }}</h3><p>{{ person.copy }}</p></article></div></div></section>
-
-    <section id="data-section" class="data-section"><div class="hy-container"><header class="section-title" data-reveal><h2>中国医疗数据优势</h2><p>用数据客观对比，助您做出明智决策</p></header><div class="data-grid"><article class="radar-card" data-reveal><h3>多维度能力对比</h3><div class="source-chart" role="img" aria-label="中国、美国、德国医疗能力雷达图"><div ref="radarChartEl" class="chart-canvas" /></div></article><article class="cost-card" data-reveal><h3>治疗费用对比（千美元）</h3><div class="source-chart" role="img" aria-label="治疗费用对比"><div ref="costChartEl" class="chart-canvas" /></div></article></div></div></section>
-
-    <section class="hospital-section"><div class="hy-container"><header class="section-title" data-reveal><h2>权威合作医院</h2><p>只与中国最高水平的医院官方签约合作</p></header><div class="hospital-grid"><RouterLink v-for="hospital in hospitals" :key="hospital.name" to="/hospitals" data-reveal><span class="hospital-grid__image" role="img" :aria-label="hospital.name" :style="{ backgroundImage: `url(${hospital.image})`, backgroundSize: hospital.imageSize, backgroundPosition: hospital.imagePosition }" /><h3>{{ hospital.name }}</h3><p>{{ hospital.copy }}</p></RouterLink></div></div></section>
-
-    <section class="expert-section"><div class="hy-container"><header class="section-title" data-reveal><h2>权威专家团队</h2><p>按疾病分类，为您推荐各领域顶尖专家</p><div class="expert-tabs" role="tablist"><button v-for="tab in expertTabs" :key="tab" type="button" role="tab" :class="{ active: activeExpertTab === tab }" :aria-selected="activeExpertTab === tab" @click="activeExpertTab = tab">{{ tab }}</button></div></header><div v-if="visibleExperts.length" class="expert-grid" role="tabpanel"><article v-for="expert in visibleExperts" :key="expert.name" data-reveal><div><span class="expert-grid__portrait" role="img" :aria-label="expert.name" :style="{ backgroundImage: `url(${expert.image})`, backgroundSize: expert.imageSize, backgroundPosition: expert.imagePosition, transform: expert.imageFlip ? 'scaleX(-1)' : 'none' }" /><h3>{{ expert.name }}</h3></div><div class="expert-grid__body"><div class="expert-grid__details"><p><img src="/images/figma/home-icons/node-143-760.svg" alt="" />{{ expert.title }}</p><p><img src="/images/figma/home-icons/node-143-766.svg" alt="" />{{ expert.hospital }}</p></div><div class="expert-grid__specialty"><strong>擅长: {{ expert.specialty }}</strong><small>{{ expert.experience }}</small></div></div></article></div><div v-else class="expert-empty" role="tabpanel"><p>{{ activeExpertTab }}专家资料正在更新</p><button type="button" @click="openConsultation">提交病历，由医疗顾问人工匹配</button></div></div></section>
-
-    <section ref="strengthSection" class="strength-section"><div class="strength-sticky"><div class="hy-container"><header class="section-title"><h2>我们的实力</h2><p>用专业和实力赢得全球患者信赖</p></header><div class="strength-layout"><div class="strength-copy-window"><div class="strength-copy-track" :style="{ transform: `translate3d(0, -${strengthTrackOffset}px, 0)` }"><article v-for="state in strengthStates" :key="state.nodeId" class="strength-copy-state"><h3>{{ state.title }}</h3><p>{{ state.copy }}</p><img class="strength-copy-state__mobile-image" :src="state.source" alt="寰宇云医全球医疗协同" /></article></div></div><div class="strength-artwork"><img v-for="(state,index) in strengthStates" :key="state.nodeId" class="strength-layout__image" :class="{ active: activeStrengthIndex === index }" :src="state.source" :alt="index === activeStrengthIndex ? '寰宇云医全球医疗协同' : ''" :aria-hidden="index !== activeStrengthIndex" /></div></div></div></div></section>
-
-    <section class="partners-section">
-      <header class="section-title hy-container" data-reveal><h2>合作伙伴</h2><p>携手全球顶尖企业与保险公司，为患者提供全方位保障</p></header>
-      <div class="partners-marquee">
-        <div>
-          <picture><source media="(max-width:700px)" srcset="/images/figma/partners-mobile-track.webp" /><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img width="3570" height="472" src="/images/figma/partners-track.webp" alt="全球合作伙伴" /></picture>
-          <picture><source media="(max-width:700px)" srcset="/images/figma/partners-mobile-track.webp" /><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img width="3570" height="472" src="/images/figma/partners-track.webp" alt="" aria-hidden="true" /></picture>
-        </div>
-      </div>
-    </section>
-
-    <section id="home-cta" class="home-cta"><div class="hy-container" data-reveal><h2>准备好开启您的来华就医之旅了吗？</h2><p>我们的医疗顾问团队随时为您提供免费咨询</p><div><button type="button" class="cta-white" @click="openConsultation"><img src="/images/figma/home-icons/node-143-996.svg" alt="" />免费问阿宁</button><RouterLink to="/report" class="cta-outline"><img src="/images/figma/home-icons/node-143-1000.svg" alt="" />生成可行性报告</RouterLink><button type="button" class="cta-dark" @click="openConsultation">预约专家面诊 $200起<img src="/images/figma/home-icons/node-143-1005.svg" alt="" /></button></div><small><span><img src="/images/figma/home-icons/node-143-1010.svg" alt="" />免费咨询</span><span><img src="/images/figma/home-icons/node-143-1015.svg" alt="" />无隐藏费用</span><span><img src="/images/figma/home-icons/node-143-1020.svg" alt="" />24小时响应</span></small></div></section>
-
-    <Transition name="why-modal">
-      <div v-if="whyModalOpen" class="why-detail-modal" role="presentation" @click.self="closeWhyDetail">
-        <section class="why-detail-modal__panel" role="dialog" aria-modal="true" aria-labelledby="why-detail-title" tabindex="-1">
-          <header class="why-detail-modal__header">
-            <div>
-              <h2 id="why-detail-title">{{ whyDetails[selectedWhyIndex]!.title }}</h2>
-              <p>{{ whyDetails[selectedWhyIndex]!.subtitle }}</p>
-            </div>
-            <button ref="whyModalClose" class="why-detail-modal__close" type="button" aria-label="关闭详情" @click="closeWhyDetail"><span aria-hidden="true">×</span></button>
-          </header>
-          <div v-if="whyDetails[selectedWhyIndex]!.table" class="why-detail-modal__table-block" :class="{ 'why-detail-modal__table-block--cost': selectedWhyIndex === 1, 'why-detail-modal__table-block--care': selectedWhyIndex === 2 }">
-            <h3 v-if="selectedWhyIndex === 1">常见治疗项目的中外费用对比：</h3>
-            <h3 v-else>从抵达到离境的全流程陪诊标准：</h3>
-            <div class="why-detail-modal__table-wrap">
-              <table>
-                <thead><tr><th v-for="head in whyDetails[selectedWhyIndex]!.table!.headers" :key="head">{{ head }}</th></tr></thead>
-                <tbody><tr v-for="row in whyDetails[selectedWhyIndex]!.table!.rows" :key="row[0]"><td v-for="(cell, cellIndex) in row" :key="`${row[0]}-${cellIndex}`">{{ cell }}</td></tr></tbody>
-              </table>
-            </div>
-            <p v-if="whyDetails[selectedWhyIndex]!.note" class="why-detail-modal__note">{{ whyDetails[selectedWhyIndex]!.note }}</p>
-          </div>
-          <div class="why-detail-modal__body" :class="[`why-detail-modal__body--${whyDetails[selectedWhyIndex]!.layout}`, `why-detail-modal__body--state-${selectedWhyIndex}`]">
-            <article v-for="card in whyDetails[selectedWhyIndex]!.cards" :key="card.title">
-              <component :is="card.icon" class="why-detail-modal__icon" :size="32" :stroke-width="1.8" aria-hidden="true" />
-              <div class="why-detail-modal__card-copy"><h3>{{ card.title }}</h3><p>{{ card.copy }}</p></div>
-            </article>
-          </div>
-          <p v-if="whyDetails[selectedWhyIndex]!.layout === 'wide-cards' && whyDetails[selectedWhyIndex]!.note" class="why-detail-modal__note why-detail-modal__note--bottom">{{ whyDetails[selectedWhyIndex]!.note }}</p>
-        </section>
-      </div>
-    </Transition>
+    <HomeSourceDialog v-if="whyModalOpen" :desktop-panel="whyDesktopPanels[selectedWhyIndex]!" :mobile-panel="whyMobilePanels[selectedWhyIndex]!" :desktop-title="whyDesktopTitles[selectedWhyIndex]!" :mobile-title="whyMobileTitles[selectedWhyIndex]!" :actions="whySourceActions" @close="closeWhyDetail" />
+    <HomeSourceDialog v-if="storyModalOpen" desktop-panel="1407:8" mobile-panel="1543:42" desktop-title="1407:14" mobile-title="1543:134" :actions="storySourceActions" scroll-node="1407:28" @close="closeStoryDetail" />
+    <HomeExpertDialog v-if="selectedExpert!==null" :expert="selectedExpert" @close="selectedExpert=null" />
   </div>
 </template>
 
 <style scoped>
+.revision-chart { width:100%; height:100%; }
+.home-source-faq-answer { display:grid; grid-template-rows:0fr; width:100%; opacity:0; transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
+.home-source-faq-answer.is-open { grid-template-rows:1fr; opacity:1; }
+.home-source-faq-answer > div { min-height:0; overflow:hidden; }
+.home-source-faq-answer__copy { padding:0 0 24px; }
+.home-source-faq-answer strong { display:block; margin:0 0 12px; color:#2563eb; font:500 14px/22px 'PingFang SC',sans-serif; }
+.home-source-faq-answer p { margin:0; color:#6b7280; font:400 14px/22px 'PingFang SC',sans-serif; }
+@media (prefers-reduced-motion:reduce) { .home-source-faq-answer { transition:none; } }
+.home-source-journey { position:relative; background:#f5f6f7; }
+.journey-desktop { position:relative; }
+.journey-desktop :deep([data-home-why-copy]) { transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.journey-desktop :deep([data-home-why-copy="0"]) { transform:translateY(32px)!important; }
+.journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more { opacity:0; transition:opacity .3s cubic-bezier(.22,1,.36,1); }
+.home-why-card__more { position:absolute; pointer-events:none; }
+.journey-desktop :deep([data-home-why-card]:hover [data-home-why-copy]),.journey-desktop :deep([data-home-why-card]:focus-visible [data-home-why-copy]) { transform:translateY(-32px)!important; }
+.journey-desktop :deep([data-home-why-card="0"]:hover [data-home-why-copy]),.journey-desktop :deep([data-home-why-card="0"]:focus-visible [data-home-why-copy]) { transform:none!important; }
+.journey-desktop :deep([data-home-why-card]:hover [data-figma-node="1412:5804"]),.journey-desktop :deep([data-home-why-card]:focus-visible [data-figma-node="1412:5804"]),
+.journey-desktop :deep([data-home-why-card]:hover .home-why-card__more),.journey-desktop :deep([data-home-why-card]:focus-visible .home-why-card__more) { opacity:1; }
+.journey-desktop :deep([data-home-why-card]:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
+@media (prefers-reduced-motion:reduce) { .journey-desktop :deep([data-home-why-copy]),.journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more { transition:none; } }
+.journey-desktop__tail { position:relative; display:grid; width:min(1216px,calc(100% - 48px)); margin:0 auto; grid-template-columns:220px minmax(0,802px); justify-content:space-between; }
+.journey-desktop__tail .home-process__stack { grid-column:2; }
+.journey-desktop__tail .home-process__stage::before { display:none; }
+.journey-desktop__tail .home-process__stage[data-stage="02"] { display:flex; min-height:754px; flex-direction:column; justify-content:center; padding:80px 0; }
+.journey-desktop__tail .home-process__stage[data-stage="03"] { min-height:1148px; padding:96px 0; }
+.journey-desktop__tail .home-process__stage[data-stage="04"] { min-height:1384px; padding:96px 0; }
+.journey-desktop__rail-lane { position:absolute; z-index:2; top:calc(279px * var(--journey-scale)); bottom:calc(279px * var(--journey-scale)); left:calc(50% - 588px * var(--journey-scale)); width:calc(220px * var(--journey-scale)); pointer-events:none; }
+.journey-desktop__rail { position:sticky; top:88px; height:calc(650px * var(--journey-scale)); }
+.journey-desktop__rail > :deep([data-figma-node]) { transform:scale(var(--journey-scale))!important; transform-origin:top left!important; }
+@media (min-width:701px) and (max-width:1199px) { .journey-desktop__tail { grid-template-columns:minmax(160px,220px) minmax(0,1fr); gap:24px; } }
+.home-source-partners :deep([data-figma-node="1528:766"]) { overflow:hidden!important; }
+@media (max-width:700px) { .home-page { margin-top:0!important; } }
 .home-page { margin-top:-64px; background:#fff; color:#1e3a5f; font-family:'PingFang SC',sans-serif; }
 .home-page section[id] { scroll-margin-top:72px; }
 .home-page :deep(.hy-container) { width:min(1216px,calc(100% - 48px)); }
@@ -635,13 +672,24 @@ onBeforeUnmount(() => {
 .why-overview__grid article:hover .why-overview__more,.why-overview__grid article:focus-visible .why-overview__more { opacity:1; transform:none; }
 .why-overview__more img { width:16px; height:16px; margin:0; }
 .patient-story { height:720px; padding:96px 0; background:#fff; }
+.patient-story__viewport { position:relative; display:grid; }
 .patient-story__card { display:grid; height:448px; grid-template-columns:389.33px 1fr; gap:24px; margin-top:0; padding-top:48px; }
+.patient-story__contents { display:grid; min-width:0; }
 .patient-story__image { position:relative; height:400px; overflow:hidden; border-radius:24px; }
 .patient-story__image img { width:100%; height:100%; object-fit:cover; object-position:60.7% 0; }
+.patient-story__image>img { position:absolute; inset:0; visibility:hidden; opacity:0; transition:opacity .5s ease,visibility .5s; }
+.patient-story__image>img.active { visibility:visible; opacity:1; }
 .patient-story__image>span { position:absolute; bottom:24px; left:50%; display:flex; gap:8px; transform:translateX(-50%); }
 .patient-story__image i { width:10px; height:10px; border-radius:9999px; background:rgba(255,255,255,.2); }
 .patient-story__image i.active { width:32px; background:#dd6b20; }
+.patient-story__image>span { z-index:1; bottom:13px; }
+.patient-story__image>span button { display:grid; place-items:center; height:32px; border:0; padding:0; background:none; cursor:pointer; }
+.patient-story__image>span i { display:block; }
+.patient-story__pause { position:absolute; top:16px; right:16px; min-height:32px; border:0; border-radius:999px; padding:6px 12px; background:rgba(15,22,46,.6); color:#fff; font-size:12px; opacity:0; transition:opacity .2s; }
+.patient-story__viewport:hover .patient-story__pause,.patient-story__viewport:focus-within .patient-story__pause { opacity:1; }
 .patient-story__content { display:flex; min-width:0; height:400px; flex-direction:column; justify-content:space-between; align-items:flex-start; border-radius:24px; padding:32px; background:#f5f6f7; }
+.patient-story__content { grid-area:1 / 1; visibility:hidden; opacity:0; pointer-events:none; transition:opacity .5s ease,visibility .5s; }
+.patient-story__content--active { visibility:visible; opacity:1; pointer-events:auto; }
 .patient-story__top { display:flex; width:100%; flex-direction:column; align-items:flex-start; }
 .patient-story__bottom { display:flex; width:100%; align-items:flex-end; justify-content:space-between; }
 .patient-story__card b { border-radius:23px 47px 47px 23px; padding:4px 12px; background:#2563eb; color:#fff; font-size:14px; font-weight:400; line-height:21px; }
@@ -649,7 +697,8 @@ onBeforeUnmount(() => {
 .patient-story__details { width:339.33px; max-width:100%; padding-top:24px; }
 .patient-story__card p { display:flex; align-items:center; gap:8px; margin:0; color:#4b5563; font-size:16px; line-height:16px; }
 .patient-story__details p + p { padding-top:16px; }
-.patient-story__card p img { width:16px; height:16px; }
+.patient-story__content:not([data-story-index="1"]) .patient-story__details p { align-items:flex-start; line-height:22px; }
+.patient-story__card p img { width:16px; height:16px; flex:none; }
 .patient-story__card small { color:#9ca3af; font-family:'DM Sans',sans-serif; font-size:14px; line-height:14px; }
 .patient-story__card small span { color:#0f162e; }
 .patient-story__card a { display:flex; height:52px; align-items:center; gap:8px; border-radius:14px; padding:18px 24px; background:#dd6b20; color:#fff; font-size:16px; font-weight:600; line-height:16px; }
@@ -825,6 +874,7 @@ onBeforeUnmount(() => {
 .home-cta small { display:flex; justify-content:center; gap:16px; margin-top:24px; color:rgba(255,255,255,.58); font-size:12px; line-height:16px; }
 @keyframes partner-loop { to { transform:translate3d(calc(0px - var(--partner-step)),0,0); } }
 @media (max-width:1199px) and (min-width:701px) {
+  .home-hero__image { object-fit:cover; }
   .home-process__body { grid-template-columns:minmax(180px,220px) minmax(0,1fr); }
   .home-process__stage::before { left:calc((100% - 100vw)/2 - 220px); }
   .home-flow__step { width:100%; min-width:0; padding-right:8px; padding-left:8px; }
@@ -833,10 +883,18 @@ onBeforeUnmount(() => {
   .why-overview__main,.why-overview__main .section-title,.why-overview__grid { width:100%; min-width:0; }
   .why-overview__grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .why-overview__grid article { width:auto; min-width:0; }
+  .patient-story { height:auto; }
+  .patient-story__card { height:auto; grid-template-columns:minmax(0,34fr) minmax(0,66fr); }
+  .patient-story__image { height:100%; min-height:400px; }
+  .patient-story__content { height:auto; min-height:400px; gap:24px; }
+  .patient-story__bottom { flex-wrap:wrap; gap:16px; }
+  .patient-story__bottom small { line-height:22px; }
+  .patient-story__bottom a { flex:none; white-space:nowrap; }
   .data-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .data-grid article { width:auto; min-width:0; }
   .hospital-grid,.expert-grid,.team-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
   .hospital-grid a,.hospital-grid__image,.expert-grid article,.team-grid article { width:100%; min-width:0; }
+  .hospital-grid__image { height:auto; aspect-ratio:1; }
   .strength-layout { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .strength-layout>div,.strength-layout__image { width:100%; min-width:0; }
 }
@@ -860,6 +918,10 @@ onBeforeUnmount(() => {
   .expert-grid article:nth-child(1) { order:3; }
   .expert-grid article:nth-child(2) { order:4; }
   .partners-marquee { width:100vw; }
+  .data-grid { grid-template-columns:1fr; }
+  .source-chart { width:100%; height:280px; aspect-ratio:auto; }
+  .patient-story__content { padding:24px; }
+  .patient-story blockquote { font-size:20px; line-height:30px; }
 }
 @media (max-width:700px) {
   .home-page { margin-top:-64px; }
@@ -931,36 +993,34 @@ onBeforeUnmount(() => {
   .why-overview__grid article { width:100%; height:230px; }
   .patient-story { padding:64px 0; }
   .patient-story__card { height:auto; grid-template-columns:1fr; padding-top:40px; }
-  .patient-story__image { height:340px; }
-  .patient-story__content { height:380px; padding:24px; }
-  .patient-story__bottom { gap:12px; }
-  .patient-story blockquote { font-size:20px; }
+  .patient-story__image { width:100%; height:auto; aspect-ratio:4 / 3; max-height:240px; }
+  .patient-story__pause { opacity:1; }
+  .patient-story__content { height:auto; min-height:0; padding:20px; gap:24px; }
+  .patient-story__bottom { flex-wrap:wrap; gap:16px; }
+  .patient-story__bottom small { line-height:22px; }
+  .patient-story__bottom a { flex:none; height:44px; padding:12px 20px; line-height:20px; white-space:nowrap; }
+  .patient-story blockquote { margin-top:20px; font-size:18px; line-height:28px; }
+  .patient-story__details { padding-top:20px; }
+  .patient-story__details p { font-size:14px; line-height:22px; }
   .care-section,.team-section,.data-section,.hospital-section,.expert-section,.strength-section,.partners-section { padding:64px 0; }
   .care-grid,.team-grid,.data-grid,.hospital-grid,.expert-grid,.strength-layout { width:100%; height:auto; grid-template-columns:1fr; gap:24px; padding-top:40px; }
   .care-grid a { height:210px; }
   .team-grid article { width:100%; height:250px; }
-  .data-grid article { width:100%; height:420px; padding:32px 16px; }
+  .data-grid article { width:100%; height:auto; padding:32px 16px; }
   .cost-chart i { width:6px; }
   .cost-chart>div:not(.cost-axis)>span { font-size:7px; }
   .hospital-grid a { width:100%; height:auto; }
+  .hospital-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 16px; padding-top:32px; }
+  .hospital-grid__image { width:100%; height:auto; aspect-ratio:1; border-radius:16px; }
   .hospital-grid img { width:100%; height:auto; aspect-ratio:1; }
   .hospital-grid h3,.hospital-grid p { margin-left:0; }
+  .hospital-grid h3 { min-height:48px; margin-top:12px; font-size:16px; line-height:24px; }
+  .hospital-grid p { margin-top:6px; font-size:13px; line-height:20px; }
   .expert-section .section-title { height:auto; }
   .expert-tabs { height:auto; flex-wrap:wrap; padding-top:30px; }
   .expert-tabs button { height:40px; font-size:14px; }
   .expert-grid { margin-top:0; }
   .expert-grid article { width:100%; height:266px; }
-  .strength-section { height:auto; min-height:0; }
-  .strength-sticky { position:static; height:auto; padding:64px 0; overflow:visible; }
-  .strength-section .section-title { height:auto; }
-  .strength-layout { display:block; height:auto; padding-top:32px; }
-  .strength-copy-window { width:100%; height:auto; overflow:visible; }
-  .strength-copy-track { width:100%; height:auto; transform:none !important; }
-  .strength-copy-state { width:100%; height:auto; min-height:0; padding:24px 0 12px; }
-  .strength-copy-state h3 { font-size:26px; line-height:34px; }
-  .strength-copy-state p { width:100%; padding-top:16px; font-size:15px; line-height:24px; }
-  .strength-copy-state__mobile-image { display:block; width:100%; height:auto; aspect-ratio:596/409; object-fit:cover; border-radius:16px; }
-  .strength-artwork { display:none; }
   .why-detail-modal { padding:16px; }
   .why-detail-modal__panel { width:100%; border-radius:20px; padding:24px; }
   .why-detail-modal__header { gap:12px; margin-bottom:24px; }
@@ -974,10 +1034,10 @@ onBeforeUnmount(() => {
   .why-detail-modal__table-wrap table { min-width:620px; font-size:14px; }
   .why-detail-modal__table-wrap th,.why-detail-modal__table-wrap td { white-space:normal; }
   .partners-section .section-title { height:auto; padding-bottom:0; }
-  .partners-marquee { --partner-step:calc(100vw * 3570 / 1440); --partner-fade:40px; width:100%; height:auto; aspect-ratio:1440 / 472; margin:40px 0 0; }
+  .partners-marquee { --partner-step:1785px; --partner-fade:40px; width:100%; height:236px; aspect-ratio:auto; margin:40px 0 0; }
   .partners-marquee>div { left:0; }
   .partners-marquee>div { height:auto; }
-  .partners-marquee picture,.partners-marquee img { width:100vw; height:auto; aspect-ratio:1440 / 472; }
+  .partners-marquee picture,.partners-marquee img { width:var(--partner-step); max-width:none; height:236px; aspect-ratio:3570 / 472; }
   .home-cta { padding:64px 0; }
   .home-cta>div { height:auto; }
   .home-cta h2 { font-size:30px; line-height:38px; }
@@ -986,7 +1046,21 @@ onBeforeUnmount(() => {
   .home-cta button,.home-cta a { width:100%; height:48px; }
   .home-cta small { flex-wrap:wrap; margin-top:20px; }
 }
+@media (max-width:900px) {
+  .strength-section { height:auto; min-height:0; padding:0; }
+  .strength-sticky { position:static; height:auto; padding:64px 0; overflow:visible; }
+  .strength-section .section-title { height:auto; }
+  .strength-layout { display:block; height:auto; padding-top:32px; }
+  .strength-copy-window,.strength-copy-track { width:100%; height:auto; overflow:visible; }
+  .strength-copy-track { transform:none !important; }
+  .strength-copy-state { width:100%; height:auto; min-height:0; padding:24px 0 12px; }
+  .strength-copy-state h3 { font-size:26px; line-height:34px; }
+  .strength-copy-state p { width:100%; padding-top:16px; font-size:15px; line-height:24px; }
+  .strength-copy-state__mobile-image { display:block; width:100%; height:auto; aspect-ratio:596/409; object-fit:cover; border-radius:16px; }
+  .strength-artwork { display:none; }
+}
 @media (prefers-reduced-motion:reduce) {
+  .patient-story__content,.patient-story__image>img,.patient-story__pause { transition:none; }
   .home-hero__image,
   .home-hero__copy,
   .hero-image-enter-active,
@@ -1019,10 +1093,5 @@ onBeforeUnmount(() => {
   .strength-copy-enter-active,.strength-copy-leave-active,.strength-image-enter-active,.strength-image-leave-active,
   .why-modal-enter-active,.why-modal-leave-active,.why-modal-enter-active .why-detail-modal__panel,.why-modal-leave-active .why-detail-modal__panel,
   .why-overview__more { transition:none; }
-}
-@supports (width:round(nearest,1px,1px)) {
-  @media (max-width:700px) {
-    .partners-marquee { --partner-step:round(nearest,100vw,1px); }
-  }
 }
 </style>

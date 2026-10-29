@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-const scenario = ref(0)
+const scenario = ref(-1)
 const expandedScenarios = ref<number[]>([])
 const expandedPaths = ref<number[]>([])
 const assessmentOpen = ref(false)
@@ -52,7 +52,7 @@ const pathDetails = [
   { title: '服务内容：', lines: ['保单解读与覆盖判断', '材料复核与完整性检查', '拒赔申诉文书撰写', '与保险公司直接沟通协调'], facts: [['视协商', '入院速度'], ['可分期', '垫付金额'], ['任何保险', '适用保险'], ['全程协助', '平台服务']] },
 ]
 const assessmentResult = computed(() => {
-  const direct = canAdvance.value === '不可以' || insurer.value === 'Allianz' || insurer.value === 'Cigna'
+  const direct = !insurer.value || canAdvance.value === '不可以' || insurer.value === 'Allianz' || insurer.value === 'Cigna'
   return {
     likelihood: insurer.value && visitTime.value && canAdvance.value ? (direct ? '高' : '待核实') : '高',
     method: direct ? '直赔' : '先付后赔',
@@ -115,10 +115,11 @@ function openConsultation() {
     <section class="insurance-scenarios" :class="{ 'insurance-scenarios--expanded': expandedScenarios.length }">
       <div class="hy-container">
         <h2 data-reveal>您属于哪种就医场景?</h2>
+        <p hidden data-figma-node="419:1125">来自各国患者真实就诊经历，客观记录来华治疗全过程</p>
         <div class="insurance-scenario-grid">
           <article v-for="(item, index) in scenarios" :key="item.title" :class="{ active: index === scenario, expanded: expandedScenarios.includes(index) }" :style="{ '--reveal-delay': `${index * 70}ms` }" data-reveal @click="toggleScenario(index)">
             <img class="insurance-scenario-icon" :src="item.icon" alt="" />
-            <div class="insurance-scenario-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p><button type="button" :aria-expanded="expandedScenarios.includes(index)" :aria-controls="`insurance-scenario-detail-${index}`" @click.stop="toggleScenario(index)">{{ item.action }} <img src="/images/figma/insurance/Icon-16.svg" alt="" /></button><Transition name="insurance-accordion"><div v-if="expandedScenarios.includes(index)" :id="`insurance-scenario-detail-${index}`" class="insurance-scenario-detail"><section v-for="section in scenarioDetails[index].sections" :key="section.title"><h4>{{ section.title }}</h4><ul><li v-for="line in section.lines" :key="line">· {{ line }}</li></ul></section><small>{{ scenarioDetails[index].note }}</small></div></Transition></div>
+            <div class="insurance-scenario-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p><div class="insurance-scenario-action"><button type="button" :aria-expanded="expandedScenarios.includes(index)" :aria-controls="`insurance-scenario-detail-${index}`" @click.stop="toggleScenario(index)">{{ item.action }} <img src="/images/figma/insurance/Icon-16.svg" alt="" /></button><Transition name="insurance-accordion"><div v-if="expandedScenarios.includes(index)" :id="`insurance-scenario-detail-${index}`" class="insurance-scenario-detail"><section v-for="section in scenarioDetails[index].sections" :key="section.title"><h4>{{ section.title }}</h4><ul><li v-for="line in section.lines" :key="line">· {{ line }}</li></ul></section><small>{{ scenarioDetails[index].note }}</small></div></Transition></div></div>
           </article>
         </div>
       </div>
@@ -133,12 +134,12 @@ function openConsultation() {
     </section>
 
     <section class="insurance-paths" :class="{ 'insurance-paths--expanded': expandedPaths.length }">
-        <div class="hy-container"><h2 data-reveal>三条报销路径</h2><div class="insurance-path-grid"><article v-for="(path, index) in paths" :key="path.title" :class="[`insurance-path-card--${path.tone}`, { expanded: expandedPaths.includes(index) }]" :style="{ '--reveal-delay': `${index * 70}ms` }" data-reveal @click="togglePath(index)"><header><div><h3>{{ path.title }}</h3><small>{{ path.copy }}</small></div><span>{{ path.tag }}</span></header><div class="insurance-path-rate"><strong>{{ path.percent }}</strong><em>成功率</em></div><div class="insurance-path-conditions"><h4>适合条件：</h4><ul><li v-for="item in path.items" :key="item"><img src="/images/figma/insurance/Icon-10.svg" alt="" />{{ item }}</li></ul></div><button type="button" :aria-expanded="expandedPaths.includes(index)" :aria-controls="`insurance-path-detail-${index}`" @click.stop="togglePath(index)">{{ path.action }} <img src="/images/figma/insurance/Icon-16.svg" alt="" /></button><Transition name="insurance-accordion"><div v-if="expandedPaths.includes(index)" :id="`insurance-path-detail-${index}`" class="insurance-path-detail"><h4>{{ pathDetails[index].title }}</h4><ul><li v-for="line in pathDetails[index].lines" :key="line">· {{ line }}</li></ul><div class="insurance-path-facts"><div v-for="fact in pathDetails[index].facts" :key="fact[1]"><strong>{{ fact[0] }}</strong><small>{{ fact[1] }}</small></div></div></div></Transition></article></div></div>
+        <div class="hy-container"><h2 data-reveal :data-figma-node="expandedPaths.length ? '419:946' : '419:259'">{{ expandedPaths.length ? '保险报销三条路径' : '三条报销路径' }}</h2><p hidden data-figma-node="419:948">专家·费用·合规，你想知道的都在这里</p><div class="insurance-path-grid"><article v-for="(path, index) in paths" :key="path.title" :class="[`insurance-path-card--${path.tone}`, { expanded: expandedPaths.includes(index) }]" :style="{ '--reveal-delay': `${index * 70}ms` }" data-reveal @click="togglePath(index)"><header><div><h3>{{ path.title }}</h3><small>{{ path.copy }}</small></div><span>{{ path.tag }}</span></header><div class="insurance-path-rate"><strong>{{ path.percent }}</strong><em>成功率</em></div><div class="insurance-path-conditions"><h4>适合条件：</h4><ul><li v-for="item in path.items" :key="item"><img src="/images/figma/insurance/Icon-10.svg" alt="" />{{ item }}</li></ul></div><div class="insurance-path-action"><button type="button" :aria-expanded="expandedPaths.includes(index)" :aria-controls="`insurance-path-detail-${index}`" @click.stop="togglePath(index)">{{ path.action }} <img src="/images/figma/insurance/Icon-16.svg" alt="" /></button><Transition name="insurance-accordion"><div v-if="expandedPaths.includes(index)" :id="`insurance-path-detail-${index}`" class="insurance-path-detail"><h4>{{ pathDetails[index].title }}</h4><ul><li v-for="line in pathDetails[index].lines" :key="line">· {{ line }}</li></ul><div class="insurance-path-facts"><div v-for="fact in pathDetails[index].facts" :key="fact[1]"><strong>{{ fact[0] }}</strong><small>{{ fact[1] }}</small></div></div></div></Transition></div></article></div></div>
     </section>
 
     <section class="insurance-compare"><div class="hy-container"><h2 data-reveal>三条路径对比一览</h2><table data-reveal><thead><tr><th>对比维度</th><th>直付</th><th>先付后垫</th><th>理赔协助</th></tr></thead><tbody><tr><th>入院速度</th><td>1-3天</td><td>3-7天</td><td>视协商</td></tr><tr><th>垫付金额</th><td>仅自付部分</td><td>全额垫付</td><td>可分期</td></tr><tr><th>理赔成功率</th><td>95%+</td><td>70-85%</td><td>90%+</td></tr><tr><th>适用保险</th><td>直赔网络内</td><td>任何保险</td><td>任何保险</td></tr></tbody></table><small>以上数据仅供参考，具体成功率因保险公司和个案而异</small></div></section>
 
-    <section class="insurance-partners"><div><header data-reveal><h2>直赔合作保险公司</h2><p>即使在列表中，仍需确认具体保单是否覆盖、是否需要担保信、自付额与共付比例，顾问会为您逐条核对</p></header><div class="insurance-partners-marquee"><div class="insurance-partners-track"><picture><source media="(max-width:700px)" srcset="/images/figma/partners-mobile-track.webp" /><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img src="/images/figma/partners-track.webp" width="3570" height="472" alt="直赔合作保险公司" /></picture><picture aria-hidden="true"><source media="(max-width:700px)" srcset="/images/figma/partners-mobile-track.webp" /><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img src="/images/figma/partners-track.webp" width="3570" height="472" alt="" /></picture></div></div></div></section>
+    <section class="insurance-partners"><div><header data-reveal><h2>直赔合作保险公司</h2><p>即使在列表中，仍需确认具体保单是否覆盖、是否需要担保信、自付额与共付比例，顾问会为您逐条核对</p></header><div class="insurance-partners-marquee"><div class="insurance-partners-track"><picture><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img src="/images/figma/partners-track.webp" width="3570" height="472" alt="直赔合作保险公司" /></picture><picture aria-hidden="true"><source srcset="/images/figma/partners-track.webp" type="image/webp" /><img src="/images/figma/partners-track.webp" width="3570" height="472" alt="" /></picture></div></div></div></section>
 
     <section class="insurance-faq"><div class="hy-container"><div class="insurance-faq-title" data-reveal><h2>保险常见问题解答</h2></div><div class="insurance-faq-list" data-reveal><article v-for="(item, index) in faqs" :key="item[0]" :class="{ active: activeFaq === index }"><button type="button" :aria-expanded="activeFaq === index" :aria-controls="`insurance-faq-answer-${index}`" @click="activeFaq = activeFaq === index ? -1 : index"><span>{{ item[0] }}</span><img :src="activeFaq === index ? '/images/figma/insurance/Icon-7.svg' : '/images/figma/insurance/Icon-6.svg'" alt="" /></button><Transition name="accordion"><div v-if="activeFaq === index" :id="`insurance-faq-answer-${index}`" class="insurance-faq-answer"><p>{{ item[1] }}</p></div></Transition></article></div></div></section>
 
@@ -167,7 +168,7 @@ function openConsultation() {
 .insurance-scenarios h2,.insurance-steps h2,.insurance-paths h2,.insurance-compare h2,.insurance-partners h2 { text-align: center; color: #1e3a5f; font-size: 40px; font-weight: 600; line-height: 40px; letter-spacing: .4px; }
 .insurance-scenario-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
 .insurance-scenario-grid article { min-height: 302px; border-radius: 24px; padding: 24px; background: #f5f6f7; cursor: pointer; transition: transform .25s ease, background .25s ease; box-sizing: border-box; }
-.insurance-scenario-grid article:hover,.insurance-scenario-grid article.active { transform: translateY(-4px); background: #f0f5fb; }
+.insurance-scenario-grid article:hover { transform: translateY(-4px); background: #f0f5fb; }
 .insurance-scenario-grid svg { width: 20px; color: #4c83ef; }
 .insurance-scenario-grid h3 { margin-top: 32px; color: #1e3a5f; font-size: 24px; font-weight: 600; line-height: 24px; }
 .insurance-scenario-grid p { margin-top: 16px; color: #4b5563; font-size: 16px; line-height: 24px; }
@@ -219,14 +220,15 @@ function openConsultation() {
 
 .insurance-scenarios { height: 582px; min-height: 0; }
 .insurance-scenario-grid article { display: flex; height: 302px; min-height: 0; flex-direction: column; gap: 80px; transition: transform .28s cubic-bezier(.22,1,.36,1), background .28s ease, box-shadow .28s ease; }
-.insurance-scenario-grid article:hover,.insurance-scenario-grid article.active { transform: translateY(-6px); box-shadow: 0 22px 36px -30px rgba(30,58,95,.5); }
+.insurance-scenario-grid article:hover { transform: translateY(-6px); box-shadow: 0 22px 36px -30px rgba(30,58,95,.5); }
 .insurance-scenario-icon { width: 32px; height: 32px; object-fit: contain; }
 .insurance-scenario-body { width: 100%; }
 .insurance-scenario-grid h3 { margin-top: 0; }
 .insurance-scenario-grid button { display: flex; width: 100%; justify-content: space-between; gap: 0; padding: 0; color: #9ca3af; }
 .insurance-scenario-grid button img { width: 14px; height: 14px; transition: transform .2s ease; }
 .insurance-scenario-grid article:hover button img,.insurance-scenario-grid article.active button img { transform: translateY(2px); }
-.insurance-scenario-grid article:nth-child(n+2) .insurance-scenario-body { margin-top: 24px; }
+.insurance-scenario-grid { margin-top: 48px; }
+.insurance-scenario-action,.insurance-path-action { width: 100%; }
 
 .insurance-steps h2 { color: #fff; }
 .insurance-step-line { gap: 0; }
@@ -244,19 +246,21 @@ function openConsultation() {
 .insurance-path-grid article { position: relative; display: flex; height: 410px; min-height: 0; flex-direction: column; align-items: flex-start; gap: 24px; overflow: hidden; box-sizing: border-box; transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease; }
 .insurance-path-grid article:hover { transform: translateY(-6px); box-shadow: 0 24px 42px -34px rgba(30,58,95,.5); }
 .insurance-path-grid header { width: 100%; }
+.insurance-path-grid h3 { font-weight: 600; letter-spacing: -.439px; }
+.insurance-path-grid header small,.insurance-path-conditions li { letter-spacing: -.15px; }
 .insurance-path-grid header span { position: absolute; top: 16px; right: 24px; box-sizing: border-box; background: rgba(37,99,235,.1); color: #2563eb; }
 .insurance-path-card--orange header span { background: rgba(221,107,32,.1); color: #dd6b20; }
 .insurance-path-card--navy header span { background: rgba(30,58,95,.1); color: #1e3a5f; }
 .insurance-path-rate { display: flex; width: 100%; flex-direction: column; align-items: center; border-radius: 16px; padding: 12px; background: #2563eb; color: #fff; box-sizing: border-box; }
 .insurance-path-card--orange .insurance-path-rate { background: #dd6b20; }
 .insurance-path-card--navy .insurance-path-rate { background: #1e3a5f; }
-.insurance-path-rate strong { font-size: 24px; font-weight: 800; line-height: 32px; }
-.insurance-path-rate em { opacity: .9; font-size: 12px; font-style: normal; line-height: 16px; }
+.insurance-path-rate strong { font-family: 'SF Pro', -apple-system, sans-serif; font-size: 24px; font-weight: 800; line-height: 32px; letter-spacing: .07px; }
+.insurance-path-rate em { opacity: .9; font-family: 'SF Pro', -apple-system, sans-serif; font-size: 12px; font-style: normal; font-weight: 500; line-height: 16px; }
 .insurance-path-conditions { display: flex; flex-direction: column; gap: 16px; }
 .insurance-path-grid h4 { margin: 0; color: #4b5563; font-weight: 400; }
 .insurance-path-grid ul { margin: 0; color: #1e3a5f; }
 .insurance-path-grid li img { width: 20px; height: 20px; }
-.insurance-path-grid button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 0; margin-top: 0; padding: 0; color: #9ca3af; }
+.insurance-path-grid button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 0; margin-top: 0; padding: 16px 0 0; color: #9ca3af; line-height: 14px; }
 .insurance-path-grid button img { width: 14px; height: 14px; }
 
 .insurance-compare { height: 668px; min-height: 0; }
@@ -285,43 +289,48 @@ function openConsultation() {
 .insurance-secondary { border: 2px solid #1e3a5f; background: transparent; color: #1e3a5f; box-shadow: none; }
 
 .insurance-hero--expanded { height: 1150px; }
+.insurance-hero--expanded .insurance-hero__backdrop { background-size: auto, 132.937% 128.299%; }
+.insurance-hero--expanded .insurance-hero__filters { width: min(1008px, 100%); column-gap: 24px; }
 .insurance-hero { transition: height .42s cubic-bezier(.22,1,.36,1); }
 .insurance-assessment-shell { width: min(1008px, 100%); min-height: 0; overflow: hidden; }
-.insurance-assessment-result { width: 100%; border: 1px solid #dbeafe; border-radius: 24px; padding: 32px 24px 24px; background: #fff; box-sizing: border-box; text-align: center; }
-.insurance-assessment-result h2 { color: #1e3a5f; font-size: 24px; font-weight: 700; line-height: 32px; }
-.insurance-assessment-method { display: inline-block; margin-top: 12px; border-radius: 999px; padding: 8px 16px; background: #eff6ff; color: #2563eb; font-size: 14px; font-weight: 600; }
-.insurance-assessment-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 20px; text-align: left; }
-.insurance-assessment-columns section { min-height: 176px; border-radius: 24px; padding: 24px; background: #f5f6f7; box-sizing: border-box; }
-.insurance-assessment-columns h3 { color: #1e3a5f; font-size: 20px; line-height: 28px; }
-.insurance-assessment-columns p { margin-top: 16px; color: #4b5563; font-size: 14px; line-height: 28px; }
-.insurance-assessment-columns ul { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; color: #4b5563; font-size: 14px; }
+.insurance-assessment-result { width: 100%; border: 1px solid #dbeafe; border-radius: 24px; padding: 32px; background: #fff; box-sizing: border-box; text-align: center; }
+.insurance-assessment-result h2 { color: #111827; font-family: 'SF Pro', -apple-system, sans-serif; font-size: 24px; font-weight: 700; line-height: 24px; letter-spacing: -.439px; }
+.insurance-assessment-method { display: inline-block; margin-top: 16px; border-radius: 30px; padding: 16px 24px; background: #eff6ff; color: #2563eb; font-size: 18px; font-weight: 600; line-height: 18px; letter-spacing: -.312px; }
+.insurance-assessment-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; text-align: left; }
+.insurance-assessment-columns section { display: flex; min-height: 208px; flex-direction: column; border-radius: 24px; padding: 24px; background: #f5f6f7; box-sizing: border-box; }
+.insurance-assessment-columns section:first-child { justify-content: space-between; }
+.insurance-assessment-columns h3 { color: #1e3a5f; font-size: 24px; font-weight: 600; line-height: 24px; letter-spacing: -.439px; }
+.insurance-assessment-columns p { margin-top: 16px; color: #374151; font-size: 16px; line-height: 32px; letter-spacing: -.15px; }
+.insurance-assessment-columns ul { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; color: #374151; font-size: 16px; line-height: 24px; letter-spacing: -.15px; }
 .insurance-assessment-columns li { display: flex; align-items: center; gap: 8px; }
 .insurance-assessment-columns li img { width: 16px; height: 16px; }
 
 .insurance-scenarios--expanded { height: auto; min-height: 1093px; }
 .insurance-scenario-grid { align-items: start; }
 .insurance-scenario-grid article { transition: min-height .42s cubic-bezier(.22,1,.36,1), transform .28s cubic-bezier(.22,1,.36,1), background .28s ease, box-shadow .28s ease; }
-.insurance-scenario-grid article.active { outline: 2px solid #2563eb; outline-offset: -2px; }
-.insurance-scenario-grid article.expanded { height: auto; min-height: 810px; gap: 80px; }
-.insurance-scenario-detail { min-height: 0; overflow: hidden; color: #4b5563; font-size: 14px; line-height: 20px; }
-.insurance-scenario-detail section { margin-top: 24px; }
+.insurance-scenario-grid article.expanded { height: auto; gap: 80px; }
+.insurance-scenario-detail { min-height: 0; overflow: hidden; color: #4b5563; font-size: 16px; line-height: 24px; }
+.insurance-scenario-detail section { margin-top: 16px; }
 .insurance-scenario-detail h4 { margin: 0; color: #1e3a5f; font-size: 16px; font-weight: 600; line-height: 24px; }
 .insurance-scenario-detail ul { margin: 0; padding: 0; list-style: none; }
-.insurance-scenario-detail small { display: block; margin-top: 24px; color: #9ca3af; font-size: 14px; line-height: 20px; }
+.insurance-scenario-detail small { display: block; margin-top: 16px; color: #9ca3af; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 21px; }
+.insurance-scenario-grid h3 { letter-spacing: -.439px; }
+.insurance-scenario-grid article:nth-child(n+2) p { letter-spacing: -.15px; }
 .insurance-scenario-grid article.expanded button img,.insurance-path-grid article.expanded button img { transform: rotate(180deg); }
 
 .insurance-paths--expanded { height: auto; min-height: 1026px; }
 .insurance-path-grid { align-items: start; }
 .insurance-path-grid article { cursor: pointer; transition: min-height .42s cubic-bezier(.22,1,.36,1), transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease; }
 .insurance-path-grid article.expanded { height: auto; min-height: 746px; }
-.insurance-path-detail { min-height: 0; overflow: hidden; width: 100%; color: #4b5563; font-size: 14px; line-height: 20px; }
-.insurance-path-detail h4 { margin: 0 0 12px; color: #1e3a5f; font-weight: 600; }
-.insurance-path-detail ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; color: #4b5563; font-size: 14px; line-height: 20px; }
+.insurance-path-detail { min-height: 0; overflow: hidden; width: 100%; padding-top: 16px; color: #4b5563; font-size: 16px; line-height: 24px; box-sizing: border-box; }
+.insurance-path-detail h4 { margin: 0; color: #1e3a5f; font-size: 16px; font-weight: 600; line-height: 24px; }
+.insurance-path-detail ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; color: #4b5563; font-size: 16px; line-height: 24px; }
+.insurance-path-detail h4 + ul { margin-top: 8px; }
 .insurance-path-detail li { display: block; }
-.insurance-path-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
-.insurance-path-facts div { display: grid; justify-items: center; border-radius: 16px; padding: 12px 8px; background: #f5f6f7; text-align: center; }
-.insurance-path-facts strong { color: #1e3a5f; font-size: 20px; line-height: 28px; }
-.insurance-path-facts small { color: #9ca3af; font-size: 14px; line-height: 20px; }
+.insurance-path-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.insurance-path-facts div { display: grid; justify-items: center; gap: 8px; border-radius: 16px; padding: 16px; background: #f5f6f7; text-align: center; }
+.insurance-path-facts strong { color: #1e3a5f; font-size: 20px; font-weight: 600; line-height: 20px; letter-spacing: .352px; }
+.insurance-path-facts small { color: #9ca3af; font-size: 14px; line-height: 14px; letter-spacing: -.15px; }
 
 .insurance-accordion-enter-active,.insurance-accordion-leave-active { display: grid; grid-template-rows: 1fr; overflow: hidden; opacity: 1; transition: grid-template-rows .42s cubic-bezier(.22,1,.36,1), opacity .25s ease; }
 .insurance-accordion-enter-from,.insurance-accordion-leave-to { grid-template-rows: 0fr; opacity: 0; }
@@ -343,6 +352,13 @@ function openConsultation() {
   .insurance-faq-list p { width:100%; max-width:100%; }
 }
 
+@media (max-width:900px) {
+  .insurance-scenarios,.insurance-steps,.insurance-paths,.insurance-faq,.insurance-cta { height:auto; min-height:0; }
+  .insurance-scenario-grid,.insurance-path-grid { grid-template-columns:1fr; }
+  .insurance-scenario-grid article,.insurance-path-grid article { height:auto; }
+  .insurance-path-detail h4 { line-height:24px; }
+}
+
 @media (max-width: 700px) {
   .insurance-hero--expanded { height: auto; }
   .insurance-assessment-columns { grid-template-columns: 1fr; }
@@ -351,10 +367,11 @@ function openConsultation() {
   .insurance-scenarios--expanded,.insurance-paths--expanded { min-height: 0; }
   .insurance-scenario-grid article.expanded,.insurance-path-grid article.expanded { min-height: 0; }
   .insurance-scenario-detail,.insurance-path-detail { font-size: 14px; line-height: 22px; }
+  .insurance-path-detail h4 { line-height: 24px; }
   .insurance-scenario-detail li,.insurance-path-detail li { font-size: 14px; line-height: 22px; }
-  .insurance-partners-marquee { --partner-step: 100vw; --partner-fade: 40px; height: auto; aspect-ratio: 1440 / 472; }
+  .insurance-partners-marquee { --partner-step: 1785px; --partner-fade: 40px; height:236px; aspect-ratio:auto; }
   .insurance-partners-track { left: 0; height: auto; }
-  .insurance-partners-track picture,.insurance-partners-track img { width: 100vw; height: auto; aspect-ratio: 1440 / 472; }
+  .insurance-partners-track picture,.insurance-partners-track img { width:var(--partner-step); max-width:none; height:236px; aspect-ratio:3570 / 472; }
   .insurance-hero__inner { gap: 40px; }
   .insurance-hero__filters { margin-top: 0; }
   .insurance-scenarios,.insurance-paths,.insurance-compare,.insurance-partners,.insurance-faq,.insurance-cta { height: auto; }
@@ -365,13 +382,16 @@ function openConsultation() {
   .insurance-step-line .active span { box-shadow: 0 0 0 6px #52e8ff; }
   .insurance-step-line b { margin-top: 16px; }
   .insurance-step-line small { margin-top: 8px; }
-  .insurance-scenario-grid article:nth-child(n+2) .insurance-scenario-body { margin-top: 0; }
+  .insurance-scenario-grid { margin-top: 48px; }
   .insurance-step-note { padding: 24px; }
-  .insurance-compare { overflow-x: auto; }
-  .insurance-compare .hy-container { min-width: 680px; }
+  .insurance-compare { overflow:visible; }
+  .insurance-compare .hy-container { min-width:0; }
+  .insurance-compare table { width:100%; table-layout:fixed; }
+  .insurance-compare th,.insurance-compare td { padding:12px 6px; font-size:14px; line-height:20px; overflow-wrap:anywhere; }
+  .insurance-scenarios h2,.insurance-steps h2,.insurance-paths h2,.insurance-compare h2,.insurance-partners h2 { font-size:28px; line-height:36px; }
   .insurance-partners > div { width: 100%; }
   .insurance-partners header { width: calc(100% - 32px); }
-  .insurance-partners img { width: 100%; height: auto; }
+  .insurance-partners img { width:var(--partner-step); height:236px; }
   .insurance-faq-list button { font-size: 18px; line-height: 24px; }
   .insurance-faq .hy-container { grid-template-columns: 1fr; }
   .insurance-faq-list p { width: 100%; max-width: 100%; }

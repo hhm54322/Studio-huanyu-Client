@@ -1,0 +1,1161 @@
+{
+  "sourceFrame": "1523:31",
+  "sourceSHA256": "915e3f7a3fe7a34c50b40de5f3885c55d15419eaad4b844851292527eed1f583",
+  "root": {
+    "id": "1523:31",
+    "name": "01寰宇云医 - 首页",
+    "type": "FRAME",
+    "width": 1440,
+    "height": 754,
+    "x": -3810,
+    "y": 2187,
+    "visible": true,
+    "css": "display: flex;\nwidth: 1440px;\nflex-direction: column;\nalign-items: flex-start;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+    "layoutCss": "display: flex;\nwidth: 1440px;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+    "text": "",
+    "children": [
+      {
+        "id": "1523:32",
+        "name": "Main Content",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 754,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+        "text": "",
+        "children": [
+          {
+            "id": "1523:33",
+            "name": "Section",
+            "type": "FRAME",
+            "width": 1440,
+            "height": 754,
+            "x": 0,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+            "layoutCss": "display: flex;\nheight: 754px;\nflex-direction: column;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:754px;overflow:hidden;",
+            "text": "",
+            "children": [
+              {
+                "id": "1523:34",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 1440,
+                "height": 754,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "display: flex;\nwidth: 1440px;\nalign-items: flex-start;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 1440px;\nalign-items: flex-start;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1523:35",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "width": 1440,
+                    "height": 754,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 1440px;\nheight: 754px;\npadding: 0 80px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 10px;\nflex-shrink: 0;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:36",
+                        "name": "Image",
+                        "type": "FRAME",
+                        "width": 1440,
+                        "height": 754,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 1440px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+                        "layoutCss": "display: flex;\nwidth: 1440px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:754px;overflow:hidden;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1523:37",
+                            "name": "ChatGPT Image 2026年9月3日 11_05_52 2",
+                            "type": "ROUNDED_RECTANGLE",
+                            "width": 1440.715087890625,
+                            "height": 757,
+                            "x": 0,
+                            "y": 0,
+                            "visible": true,
+                            "css": "width: 1440.715px;\nheight: 757px;\nflex-shrink: 0;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-bee6ffbc855ab5ba563cd535ce7c82be8e6002e1.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "width: 1440.715px;\nheight: 757px;\nflex-shrink: 0;\naspect-ratio: 59/31;\nbackground: url(/images/figma/home-revision/image-bee6ffbc855ab5ba563cd535ce7c82be8e6002e1.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440.71509px;height:757px;",
+                            "text": "",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "1523:47",
+                        "name": "Container",
+                        "type": "FRAME",
+                        "width": 1280,
+                        "height": 362,
+                        "x": 80,
+                        "y": 196,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nposition:absolute;left:80px;top:196px;right:auto;bottom:auto;width:1280px;height:362px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 1280px;\nmax-width: 1280px;\npadding: 0 32px;\nflex-direction: column;\njustify-content: center;\nalign-items: flex-start;\ngap: 40px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1523:48",
+                            "name": "Text",
+                            "type": "FRAME",
+                            "width": 134,
+                            "height": 34,
+                            "x": 32,
+                            "y": 0,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:32px;top:0px;right:auto;bottom:auto;width:134px;height:34px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 10px 16px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nborder-radius: 9999px;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:134px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:49",
+                                "name": "Frame 1",
+                                "type": "FRAME",
+                                "width": 102,
+                                "height": 14,
+                                "x": 16,
+                                "y": 10,
+                                "visible": true,
+                                "css": "display: flex;\nalign-items: center;\ngap: 4px;\nposition:absolute;left:16px;top:10px;right:auto;bottom:auto;width:102px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nalign-items: center;\ngap: 4px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:102px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1523:50",
+                                    "name": "Frame",
+                                    "type": "FRAME",
+                                    "width": 14,
+                                    "height": 14,
+                                    "x": 0,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:0px;top:0px;",
+                                    "layoutCss": "width: 14px;\nheight: 14px;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                                    "text": "",
+                                    "svg": "/images/figma/home-revision/node-1523-50.svg",
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1523:52",
+                                    "name": "真实患者声音",
+                                    "type": "TEXT",
+                                    "width": 84,
+                                    "height": 14,
+                                    "x": 18,
+                                    "y": 0,
+                                    "visible": true,
+                                    "css": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:18px;top:0px;right:auto;bottom:auto;width:84px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 14px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:84px;height:14px;white-space:pre;",
+                                    "text": "真实患者声音",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1523:53",
+                            "name": "Heading 1",
+                            "type": "FRAME",
+                            "width": 730,
+                            "height": 94,
+                            "x": 32,
+                            "y": 74,
+                            "visible": true,
+                            "css": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nposition:absolute;left:32px;top:74px;right:auto;bottom:auto;width:730px;height:94px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nwidth: 730px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:54",
+                                "name": "\"来中国是我做过最正确的决定\"",
+                                "type": "TEXT",
+                                "width": 732,
+                                "height": 52,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:732px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #143162;\nfont-family: \"PingFang SC\";\nfont-size: 52px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 52px; /* 100% */\nletter-spacing: 0.352px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:732px;height:52px;white-space:pre;",
+                                "text": "\"来中国是我做过最正确的决定\"",
+                                "children": []
+                              },
+                              {
+                                "id": "1523:55",
+                                "name": "来自俄罗斯、印尼、哈萨克斯坦等国的患者，在中国重获新生",
+                                "type": "TEXT",
+                                "width": 475,
+                                "height": 18,
+                                "x": 0,
+                                "y": 76,
+                                "visible": true,
+                                "css": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nposition:absolute;left:0px;top:76px;right:auto;bottom:auto;width:475px;height:18px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #5B606A;\nfont-family: \"PingFang SC\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 18px; /* 100% */\nletter-spacing: -0.439px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:475px;height:18px;white-space:pre;",
+                                "text": "来自俄罗斯、印尼、哈萨克斯坦等国的患者，在中国重获新生",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1523:56",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 361,
+                            "height": 46,
+                            "x": 32,
+                            "y": 208,
+                            "visible": true,
+                            "css": "display: flex;\npadding: 12px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nborder-radius: 10px;\nborder: 1px solid rgba(37, 99, 235, 0.20);\nbackground: rgba(255, 255, 255, 0.10);\nposition:absolute;left:32px;top:208px;right:auto;bottom:auto;width:361px;height:46px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding: 12px;\njustify-content: center;\nalign-items: center;\ngap: 10px;\nborder-radius: 10px;\nborder: 1px solid rgba(37, 99, 235, 0.20);\nbackground: rgba(255, 255, 255, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:361px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:57",
+                                "name": "M·A，35岁，脊髓肿瘤 → 天坛医院 → 术后3年无复发",
+                                "type": "TEXT",
+                                "width": 335,
+                                "height": 20,
+                                "x": 13,
+                                "y": 13,
+                                "visible": true,
+                                "css": "color: #3B82F6;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 20px; /* 142.857% */\nletter-spacing: -0.15px;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:335px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #3B82F6;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 20px; /* 142.857% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:335px;height:20px;white-space:pre;",
+                                "text": "M·A，35岁，脊髓肿瘤 → 天坛医院 → 术后3年无复发",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1523:58",
+                            "name": "Container",
+                            "type": "FRAME",
+                            "width": 168,
+                            "height": 68,
+                            "x": 32,
+                            "y": 294,
+                            "visible": true,
+                            "css": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 32px;\nposition:absolute;left:32px;top:294px;right:auto;bottom:auto;width:168px;height:68px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\npadding-top: 16px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 32px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:168px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:59",
+                                "name": "Link",
+                                "type": "FRAME",
+                                "width": 168,
+                                "height": 52,
+                                "x": 0,
+                                "y": 16,
+                                "visible": true,
+                                "css": "display: flex;\nheight: 52px;\npadding: 18px 24px;\nalign-items: center;\ngap: 8px;\nborder-radius: 14px;\nbackground: linear-gradient(0deg, #1E3A5F 0%, #1E3A5F 100%), #DD6B20;\nbox-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:16px;right:auto;bottom:auto;width:168px;height:52px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                                "layoutCss": "display: flex;\nheight: 52px;\npadding: 18px 24px;\nalign-items: center;\ngap: 8px;\nborder-radius: 14px;\nbackground: linear-gradient(0deg, #1E3A5F 0%, #1E3A5F 100%), #DD6B20;\nbox-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:168px;",
+                                "text": "",
+                                "children": [
+                                  {
+                                    "id": "1523:60",
+                                    "name": "查看更多案例",
+                                    "type": "TEXT",
+                                    "width": 96,
+                                    "height": 16,
+                                    "x": 24,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "color: #FFF;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nposition:absolute;left:24px;top:18px;right:auto;bottom:auto;width:96px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                    "layoutCss": "color: #FFF;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 100% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:96px;height:16px;white-space:pre;",
+                                    "text": "查看更多案例",
+                                    "children": []
+                                  },
+                                  {
+                                    "id": "1523:61",
+                                    "name": "Icon",
+                                    "type": "FRAME",
+                                    "width": 16,
+                                    "height": 16,
+                                    "x": 128,
+                                    "y": 18,
+                                    "visible": true,
+                                    "css": "width: 16px;\nheight: 16px;\nposition:absolute;left:128px;top:18px;right:auto;bottom:auto;width:16px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:16px;height:16px;left:128px;top:18px;",
+                                    "layoutCss": "width: 16px;\nheight: 16px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:16px;overflow:hidden;background:none;opacity:1;transform:none;width:16px;height:16px;",
+                                    "text": "",
+                                    "svg": "/images/figma/home-revision/node-1523-61.svg",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1523:64",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 48,
+                "height": 48,
+                "x": 24,
+                "y": 353,
+                "visible": true,
+                "css": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\njustify-content: center;\nalign-items: center;\nposition: absolute;\nleft: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:24px;top:353px;right:auto;bottom:auto;width:48px;height:48px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1523:65",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 24,
+                    "height": 24,
+                    "x": 12,
+                    "y": 12,
+                    "visible": true,
+                    "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+                    "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+                    "text": "",
+                    "svg": "/images/figma/home-revision/node-1523-65.svg",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "1523:67",
+                "name": "Button",
+                "type": "FRAME",
+                "width": 48,
+                "height": 48,
+                "x": 1416,
+                "y": 353,
+                "visible": true,
+                "css": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nposition:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+                "layoutCss": "display: flex;\nwidth: 48px;\nheight: 48px;\ntransform: scaleX(-1);\njustify-content: center;\nalign-items: center;\nposition: absolute;\nright: 24px;\ntop: 353px;\nborder-radius: 9999px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:1416px;top:353px;right:auto;bottom:auto;width:48px;height:48px;transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1523:68",
+                    "name": "Icon",
+                    "type": "FRAME",
+                    "width": 24,
+                    "height": 24,
+                    "x": 12,
+                    "y": 12,
+                    "visible": true,
+                    "css": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:12px;top:12px;",
+                    "layoutCss": "width: 24px;\nheight: 24px;\nflex-shrink: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;",
+                    "text": "",
+                    "svg": "/images/figma/home-revision/node-1523-68.svg",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "1523:70",
+                "name": "Container",
+                "type": "FRAME",
+                "width": 86,
+                "height": 10,
+                "x": 677,
+                "y": 720,
+                "visible": true,
+                "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nposition:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition: absolute;\nleft: 677px;\nbottom: 24px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:677px;top:720px;right:auto;bottom:auto;width:86px;height:10px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1523:71",
+                    "name": "Button",
+                    "type": "FRAME",
+                    "width": 10,
+                    "height": 10,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "1523:72",
+                    "name": "Button",
+                    "type": "FRAME",
+                    "width": 10,
+                    "height": 10,
+                    "x": 18,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:18px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "1523:73",
+                    "name": "Button",
+                    "type": "FRAME",
+                    "width": 10,
+                    "height": 10,
+                    "x": 36,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nposition:absolute;left:36px;top:0px;right:auto;bottom:auto;width:10px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 10px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                    "text": "",
+                    "children": []
+                  },
+                  {
+                    "id": "1523:74",
+                    "name": "Button",
+                    "type": "FRAME",
+                    "width": 32,
+                    "height": 10,
+                    "x": 54,
+                    "y": 0,
+                    "visible": true,
+                    "css": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nposition:absolute;left:54px;top:0px;right:auto;bottom:auto;width:32px;height:10px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "width: 32px;\nheight: 10px;\nborder-radius: 9999px;\nbackground: #DD6B20;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:10px;",
+                    "text": "",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1523:75",
+        "name": "Header",
+        "type": "FRAME",
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0,
+        "visible": true,
+        "css": "display: flex;\nwidth: 1440px;\nflex-direction: column;\nalign-items: center;\nposition: absolute;\nbackground: #FFF;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:64px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\nwidth: 1440px;\nflex-direction: column;\nalign-items: center;\nposition: absolute;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:0px;top:0px;right:auto;bottom:auto;width:1440px;height:64px;",
+        "text": "",
+        "children": [
+          {
+            "id": "1523:76",
+            "name": "Container",
+            "type": "FRAME",
+            "width": 1280,
+            "height": 64,
+            "x": 80,
+            "y": 0,
+            "visible": true,
+            "css": "display: flex;\nwidth: 1280px;\nheight: 64px;\nmax-width: 1280px;\npadding: 0 32px;\njustify-content: space-between;\nalign-items: center;\nposition:absolute;left:80px;top:0px;right:auto;bottom:auto;width:1280px;height:64px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 1280px;\nheight: 64px;\nmax-width: 1280px;\npadding: 0 32px;\njustify-content: space-between;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "2326:8518",
+                "name": "未标题-1 1",
+                "type": "ROUNDED_RECTANGLE",
+                "width": 148,
+                "height": 48,
+                "x": 32,
+                "y": 8,
+                "visible": true,
+                "css": "width: 148px;\nheight: 48px;\nflex-shrink: 0;\naspect-ratio: 37/12;\nbackground: url(/images/figma/home-revision/logo-2326-8518.webp) -12.254px -27.624px / 116.76% 215.385% no-repeat;background-size:100% 100%;background-position:0 0;\nposition:absolute;left:32px;top:8px;right:auto;bottom:auto;width:148px;height:48px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "width: 148px;\nheight: 48px;\nflex-shrink: 0;\naspect-ratio: 37/12;\nbackground: url(/images/figma/home-revision/logo-2326-8518.webp) -12.254px -27.624px / 116.76% 215.385% no-repeat;background-size:100% 100%;background-position:0 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:48px;",
+                "text": "",
+                "children": []
+              },
+              {
+                "id": "1523:82",
+                "name": "Navigation",
+                "type": "FRAME",
+                "width": 835,
+                "height": 28,
+                "x": 413,
+                "y": 18,
+                "visible": true,
+                "css": "display: flex;\nalign-items: center;\ngap: 2px;\nposition:absolute;left:413px;top:18px;right:auto;bottom:auto;width:835px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\nalign-items: center;\ngap: 2px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:835px;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "1523:83",
+                    "name": "Link:margin",
+                    "type": "FRAME",
+                    "width": 88,
+                    "height": 28,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding-right: 8px;\nalign-items: flex-start;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:88px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-right: 8px;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:88px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:84",
+                        "name": "Link",
+                        "type": "FRAME",
+                        "width": 80,
+                        "height": 28,
+                        "x": 0,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 6px 12px;\nalign-items: center;\ngap: 6px;\nborder-radius: 10px;\nbackground: linear-gradient(90deg, #DD6B20 0%, #3B82F6 100%);\nbox-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.10);\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:80px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 6px 12px;\nalign-items: center;\ngap: 6px;\nborder-radius: 10px;\nbackground: linear-gradient(90deg, #DD6B20 0%, #3B82F6 100%);\nbox-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:80px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1523:85",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 12,
+                            "y": 7,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\nposition:absolute;left:12px;top:7px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:12px;top:7px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-1523-85.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1523:87",
+                            "name": "Text",
+                            "type": "FRAME",
+                            "width": 36,
+                            "height": 16,
+                            "x": 32,
+                            "y": 6,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:32px;top:6px;right:auto;bottom:auto;width:36px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:36px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:88",
+                                "name": "问阿宁",
+                                "type": "TEXT",
+                                "width": 36,
+                                "height": 16,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:36px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:36px;height:16px;white-space:pre;",
+                                "text": "问阿宁",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:89",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 44,
+                    "height": 28,
+                    "x": 90,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbackground: rgba(37, 99, 235, 0.10);\nposition:absolute;left:90px;top:0px;right:auto;bottom:auto;width:44px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbackground: rgba(37, 99, 235, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:44px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:90",
+                        "name": "首页",
+                        "type": "TEXT",
+                        "width": 24,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:24px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #2563EB;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:24px;height:16px;white-space:pre;",
+                        "text": "首页",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:91",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 104,
+                    "height": 28,
+                    "x": 136,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:136px;top:0px;right:auto;bottom:auto;width:104px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:104px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:92",
+                        "name": "为什么选择中国",
+                        "type": "TEXT",
+                        "width": 84,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:84px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:84px;height:16px;white-space:pre;",
+                        "text": "为什么选择中国",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:93",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 104,
+                    "height": 28,
+                    "x": 242,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:242px;top:0px;right:auto;bottom:auto;width:104px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:104px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:94",
+                        "name": "信任与常见问题",
+                        "type": "TEXT",
+                        "width": 84,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:84px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:84px;height:16px;white-space:pre;",
+                        "text": "信任与常见问题",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:95",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 86,
+                    "height": 28,
+                    "x": 348,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nalign-items: center;\ngap: 2px;\nborder-radius: 8px;\nposition:absolute;left:348px;top:0px;right:auto;bottom:auto;width:86px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nalign-items: center;\ngap: 2px;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:86px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:96",
+                        "name": "医疗服务",
+                        "type": "TEXT",
+                        "width": 48,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #2563EB;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #2563EB;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                        "text": "医疗服务",
+                        "children": []
+                      },
+                      {
+                        "id": "1523:97",
+                        "name": "Container:margin",
+                        "type": "FRAME",
+                        "width": 16,
+                        "height": 16,
+                        "x": 60,
+                        "y": 6,
+                        "visible": true,
+                        "css": "display: flex;\nwidth: 16px;\nheight: 16px;\njustify-content: center;\nalign-items: center;\naspect-ratio: 1/1;\nposition:absolute;left:60px;top:6px;right:auto;bottom:auto;width:16px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\nwidth: 16px;\nheight: 16px;\njustify-content: center;\nalign-items: center;\naspect-ratio: 1/1;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1523:98",
+                            "name": "Vector",
+                            "type": "VECTOR",
+                            "width": 8,
+                            "height": 4,
+                            "x": 4,
+                            "y": 6,
+                            "visible": true,
+                            "css": "width: 8px;\nheight: 4px;\nflex-shrink: 0;\naspect-ratio: 2/1;\nstroke-width: 1.2px;\nstroke: #2563EB;\nposition:absolute;left:4px;top:6px;right:auto;bottom:auto;width:8px;height:4px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;background-image:none;background:none;opacity:1;transform:none;width:8px;height:4px;left:4px;top:6px;",
+                            "layoutCss": "width: 8px;\nheight: 4px;\nflex-shrink: 0;\naspect-ratio: 2/1;\nstroke-width: 1.2px;\nstroke: #2563EB;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:4px;background:none;opacity:1;transform:none;width:8px;height:4px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-1523-98.svg",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:99",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 44,
+                    "height": 28,
+                    "x": 436,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:436px;top:0px;right:auto;bottom:auto;width:44px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:44px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:100",
+                        "name": "牙科",
+                        "type": "TEXT",
+                        "width": 24,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:24px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:24px;height:16px;white-space:pre;",
+                        "text": "牙科",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:101",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 68,
+                    "height": 28,
+                    "x": 482,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:482px;top:0px;right:auto;bottom:auto;width:68px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:68px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:102",
+                        "name": "中国医院",
+                        "type": "TEXT",
+                        "width": 48,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                        "text": "中国医院",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:103",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 68,
+                    "height": 28,
+                    "x": 552,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:552px;top:0px;right:auto;bottom:auto;width:68px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:68px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:104",
+                        "name": "患者案例",
+                        "type": "TEXT",
+                        "width": 48,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                        "text": "患者案例",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:105",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 68,
+                    "height": 28,
+                    "x": 622,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:622px;top:0px;right:auto;bottom:auto;width:68px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:68px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:106",
+                        "name": "保险指南",
+                        "type": "TEXT",
+                        "width": 48,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                        "text": "保险指南",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:107",
+                    "name": "Link",
+                    "type": "FRAME",
+                    "width": 68,
+                    "height": 28,
+                    "x": 692,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:692px;top:0px;right:auto;bottom:auto;width:68px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:68px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:108",
+                        "name": "关于我们",
+                        "type": "TEXT",
+                        "width": 48,
+                        "height": 16,
+                        "x": 10,
+                        "y": 6,
+                        "visible": true,
+                        "css": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                        "layoutCss": "color: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                        "text": "关于我们",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1523:109",
+                    "name": "Container:margin",
+                    "type": "FRAME",
+                    "width": 73,
+                    "height": 28,
+                    "x": 762,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\npadding-left: 8px;\nalign-items: flex-start;\nposition:absolute;left:762px;top:0px;right:auto;bottom:auto;width:73px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\npadding-left: 8px;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:73px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "1523:110",
+                        "name": "Button",
+                        "type": "FRAME",
+                        "width": 65,
+                        "height": 28,
+                        "x": 8,
+                        "y": 0,
+                        "visible": true,
+                        "css": "display: flex;\npadding: 6px 8px;\nalign-items: center;\ngap: 4px;\nborder-radius: 8px;\nposition:absolute;left:8px;top:0px;right:auto;bottom:auto;width:65px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                        "layoutCss": "display: flex;\npadding: 6px 8px;\nalign-items: center;\ngap: 4px;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:65px;",
+                        "text": "",
+                        "children": [
+                          {
+                            "id": "1523:111",
+                            "name": "Icon",
+                            "type": "FRAME",
+                            "width": 14,
+                            "height": 14,
+                            "x": 8,
+                            "y": 7,
+                            "visible": true,
+                            "css": "width: 14px;\nheight: 14px;\nposition:absolute;left:8px;top:7px;right:auto;bottom:auto;width:14px;height:14px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:14px;height:14px;left:8px;top:7px;",
+                            "layoutCss": "width: 14px;\nheight: 14px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:14px;overflow:hidden;background:none;opacity:1;transform:none;width:14px;height:14px;",
+                            "text": "",
+                            "svg": "/images/figma/home-revision/node-1523-111.svg",
+                            "children": []
+                          },
+                          {
+                            "id": "1523:115",
+                            "name": "Text",
+                            "type": "FRAME",
+                            "width": 12,
+                            "height": 16,
+                            "x": 26,
+                            "y": 6,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: center;\nposition:absolute;left:26px;top:6px;right:auto;bottom:auto;width:12px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:12px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:116",
+                                "name": "🇨🇳",
+                                "type": "TEXT",
+                                "width": 12,
+                                "height": 16,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #6B7280;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:12px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:12px;height:16px;white-space:pre;",
+                                "text": "🇨🇳",
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "1523:117",
+                            "name": "Text",
+                            "type": "FRAME",
+                            "width": 15,
+                            "height": 16,
+                            "x": 42,
+                            "y": 6,
+                            "visible": true,
+                            "css": "display: flex;\nflex-direction: column;\nalign-items: center;\nposition:absolute;left:42px;top:6px;right:auto;bottom:auto;width:15px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: center;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:15px;",
+                            "text": "",
+                            "children": [
+                              {
+                                "id": "1523:118",
+                                "name": "ZH",
+                                "type": "TEXT",
+                                "width": 15,
+                                "height": 16,
+                                "x": 0,
+                                "y": 0,
+                                "visible": true,
+                                "css": "color: #6B7280;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 160% */\nletter-spacing: 0.117px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:15px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                                "layoutCss": "color: #6B7280;\ntext-align: center;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 10px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 160% */\nletter-spacing: 0.117px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:15px;height:16px;white-space:pre;",
+                                "text": "ZH",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1523:119",
+        "name": "Link",
+        "type": "FRAME",
+        "width": 158,
+        "height": 44,
+        "x": 1258,
+        "y": 686,
+        "visible": true,
+        "css": "display: flex;\npadding: 12px 16px;\nalign-items: center;\ngap: 8px;\nposition: absolute;\nright: 24px;\nbottom: 24px;\nborder-radius: 9999px;\nbackground: linear-gradient(135deg, #DD6B20 0%, #3B82F6 100%);\nbox-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);\nposition:absolute;left:1258px;top:686px;right:auto;bottom:auto;width:158px;height:44px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\npadding: 12px 16px;\nalign-items: center;\ngap: 8px;\nposition: absolute;\nright: 24px;\nbottom: 24px;\nborder-radius: 9999px;\nbackground: linear-gradient(135deg, #DD6B20 0%, #3B82F6 100%);\nbox-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:1258px;top:686px;right:auto;bottom:auto;width:158px;height:44px;",
+        "text": "",
+        "children": [
+          {
+            "id": "1523:120",
+            "name": "Icon",
+            "type": "FRAME",
+            "width": 20,
+            "height": 20,
+            "x": 16,
+            "y": 12,
+            "visible": true,
+            "css": "width: 20px;\nheight: 20px;\nposition:absolute;left:16px;top:12px;right:auto;bottom:auto;width:20px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:20px;height:20px;left:16px;top:12px;",
+            "layoutCss": "width: 20px;\nheight: 20px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:20px;overflow:hidden;background:none;opacity:1;transform:none;width:20px;height:20px;",
+            "text": "",
+            "svg": "/images/figma/home-revision/node-1523-120.svg",
+            "children": []
+          },
+          {
+            "id": "1523:122",
+            "name": "Text",
+            "type": "FRAME",
+            "width": 98,
+            "height": 20,
+            "x": 44,
+            "y": 12,
+            "visible": true,
+            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:44px;top:12px;right:auto;bottom:auto;width:98px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:98px;",
+            "text": "",
+            "children": [
+              {
+                "id": "1523:123",
+                "name": "问问寰宇小助手",
+                "type": "TEXT",
+                "width": 98,
+                "height": 20,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 20px; /* 142.857% */\nletter-spacing: -0.15px;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:98px;height:20px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                "layoutCss": "color: #FFF;\nfont-family:\"SF Pro\",-apple-system,BlinkMacSystemFont,sans-serif;\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 500;\nline-height: 20px; /* 142.857% */\nletter-spacing: -0.15px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:98px;height:20px;white-space:pre;",
+                "text": "问问寰宇小助手",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1524:26",
+        "name": "Frame 657",
+        "type": "FRAME",
+        "width": 111,
+        "height": 149,
+        "x": 830,
+        "y": 72,
+        "visible": true,
+        "css": "display: flex;\npadding: 12px 14px 12px 12px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nposition: absolute;\nright: 499px;\ntop: 72px;\nborder-radius: 16px;\nborder: 0.5px solid #E3E4E8;\nbackground: #FFF;\nposition:absolute;left:830px;top:72px;right:auto;bottom:auto;width:111px;height:149px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\npadding: 12px 14px 12px 12px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 4px;\nposition: absolute;\nright: 499px;\ntop: 72px;\nborder-radius: 16px;\nborder: 0.5px solid #E3E4E8;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:830px;top:72px;right:auto;bottom:auto;width:111px;height:149px;",
+        "text": "",
+        "children": [
+          {
+            "id": "1524:27",
+            "name": "Link",
+            "type": "FRAME",
+            "width": 84,
+            "height": 28,
+            "x": 12.5,
+            "y": 12.5,
+            "visible": true,
+            "css": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:12px;top:12px;right:auto;bottom:auto;width:84px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "1524:28",
+                "name": "健康体检",
+                "type": "TEXT",
+                "width": 48,
+                "height": 16,
+                "x": 10,
+                "y": 6,
+                "visible": true,
+                "css": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                "layoutCss": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                "text": "健康体检",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "1524:29",
+            "name": "Link",
+            "type": "FRAME",
+            "width": 84,
+            "height": 28,
+            "x": 12.5,
+            "y": 44.5,
+            "visible": true,
+            "css": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:12px;top:44px;right:auto;bottom:auto;width:84px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "1524:30",
+                "name": "专科诊疗",
+                "type": "TEXT",
+                "width": 48,
+                "height": 16,
+                "x": 10,
+                "y": 6,
+                "visible": true,
+                "css": "color: #2563EB;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                "layoutCss": "color: #2563EB;\ntext-align: center;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                "text": "专科诊疗",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "1524:31",
+            "name": "Link",
+            "type": "FRAME",
+            "width": 84,
+            "height": 28,
+            "x": 12.5,
+            "y": 76.5,
+            "visible": true,
+            "css": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:12px;top:76px;right:auto;bottom:auto;width:84px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "1524:32",
+                "name": "中医康养",
+                "type": "TEXT",
+                "width": 48,
+                "height": 16,
+                "x": 10,
+                "y": 6,
+                "visible": true,
+                "css": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                "layoutCss": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                "text": "中医康养",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "1524:33",
+            "name": "Link",
+            "type": "FRAME",
+            "width": 84,
+            "height": 28,
+            "x": 12.5,
+            "y": 108.5,
+            "visible": true,
+            "css": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nposition:absolute;left:12px;top:108px;right:auto;bottom:auto;width:84px;height:28px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nwidth: 84px;\npadding: 6px 10px;\nflex-direction: column;\nalign-items: flex-start;\nborder-radius: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;",
+            "text": "",
+            "children": [
+              {
+                "id": "1524:34",
+                "name": "细胞治疗",
+                "type": "TEXT",
+                "width": 48,
+                "height": 16,
+                "x": 10,
+                "y": 6,
+                "visible": true,
+                "css": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nposition:absolute;left:10px;top:6px;right:auto;bottom:auto;width:48px;height:16px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                "layoutCss": "color: #6B7280;\nfont-family: \"PingFang SC\";\nfont-size: 12px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 16px; /* 133.333% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:48px;height:16px;white-space:pre;",
+                "text": "细胞治疗",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

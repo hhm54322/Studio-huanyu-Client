@@ -1,17 +1,17 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const assert = require('node:assert/strict')
-const { chromium } = require('/tmp/huanyu-visual-qa-tools/node_modules/playwright')
+const { chromium } = require(path.join(process.env.HUANYU_QA_TOOLS || '/tmp/huanyu-visual-qa-tools/node_modules', 'playwright'))
 const directory = path.resolve('docs/figma-source/cases')
 const mapping = JSON.parse(fs.readFileSync(path.join(directory, 'node-to-code-2026-09-29.json')))
 const native = new Map(JSON.parse(fs.readFileSync(path.join(directory, 'native-parameters-2026-09-29.json'))).nodes.map(n => [n.nodeId, n]))
-const out = path.resolve('docs/figma-verification/cases/2026-09-29')
+const out = path.resolve(process.env.HUANYU_QA_OUT || 'docs/figma-verification/cases/2026-09-29')
 const corrected = text => text.replace('患者背景：:', '患者背景：').replaceAll('压迫险', '压迫风险').replaceAll('手术险', '手术风险')
 async function main() {
-  const browser = await chromium.launch({ headless: true })
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.HUANYU_QA_BROWSER })
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
-    await page.goto('http://127.0.0.1:5173/cases', { waitUntil: 'networkidle' })
+    await page.goto(`${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173'}/cases`, { waitUntil: 'networkidle' })
     await page.evaluate(() => document.fonts.ready)
     const evidence = { nodes: [], typography: [], geometry: [] }
     for (const node of mapping.nodes) {

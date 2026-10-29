@@ -1,0 +1,6 @@
+/* Figma fonts: bundled locally so rendering doesn't depend on an overseas CDN. */
+@font-face { font-family:Poppins; font-style:normal; font-weight:500; font-display:swap; src:url('./poppins-latin-500.woff2') format('woff2'); }
+@font-face { font-family:'DM Sans'; font-style:normal; font-weight:400; font-display:swap; src:url('./dm-sans-latin-400.woff2') format('woff2'); }
+@font-face { font-family:Inter; font-style:normal; font-weight:400; font-display:swap; src:url('./inter-latin-400.woff2') format('woff2'); }
+@font-face { font-family:'Alibaba PuHuiTi'; font-style:normal; font-weight:400; font-display:swap; src:url('./alibaba-puhuiti-source-regular.woff2') format('woff2'); }
+@font-face { font-family:'Alibaba PuHuiTi'; font-style:normal; font-weight:500; font-display:swap; src:url('./alibaba-puhuiti-source-medium.woff2') format('woff2'); }

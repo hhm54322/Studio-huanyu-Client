@@ -75,6 +75,31 @@ The implementation owner is responsible for the complete page delivery after the
 
 The requester is not expected to separately wire interactions or perform screenshot QA. A copied Figma HTML/CSS result is only an implementation input and must never be reported as a completed page by itself.
 
+### 2.4 Continuous design revision detection — 2026-10-28
+
+Figma is continuously edited. Before starting a page and again before its final verification, obtain a current official source export from the existing IAB Design tab. Record its export time, SHA-256 and live connection evidence. A fresh comparison run over an old download is not a fresh design check. The executable gate rejects source exports over 24 hours old; this is an upper limit, not permission to reuse an export from an earlier task.
+
+Use the single comparator `scripts/figma-source-gate.cjs`. Compare the source export used by the implementation with the current export. A comparison only between two recent downloads does not establish that the implementation is current. For registered pages:
+
+```sh
+pnpm run audit:figma:changes --page home --current '/absolute/path/current.fig'
+pnpm run audit:figma:changes --page dental --current '/absolute/path/current.fig'
+```
+
+Other pages use explicit `--baseline`, `--current` and repeated `--root` arguments. Include the full page plus its separate first-screen, dialog, tab, expanded and other implemented state frames. Inspect the full-file added/removed source list before declaring a page unchanged; registered old IDs alone cannot discover a newly named redesign. Same-name alternatives are candidates requiring live Design/Prototype inspection, not permission to select the numerically largest ID.
+
+The comparison must cover:
+
+- Every node, regardless of dimensions or visibility; IDs, names, type, parents, sibling order, reparenting, additions, removals and visibility.
+- All native fields, including text, rich-text overrides, geometry, fractional spacing, Auto Layout, typography, colors, gradients, borders, radius, effects, opacity, image fit/crop/transform and prototype bindings.
+- Shared variable aliases, styles and component dependencies, including their descendants and transitive references. A consumer binding can remain identical while its shared source changes.
+- Actual vector/blob hashes and image bytes verified against their content hashes. A missing image in a partial export remains unresolved unless identical bytes are available in a verified content cache. Missing data is not evidence of equality.
+- Same-name new source frames even when the original frame remains. Classify only editor timestamps, exact duplicate default gradient-color metadata and source-frame canvas translation separately; internal movement, source rotation, real color/alpha and variable binding changes remain significant.
+
+Reports are local artifacts under `artifacts/figma-source-gate/` and locate each difference by source frame, node path, field, before value and after value. They never overwrite or approve source baselines. Homepage and dental revision audits consume their reports before historical locks/screenshots can pass. Other pages must use explicit comparison roots until registered; this integration is not yet a universal automatic source check for all pages.
+
+When a source changes, preserve the historical extraction, record the current source IDs and affected fields in the page spec, then repeat Layers/Dev Mode extraction and static baseline mapping for those changes before editing Vue. Screenshot verification remains the final step; neither an unchanged-source result nor detector unit tests prove that the website matches the design. Mobile implementation remains deferred while the user's mobile-design freeze is in effect.
+
 ## 3. Required Page Workflow
 
 Work on exactly one page at a time.
@@ -217,6 +242,10 @@ Each file under `docs/figma-page-specs/` should use this minimum structure:
 ```
 
 ## 5. Completion Gate
+
+### Mobile regression coverage (2026-10-10)
+
+Where the source has no mobile frame, preserve its content, asset proportions and desktop parameters while adapting columns, intrinsic heights and controls to narrow screens. Verify 320/390/430px phone widths, 768px tablet width and the 1440px desktop baseline. Check internal clipping as well as document overflow; `overflow: clip` alone is not evidence that a layout fits. Photos must use proportional cover/contain rather than stretched fills; illustrations/logos retain their intrinsic aspect ratio. Shared mobile navigation keeps its menu at the right edge; form text remains at least 16px to avoid iOS focus zoom. Browser pinch zoom remains available. Screenshot and interaction evidence belongs in the ignored local artifacts directory.
 
 A page is not complete when it merely looks similar. It is complete only when all of the following are true:
 
