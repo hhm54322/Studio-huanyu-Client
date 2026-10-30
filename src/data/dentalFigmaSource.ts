@@ -1,5 +1,7 @@
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import doctorCardConsumption from '../../docs/figma-source/dental-revision-2026-10-28/matching-card-consumption-2026-10-28.json'
+import completeSource from '../../docs/figma-source/dental-complete-2026-10-30/source-extension.json'
+export { dentalPhysicians as dentalCurrentDoctors } from './dentalPhysicianData'
 type SourceFile = { sourceFrame: string; root: SourceNode }
 const files = import.meta.glob('../../docs/figma-source/dental-revision-2026-10-28/*/source-tree-2026-10-28.json', { eager: true, import: 'default' }) as Record<string, SourceFile>
 export const dentalSources: Record<string, SourceFile> = {}
@@ -16,7 +18,15 @@ for (const [path, source] of Object.entries(files)) {
   index(source.root)
 }
 export const dentalNode = (id: string) => dentalNodes.get(id)!
-export const dentalProjectNodes = ['2294:8281', '2294:8302', '2294:8319']
+export const dentalCompleteSource = completeSource
+for (const subtree of [...completeSource.projectCards, completeSource.footer]) {
+  function index(node: SourceNode) {
+    dentalNodes.set(node.id, node)
+    node.children.forEach(child => { dentalParents.set(child.id, node); index(child) })
+  }
+  index(subtree as SourceNode)
+}
+export const dentalProjectNodes = ['2294:8281', '2294:8302', '2294:8319', ...completeSource.projectCards.map(card => card.id)]
 export const dentalDoctorNodes = [{ node: '2294:7061', id: 5, name: '谭兆林' }]
 // The standalone Doctor Card frame is the reusable source component used by
 // the matching result card. The page frame owns its placement; this component
@@ -40,13 +50,6 @@ function composeMatchingCard(node: SourceNode): SourceNode {
 export const dentalMatchingSource = composeMatchingCard(dentalSources.matching!.root)
 export const dentalStepNodes = [['2294:8257', '2294:8263', '2294:8269'], ['2294:6988', '2294:6994', '2294:7000'], ['2294:8054', '2294:8060', '2294:8066']]
 export const dentalStepRails = ['2294:8256', '2294:6987', '2294:8053']
-export const dentalCurrentDoctors = [{
-  id:5, name:'谭兆林', title:'院长 / 主治医生', hospital:'上海牙科机构', city:'上海', experience:'20年经验',
-  languages:['中文','English'], background:'口腔专科', specialty:dentalNode('2294:7087').text,
-  rating:'5.0',cases:'1',portrait:'/images/figma/dental-revision/image-3d917ce08391a294490b64fe755d5643e23f6093.webp',
-  tags:[],startingPrice:1200,bio:dentalNode('2294:7790').text,
-  credentials:['2294:7799','2294:7805','2294:7811','2294:7817'].map(id=>dentalNode(id).text),
-}]
 export const dentalActions: Record<string, HomeSourceAction> = {}
 const routes: Record<string, string> = {
   首页: '/', 为什么选择中国: '/why-china', 信任与常见问题: '/trust', 医疗服务: '/diseases-technologies', 疾病中心: '/diseases-technologies',
@@ -54,7 +57,7 @@ const routes: Record<string, string> = {
   报告体验: '/report', 就医步骤: '/steps', 'contact@huanyuyunyi.com': 'mailto:contact@huanyuyunyi.com',
   '+86 400-888-XXXX': 'tel:+864008886688', WhatsApp: 'https://wa.me/864008886688',
 }
-for (const source of Object.values(dentalSources)) {
+for (const source of [...Object.values(dentalSources), { root: completeSource.footer as SourceNode }]) {
   for (const node of dentalDescendants(source.root)) {
     if (node.type !== 'TEXT' || !node.visible) continue
     if (routes[node.text]) dentalActions[node.id] = { href: routes[node.text] }
@@ -81,8 +84,8 @@ dentalActions['2294:7101']={action:'quote:5',label:'获取谭兆林医生免费�
 // reference content, not a button opening an unauthored page or modal.
 dentalActions['2294:8114']={action:'submit',label:'提交评估 · 获取书面报价'}
 export const dentalFilterControls = [
- {node:'2294:7006',text:'2294:7007',key:'city',label:'城市',options:['上海','广州','北京']},
- {node:'2294:7011',text:'2294:7012',key:'title',label:'医生职称',options:['主治医生','主任医师','教授']},
+ {node:'2294:7006',text:'2294:7007',key:'city',label:'城市',options:['深圳','上海','广州','北京']},
+ {node:'2294:7011',text:'2294:7012',key:'title',label:'医生职称',options:['主治医师','副主任医师','主任医师','教授','院长']},
  {node:'2294:7016',text:'2294:7017',key:'experience',label:'经验标签',options:['10-20年','20年以上']},
  {node:'2294:7021',text:'2294:7022',key:'background',label:'机构背景',options:['口腔专科','公立三甲']},
  {node:'2294:7026',text:'2294:7027',key:'language',label:'语言能力',options:['English','Русский','中文']},

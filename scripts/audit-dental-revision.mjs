@@ -63,6 +63,33 @@ export async function auditDentalRevision({ sourceOnly = false } = {}) {
     total += inventory.nodeCount
   }
   assert.equal(total, 1358)
+  // The customer selected the complete eight-project source in addition to
+  // the newer short first-screen state. Keep both immutable extractions.
+  const extensionDir = join(root, 'docs/figma-source/dental-complete-2026-10-30')
+  const extension = await read(join(extensionDir, 'source-extension.json'))
+  const extensionMapping = await read(join(extensionDir, 'parameters-and-mapping.json'))
+  const originalProject = await read(join(root, 'docs/figma-source/dental-revision/project/source-tree-2026-10-20.json'))
+  const originalNodes = new Map(descendants(originalProject.root).map(node => [node.id, node]))
+  assert.equal(extension.sourceFrame, '231:88')
+  assert.equal(extension.sourceSHA256, originalProject.sourceSHA256)
+  assert.deepEqual(extension.projectCards.map(node => node.id), ['231:184','231:201','231:217','231:235','231:253'])
+  assert.equal(extension.footer.id, '231:276')
+  const extensionNodes = [...extension.projectCards, extension.footer].flatMap(descendants)
+  assert.equal(extensionNodes.length, 133)
+  assert.equal(extensionMapping.nodeCount, extensionNodes.length)
+  assert.deepEqual(extensionMapping.nodes.map(node => node.nodeId), extensionNodes.map(node => node.id))
+  for (const subtree of [...extension.projectCards, extension.footer]) assert.deepEqual(subtree, originalNodes.get(subtree.id), `${subtree.id}: complete source subtree changed`)
+  for (const node of extensionNodes) {
+    const mapping = extensionMapping.nodes.find(row => row.nodeId === node.id)
+    assert.ok(mapping.component && mapping.selector && mapping.originalParameters && mapping.devMode)
+    if (node.svg) await access(join(root, 'public', node.svg))
+  }
+  const completeComparison = await read(join(root, 'artifacts/figma-source-gate/current-dental-complete-original.json'))
+  assert.equal(completeComparison.baseline.sha256, extension.sourceSHA256)
+  const completeScope = completeComparison.scopes.find(scope => scope.rootId === '231:88')
+  for (const field of ['addedIds','removedIds','changedIds','dependencyChanges','unresolvedImages','unresolvedBlobs','integrityErrors']) assert.deepEqual(completeScope[field], [], `Complete source changed: ${field}`)
+  assert.deepEqual(completeScope.alternatives.map(row => [row.oldId,row.newId,row.oldRetained]), [['231:88','2294:8240',true]])
+  assert.ok(Date.now()-Date.parse(completeComparison.current.exportedAt) < 24*3600000)
   const assets = (await read(join(base, `assets-${date}.json`))).assets
   for (const asset of assets) {
     assert.ok(sourceIds.has(asset.nodeId), `${asset.nodeId}: asset has no source node`)
@@ -87,8 +114,17 @@ export async function auditDentalRevision({ sourceOnly = false } = {}) {
   console.log(`Dental current source gate: ${sets.length} frames / ${total} nodes / ${assets.length} assets; hierarchy, Dev Mode, mapping, source locks and child-content frames pass.`)
   if (sourceOnly) return
 
+  // The authorized DOCX records replace the single Figma example doctor.
+  // Keep the immutable source audit above; require new content-aware evidence
+  // for the current runtime instead of comparing real records to the example.
+  const currentProvider = await readFile(join(root, 'src/data/dentalFigmaSource.ts'), 'utf8')
+  if (currentProvider.includes('export { dentalPhysicians as dentalCurrentDoctors }')) {
+    await import('./audit-dental-physicians.mjs')
+    return
+  }
+
   const evidence = join(root, `artifacts/figma-dental-${date}`)
-  const uiFiles = ['src/components/common/DentalDesktopFlow.vue', 'src/components/common/DentalSourceCanvas.vue', 'src/components/common/DentalDoctorSourceDialog.vue', 'src/data/dentalFigmaSource.ts', 'src/components/common/HomeSourceNode.vue', 'src/views/patient/DentalView.vue', 'src/assets/styles/main.css', 'src/components/layout/PatientLayout.vue']
+  const uiFiles = ['src/components/common/DentalDesktopFlow.vue', 'src/components/common/DentalSourceCanvas.vue', 'src/components/common/DentalDoctorSourceDialog.vue', 'src/data/dentalFigmaSource.ts', 'src/utils/figmaFullBleed.ts', 'docs/figma-source/dental-complete-2026-10-30/source-extension.json', 'src/components/common/HomeSourceNode.vue', 'src/views/patient/DentalView.vue', 'src/assets/styles/main.css', 'src/components/layout/PatientLayout.vue']
   const modified = Math.max(...await Promise.all(uiFiles.map(async file => (await stat(join(root, file))).mtimeMs)))
   const reports = []
   for (const environment of ['', 'production/']) {

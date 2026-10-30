@@ -124,7 +124,7 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
 
 <template>
   <div ref="page" class="hospital-page" :class="{'is-phone':phone,'is-fluid':fluid}" @mouseover="hover" @mouseout="leaveMenu" @focusin="hover" @focusout="leaveMenu">
-    <HospitalFigmaCanvas :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :hidden="[headerId,'1741:5732']" label="中国医院列表" @activate="activate" />
+    <HospitalFigmaCanvas :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" label="中国医院列表" @activate="activate" />
     <header class="hospital-source-header">
       <HospitalFigmaCanvas :node="hospitalNode(headerId)" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" label="主导航" @activate="activate" />
       <Transition name="hospital-dropdown"><div v-if="!phone&&hospitalMenuOpen" class="hospital-nav-dropdown">

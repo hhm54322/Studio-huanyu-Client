@@ -36,12 +36,37 @@ const mobileStyles=computed(()=>{
   return all
 })
 const attributes=computed(()=>Object.fromEntries([...selected.value.dots.map((id,index)=>[id,{'aria-pressed':index===active.value}]),...['1528:130','1528:131','1528:132','1528:133'].map((id,index)=>[id,{'aria-pressed':mobileOrder[index]===active.value}])] ))
-const styles=computed(()=>({
+const styles=computed(()=>{
+  const fullBleed:Record<string,string>={}
+  if(width.value>1440) {
+    const frame=homeDesktopNodes.get(selected.value.frame)!
+    const extra=width.value-frame.width
+    // Stretch the background chain, retaining the source copy's 1280px
+    // centred container rather than enlarging its type on wider screens.
+    function stretch(node:typeof frame) {
+      if(node.id===frame.id) fullBleed[node.id]=`width:${width.value}px;transform:translateX(${-extra/2}px);`
+      else if(node.width>=frame.width || node.css.includes('linear-gradient') && node.width>frame.width/2) fullBleed[node.id]=`width:${node.width*width.value/frame.width}px;`
+      node.children.forEach(stretch)
+    }
+    stretch(frame)
+    // The selected third-slide bitmap is a source crop. Its old fixed pixel
+    // background-size left the extended element unpainted on wide screens.
+    if (active.value === 2) fullBleed[selected.value.image] += 'background-size:cover;background-position:center;'
+    const content=homeDesktopNodes.get(selected.value.content)!
+    fullBleed[content.id]=`left:${content.x+extra/2}px;`
+    const next=homeDesktopNodes.get(selected.value.next)!
+    fullBleed[next.id]=`left:${next.x+extra}px;`
+    const dots=frame.children.find(node=>node.children.some(child=>child.id===selected.value.dots[0]))!
+    fullBleed[dots.id]=`left:${dots.x+extra/2}px;`
+  }
+  return {
+  ...fullBleed,
   ...Object.fromEntries(['1528:130','1528:131','1528:132','1528:133'].map((id,index)=>[id,`background:${active.value===mobileOrder[index]?'#DD6B20':'rgba(0,0,0,.10)'};`])),
   // These selected SVGs already include the source parent's reflection.
   // Invert that reflection only on the asset, not on its button geometry.
   ...Object.fromEntries(['143:1215','143:1244','143:1292','1412:5711','1523:68'].map(id=>[id,'transform:scaleX(-1);transform-origin:center;'])),
-}))
+  }
+})
 function select(index:number){selectSlide(index)}
 function activate(action:string,event:MouseEvent) {
   const [name,value]=action.split(':')

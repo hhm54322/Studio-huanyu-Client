@@ -9,9 +9,35 @@
 - Source extraction run: `2026-10-19`，官方原生导出与UI Layers/逐节点Dev Mode交叉核验；主帧基线锁为 `baseline-lock-2026-10-19.json`；2026-10-28/29 以当前官方导出复核全部已接入源帧。
 - Desktop frame: `1440 x 8921px`
 - Mobile frame: 外容器 `1528:115` 为375×7652px；网站本体 `1528:116` 为375×7566.0625px
-- Status: verified — 2026-10-28 desktop source/state verification; mobile deferred by user
+- Status: verified — desktop corrections against Figma, 2026-10-29; mobile deferred by user
 
-### 当前桌面源稿与验收 — 2026-10-28
+### 患者照片轮播与宽屏修正 — 2026-10-29
+
+用户确认：患者故事及详情均为同一位 Michael W. 的五张照片，病例文案不切换。此前从病例页/其他页面借用 Maria、James、新加坡及马来西亚患者内容的做法作废，删除首页相关数据与跳转。下文旧日期中“五个故事状态”的验收不能证明这项语义正确。
+
+本轮官方源导出 `artifacts/figma-home-corrections-2026-10-29/current.fig`，导出时间 `2026-10-29T14:48:20.070Z`，SHA-256 `7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf`。现有首页根及弹窗源逐节点比较无变化；八个独立照片源新增提取记录已完成 live Layers/Dev CSS 及 native 父子顺序交叉核验，参数、源码、映射及锁位于该目录 `sources/`。照片不是新患者记录。
+
+| 用途 | Figma 节点 → Vue 归属 | 精确静态参数 |
+| --- | --- | --- |
+| 主页五张照片 | `1466:843`、`1412:5862 > 1466:846`、`1466:848 > 1466:849`、`1466:850 > 1466:851`、`1466:852 > 1466:853` → `HomePatientStories > HomeSourceNode` | 外框389.33334×400，圆角24；后四张内部图片600×400，x分别−105、−105、−80、−16，y均0。保留首张原生填充变换。 |
+| 详情五张照片 | `1407:20`、`1466:856`、`1466:865`、`1466:866`、`1466:867` → `HomeSourceDialog > HomeSourceNode` | 404×269.33334，圆角24，使用各自原图及原生图像填充。 |
+| 详情照片圆点 | `1466:858 > 1466:859–863` → `HomeSourceDialog` | 容器104×10，x150、y243；活动32×10，其他10×10，间隔8。只切图片。 |
+| 详情右侧滚动到底 | `1407:28/30`、底部状态`1414:7361/7363` → `HomeSourceDialog` | 视口404×532，内容404×778，底部状态y−278，得出白色尾部间距32；内容下圆角24。 |
+| 宽屏首屏 | `143:1190/1222/1251`、`1523:33` → `HomeHeroSection` | 保留1440×754基线；宽度超过1440时按stretch约束扩展背景，文案保持1280版心，左右控件距视口边24，圆点居中。 |
+
+运行数据为 `docs/figma-source/home/story-carousel/source-trees-2026-10-29.json`，所有照片使用 SHA1 校验的 Figma 原图压缩 WebP。开始 Vue 修改前已建立完整静态基线；接线后重新核验五张图片、同一病例文案、详情滚动、关闭焦点恢复、暂停/键盘/reduced-motion，以及1440/1920宽屏几何与截图。
+
+顶部导航透明度：用户2026-10-29确认使用透明底。现场重新读取主帧导航 `1412:6749` 的 Dev Mode CSS，无背景填充，1440×64、absolute；子容器 `1412:6750` 为1280×64、x80、左右padding32。继续保留最新独立首屏 `1523:75` 的导航内容/Logo/菜单几何，仅桌面静止态采用主帧透明底，不沿用独立帧里的白色填充。参数证据 `artifacts/figma-home-corrections-2026-10-29/live-header-transparent.txt`。页面滚动后的已有可读性背景不影响首屏透明状态；手机冻结。
+
+验收结果：主页及弹窗两组独立图片分别绑定自身的源节点，未将一组重新裁成另一组。通过 Figma 的 Copy as PNG 逐个导出10个节点，与浏览器原生DPR2逐张对照：最高nMAE 0.7314%，最高pixelmatch 0.1668%；照片正文始终为同一 Michael W. 病例。详情底部完整面板对照为0.5608%/0.2187%，右侧底部留白32px，关闭恢复焦点及页面位置。两组自动播放、悬停/聚焦暂停、键盘、reduced-motion通过。4个Hero状态在1024/1440/1920/2560宽度共16组合均无白边或横向溢出，首屏导航三层底色均透明。
+
+证据：`artifacts/figma-home-corrections-2026-10-29/references/` 是两组各自的Figma节点图，`verification/qa.json`、`*-comparison.png` 是本轮逐图/底部/宽屏验收；已有八组首页回归已在本轮代码后重跑，`artifacts/figma-home-2026-10-28/` 的13分区、9状态、7详情、15专家状态均双指标<1%。`scripts/audit-current-home.mjs`新增10张照片、固定病例内容、32px留白、两组播放、透明导航与全宽检查；不使用旧的首张截图代替新增状态验证。
+
+交付前另从同一IAB下载 `/Users/hhm/Downloads/寰宇云医 (17).fig`，完整首页、独立Hero及八个新照片源分别与各自实现源导出比较，相关源全部unchanged。原始源锁不更新。当前桌面这些修正剩余差异：无；手机按用户要求继续冻结。
+
+外网发布版本 `20261029160923`，地址 `https://www.huanyumedical.com/`。完整 `pnpm build`（含42份规范门禁）、类型检查及 diff 检查通过；共享导航涉及的关于我们、病例、病种及专家目录已实际重跑回归。外网重新逐张核验两组共10张照片，最高 nMAE 0.7303%、pixelmatch 0.1656%；详情底部32px留白、关闭恢复位置和焦点、自动播放/暂停/键盘/reduced-motion，以及4个Hero状态×4种桌面宽度的透明导航与全宽检查均通过，无页面错误。证据为 `artifacts/figma-home-corrections-2026-10-29/online/qa.json`、`online-summary.json`，发布记录为 `artifacts/deployment/20261029160923/`。主站文件与发布清单2094项校验一致，API健康检查通过；后台与报告生成未改动。
+
+### 历史桌面源稿与验收 — 2026-10-28（本次修正前）
 
 当前独立首屏 `1523:31`（1440×754，89节点）已完整提取 Layers/Dev Mode 并接入；长页及原有桌面状态经完整官方源比较无变化。交付前最新官方导出为 `docs/figma-source/huanyu-current-2026-10-29.fig`（导出时间2026-10-28T19:56:21.274Z，SHA-256 `dd25ba88e97467ac8803951a3aebe3596f13f8e69c41ed30f5988b5408a40353`）；首页相关源帧逐节点比较 unchanged。Logo `2326:8518` 已使用准确选中导出资源。
 

@@ -5,7 +5,18 @@ const read=async(name,kind)=>JSON.parse(await fs.readFile(path.join(base,name,`$
 const sel=id=>`[data-figma-node="${id}"]`
 // A tab mounts new source text. Wait for the native-baseline alignment to
 // finish its fonts-ready/nextTick cycle before capturing the settled state.
-const settled=page=>page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))})
+const settled=page=>page.evaluate(async()=>{
+ await document.fonts.ready
+ // Dialog backgrounds start loading when their source subtree is mounted.
+ // Wait for the actual image decodes before comparing, including on the CDN.
+ const urls=new Set()
+ for(const element of document.querySelectorAll('.dental-source-canvas *, .dental-source-dialog__clip *')){
+  if(!element.getClientRects().length)continue
+  for(const match of getComputedStyle(element).backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g))urls.add(match[1])
+ }
+ await Promise.all([...urls].map(async url=>{const image=new Image();image.src=url;await image.decode()}))
+ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))
+})
 async function fullContent(page,name){
  const model=await read(name,'dialog-model'),source=await read(name,'source-tree'),clip=page.locator('.dental-source-dialog__clip'),position=page.locator('.dental-source-dialog__position')
  const original={clip:await clip.getAttribute('style'),position:await position.getAttribute('style')}
@@ -50,8 +61,12 @@ async function main(){
  await page.goto((process.env.HUANYU_QA_URL||'http://127.0.0.1:5174')+'/dental',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready)
  for(const [index,name]of ['project','matching','upload'].entries()){
   if(index)await page.locator(sel(index===1?'2294:8336':'2294:7209')).click()
-  const t=await read(name,'source-tree');await page.setViewportSize({width:1440,height:t.root.height});await page.evaluate(()=>window.scrollTo(0,0));await page.waitForTimeout(200)
-  const local=path.join(output,name+'-local.png');await page.locator('.dental-source-canvas').screenshot({path:local});results.push(await compare(name,local,path.join(references,name+'-figma.png')))
+  const t=await read(name,'source-tree');await page.setViewportSize({width:1440,height:index===0?2384:t.root.height});await page.evaluate(()=>window.scrollTo(0,0));await settled(page);await page.waitForTimeout(200)
+  // The customer confirmed the complete 8-project source 231:88 alongside
+  // the short 2294:8240 first-screen state. Compare every restored row and
+  // footer against the full official source, without truncating the page.
+  const reference=index===0?path.join(root,'artifacts/hero-full-bleed-2026-10-30/source/dental-complete-figma.png'):path.join(references,name+'-figma.png')
+  const local=path.join(output,name+'-local.png');await page.locator('.dental-source-canvas').screenshot({path:local});results.push(await compare(name,local,reference))
  }
  await page.locator(sel('2294:8060')).click();await page.setViewportSize({width:1440,height:756});await page.locator(sel('2294:7099')).click();await page.evaluate(()=>document.fonts.ready)
  for(const [index,name]of ['profile','treatment-scroll','cases','reviews','services-scroll'].entries()){

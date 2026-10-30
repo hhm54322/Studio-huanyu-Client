@@ -2,6 +2,9 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData as SourceNode } from './HomeSourceNode.vue'
 import { dentalDescendants, dentalNode, dentalSources } from '@/data/dentalFigmaSource'
+import { dentalPhysicianById } from '@/data/dentalPhysicianData'
+import { populateDentalPhysicianIdentity, replaceDentalText } from '@/data/dentalPhysicianSource'
+import DentalPhysicianDocumentContent from './DentalPhysicianDocumentContent.vue'
 import profileModel from '../../../docs/figma-source/dental-revision-2026-10-28/profile/dialog-model-2026-10-28.json'
 import treatmentModel from '../../../docs/figma-source/dental-revision-2026-10-28/treatment-scroll/dialog-model-2026-10-28.json'
 import casesModel from '../../../docs/figma-source/dental-revision-2026-10-28/cases/dialog-model-2026-10-28.json'
@@ -13,6 +16,9 @@ const props=withDefaults(defineProps<{doctor?:{id:number;name:string};initialTab
 const emit=defineEmits<{close:[]}>()
 const active=ref(props.initialTab),dialog=ref<HTMLDialogElement|null>(null),clip=ref<HTMLElement|null>(null)
 const width=ref(window.innerWidth),height=ref(window.innerHeight)
+const record=computed(()=>props.doctor?dentalPhysicianById(props.doctor.id):undefined)
+const documentMode=computed(() => props.institution?'institution':active.value===0?'profile':active.value===2?'cases':active.value===3?'reviews':null)
+const documentHeight=ref(0)
 const sources=[{...profileModel,folder:'profile'},{...treatmentModel,folder:'treatment-scroll'},{...casesModel,folder:'cases'},{...reviewsModel,folder:'reviews'},{...servicesModel,folder:'services-scroll'}]
 const model=computed(()=>props.institution?{...institutionModel,folder:'institution-scroll',tabs:[]}:sources[active.value]!)
 const root=computed(()=>{
@@ -46,17 +52,31 @@ const root=computed(()=>{
     const body=nodes.find(node=>node.name==='Frame 683')!
     panel.height=Math.max(panel.height,body.y+body.height+body.y)
   }
+  if(record.value){
+    if(props.institution){
+      const title=nodes.find(node=>node.id==='2294:7642')!
+      replaceDentalText(title,`${record.value.institutionLabel}（${record.value.city}）`)
+      title.css+=';width:784px;white-space:normal;'
+    }else populateDentalPhysicianIdentity(panel,record.value)
+    if(documentMode.value){
+      panel.height=Math.max(640,documentHeight.value+(props.institution?32:189)+64)
+      const body=nodes.find(node=>node.name==='Frame 683')!
+      body.height=panel.height-64;body.css+=`;height:${body.height}px;`
+    }
+  }
   panel.css+=`;height:${panel.height}px;overflow:visible;`
   return panel
 })
 const nodes=computed(()=>dentalDescendants(root.value))
 const baselines=computed(()=>nodes.value.filter(node=>node.textLines).map(node=>node.id))
-const tabs=computed(()=>model.value.tabs)
+const tabs=computed(()=>model.value.tabs.map((tab,index)=>({...tab,text:record.value?['医生简介','治疗流程','案例集',`患者评价（${record.value.reviews.length}）`,'在华就诊保障服务（10）'][index]!:tab.text})))
+const bodyId=computed(()=>nodes.value.find(node=>node.name==='Frame 683')!.id)
 const tabRow=computed(()=>nodes.value.find(node=>node.children.some(child=>tabs.value.some(tab=>tab.id===child.id))))
 const contentRoots=computed(()=>{
   if(props.institution)return root.value.children.filter(node=>node.name==='Frame 683').map(node=>node.id)
-  const row=tabRow.value!,body=nodes.value.find(node=>node.children.some(child=>child.id===row.id))!
-  return body.children.filter(node=>node.y>=row.y+row.height).map(node=>node.id)
+  const body=nodes.value.find(node=>node.name==='Frame 683')!
+  const tabs=body.children.find(child=>dentalDescendants(child).some(node=>node.id===tabRow.value?.id))!
+  return body.children.filter(node=>node.y>=tabs.y+tabs.height).map(node=>node.id)
 })
 const scale=computed(()=>Math.min(1,(width.value-48)/model.value.width))
 const viewportHeight=computed(()=>Math.min(model.value.mask?.height??model.value.height,(height.value-80)/scale.value))
@@ -69,11 +89,12 @@ const attributes=computed(()=>{
     [model.value.title]:{id:'dental-source-dialog-title'},[model.value.close]:{'data-dialog-close':true},
   }
   if(tabRow.value)result[tabRow.value.id]={role:'tablist','aria-label':'医生资料'}
-  tabs.value.forEach((tab,index)=>{result[tab.id]={id:`dental-source-tab-${index}`,role:'tab','aria-selected':active.value===index,'aria-controls':contentRoots.value.map((_,i)=>`dental-source-content-${i}`).join(' '),tabindex:active.value===index?0:-1}})
+  tabs.value.forEach((tab,index)=>{result[tab.id]={id:`dental-source-tab-${index}`,role:'tab','aria-selected':active.value===index,'aria-controls':record.value&&documentMode.value?'dental-document-content':contentRoots.value.map((_,i)=>`dental-source-content-${i}`).join(' '),tabindex:active.value===index?0:-1}})
   contentRoots.value.forEach((id,index)=>{result[id]={id:`dental-source-content-${index}`,role:index===0?'tabpanel':'region','aria-labelledby':props.institution?'dental-source-dialog-title':`dental-source-tab-${active.value}`,...(index===0?{tabindex:0}:{})}})
   return result
 })
 const styles=computed(()=>({[model.value.close]:'z-index:3;'}))
+const hidden=computed(()=>record.value&&documentMode.value?(props.institution?['2294:7681','2294:7683']:contentRoots.value):[])
 let trigger:HTMLElement|null=null,oldOverflow='',scrollPosition=0
 function resize(){width.value=window.innerWidth;height.value=window.innerHeight}
 async function changeTab(index:number){
@@ -108,12 +129,16 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);dialog.value?.c
 
 <template>
   <Teleport to="body">
-    <dialog ref="dialog" class="dental-source-dialog" :data-figma-node="model.frame" :data-dental-dialog="institution?'institution':'doctor'" :data-active-tab="active" aria-labelledby="dental-source-dialog-title" @cancel.prevent="emit('close')" @keydown="keydown" @click="outside">
+    <dialog ref="dialog" class="dental-source-dialog" :data-figma-node="model.frame" :data-dental-dialog="institution?'institution':'doctor'" :data-document-doctor="record?.id" :data-active-tab="active" aria-labelledby="dental-source-dialog-title" @cancel.prevent="emit('close')" @keydown="keydown" @click="outside">
       <div class="dental-source-dialog__overlay" data-dental-source-overlay :data-figma-node="model.overlay">
         <div class="dental-source-dialog__position" :style="{width:`${model.width*scale}px`,height:`${viewportHeight*scale}px`}">
           <div ref="clip" class="dental-source-dialog__clip" :data-figma-node="model.mask?.id" :style="{width:`${model.width}px`,height:`${viewportHeight}px`,transform:`scale(${scale})`}">
             <div class="dental-source-dialog__canvas" :style="{width:`${model.width}px`,height:`${root.height}px`}">
-              <HomeSourceNode :key="model.panel" :node="root" root :actions="actions" :attributes="attributes" :styles="styles" :baseline-nodes="baselines" preserve-text-lines @activate="activate" />
+              <HomeSourceNode :key="model.panel" :node="root" root :actions="actions" :attributes="attributes" :styles="styles" :hidden="hidden" :baseline-nodes="baselines" preserve-text-lines @activate="activate">
+                <template #after="{node}">
+                  <DentalPhysicianDocumentContent v-if="record&&documentMode&&node.id===bodyId" :key="documentMode" :doctor="record" :mode="documentMode" :aria-labelledby="institution?'dental-source-dialog-title':`dental-source-tab-${active}`" :style="{top:`${institution?32:189}px`}" @height="value=>documentHeight=value" />
+                </template>
+              </HomeSourceNode>
             </div>
           </div>
         </div>

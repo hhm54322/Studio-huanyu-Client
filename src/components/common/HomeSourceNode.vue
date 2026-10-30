@@ -31,6 +31,7 @@ const props = defineProps<{
   flowRoots?: string[]
   fixedRoots?: string[]
   baselineNodes?: string[]
+  baselineScale?: number
   preserveTextLines?: boolean
   replica?: boolean
 }>()
@@ -65,13 +66,13 @@ async function alignSourceBaselines() {
     element.append(marker)
     const actual = marker.getBoundingClientRect().top - element.getBoundingClientRect().top
     const unscaledHeight = (element as HTMLElement).offsetHeight
-    const scale = unscaledHeight ? element.getBoundingClientRect().height / unscaledHeight : 1
+    const scale = props.baselineScale ?? (unscaledHeight ? element.getBoundingClientRect().height / unscaledHeight : 1)
     marker.remove()
     return expected - actual / (scale || 1)
   })
 }
 onMounted(alignSourceBaselines)
-watch([() => props.node, () => props.preserveTextLines, fluidLayout, () => props.texts?.[props.node.id]], alignSourceBaselines, { flush:'post' })
+watch([() => props.node, () => props.preserveTextLines, () => props.baselineScale, fluidLayout, () => props.texts?.[props.node.id]], alignSourceBaselines, { flush:'post' })
 </script>
 
 <template>
@@ -84,7 +85,7 @@ watch([() => props.node, () => props.preserveTextLines, fluidLayout, () => props
     <template v-else-if="node.text">{{ texts?.[node.id] ?? node.text }}</template>
     <slot v-if="node.chart === 'radar'" name="radar" :node="node" />
     <slot v-if="node.chart === 'cost'" name="cost" :node="node" />
-    <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :replica="replica" @activate="(action, event) => emit('activate', action, event)">
+    <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :replica="replica" @activate="(action, event) => emit('activate', action, event)">
       <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
       <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
       <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>

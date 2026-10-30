@@ -48,10 +48,15 @@ async function compare(page,width,id,source,referenceImage) {
   else await page.mouse.move(0,0)
   const box=await locator.boundingBox()
   if(!box) throw Error(`Missing source element ${id}`)
+  // The independent first-screen export has a white 64px header. The user
+  // selects the main frame's transparent variant; verify that header in the
+  // correction suite and keep this comparison on the unchanged hero content.
+  const topInset=id==='1523:33'?64:0
+  const captureHeight=node.height-topInset
   const viewportImage=await page.screenshot({animations:'disabled'})
-  const local=await sharp(viewportImage).extract({left:Math.round(box.x*2),top:Math.round(box.y*2),width:width*2,height:Math.round(node.height*2)}).png().toBuffer()
+  const local=await sharp(viewportImage).extract({left:Math.round(box.x*2),top:Math.round((box.y+topInset)*2),width:width*2,height:Math.round(captureHeight*2)}).png().toBuffer()
   const slug=`${width}-${id.replace(':','-')}`
-  const reference=await sharp(referenceImage).extract({left:0,top:Math.round(node.absoluteY*2),width:width*2,height:Math.round(node.height*2)}).png().toBuffer()
+  const reference=await sharp(referenceImage).extract({left:0,top:Math.round((node.absoluteY+topInset)*2),width:width*2,height:Math.round(captureHeight*2)}).png().toBuffer()
   // Render at native DPR2. Round only the fractional bottom edge, not geometry.
   const meta=await sharp(local).metadata()
   const actual=await sharp(local).extract({left:0,top:0,width:width*2,height:Math.min(meta.height,Math.round(node.height*2))}).png().toBuffer()
@@ -61,7 +66,7 @@ async function compare(page,width,id,source,referenceImage) {
   await sharp({create:{width:width*2,height:Math.round(node.height)*2,channels:3,background:'#fff'}})
     .composite([{input:await sharp(target).resize({width}).toBuffer(),left:0,top:0},{input:await sharp(actual).resize({width}).toBuffer(),left:width,top:0}])
     .png().toFile(path.join(output,`${slug}-comparison.png`))
-  return {id,name:node.name,...metric,reference:path.join(output,`${slug}-figma.png`),local:path.join(output,`${slug}-local.png`),source:{width:node.width,height:node.height,y:node.absoluteY},actual:{width:box.width,height:box.height}}
+  return {id,name:node.name,...metric,reference:path.join(output,`${slug}-figma.png`),local:path.join(output,`${slug}-local.png`),source:{width:node.width,height:node.height,y:node.absoluteY},actual:{width:box.width,height:box.height},...(topInset?{scope:'Hero below 64px header; user-requested transparent header checked separately'}:{})}
 }
 async function main() {
   await fs.mkdir(output,{recursive:true})

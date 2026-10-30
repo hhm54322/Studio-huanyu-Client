@@ -22,10 +22,13 @@ for (const file of await files(root)) {
   if (!metadata.hasAlpha && Math.max(metadata.width, metadata.height) > 2560) {
     image = image.resize({ width: 2560, height: 2560, fit: 'inside', withoutEnlargement: true })
   }
-  const { data, info } = await image.webp({ quality: 90, alphaQuality: 100, effort: 6 }).toBuffer({ resolveWithObject: true })
+  // These 534px institution crops are already the displayed Figma image
+  // exports. Preserve their pixels instead of adding a second lossy pass.
+  const lossless = /dental-revision\/selected-image-2294-(?:774[3-9]|7750)\.png$/.test(file)
+  const { data, info } = await image.webp({ quality: 90, alphaQuality: 100, effort: 6, lossless }).toBuffer({ resolveWithObject: true })
   if (data.length >= original.length * 0.9) continue
   await writeFile(`${file}.optimized.webp`, data)
-  records.push({ source: `/images/${path.relative(root, file).split(path.sep).join('/')}`, optimizedSource: `/images/${path.relative(root, file).split(path.sep).join('/')}.optimized.webp`, originalBytes: original.length, optimizedBytes: data.length, originalWidth: metadata.width, originalHeight: metadata.height, width: info.width, height: info.height })
+  records.push({ source: `/images/${path.relative(root, file).split(path.sep).join('/')}`, optimizedSource: `/images/${path.relative(root, file).split(path.sep).join('/')}.optimized.webp`, originalBytes: original.length, optimizedBytes: data.length, originalWidth: metadata.width, originalHeight: metadata.height, width: info.width, height: info.height, ...(lossless ? { lossless: true } : {}) })
 }
 await writeFile('public/image-optimization.json', JSON.stringify({ quality: 90, maxPhotoDimension: 2560, images: records }, null, 2) + '\n')
 const before = records.reduce((sum, item) => sum + item.originalBytes, 0)

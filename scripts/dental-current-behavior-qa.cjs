@@ -6,8 +6,8 @@ const root = path.resolve(__dirname, '..')
 const out = path.resolve(process.env.HUANYU_QA_OUTPUT || path.join(root, 'artifacts/figma-dental-2026-10-28/behavior'))
 const url = (process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174').replace(/\/$/, '') + '/dental'
 const selector = id => `[data-figma-node="${id}"]`
-const projects = ['2294:8281', '2294:8302', '2294:8319']
-const projectNames = ['implant', 'whitening', 'veneer']
+const projects = ['2294:8281', '2294:8302', '2294:8319', '231:184', '231:201', '231:217', '231:235', '231:253']
+const projectNames = ['implant', 'whitening', 'veneer', 'aligner', 'crown', 'periodontal', 'root-canal', 'children']
 const frames = ['2294:7751', '2294:7487', '2294:7334', '231:1421', '2294:7557']
 const tails = ['2294:7817', '2294:7912', '2294:7376', '231:1501', '2294:7486']
 const cardConsumption = require('../docs/figma-source/dental-revision-2026-10-28/matching-card-consumption-2026-10-28.json')
@@ -18,12 +18,16 @@ const sourceCoverage = {
 }
 const file = { name: 'qa-dental.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl6wAAAAABJRU5ErkJggg==', 'base64') }
 const pause = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+async function waitForAssets(page) {
+  await page.waitForFunction(() => [...document.images].every(image => image.complete && image.naturalWidth > 0), null, { timeout: 15000 })
+}
 async function step(page, number) {
   await page.getByRole('button', { name: `${String(number).padStart(2, '0')} ${['选择牙科项目', '城市与医生匹配', '上传影像资料'][number - 1]}`, exact: true }).click()
   await pause(page)
   assert.equal(await page.locator('.dental-desktop-flow').getAttribute('data-dental-step'), String(number))
 }
 async function screenshot(page, name) {
+  await waitForAssets(page)
   // A modal is fixed to the viewport. Capturing the full document while it is
   // inert makes Chrome briefly resize this page to 1×1, replacing the desktop
   // subtree with the frozen mobile UI. Capture modal evidence at its real size.
@@ -46,6 +50,7 @@ async function main() {
     for (const [width, height] of [[1024, 600], [1440, 900], [1920, 1080]]) {
       const page = activePage = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' })
       page.setDefaultTimeout(5000)
+      page.setDefaultNavigationTimeout(45000)
       page.on('pageerror', error => report.errors.push(error.message))
       await page.goto(url, { waitUntil: 'networkidle' })
       await page.evaluate(() => document.fonts.ready)
@@ -57,13 +62,13 @@ async function main() {
         const box = await detail.boundingBox(), cardBox = await card.boundingBox()
         assert.ok(box.height > 0 && box.y + box.height <= cardBox.y + cardBox.height + 1, 'Expanded detail clipped')
       }
-      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 3)
+      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 8)
       await screenshot(page, `all-projects-open-${width}`)
       await page.locator(selector(projects[1])).press('Enter')
-      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 2)
+      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 7)
       assert.equal(await page.locator('#dental-details-whitening').getAttribute('aria-hidden'), 'true')
       await page.locator(selector(projects[1])).press('Space')
-      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 3)
+      assert.equal(await page.locator('.dental-live-project[aria-expanded="true"]').count(), 8)
       checks.independentAccordions = checks.keyboardAccordion = true
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
       checks.projectFit = true
@@ -146,6 +151,7 @@ async function main() {
       await page.getByRole('button', { name: '获取谭兆林医生免费报价', exact: true }).click()
       await pause(page)
       assert.equal(await page.locator('.dental-desktop-flow').getAttribute('data-dental-step'), '3')
+      await waitForAssets(page)
       const submit = page.getByRole('button', { name: '提交评估 · 获取书面报价', exact: true })
       await submit.click()
       await page.getByRole('alert').filter({ hasText: '请至少上传一份' }).waitFor({ state: 'visible' })
@@ -169,6 +175,7 @@ async function main() {
     // Preserve the real multipart contract without writing a test case to the server.
     const page = activePage = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
     page.setDefaultTimeout(5000)
+    page.setDefaultNavigationTimeout(45000)
     let calls = 0, payloads = [], mode = 'failure', release
     await page.route('**/api/dental-assessments', async route => {
       if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'POST,OPTIONS', 'access-control-allow-headers': '*' } })
@@ -207,6 +214,7 @@ async function main() {
     await page.close()
     const motion = activePage = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' })
     motion.setDefaultTimeout(5000)
+    motion.setDefaultNavigationTimeout(45000)
     await motion.goto(url, { waitUntil: 'networkidle' }); await motion.evaluate(() => document.fonts.ready)
     const card = motion.locator(selector(projects[0])), detail = motion.locator('#dental-details-implant')
     await card.scrollIntoViewIfNeeded()

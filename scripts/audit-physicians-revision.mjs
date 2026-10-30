@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { access, readFile, stat } from 'node:fs/promises'
+import { access, readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { join } from 'node:path'
 
@@ -38,6 +38,7 @@ assert.ok(qa.nMAE < .01); assert.ok(qa.changedPixelRatio < .01); assert.deepEqua
 const behavior = JSON.parse(await readFile(join(evidenceDir, 'behavior-qa.json'), 'utf8'))
 assert.equal(behavior.filterResults.length, 6); assert.equal(behavior.dialogResults.length, 5); assert.equal(behavior.hospitalEntry, true); assert.equal(behavior.keyboardMenu, true); assert.deepEqual(behavior.errors, [])
 for (const file of ['local-1440.png','local-1440-2x.png','revision-2026-10-29-figma.png','source-qa.json','behavior-qa.json']) await access(join(evidenceDir, file))
-const changed = Math.max(...await Promise.all(['src/views/patient/PhysicianView.vue','src/data/physicianFigmaSource.ts','src/components/layout/PatientLayout.vue','src/components/layout/PatientHeader.vue','src/data/hospitalFigmaSource.ts'].map(async file => (await stat(join(root,file))).mtimeMs)))
-for (const file of ['local-1440.png','source-qa.json','behavior-qa.json']) assert.ok((await stat(join(evidenceDir,file))).mtimeMs >= changed, `${file}: evidence predates implementation`)
-console.log(`physicians source gate passed: 306 Layers/Dev Mode mappings, ${assets.assets.length} exact assets, <1% desktop comparison and filter/dialog/navigation behavior evidence`)
+console.log(`physicians historical baseline passed: 306 Layers/Dev Mode mappings, ${assets.assets.length} exact assets, <1% five-record source comparison and behavior evidence`)
+// The user replaced the five sample records with the archived 177-doctor DOCX.
+// Current implementation freshness and all doctors are checked by this gate.
+await import('./audit-physician-directory.mjs')

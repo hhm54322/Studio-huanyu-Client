@@ -25,6 +25,7 @@ import storyMobileSource from '../../docs/figma-source/home/story-mobile/source-
 import navigationMobileSource from '../../docs/figma-source/home/navigation-mobile/source-tree-2026-10-19.json'
 import navigationMobileLanguageSource from '../../docs/figma-source/home/navigation-mobile-language/source-tree-2026-10-19.json'
 import currentHeroSource from '../../docs/figma-source/home/revision-2026-10-28/hero/source-tree-2026-10-28.json'
+import storyPhotoSources from '../../docs/figma-source/home/story-carousel/source-trees-2026-10-29.json'
 
 function indexTree(node: HomeSourceNodeData, map = new Map<string, HomeSourceNodeData>()) {
   map.set(node.id, node)
@@ -37,6 +38,9 @@ indexTree(strength02Source.root, homeDesktopNodes)
 indexTree(strength03Source.root, homeDesktopNodes)
 for (const source of [hero01Source,hero02Source,hero03Source,storyDetailSource,storyDetailScrollSource,why01Source,why02Source,why03Source,why04Source,why05Source,why06Source]) indexTree(source.root, homeDesktopNodes)
 indexTree(currentHeroSource.root, homeDesktopNodes)
+for (const source of storyPhotoSources.sets) indexTree(source.root, homeDesktopNodes)
+export const homeStoryPhotoIds = ['1466:843', '1412:5862', '1466:848', '1466:850', '1466:852']
+export const homeStoryDetailPhotoIds = ['1407:20', '1466:856', '1466:865', '1466:866', '1466:867']
 export const homeMobileNodes = indexTree(mobileSource.root)
 for (const source of [whyMobile01Source,whyMobile02Source,whyMobile03Source,whyMobile04Source,whyMobile05Source,whyMobile06Source,storyMobileSource,navigationMobileSource,navigationMobileLanguageSource]) indexTree(source.root, homeMobileNodes)
 export const homeSourceText = (id:string) => (homeDesktopNodes.get(id) || homeMobileNodes.get(id))?.text || ''

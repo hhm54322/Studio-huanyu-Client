@@ -16,6 +16,8 @@ import {
   UploadCloud,
 } from 'lucide-vue-next'
 import { dentalCurrentDoctors, dentalStepRails } from '@/data/dentalFigmaSource'
+import { dentalPhysicianTitleMatches } from '@/data/dentalPhysicianData'
+import { displayDentalExperience } from '@/data/dentalPhysicianSource'
 import { createDentalAssessment, getSubmissionErrorMessage } from '@/services/patientSubmissions'
 const DentalDoctorSourceDialog=defineAsyncComponent(()=>import('@/components/common/DentalDoctorSourceDialog.vue'))
 const DentalDesktopFlow=defineAsyncComponent(()=>import('@/components/common/DentalDesktopFlow.vue'))
@@ -115,6 +117,7 @@ const sortMode = ref<'recommended' | 'experience' | 'cases' | 'rating' | 'price'
 const selectedDoctor = ref<DentalDoctor | null>(null)
 const desktopDoctorTab=ref(0)
 const institutionOpen=ref(false)
+const institutionDoctorId=ref<number|null>(null)
 const quoteDoctorId=ref<number|null>(null)
 const doctorTab = ref<'profile' | 'cases' | 'reviews'>('profile')
 const modalCloseButton = ref<HTMLButtonElement | null>(null)
@@ -131,7 +134,7 @@ const filteredDoctors = computed(() => {
   const filtered = (desktopDoctors.value?dentalCurrentDoctors:doctors).filter((doctor) => {
     const current = appliedFilters.value
     if (current.city && doctor.city !== current.city) return false
-    if (current.title && !doctor.title.includes(current.title)) return false
+    if (!dentalPhysicianTitleMatches(doctor.title, current.title)) return false
     if (current.experience === '20年以上' && Number(doctor.experience.match(/\d+/)?.[0]||0)<20) return false
     if (current.experience === '10-20年' && (Number(doctor.experience.match(/\d+/)?.[0]||0)<10||Number(doctor.experience.match(/\d+/)?.[0]||0)>20)) return false
     if (current.background && !doctor.background.includes(current.background)) return false
@@ -267,7 +270,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <DentalDesktopFlow v-if="desktopDoctors" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="institutionOpen=true" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
+  <DentalDesktopFlow v-if="desktopDoctors" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
   <div v-else class="dental-page" :class="`dental-page--step-${activeStep}`">
     <section class="dental-hero" :class="`dental-hero--step-${activeStep}`">
       <div class="dental-hero__backdrop" />
@@ -324,7 +327,7 @@ onBeforeUnmount(() => {
         <div class="dental-doctor-grid">
           <article v-for="doctor in filteredDoctors" :key="doctor.id" class="dental-doctor-card" :class="{ selected: doctor.id === 1 }" data-reveal>
             <div class="dental-doctor-card__top"><div class="dental-doctor-card__portrait"><img :src="doctor.portrait" :alt="doctor.name" /></div><div><h3>{{ doctor.name }}</h3><span>{{ doctor.title }}</span><small><MapPin class="h-3.5 w-3.5" />{{ doctor.hospital }}</small></div><span class="dental-doctor-card__rating"><Star class="h-3.5 w-3.5" />{{ doctor.rating }}</span></div>
-            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ doctor.experience }}</span><span><Globe2 class="h-4 w-4" />{{ doctor.languages.join(' / ') }}</span></div>
+            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ displayDentalExperience(doctor.experience) }}</span><span><Globe2 class="h-4 w-4" />{{ doctor.languages.join(' / ') }}</span></div>
             <p>{{ doctor.specialty }}</p>
             <div class="dental-doctor-card__tags"><span v-for="tag in doctor.tags" :key="tag">{{ tag }}</span></div>
             <button type="button" class="dental-doctor-card__button" @click="openDoctor(doctor)">了解更多 <ArrowRight class="h-4 w-4" /></button>
@@ -350,7 +353,7 @@ onBeforeUnmount(() => {
           <section ref="modalPanel" class="dental-doctor-modal" :class="`dental-doctor-modal--${doctorTab}`" role="dialog" aria-modal="true" aria-label="医生详情">
             <button ref="modalCloseButton" type="button" class="dental-modal-close" aria-label="关闭医生详情" @click="closeDoctor"><img src="/images/figma/doctor-modal-close.svg" alt="" /></button>
             <h2>医生详情</h2>
-            <header class="dental-modal-profile"><div class="dental-modal-profile__portrait"><img :src="selectedDoctor.portrait" :alt="selectedDoctor.name" /></div><div class="dental-modal-profile__details"><div class="dental-modal-profile__identity"><h3>{{ selectedDoctor.name }}</h3><p>{{ selectedDoctor.title }}</p></div><span><img src="/images/figma/doctor-modal-hospital.svg" alt="" />{{ selectedDoctor.hospital }}</span><small><img src="/images/figma/doctor-modal-experience.svg" alt="" />{{ selectedDoctor.experience }}</small></div></header>
+            <header class="dental-modal-profile"><div class="dental-modal-profile__portrait"><img :src="selectedDoctor.portrait" :alt="selectedDoctor.name" /></div><div class="dental-modal-profile__details"><div class="dental-modal-profile__identity"><h3>{{ selectedDoctor.name }}</h3><p>{{ selectedDoctor.title }}</p></div><span><img src="/images/figma/doctor-modal-hospital.svg" alt="" />{{ selectedDoctor.hospital }}</span><small><img src="/images/figma/doctor-modal-experience.svg" alt="" />{{ displayDentalExperience(selectedDoctor.experience) }}</small></div></header>
             <nav class="dental-modal-tabs"><button v-for="tab in ([['profile', '医生简介'], ['cases', '案例集'], ['reviews', '患者评价']] as const)" :key="tab[0]" type="button" :class="{ active: doctorTab === tab[0] }" @click="doctorTab = tab[0]">{{ tab[1] }}<template v-if="doctorTab !== 'profile'"><span v-if="tab[0] === 'cases'">（32）</span><span v-if="tab[0] === 'reviews'">（128）</span></template></button></nav>
             <div v-if="doctorTab === 'profile'" class="dental-modal-panel"><p>{{ selectedDoctor.bio ?? `${selectedDoctor.name}，${selectedDoctor.title}，从事口腔临床工作${selectedDoctor.experience.replace('经验', '')}。擅长复杂种植、数字化修复和跨境患者治疗方案设计，为国际患者提供清晰的治疗路径。` }}</p><h4>专业资质</h4><ul><li v-for="credential in (selectedDoctor.credentials ?? ['医师执业证书（可查）', '主任医师职称', '国际口腔种植学会会员', '多语种医疗沟通经验'])" :key="credential"><img src="/images/figma/doctor-modal-credential.svg" alt="" />{{ credential }}</li></ul></div>
             <div v-else-if="doctorTab === 'cases'" class="dental-modal-list dental-modal-list--cases"><article><b>半口种植 · 数字化导板</b><p>美国患者，半口缺牙多年。采用数字化导板精准种植，2次到诊完成。整体费用较美国节省约65%。</p><small>上海 · 2025.08 · 已匿名授权</small></article><article><b>单颗后牙种植</b><p>新加坡患者，后牙缺失伴骨量不足。完成植骨+种植，全程1次到诊+远程复诊。</p><small>上海 · 2025.05 · 已匿名授权</small></article><article><b>美学区种植修复</b><p>菲律宾患者，上颌半口牙缺失伴重度骨吸收。完成4枚植体半口即刻负重，全程2次到诊+远程复诊。</p><small>上海 · 2025.03 · 已匿名授权</small></article></div>
@@ -360,7 +363,7 @@ onBeforeUnmount(() => {
       </Transition>
     </Teleport>
   </div>
-  <DentalDoctorSourceDialog v-if="institutionOpen&&desktopDoctors" institution @close="institutionOpen=false" />
+  <DentalDoctorSourceDialog v-if="institutionOpen&&desktopDoctors" institution :doctor="dentalCurrentDoctors.find(doctor=>doctor.id===institutionDoctorId)" @close="institutionOpen=false" />
   <DentalDoctorSourceDialog v-if="selectedDoctor&&desktopDoctors" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
 </template>
 

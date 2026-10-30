@@ -499,7 +499,7 @@ onBeforeUnmount(() => {
     <HomeFigmaSection id="home-cta" desktop-id="1412:6635" mobile-id="1528:771" label="开启来华就医之旅" :actions="homeFigmaActions" :texts="{ '1412:6652': '预约专家面诊 $200起' }" @activate="activateFigmaAction" />
 
     <HomeSourceDialog v-if="whyModalOpen" :desktop-panel="whyDesktopPanels[selectedWhyIndex]!" :mobile-panel="whyMobilePanels[selectedWhyIndex]!" :desktop-title="whyDesktopTitles[selectedWhyIndex]!" :mobile-title="whyMobileTitles[selectedWhyIndex]!" :actions="whySourceActions" @close="closeWhyDetail" />
-    <HomeSourceDialog v-if="storyModalOpen" desktop-panel="1407:8" mobile-panel="1543:42" desktop-title="1407:14" mobile-title="1543:134" :actions="storySourceActions" scroll-node="1407:28" @close="closeStoryDetail" />
+    <HomeSourceDialog v-if="storyModalOpen" desktop-panel="1407:8" mobile-panel="1543:42" desktop-title="1407:14" mobile-title="1543:134" :actions="storySourceActions" scroll-node="1407:28" photo-carousel @close="closeStoryDetail" />
     <HomeExpertDialog v-if="selectedExpert!==null" :expert="selectedExpert" @close="selectedExpert=null" />
   </div>
 </template>

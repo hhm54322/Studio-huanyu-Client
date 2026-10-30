@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HomeSourceNode from './HomeSourceNode.vue'
 import TrustArticleDialog from './TrustArticleDialog.vue'
 import { sourceAtOrigin } from '@/data/hospitalFigmaSource'
+import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 import { trustSource, trustTravel, trustAftercare, trustAssuranceState, trustNode, trustNodes, trustDescendants, trustArticles, trustAssurances, trustFaqRows, trustActions, type TrustArticleKey } from '@/data/trustFigmaSource'
 const width = ref(innerWidth)
 // Keep reading state in the route owner, so a responsive branch switch does
@@ -38,7 +39,7 @@ const attributes = computed(() => {
   return result
 })
 const styles = computed(() => {
-  const result: Record<string,string>={}
+  const result: Record<string,string>=figmaFullBleedStyles(trustSource,width.value,['143:2531','143:2937'])
   result['204:5638']=`transform:translateY(${toolkitOffset.value}px);`
   trustAssurances.forEach((id,i) => {
     const expandedHeight = i === 1 ? 350 : 374

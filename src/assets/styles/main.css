@@ -63,6 +63,9 @@
   background: #fff;
 }
 
+html:has(.patient-shell) { scrollbar-width: none; }
+html:has(.patient-shell)::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 .hy-container {
   width: min(1180px, calc(100% - 40px));
   margin-inline: auto;

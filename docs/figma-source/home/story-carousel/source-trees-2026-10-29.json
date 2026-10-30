@@ -1,0 +1,209 @@
+{
+  "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+  "sets": [
+    {
+      "sourceFrame": "1412:5862",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1412:5862",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 389.3333435058594,
+        "height": 400,
+        "x": -2707,
+        "y": 4889,
+        "visible": true,
+        "css": "display: flex;\nwidth: 389.333px;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:389.33334px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+        "layoutCss": "display: flex;\nwidth: 389.333px;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:400px;overflow:hidden;",
+        "text": "",
+        "children": [
+          {
+            "id": "1466:846",
+            "name": "9ff30a01263ebe520f20b800d8315d03 1",
+            "type": "ROUNDED_RECTANGLE",
+            "width": 600,
+            "height": 400,
+            "x": -105,
+            "y": 0,
+            "visible": true,
+            "css": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-19339d674d0e9374f383824c904dba523cf67d6f.webp) 50% / cover no-repeat;\nposition:absolute;left:-105px;top:0px;right:auto;bottom:auto;width:600px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-19339d674d0e9374f383824c904dba523cf67d6f.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-105px;top:0px;right:auto;bottom:auto;width:600px;height:400px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "sourceFrame": "1466:848",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:848",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 389.3333435058594,
+        "height": 400,
+        "x": -2707,
+        "y": 5342,
+        "visible": true,
+        "css": "display: flex;\nwidth: 389.333px;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:389.33334px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+        "layoutCss": "display: flex;\nwidth: 389.333px;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:400px;overflow:hidden;",
+        "text": "",
+        "children": [
+          {
+            "id": "1466:849",
+            "name": "9ff30a01263ebe520f20b800d8315d03 1",
+            "type": "ROUNDED_RECTANGLE",
+            "width": 600,
+            "height": 400,
+            "x": -105,
+            "y": 0,
+            "visible": true,
+            "css": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-3bc1b8c7d9c30be819a7219bd0f85883547ea5da.webp) 50% / cover no-repeat;\nposition:absolute;left:-105px;top:0px;right:auto;bottom:auto;width:600px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-3bc1b8c7d9c30be819a7219bd0f85883547ea5da.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-105px;top:0px;right:auto;bottom:auto;width:600px;height:400px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "sourceFrame": "1466:850",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:850",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 389.3333435058594,
+        "height": 400,
+        "x": -2707,
+        "y": 5814,
+        "visible": true,
+        "css": "display: inline-flex;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:389.33334px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+        "layoutCss": "display: inline-flex;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:400px;overflow:hidden;",
+        "text": "",
+        "children": [
+          {
+            "id": "1466:851",
+            "name": "9ff30a01263ebe520f20b800d8315d03 1",
+            "type": "ROUNDED_RECTANGLE",
+            "width": 600,
+            "height": 400,
+            "x": -80,
+            "y": 0,
+            "visible": true,
+            "css": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-1d8fab748061e292db3a9eec868b8c8ca7adca28.webp) 50% / cover no-repeat;\nposition:absolute;left:-80px;top:0px;right:auto;bottom:auto;width:600px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-1d8fab748061e292db3a9eec868b8c8ca7adca28.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-80px;top:0px;right:auto;bottom:auto;width:600px;height:400px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "sourceFrame": "1466:852",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:852",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 389.3333435058594,
+        "height": 400,
+        "x": -2707,
+        "y": 6286,
+        "visible": true,
+        "css": "display: inline-flex;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:389.33334px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;overflow:hidden;",
+        "layoutCss": "display: inline-flex;\nheight: 400px;\nflex-direction: column;\njustify-content: center;\nalign-items: center;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-a5d07ae577097df13bd0a278829f2fb60460e98e.webp) -127.992px 0px / 154.11% 100% no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:400px;overflow:hidden;",
+        "text": "",
+        "children": [
+          {
+            "id": "1466:853",
+            "name": "9ff30a01263ebe520f20b800d8315d03 1",
+            "type": "ROUNDED_RECTANGLE",
+            "width": 600,
+            "height": 400,
+            "x": -16,
+            "y": 0,
+            "visible": true,
+            "css": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-a8e31e031b60e22a7d9d3116bac203ddf7f8269e.webp) 50% / cover no-repeat;\nposition:absolute;left:-16px;top:0px;right:auto;bottom:auto;width:600px;height:400px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "width: 600px;\nheight: 400px;\nflex-shrink: 0;\naspect-ratio: 3/2;\nbackground: url(/images/figma/home-revision/story-carousel/image-a8e31e031b60e22a7d9d3116bac203ddf7f8269e.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:-16px;top:0px;right:auto;bottom:auto;width:600px;height:400px;",
+            "text": "",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "sourceFrame": "1466:856",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:856",
+        "name": "d602d9897a0a03b944e15587ed192e53 2",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 404,
+        "height": 269.3333435058594,
+        "x": -690,
+        "y": 5484,
+        "visible": true,
+        "css": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-19339d674d0e9374f383824c904dba523cf67d6f.webp) 50% / cover no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:269.33334px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-19339d674d0e9374f383824c904dba523cf67d6f.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:269.33334px;",
+        "text": "",
+        "children": []
+      }
+    },
+    {
+      "sourceFrame": "1466:865",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:865",
+        "name": "d602d9897a0a03b944e15587ed192e53 3",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 404,
+        "height": 269.3333435058594,
+        "x": -276,
+        "y": 5484,
+        "visible": true,
+        "css": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-3bc1b8c7d9c30be819a7219bd0f85883547ea5da.webp) 50% / cover no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:269.33334px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-3bc1b8c7d9c30be819a7219bd0f85883547ea5da.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:269.33334px;",
+        "text": "",
+        "children": []
+      }
+    },
+    {
+      "sourceFrame": "1466:866",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:866",
+        "name": "d602d9897a0a03b944e15587ed192e53 4",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 404,
+        "height": 269.3333435058594,
+        "x": 138,
+        "y": 5484,
+        "visible": true,
+        "css": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-1d8fab748061e292db3a9eec868b8c8ca7adca28.webp) 50% / cover no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:269.33334px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-1d8fab748061e292db3a9eec868b8c8ca7adca28.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:269.33334px;",
+        "text": "",
+        "children": []
+      }
+    },
+    {
+      "sourceFrame": "1466:867",
+      "sourceSHA256": "7ed9a18debe13572cfdbe58e2721d265e16395077040615b95a8116b6f8ee9bf",
+      "root": {
+        "id": "1466:867",
+        "name": "d602d9897a0a03b944e15587ed192e53 5",
+        "type": "ROUNDED_RECTANGLE",
+        "width": 404,
+        "height": 269.3333435058594,
+        "x": 552,
+        "y": 5484,
+        "visible": true,
+        "css": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-d10066eed8f123ddb80a6a6b4ab4becdc2d5de84.webp) 50% / cover no-repeat;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:404px;height:269.33334px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "width: 404px;\nheight: 269.333px;\naspect-ratio: 3/2;\nborder-radius: 24px;\nbackground: url(/images/figma/home-revision/story-carousel/image-d10066eed8f123ddb80a6a6b4ab4becdc2d5de84.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:269.33334px;",
+        "text": "",
+        "children": []
+      }
+    }
+  ]
+}

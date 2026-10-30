@@ -2,14 +2,17 @@
 import { computed } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData, type HomeSourceAction } from './HomeSourceNode.vue'
 import { sourceAtOrigin } from '@/data/hospitalFigmaSource'
+import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 const props=defineProps<{
   node:HomeSourceNodeData; width:number; phone?:boolean; fluid?:boolean; height?:number
   actions?:Record<string,HomeSourceAction>; styles?:Record<string,string>; texts?:Record<string,string>
   attributes?:Record<string,Record<string,string|number|boolean>>; hidden?:string[]; label?:string
+  fullBleed?:string[]
 }>()
 const emit=defineEmits<{activate:[action:string,event:MouseEvent]}>()
 const root=computed(()=>sourceAtOrigin(props.node))
 const scale=computed(()=>props.phone?1:Math.min(1,props.width/(props.node.width || 1440)))
+const sourceStyles=computed(()=>({ ...(!props.phone ? figmaFullBleedStyles(props.node,props.width,props.fullBleed||[]) : {}),...props.styles }))
 const baselineNodes=computed(()=>{
   const result:string[]=[]
   const visit=(node:HomeSourceNodeData)=>{if(node.textLines)result.push(node.id);node.children.forEach(visit)}
@@ -20,7 +23,7 @@ const baselineNodes=computed(()=>{
 <template>
   <section class="hospital-source-canvas" :class="{'is-phone':phone,'is-fluid':fluid}" :aria-label="label" :style="!fluid?{height:`${(height??node.height)*scale}px`}:undefined">
     <div class="hospital-source-canvas__inner" :style="phone?undefined:{width:`${node.width}px`,height:`${height??node.height}px`,transform:`translateX(-50%) scale(${scale})`}">
-      <HomeSourceNode :node="root" root :fluid="fluid" :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :preserve-text-lines="width===375" @activate="(action,event)=>emit('activate',action,event)">
+      <HomeSourceNode :node="root" root :fluid="fluid" :actions="actions" :styles="sourceStyles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :preserve-text-lines="width===375" @activate="(action,event)=>emit('activate',action,event)">
         <template #after="data"><slot name="after" v-bind="data" /></template>
         <template #radar="data"><slot name="radar" v-bind="data" /></template>
       </HomeSourceNode>

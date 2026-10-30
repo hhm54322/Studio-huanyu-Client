@@ -70,7 +70,7 @@ async function autoplay(browser) {
   await page.clock.fastForward(7000)
   assert.equal(await state(),hoverState,'Hover did not pause story')
   await page.mouse.move(0,0)
-  await root.locator('button[aria-label="查看第1个患者故事"]').focus()
+  await root.locator('button[aria-label="查看第1张患者照片"]').focus()
   const focused=await state()
   await page.clock.fastForward(7000)
   assert.equal(await state(),focused,'Focus did not pause story')

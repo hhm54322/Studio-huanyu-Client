@@ -204,7 +204,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
       'patient-header--open': menuOpen,
     }"
   >
-    <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" label="主导航" :actions="homeFigmaActions" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
+    <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" label="主导航" :actions="homeFigmaActions" :styles="headerWidth > 700 ? { '1523:75':'background:transparent;' } : undefined" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
     <div v-if="route.path === '/' && headerWidth > 700 && desktopServicesOpen" id="home-services-menu" class="home-desktop-services" :style="desktopServicesStyle">
       <HomeSourceNode :node="homeDesktopNodes.get('1524:26')!" root :actions="homeFigmaActions" />
     </div>

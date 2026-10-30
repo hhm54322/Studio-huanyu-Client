@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-10-30T14:12:20.500Z",
+  "sourceCache": "artifacts/figma-dental-2026-10-28/original-images.zip",
+  "assets": [
+    {
+      "nodeId": "2294:7091",
+      "originalImageHash": "6c39aa3f0dc96d05e237ff0fb5e000bb77e1c99b",
+      "originalSHA256": "412d636ad5cf4f6950fee8221a208c4801734aa897b90ec83f1fb2c96ee3066f",
+      "display": {
+        "width": 80,
+        "height": 80,
+        "radius": 16,
+        "fit": "cover",
+        "position": "center",
+        "from": "matching/native-parameters-2026-10-28.json and matching/dev-mode-2026-10-28.json"
+      },
+      "width": 160,
+      "height": 160,
+      "format": "webp",
+      "quality": 92,
+      "bytes": 9798,
+      "sha256": "b647c97e2ea4eefc79f7f22d284a12c3d77697a266704c186f656126c3357913",
+      "projectPath": null,
+      "reason": "Precompute native 80px cover at DPR2 from verified original; avoids browser minification blur, no screenshot raster used. Production usage is disabled until a physician detail contains a real authorised case collection.",
+      "productionUsage": false
+    },
+    {
+      "nodeId": "2294:7092",
+      "originalImageHash": "bafaa0021c58d76a43f7d2761e8c9bed0263c785",
+      "originalSHA256": "41d22c0c83d711c78049362f39f61505f5c00cd5168dee9d8b7e141b1e67f010",
+      "display": {
+        "width": 80,
+        "height": 80,
+        "radius": 16,
+        "fit": "cover",
+        "position": "center",
+        "from": "matching/native-parameters-2026-10-28.json and matching/dev-mode-2026-10-28.json"
+      },
+      "width": 160,
+      "height": 160,
+      "format": "webp",
+      "quality": 92,
+      "bytes": 9430,
+      "sha256": "ac3789f6850d62f4c7afbf4f1ef4bcea775efe962326a22bd1286bfe28504d47",
+      "projectPath": null,
+      "reason": "Precompute native 80px cover at DPR2 from verified original; avoids browser minification blur, no screenshot raster used. Production usage is disabled until a physician detail contains a real authorised case collection.",
+      "productionUsage": false
+    }
+  ],
+  "status": "source-only; Figma illustrative assets are retained for design provenance and are not production physician data"
+}

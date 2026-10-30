@@ -15,7 +15,7 @@ const baselines = computed(() => dentalDescendants(props.node).filter(node => no
 <template>
   <div class="dental-source-canvas" :style="{ height: `${(height ?? node.height) * scale}px` }">
     <div class="dental-source-canvas__inner" :style="{ width: `${node.width}px`, height: `${height ?? node.height}px`, transform: `translateX(-50%) scale(${scale})` }">
-      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" preserve-text-lines @activate="(action, event) => emit('activate', action, event)">
+      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" :baseline-scale="scale" preserve-text-lines @activate="(action, event) => emit('activate', action, event)">
         <template #after="data"><slot name="after" v-bind="data" /></template>
       </HomeSourceNode>
     </div>

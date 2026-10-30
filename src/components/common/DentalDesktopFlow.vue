@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import DentalSourceCanvas from './DentalSourceCanvas.vue'
-import { dentalActions, dentalDoctorCardAliases, dentalDoctorCardSource, dentalDoctorNodes, dentalFilterControls, dentalMatchingSource, dentalNode, dentalProjectNodes, dentalSources } from '@/data/dentalFigmaSource'
+import { dentalActions, dentalCompleteSource, dentalDescendants, dentalFilterControls, dentalNode, dentalProjectNodes, dentalSources } from '@/data/dentalFigmaSource'
+import { createDentalPhysicianMatching } from '@/data/dentalPhysicianSource'
+import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 type Filters = { city: string; title: string; experience: string; background: string; language: string; price: string }
 const props = defineProps<{
   step: 1 | 2 | 3; width: number; selectedProject: string; expandedProjects: Set<string>
@@ -12,10 +14,19 @@ const props = defineProps<{
 const emit = defineEmits<{
   step: [step: 1 | 2 | 3]; project: [id: string]; doctor: [id: number]; filter: []; reset: []; sort: [sort: 'recommended' | 'experience' | 'rating' | 'price']
   'update-filter': [key: keyof Filters, value: string]; 'update-form': [key: 'budget' | 'visitTime' | 'notes', value: string]
-  files: [event: Event]; submit: []; retry: []; consultation: []; institution: []; 'doctor-cases':[id:number]; quote:[id:number]
+  files: [event: Event]; submit: []; retry: []; consultation: []; institution: [id: number]; 'doctor-cases':[id:number]; quote:[id:number]
 }>()
 const root = ref<HTMLElement | null>(null)
-const source = computed(() => props.step === 2 ? dentalMatchingSource : dentalSources[props.step === 1 ? 'project' : 'upload']!.root)
+const matching = computed(() => createDentalPhysicianMatching(props.filteredDoctorIds))
+const source = computed(() => {
+  if (props.step === 2) return matching.value.root
+  if (props.step === 3) return dentalSources.upload!.root
+  const tree = structuredClone(dentalSources.project!.root)
+  const nodes = new Map(dentalDescendants(tree).map(node => [node.id, node]))
+  nodes.get('2294:8280')!.children.push(...structuredClone(dentalCompleteSource.projectCards))
+  nodes.get('2294:8241')!.children.push(structuredClone(dentalCompleteSource.footer))
+  return tree
+})
 const detailHeights = ref<Record<string, number>>({})
 let observer: ResizeObserver | undefined
 const detailElements = new Map<Element, string>()
@@ -46,16 +57,18 @@ const projects = computed(() => dentalProjectNodes.map((id, index) => {
   return { id, node, content, detail, data: props.projects[index]!, summaryHeight, extraHeight, expanded, height: node.height - (detail?.height ?? 0) + (expanded ? extraHeight : 0) }
 }))
 const projectLayout = computed(() => {
-  const next=dentalNode('2294:8336')
-  // The source action sits in the middle column. Preserve its resting position
-  // and let that column's independently expanded card push it down.
-  const buttonTop=Math.max(next.y,projects.value[1]!.height+24)
-  const height=Math.max(dentalNode('2294:8280').height,...projects.value.map(item=>item.height),buttonTop+next.height)
-  return { height,buttonTop,delta:height-dentalNode('2294:8280').height }
+  const { grid, action } = dentalCompleteSource
+  const rowHeights = Array.from({ length: Math.ceil(projects.value.length / grid.columns) }, (_, row) =>
+    Math.max(...projects.value.slice(row * grid.columns, (row + 1) * grid.columns).map(item => item.height)))
+  const rowTops = rowHeights.map((_, row) => rowHeights.slice(0, row).reduce((sum, height) => sum + height + grid.rowGap, 0))
+  const gridHeight = rowTops[rowTops.length - 1]! + rowHeights[rowHeights.length - 1]!
+  const buttonTop = gridHeight + action.gap
+  const contentHeight = dentalNode('2294:8250').y + dentalNode('2294:8274').y + buttonTop + action.height + action.bottomGap
+  return { gridHeight, rowTops, buttonTop, contentHeight, height: contentHeight + dentalCompleteSource.footer.height }
 })
-const canvasHeight = computed(() => source.value.height + (props.step === 1 ? projectLayout.value.delta : 0))
+const canvasHeight = computed(() => props.step === 1 ? projectLayout.value.height : source.value.height)
 const actions = computed(() => {
-  const result = { ...dentalActions }
+  const result = { ...dentalActions, ...(props.step === 2 ? matching.value.actions : {}) }
   dentalProjectNodes.forEach((id, index) => { result[id] = { action: `project:${props.projects[index]!.id}`, label: props.projects[index]!.title } })
   return result
 })
@@ -68,15 +81,13 @@ const texts = computed(() => {
   return result
 })
 const attributes = computed(() => {
-  const result: Record<string, Record<string, string | number | boolean>> = {}
-  for (const [id, sourceId] of Object.entries(dentalDoctorCardAliases)) result[id] = { 'data-figma-source-node': sourceId }
+  const result: Record<string, Record<string, string | number | boolean>> = props.step === 2 ? { ...matching.value.attributes } : {}
   projects.value.forEach(project => {
     result[project.id] = { 'aria-expanded': project.expanded, 'aria-controls': `dental-details-${project.data.id}`, 'aria-pressed': props.selectedProject === project.data.id, 'data-project': project.data.id, class: 'dental-live-project' }
     if (project.detail) result[project.detail.id] = { id: `dental-details-${project.data.id}`, 'aria-hidden': !project.expanded, class: 'dental-live-detail' }
     const arrow = project.content.children.find(child => child.y === 96)?.children.find(child => child.svg)
     if (arrow) result[arrow.id] = { class: 'dental-live-arrow' }
   })
-  dentalDoctorNodes.forEach(doctor => { result[doctor.node] = { ...result[doctor.node], 'data-doctor': doctor.id, 'data-figma-component': dentalDoctorCardSource.frame, class: 'dental-doctor-card__button' } })
   sortNodes.forEach((id, index) => { result[id] = { 'aria-pressed': props.sort === sorts[index] } })
   result['2294:8114'] = { disabled: props.status === 'submitting' || props.submitted, 'aria-busy': props.status === 'submitting' }
   result['2294:8078'] = { class: 'dental-live-picker', 'data-upload-state': props.status }
@@ -86,14 +97,18 @@ const sorts = ['recommended', 'experience', 'rating', 'price'] as const
 const sortNodes = ['2294:7047', '2294:7049', '2294:7051', '2294:7053']
 const paint = (id: string) => dentalNode(id).css.split('position:absolute;')[0]!.split('\n').filter(line => /^(?:border|background|box-shadow)/.test(line.trim())).join(';')
 const styles = computed(() => {
-  const result: Record<string, string> = {}
+  const backgrounds = dentalDescendants(source.value).filter(node => node.width === 1440 && (node.name === 'Footer' || node.name === 'Section' && node.y === 0 && node.css.includes('url(')))
+  const result: Record<string, string> = figmaFullBleedStyles(source.value, props.width, backgrounds.map(node => node.id))
   if (props.step === 1) {
-    const delta = projectLayout.value.delta
-    for (const id of ['2294:8240', '2294:8241', '2294:8242', '2294:8250', '2294:8274']) result[id] = `height:${dentalNode(id).height + delta}px;`
-    result['2294:8280'] = `height:${projectLayout.value.height}px;`
-    result['2294:8336'] = `top:${projectLayout.value.buttonTop}px;`
+    for (const id of ['2294:8240', '2294:8241']) result[id] = `height:${projectLayout.value.height}px;`
+    result['2294:8242'] = `height:${projectLayout.value.contentHeight}px;`
+    result['2294:8250'] = `height:${projectLayout.value.contentHeight - dentalNode('2294:8250').y}px;`
+    result['2294:8274'] = `height:${projectLayout.value.buttonTop + dentalCompleteSource.action.height}px;`
+    result['2294:8280'] = `height:${projectLayout.value.gridHeight}px;`
+    result['2294:8336'] = `left:${(dentalCompleteSource.grid.width - dentalCompleteSource.action.width) / 2}px;top:${projectLayout.value.buttonTop}px;`
+    result[dentalCompleteSource.footer.id] = (result[dentalCompleteSource.footer.id] || '') + `top:${projectLayout.value.contentHeight}px;`
     projects.value.forEach((project, index) => {
-      result[project.id] = `top:0px;height:${project.height}px;overflow:hidden;`
+      result[project.id] = `top:${projectLayout.value.rowTops[Math.floor(index / dentalCompleteSource.grid.columns)]}px;height:${project.height}px;overflow:hidden;`
       const originallySelected = project.id === '2294:8302'
       if ((props.selectedProject === project.data.id) !== originallySelected) {
         const selected = props.selectedProject === project.data.id
@@ -114,13 +129,6 @@ const styles = computed(() => {
         result[dentalNode(id).children[0]!.id] = typography(active ? '2294:7048' : '2294:7050')
       }
     })
-    if (props.filtered) {
-      const slots = dentalDoctorNodes.map(doctor => dentalNode(doctor.node)).sort((a, b) => a.y - b.y || a.x - b.x)
-      props.filteredDoctorIds.forEach((id, index) => {
-        const doctor = dentalDoctorNodes.find(item => item.id === id), slot = slots[index]
-        if (doctor && slot) result[doctor.node] = `left:${slot.x}px;top:${slot.y}px;`
-      })
-    }
   }
   if (props.step === 3) {
     if (props.form.budget) result['2294:8095'] = 'visibility:hidden;'
@@ -129,13 +137,13 @@ const styles = computed(() => {
   }
   return result
 })
-const hidden = computed(() => props.step === 2 && props.filtered ? dentalDoctorNodes.filter(doctor => !props.filteredDoctorIds.includes(doctor.id)).map(doctor => doctor.node) : [])
+const hidden: string[] = []
 function activate(action: string) {
   if (action.startsWith('step:')) emit('step', Number(action.slice(5)) as 1 | 2 | 3)
   else if (action.startsWith('project:')) emit('project', action.slice(8))
   else if (action.startsWith('doctor-cases:')) emit('doctor-cases',Number(action.slice(13)))
   else if (action.startsWith('quote:')) emit('quote',Number(action.slice(6)))
-  else if (action === 'institution') emit('institution')
+  else if (action.startsWith('institution:')) emit('institution', Number(action.slice(12)))
   else if (action.startsWith('doctor:')) emit('doctor', Number(action.slice(7)))
   else if (action.startsWith('sort:')) emit('sort', action.slice(5) as 'recommended' | 'experience' | 'rating' | 'price')
   else if (action === 'filter') emit('filter')
