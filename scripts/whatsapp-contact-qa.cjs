@@ -14,7 +14,8 @@ const production = process.env.HUANYU_QA_PRODUCTION_URL || 'http://127.0.0.1:531
 const routes = ['/', '/why-china', '/trust', '/insurance', '/hospitals', '/doctors', '/cases', '/dental', '/diseases-technologies', '/steps', '/steps/toolkit-detail', '/about', '/report']
 const pendingDesignRoutes = ['/equipment', '/visa', '/professional-report']
 const email = 'gh20260826@qq.com'
-const whatsapp = 'https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0'
+const whatsapp = 'https://wa.me/8615855159472'
+const facebook = 'https://www.facebook.com/share/19QEe4vFdQ/?mibextid=wwXIfr'
 
 async function fixed(page) {
   const contact = page.locator('.whatsapp-contact')
@@ -52,6 +53,7 @@ async function main() {
         const mail = page.locator(`a[href="mailto:${email}"]`).filter({ visible:true })
         await mail.first().waitFor({ state:'visible' })
         assert.equal(await page.locator('a[href="mailto:contact@huanyuyunyi.com"],a[href="https://wa.me/864008886688"]').count(), 0)
+        assert.equal(await page.locator('a[href*="Y42GUI2UUXBVB1"]').count(), 0)
         assert.ok((await mail.first().textContent()).includes(email))
         const footerWhatsApp = page.locator(`a[href="${whatsapp}"]`).filter({ visible:true })
         assert.ok(await footerWhatsApp.count() >= 2, `${route}: footer and fixed WhatsApp entry`)
@@ -59,7 +61,26 @@ async function main() {
           assert.equal(await entry.getAttribute('target'), '_blank')
           assert.equal(await entry.getAttribute('rel'), 'noopener noreferrer')
         }
+        const facebookEntry = page.getByRole('link', {name:'Facebook', exact:true}).filter({visible:true})
+        assert.equal(await facebookEntry.count(), 1, `${route}: one footer Facebook entry`)
+        assert.equal(await facebookEntry.getAttribute('href'), facebook)
+        assert.equal(await facebookEntry.getAttribute('target'), '_blank')
+        assert.equal(await facebookEntry.getAttribute('rel'), 'noopener noreferrer')
+        const fbBox = await facebookEntry.boundingBox()
+        assert.ok(fbBox && fbBox.x >= 0 && fbBox.x + fbBox.width <= 1440, `${route}: Facebook is within viewport`)
+        assert.equal(await facebookEntry.evaluate(el => el.parentElement.closest('a') === null), true, `${route}: no nested anchors`)
+        const waEntry = page.locator(`a[href="${whatsapp}"]:not(.whatsapp-contact)`).filter({visible:true}).last()
+        const waLabel = await waEntry.evaluate(el => {
+          const textNodes = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
+          while (textNodes.nextNode()) {
+            if (!textNodes.currentNode.textContent.trim().startsWith('WhatsApp')) continue
+            const range = document.createRange(); range.selectNodeContents(textNodes.currentNode)
+            return range.getBoundingClientRect().toJSON()
+          }
+        })
+        assert.ok(waLabel && fbBox.x >= waLabel.right + 6 && Math.abs(fbBox.y - waLabel.y) < 3, `${route}: social labels align without overlap`)
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+        await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].filter(img => img.getBoundingClientRect().top < innerHeight && img.getBoundingClientRect().bottom > 0).map(img => img.decode().catch(() => {}))) })
         await page.screenshot({path:path.join(out,`${environment}-${route.replaceAll('/','_')||'home'}-footer.png`)})
         if (route === '/') {
           await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }))
@@ -82,7 +103,7 @@ async function main() {
       for (const width of [1024, 1280, 1440, 1920]) { await page.setViewportSize({ width, height: 900 }); await fixed(page) }
       await page.setViewportSize({ width: 375, height: 812 })
       assert.equal(await page.locator('.whatsapp-contact').isVisible(), false)
-      environments.push({ environment, base, routes: checkedRoutes, fixed: true, assistantGap: 12, mobileDeferred: true, modalDoesNotExposeContact: true })
+      environments.push({ environment, base, routes: checkedRoutes, fixed: true, facebook:true, assistantGap: 12, mobileDeferred: true, modalDoesNotExposeContact: true })
       await page.close()
     }
     for (const [input, expected] of [

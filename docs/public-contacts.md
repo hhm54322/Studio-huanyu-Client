@@ -2,10 +2,10 @@
 
 - Scope: user-authorized public contact copy and link override across patient pages. No layout redesign or report-generation change.
 - Company email: `gh20260826@qq.com`, native `mailto:` link (opens the configured email application; does not send automatically).
-- WhatsApp: `https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0`, opens a new tab with `noopener noreferrer`; both footer and desktop fixed CTA use the same configuration.
-- Facebook: user confirmed pending; the supplied email is not used as a Facebook destination.
+- WhatsApp: `+86 158 5515 9472`, linked as `https://wa.me/8615855159472`, opens a new tab with `noopener noreferrer`; both footer and desktop fixed CTA use the same account.
+- Facebook: `https://www.facebook.com/share/19QEe4vFdQ/?mibextid=wwXIfr`, opens a new tab with `noopener noreferrer`. The user confirmed that the share link's destination is intentional.
 - Configuration: `src/data/publicContacts.ts`. Optional release override accepts HTTPS official phone/message links; invalid overrides retain the confirmed account.
-- Immutable Figma source JSON/CSS/assets remain unchanged. `HomeSourceNode` replaces only the exact old public email text; clinical/user content is unaffected.
+- Immutable Figma source JSON/CSS/assets remain unchanged. `HomeSourceNode` replaces only the exact old public email text and appends the user-authorized Facebook contact beside the existing WhatsApp row; clinical/user content is unaffected.
 
 ## Source connection and scope
 
@@ -37,7 +37,7 @@ Home email now binds the entire source list item instead of only its 16px icon. 
 - Mobile/tablet smoke: 320/390/430/768px, home/dental/report, zero horizontal overflow and correct footer email; existing mobile frozen layout retained. `mobile-qa.json`.
 - Compared before/after footer screenshots personally: `footer-comparison.jpg`. Only authorized contact copy/link differences; no layout drift observed.
 - `vue-tsc -b`, direct Vite production build (`20261103220000`) and `git diff --check` passed. Full `pnpm run build` was executed and remains failed due to pre-existing/stale full-page evidence and changed shared-code hashes in the repository's Figma gate; no audit or historical source lock was weakened. This contact regression is not a claim of renewed whole-site Figma acceptance.
-- WhatsApp URL format is official. Direct external account-page verification timed out on current network; account availability cannot be inferred from local href/click tests. Mailbox ownership/deliverability not tested.
+- WhatsApp URL format is official. The account page was verified in the current-session browser as `huanyu china medical tourism`; no message was sent. The Facebook share link was opened and verified as `Sarah Desi Littman | York NY`, matching the user-confirmed destination. Mailbox ownership/deliverability and native-app receipt were not tested.
 
 ## Published result
 
@@ -45,3 +45,14 @@ Home email now binds the entire source list item instead of only its 16px icon. 
 - Public 13-route contact regression passed on complete recheck. Initial homepage connection failure is retained separately; evidence `artifacts/deployment/20261103220000/online-recheck/qa.json`.
 - Both domains' 32 entry refreshes and 37 new asset/shell prewarms completed 100%, checked individually against the submitted URL lists: `cdn-summary.json` (69/69, zero missing).
 - Release checksum, backup and verification details: `docs/deployment.md`.
+
+## Follow-up contact update — 20261103230000
+
+- User confirmed the phone-based WhatsApp account and Facebook share destination. The preceding release used the old WhatsApp message-code URL and had no Facebook entry; those historical release notes above describe that release only.
+- Current-session connection reverified at `2026-11-03T09:03:34.179Z`, IAB `6`, source tab `4`, session `01a0bebd-b6f9-7fd3-bf5a-b79501589b80`. Selected WhatsApp text `1412:6730`; Design, Layers and Properties readable. Before-change connection was verified at `2026-11-03T08:24:38.948Z`.
+- Before-change official export: `/Users/hhm/Downloads/寰宇云医 (38).fig`, exported `2026-11-03T08:30:00.850Z`, SHA256 `3b88c9bc2b7800e916b02be1bcac6493f3293e38d04643ef1285d9bde77d09e2`. Before-delivery export: `/Users/hhm/Downloads/寰宇云医 (39).fig`, exported `2026-11-03T09:05:26.987Z`, SHA256 `aa6a67423deb9ce4ab98e157efa8a264ebecae6410b3069d744f7e130d3ef5db`.
+- Compared all nodes, same-name source candidates, dependencies and image/blob bytes against five actual implementation exports. Reports: `artifacts/contact-social-update-20261103/source/{before,final}-*.json` and summary files. Home/footer, hero, hospital, physician directory, trust, toolkit and dental footer `231:276` contact scopes are unchanged. Existing unrelated dental detail replacements/alternatives remain unresolved. The final export also adds same-name homepage expert-detail candidate `3424:6069` alongside `1432:7917` (徐宇-01专业擅长); recorded for the subsequent design task, not silently adopted or reported as unchanged.
+- Live source WhatsApp row `1412:6726`: `268 × 32`, top padding `12`, gap `8`, icon `16 × 16`; text `1412:6730`: `68 × 20`, SF Pro `14 / 20`, weight `400`, `#9CA3AF`, letter spacing `-0.15px`. Facebook uses the source text style beside the WhatsApp label; original source hierarchy and geometry remain unchanged.
+- Final production preview and development checks passed on 13 patient routes. Personally inspected final home, dental, hospital and toolkit footer screenshots; both social labels align with no overlap. Actual fixed/footer WhatsApp and Facebook clicks opened the expected new-tab URLs (destination intercepted, no messages sent). 12 narrow-screen smoke checks at `320/390/430/768px` passed for home, dental and report; contact labels remain within the viewport. Existing mobile layout remains frozen, including its pre-existing narrow home-footer clipping outside the added contacts.
+- Evidence: `artifacts/contact-social-update-20261103/{qa/qa.json,contact-smoke.json}` and screenshots. `vue-tsc -b`, Vite production build and `git diff --check` passed. Full-site Figma compliance build remains failed on historical/stale page evidence and shared-code hashes; logs retained in `build.log`, no gate or baseline weakened. This update verifies public contacts only, not renewed whole-site design acceptance.
+- Published at `2026-11-03T09:22:16.490205+00:00`; public version `20261103230000`. All 13 public routes passed contact regression with zero script errors. Both domains' 32 entry refreshes and 37 asset/shell prewarms individually completed (69/69). Evidence: `artifacts/deployment/20261103230000/{online/qa.json,cdn-summary.json,published.json}`. Backup and checksums in `docs/deployment.md`.

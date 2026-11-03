@@ -9,6 +9,15 @@
 - 发布目录：`/opt/huanyu/releases/<version>`；回滚备份：`/opt/huanyu/backups/website-before-<version>.tar.gz`。
 - 本次仅更新主站前端；专家工作台、API、数据库和报告生成服务不随此静态发布更新。
 
+## 2026-11-03 Facebook 与 WhatsApp 号码更新（20261103230000）
+
+- 版本 `20261103230000` 已发布至 `https://www.huanyumedical.com/`，完成时间 `2026-11-03T09:22:16.490205+00:00`。页脚和桌面常驻 WhatsApp 统一使用 `https://wa.me/8615855159472`，页脚新增用户确认的 Facebook 分享链接。公司邮箱保持 `gh20260826@qq.com`。
+- WhatsApp 官方页面显示 `huanyu china medical tourism`，中文/英文/换行/来源参数保留至 WhatsApp Web 继续链接。Facebook 分享页实际目的地 `Sarah Desi Littman | York NY` 已由用户确认。没有向任何联系人发送消息。
+- 3,243 个文件上传前后逐项 SHA256 校验通过，发布包 SHA256 `2980039915f74f62a1cd93f9c47cd71c186c37d926bcd14e43c8908cea64e643`。Nginx 配置及 API 健康正常，备份 `/opt/huanyu/backups/website-before-20261103230000.tar.gz`；旧哈希资源保留，依次发布资源、入口和 Worker。后台、数据库和报告生成行为未修改。
+- 开发及最终生产预览 13 路由专项回归、实际点击打开新窗口、12 项窄屏检查通过；公网 13/13 路由检查通过，未见脚本异常或横向溢出。已亲自复核线上首页、牙科、报告页最终截图。新版本公开检查 `artifacts/deployment/20261103230000/online/qa.json`、`version.json`。
+- CDN 两域名共 32 项入口刷新、37 项新版哈希资源及页面壳预热，逐项按 URL 和本次时间戳核对，69/69 显示完成 100%，无缺项。证据 `artifacts/deployment/20261103230000/{cdn-summary.json,cdn-record-pages.json,cdn-completed.png,published.json}`。
+- 类型检查、Vite 生产构建与 diff 检查通过。全站 Figma build 门禁仍因历史页面证据时效、既有源变更及共享代码哈希不匹配失败，未放宽门禁或接受新基线；本次仅确认联系方式专项回归，不代表全站最新设计验收完成。最新 Figma 同名详情候选及范围记录见 `docs/public-contacts.md`。
+
 ## 2026-11-03 公司邮箱与 WhatsApp 接入（20261103220000）
 
 - 版本 `20261103220000` 已发布至 `https://www.huanyumedical.com/`，发布完成时间 `2026-11-03T07:16:15.555568+00:00`。公司邮箱统一为 `gh20260826@qq.com`；页脚及桌面常驻 WhatsApp 使用用户确认的官方客服链接。Facebook 由用户确认待补充，未使用邮箱猜测主页地址。配置与 Figma 联系区域核验见 `docs/public-contacts.md`。

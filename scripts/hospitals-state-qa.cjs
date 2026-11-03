@@ -59,7 +59,7 @@ async function main() {
       const geometry=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,broken:[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)}))
       assert.equal(geometry.scrollWidth,width,`${width}: horizontal overflow`)
       assert.equal(geometry.broken.length,0)
-      for(const attribute of ['mailto:','tel:','https://api.whatsapp.com/message/'])assert.ok(await page.locator(`footer a[href^="${attribute}"]`).count())
+      for(const attribute of ['mailto:','tel:','https://wa.me/'])assert.ok(await page.locator(`footer a[href^="${attribute}"]`).count())
       await page.locator('.header-logo').click()
       await page.waitForURL(`${origin}/`)
       results.push({...geometry,cityFilters:5,keyboard:true,modalFocusTrap:true,escape:true,focusRestore:true,consultation:true,homeLink:true})

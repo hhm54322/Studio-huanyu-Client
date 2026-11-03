@@ -91,7 +91,7 @@ async function main() {
       }
       const contacts=width<=700?['1528:835','1528:841','1528:846']:['1412:6715','1412:6721','1412:6726']
       result.contacts=await Promise.all(contacts.map(id=>page.locator(node(id)).getAttribute('href')))
-      assert.ok(result.contacts[0].startsWith('mailto:')&&result.contacts[1].startsWith('tel:')&&result.contacts[2].startsWith('https://api.whatsapp.com/message/'))
+      assert.ok(result.contacts[0].startsWith('mailto:')&&result.contacts[1].startsWith('tel:')&&result.contacts[2].startsWith('https://wa.me/'))
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width)
       result.scrollBeforeConsultation=before
       await page.close()

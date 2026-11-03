@@ -3357,7 +3357,10 @@ const resetWizard = () => {
           <strong>联系</strong>
           <a :href="publicContacts.emailHref">{{ publicContacts.email }}</a>
           <a href="tel:+864008886688">+86 400-888-6688</a>
-          <a :href="publicContacts.whatsappHref" target="_blank" rel="noopener noreferrer">WhatsApp · 24小时客服</a>
+          <div class="pro-report-footer__social">
+            <a :href="publicContacts.whatsappHref" target="_blank" rel="noopener noreferrer">WhatsApp · 24小时客服</a>
+            <a :href="publicContacts.facebookHref" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
         </div>
       </div>
       <p class="pro-report-footer__copyright">Copyright 2026 寰宇云医. All rights reserved.</p>
@@ -4092,6 +4095,8 @@ const resetWizard = () => {
 .pro-report-footer__inner a:hover {
   color: #fff;
 }
+
+.pro-report-footer__social { display:flex; flex-wrap:wrap; gap:8px 16px; }
 
 .pro-report-footer__copyright {
   max-width: 1216px;

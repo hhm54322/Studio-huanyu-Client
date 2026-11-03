@@ -1,4 +1,4 @@
-> 2026-11-03：用户授权更新公开邮箱/WhatsApp，公共入口参数、源比较及专项截图回归见 [public-contacts.md](../public-contacts.md)。本次不重新声明全页 Figma 验收通过。
+> 2026-11-03：用户授权更新公开邮箱/WhatsApp/Facebook，公共入口参数、源比较及专项截图回归见 [public-contacts.md](../public-contacts.md)。最终源导出新增徐宇详情同名候选 `3424:6069`，仍需后续独立设计任务核对，未自动接入。本次不重新声明全页 Figma 验收通过。
 
 # 首页
 
@@ -44,7 +44,7 @@
 - 开发与 production preview 均通过完整5图循环、4.7秒未切/5.2秒已切、图片hover11秒不切、移出5秒恢复、文字/圆点/焦点继续、键盘循环及关闭后焦点/滚动恢复。10图最高 nMAE **0.73135%**、pixelmatch **0.16671%**；详情底部32px白边 nMAE **0.56073%**。4种Hero×1024/1440/1920/2560透明导航，无白边或溢出。
 - 本轮重跑8套首页回归：`artifacts/figma-home-2026-10-28/{hero,page,states,dialogs,experts,interactions,site,behavior}/qa.json`。13分区、9补充状态、7详情、15专家状态均双指标<1%；动效、独立FAQ、ECharts、定位导航及咨询入口通过。新增 WhatsApp 控件单独验收；旧源截图比较只隐藏该新增控件，不改底层页面。
 - 照片证据：`artifacts/patient-updates-2026-10-31/home-carousel-qa/qa.json`、`production-home/qa.json`；`scripts/audit-current-home.mjs` 通过。类型检查、直接 Vite 生产构建、diff 检查通过。本轮未发布外网；全站其他页面的历史证据时效问题不在本页通过结论内。
-- 用户新增 WhatsApp 常驻入口，独立于原 Figma 构图：`PatientLayout > WhatsAppContact`，桌面 fixed、right24/bottom80、高44px，与首页固定助手间隔12px。用户确认真实账号稍后提供，当前未配置时禁用；发布构建前通过 `.env.example` 中的 `VITE_WHATSAPP_CONTACT` 配置完整国际号码或官方 `https://wa.me/<number>`。不使用旧400占位号或参考网站账号。
+- 用户新增 WhatsApp 常驻入口，独立于原 Figma 构图：`PatientLayout > WhatsAppContact`，桌面 fixed、right24/bottom80、高44px，与首页固定助手间隔12px。当前账号为 `+86 158 5515 9472`，使用官方 `https://wa.me/8615855159472`；页脚同时提供用户确认的 Facebook 分享入口。`.env.example` 仍保留可选的官方号码覆盖配置。
 - WhatsApp 实际浏览器验收：`artifacts/patient-updates-2026-10-31/whatsapp/qa.json`，开发/生产preview各13个已开放患者路由、4种桌面宽度、固定位置、唯一实例、原生modal遮挡及6种有效/无效配置均通过，页面错误0；未向外部发送消息。`/equipment`、`/visa`、`/professional-report` 继续由既有路由门禁拦截，手机入口不启用。已亲自复看生产preview的首页入口截图。
 
 ## 历史参数与验证记录

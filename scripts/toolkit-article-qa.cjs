@@ -138,7 +138,7 @@ async function main() {
       const links = {
         'gh20260826@qq.com': 'mailto:gh20260826@qq.com',
         '+86 400-888-XXXX': 'tel:+864008886688',
-        'WhatsApp': 'https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0',
+        'WhatsApp': 'https://wa.me/8615855159472',
       }
       checks.contactLinks = true
       for (const [label, href] of Object.entries(links)) {

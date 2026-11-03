@@ -2,7 +2,8 @@
 // points in sync without modifying the immutable Figma handoff files.
 export const sourceContactEmail = 'contact@huanyuyunyi.com'
 const email = 'gh20260826@qq.com'
-const defaultWhatsApp = 'https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0'
+const defaultWhatsApp = 'https://wa.me/8615855159472'
+const facebook = 'https://www.facebook.com/share/19QEe4vFdQ/?mibextid=wwXIfr'
 
 function whatsAppUrl(value: string): string | undefined {
   const input = value.trim()
@@ -19,6 +20,7 @@ export const publicContacts = Object.freeze({
   email,
   emailHref: `mailto:${email}`,
   whatsappHref: whatsAppUrl(import.meta.env.VITE_WHATSAPP_CONTACT || '') || defaultWhatsApp,
+  facebookHref: facebook,
 })
 
 export function publicContactText(sourceText: string): string | undefined {

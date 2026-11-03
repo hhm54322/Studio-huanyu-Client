@@ -79,6 +79,25 @@ const linkAttributes = computed(() => !control.value?.href ? {} : control.value.
   href:control.value.href,
   ...(control.value.href === publicContacts.whatsappHref ? { target:'_blank', rel:'noopener noreferrer' } : {}),
 })
+// Facebook is a user-authorized contact addition. Keep the locked source
+// hierarchy and WhatsApp hit area; append a sibling link in its existing row.
+const facebookStyle = computed(() => {
+  if (control.value?.href !== publicContacts.whatsappHref || !props.node.visible || props.hidden?.includes(props.node.id)) return
+  const locate = (node: HomeSourceNodeData, x = 0, y = 0): { node: HomeSourceNodeData; x: number; y: number } | undefined => {
+    if (node.type === 'TEXT' && node.text === 'WhatsApp') return { node, x, y }
+    for (const child of node.children) {
+      const found = locate(child, x + child.x, y + child.y)
+      if (found) return found
+    }
+  }
+  const text = locate(props.node)
+  if (!text) return
+  const typography = text.node.css.split(';').filter(value => /^\s*(?:color|font(?:-[\w-]+)?|line-height|letter-spacing):/.test(value)).join(';')
+  // The injected link is a sibling of the source item in the parent source
+  // tree. Include the item's authored position so the added contact stays
+  // aligned with the source row at every nesting level.
+  return `${typography};position:absolute;left:${props.node.x + text.x + text.node.width + 8}px;top:${props.node.y + text.y}px;`
+})
 const inheritedImageReady = inject<Ref<boolean> | null>(IMAGE_READY, null)
 const ownsDeferredImages = Boolean(!inheritedImageReady && props.root && props.deferImages || props.deferImageRoots?.includes(props.node.id))
 const imageReady = ownsDeferredImages ? ref(false) : inheritedImageReady ?? ref(!props.deferImages)
@@ -151,6 +170,7 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
     </HomeSourceNode>
     <slot name="after" :node="node" />
   </component>
+  <a v-if="facebookStyle" class="home-source-node__facebook" :style="facebookStyle" :href="publicContacts.facebookHref" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
 </template>
 
 <style scoped>
@@ -159,4 +179,7 @@ img { display:block; width:100%; height:auto; max-width:none; }
 .home-source-node--root { position:relative!important; left:0!important; top:0!important; }
 .home-source-node__accessible-text { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:pre; }
 .home-source-node__font-awesome-glyph { width:100%!important; height:100%!important; object-fit:fill; }
+.home-source-node__facebook { display:block; width:max-content; margin:0; padding:0; text-decoration:none; white-space:nowrap; }
+.home-source-node__facebook:hover { text-decoration:underline; }
+.home-source-node__facebook:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
 </style>
