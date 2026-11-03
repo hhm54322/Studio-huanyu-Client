@@ -70,7 +70,7 @@ for(const result of behavior.results){
 assert.equal(motion.shortScreens.length,2)
 assert.deepEqual(motion.errors,[])
 for(const passed of Object.values(motion.motion))assert.equal(passed,true)
-const codeFiles=['src/views/patient/HospitalView.vue','src/components/common/HospitalFigmaCanvas.vue','src/components/common/HospitalSourceDialog.vue','src/components/common/HospitalRadar.vue','src/components/common/HomeSourceNode.vue','src/data/hospitalFigmaSource.ts','src/components/layout/PatientLayout.vue']
+const codeFiles=['vite.config.ts','scripts/build-hospital-card-images.mjs','scripts/optimize-release-images.mjs','scripts/hospitals-revision-qa.cjs','src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/components/common/hospitalSourceDialog.ts','src/views/patient/HospitalView.vue','src/components/common/HospitalFigmaCanvas.vue','src/components/common/HospitalSourceDialog.vue','src/components/common/HospitalRadar.vue','src/components/common/HomeSourceNode.vue','src/data/hospitalFigmaSource.ts','src/data/hospitalFigmaDetails.ts','src/utils/sourceAtOrigin.ts','src/components/layout/PatientLayout.vue']
 const changed=Math.max(...await Promise.all(codeFiles.map(async file=>(await stat(join(root,file))).mtimeMs)))
 for(const name of ['list-qa.json','detail-qa.json','behavior-qa.json','motion-qa.json'])assert.ok((await stat(join(evidence,name))).mtimeMs>=changed,`${name}: evidence predates code`)
 console.log(`Hospital desktop revision gate passed: 22 locked source sets / ${count} native nodes / ${assets.assets.length} assets; list + 7 detail states nMAE <1%; 3 desktop widths; interactions, short screens, motion and reduced-motion. Mobile development/acceptance deferred by user.`)

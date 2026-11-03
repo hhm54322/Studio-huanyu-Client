@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import BrandLogo from '@/components/common/BrandLogo.vue'
 import { useRoute } from 'vue-router'
-import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
 import { homeFigmaActions } from '@/data/homeFigmaActions'
+const HomeFigmaSection = defineAsyncComponent(() => import('@/components/common/HomeFigmaSection.vue'))
 const route = useRoute()
 withDefaults(defineProps<{ contactIcons?: string[] }>(), { contactIcons: () => ['/images/figma/about-icons/Icon-9.svg', '/images/figma/about-icons/Icon-6.svg', '/images/figma/about-icons/Icon-10.svg'] })
 const serviceLinks = [{ label:'疾病中心',path:'/diseases-technologies' },{ label:'费用对比',path:'/cost' },{ label:'报告体验',path:'/report' },{ label:'签证办理',path:'/visa' },{ label:'就医步骤',path:'/steps' }]

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { X } from "lucide-vue-next";
-import TrustArticleDialog from '@/components/common/TrustArticleDialog.vue';
+import { trustArticleDialog } from '@/components/common/trustArticleDialog';
 import TrustDesktopPage from '@/components/common/TrustDesktopPage.vue';
 
 const desktopArticle = ref(typeof window === 'undefined' || window.innerWidth > 900);
@@ -339,7 +339,7 @@ function openConsultation() {
       </div>
     </section>
 
-    <TrustArticleDialog v-if="jciModalOpen && desktopArticle" :key="activeArticle" :article="activeArticle" @close="closeJciArticle" />
+    <component :is="trustArticleDialog(activeArticle)" v-if="jciModalOpen && desktopArticle" :key="activeArticle" :article="activeArticle" @close="closeJciArticle" />
     <Transition name="jci-dialog">
       <div
         v-if="jciModalOpen && !desktopArticle"

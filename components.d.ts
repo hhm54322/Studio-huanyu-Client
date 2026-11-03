@@ -30,6 +30,7 @@ declare module 'vue' {
     HospitalRadar: typeof import('./src/components/common/HospitalRadar.vue')['default']
     HospitalSourceDialog: typeof import('./src/components/common/HospitalSourceDialog.vue')['default']
     MedicalServicesMenu: typeof import('./src/components/layout/MedicalServicesMenu.vue')['default']
+    PatientDesktopNavigation: typeof import('./src/components/layout/PatientDesktopNavigation.vue')['default']
     PatientFooter: typeof import('./src/components/layout/PatientFooter.vue')['default']
     PatientHeader: typeof import('./src/components/layout/PatientHeader.vue')['default']
     PatientLayout: typeof import('./src/components/layout/PatientLayout.vue')['default']
@@ -39,5 +40,6 @@ declare module 'vue' {
     SectionHeading: typeof import('./src/components/common/SectionHeading.vue')['default']
     TrustArticleDialog: typeof import('./src/components/common/TrustArticleDialog.vue')['default']
     TrustDesktopPage: typeof import('./src/components/common/TrustDesktopPage.vue')['default']
+    WhatsAppContact: typeof import('./src/components/common/WhatsAppContact.vue')['default']
   }
 }

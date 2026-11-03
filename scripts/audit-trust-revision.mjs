@@ -49,7 +49,7 @@ assertCurrentSource({ roots: ['143:3624'], baselineSHA256: inventories[3].source
 const runtime = await read(join(base, 'assurances/runtime-mapping-2026-10-29.json'))
 assert.deepEqual(runtime.nodes.map(row => row.nodeId), inventories[3].nodes.map(row => row.id))
 for (const row of runtime.nodes) assert.ok(row.selector && row.ownerNodeId && row.component)
-const newest = Math.max(...await Promise.all([
+const newest = Math.max(...await Promise.all(['src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/data/trustArticleSource.ts','src/components/common/trustArticleDialog.ts',
   'src/views/patient/TrustView.vue', 'src/components/common/TrustDesktopPage.vue', 'src/data/trustFigmaSource.ts',
   'src/components/common/HomeSourceNode.vue', 'src/components/layout/PatientLayout.vue',
   'scripts/trust-assurances-current-qa.cjs', 'scripts/trust-desktop-current-qa.cjs', 'scripts/trust-desktop-behavior-qa.cjs',

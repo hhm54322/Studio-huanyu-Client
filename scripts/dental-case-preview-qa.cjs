@@ -33,8 +33,12 @@ async function main() {
     await page.route('**/src/data/dentalPhysicians.json*', route => route.fulfill({ status: 200, contentType: 'application/javascript', body: `export default ${JSON.stringify(data)}` }))
     await page.goto(`${url}/dental`, { waitUntil: 'networkidle' })
     await page.getByRole('button', { name: '下一步 城市与医生匹配', exact: true }).click()
+    await page.locator('[data-dental-step="2"]').waitFor()
     await page.evaluate(() => document.fonts.ready)
-    assert.equal(await page.locator('[data-figma-source-node="2294:7088"]').count(), 2)
+    assert.equal(await page.locator('[data-figma-source-node="2294:7088"]').count(), 3)
+    const retained = page.locator('[data-doctor="5"]')
+    assert.equal(await retained.count(), 1)
+    assert.equal(await retained.locator('[data-figma-source-node="2294:7088"]').count(), 1)
     for (const [index, doctor] of data.records.entries()) {
       const card = page.locator(`[data-doctor="${doctor.id}"]`)
       const hasCase = index === 0 || index === 3
@@ -58,14 +62,14 @@ async function main() {
     const first = await page.locator('[data-doctor="101"]').boundingBox()
     const fourth = await page.locator('[data-doctor="104"]').boundingBox()
     assert.equal(fourth.y - first.y, 520, 'Mixed rows must retain the highest source card and 24px row gap')
-    await page.getByRole('combobox', { name: '城市', exact: true }).selectOption('上海')
+    await page.getByRole('combobox', { name: '城市', exact: true }).selectOption('北京')
     await page.getByRole('button', { name: '筛选医生', exact: true }).click()
     assert.equal(await page.locator('[data-doctor]').count(), 0)
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
     await page.getByRole('button', { name: '重置筛选', exact: true }).click()
-    assert.equal(await page.locator('[data-figma-source-node="2294:7088"]').count(), 2)
+    assert.equal(await page.locator('[data-figma-source-node="2294:7088"]').count(), 3)
     assert.deepEqual(errors, [])
-    const result = { cardsWithRealDetailCases: [101, 104], staleCountIgnored: true, incompleteCaseIgnored: true, perDoctorImagesMatchDetail: true, mixedRows: true, emptyFilter: true, reset: true, errors, realDataSent: false, checkedAt: new Date().toISOString() }
+    const result = { cardsWithRealDetailCases: [101, 104], retainedSourceCases: [5], staleCountIgnored: true, incompleteCaseIgnored: true, perDoctorImagesMatchDetail: true, mixedRows: true, emptyFilter: true, reset: true, errors, realDataSent: false, checkedAt: new Date().toISOString() }
     await fs.writeFile(path.join(out, 'result.json'), JSON.stringify(result, null, 2) + '\n')
     console.log(JSON.stringify(result))
   } finally { await browser.close() }

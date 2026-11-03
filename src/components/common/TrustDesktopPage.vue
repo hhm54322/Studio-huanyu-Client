@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HomeSourceNode from './HomeSourceNode.vue'
-import TrustArticleDialog from './TrustArticleDialog.vue'
-import { sourceAtOrigin } from '@/data/hospitalFigmaSource'
+import { trustArticleDialog } from './trustArticleDialog'
+import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 import { trustSource, trustTravel, trustAftercare, trustAssuranceState, trustNode, trustNodes, trustDescendants, trustArticles, trustAssurances, trustFaqRows, trustActions, type TrustArticleKey } from '@/data/trustFigmaSource'
 const width = ref(innerWidth)
@@ -55,16 +55,18 @@ const styles = computed(() => {
   ;['143:2601','143:2614','143:2622','143:2630'].forEach((id,i) => {result[id]=`transform:rotate(${expandedFaq.value.has(i)===(i===0)?0:180}deg);`})
   return result
 })
-const pageTree = computed(() => {
+// Assemble the authored state trees once. FAQ expansion only moves a handful
+// of ancestors; keep every unaffected source subtree stable across toggles.
+const staticPageTree = (() => {
   const node=structuredClone(trustSource),nodes=new Map(trustDescendants(node).map(n=>[n.id,n]))
   // Add the three authored expanded subtrees (including exact text lines and
   // Dev Mode styles), rather than rebuilding their copy and geometry by hand.
   assuranceDetails.slice(1).forEach(([id, parent]) => {
     nodes.get(parent)!.children.push(structuredClone(assuranceNodes.get(id)!))
   })
-  for(const id of ['143:2528','143:2529','143:2530']){const n=nodes.get(id)!;n.height+=extraHeight+faqDelta.value;n.css+=`;height:${n.height}px;`}
-  const faq=nodes.get('143:2589')!;faq.height+=faqDelta.value;faq.css+=`;height:${faq.height}px;`
-  for(const id of ['143:2638','204:5636','1582:2002','143:2937']){const n=nodes.get(id)!;n.y+=faqDelta.value;if(['1582:2002','143:2937'].includes(id))n.y+=extraHeight;n.css+=`;top:${n.y}px;`}
+  for(const id of ['143:2528','143:2529','143:2530']){const n=nodes.get(id)!;n.height+=extraHeight;n.css+=`;height:${n.height}px;`}
+  const faq=nodes.get('143:2589')!;faq.css+=`;height:${faq.height}px;`
+  for(const id of ['143:2638','204:5636','1582:2002','143:2937']){const n=nodes.get(id)!;if(['1582:2002','143:2937'].includes(id))n.y+=extraHeight;n.css+=`;top:${n.y}px;`}
   const toolkit=nodes.get('204:5636')!;toolkit.height+=extraHeight;toolkit.css+=`;height:${toolkit.height}px;overflow:visible;`
   const first=nodes.get('204:5637')!,fixed=nodes.get('204:5638')!
   first.children=first.children.filter(n=>n.id!==fixed.id)
@@ -77,6 +79,28 @@ const pageTree = computed(() => {
   }
   nodes.get('484:1463')!.visible=false
   return sourceAtOrigin(node)
+})()
+const heightIds = new Set(['143:2528','143:2529','143:2530','143:2589'])
+const movedIds = new Set(['143:2638','204:5636','1582:2002','143:2937'])
+const faqPaths = new Set<string>()
+function recordFaqPaths(node: typeof staticPageTree): boolean {
+  const children = node.children.map(recordFaqPaths)
+  const affected = heightIds.has(node.id) || movedIds.has(node.id) || children.some(Boolean)
+  if (affected) faqPaths.add(node.id)
+  return affected
+}
+recordFaqPaths(staticPageTree)
+const pageTree = computed(() => {
+  const delta = faqDelta.value
+  if (!delta) return staticPageTree
+  function shift(node: typeof staticPageTree): typeof staticPageTree {
+    if (!faqPaths.has(node.id)) return node
+    const result = { ...node, children: node.children.map(shift) }
+    if (heightIds.has(node.id)) { result.height += delta; result.css += `;height:${result.height}px;` }
+    if (movedIds.has(node.id)) { result.y += delta; result.css += `;top:${result.y}px;` }
+    return result
+  }
+  return shift(staticPageTree)
 })
 function activate(value:string){
   if(value==='consultation')window.dispatchEvent(new CustomEvent('open-consultation'))
@@ -127,11 +151,10 @@ onBeforeUnmount(()=>{removeEventListener('resize',resize);removeEventListener('s
       <div :style="{transform:`translateX(-50%) scale(${scale})`}"><HomeSourceNode :node="sourceAtOrigin(trustNode('484:1463'))" root :actions="trustActions" :baseline-nodes="baselineNodes" @activate="activate" /></div>
       <div v-if="languageOpen" class="trust-source-languages"><button type="button" @click="languageOpen=false">中文</button></div>
     </header>
-    <TrustArticleDialog v-if="article" :key="article" :article="article" @close="closeArticle" />
+    <component :is="trustArticleDialog(article)" v-if="article" :key="article" :article="article" @close="closeArticle" />
   </div>
 </template>
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .trust-desktop-source{position:relative;overflow-anchor:none;font-family:'PingFang SC',sans-serif;-webkit-font-smoothing:antialiased}
 .trust-desktop-source__canvas,.trust-desktop-source__header>div:first-child{position:absolute;top:0;left:50%;width:1440px;transform-origin:top center}
 .trust-desktop-source__header{position:fixed;inset:0 0 auto;z-index:60;height:64px;pointer-events:none}

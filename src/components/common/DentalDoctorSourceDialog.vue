@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { loadDentalDetail } from '@/data/dentalFigmaDetails'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData as SourceNode } from './HomeSourceNode.vue'
 import { dentalDescendants, dentalNode, dentalSources } from '@/data/dentalFigmaSource'
@@ -16,7 +17,10 @@ const props=withDefaults(defineProps<{doctor?:{id:number;name:string};initialTab
 const emit=defineEmits<{close:[]}>()
 const active=ref(props.initialTab),dialog=ref<HTMLDialogElement|null>(null),clip=ref<HTMLElement|null>(null)
 const width=ref(window.innerWidth),height=ref(window.innerHeight)
-const record=computed(()=>props.doctor?dentalPhysicianById(props.doctor.id):undefined)
+const record=computed(()=>{
+  const doctor=props.doctor?dentalPhysicianById(props.doctor.id):undefined
+  return doctor?.sourceProfile?undefined:doctor
+})
 const documentMode=computed(() => props.institution?'institution':active.value===0?'profile':active.value===2?'cases':active.value===3?'reviews':null)
 const documentHeight=ref(0)
 const sources=[{...profileModel,folder:'profile'},{...treatmentModel,folder:'treatment-scroll'},{...casesModel,folder:'cases'},{...reviewsModel,folder:'reviews'},{...servicesModel,folder:'services-scroll'}]
@@ -95,10 +99,15 @@ const attributes=computed(()=>{
 })
 const styles=computed(()=>({[model.value.close]:'z-index:3;'}))
 const hidden=computed(()=>record.value&&documentMode.value?(props.institution?['2294:7681','2294:7683']:contentRoots.value):[])
-let trigger:HTMLElement|null=null,oldOverflow='',scrollPosition=0
+let trigger:HTMLElement|null=null,oldOverflow='',scrollPosition=0,tabRequest=0,disposed=false
+const loadingTab=ref(false)
 function resize(){width.value=window.innerWidth;height.value=window.innerHeight}
 async function changeTab(index:number){
-  if(index===active.value)return
+  const request=++tabRequest
+  if(index===active.value){loadingTab.value=false;return}
+  loadingTab.value=true
+  try{await loadDentalDetail(index)}finally{if(request===tabRequest&&!disposed)loadingTab.value=false}
+  if(disposed||request!==tabRequest)return
   active.value=index;await nextTick()
   if(clip.value)clip.value.scrollTop=0
   dialog.value?.querySelector<HTMLElement>(`#dental-source-tab-${index}`)?.focus({preventScroll:true})
@@ -124,7 +133,7 @@ onMounted(async()=>{
   dialog.value?.showModal();await nextTick();dialog.value?.querySelector<HTMLElement>('[data-dialog-close]')?.focus({preventScroll:true})
   window.addEventListener('resize',resize,{passive:true})
 })
-onBeforeUnmount(()=>{window.removeEventListener('resize',resize);dialog.value?.close();document.body.style.overflow=oldOverflow;trigger?.focus({preventScroll:true});if(window.scrollY!==scrollPosition)window.scrollTo({top:scrollPosition,behavior:'instant'})})
+onBeforeUnmount(()=>{disposed=true;tabRequest++;window.removeEventListener('resize',resize);dialog.value?.close();document.body.style.overflow=oldOverflow;trigger?.focus({preventScroll:true});if(window.scrollY!==scrollPosition)window.scrollTo({top:scrollPosition,behavior:'instant'})})
 </script>
 
 <template>
@@ -132,7 +141,7 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);dialog.value?.c
     <dialog ref="dialog" class="dental-source-dialog" :data-figma-node="model.frame" :data-dental-dialog="institution?'institution':'doctor'" :data-document-doctor="record?.id" :data-active-tab="active" aria-labelledby="dental-source-dialog-title" @cancel.prevent="emit('close')" @keydown="keydown" @click="outside">
       <div class="dental-source-dialog__overlay" data-dental-source-overlay :data-figma-node="model.overlay">
         <div class="dental-source-dialog__position" :style="{width:`${model.width*scale}px`,height:`${viewportHeight*scale}px`}">
-          <div ref="clip" class="dental-source-dialog__clip" :data-figma-node="model.mask?.id" :style="{width:`${model.width}px`,height:`${viewportHeight}px`,transform:`scale(${scale})`}">
+          <div ref="clip" class="dental-source-dialog__clip" :aria-busy="loadingTab" :data-figma-node="model.mask?.id" :style="{width:`${model.width}px`,height:`${viewportHeight}px`,transform:`scale(${scale})`}">
             <div class="dental-source-dialog__canvas" :style="{width:`${model.width}px`,height:`${root.height}px`}">
               <HomeSourceNode :key="model.panel" :node="root" root :actions="actions" :attributes="attributes" :styles="styles" :hidden="hidden" :baseline-nodes="baselines" preserve-text-lines @activate="activate">
                 <template #after="{node}">
@@ -148,7 +157,6 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);dialog.value?.c
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .dental-source-dialog{position:fixed;inset:0;width:100%;max-width:none;height:100%;max-height:none;padding:0;border:0;margin:0;overflow:auto;overscroll-behavior:contain;background:transparent;font-family:'PingFang SC',sans-serif;-webkit-font-smoothing:antialiased;}
 .dental-source-dialog::backdrop{background:rgba(0,0,0,.5);backdrop-filter:blur(4px);}
 .dental-source-dialog__overlay{display:flex;flex-direction:column;align-items:center;min-height:100%;padding:40px 24px;}

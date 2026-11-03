@@ -5,7 +5,7 @@ const selector=id=>`[data-figma-node="${id}"]`
 async function main(){
  await fs.mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const errors=[],results=[]
  try{for(const width of [1024,1440,1920]){
-  const page=await browser.newPage({viewport:{width,height:754},deviceScaleFactor:2,reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready)
+  const page=await browser.newPage({viewport:{width,height:754},deviceScaleFactor:2,reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);await page.addStyleTag({content:'.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}'})
   const trigger=page.locator(selector('1523:95')),menu=page.locator('#home-services-menu');assert.equal(await menu.count(),0);assert.equal(await trigger.getAttribute('aria-expanded'),'false');await trigger.hover();await menu.waitFor({state:'visible'});assert.equal(await trigger.getAttribute('aria-expanded'),'true');assert.equal(await page.locator(selector('1524:29')).getAttribute('href'),'/diseases-technologies')
   for(const id of ['1524:27','1524:31','1524:33']) assert.equal(await page.locator(selector(id)).getAttribute('href'),null)
   if(width===1440){

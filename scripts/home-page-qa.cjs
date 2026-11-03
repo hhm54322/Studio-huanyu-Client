@@ -41,6 +41,12 @@ async function compare(page,width,id,source,referenceImage) {
   // single full-page DPR2 bitmap taller than 16384 device pixels.
   await page.evaluate(y=>window.scrollTo({top:Math.floor(y),behavior:'instant'}),origin)
   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))))
+  // A real viewport visit starts the deferred image/chart requests. Compare
+  // their decoded resting state, without disabling the loading strategy.
+  await page.waitForLoadState('networkidle')
+  await locator.evaluate(async element => {
+    await Promise.all(Array.from(element.querySelectorAll('img')).filter(image => image.currentSrc).map(image => image.decode()))
+  })
   // The source frame depicts the first advantage card's revealed state.
   // Match that state explicitly, not by permanently exposing its CTA.
   if(id==='1412:5765') await page.locator('[data-home-why-card="0"]').hover()
@@ -95,7 +101,7 @@ async function main() {
         : await sharp(mobileExport).extract({left:0,top:84*3,width:375*3,height:Math.round(7566.0625*3)}).resize({width:750}).png().toBuffer()
       const sections=[]
       for(const id of width===1440?desktopIds:mobileIds) {
-        if(id===(width===1440?'1412:5718':'1528:127')) await page.addStyleTag({content:'.patient-header,.patient-header *,.consult-float,.consult-float *,.home-source-hero__assistant,.home-source-hero__assistant *{visibility:hidden!important}'})
+        if(id===(width===1440?'1412:5718':'1528:127')) await page.addStyleTag({content:'.patient-header,.patient-header *,.consult-float,.consult-float *,.home-source-hero__assistant,.home-source-hero__assistant *,.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}'})
         sections.push(await compare(page,width,id,source,id==='1523:33' ? await sharp('artifacts/figma-home-2026-10-28/figma-1523-31-2x.png').png().toBuffer() : sourceImage))
       }
       results.push({width,errors,sections})

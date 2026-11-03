@@ -169,3 +169,11 @@ The complete one-to-one filename, order, size, and Node ID mapping for all 29 ex
 - Motion evidence: card hover settled at about `translateY(-5px)`; all `19/19` reveal nodes remained visible after scrolling; toolkit copy computed `position: sticky`; reduced-motion state left every reveal node visible with no transform.
 - Verification run: 2026-09-30
 - Remaining differences: none
+
+
+## 2026-11-01 第五轮性能回归（80000）
+
+- 8篇长文按篇加载、并发去重并缓存；FAQ源树结构共享，只复制修改的节点及祖先。JCI异步打开后关闭恢复的3px焦点滚动偏差已修复。原始源、文案与接口未改。
+- 当前桌面主页面、独立FAQ、保障卡、JCI及7篇长文均在开发/生产回归；慢下载切换、关闭重开与焦点/滚动恢复通过。源及截图专项门禁通过，移动设计冻结。
+- 同条件LCP中位2348→2280ms；滚动脚本32.7→16.9ms。长文原本随首屏准备，拆分后首次JCI/费用长文点击约增加0.2秒，缓存重开不重复请求；不宣称所有首次点击提速。
+- 证据：`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,final-source-summary.json,detail-open/qa.json,runtime/final-interleaved.json}`及对应的`artifacts/figma-content-2026-10-22/`静态/交互证据。

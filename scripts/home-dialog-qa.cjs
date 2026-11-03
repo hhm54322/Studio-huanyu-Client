@@ -71,7 +71,7 @@ async function main() {
     const page=await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:2})
     page.on('pageerror',e=>errors.push(e.message))
     await page.emulateMedia({reducedMotion:'reduce'})
-    await page.goto(process.env.HUANYU_QA_URL||'http://127.0.0.1:5174/',{waitUntil:'networkidle'})
+    await page.goto(process.env.HUANYU_QA_URL||'http://127.0.0.1:5174/',{waitUntil:'networkidle'}); await page.addStyleTag({content:'.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}'})
     await page.evaluate(()=>document.fonts.ready)
     for(const width of widths) {
       for(let i=0;i<6;i++) {

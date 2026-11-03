@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sourceGate from './figma-source-gate.cjs'
+import { assertCurrentDentalSource } from './assert-current-dental-source.mjs'
 
 const date = '2026-10-28'
 const frames = {
@@ -20,7 +21,7 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 const descendants = node => [node, ...node.children.flatMap(descendants)]
 
 export async function auditDentalRevision({ sourceOnly = false } = {}) {
-  sourceGate.assertPageCurrent('dental')
+  assertCurrentDentalSource()
   const root = process.cwd(), base = join(root, `docs/figma-source/dental-revision-${date}`)
   const lock = await read(join(base, `baseline-lock-${date}.json`))
   const sets = (await read(join(base, `sources-${date}.json`))).sets
@@ -114,11 +115,16 @@ export async function auditDentalRevision({ sourceOnly = false } = {}) {
   console.log(`Dental current source gate: ${sets.length} frames / ${total} nodes / ${assets.length} assets; hierarchy, Dev Mode, mapping, source locks and child-content frames pass.`)
   if (sourceOnly) return
 
-  // The authorized DOCX records replace the single Figma example doctor.
+  // The authorized DOCX records supplement the retained Figma doctor.
   // Keep the immutable source audit above; require new content-aware evidence
   // for the current runtime instead of comparing real records to the example.
   const currentProvider = await readFile(join(root, 'src/data/dentalFigmaSource.ts'), 'utf8')
-  if (currentProvider.includes('export { dentalPhysicians as dentalCurrentDoctors }')) {
+  const currentView = await readFile(join(root, 'src/views/patient/DentalView.vue'), 'utf8')
+  // The lightweight doctor records now belong to their own module. Moving
+  // that import must not switch the audit back to the historical one-card UI.
+  const documentDoctors = currentProvider.includes('export { dentalPhysicians as dentalCurrentDoctors }')
+    || currentView.includes('dentalPhysicians as dentalCurrentDoctors') && currentView.includes("from '@/data/dentalPhysicianData'")
+  if (documentDoctors) {
     await import('./audit-dental-physicians.mjs')
     return
   }

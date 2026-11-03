@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeFigmaSection from './HomeFigmaSection.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
-import { homeDesktopNodes } from '@/data/homeFigmaSource'
+import { homeDesktopNodes } from '@/data/homeSourceRegistry'
 import { homeFigmaActions } from '@/data/homeFigmaActions'
 import { useAutoplayCarousel } from '@/composables/useAutoplayCarousel'
 
@@ -18,6 +18,29 @@ const states=[
   {frame:'1523:33',content:'1523:47',image:'1523:37',previous:'1523:64',next:'1523:67',dots:['1523:71','1523:72','1523:73','1523:74']},
 ]
 const selected=computed(()=>states[active.value]!)
+const preloadedHeroImages = new Map<string, HTMLImageElement>()
+let heroWarmup: number | undefined
+let disposed = false
+async function warmHeroImages() {
+  if (width.value <= 700) return
+  // Finish the visible bitmap first. Sequential, low-priority warming then
+  // follows playback order without competing with the first hero request.
+  const initial = active.value
+  for (let offset = 0; offset < states.length; offset++) {
+    if (disposed) return
+    if (offset && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const state = states[(initial + offset) % states.length]!
+    const css = homeDesktopNodes.get(state.image)?.css || ''
+    const url = css.match(/url\((?:["']?)([^)"']+)/)?.[1]
+    if (!url || preloadedHeroImages.has(url)) continue
+    const image = new Image()
+    image.decoding = 'async'
+    image.fetchPriority = offset ? 'low' : 'high'
+    image.src = url
+    preloadedHeroImages.set(url, image)
+    try { await image.decode() } catch { /* Keep manual navigation available if warming fails. */ }
+  }
+}
 const actions={...homeFigmaActions,'143:1206':{href:'/report'},...Object.fromEntries(states.flatMap(state=>[
   [state.previous,{action:'hero:previous',label:'上一张'}],
   [state.next,{action:'hero:next',label:'下一张'}],
@@ -76,8 +99,13 @@ function activate(action:string,event:MouseEvent) {
 function resize(){width.value=window.innerWidth}
 onMounted(()=>{
   window.addEventListener('resize',resize,{passive:true})
+  // Let the first Vue paint commit before warming the three non-visible
+  // states; the current state has already been started by the HTML preload.
+  heroWarmup = window.setTimeout(() => { void warmHeroImages() }, 0)
 })
 onBeforeUnmount(()=>{
+  disposed = true
+  window.clearTimeout(heroWarmup)
   window.removeEventListener('resize',resize)
 })
 </script>
@@ -85,7 +113,7 @@ onBeforeUnmount(()=>{
 <template>
   <div ref="root" class="home-source-hero" tabindex="0" :data-figma-node="width>700 && active===3 ? '1523:31' : undefined" :data-hero-state="active+1" aria-roledescription="轮播" aria-label="寰宇云医介绍" @keydown.left.prevent="select(active-1)" @keydown.right.prevent="select(active+1)">
     <Transition name="home-hero-fade">
-    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" label="寰宇云医介绍" :actions="actions" :attributes="attributes" :styles="styles" @activate="activate" />
+    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" label="寰宇云医介绍" :actions="actions" :attributes="attributes" :styles="styles" :defer-images="false" @activate="activate" />
     <section v-else :key="`mobile-${active}`" class="home-source-hero__mobile" :data-figma-desktop-state="selected.frame">
       <div class="home-source-hero__mobile-image" :style="{backgroundImage:homeDesktopNodes.get(selected.image)!.css.match(/background:\s*(url\([^;]*?\))/)?.[1]}" />
       <div class="home-source-hero__mobile-copy" :class="{'is-assurance':active===2}"><HomeSourceNode :node="homeDesktopNodes.get(selected.content)!" root fluid :styles="mobileStyles" :actions="actions" @activate="activate" /></div>

@@ -39,6 +39,6 @@ const behavior = JSON.parse(await readFile(join(evidenceDir, 'behavior-qa.json')
 assert.equal(behavior.filterResults.length, 6); assert.equal(behavior.dialogResults.length, 5); assert.equal(behavior.hospitalEntry, true); assert.equal(behavior.keyboardMenu, true); assert.deepEqual(behavior.errors, [])
 for (const file of ['local-1440.png','local-1440-2x.png','revision-2026-10-29-figma.png','source-qa.json','behavior-qa.json']) await access(join(evidenceDir, file))
 console.log(`physicians historical baseline passed: 306 Layers/Dev Mode mappings, ${assets.assets.length} exact assets, <1% five-record source comparison and behavior evidence`)
-// The user replaced the five sample records with the archived 177-doctor DOCX.
+// Historical source lock for the original 177-doctor release; current content is audited separately.
 // Current implementation freshness and all doctors are checked by this gate.
 await import('./audit-physician-directory.mjs')

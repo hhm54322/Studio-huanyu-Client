@@ -1,0 +1,20 @@
+{
+  "nodeId": "2294:7751",
+  "field": "parameters.name",
+  "before": "05案例集",
+  "after": "05医生简介",
+  "verifiedAt": "2026-11-03T04:01:03.562Z",
+  "connection": "artifacts/patient-navigation-avatars-20261103/connection.json",
+  "liveEvidence": "artifacts/patient-navigation-avatars-20261103/dental-profile-rename-live.txt",
+  "liveEvidenceSHA256": "488005aa4e0b5717a45383314c121723f20559bbda9d4998897022b347201449",
+  "sourceFile": "/Users/hhm/Downloads/寰宇云医 (35).fig",
+  "sourceSHA256": "00ef223839b8cfdf6be3eddbd18a691d5e96030201bd07b24ddfec9b74c0b2ca",
+  "layers": [
+    "2294:7751",
+    "2294:7752",
+    "2294:7754"
+  ],
+  "devModeCSS": "display:flex;width:1440px;height:756px;flex-direction:column;align-items:flex-start;gap:10px;background:#FFF;",
+  "owner": "DentalDoctorSourceDialog.vue: profile source root; data-figma-name only",
+  "effect": "Frame label only; no rendered copy, descendant, geometry, asset, dependency or authored interaction changed. Preserve immutable 2026-10-28 extraction and changed comparison report."
+}

@@ -17,6 +17,8 @@ import { useAppStore, type Locale } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 
 const PhysicianProfileDialog = defineAsyncComponent(() => import('@/components/common/PhysicianProfileDialog.vue'))
+import { homeExpertDialog } from '@/components/common/homeExpertDialog'
+import { dentalSourceDialog } from '@/components/common/dentalSourceDialog'
 const width = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
 const filter = ref(0)
 const department = ref('')
@@ -138,12 +140,13 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
       </div></Transition>
       <div v-if="languageMenu" class="physician-languages"><button v-for="language in [{ code: 'zh', name: '中文' }, { code: 'en', name: 'English' }, { code: 'id', name: 'Bahasa Indonesia' }, { code: 'ru', name: 'Русский' }, { code: 'mn', name: 'Монгол' }]" :key="language.code" type="button" @click="changeLanguage(language.code as Locale)">{{ language.name }}</button></div>
     </header>
-    <PhysicianProfileDialog v-if="selected" :record="selected" @close="selected = null" />
+    <component :is="dentalSourceDialog()" v-if="selected?.sourceExpert === -1" :doctor="{ id: 5, name: selected.name }" @close="selected = null" />
+    <component :is="homeExpertDialog(selected.sourceExpert)" v-else-if="selected?.sourceExpert !== undefined" :expert="selected.sourceExpert" @close="selected = null" />
+    <PhysicianProfileDialog v-else-if="selected" :record="selected" @close="selected = null" />
   </div>
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .physician-page { position:relative; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .physician-department-filter { position:absolute; z-index:4; top:0; right:0; display:flex; align-items:center; gap:10px; height:42px; }
 .physician-department-filter label { color:#4B5563; font-size:14px; line-height:20px; white-space:nowrap; }

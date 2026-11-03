@@ -92,7 +92,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .physician-profile-dialog { position:fixed; inset:0; width:100%; max-width:none; height:100%; max-height:none; margin:0; padding:0; border:0; background:transparent; overflow:auto; color:#1E3A5F; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .physician-profile-dialog::backdrop { background:rgba(0,0,0,.5); backdrop-filter:blur(4px); }
 .physician-profile-dialog__backdrop { min-height:100%; display:flex; align-items:center; justify-content:center; padding:40px 24px; box-sizing:border-box; }

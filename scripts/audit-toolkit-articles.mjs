@@ -12,6 +12,8 @@ const lock = await read(join(dir, `baseline-lock-${date}.json`))
 for (const file of lock.files) assert.equal(hash(await readFile(join(root, file.name))), file.sha256, `${key}: source lock changed: ${file.name}`)
 const at = kind => join(dir, `${kind}-${date}.json`)
 const [inventory, layers, dev, parameters, mapping, variant, source, assets] = await Promise.all(['native-inventory', 'layers', 'dev-mode', 'native-parameters', 'node-to-code', 'desktop-variant', 'article-nodes', 'assets'].map(kind => read(at(kind))))
+const index = await read(join(root, 'src/data/toolkitArticleIndex.json'))
+assert.deepEqual(index[key], Object.fromEntries(['key', 'title', 'articleFrame'].map(field => [field, variant[field]])), `${key}: article index differs from locked source`)
 assert.equal(inventory.layersCrossCheck, true)
 assert.equal(inventory.sourceFrame, source.article)
 assert.equal(new Set(inventory.nodes.map(n => n.id)).size, inventory.nodeCount)
@@ -45,8 +47,9 @@ console.log(`${key}: ${inventory.nodeCount}/${inventory.nodeCount} Layers, nativ
 if (!process.argv.includes('--source-only')) {
   const evidence = join(root, 'artifacts/figma-toolkit-2026-10-22', key)
   const reports = await Promise.all([join(evidence, 'final-qa.json'), join(evidence, 'production/production-qa.json')].map(read))
-  const implementation = ['src/data/contentFigmaSource.ts', 'src/components/common/ContentArticleCanvas.vue', 'src/views/patient/ToolkitDetailView.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/common/HospitalFigmaCanvas.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', 'scripts/toolkit-article-qa.cjs', ...lock.files.map(f => f.name)]
+  const implementation = ['src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/data/contentFigmaSource.ts', 'src/components/common/ContentArticleCanvas.vue', 'src/views/patient/ToolkitDetailView.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/common/HospitalFigmaCanvas.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', 'scripts/toolkit-article-qa.cjs', ...lock.files.map(f => f.name)]
   if (['visa', 'steps-flow'].includes(key)) implementation.push('src/views/patient/TrustView.vue', 'src/views/patient/StepView.vue', 'scripts/toolkit-entry-qa.cjs')
+  implementation.push('src/data/toolkitArticleIndex.json', 'src/router/index.ts')
   const newest = Math.max(...await Promise.all(implementation.map(async file => (await stat(join(root, file))).mtimeMs)))
   for (const report of reports) {
     assert.equal(report.key, key); assert.equal(report.sourceFrame, source.article); assert.equal(report.templateFrame, '143:3058')
@@ -64,6 +67,10 @@ if (!process.argv.includes('--source-only')) {
     assert.deepEqual(report.desktopBehavior.map(row => row.width), [1024, 1440, 1920])
     for (const row of report.desktopBehavior) for (const check of ['fits', 'fullCopy', 'stickyTop', 'bottomBoundary', 'scrollRestores', 'currentArticle', 'noFakeAnchors', 'keyboardReturn', 'contactLinks', 'consultation', 'disabledDestinations']) assert.equal(row.checks[check], true, `${key}/${row.width}: ${check}`)
     for (const check of ['directoryEntry', 'historyRestores', 'mobileDeferredSafely', 'unknownKeySafe']) assert.equal(report[check], true, `${key}: ${check}`)
+    assert.equal(report.lazyLoading.directArticleRequests.length, 1, `${key}: direct entry loaded extra article data`)
+    assert.equal(report.lazyLoading.translationArticleRequests, 0, `${key}: translation loaded extra article data`)
+    assert.equal(report.lazyLoading.directoryArticleRequests, 1, `${key}: directory loaded extra article data`)
+    assert.equal(report.lazyLoading.historyArticleRequests, 0, `${key}: history fetched article data again`)
     const m = report.motion
     assert.ok(m.exists && +m.start.opacity === 0 && +m.middle.opacity > 0 && +m.middle.opacity < 1 && +m.end.opacity === 1 && m.duration === 620 && m.reducedMotion)
     assert.ok(Date.parse(report.createdAt) >= newest, `${key}: stale evidence`)

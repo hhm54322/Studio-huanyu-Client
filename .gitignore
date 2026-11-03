@@ -24,6 +24,7 @@ node_modules/
 !/docs/figma-source/cases/content-2026-09-29.json
 !/docs/figma-source/content-revision/toolkit/source-tree-2026-10-21.json
 !/docs/figma-source/dental-complete-2026-10-30/source-extension.json
+!/docs/figma-source/dental-revision-2026-11-03/profile-frame-name.json
 !/docs/figma-source/dental-revision-2026-10-28/cases/dialog-model-2026-10-28.json
 !/docs/figma-source/dental-revision-2026-10-28/cases/source-tree-2026-10-28.json
 !/docs/figma-source/dental-revision-2026-10-28/doctor-card/source-tree-2026-10-28.json
@@ -205,6 +206,11 @@ node_modules/
 # Prebuild recreates compression companions from the versioned originals.
 /public/images/**/*.optimized.webp
 /public/image-optimization.json
+# Content-addressed copies are rebuilt from the original public assets.
+/public/static-assets/
+/scripts/public-asset-cache.d.ts
+/scripts/patient-cache-plugin.d.ts
+/scripts/packed-home-source.d.ts
 
 # Local environment, uploaded/exported data, logs and caches
 tmp/

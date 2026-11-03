@@ -1,0 +1,32 @@
+{
+  "assessment": {
+    "key": "assessment",
+    "title": "来华就医可行性评估",
+    "articleFrame": "1604:270"
+  },
+  "companions": {
+    "key": "companions",
+    "title": "家属陪同攻略",
+    "articleFrame": "1604:405"
+  },
+  "medication-entry": {
+    "key": "medication-entry",
+    "title": "药品入境规定",
+    "articleFrame": "1604:945"
+  },
+  "muslim": {
+    "key": "muslim",
+    "title": "穆斯林患者实操手册",
+    "articleFrame": "1604:675"
+  },
+  "steps-flow": {
+    "key": "steps-flow",
+    "title": "就医步骤与就诊流程",
+    "articleFrame": "1604:810"
+  },
+  "visa": {
+    "key": "visa",
+    "title": "签证申请清单",
+    "articleFrame": "1604:540"
+  }
+}

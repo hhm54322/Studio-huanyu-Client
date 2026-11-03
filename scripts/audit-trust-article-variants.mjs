@@ -47,7 +47,7 @@ if (!process.argv.includes('--source-only')) {
     await access(article.reference); await access(article.local)
   }
   const reports = await Promise.all([join(evidence, 'trust-variants-final-qa.json'), join(evidence, 'production/trust-variants-production-qa.json')].map(read))
-  const implementation = ['src/views/patient/TrustView.vue', 'src/components/common/TrustArticleDialog.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', 'docs/figma-source/trust-articles-revision/desktop-composition-lock-2026-10-22.json']
+  const implementation = ['src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/data/trustArticleSource.ts','src/components/common/trustArticleDialog.ts','src/views/patient/TrustView.vue', 'src/components/common/TrustArticleDialog.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', 'docs/figma-source/trust-articles-revision/desktop-composition-lock-2026-10-22.json']
   const newest = Math.max(...await Promise.all(implementation.map(async name => (await stat(join(root, name))).mtimeMs)))
   for (const report of reports) {
     assert.ok(Date.parse(report.createdAt) >= newest, 'Evidence predates code/source lock')

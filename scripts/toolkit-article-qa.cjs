@@ -61,6 +61,11 @@ async function main() {
   try {
     const page = await browser.newPage({ viewport: { width: 375, height: 900 }, deviceScaleFactor: 2, reducedMotion: 'reduce' })
     page.on('pageerror', e => errors.push(e.message))
+    const articleRequests = []
+    let trackArticles = false
+    page.on('request', request => {
+      if (trackArticles && /(?:\/toolkit-revision\/[^/]+\/desktop-variant-2026-10-22\.json|\/assets\/desktop-variant-2026-10-22-[^/]+\.js)(?:\?|$)/.test(request.url())) articleRequests.push(request.url())
+    })
     // Original source fidelity is isolated from the PC composition metric.
     await page.goto(sourceUrl + `/docs/figma-source/toolkit-revision/${key}/source-baseline-2026-10-22.html`, { waitUntil: 'networkidle' })
     await page.evaluate(() => document.fonts.ready)
@@ -75,7 +80,11 @@ async function main() {
     const baseline = path.join(out, `desktop-baseline-${phase}.png`)
     assert.ok(Math.abs(await page.evaluate(() => document.documentElement.scrollHeight) - variant.root.height) <= 1, 'Static baseline total height differs from its locked layout')
     await page.screenshot({ path: baseline, fullPage: true })
+    trackArticles = true
     await page.goto(url + '/steps/toolkit-detail?article=' + key, { waitUntil: 'networkidle' })
+    trackArticles = false
+    reports.lazyLoading = { directArticleRequests: [...articleRequests] }
+    assert.equal(articleRequests.length, 1, 'Direct article entry must request only the selected article, exactly once')
     await page.evaluate(() => document.fonts.ready)
     await page.waitForTimeout(750)
     const local = path.join(out, `desktop-${phase}.png`)
@@ -152,12 +161,18 @@ async function main() {
       desktop.push({ width, height, checks })
     }
     await page.setViewportSize({ width: 1440, height: 900 })
+    articleRequests.length = 0
+    trackArticles = true
     await page.goto(url + '/steps/toolkit-detail', { waitUntil: 'networkidle' })
+    reports.lazyLoading.translationArticleRequests = articleRequests.length
+    assert.equal(articleRequests.length, 0, 'The default translation article must not download other articles')
     const entry = source.entryNode || '143:3087'
     await page.locator(selector(entry)).focus()
     await page.keyboard.press('Enter')
     await page.waitForURL('**/steps/toolkit-detail?article=' + key)
     await page.waitForSelector('[data-toolkit-article="' + key + '"]')
+    reports.lazyLoading.directoryArticleRequests = articleRequests.length
+    assert.equal(articleRequests.length, 1, 'A directory click must load only the selected article')
     reports.directoryEntry = (await page.locator(selector('143:3074')).innerText()) === variant.title
     await page.goBack({ waitUntil: 'networkidle' })
     await page.waitForSelector('[data-toolkit-article="translation"]')
@@ -165,13 +180,19 @@ async function main() {
     await page.goForward({ waitUntil: 'networkidle' })
     await page.waitForSelector('[data-toolkit-article="' + key + '"]')
     reports.historyRestores &&= (await page.locator(selector('143:3074')).innerText()) === variant.title
+    reports.lazyLoading.historyArticleRequests = articleRequests.length - reports.lazyLoading.directoryArticleRequests
+    assert.equal(reports.lazyLoading.historyArticleRequests, 0, 'Back/forward must reuse the loaded article')
+    trackArticles = false
     // Preserve the frozen mobile page and fail safely for desktop-only keys.
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto(url + '/steps/toolkit-detail?article=' + key, { waitUntil: 'networkidle' })
     reports.mobileDeferredSafely = new URL(page.url()).pathname === '/trust'
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto(url + '/steps/toolkit-detail?article=not-an-article', { waitUntil: 'networkidle' })
-    reports.unknownKeySafe = !new URL(page.url()).search && await page.locator('[data-toolkit-article="translation"]').count() === 1
+    reports.unknownKeySafe = true
+    for (const unknown of ['not-an-article', 'constructor', '__proto__']) {
+      await page.goto(url + '/steps/toolkit-detail?article=' + unknown, { waitUntil: 'networkidle' })
+      reports.unknownKeySafe &&= !new URL(page.url()).search && await page.locator('[data-toolkit-article="translation"]').count() === 1
+    }
     await page.emulateMedia({ reducedMotion: 'no-preference' })
     await page.goto(url + '/steps/toolkit-detail?article=' + key, { waitUntil: 'networkidle' })
     const motion = await page.locator('[data-content-entry]').evaluate(el => {

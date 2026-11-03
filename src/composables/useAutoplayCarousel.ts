@@ -1,7 +1,7 @@
 import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
 
 /** Autoplay only while readable; touch swipes leave vertical page scrolling alone. */
-export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number, options: { initialIndex?: number; media?: string } = {}) {
+export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number, options: { initialIndex?: number; media?: string; hoverTarget?: Ref<HTMLElement | null>; intervalMs?: number } = {}) {
   const activeIndex = ref(options.initialIndex ?? 0)
   const paused = ref(false)
   const enabled = ref(!options.media)
@@ -11,7 +11,6 @@ export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number
   let viewport: MediaQueryList | undefined
   let visible = false
   let hovering = false
-  let focused = false
   let touching = false
   let startX = 0
   let startY = 0
@@ -26,16 +25,18 @@ export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number
     return motion?.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }
   function schedule() {
-    stop()
-    if (!visible || hovering || focused || touching || paused.value || document.hidden || reducedMotionActive() || viewport?.matches === false || count < 2) return
+    if (!visible || hovering || touching || paused.value || document.hidden || reducedMotionActive() || viewport?.matches === false || count < 2) { stop(); return }
+    // A repeated observer or resize callback must not postpone a running
+    // countdown. Only a real pause or manual selection starts a new interval.
+    if (timer !== undefined) return
     timer = window.setTimeout(() => {
       timer = undefined
       if (reducedMotionActive()) return
       activeIndex.value = (activeIndex.value + 1) % count
       schedule()
-    }, 6500)
+    }, options.intervalMs ?? 5000)
   }
-  function select(index: number) { activeIndex.value = (index + count) % count; schedule() }
+  function select(index: number) { if (count < 1) return; activeIndex.value = ((index % count) + count) % count; stop(); schedule() }
   function togglePause() { paused.value = !paused.value; schedule() }
 
   onMounted(() => {
@@ -50,10 +51,25 @@ export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number
       target.addEventListener(type, handler, { passive: true })
       cleanups.push(() => target.removeEventListener(type, handler))
     }
-    listen(element, 'pointerenter', event => { if ((event as PointerEvent).pointerType === 'mouse') { hovering = true; schedule() } })
-    listen(element, 'pointerleave', () => { hovering = false; schedule() })
-    listen(element, 'focusin', () => { focused = true; schedule() })
-    listen(element, 'focusout', event => { focused = element.contains((event as FocusEvent).relatedTarget as Node | null); schedule() })
+    // Pause only while the pointer is over the authored image viewport. The
+    // image wrapper uses pointer-events:none so this is delegated from the
+    // carousel root to the active image itself; copy, whitespace and dots do
+    // not affect the countdown. The ref is read at event time because a slot
+    // can mount after this composable's onMounted hook.
+    const isImageTarget = (target: EventTarget | null) => {
+      const hoverElement = options.hoverTarget ? options.hoverTarget.value : element
+      return Boolean(hoverElement && target instanceof Node && hoverElement.contains(target))
+    }
+    listen(element, 'pointerover', event => {
+      const pointer = event as PointerEvent
+      if (pointer.pointerType !== 'mouse' || !isImageTarget(pointer.target)) return
+      if (!isImageTarget(pointer.relatedTarget)) { hovering = true; schedule() }
+    })
+    listen(element, 'pointerout', event => {
+      const pointer = event as PointerEvent
+      if (pointer.pointerType !== 'mouse' || !isImageTarget(pointer.target)) return
+      if (!isImageTarget(pointer.relatedTarget)) { hovering = false; schedule() }
+    })
     listen(element, 'touchstart', event => {
       const touch = (event as TouchEvent).touches[0]
       if (!touch) return

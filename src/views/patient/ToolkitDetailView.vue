@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import ContentArticleCanvas from '@/components/common/ContentArticleCanvas.vue'
-import { toolkitArticles } from '@/data/contentFigmaSource'
+import { loadToolkitArticle, toolkitArticles } from '@/data/contentFigmaSource'
 const route = useRoute()
 const router = useRouter()
+// A query-only article change reuses this route, so its beforeEnter does not
+// run again. Finish loading before committing the new title/content together.
+onBeforeRouteUpdate(async to => {
+  if (typeof to.query.article === 'string') await loadToolkitArticle(to.query.article)
+})
 const article = computed(() => typeof route.query.article === 'string' && toolkitArticles[route.query.article] ? route.query.article : undefined)
 watch(() => route.query.article, value => {
   // Unknown article keys must not silently display an unrelated article.

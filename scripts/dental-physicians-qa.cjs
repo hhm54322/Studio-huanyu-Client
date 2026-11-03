@@ -8,18 +8,21 @@ const { chromium } = require(path.join(runtime, 'playwright'))
 const sharp = require(path.join(runtime, 'sharp'))
 const root = path.resolve(__dirname, '..')
 const base = path.join(root, 'artifacts/dental-physicians-2026-10-30')
-const out = process.env.HUANYU_QA_OUTPUT || path.join(base, 'development')
+const out = process.env.HUANYU_QA_OUTPUT || path.join(root, 'artifacts/patient-updates-2026-10-31/dental')
 const url = (process.env.HUANYU_QA_URL || 'http://127.0.0.1:5173').replace(/\/$/, '')
 const s = id => `[data-figma-node="${id}"]`
 const normalize = text => text.replace(/\s+/g, '')
 const publishedCases = record => (record.caseStudies || []).filter(item => item.title.trim() && item.images.some(image => image.src.trim()))
 const displayExperience = value => /(经验|专家)\s*$/.test(value.trim()) ? value : `${value}经验`
 const hash = async file => createHash('sha256').update(await fs.readFile(path.join(root, file))).digest('hex')
-const codeFiles = ['src/views/patient/DentalView.vue', 'src/components/common/DentalDesktopFlow.vue', 'src/components/common/DentalDoctorSourceDialog.vue', 'src/components/common/DentalPhysicianDocumentContent.vue', 'src/data/dentalFigmaSource.ts', 'src/data/dentalPhysicianSource.ts', 'src/data/dentalPhysicianData.ts', 'src/components/common/DentalSourceCanvas.vue', 'src/components/common/HomeSourceNode.vue', 'src/utils/figmaFullBleed.ts', 'src/assets/styles/main.css', 'src/components/layout/PatientLayout.vue', 'src/components/layout/PatientHeader.vue']
+const codeFiles = ['scripts/packed-home-source.ts', 'vite.config.ts', 'src/data/dentalFigmaDetails.ts', 'src/data/dentalPhysicianPresentation.ts', 'src/views/patient/DentalView.vue', 'src/components/common/DentalDesktopFlow.vue', 'src/components/common/DentalDoctorSourceDialog.vue', 'src/components/common/DentalPhysicianDocumentContent.vue', 'src/data/dentalFigmaSource.ts', 'src/data/dentalPhysicianSource.ts', 'src/data/dentalPhysicianData.ts', 'src/components/common/DentalSourceCanvas.vue', 'src/components/common/HomeSourceNode.vue', 'src/utils/figmaFullBleed.ts', 'src/assets/styles/main.css', 'src/components/layout/PatientLayout.vue', 'src/components/layout/PatientHeader.vue']
+codeFiles.push('src/data/dentalFigmaDetails.ts','src/components/common/dentalSourceDialog.ts','src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts')
 const pause = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+const waitTab=(page,index)=>page.waitForFunction(index=>document.querySelector('dialog[open]')?.getAttribute('data-active-tab')===String(index)&&document.querySelector('.dental-source-dialog__clip')?.getAttribute('aria-busy')!=='true',index)
 const file = { name: 'qa-dental.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl6wAAAAABJRU5ErkJggg==', 'base64') }
 async function step(page, number) {
   await page.getByRole('button', { name: `${String(number).padStart(2, '0')} ${['选择牙科项目', '城市与医生匹配', '上传影像资料'][number - 1]}`, exact: true }).click()
+  await page.locator(`[data-dental-step="${number}"]`).waitFor()
   await pause(page)
 }
 async function imageDifference(reference, local) {
@@ -46,8 +49,15 @@ async function cardSourceCrop(name, rect, reference, localFull) {
 }
 async function main() {
   await fs.mkdir(out, { recursive: true })
+  const manifestFile = process.env.HUANYU_QA_ASSET_MANIFEST
+  const assetMapping = manifestFile ? JSON.parse(await fs.readFile(path.resolve(manifestFile))).assets : {}
+  const assetPath = original => {
+    if (manifestFile) assert.ok(Object.hasOwn(assetMapping, original), `Built asset missing from manifest: ${original}`)
+    return assetMapping[original] || original
+  }
   const data = JSON.parse(await fs.readFile(path.join(root, 'src/data/dentalPhysicians.json')))
-  const records = data.records
+  const legacy={id:5,name:'谭兆林',sourceProfile:true,title:'院长 / 主治医生',city:'上海',experience:'20年经验',background:'口腔专科',languages:[],startingPrice:1200,rating:'5.0',portrait:'/images/figma/dental-revision/image-3a358e16a710d3ace711509d018e54023d2a9577.webp'}
+  const records = [legacy,...data.records]
   const report = { doctors: [], filters: [], layouts: [], visual: {}, submission: {}, motion: {}, errors: [], failedRequests: [] }
   const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' })
   let page
@@ -57,24 +67,30 @@ async function main() {
     page.on('pageerror', error => report.errors.push(error.message))
     page.on('response', response => { if (response.status() >= 400 && /127\.0\.0\.1/.test(response.url()) && !response.url().includes('/api/')) report.failedRequests.push({ url: response.url(), status: response.status() }) })
     await page.goto(`${url}/dental`, { waitUntil: 'networkidle' })
+    // The small state-loader index is allowed at entry; the dialog renderer
+    // and its authored content must still wait for an explicit opening.
+    const initialDetails = await page.evaluate(() => performance.getEntriesByType('resource').filter(entry => /DentalDoctorSourceDialog[-.]/.test(entry.name)).map(entry => entry.name))
+    assert.deepEqual(initialDetails, [], 'Doctor/institution details should not load with the dental entry page')
     await page.evaluate(() => document.fonts.ready)
     // Preserve the eight existing independent project cards and public footer.
     assert.equal(await page.locator('.dental-live-project').count(), 8)
     await page.getByRole('button', { name: '下一步 城市与医生匹配', exact: true }).click()
+    await page.locator('[data-dental-step="2"]').waitFor()
+    await page.locator('[data-dental-step="2"] [data-doctor]').first().waitFor()
     const cards = page.locator('[data-doctor]')
     const ids = async () => (await cards.evaluateAll(items => items.map(item => Number(item.dataset.doctor)) ))
     assert.deepEqual(await ids(), records.map(record => record.id))
-    assert.ok(!/谭兆林|案例集（1）|128/.test(await page.locator('.dental-desktop-flow').innerText()))
+    assert.equal(await page.getByRole('button',{name:'查看谭兆林医生详情',exact:true}).count(),1)
     for (const record of records) {
       const card = page.locator(`[data-doctor="${record.id}"]`)
-      const hasCases = publishedCases(record).length > 0
-      for (const text of [record.name, displayExperience(record.experience), '深圳', '5.0', '¥1,080/颗']) assert.ok((await card.innerText()).includes(text), `${record.name}: ${text}`)
+      const hasCases = Boolean(record.sourceProfile || publishedCases(record).length)
+      for (const text of [record.name, displayExperience(record.experience), record.city, '5.0', record.sourceProfile?'¥1,200/颗':'¥1,080/颗']) assert.ok((await card.innerText()).includes(text), `${record.name}: ${text}`)
       assert.equal(await card.locator('[data-figma-source-node="2294:7088"]').count(), hasCases ? 1 : 0, `${record.name}: case panel visibility`)
       assert.equal(await card.locator('[data-figma-source-node="2294:7091"]').count(), hasCases ? 1 : 0, `${record.name}: case image 1 visibility`)
       assert.equal(await card.locator('[data-figma-source-node="2294:7092"]').count(), hasCases ? 1 : 0, `${record.name}: case image 2 visibility`)
       assert.equal(await card.getByRole('button', { name: `查看${record.name}案例集`, exact: true }).count(), hasCases ? 1 : 0, `${record.name}: case action visibility`)
       const avatar = card.locator(`[data-figma-node^="2294:7063::"]`)
-      assert.ok((await avatar.getAttribute('style')).includes(record.portrait))
+      assert.ok((await avatar.getAttribute('style')).includes(assetPath(record.portrait)))
       const design = await card.evaluate(el => {
         const at = id => el.querySelector(`[data-figma-node="${id}::dental-physician-${el.dataset.doctor}"]`)
         const box = id => { const node = at(id); if (!node) return null; const style = getComputedStyle(node); return { width: parseFloat(style.width), height: parseFloat(style.height), radius: style.borderRadius, background: style.backgroundColor } }
@@ -88,27 +104,27 @@ async function main() {
       } else {
         assert.equal(design.caseBox, null); assert.deepEqual(design.images, [null, null]); assert.equal(design.cardHeight, 338)
       }
-      assert.deepEqual(design.price, [{ text: '¥1,080', color: 'rgb(37, 99, 235)', weight: '600' }, { text: '/颗', color: 'rgb(75, 85, 99)', weight: '400' }])
+      assert.deepEqual(design.price, [{ text: record.sourceProfile?'¥1,200':'¥1,080', color: 'rgb(37, 99, 235)', weight: '600' }, { text: '/颗', color: 'rgb(75, 85, 99)', weight: '400' }])
       assert.equal(design.noReferenceLabel, true)
     }
     await page.evaluate(() => scrollTo(0, 0))
     await page.screenshot({ path: path.join(out, 'matching-full.png'), fullPage: true })
     await page.screenshot({ path: path.join(out, 'local-hero-2x.png'), clip: { x: 0, y: 0, width: 1440, height: 460 } })
     const reference = path.join(root, 'artifacts/figma-dental-2026-10-28/source/matching-figma.png')
-    report.visual.casePreview = records.some(record => publishedCases(record).length)
+    report.visual.casePreview = records.some(record => record.sourceProfile || publishedCases(record).length)
       ? await cardSourceCrop('case-preview', { left: 272, top: 2252, width: 682, height: 268 }, reference, path.join(out, 'matching-full.png'))
       : { omitted: true, reason: 'No physician detail currently contains a published/authorised case collection; Figma illustrative assets are not rendered.' }
     report.visual.rating = await cardSourceCrop('rating', { left: 786, top: 1864, width: 168, height: 64 }, reference, path.join(out, 'matching-full.png'))
-    await sharp(path.join(out, 'matching-full.png')).extract({ left: 224, top: 1816, width: 779, height: 992 }).toFile(path.join(out, 'card-101.png'))
+    await sharp(path.join(out, 'matching-full.png')).extract({ left: 224, top: 1816, width: 779, height: 992 }).toFile(path.join(out, 'card-5.png'))
     const info = await sharp(reference).metadata(), ratio = info.width / 1440
     await sharp(reference).extract({ left: 0, top: 0, width: Math.round(1440 * ratio), height: Math.round(460 * ratio) }).resize(2880, 920).toFile(path.join(out, 'figma-hero-2x.png'))
     report.visual.heroNMAE = await imageDifference(path.join(out, 'figma-hero-2x.png'), path.join(out, 'local-hero-2x.png'))
     assert.ok(report.visual.heroNMAE < .01, `Hero mismatch ${report.visual.heroNMAE}`)
     const first = await cards.first().boundingBox(), second = await cards.nth(1).boundingBox(), fourth = await cards.nth(3).boundingBox()
     report.visual.cardGeometry = { first, second, fourth }
-    assert.ok(Math.abs(first.width - 389.33334) < .02); assert.equal(first.height, publishedCases(records[0]).length ? 496 : 338)
+    assert.ok(Math.abs(first.width - 389.33334) < .02); assert.equal(first.height, records[0].sourceProfile || publishedCases(records[0]).length ? 496 : 338)
     assert.equal(first.x, 112); assert.equal(first.y, 908)
-    assert.ok(Math.abs(second.x - first.x - 413.33334) < .02); assert.equal(fourth.y - first.y, Math.max(...records.slice(0, 3).map(record => publishedCases(record).length ? 496 : 338)) + 24)
+    assert.ok(Math.abs(second.x - first.x - 413.33334) < .02); assert.equal(fourth.y - first.y, Math.max(...records.slice(0, 3).map(record => record.sourceProfile || publishedCases(record).length ? 496 : 338)) + 24)
     const footer = page.locator(s('2294:7214'))
     await footer.scrollIntoViewIfNeeded()
     await footer.screenshot({ path: path.join(out, 'local-footer-2x.png') })
@@ -116,10 +132,10 @@ async function main() {
     report.visual.footerNMAE = await imageDifference(path.join(out, 'figma-footer-2x.png'), path.join(out, 'local-footer-2x.png'))
     assert.ok(report.visual.footerNMAE < .01, `Footer mismatch ${report.visual.footerNMAE}`)
     const filters = [
-      ['城市', '深圳', records], ['城市', '上海', []], ['城市', '广州', []],
+      ['城市', '深圳', records.filter(r=>r.city==='深圳')], ['城市', '上海', records.filter(r=>r.city==='上海')], ['城市', '广州', []],
       ['医生职称', '副主任医师', records.filter(record => record.title.includes('副主任医师'))],
       ['医生职称', '主任医师', records.filter(record => record.title.replace(/副主任医师/g, '').includes('主任医师'))],
-      ['医生职称', '主治医师', records.filter(record => record.title.includes('主治医师'))],
+      ['医生职称', '主治医师', records.filter(record => record.title.replace('主治医生','主治医师').includes('主治医师'))],
       ['医生职称', '教授', records.filter(record => record.title.includes('教授'))],
       ['医生职称', '院长', records],
       ['经验标签', '20年以上', records.filter(record => Number(record.experience.match(/\d+/)?.[0] || 0) >= 20)],
@@ -129,7 +145,7 @@ async function main() {
     ]
     for (const [label, value, expected] of filters) {
       await page.getByRole('combobox', { name: label, exact: true }).selectOption(value)
-      assert.equal(await cards.count(), 6, 'Filter applied before clicking confirmation')
+      assert.equal(await cards.count(), records.length, 'Filter applied before clicking confirmation')
       await page.getByRole('button', { name: '筛选医生', exact: true }).click()
       assert.deepEqual(await ids(), expected.map(record => record.id), `${label} ${value}`)
       if (!expected.length) assert.equal(await page.getByRole('status').filter({ hasText: '暂无符合条件的医生' }).count(), 1)
@@ -138,14 +154,50 @@ async function main() {
     }
     for (const [name, expected] of [
       ['经验优先', [...records].sort((a, b) => Number(b.experience.match(/\d+/)?.[0] || 0) - Number(a.experience.match(/\d+/)?.[0] || 0))],
-      ['价格排序', records], ['评价最高', records], ['综合推荐', records],
+      ['价格排序', [...records].sort((a,b)=>a.startingPrice-b.startingPrice)], ['评价最高', records], ['综合推荐', records],
     ]) {
       await page.getByRole('button', { name, exact: true }).click()
       assert.deepEqual(await ids(), expected.map(record => record.id))
       assert.equal(await page.getByRole('button', { name, exact: true }).getAttribute('aria-pressed'), 'true')
     }
     report.sorting = true
-    for (const record of records) {
+    // Retained physician keeps his own authored tabs and case/institution assets.
+    const legacyOpener=page.getByRole('button',{name:'查看谭兆林医生详情',exact:true})
+    await legacyOpener.scrollIntoViewIfNeeded();await legacyOpener.focus()
+    const legacyY=await page.evaluate(()=>scrollY)
+    await legacyOpener.click()
+    const legacyDialog=page.locator('dialog[open]')
+    await legacyDialog.waitFor({state:'visible'})
+    assert.equal(await legacyDialog.getAttribute('data-document-doctor'),null)
+    for(let tab=0;tab<5;tab++) {
+      await legacyDialog.getByRole('tab').nth(tab).click();await waitTab(page,tab);await pause(page)
+      assert.ok((await legacyDialog.innerText()).includes('谭兆林'))
+      assert.equal(await legacyDialog.getByRole('tab',{selected:true}).count(),1)
+      const clip=legacyDialog.locator('.dental-source-dialog__clip')
+      await clip.evaluate(el=>el.scrollTo({top:el.scrollHeight,behavior:'instant'}));await pause(page)
+      assert.equal(await clip.evaluate(el=>el.scrollWidth<=el.clientWidth+1),true)
+      await page.screenshot({path:path.join(out,`retained-profile-5-tab-${tab}.png`)})
+      await clip.evaluate(el=>el.scrollTo({top:0,behavior:'instant'}))
+    }
+    await legacyDialog.getByRole('tab').first().press('End')
+    await waitTab(page,4)
+    assert.equal(await legacyDialog.getAttribute('data-active-tab'),'4')
+    await page.keyboard.press('Escape');await legacyDialog.waitFor({state:'detached'})
+    assert.equal(await page.evaluate(()=>scrollY),legacyY)
+    assert.equal(await legacyOpener.evaluate(el=>el===document.activeElement),true)
+    const legacyCases=page.getByRole('button',{name:'查看谭兆林案例集',exact:true})
+    await legacyCases.click();await legacyDialog.waitFor({state:'visible'})
+    assert.equal(await legacyDialog.getAttribute('data-active-tab'),'2')
+    assert.ok((await legacyDialog.innerText()).includes('种植修复'))
+    await page.keyboard.press('Escape');await legacyDialog.waitFor({state:'detached'})
+    const legacyInstitution=page.locator('[data-doctor="5"]').getByRole('button',{name:'查看博远口腔',exact:true})
+    await legacyInstitution.click();await legacyDialog.waitFor({state:'visible'})
+    assert.equal(await legacyDialog.getAttribute('data-dental-dialog'),'institution')
+    assert.ok((await legacyDialog.innerText()).includes('上海牙科机构'))
+    assert.equal(await legacyDialog.locator(s('2294:7683')).count(),1)
+    await page.keyboard.press('Escape');await legacyDialog.waitFor({state:'detached'})
+    report.doctors.push({id:5,name:'谭兆林',sourceProfile:true,states:['profile','treatment','cases','reviews','services'],content:true,bottomReachable:true,institution:true,directCases:true,focusRestore:true,scrollRestore:true,keyboard:true})
+    for (const record of data.records) {
       const opener = page.getByRole('button', { name: `查看${record.name}医生详情`, exact: true })
       await opener.scrollIntoViewIfNeeded(); await opener.focus()
       const scroll = await page.evaluate(() => scrollY)
@@ -167,7 +219,7 @@ async function main() {
       const states = ['profile']
       for (let index = 1; index < 5; index++) {
         await clip.evaluate(el => el.scrollTo({ top: 0, behavior: 'instant' }))
-        await dialog.getByRole('tab').nth(index).click(); await pause(page)
+        await dialog.getByRole('tab').nth(index).click(); await waitTab(page,index); await pause(page)
         assert.equal(await dialog.getByRole('tab', { selected: true }).count(), 1)
         const text = normalize(await dialog.innerText())
         assert.ok(text.includes(record.name)); assert.ok(!text.includes('谭兆林'))
@@ -194,6 +246,7 @@ async function main() {
       await clip.evaluate(el => el.scrollTo({ top: 0, behavior: 'instant' }))
       for (const [key, expected] of [['Home', '0'], ['ArrowRight', '1'], ['End', '4'], ['ArrowLeft', '3']]) {
         await dialog.getByRole('tab', { selected: true }).press(key)
+        await waitTab(page,expected)
         assert.equal(await dialog.getAttribute('data-active-tab'), expected)
       }
       for (let i = 0; i < 10; i++) { await page.keyboard.press(i % 2 ? 'Tab' : 'Shift+Tab'); assert.ok(await dialog.evaluate(el => el.contains(document.activeElement))) }
@@ -224,7 +277,7 @@ async function main() {
       await page.goto(`${url}/dental`, { waitUntil: 'networkidle' }); await step(page, 2)
       await page.evaluate(() => document.fonts.ready)
       const layout = await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, cards: document.querySelectorAll('[data-doctor]').length, broken: [...document.images].filter(img => !img.complete || !img.naturalWidth).map(img => img.src) }))
-      assert.equal(layout.width, layout.scrollWidth); assert.equal(layout.cards, 6); assert.deepEqual(layout.broken, [])
+      assert.equal(layout.width, layout.scrollWidth); assert.equal(layout.cards, records.length); assert.deepEqual(layout.broken, [])
       await page.screenshot({ path: path.join(out, `desktop-${width}.png`), fullPage: true })
       await page.getByRole('button', { name: '查看万前程医生详情', exact: true }).click()
       const clip = page.locator('.dental-source-dialog__clip')

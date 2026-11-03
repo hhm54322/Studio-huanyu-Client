@@ -1,13 +1,26 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData, type HomeSourceAction } from './HomeSourceNode.vue'
-import { homeDesktopNodes as desktop, homeMobileNodes as mobile } from '@/data/homeFigmaSource'
+import { homeDesktopNodes as desktop, homeMobileNodes as mobile } from '@/data/homeSourceRegistry'
+import { scheduleHomeSourceMount } from '@/utils/homeSourceMount'
 
-const props = defineProps<{ desktopId: string; mobileId?: string; label: string; actions?:Record<string, HomeSourceAction>; texts?:Record<string,string>; styles?:Record<string,string>; hidden?:string[]; attributes?:Record<string,Record<string,string|number|boolean>>; fixedMobile?:boolean; flowRoots?:string[]; contentHeightId?:string; baselineNodes?:string[] }>()
+const props = withDefaults(defineProps<{ desktopId: string; mobileId?: string; label: string; actions?:Record<string, HomeSourceAction>; texts?:Record<string,string>; styles?:Record<string,string>; hidden?:string[]; attributes?:Record<string,Record<string,string|number|boolean>>; fixedMobile?:boolean; flowRoots?:string[]; contentHeightId?:string; baselineNodes?:string[]; deferImages?:boolean; deferRender?:boolean }>(), { deferImages: true })
 const emit = defineEmits<{ activate: [action: string, event: MouseEvent] }>()
 const width = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
 const canvas = ref<HTMLElement | null>(null)
 const contentDelta = ref(0)
+const section = ref<HTMLElement | null>(null)
+const rendered = ref(!props.deferRender || width.value <= 700 || Boolean(props.contentHeightId))
+let cancelMount: (() => void) | undefined
+let renderObserver: IntersectionObserver | undefined
+onMounted(() => {
+  if (rendered.value) return
+  const mount = () => { rendered.value = true; cancelMount?.(); renderObserver?.disconnect() }
+  cancelMount = scheduleHomeSourceMount(mount)
+  renderObserver = new IntersectionObserver(entries => { if (entries.some(entry => entry.isIntersecting)) mount() }, { rootMargin: '1200px 0px' })
+  if (section.value) renderObserver.observe(section.value)
+})
+onBeforeUnmount(() => { cancelMount?.(); renderObserver?.disconnect() })
 let heightObserver: ResizeObserver | undefined
 function resize() { width.value = window.innerWidth }
 onMounted(() => window.addEventListener('resize', resize, { passive:true }))
@@ -35,9 +48,9 @@ const sectionStyle = computed(() => ({
 </script>
 
 <template>
-  <section class="home-figma-section" :class="{ 'home-figma-section--mobile': isMobile }" :aria-label="label" :style="sectionStyle">
-    <div ref="canvas" class="home-figma-section__canvas" :style="isMobile ? undefined : { width: `${node.width}px`, height: `${contentHeight}px`, transform: `translateX(-50%) scale(${scale})` }">
-      <HomeSourceNode :node="node" :fluid="Boolean(isMobile) && !fixedMobile" :flow-roots="flowRoots" :baseline-nodes="baselineNodes" :preserve-text-lines="Boolean(isMobile) && width === node.width" :actions="actions" :texts="texts" :styles="sourceStyles" :hidden="hidden" :attributes="attributes" root @activate="(action, event) => emit('activate', action, event)">
+  <section ref="section" class="home-figma-section" :class="{ 'home-figma-section--mobile': isMobile, 'home-figma-section--deferred': !isMobile && !contentHeightId }" :aria-label="label" :style="sectionStyle" :data-source-render="rendered ? 'ready' : 'queued'">
+    <div v-if="rendered || isMobile" ref="canvas" class="home-figma-section__canvas" :style="isMobile ? undefined : { width: `${node.width}px`, height: `${contentHeight}px`, transform: `translateX(-50%) scale(${scale})` }">
+      <HomeSourceNode :node="node" :fluid="Boolean(isMobile) && !fixedMobile" :flow-roots="flowRoots" :baseline-nodes="baselineNodes" :preserve-text-lines="Boolean(isMobile) && width === node.width" :actions="actions" :texts="texts" :styles="sourceStyles" :hidden="hidden" :attributes="attributes" root :defer-images="deferImages" @activate="(action, event) => emit('activate', action, event)">
         <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
         <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
         <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>
@@ -47,8 +60,11 @@ const sectionStyle = computed(() => ({
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .home-figma-section { position:relative; width:100%; overflow:clip; background:#fff; }
+/* These desktop sections have an explicit authored outer height. The browser
+   may skip offscreen descendants without changing scroll geometry. Sections
+   whose height follows an accordion remain fully laid out. */
+.home-figma-section--deferred { content-visibility:auto; }
 .home-figma-section__canvas { position:absolute; top:0; left:50%; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .home-figma-section--mobile .home-figma-section__canvas { position:relative; left:0; width:100%; transform:none; }
 .home-figma-section--mobile :deep(.home-source-node--root) { width:100%!important; }

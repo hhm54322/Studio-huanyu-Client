@@ -116,3 +116,11 @@ All 32 SVG/photo asset rows and source IDs are in the manifest.
 ## Latest desktop revision — 2026-10-29
 
 The current official export and live Design node `190:5550` retain the matcher hierarchy. Re-read source typography and native baseline coordinates before applying browser line-box alignment: title `190:5559` is 130×32, tracking .3955078125 and baseline 27.52000046; question texts `190:5565/5589/5607` use tracking -.3125 and baseline 20.63999939; helper text uses baseline 16.04000092. Option labels use SF Pro 16/16, tracking -.150390625 and baseline13.6875. The submit button `190:5621` is203×52 at618.5/710; text `190:5622` is127×16 at642.5/728, baseline13.76000023. Labels remain native DOM text; line-box offsets are calculated from these source baselines against the browser's measured baseline. No screenshot-derived offsets are used. Latest reference: `artifacts/figma-cases-2026-10-29/matcher-reference-2x.png`.
+
+
+## 2026-11-01 性能改动后的真实回归
+
+- 生产构建80000重跑完整源节点/75文字/17几何检查、1440/1024/768/390状态、智能匹配与键盘/焦点/关闭恢复；没有修改页面实现、Figma参数、图源或既定阈值。
+- 完整实际截图及原始指标另存`artifacts/performance-exhaustive-2026-11-01/cases-unmodified-captures/`。用户另行要求的WhatsApp常驻入口不在原始Figma帧内，源码层截图仅对这一固定悬浮入口临时设为不可见；页面内容全部保留。此项为授权新增控件的独立范围，不能将去除它后的指标冒充完整界面逐像素一致。该入口以`whatsapp-contact-qa.cjs`独立验证全13路由、位置与配置。
+- 原始完整截图pixelmatch1.00924%、nMAE1.00702%；仅比较源稿页面层为pixelmatch0.78782%、nMAE0.83875%。两组指标和截图同时保留，源稿图片/源锁没有重写。
+- 原始提取记录的`.fig`路径现存文件SHA与历史SHA不同，未将替代导出当作原始基线。最新完整源变更相等性尚缺该历史导出；本次结论限于锁定参数/图片的真实回归及性能无布局变化，不据此宣称本页全量最新设计已验收。见`artifacts/performance-exhaustive-2026-11-01/additional-source-summary.json`。

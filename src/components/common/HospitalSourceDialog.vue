@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData as SourceNode } from './HomeSourceNode.vue'
-import HospitalRadar from './HospitalRadar.vue'
-import { hospitalSources, hospitalNode, hospitalText, descendants, sourceAtOrigin, hospitalCards, hospitalRecord } from '@/data/hospitalFigmaSource'
+import { hospitalSources, hospitalNode, hospitalText, descendants, hospitalCards, hospitalRecord } from '@/data/hospitalFigmaSource'
+import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
+import { loadHospitalTab } from '@/data/hospitalFigmaDetails'
+
+const HospitalRadar = defineAsyncComponent(() => import('./HospitalRadar.vue'))
 
 const props=defineProps<{hospitalName:string}>()
 const emit=defineEmits<{close:[];consultation:[]}>()
@@ -11,6 +14,7 @@ const height=ref(typeof window==='undefined'?900:window.innerHeight)
 const phone=computed(()=>width.value<=700)
 const fluid=computed(()=>phone.value&&width.value!==375)
 const activeTab=ref(0)
+const loadingTab=ref(false)
 const scrollTop=ref(0)
 const overviewEntered=ref(false)
 const dialog=ref<HTMLDialogElement|null>(null)
@@ -162,9 +166,16 @@ const attributes=computed(()=>{
 })
 let trigger:HTMLElement|null=null,oldOverflow='',savedY=0
 let galleryIndex=0
+let tabRequest=0,disposed=false
 function resize(){width.value=innerWidth;height.value=innerHeight}
 function onScroll(){scrollTop.value=scroller.value?.scrollTop||0;if(scrollTop.value>0)overviewEntered.value=true}
 async function changeTab(index:number){
+  const request=++tabRequest
+  loadingTab.value=true
+  try {
+    await Promise.all([loadHospitalTab(index), ...(index===3?[import('./HospitalRadar.vue')]:[])])
+  } finally { if(request===tabRequest&&!disposed)loadingTab.value=false }
+  if(disposed||request!==tabRequest)return
   const wasStuck=stuck.value
   const oldScroll=scrollTop.value
   activeTab.value=index;galleryIndex=0
@@ -214,6 +225,7 @@ onMounted(async()=>{
   dialog.value?.querySelector<HTMLElement>('[aria-label="关闭医院详情"]')?.focus({preventScroll:true})
 })
 onBeforeUnmount(()=>{
+  disposed=true;tabRequest++
   dialog.value?.close();document.body.style.overflow=oldOverflow;window.removeEventListener('resize',resize)
   window.scrollTo({top:savedY,behavior:'instant'});trigger?.focus({preventScroll:true})
 })
@@ -224,7 +236,7 @@ onBeforeUnmount(()=>{
     <dialog ref="dialog" class="hospital-dialog" :class="{'is-phone':phone,'is-fluid':fluid,'is-generic':!yaoying}" aria-labelledby="hospital-detail-title" @cancel.prevent="emit('close')" @click="outside" @keydown="keydown">
       <div class="hospital-dialog__position" :style="{width:`${panelWidth}px`,height:`${panelHeight*desktopScale}px`}">
         <section class="hospital-dialog__panel" :data-hospital-panel="model.panel.id" :style="{width:`${phone?panelWidth:model.width}px`,height:`${panelHeight}px`,transform:`scale(${desktopScale})`}">
-          <div ref="scroller" class="hospital-dialog__scroll" :style="{height:`${panelHeight-model.cta.height}px`}" @scroll="onScroll">
+          <div ref="scroller" class="hospital-dialog__scroll" :aria-busy="loadingTab" :style="{height:`${panelHeight-model.cta.height}px`}" @scroll="onScroll">
             <HomeSourceNode :node="rootNode" root :fluid="fluid||!phone&&!yaoying" :actions="actions" :styles="nodeStyles" :texts="genericData" :hidden="hidden" :attributes="attributes" :baseline-nodes="baselineNodes" :preserve-text-lines="!fluid&&(phone||yaoying)" @activate="activate">
               <template #radar><HospitalRadar :phone="phone" /></template>
             </HomeSourceNode>
@@ -248,7 +260,6 @@ onBeforeUnmount(()=>{
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .hospital-dialog { position:fixed; inset:0; width:100%; max-width:none; height:100%; max-height:none; margin:0; padding:16px; border:0; background:transparent; overflow:auto; overscroll-behavior:contain; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .hospital-dialog[open] { display:flex; align-items:center; justify-content:center; }
 .hospital-dialog::backdrop { background:rgba(0,0,0,.5); backdrop-filter:blur(4px); }

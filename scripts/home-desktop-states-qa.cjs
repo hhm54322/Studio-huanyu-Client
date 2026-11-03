@@ -37,6 +37,21 @@ async function capture(page, locator, crop, file) {
   const origin = await locator.evaluate(el => el.getBoundingClientRect().top + scrollY)
   await page.evaluate(y => scrollTo({ top: Math.floor(y), behavior: 'instant' }), origin)
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+  // Entering the viewport starts deferred images. Wait for their real load
+  // and decode before comparing this settled state to the Figma source.
+  await page.waitForLoadState('networkidle')
+  await locator.evaluate(async element => {
+    const urls = new Set()
+    for (const node of [element, ...element.querySelectorAll('*')]) {
+      if (node instanceof HTMLImageElement && node.currentSrc) urls.add(node.currentSrc)
+      for (const match of getComputedStyle(node).backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g)) urls.add(match[1])
+    }
+    await Promise.all([...urls].map(async url => {
+      const image = new Image()
+      image.src = url
+      await image.decode()
+    }))
+  })
   const box = await locator.boundingBox()
   assert.ok(box)
   const image = await page.screenshot({ animations: 'disabled' })
@@ -56,7 +71,7 @@ async function main() {
     await page.mouse.move(0, 0)
     // Header and assistant overlays are independently verified against the
     // full homepage. Supplemental Hero frames do not contain those overlays.
-    await page.addStyleTag({ content: '.patient-header,.patient-header *,.consult-float,.consult-float *,.home-source-hero__assistant,.home-source-hero__assistant *{visibility:hidden!important}' })
+    await page.addStyleTag({ content: '.patient-header,.patient-header *,.consult-float,.consult-float *,.home-source-hero__assistant,.home-source-hero__assistant *,.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}' })
     const hero = page.locator('.home-source-hero')
     for (let state = 1; state <= 3; state++) {
       await hero.press('ArrowRight')

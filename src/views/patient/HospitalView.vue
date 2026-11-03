@@ -2,11 +2,11 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HospitalFigmaCanvas from '@/components/common/HospitalFigmaCanvas.vue'
 import HomeSourceNode, { type HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
-import HospitalSourceDialog from '@/components/common/HospitalSourceDialog.vue'
 import { hospitalActions, hospitalSources, hospitalNode, hospitalCities, hospitalCityNodes, hospitalCards, descendants, filteredHospitalSource } from '@/data/hospitalFigmaSource'
-import { homeMobileNodes } from '@/data/homeFigmaSource'
+import { homeMobileNodes } from '@/data/homeMobileNavigation'
 import { useAppStore, type Locale } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import { hospitalSourceDialog } from '@/components/common/hospitalSourceDialog'
 
 const viewport=ref(typeof window==='undefined'?1440:window.innerWidth)
 const phone=computed(()=>viewport.value<=700)
@@ -21,6 +21,8 @@ const {locale}=useI18n()
 const app=useAppStore()
 const filtered=computed(()=>hasFiltered.value&&!phone.value?filteredHospitalSource(selectedCity.value):undefined)
 const source=computed(()=>filtered.value?.root||hospitalSources[phone.value?'list-mobile':'desktop']!.root)
+const cardNodes=computed(()=>filtered.value?.root?descendants(filtered.value.root).filter(node=>node.id.includes('::hospital-')&&node.name===hospitalCards.desktop[0]!.node.name&&node.height===398):hospitalCards[phone.value?'mobile':'desktop'].map(card=>card.node))
+const deferredImageRoots=computed(()=>phone.value?[]:cardNodes.value.map(node=>node.id))
 const headerId=computed(()=>phone.value?'1620:583':'484:1549')
 const actions=computed<Record<string,HomeSourceAction>>(()=>({...hospitalActions,...filtered.value?.actions}))
 const nodeStyles=computed(()=>{
@@ -49,8 +51,7 @@ const attributes=computed(()=>{
   const values:Record<string,Record<string,string|number|boolean>>={}
   hospitalCityNodes[phone.value?'mobile':'desktop'].forEach((id,index)=>values[id]={'aria-pressed':selectedCity.value===hospitalCities[index]})
   values[phone.value?'1620:589':'484:1573']={'aria-expanded':phone.value?menuOpen.value:hospitalMenuOpen.value}
-  const cards=filtered.value?.root?descendants(filtered.value.root).filter(node=>node.id.includes('::hospital-')&&node.name===hospitalCards.desktop[0]!.node.name&&node.height===398):hospitalCards[phone.value?'mobile':'desktop'].map(card=>card.node)
-  for(const card of cards){
+  for(const card of cardNodes.value){
     values[card.id]={'data-hospital-card':true}
     const title=card.children[1]?.children[0]?.children.find(node=>node.type==='TEXT')
     if(title)values[title.id]={title:title.text}
@@ -124,7 +125,7 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
 
 <template>
   <div ref="page" class="hospital-page" :class="{'is-phone':phone,'is-fluid':fluid}" @mouseover="hover" @mouseout="leaveMenu" @focusin="hover" @focusout="leaveMenu">
-    <HospitalFigmaCanvas :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" label="中国医院列表" @activate="activate" />
+    <HospitalFigmaCanvas :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" :defer-image-roots="deferredImageRoots" image-preload-margin="200px 0px" label="中国医院列表" @activate="activate" />
     <header class="hospital-source-header">
       <HospitalFigmaCanvas :node="hospitalNode(headerId)" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" label="主导航" @activate="activate" />
       <Transition name="hospital-dropdown"><div v-if="!phone&&hospitalMenuOpen" class="hospital-nav-dropdown">
@@ -139,12 +140,11 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
         <button v-for="language in [{code:'zh',name:'中文'},{code:'en',name:'English'},{code:'id',name:'Bahasa Indonesia'},{code:'ru',name:'Русский'},{code:'mn',name:'Монгол'}]" :key="language.code" type="button" @click="changeLanguage(language.code as Locale)">{{language.name}}</button>
       </div>
     </header>
-    <HospitalSourceDialog v-if="selectedName" :hospital-name="selectedName" @close="selectedName=null" @consultation="openConsultation" />
+    <component :is="hospitalSourceDialog(selectedName)" v-if="selectedName" :hospital-name="selectedName" @close="selectedName=null" @consultation="openConsultation" />
   </div>
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .hospital-page { position:relative; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .hospital-source-header { position:fixed; left:0; right:0; top:0; z-index:60; height:64px; pointer-events:none; }
 .hospital-source-header :deep(a),.hospital-source-header :deep(button),.hospital-nav-dropdown,.hospital-mobile-menu,.hospital-languages { pointer-events:auto; }

@@ -1,5 +1,34 @@
 # 牙科服务 · 项目选择与城市医生匹配
 
+## 2026-11-03 桌面悬浮下一步与公共导航修正
+
+- 用户本次重新要求下一步底部悬浮，覆盖下方历史非悬浮记录。第一步 `2294:8336`、第二步 `2294:7209` 保留各自源按钮和点击逻辑，第三步不增加按钮。原位置保留布局空间，页面只出现一个可操作按钮。
+- 使用完整源 `231:88` 提取的底部间距96px，桌面按画布比例缩放。按钮底边位于 `min(viewportBottom, footerTop) - 96×scale`，页脚进入视口后同步上移；滚动/尺寸与手风琴高度变化合并至动画帧。公共导航由 `patient-navigation.md` 承接。
+- 当前官方源 `(35).fig` 于2026-11-03T04:07:25.377Z导出，SHA256 `00ef223839b8cfdf6be3eddbd18a691d5e96030201bd07b24ddfec9b74c0b2ca`。12个登记源不变，`2294:7751`仅外层帧名由05案例集变为05医生简介；已重新读取live Layers/Dev Mode，记录 `docs/figma-source/dental-revision-2026-11-03/profile-frame-name.json`。原基线与changed报告保留；无其他参数/内容/资源变动。
+- 正式构建 `20261103210000`：1024/1280/1440/1920两步骤8种悬浮/页脚状态全部通过，间距误差<1px；第三步无重复按钮。证据 `artifacts/patient-navigation-avatars-20261103/production/qa.json` 与 `dental-1-1440-footer.png`，已个人复看截图。
+- 开发与正式构建7位医生全部标签、15组筛选、4种排序、机构/案例、报价提交失败重试及焦点/滚动恢复通过，无真实资料提交。生产图片严格按 `dist/asset-cache-manifest.json` 比对内容哈希URL，不跳过图片断言。
+- 最新生产截图对源：案例预览nMAE0.73241%、pixelmatch0.26973%；评分/价格0.62168%/0.53943%；Hero0.99549%、Footer0.66522%，均<1%。证据 `artifacts/patient-navigation-avatars-20261103/dental-production/behavior-qa.json`；专项目录门禁通过。当前仅本地构建验证，未发布公网；移动端设计保持冻结。
+
+## 2026-11-01 牙科首屏进一步优化
+
+- 沿用已锁定的13组页面/详情/卡片源及8项目+页脚补充源。官方源`寰宇云医 (31).fig`于2026-11-01T03:36:23.606Z导出，SHA256 `b12a7b02b462486846e75e7a0f0552a30a2e800f1c7452fdb925891c9f98abf4`；对原实施源逐节点无新增差异，未修改参数、资产或源锁。本轮`final-source-summary.json`留档。
+- 仅拆分运行数据：第一步先加载8个项目与页脚；第二步匹配源及独立医生卡模板、第三步上传源在进入时准备。保留资料、筛选、顺序、独立展开、详情和业务接口。先加载再切换，缓存/并发去重/最后操作优先；失败保留当前步骤并可重试。窄屏原有流程不加载桌面源。
+- 后续实测与静态、交互回归结果待填写，目前不声明完成。
+
+## 2026-10-31 当前医生补充与验收
+
+- Status: verified — seven merged desktop dental doctors and production preview; mobile deferred by user. This batch is not deployed.
+- 当前源：本会话 IAB 验证 Design/Layers/Properties（2026-10-31T15:03:29.138Z，browser6/tab4）；官方导出 `(25).fig`，2026-10-31T15:08:23.937Z，SHA256 `b8e39c0623027d2db8c3a2e90400a4a353304c508ca64f916302c506a7f67854`。`latest-dental.json` 的13源帧逐节点/图片/矢量/依赖均 unchanged，沿用下方完整参数。
+- 完整8项目源 `231:88` 的节点与依赖未变；历史比较同时发现同名短帧 `2294:8240`。`current-dental-complete-original.json` 保留 status=changed 及该alternative，未改为 unchanged。按用户确认的8项目继续组合短帧首屏与完整源后5项目/页脚；`current-dental-complete-frame.json` 比较 unchanged。
+- 谭兆林（业务ID5，源卡 `2294:7061`）保留，补充文档6位深圳医生ID101–106，共7位；同名文档优先。谭兆林保留自己的5标签、案例和上海机构；新6位无真实授权案例则不显示预览/入口，不复制谭兆林或源样例。
+- 卡片沿用389.33334宽、padding24、radius24、行列距24；谭兆林有案例496高，新6位无案例338高；混合行按最大高度定位下一行。评分价格区保留源层级/富文本参数，价格按各自资料。
+- 开发与 production preview：`artifacts/patient-updates-2026-10-31/dental/behavior-qa.json`、`dental-production/behavior-qa.json`。7人标签/机构/案例、15筛选、4排序、报价带入、失败重试和重复提交保护通过；仅本地拦截API，未提交真实资料。1024/1280/1440/1920无溢出、破图或页面错误。
+- 源区域对照：案例预览 nMAE **0.73241%**、pixelmatch **0.26973%**；评分/价格 **0.62169%/0.53944%**；Hero **0.75919%**、Footer **0.66523%**。新资料不宣称与旧单人样例整页像素一致。
+- 本地临时案例回归验证：有详情案例才显示预览，计数不创建案例、不完整案例不显示，各医生预览与本人详情图片一致；混合行/空筛选/重置通过，原谭兆林案例保留。测试数据仅拦截响应，未写入源码或服务端。
+- 已亲自复看7人列表、谭兆林案例和新医生详情；`scripts/audit-dental-physicians.mjs`、类型检查与直接 Vite 生产构建通过。本轮未发布外网；下方六位文档医生信息为历史版本。
+
+## 历史参数与验证记录
+
 ## 2026-10-30 案例集显示修正（当前发布）
 
 - 案例预览不再使用统一的 Figma 示例图。卡片案例区、案例入口和详情「案例集」标签只读取该医生自己的 `caseStudies` 数据；没有真实授权案例时全部隐藏，详情显示空态。
@@ -149,3 +178,24 @@
 - Source audit: `scripts/audit-dental-revision.mjs`及`scripts/audit-doctors-revision.mjs`；只接受当前13帧、1358节点、125资源及代码修改后的证据。
 - Remaining differences: none
 - Verification run: 2026-10-28（本地桌面开发及生产preview；未部署外网）
+
+### 2026-11-01 详情数据按需加载
+
+- 原始13组Figma树、节点参数及图源均未改动。首屏仅载入项目、匹配、上传及医生卡片树，其余医生/机构详情在首次打开时按原排序注册；完整8项目/页脚扩展继续保有原有节点查找优先级。
+- 生产/开发环境已验证7位医生全部标签、机构、案例、筛选、报价重试、关闭/焦点/滚动恢复及4个桌面宽度。首次进入不请求详情组件或其数据，详情首次打开仍完整可用。
+- 与上次发布版对照首屏nMAE为0.0097%，无运行错误或溢出。首次JS解码1,719,408→1,133,821B，gzip 245,451→203,736B；这是受控本地资源统计，不是公网SLA。
+- 证据：`artifacts/performance-followup-2026-11-01/dental-loader/qa.json`及`artifacts/patient-updates-2026-10-31/{dental,dental-production}/behavior-qa.json`。移动端设计保持冻结。
+
+
+### 2026-11-01 第五轮详情标签拆分（80000）
+
+- 医生及机构详情按当前标签加载，保留完整治疗流程、服务保障、机构图库及原滚动源；公共工厂不再提前带入牙科主数据。Figma节点、文案和源锁未改。
+- 开发/生产7位医生全部标签、案例、机构、筛选、报价重试及关闭/焦点/滚动恢复通过；新增慢下载快速换标签、请求未完成时关闭和缓存重开回归通过。专项门禁通过。
+- 同条件3次中位LCP2496→2248ms；谭兆林简介首次点击下载JS编码量49,552→11,495B、显示600→523ms。弹窗显示和全部图片完成分开统计。
+- 证据：`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,detail-open/qa.json,final-source-summary.json}`及`artifacts/patient-updates-2026-10-31/{dental,dental-production}/behavior-qa.json`。移动设计继续冻结。
+
+### 2026-11-01 牙科性能收敛复核
+
+- 最新官方源导出 `/Users/hhm/Downloads/寰宇云医 (32).fig`，SHA256 `647b79b83961afbbbfb58e1d788f2ab146304da79da7a5ff0fa499d3afeabad6`；13 个登记源帧、1358 个节点和125个资源均 unchanged。
+- 最终包 `20261101111000` 对线上 `20261101080000` 的受控慢网中位：LCP `2332→2100ms`、FCP `1768→1536ms`、CLS `0`；JS 解码 `1,138,150→542,513B`，gzip `205,730→176,154B`。匹配、上传和详情源按步骤/标签加载，7位医生、15组筛选、8个项目、上传失败重试、步骤过期请求和五种宽度对照均通过。
+- 证据：`artifacts/performance-home-dental-2026-11-01/{slow-final/qa.json,runtime-final/dental-interleaved.json,step-loading-final/qa.json,visual-final/qa.json}`及`artifacts/figma-dental-2026-10-28/behavior/behavior-qa.json`。原始医生卡/页脚的既有 Figma 残差与 WhatsApp 独立控件仍按源稿门禁单独记录，未放宽1%阈值；本轮尚未部署公网。

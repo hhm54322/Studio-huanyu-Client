@@ -83,22 +83,22 @@ function endTouch(event:TouchEvent) {
 
 <template>
   <div ref="root" class="home-strength-source" :class="{'is-pinned':pinned}" :style="sectionStyle" tabindex="0" aria-label="我们的实力，使用左右方向键切换" :data-strength-state="active+1" @keydown="handleKey" @touchstart.passive="startTouch" @touchend.passive="endTouch">
-    <HomeFigmaSection class="home-strength-source__stage" desktop-id="1442:343" mobile-id="1528:727" label="我们的实力" :actions="actions" :attributes="attributes" :styles="styles" :texts="texts" :hidden="['1442:345','1442:373']" @activate="action=>select(Number(action))">
+    <HomeFigmaSection class="home-strength-source__stage" desktop-id="1442:343" mobile-id="1528:727" label="我们的实力" :actions="actions" :attributes="attributes" :styles="styles" :texts="texts" :hidden="['1442:345','1442:373']" defer-render @activate="action=>select(Number(action))">
       <template #after="{ node }">
         <template v-if="node.id==='1442:344'">
           <div class="home-strength-source__mosaics" :style="{left:`${mosaic.x}px`,top:`${mosaic.y}px`,width:`${mosaic.width}px`,height:`${mosaic.height}px`}">
-            <div v-for="(state,index) in states" :key="state.frame" class="home-strength-source__mosaic" :class="{'is-active':active===index}" :aria-hidden="active!==index"><HomeSourceNode :node="homeDesktopNodes.get(state.mosaic)!" root /></div>
+            <div v-for="(state,index) in states" :key="state.frame" class="home-strength-source__mosaic" :class="{'is-active':active===index}" :aria-hidden="active!==index"><HomeSourceNode :node="homeDesktopNodes.get(state.mosaic)!" root defer-images /></div>
           </div>
           <div class="home-strength-source__copy-window" :style="{left:`${copy.x}px`,top:`${copy.y+heading.y}px`,width:`${copy.width}px`,height:`${copyHeight}px`}">
             <div class="home-strength-source__copy-track" :style="{transform:`translate3d(0,${-active*copyHeight}px,0)`}">
               <div v-for="(state,index) in states" :key="state.copy" class="home-strength-source__copy-item" :style="{height:`${copyHeight}px`}" :aria-hidden="active!==index">
-                <div :style="{position:'absolute',top:`${-heading.y}px`,width:`${copy.width}px`}"><HomeSourceNode :node="homeDesktopNodes.get(state.copy)!" root /></div>
+                <div :style="{position:'absolute',top:`${-heading.y}px`,width:`${copy.width}px`}"><HomeSourceNode :node="homeDesktopNodes.get(state.copy)!" root defer-images /></div>
               </div>
             </div>
           </div>
         </template>
         <div v-if="active && node.id==='1528:731'" class="home-strength-source__mobile-mosaic">
-          <div :style="{width:'1216px',height:'387px',transform:`scale(${(width-32)/1216})`,transformOrigin:'top left'}"><HomeSourceNode :node="homeDesktopNodes.get(selected.mosaic)!" root /></div>
+          <div :style="{width:'1216px',height:'387px',transform:`scale(${(width-32)/1216})`,transformOrigin:'top left'}"><HomeSourceNode :node="homeDesktopNodes.get(selected.mosaic)!" root defer-images /></div>
         </div>
       </template>
     </HomeFigmaSection>

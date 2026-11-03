@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData } from './HomeSourceNode.vue'
-import source from '../../../docs/figma-source/home/experts/dialog-sources-2026-10-19.json'
-
-type ExpertSource = {
-  name:string; frame:string; overlay:string; panel:string; width:number; height:number
-  title:string; close:string; tabs:{id:string;text:string}[]; scrollContainers:string[]
-  root:HomeSourceNodeData
-}
-const records = source.records as Record<string, ExpertSource>
+import { homeExpertRecords } from '@/data/homeExpertSource'
 const props = defineProps<{ expert:number }>()
+const records = computed(() => homeExpertRecords(props.expert))
 const emit = defineEmits<{ close:[] }>()
 const names = ['xu-yu','zhou-li-li','liu-guang-yu','chen-ji-wu']
 const activeTab = ref(0)
@@ -23,7 +17,7 @@ const model = computed(()=>{
   const key=`${name.value}${phone.value?'-mobile':''}-0${activeTab.value+1}`
   // The separate Figma Frame 716 is the short-screen scrolling variant of
   // this long list. Use it when the complete 560px version cannot fit.
-  return records[phone.value&&key==='liu-guang-yu-mobile-02'&&height.value<records[key]!.height+32?`${key}-alternate`:key]!
+  return records.value[phone.value&&key==='liu-guang-yu-mobile-02'&&height.value<records.value[key]!.height+32?`${key}-alternate`:key]!
 })
 const scale = computed(()=>phone.value?1:Math.min(1,(width.value-48)/model.value.width))
 const actions = computed<Record<string,HomeSourceAction>>(()=>({
@@ -158,7 +152,6 @@ onBeforeUnmount(()=>{
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .expert-source-dialog { position:fixed; inset:0; width:100%; max-width:none; height:100%; max-height:none; margin:0; padding:0; border:0; overflow:auto; overscroll-behavior:contain; background:transparent; -webkit-font-smoothing:antialiased; }
 .expert-source-dialog::backdrop { background:rgba(0,0,0,.5); backdrop-filter:blur(4px); }
 .expert-source-dialog__overlay { display:flex; flex-direction:column; align-items:center; min-height:100%; padding:40px 24px; }

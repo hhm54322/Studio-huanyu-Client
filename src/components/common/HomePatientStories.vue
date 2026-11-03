@@ -7,9 +7,10 @@ import { useAutoplayCarousel } from '@/composables/useAutoplayCarousel'
 
 const emit = defineEmits<{ activate: [action: string, event: MouseEvent] }>()
 const root = ref<HTMLElement | null>(null)
+const photoViewport = ref<HTMLElement | null>(null)
 // Five photographs of one authored case; copy and detail destination stay fixed.
 const photos = homeStoryPhotoIds.map(id => homeDesktopNodes.get(id)!)
-const { activeIndex, select, paused, togglePause } = useAutoplayCarousel(root, photos.length)
+const { activeIndex, select, paused, togglePause } = useAutoplayCarousel(root, photos.length, { hoverTarget: photoViewport })
 const desktopDots = ['1412:5898', '1412:5899', '1412:5900', '1412:5901', '1412:5902']
 const mobileDots = ['1528:367', '1528:368', '1528:369', '1528:370', '1528:371']
 const actions = {
@@ -21,7 +22,7 @@ const styles = computed(() => {
   let left = 0
   const dots = Object.fromEntries(desktopDots.map((id, index) => {
     const width = index === activeIndex.value ? 32 : 10
-    const style = `left:${left}px;width:${width}px;background:${index === activeIndex.value ? '#DD6B20' : 'rgba(255,255,255,.20)'};`
+    const style = `left:${left}px;width:${width}px;z-index:2;background:${index === activeIndex.value ? '#DD6B20' : 'rgba(255,255,255,.20)'};`
     left += width + 8
     return [id, style]
   }))
@@ -46,11 +47,13 @@ function handleKey(event: KeyboardEvent) {
 
 <template>
   <div ref="root" class="home-patient-stories" role="region" aria-roledescription="轮播" aria-label="患者故事" :data-story-state="activeIndex + 1" @keydown="handleKey">
-    <HomeFigmaSection desktop-id="1412:5853" mobile-id="1528:360" label="患者故事 · 真实见证" :actions="actions" :attributes="attributes" :styles="styles" @activate="activate">
+    <HomeFigmaSection desktop-id="1412:5853" mobile-id="1528:360" label="患者故事 · 真实见证" :actions="actions" :attributes="attributes" :styles="styles" defer-render @activate="activate">
       <template #after="{ node }">
         <template v-if="node.id === '1466:843'">
-          <div v-for="(photo,index) in photos" :key="photo.id" class="home-patient-stories__photo" :class="{'is-active':index === activeIndex}" :aria-hidden="index !== activeIndex" :data-story-photo="index + 1" role="img" :aria-label="`Michael W. 的第${index + 1}张就医照片`">
-            <HomeSourceNode :node="photo" root :replica="index === 0" />
+          <div ref="photoViewport" class="home-patient-stories__photos" aria-label="患者照片">
+            <div v-for="(photo,index) in photos" :key="photo.id" class="home-patient-stories__photo" :class="{'is-active':index === activeIndex}" :aria-hidden="index !== activeIndex" :data-story-photo="index + 1" role="img" :aria-label="`Michael W. 的第${index + 1}张就医照片`">
+              <HomeSourceNode :node="photo" root :replica="index === 0" defer-images />
+            </div>
           </div>
         </template>
       </template>
@@ -61,8 +64,9 @@ function handleKey(event: KeyboardEvent) {
 
 <style scoped>
 .home-patient-stories { position:relative; }
+.home-patient-stories__photos { position:absolute; inset:0; pointer-events:none; }
 .home-patient-stories__photo { position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .5s cubic-bezier(.22,1,.36,1); }
-.home-patient-stories__photo.is-active { opacity:1; }
+.home-patient-stories__photo.is-active { opacity:1; pointer-events:auto; }
 @media (max-width:700px) {
   .home-patient-stories :deep([data-figma-node="1528:383"]) { width:100%!important; }
   .home-patient-stories :deep([data-figma-node="1528:366"]) { left:50%!important; transform:translateX(-50%)!important; }

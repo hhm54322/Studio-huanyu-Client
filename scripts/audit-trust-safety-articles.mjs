@@ -49,7 +49,7 @@ for (const key of keys) {
       assert.ok(row.nMAE < 1 && row.pixelmatchPercent < 1)
       await access(row.reference); await access(row.local)
     }
-    const files = ['src/views/patient/TrustView.vue', 'src/components/common/TrustArticleDialog.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', `docs/figma-source/trust-safety-revision/${key}/desktop-composition-lock-${date}.json`, 'scripts/trust-article-variants-qa.cjs']
+    const files = ['src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/data/trustArticleSource.ts','src/components/common/trustArticleDialog.ts','src/views/patient/TrustView.vue', 'src/components/common/TrustArticleDialog.vue', 'src/components/common/HomeSourceNode.vue', 'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css', `docs/figma-source/trust-safety-revision/${key}/desktop-composition-lock-${date}.json`, 'scripts/trust-article-variants-qa.cjs']
     const newest = Math.max(...await Promise.all(files.map(async f => (await stat(join(root, f))).mtimeMs)))
     const reports = await Promise.all([`${key}/final-qa.json`, `${key}/production-qa.json`].map(f => read(join(evidence, f))))
     for (const report of reports) {

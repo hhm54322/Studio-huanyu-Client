@@ -15,19 +15,36 @@ import {
   Star,
   UploadCloud,
 } from 'lucide-vue-next'
-import { dentalCurrentDoctors, dentalStepRails } from '@/data/dentalFigmaSource'
-import { dentalPhysicianTitleMatches } from '@/data/dentalPhysicianData'
-import { displayDentalExperience } from '@/data/dentalPhysicianSource'
+import { dentalPhysicians as dentalCurrentDoctors, dentalPhysicianTitleMatches } from '@/data/dentalPhysicianData'
+import { displayDentalExperience } from '@/data/dentalPhysicianPresentation'
 import { createDentalAssessment, getSubmissionErrorMessage } from '@/services/patientSubmissions'
-const DentalDoctorSourceDialog=defineAsyncComponent(()=>import('@/components/common/DentalDoctorSourceDialog.vue'))
+import { dentalSourceDialog } from '@/components/common/dentalSourceDialog'
 const DentalDesktopFlow=defineAsyncComponent(()=>import('@/components/common/DentalDesktopFlow.vue'))
 const desktopDoctors=ref(typeof window!=='undefined'&&window.innerWidth>700)
 const desktopWidth=ref(typeof window!=='undefined'?window.innerWidth:1440)
-function updateDoctorViewport(){desktopWidth.value=window.innerWidth;desktopDoctors.value=window.innerWidth>700}
+let viewportRequest = 0
+async function updateDoctorViewport() {
+  desktopWidth.value = window.innerWidth
+  const request = ++viewportRequest
+  if (window.innerWidth <= 700) { desktopDoctors.value = false; return }
+  if (desktopDoctors.value) return
+  const step = activeStep.value
+  try {
+    await import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step))
+    if (disposed || request !== viewportRequest || window.innerWidth <= 700) return
+    if (activeStep.value !== step) { void updateDoctorViewport(); return }
+    desktopDoctors.value = true
+  } catch { if (!disposed && request === viewportRequest) failedStep.value = step }
+}
 onMounted(()=>window.addEventListener('resize',updateDoctorViewport,{passive:true}))
 onBeforeUnmount(()=>window.removeEventListener('resize',updateDoctorViewport))
 
 type DentalStep = 1 | 2 | 3
+const dentalStepRails = ['2294:8256', '2294:6987', '2294:8053']
+const loadingStep = ref<DentalStep | null>(null)
+const failedStep = ref<DentalStep | null>(null)
+let stepRequest = 0, disposed = false
+onBeforeUnmount(() => { disposed = true; stepRequest++; viewportRequest++ })
 
 interface DentalProject {
   id: string
@@ -152,7 +169,22 @@ const filteredDoctors = computed(() => {
   })
 })
 
-function setStep(step: DentalStep) {
+async function setStep(step: DentalStep) {
+  const request = ++stepRequest
+  failedStep.value = null
+  loadingStep.value = null
+  if (desktopDoctors.value && step !== activeStep.value) {
+    loadingStep.value = step
+    try {
+      await import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step))
+    } catch {
+      if (!disposed && request === stepRequest) failedStep.value = step
+      return
+    } finally {
+      if (!disposed && request === stepRequest) loadingStep.value = null
+    }
+  }
+  if (disposed || request !== stepRequest) return
   activeStep.value = step
   nextTick(() => document.querySelector(desktopDoctors.value?`[data-figma-node="${dentalStepRails[step-1]}"]`:'.dental-workspace')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth', block: 'start' }))
 }
@@ -270,7 +302,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <DentalDesktopFlow v-if="desktopDoctors" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
+  <span v-if="loadingStep" class="dental-step-loading" role="status" aria-live="polite">正在准备下一步…</span>
+  <div v-if="failedStep" class="dental-step-error" role="alert">下一步暂时未能加载，请重试。<button type="button" @click="desktopDoctors ? setStep(failedStep) : updateDoctorViewport()">重新加载</button></div>
+  <DentalDesktopFlow v-if="desktopDoctors" :aria-busy="Boolean(loadingStep)" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
   <div v-else class="dental-page" :class="`dental-page--step-${activeStep}`">
     <section class="dental-hero" :class="`dental-hero--step-${activeStep}`">
       <div class="dental-hero__backdrop" />
@@ -363,11 +397,14 @@ onBeforeUnmount(() => {
       </Transition>
     </Teleport>
   </div>
-  <DentalDoctorSourceDialog v-if="institutionOpen&&desktopDoctors" institution :doctor="dentalCurrentDoctors.find(doctor=>doctor.id===institutionDoctorId)" @close="institutionOpen=false" />
-  <DentalDoctorSourceDialog v-if="selectedDoctor&&desktopDoctors" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
+  <component :is="dentalSourceDialog(0,true)" v-if="institutionOpen&&desktopDoctors" institution :doctor="dentalCurrentDoctors.find(doctor=>doctor.id===institutionDoctorId)" @close="institutionOpen=false" />
+  <component :is="dentalSourceDialog(desktopDoctorTab)" v-if="selectedDoctor&&desktopDoctors" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
 </template>
 
 <style scoped>
+.dental-step-loading { position:fixed; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.dental-step-error { position:fixed; z-index:70; left:50%; bottom:32px; transform:translateX(-50%); max-width:calc(100% - 32px); padding:12px 20px; border-radius:12px; background:#fff; color:#1e3a5f; box-shadow:0 4px 24px #0002; }
+.dental-step-error button { margin-left:12px; border:0; background:none; color:#1e3a5f; text-decoration:underline; cursor:pointer; }
 .dental-page { --dental-ink: #153a68; --dental-blue: #3778ef; --dental-cyan: #46d6ec; --dental-orange: #ea6f1f; margin-top:-72px; color: #173b5b; background: #fff; }
 .dental-hero { position: relative; min-height: 490px; display: grid; align-items: center; overflow: hidden; isolation: isolate; background: #edf7fb; }
 .dental-hero__backdrop { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(239,248,252,.98) 0%, rgba(239,248,252,.86) 44%, rgba(239,248,252,.1) 76%), url('/images/doctor-team.jpg') 82% 28% / 55% auto no-repeat; }

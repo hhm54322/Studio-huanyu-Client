@@ -1,24 +1,36 @@
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import doctorCardConsumption from '../../docs/figma-source/dental-revision-2026-10-28/matching-card-consumption-2026-10-28.json'
 import completeSource from '../../docs/figma-source/dental-complete-2026-10-30/source-extension.json'
-export { dentalPhysicians as dentalCurrentDoctors } from './dentalPhysicianData'
-type SourceFile = { sourceFrame: string; root: SourceNode }
-const files = import.meta.glob('../../docs/figma-source/dental-revision-2026-10-28/*/source-tree-2026-10-28.json', { eager: true, import: 'default' }) as Record<string, SourceFile>
+export type DentalSourceFile = { sourceFrame: string; root: SourceNode }
+type SourceFile = DentalSourceFile
+const files = import.meta.glob([
+  '../../docs/figma-source/dental-revision-2026-10-28/project/source-tree-2026-10-28.json',
+], { eager: true, import: 'default' }) as Record<string, SourceFile>
 export const dentalSources: Record<string, SourceFile> = {}
 export const dentalNodes = new Map<string, SourceNode>()
 export const dentalParents = new Map<string, SourceNode>()
 export function dentalDescendants(node: SourceNode): SourceNode[] { return [node, ...node.children.flatMap(dentalDescendants)] }
-for (const [path, source] of Object.entries(files)) {
+function indexDentalSources(sources: Record<string, SourceFile>) {
+for (const [path, source] of Object.entries(sources)) {
   const segments = path.split('/')
-  dentalSources[segments[segments.length - 2]!] = source
+  const folder = segments[segments.length - 2]!
+  // Current live Layers corrected this frame's editor label only. Preserve
+  // the immutable extraction; the exact reviewed delta is recorded under
+  // docs/figma-source/dental-revision-2026-11-03/profile-frame-name.json.
+  const current = folder === 'profile' && source.root.id === '2294:7751'
+    ? { ...source, root: { ...source.root, name: '05医生简介' } } : source
+  dentalSources[folder] = current
   function index(node: SourceNode) {
     dentalNodes.set(node.id, node)
     node.children.forEach(child => { dentalParents.set(child.id, node); index(child) })
   }
-  index(source.root)
+  index(current.root)
 }
+}
+indexDentalSources(files)
 export const dentalNode = (id: string) => dentalNodes.get(id)!
 export const dentalCompleteSource = completeSource
+function indexCompleteSource() {
 for (const subtree of [...completeSource.projectCards, completeSource.footer]) {
   function index(node: SourceNode) {
     dentalNodes.set(node.id, node)
@@ -26,6 +38,8 @@ for (const subtree of [...completeSource.projectCards, completeSource.footer]) {
   }
   index(subtree as SourceNode)
 }
+}
+indexCompleteSource()
 export const dentalProjectNodes = ['2294:8281', '2294:8302', '2294:8319', ...completeSource.projectCards.map(card => card.id)]
 export const dentalDoctorNodes = [{ node: '2294:7061', id: 5, name: '谭兆林' }]
 // The standalone Doctor Card frame is the reusable source component used by
@@ -47,9 +61,12 @@ function composeMatchingCard(node: SourceNode): SourceNode {
   result.children = node.children.map(composeMatchingCard)
   return result
 }
-export const dentalMatchingSource = composeMatchingCard(dentalSources.matching!.root)
+let matchingSource: SourceNode | undefined
+export function dentalMatchingSource() {
+  if (!dentalSources.matching || !dentalSources['doctor-card']) throw new Error('Dental matching sources must be prepared before rendering')
+  return matchingSource ??= composeMatchingCard(dentalSources.matching.root)
+}
 export const dentalStepNodes = [['2294:8257', '2294:8263', '2294:8269'], ['2294:6988', '2294:6994', '2294:7000'], ['2294:8054', '2294:8060', '2294:8066']]
-export const dentalStepRails = ['2294:8256', '2294:6987', '2294:8053']
 export const dentalActions: Record<string, HomeSourceAction> = {}
 const routes: Record<string, string> = {
   首页: '/', 为什么选择中国: '/why-china', 信任与常见问题: '/trust', 医疗服务: '/diseases-technologies', 疾病中心: '/diseases-technologies',
@@ -57,7 +74,8 @@ const routes: Record<string, string> = {
   报告体验: '/report', 就医步骤: '/steps', 'contact@huanyuyunyi.com': 'mailto:contact@huanyuyunyi.com',
   '+86 400-888-XXXX': 'tel:+864008886688', WhatsApp: 'https://wa.me/864008886688',
 }
-for (const source of [...Object.values(dentalSources), { root: completeSource.footer as SourceNode }]) {
+function registerDentalActions(sources: { root: SourceNode }[]) {
+for (const source of sources) {
   for (const node of dentalDescendants(source.root)) {
     if (node.type !== 'TEXT' || !node.visible) continue
     if (routes[node.text]) dentalActions[node.id] = { href: routes[node.text] }
@@ -67,6 +85,17 @@ for (const source of [...Object.values(dentalSources), { root: completeSource.fo
     // Keep entries without authored destinations visible, without inventing pages.
     if (['签证办理', '隐私政策', '服务条款', '扫码加微信'].includes(node.text)) dentalActions[node.id] = { action: 'destination-pending', label: node.text }
   }
+}
+}
+registerDentalActions([...Object.values(dentalSources), { root: completeSource.footer as SourceNode }])
+
+export function registerDentalSources(sources: Record<string, SourceFile>) {
+  indexDentalSources(sources)
+  if (Object.keys(sources).some(path => /\/(?:matching|doctor-card)\//.test(path))) matchingSource = undefined
+  // The complete eight-project/footer extension retains its original lookup
+  // precedence after the deferred dialog trees have been registered.
+  indexCompleteSource()
+  registerDentalActions(Object.values(sources))
 }
 dentalStepNodes.forEach(ids => ids.forEach((id, index) => { dentalActions[id] = { action: `step:${index + 1}`, label: `0${index + 1} ${['选择牙科项目', '城市与医生匹配', '上传影像资料'][index]}` } }))
 dentalActions['2294:8336'] = { action: 'step:2', label: '下一步 城市与医生匹配' }

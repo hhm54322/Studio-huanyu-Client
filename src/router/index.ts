@@ -112,6 +112,11 @@ const router = createRouter({
         {
           path: 'steps/toolkit-detail',
           name: 'patient-toolkit-detail',
+          beforeEnter: async to => {
+            if (typeof to.query.article !== 'string') return
+            const { loadToolkitArticle } = await import('@/data/contentFigmaSource')
+            await loadToolkitArticle(to.query.article)
+          },
           component: () => import('@/views/patient/ToolkitDetailView.vue'),
           meta: { title: '病历翻译与整理工具' },
         },

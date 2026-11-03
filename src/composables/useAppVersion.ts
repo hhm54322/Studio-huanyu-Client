@@ -45,6 +45,15 @@ export const useAppVersion = () => {
   }
 
   const refreshApp = () => {
+    // An explicit update must bypass an older worker's cached shell even if
+    // the replacement worker has not finished installing yet. Keep the rest
+    // of the current URL; the bootstrap removes this one-use marker.
+    if (navigator.serviceWorker?.controller?.scriptURL.endsWith('/patient-cache-sw.js')) {
+      const url = new URL(window.location.href)
+      url.searchParams.set('__huanyu_update', latestVersion.value)
+      window.location.replace(url.href)
+      return
+    }
     window.location.reload()
   }
 

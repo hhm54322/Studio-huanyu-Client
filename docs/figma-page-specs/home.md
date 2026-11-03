@@ -1,5 +1,52 @@
 # 首页
 
+## 2026-11-03 桌面公共导航修正
+
+- 用户授权修正医疗服务的错误蓝色状态、各页面下拉不一致、中国医院缺箭头和已选子项名称。沿用 `1523:75/82` 源壳、透明首屏与实际SVG；状态/悬停/键盘逻辑统一到 `PatientDesktopNavigation.vue`。详细参数及当前源证据见 `patient-navigation.md`。
+- 当前官方源 `(35).fig` 对原实施导出的首页主页面、独立首屏 `1523:31`、故事图片及登记详情无节点/资源/依赖变化；公共两菜单在live Layers/Dev Mode复核。保留源参数锁，只实施本次用户要求。
+- 正式构建 `20261103210000` 的12路由公共导航、选择后名称/刷新保留、键盘/悬停行为通过，首页初始只有首页高亮，医疗服务为灰色。已复看透明首屏和两菜单截图 `artifacts/patient-navigation-avatars-20261103/production/home-services-open.png`、`home-hospitals-open.png`。320/390/430只回归冻结的原手机UI，不新增移动设计。本轮未发布公网。
+
+## 2026-11-01 图文加载顺序优化
+
+- Status: verified — desktop loading order, homepage screenshot/interaction regression and shared-route visual regression; mobile development remains deferred. Not deployed.
+- 本次仅调整资源发现顺序和共享路由依赖，不新增设计稿参数。首屏 `1523:37`、Logo `2326:8518`、四个 Hero 状态及导航/页脚继续使用下文锁定原始节点和 CSS；图片分辨率、压缩质量、裁切、字体及文字显示规则不变。移动端开发仍冻结。
+- 当前 IAB browser9/tab4 由唯一连接入口验证（`2026-10-31T16:44:55.738Z`），源tab保留handoff；交付前官方下载 `/Users/hhm/Downloads/寰宇云医 (28).fig`，导出时间 `2026-10-31T17:18:35.199Z`，SHA256 `f15f48ee863674781d0f9426744d12f2bd2836219f9e30137414c1cedb3077b2`。30组源、独立 Hero 和8个补充照片源对各实施基线逐节点 unchanged，无缺失图片/blob或完整性错误。完整文件差异及同名候选属于此前牙科调整/通用 Container，未据此替换本页源。
+- 资源映射：`index.html` 只在桌面 `/` 请求 `1523:37` 和 `2326:8518` 的现有 WebP；Vite 从最终 bundle 生成该路由实际依赖的脚本/CSS 提前请求列表，使用本次构建真实哈希，不硬编码旧 chunk 名。字体仍使用既有本地包，不预载另一条路径的字体副本。
+- `HomeHeroSection` 保留5000ms播放和已有过渡；可见图解码后按播放顺序低优先级预热其他原图，reduced-motion跳过自动播放的预热，卸载后不继续调度。没有隐藏文案等待图片。
+- `PatientHeader`、`PatientFooter` 只在首页需要时引入 `HomeFigmaSection`；页头通过浅引用取得原始 `homeFigmaSource`，未复制/重写节点。医院页既有手机菜单仅导入同一个锁定导航子树（`homeMobileNavigation.ts`），避免桌面医院页依赖全部首页节点；该菜单内容与行为不改。
+- 共享字体原先隐含依赖首页渲染器的样式；`PatientLayout` 显式引入既有 `/fonts/home-source-fonts.css`，保持报告页、流程页等原有字体可用。仅患者站布局生效，不修改后台全局样式或报告生成行为。
+- 冷缓存、1440×1000/DPR2、1.6Mbps下载/150ms延迟/CPU4倍减速，各3次本机生产预览的中位数：对照上一轮本地优化版，LCP 3808→3128ms，文字先出后等图1026.7→0ms，CLS均0。FCP 2724→3000ms，带宽重新分配使初次文字绘制略晚；未隐藏文案等待图。图片发现从Vue/CSS阶段提前到HTML阶段，首图只请求一次；不能把模拟结果当作公网承诺。
+- 正常动效下以真实时间重复同样慢网条件，Hero 4→1→2→3→4完整自动切换通过；三张后续原图均在首次切换到该图前完成请求，各图只请求一次，无页面错误。证据 `artifacts/home-loading-order/hero-warmup/qa.json`。
+- 最后生产代码之后重跑首页8套回归及照片、加载2套专项，全部通过。13主分区、9补充状态、7详情、15专家状态均nMAE/pixelmatch<1%；照片5秒计时、图片hover暂停、4宽度Hero、导航、独立FAQ、图表、滚动联动及reduced-motion通过。证据 `artifacts/home-loading-order/final-suites.json` 和既有8套目录；已亲自复看首屏、故事、实力、详情底部对照图。
+- 13个已开放患者路由首屏及适用的公共页脚与上一轮本地构建截图回归通过；其他12页不请求首页完整源包或首页预载，各页少解析约1.62–1.66MB JS，实际编码传输少约102–108KB。报告/流程字体修复后的对照已复看；无页面错误或横向溢出。此回归只验证本轮加载拆分未改变显示，不代替其他页面的最新Figma全页门禁。证据 `artifacts/home-loading-order/routes-final/qa.json`。
+- 本次资源时效检查增加 `index.html`、`vite.config.ts`、共享页脚和患者布局；类型检查、直接Vite生产构建、diff检查通过。首页专项门禁及 `audit-figma-specs.mjs home.md` 已在最终证据后通过；全站其他页历史证据时效问题仍不视为通过。尚未发布外网，详见 `docs/performance-review-2026-10-31.md`。
+
+## 2026-10-31 首页加载优化
+
+- Status: verified — homepage desktop loading optimization, screenshots and interactions; mobile development deferred by user. This batch is not deployed.
+- 本轮连接：唯一入口 `scripts/figma-connect.mjs` 于 `2026-10-31T16:10:57.541Z` 验证当前会话 `01a0bebd-b6f9-7fd3-bf5a-b79501589b80` 的 IAB browser9/tab4，Design/Layers/Properties 均可读；tab4 保留 handoff。官方导出 `/Users/hhm/Downloads/寰宇云医 (26).fig`，`exportedAt=2026-10-31T15:57:13.455Z`，SHA256 `ae80bc6bfa04ccb5a5c2cb853f5ab1091f58edd979f5ec72e992a414bb94e2d9`。
+- 对照每份原始实施源，`latest-home.json` 的30组首页源、`current-home-hero.json` 的独立首屏、`current-home-photos.json` 的8个补充照片源逐节点 unchanged，图片/blob/依赖无缺失；完整文件其他模块差异未自动接受。静态参数、层级和下文逐节点映射复用原有锁定记录。
+- 加载映射：`HomeFigmaSection > HomeSourceNode` 保留各源节点 DOM 和原始几何，900px 提前加载图片；首屏 `143:1190/1222/1251`、`1523:33` 显式即时加载。`HomePatientStories` 的5图、`HomeStrengthSection` 的3组图源、`HomePartnersSection` 的循环副本随所属模块准备，后续不卸载已加载图。未降低图片质量或改动裁切。
+- `HomeSourceDialog` 及独立 `homeFigmaDialogSource.ts` 异步载入原有6组优势和患者详情；`HomeView > homeCharts.ts` 在图表接近视口时加载原有 ECharts。弹窗源锁、文字、图表参数不变，未改报告/后台业务。
+- 同条件 production preview 1440×1000/DPR2/无缓存首屏：图片174→18个、响应体10,718,121→182,745B（−98.3%）；JS解码3,804,847→2,064,731B（−45.7%），CLS=0。10段实际滚动、图片解码、首次弹窗及返回已加载区域均通过，开发环境同样通过；该比例只表示首屏资源量，不能当作公网提速或整页流量降幅。
+- 最后代码后重跑8组桌面回归到 `artifacts/figma-home-2026-10-28/`；13主分区、9补充状态、7详情、15专家状态均双指标<1%。当前原生照片专项 `artifacts/patient-updates-2026-10-31/home-carousel-qa/` 的10图最高 nMAE0.73135% / pixelmatch0.16556%，底部32px留白 nMAE0.56072%。1024/1440/1920px导航/流程/图表/动效、4宽度Hero、5秒图片hover播放规则和reduced-motion均通过。已亲自查看首屏、故事分区、实力首态及详情底部对照图。
+- `audit-current-home.mjs` 和 `audit-figma-specs.mjs home.md` 通过；已把共享加载、轮播、弹窗源、图表代码列入证据时效检查。类型检查、Vite生产构建通过；全站其他页历史验收过期仍不能计为通过。本轮未部署，详细数据见 `docs/performance-review-2026-10-31.md`。
+
+## 2026-10-31 当前桌面修复与验收
+
+- Status: verified — current desktop photo autoplay, homepage regressions and production preview; mobile deferred by user. This batch is not deployed.
+- 当前源：本会话 IAB `figma-connect.mjs` 验证 Design/Layers/Properties（2026-10-31T15:03:29.138Z，browser6/tab4），下载 `/Users/hhm/Downloads/寰宇云医 (25).fig`；导出时间 2026-10-31T15:08:23.937Z，SHA256 `b8e39c0623027d2db8c3a2e90400a4a353304c508ca64f916302c506a7f67854`。
+- `latest-home.json` 的30组源、`current-home-hero.json` 和 `current-home-photos.json` 的首屏/8个补充照片源均与实施源逐节点比较 unchanged，无缺失图片/blob/依赖；报告位于 `artifacts/figma-source-gate/`。静态层级、CSS、裁切沿用下方锁定参数。
+- 当前规则：首页和详情弹窗各5张照片，5000ms切换；只有图片 hover 暂停，移出后重新计5秒。文字、空白、圆点 hover/点击和键盘焦点继续轮播；手动选图重新计时。后台、不可见、触摸、显式暂停与 reduced-motion 保留可读性降级。
+- 重复 IntersectionObserver 回调不再推迟倒计时，避免有时轮播非常慢。文案始终为同一患者；五张主页图与五张弹窗图分别使用自己的源图。
+- 开发与 production preview 均通过完整5图循环、4.7秒未切/5.2秒已切、图片hover11秒不切、移出5秒恢复、文字/圆点/焦点继续、键盘循环及关闭后焦点/滚动恢复。10图最高 nMAE **0.73135%**、pixelmatch **0.16671%**；详情底部32px白边 nMAE **0.56073%**。4种Hero×1024/1440/1920/2560透明导航，无白边或溢出。
+- 本轮重跑8套首页回归：`artifacts/figma-home-2026-10-28/{hero,page,states,dialogs,experts,interactions,site,behavior}/qa.json`。13分区、9补充状态、7详情、15专家状态均双指标<1%；动效、独立FAQ、ECharts、定位导航及咨询入口通过。新增 WhatsApp 控件单独验收；旧源截图比较只隐藏该新增控件，不改底层页面。
+- 照片证据：`artifacts/patient-updates-2026-10-31/home-carousel-qa/qa.json`、`production-home/qa.json`；`scripts/audit-current-home.mjs` 通过。类型检查、直接 Vite 生产构建、diff 检查通过。本轮未发布外网；全站其他页面的历史证据时效问题不在本页通过结论内。
+- 用户新增 WhatsApp 常驻入口，独立于原 Figma 构图：`PatientLayout > WhatsAppContact`，桌面 fixed、right24/bottom80、高44px，与首页固定助手间隔12px。用户确认真实账号稍后提供，当前未配置时禁用；发布构建前通过 `.env.example` 中的 `VITE_WHATSAPP_CONTACT` 配置完整国际号码或官方 `https://wa.me/<number>`。不使用旧400占位号或参考网站账号。
+- WhatsApp 实际浏览器验收：`artifacts/patient-updates-2026-10-31/whatsapp/qa.json`，开发/生产preview各13个已开放患者路由、4种桌面宽度、固定位置、唯一实例、原生modal遮挡及6种有效/无效配置均通过，页面错误0；未向外部发送消息。`/equipment`、`/visa`、`/professional-report` 继续由既有路由门禁拦截，手机入口不启用。已亲自复看生产preview的首页入口截图。
+
+## 历史参数与验证记录
+
 - Route: `/`
 - Figma frame: `01寰宇云医 - 首页`
 - Node ID: `1412:5682`; mobile `1528:115`
@@ -463,3 +510,38 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 - Green design annotations: cards/FAQ initially collapsed; blue detail links appear on hover/focus only; non-action cards have no hover treatment. These instructions override the expanded example state in static frames.
 - Existing API/report generation remains unchanged. Assistant dispatches the existing consultation event. Specialty menu points to the existing disease service route; categories without designed destinations remain non-navigating.
 - Status: verified desktop; source locks and eight current QA groups passed; mobile deferred by user.
+
+### 2026-11-01 最终性能回归
+
+- 当前静态源参数、节点层级、图片及文案不变。生产版`20261101024500`重跑首页9组回归与13路由首屏/页脚对照；首页专项Figma门禁通过，整体加载改动的对照最高nMAE 0.0092%。
+- 桌面公共页首次关键脚本/样式下载失败可受控恢复一次，用户已开始操作/页面已显示后不自动刷新；报告、后台和移动端排除。9种真实网络故障注入场景通过。证据：`artifacts/home-loading-order/recovery/qa.json`。
+- 最终慢网3次中位数：LCP 2896ms，图文等待0ms，CLS 0；仅受控测试，不等同公网各地区结果。证据：`artifacts/home-loading-order/final-recovery-slow/qa.json`。
+
+### 2026-11-01 后续按需加载改动回归
+
+- 构建`20261101041000`重跑9组首页专项及9场景初始加载恢复，均通过；首页专项Figma门禁通过。当前路由预请求增加工具包按文章定位，但首页静止截图与前版差异为0，没有加载牙科详情或工具包文章。
+- 本轮同条件慢网前后3次中位数LCP2920→2896ms，CLS0，视为持平，不叠加前轮性能收益。证据：`artifacts/performance-followup-2026-11-01/home-suites.json`、`final-routes/qa.json`、`slow-pages/qa.json`。
+
+
+### 2026-11-01 第五轮性能回归（80000）
+
+- 说明按项、专家按人及患者故事分组加载，完整原始源树和图片保留。固定高度桌面离屏模块跳过渲染，自适应手风琴排除；流程测量合并至动画帧，公共动效只登记新增节点。
+- 首页9组专项、开发专家补充、快速跳转、图片加载继承、慢下载切换及缓存恢复通过。实际41000发布包作为核验后的基线；全13路由最高nMAE0.082003%来自医院派生图片，不是首页。
+- 同条件3次中位LCP2928→2828ms；滚动脚本74.8→47.3ms。滚动布局8.0→38.9ms、初始布局98.9→81.5ms，保留离屏渲染的成本转移说明。
+- 当前源复核：`artifacts/performance-exhaustive-2026-11-01/final-source-summary.json`。连接于2026-11-01T02:36:21.687Z再次验证，IAB15/tab4，Design/Layers/Properties可读。证据在同目录`final-verification.json`、`home-loading/qa.json`、`runtime/final-interleaved.json`、`slow-final/qa.json`。移动设计继续冻结。
+
+### 2026-11-01 首页进一步优化实验
+
+- 当前官方源导出：`/Users/hhm/Downloads/寰宇云医 (31).fig`，导出时间2026-11-01T03:36:23.606Z，SHA256 `b12a7b02b462486846e75e7a0f0552a30a2e800f1c7452fdb925891c9f98abf4`；原主页面、独立首屏/五张照片与全部详情依旧分别核对，参数与节点映射沿用已核验的锁定提取。
+- 开始前主页面及详情源对照通过（`artifacts/figma-source-gate/latest-home.json`）；本轮仅对现有数据传输/运行开销实验，禁止改变设计几何、文案、图片构图和交互。
+- 首个实验将重复CSS声明做无损字典编码，构建逐字段校验解码后的完整树与原树相等，使用原有压缩图片映射。保留条件：受控慢网/CPU实测收益、截图及交互无回退。结果待记录，当前不作完成声明。
+
+- 20261101092000 首页9组专项及独立Figma门禁通过，13主分区、9补充状态、6优势+故事弹窗、15专家状态和照片5秒播放保留。图片加载专项通过真实滚动解码、深处模块跳转和弹窗滚动恢复。
+- 首屏JS解码量2105400→1187210字节，gzip260620→255078字节；44%指解码量，并非网络流量。6组离屏固定高度模块逐帧创建，全部内容随后保留；原始外框高度、手机和动态高度FAQ不变。
+- 1440×1000/DPR2、1.6Mbps/150ms、CPU4倍、每版3次交替：LCP3028→2944ms、FCP2864→2736ms、CLS均0，属于小幅本机受控收益。证据：本轮`home-suites.json`、`slow-staging/qa.json`、`home-loading/qa.json`、`home-gate.log`。未发布本轮改动，最终共享代码变更后仍重跑门禁。
+
+### 2026-11-01 首页性能收敛复核
+
+- 最新官方源导出 `/Users/hhm/Downloads/寰宇云医 (32).fig`，SHA256 `647b79b83961afbbbfb58e1d788f2ab146304da79da7a5ff0fa499d3afeabad6`；`latest-home`、`current-home-hero`、`current-home-photos` 对应源组 unchanged。
+- 代码侧最终包 `20261101111000` 对线上 `20261101080000` 的受控慢网中位：LCP `3004→2668ms`、FCP `2828→2428ms`、CLS `0`；JS 解码 `2,105,400→1,017,183B`，gzip `260,620→248,731B`。完整截图、首屏恢复、9组首页专项与 320/390/430/768/1440 静态回归均通过。
+- 证据：`artifacts/performance-home-dental-2026-11-01/{slow-final/qa.json,runtime-final/home-interleaved.json,home-loading-final/qa.json,home-final-gate-2.log,visual-final/qa.json}`。本轮只在本地构建验证，尚未部署公网；剩余瓶颈为源树体量和公网链路。

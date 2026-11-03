@@ -17,7 +17,7 @@ async function main() {
     for(const width of widths) {
       const page=await browser.newPage({viewport:{width,height:1000},deviceScaleFactor:2,reducedMotion:'reduce'})
       page.on('pageerror',e=>errors.push({width,message:e.message}))
-      await page.goto(base,{waitUntil:'networkidle'})
+      await page.goto(base,{waitUntil:'networkidle'}); await page.addStyleTag({content:'.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}'})
       await page.evaluate(()=>document.fonts.ready)
       const result={width,hero:[],flow:[]}
       const sourceMap=JSON.parse(await fs.readFile(path.resolve(`docs/figma-source/home/node-to-code${width<=700?'-mobile':''}-2026-10-19.json`),'utf8'))
@@ -49,6 +49,8 @@ async function main() {
         }
         result.flow.push({stage:index+1,y})
       }
+      await page.locator('#data-section').scrollIntoViewIfNeeded()
+      await page.waitForFunction(()=>Array.from(document.querySelectorAll('.revision-chart')).length===2 && Array.from(document.querySelectorAll('.revision-chart')).every(element=>element.querySelector('canvas') && element.hasAttribute('_echarts_instance_')))
       const chart=await page.locator('.revision-chart').evaluateAll(elements=>elements.map(el=>{
         const canvas=el.querySelector('canvas'),r=el.getBoundingClientRect()
         const data=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data
@@ -96,7 +98,7 @@ async function main() {
       results.push(result)
     }
     const page=await browser.newPage({viewport:{width:1440,height:1100}})
-    await page.goto(base,{waitUntil:'networkidle'})
+    await page.goto(base,{waitUntil:'networkidle'}); await page.addStyleTag({content:'.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}'})
     const strength=page.locator('.home-strength-source')
     const top=await strength.evaluate(el=>el.getBoundingClientRect().top+scrollY)
     for(const [index,offset] of [0,660,1320].entries()) {

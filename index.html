@@ -7,6 +7,27 @@
     <meta name="theme-color" content="#C05621" />
     <meta name="description" content="寰宇云医 - 全球医疗智能导航平台" />
     <title>寰宇云医</title>
+    <script>
+      // The desktop homepage paints its first hero as a CSS background after
+      // Vue mounts. Start the exact source asset while the app bundle parses,
+      // without preloading homepage artwork on secondary routes.
+      if (location.pathname === '/' && matchMedia('(min-width: 701px)').matches) {
+        const preload = (href) => {
+          const link = document.createElement('link')
+          link.rel = 'preload'
+          link.as = 'image'
+          link.href = href
+          link.type = 'image/webp'
+          link.fetchPriority = 'high'
+          link.dataset.huanyuPreload = 'home'
+          document.head.appendChild(link)
+        }
+        // Figma source images 1523:37 and 2326:8518; keep these identical to
+        // the current hero/header CSS so the browser reuses each request.
+        preload('/images/figma/home-revision/image-bee6ffbc855ab5ba563cd535ce7c82be8e6002e1.webp')
+        preload('/images/figma/home-revision/logo-2326-8518.webp')
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

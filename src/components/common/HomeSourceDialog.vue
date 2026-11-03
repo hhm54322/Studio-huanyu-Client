@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData } from './HomeSourceNode.vue'
-import { homeDesktopNodes, homeMobileNodes, homeStoryDetailPhotoIds } from '@/data/homeFigmaSource'
+import { homeStoryDetailPhotoIds } from '@/data/homeFigmaSource'
+import { homeDialogSources } from '@/data/homeFigmaDialogSource'
 import { useAutoplayCarousel } from '@/composables/useAutoplayCarousel'
 
 const props = defineProps<{
@@ -16,12 +17,14 @@ const props = defineProps<{
   photoCarousel?: boolean
 }>()
 const emit = defineEmits<{ close:[]; activate:[action:string,event:MouseEvent] }>()
+const { desktop: homeDesktopNodes, mobile: homeMobileNodes } = homeDialogSources(props.desktopPanel)
 const dialog = ref<HTMLDialogElement | null>(null)
 const width = ref(typeof window==='undefined'?1440:window.innerWidth)
 const mobile = computed(()=>width.value<=700)
 const photoViewport = ref<HTMLElement | null>(null)
-const photos = homeStoryDetailPhotoIds.map(id=>homeDesktopNodes.get(id)!)
-const { activeIndex:photoIndex, select:selectPhoto, paused:photosPaused, togglePause:togglePhotos } = useAutoplayCarousel(photoViewport, props.photoCarousel ? photos.length : 0)
+const photoHoverViewport = ref<HTMLElement | null>(null)
+const photos = props.photoCarousel ? homeStoryDetailPhotoIds.map(id=>homeDesktopNodes.get(id)!) : []
+const { activeIndex:photoIndex, select:selectPhoto, paused:photosPaused, togglePause:togglePhotos } = useAutoplayCarousel(photoViewport, props.photoCarousel ? photos.length : 0, { hoverTarget: photoHoverViewport })
 const photoDots=['1466:859','1466:860','1466:861','1466:862','1466:863']
 const showPhotos=computed(()=>props.photoCarousel&&!mobile.value)
 const sourceActions=computed(()=>({
@@ -32,15 +35,15 @@ const photoDotStyles=computed(()=>{
   let left=0
   return Object.fromEntries(photoDots.map((id,index)=>{
     const width=index===photoIndex.value?32:10
-    const css=`left:${left}px;width:${width}px;background:${index===photoIndex.value?'#DD6B20':'rgba(255,255,255,.20)'};`
+    const css=`left:${left}px;width:${width}px;z-index:2;background:${index===photoIndex.value?'#DD6B20':'rgba(255,255,255,.20)'};`
     left+=width+8
     return [id,css]
   }))
 })
 const photoAttributes=computed(()=>Object.fromEntries(photoDots.map((id,index)=>[id,{'aria-pressed':index===photoIndex.value}])))
-const storyScrollContent=homeDesktopNodes.get('1407:30')!
-const storyBottomContent=homeDesktopNodes.get('1414:7363')!
-const storyBottomInset=homeDesktopNodes.get('1414:7361')!.height-(storyBottomContent.height+storyBottomContent.y)
+const storyScrollContent=props.photoCarousel ? homeDesktopNodes.get('1407:30')! : undefined
+const storyBottomContent=props.photoCarousel ? homeDesktopNodes.get('1414:7363')! : undefined
+const storyBottomInset=storyBottomContent ? homeDesktopNodes.get('1414:7361')!.height-(storyBottomContent.height+storyBottomContent.y) : 0
 const node = computed(()=>(mobile.value?homeMobileNodes.get(props.mobilePanel):homeDesktopNodes.get(props.desktopPanel))!)
 const scale = computed(()=>mobile.value?1:Math.min(1,(width.value-48)/node.value.width))
 const adaptive = computed(()=>mobile.value&&width.value!==375)
@@ -125,11 +128,13 @@ onBeforeUnmount(()=>{
           <HomeSourceNode :node="node" root :fluid="adaptive" :fixed-roots="fixedRoots" :actions="sourceActions" :texts="texts" :styles="nodeStyles" :attributes="attributes" :hidden="showPhotos ? ['1407:20','1466:858'] : undefined" @activate="activate">
             <template #after="{node:sourceNode}">
               <div v-if="showPhotos && sourceNode.id==='1407:19'" ref="photoViewport" class="home-story-photos" role="region" aria-roledescription="轮播" aria-label="患者就医照片" :data-story-detail-state="photoIndex+1" @keydown="photoKey">
-                <div v-for="(photo,index) in photos" :key="photo.id" class="home-story-photos__photo" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" :data-detail-photo="index+1" role="img" :aria-label="`Michael W. 的第${index+1}张就医照片`"><HomeSourceNode :node="photo" root /></div>
+                <div ref="photoHoverViewport" class="home-story-photos__images" aria-label="患者照片">
+                  <div v-for="(photo,index) in photos" :key="photo.id" class="home-story-photos__photo" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" :data-detail-photo="index+1" role="img" :aria-label="`Michael W. 的第${index+1}张就医照片`"><HomeSourceNode :node="photo" root /></div>
+                </div>
                 <HomeSourceNode :node="homeDesktopNodes.get('1466:858')!" :actions="sourceActions" :styles="photoDotStyles" :attributes="photoAttributes" @activate="activate" />
                 <button class="home-story-photos__pause" type="button" :aria-pressed="photosPaused" @click="togglePhotos">{{photosPaused?'播放患者照片':'暂停患者照片'}}</button>
               </div>
-              <div v-if="showPhotos && sourceNode.id==='1407:28'" aria-hidden="true" class="home-story-scroll-spacer" :style="{top:`${storyScrollContent.height}px`,height:`${storyBottomInset}px`}" />
+              <div v-if="showPhotos && sourceNode.id==='1407:28'" aria-hidden="true" class="home-story-scroll-spacer" :style="{top:`${storyScrollContent!.height}px`,height:`${storyBottomInset}px`}" />
             </template>
           </HomeSourceNode>
         </div>
@@ -139,7 +144,6 @@ onBeforeUnmount(()=>{
 </template>
 
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .home-source-dialog { position:fixed; inset:0; width:100%; max-width:none; height:100%; max-height:none; margin:0; border:0; padding:40px 24px; overflow:auto; overscroll-behavior:contain; background:transparent; -webkit-font-smoothing:antialiased; }
 .home-source-dialog[open] { display:flex; flex-direction:column; align-items:center; }
 .home-source-dialog::backdrop { background:rgba(0,0,0,.5); backdrop-filter:blur(4px); }
@@ -149,8 +153,9 @@ onBeforeUnmount(()=>{
 .is-mobile .home-source-dialog__position,.is-mobile .home-source-dialog__canvas { width:100%; }
 .home-source-dialog :deep(button:focus-visible),.home-source-dialog :deep([tabindex="0"]:focus-visible) { outline:2px solid #2563eb; outline-offset:2px; }
 .home-story-photos { position:absolute; inset:0; }
+.home-story-photos__images { position:absolute; inset:0; pointer-events:none; }
 .home-story-photos__photo { position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .5s cubic-bezier(.22,1,.36,1); }
-.home-story-photos__photo.is-active { opacity:1; }
+.home-story-photos__photo.is-active { opacity:1; pointer-events:auto; }
 .home-story-photos__pause { position:absolute; right:8px; top:8px; border:0; border-radius:6px; padding:8px 12px; background:#1e3a5f; color:#fff; cursor:pointer; }
 .home-story-photos__pause:not(:focus-visible) { width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 .home-story-scroll-spacer { position:absolute; left:0; width:100%; pointer-events:none; }

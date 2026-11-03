@@ -4,7 +4,10 @@ import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
 import sourceGate from './figma-source-gate.cjs'
 
-if ((await readFile('src/data/homeFigmaSource.ts','utf8')).includes('revision-2026-10-28/hero')) {
+// The current hero can be supplied by the build-time entry projection. Check
+// both source owners so splitting transport cannot select a historical audit.
+const homeSourceOwners = await Promise.all(['src/data/homeFigmaSource.ts', 'scripts/packed-home-source.ts'].map(file => readFile(file, 'utf8')))
+if (homeSourceOwners.some(source => source.includes('revision-2026-10-28/hero'))) {
   await import('./audit-current-home.mjs')
 } else {
 // Historical screenshots/locks cannot prove that today's Design is unchanged.

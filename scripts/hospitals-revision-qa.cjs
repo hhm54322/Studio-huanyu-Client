@@ -25,6 +25,21 @@ async function main(){
       await page.emulateMedia({reducedMotion:'reduce'})
       await page.goto(`${process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174'}/hospitals`,{waitUntil:'networkidle'})
       await page.evaluate(()=>document.fonts.ready)
+      // Exercise the actual viewport loading path before a full-page capture.
+      // A fullPage screenshot alone does not scroll offscreen cards into view.
+      for(const card of await page.locator('[data-hospital-card]').all()) {
+        await card.scrollIntoViewIfNeeded()
+        await card.evaluate(async element=>{
+          if(element.hasAttribute('data-source-images'))while(element.dataset.sourceImages!=='loaded')await new Promise(requestAnimationFrame)
+          const urls=new Set()
+          for(const node of [element,...element.querySelectorAll('*')]){
+            if(node instanceof HTMLImageElement&&node.currentSrc)urls.add(node.currentSrc)
+            for(const match of getComputedStyle(node).backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g))urls.add(match[1])
+          }
+          await Promise.all([...urls].map(async url=>{const image=new Image();image.src=url;await image.decode()}))
+        })
+      }
+      await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}))
       await page.waitForTimeout(350)
       if(width===1440)await page.locator('[data-figma-node="484:1573"]').hover()
       const buffer=await page.screenshot({fullPage:true})

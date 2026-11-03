@@ -65,7 +65,7 @@ async function main() {
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1200 }, deviceScaleFactor: 2, reducedMotion: 'reduce' })
     page.on('pageerror', error => errors.push(error.message))
-    await page.goto(process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174/', { waitUntil: 'networkidle' })
+    await page.goto(process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174/', { waitUntil: 'networkidle' }); await page.addStyleTag({ content: '.whatsapp-contact,.whatsapp-contact *{visibility:hidden!important}' })
     await page.evaluate(() => document.fonts.ready)
     for (const width of widths) {
       for (const [expert, name] of names.entries()) {

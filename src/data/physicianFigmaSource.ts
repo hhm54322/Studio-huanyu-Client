@@ -1,5 +1,6 @@
 import source from '../../docs/figma-source/physicians/revision-2026-10-29/source-tree-2026-10-29.json'
 import directory from './yaoyingPhysicians.json'
+import assignedAvatars from './physicianAvatars.json'
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 
 export type PhysicianRecord = {
@@ -21,28 +22,59 @@ export type PhysicianRecord = {
   research: string[]
   crossBorderServices: string[]
   avatar?: string
+  gender?: string
+  sourceCardId?: string
+  sourceExpert?: number
 }
 
 export const physicianRoot = source.root as SourceNode
 export const physicianDescendants = (node: SourceNode): SourceNode[] => [node, ...node.children.flatMap(physicianDescendants)]
 export const physicianNodes = new Map(physicianDescendants(physicianRoot).map(node => [node.id, node]))
 export const physicianNode = (id: string) => physicianNodes.get(id)!
-export const physicianRecords = (directory.records as PhysicianRecord[]).map(record => ({ ...record }))
-export const physicianDepartments = directory.departments as string[]
+// Document revisions replace their own previous release list, while the
+// original site's doctors remain. A name present in both uses the document.
+const originalDoctors = [
+  { card: '1741:5785', name: '谭兆林', department: '口腔科', expert: -1 },
+  { card: '2324:8478', name: '徐宇', department: '骨软组织外科', expert: 0 },
+  { card: '1741:5817', name: '周莉莉', department: '血液内科', expert: 1 },
+  { card: '1741:5843', name: '柳光宇', department: '乳腺外科', expert: 2 },
+  { card: '1741:5869', name: '陈疾忤', department: '运动医学科', expert: 3 },
+]
+const documentRecords = (directory.records as PhysicianRecord[]).map(record => ({ ...record }))
+export const physicianRecords: PhysicianRecord[] = [
+  ...originalDoctors.map(original => {
+    const current = documentRecords.find(record => record.name === original.name)
+    if (current) return current
+    const texts = physicianDescendants(physicianNode(original.card)).filter(node => node.type === 'TEXT').map(node => node.text.trim())
+    return {
+      id: `figma-${original.card.replace(':', '-')}`, sourceNumber: 0,
+      name: original.name, department: original.department, departmentSource: original.department,
+      employmentType: '', title: texts[1]!, label: texts[2]!, workplace: texts[3]!, specialty: texts[4]!, footerLabel: '',
+      basicInfo: [], professionalExpertise: [], career: [], academic: [], research: [], crossBorderServices: [],
+      sourceCardId: original.card, sourceExpert: original.expert,
+    }
+  }),
+  ...documentRecords.filter(record => !originalDoctors.some(original => original.name === record.name)),
+]
+export const physicianDepartments = [...new Set(physicianRecords.map(record => record.departmentSource))].sort()
 
 const avatarByNameDepartment: Record<string, string> = {
   '周莉莉::血液内科': '/images/figma/physicians-revision/image-65b522a475e04b2b9c3f9d41fd3398f003f9c315.webp',
   '柳光宇::乳腺外科': '/images/figma/physicians-revision/image-2e1dc8b4dd3733f191842bf58d4b2ee702b1e140.webp',
   '陈疾忤::骨科': '/images/figma/physicians-revision/image-56f78245a05bde4bd8cc14881640b6f0a1bf9d29.webp',
 }
-for (const record of physicianRecords) record.avatar = avatarByNameDepartment[`${record.name}::${record.departmentSource}`]
+const portraitAssignments = assignedAvatars as Record<string, { gender: string; avatar: string }>
+for (const record of physicianRecords) {
+  const assignment = portraitAssignments[record.id]
+  record.avatar = avatarByNameDepartment[`${record.name}::${record.departmentSource}`] || record.avatar || assignment?.avatar
+  if (assignment) record.gender = assignment.gender
+}
 
-// Keep the six authored controls, using real departments in the new directory.
-const shortcutDepartments = ['', '口腔科', '骨科', '血液内科', '乳腺外科', '全科']
-const shortcutLabels = ['全部', '牙科', '骨科', '血液内科', '乳腺外科', '全科']
+// Preserve all six authored shortcut labels and their actual departments.
+const shortcutDepartments = ['', '口腔科', '运动医学科', '血液内科', '骨软组织外科', '乳腺外科']
 export const physicianFilters = physicianNode('1689:4839').children.map((node, index) => ({
   id: node.id,
-  text: shortcutLabels[index]!,
+  text: physicianDescendants(node).filter(item => item.type === 'TEXT').map(item => item.text).join(''),
   department: shortcutDepartments[index]!,
 }))
 
@@ -73,6 +105,12 @@ function replaceText(node: SourceNode, text: string, css = '') {
 
 function cloneCard(template: SourceNode, record: PhysicianRecord): SourceNode {
   const suffix = `--${record.id}`
+  if (record.sourceCardId) {
+    const card = structuredClone(physicianNode(record.sourceCardId))
+    for (const item of physicianDescendants(card)) item.id += suffix
+    card.id = `physician-card:${record.id}`
+    return card
+  }
   const textValues: Record<string, string> = {
     '1741:5822': record.name,
     '1741:5823': record.title,

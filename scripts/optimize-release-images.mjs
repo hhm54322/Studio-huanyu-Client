@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
+import { buildHospitalCardImages } from './build-hospital-card-images.mjs'
 
 const root = path.resolve('public/images')
 async function files(directory) {
@@ -30,7 +31,9 @@ for (const file of await files(root)) {
   await writeFile(`${file}.optimized.webp`, data)
   records.push({ source: `/images/${path.relative(root, file).split(path.sep).join('/')}`, optimizedSource: `/images/${path.relative(root, file).split(path.sep).join('/')}.optimized.webp`, originalBytes: original.length, optimizedBytes: data.length, originalWidth: metadata.width, originalHeight: metadata.height, width: info.width, height: info.height, ...(lossless ? { lossless: true } : {}) })
 }
-await writeFile('public/image-optimization.json', JSON.stringify({ quality: 90, maxPhotoDimension: 2560, images: records }, null, 2) + '\n')
+const hospitalCardImages = await buildHospitalCardImages()
+await writeFile('public/image-optimization.json', JSON.stringify({ quality: 90, maxPhotoDimension: 2560, images: records, hospitalCardImages }, null, 2) + '\n')
 const before = records.reduce((sum, item) => sum + item.originalBytes, 0)
 const after = records.reduce((sum, item) => sum + item.optimizedBytes, 0)
 console.log(`Images: ${records.length} optimized, ${(before / 1048576).toFixed(1)} MB -> ${(after / 1048576).toFixed(1)} MB. Originals retained for non-WebP clients.`)
+console.log(`Hospital directory: ${hospitalCardImages.length} image derivatives at the authored layer's 2x size; full-size detail images retained.`)

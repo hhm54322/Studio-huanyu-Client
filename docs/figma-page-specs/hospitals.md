@@ -150,3 +150,11 @@ Fresh local desktop captures and behavior/motion runs are archived under `artifa
 - Desktop geometry: 460 /1524 /456; total2440. Mobile: 620 /3498 /778.25; total4896.
 - Type check, direct Vite production compilation and git diff checks pass.
 - Formal `pnpm build` passed after the whole-site evidence gate was refreshed on 2026-09-29.
+
+
+## 2026-11-01 第五轮性能回归（80000）
+
+- 详情按标签下载；曜影未打开实力标签前不下载ECharts。目录图片以200px提前区按卡片加载，已加载不卸载；7张完整图片层的2倍像素WebP派生图合计2,493,302→730,318B，原图及详情图保留。
+- 开发/生产目录、52医院筛选、6标签、短屏、动效与简化动效、焦点/滚动恢复和慢下载切换通过。源锁与阈值不变，专项门禁通过。目录对41000的截图最高nMAE0.082003%，已查看图片未见明显模糊。
+- 首次图片响应体2,947,435→927,758B；但同条件LCP中位3624→3872ms，最后候选变成首张卡片，不宣称整页LCP改善。曜影首次弹窗显示2013→642ms、协和1986→512ms，图片全部完成另计。
+- 证据：`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,final-source-summary.json,slow-final/qa.json,detail-open/qa.json,routes/qa.json}`及`artifacts/figma-hospitals-2026-10-29/`。移动设计冻结，医院后台/报告生成未改。

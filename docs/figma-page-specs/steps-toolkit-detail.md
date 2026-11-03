@@ -117,3 +117,16 @@
 - Production preview: 同套截图/交互在127.0.0.1:5186复测通过，pixelmatch0.2290091%、nMAE0.3812585%、RGB>16占比1.8469847%。本次开发/生产指标一致、直接pixelmatch为0；原始指标保留在JSON，不隐去或改写。证据位于同目录production/。
 - 类型检查、直接生产构建、专项源/证据门禁和diff检查通过。全站门禁的其他页历史证据问题单独保留，未借本页通过覆盖全站结论。
 - Remaining differences: none
+
+## 2026-11-01 按需加载回归
+
+- 默认翻译页不再下载其余6篇文章的节点树；首屏与已发布构建对照nMAE及pixelmatch均为0。目录点击、文章切换及前进后退在6篇文章的开发/生产全页回归中全部通过。
+- 首次JS解码量1,496,427→571,902B，gzip217,740→154,902B；同条件慢网3次LCP中位数2504→2200ms、CLS0。仅加载策略变更，模板、源参数、文案与图源不变。
+- 证据：`artifacts/performance-followup-2026-11-01/final-routes/qa.json`、`slow-pages/qa.json`及各篇`artifacts/figma-toolkit-2026-10-22/<key>/`。移动设计保持冻结。
+
+
+## 2026-11-01 第五轮共享代码回归（80000）
+
+- 共享源节点基线测量与公共动效优化后，默认页和6篇文章在开发/生产重新验证；原始Figma源与PC组合截图指标分开，既定门槛均通过。目录、历史、固定边界、咨询及reduced-motion通过，7份工具包规范专项门禁通过。
+- 生产应用5351、不可变源HTML5353；首次runner误把生产应用当源HTML服务的6个失败保留，纠正源地址后实跑通过，没有改变截图阈值或源锁。
+- 证据：`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,followup-suites.json}`及各篇`artifacts/figma-toolkit-2026-10-22/<key>/`。移动设计继续冻结。

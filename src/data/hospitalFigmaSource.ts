@@ -1,13 +1,18 @@
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import { hospitals, type Hospital } from './hospitals'
 
-type SourceFile = { sourceFrame:string; sourceSHA256:string; root:SourceNode }
-const files = import.meta.glob('../../docs/figma-source/hospitals/**/source-tree-2026-10-20.json', { eager:true, import:'default' }) as Record<string,SourceFile>
+export type HospitalSourceFile = { sourceFrame:string; sourceSHA256:string; root:SourceNode }
+type SourceFile = HospitalSourceFile
+const files = import.meta.glob([
+  '../../docs/figma-source/hospitals/source-tree-2026-10-20.json',
+  '../../docs/figma-source/hospitals/list-mobile/source-tree-2026-10-20.json',
+], { eager:true, import:'default' }) as Record<string,SourceFile>
 export const hospitalSources:Record<string,SourceFile> = {}
 export const hospitalNodes = new Map<string,SourceNode>()
 export const hospitalParents = new Map<string,SourceNode>()
 export function descendants(node:SourceNode):SourceNode[] { return [node,...node.children.flatMap(descendants)] }
-for (const [path,source] of Object.entries(files)) {
+export function registerHospitalSources(sources:Record<string,SourceFile>) {
+for (const [path,source] of Object.entries(sources)) {
   const folder = path.replace('../../docs/figma-source/hospitals/','').split('/')
   hospitalSources[folder.length===1?'desktop':folder[0]!] = source
   function index(node:SourceNode) {
@@ -16,6 +21,8 @@ for (const [path,source] of Object.entries(files)) {
   }
   index(source.root)
 }
+}
+registerHospitalSources(files)
 export const hospitalNode = (id:string) => hospitalNodes.get(id)!
 export const hospitalText = (node:SourceNode) => descendants(node).filter(n=>n.type==='TEXT').map(n=>n.text).join('')
 export const hospitalActions:Record<string,HomeSourceAction> = {}
@@ -141,8 +148,4 @@ export function filteredHospitalSource(city:string) {
     return clone
   }
   return {root:visit(hospitalSources.desktop!.root),actions:extraActions,records}
-}
-
-export function sourceAtOrigin(node:SourceNode):SourceNode {
-  return {...node,x:0,y:0,css:node.css+';position:relative;left:0;top:0;',layoutCss:node.layoutCss+';position:relative;left:0;top:0;'}
 }

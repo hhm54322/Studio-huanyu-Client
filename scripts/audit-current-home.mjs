@@ -20,7 +20,10 @@ for(const [base,date] of [['docs/figma-source/home','2026-10-19'],['docs/figma-s
  const assets=await read(`${base}/assets-${date}.json`);for(const a of assets.assets)await access(a.projectPath.replace(/^\//,''))
 }
 const out='artifacts/figma-home-2026-10-28'
-const modified=Math.max(...await Promise.all(['src/components/layout/PatientHeader.vue','src/components/common/HomeHeroSection.vue','src/components/common/HomePatientStories.vue','src/components/common/HomeSourceDialog.vue','src/data/homeFigmaSource.ts','src/data/homeFigmaActions.ts','src/views/patient/HomeView.vue'].map(async f=>(await stat(f)).mtimeMs)))
+const modified=Math.max(...await Promise.all(['src/data/homeSourceRegistry.ts','scripts/packed-home-source.ts','src/utils/homeSourceMount.ts','src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/data/homeExpertSource.ts','src/components/common/homeExpertDialog.ts','src/components/common/homeSourceDialog.ts','index.html','vite.config.ts','src/bootstrap/patientLoadRecovery.js','src/components/layout/PatientHeader.vue','src/components/layout/PatientFooter.vue','src/components/layout/PatientLayout.vue','src/components/common/HomeHeroSection.vue','src/components/common/HomePatientStories.vue','src/components/common/HomeSourceDialog.vue','src/components/common/HomeSourceNode.vue','src/components/common/HomeFigmaSection.vue','src/components/common/HomePartnersSection.vue','src/components/common/HomeStrengthSection.vue','src/composables/useAutoplayCarousel.ts','src/data/homeFigmaSource.ts','src/data/homeFigmaDialogSource.ts','src/data/homeFigmaActions.ts','src/utils/homeCharts.ts','src/views/patient/HomeView.vue'].map(async f=>(await stat(f)).mtimeMs)))
+const recovery=await read('artifacts/home-loading-order/recovery/qa.json')
+assert.ok(Date.parse(recovery.checkedAt)>=Math.max((await stat('vite.config.ts')).mtimeMs,(await stat('src/bootstrap/patientLoadRecovery.js')).mtimeMs),'Initial-load recovery evidence predates code')
+assert.deepEqual(recovery.results.map(row=>[row.name,row.navigations,row.recovered]),[['entry-dependency-once',2,true],['stylesheet-once',2,true],['permanent-failure-bounded',2,false],['after-ready-no-reload',1,false],['interaction-cancels-reload',1,false],['storage-unavailable-no-loop',1,false],['report-excluded',1,false],['administration-excluded',1,false],['mobile-unchanged',1,false]])
 const visual=async item=>{const v=typeof item.visual==='object'?item.visual:typeof item.diff==='object'?item.diff:item;assert.ok(v.nMAE<1&&v.pixelmatchPercent<1,`Screenshot exceeds 1%: ${v.local}`);await access(v.local);await access(v.panelReference||v.reference);assert.ok((await stat(v.local)).mtimeMs>=modified,`Stale screenshot: ${v.local}`)}
 for(const name of ['hero','page','states','dialogs','experts','interactions','site','behavior']){
  const r=await read(`${out}/${name}/qa.json`);assert.deepEqual(r.errors ?? [],[]);assert.ok(Date.parse(r.createdAt)>=modified,`Evidence predates code: ${name}`)
@@ -43,7 +46,7 @@ for(const source of photoTrees.sets) {
  const original=await read(`${photoSource}/${source.sourceFrame.replace(':','-')}/source-tree-2026-10-29.json`)
  assert.deepEqual(source,original,'Runtime photo tree differs from its extracted baseline')
 }
-const correction=await read('artifacts/figma-home-corrections-2026-10-29/verification/qa.json')
+const correction=await read('artifacts/patient-updates-2026-10-31/home-carousel-qa/qa.json')
 assert.ok(Date.parse(correction.createdAt)>=modified,'Stale photo/wide-screen verification')
 assert.deepEqual(correction.errors,[])
 assert.equal(correction.constantPatient,true)
@@ -52,7 +55,10 @@ assert.deepEqual(correction.photos.map(p=>p.source),['1466:843','1412:5862','146
 for(const photo of correction.photos)await visual(photo)
 await visual(correction.bottom.visual)
 assert.equal(correction.bottom.inset,32)
-for(const value of Object.values(correction.detailPlayback))assert.equal(value,true)
+for(const playback of correction.playback) {
+ assert.equal(playback.intervalMs,5000)
+ for(const key of ['fullCycle','imageHoverPause','copyHoverContinues','dotHoverAndClickContinues','keyboardFocusContinues','resumeAfterFiveSeconds','reducedMotion']) assert.equal(playback[key],true)
+}
 assert.equal(correction.heroes.length,16)
 for(const hero of correction.heroes){assert.ok(Math.abs(hero.x)<=1&&Math.abs(hero.widthRendered-hero.width)<=1);assert.equal(hero.transparentHeader,true);assert.equal(hero.noOverflow,true)}
 console.log('Home current desktop gate: complete source locks and per-node records; all current page/state screenshots <1%; 3 desktop widths; hover, fixed assistant, navigation, independent accordion, modal, ECharts, scroll, autoplay and reduced-motion checks pass. Mobile deferred by user.')

@@ -1,9 +1,23 @@
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
+import articleIndex from './toolkitArticleIndex.json'
 
 type SourceFile = { sourceFrame: string; sourceSHA256: string; root: SourceNode }
-type ToolkitVariant = { key: string; title: string; articleFrame: string; root: SourceNode }
-const variantFiles = import.meta.glob('../../docs/figma-source/toolkit-revision/*/desktop-variant-2026-10-22.json', { eager: true, import: 'default' }) as Record<string, ToolkitVariant>
-export const toolkitArticles: Record<string, ToolkitVariant> = Object.fromEntries(Object.values(variantFiles).map(variant => [variant.key, variant]))
+type ToolkitArticle = { key: string; title: string; articleFrame: string }
+export const toolkitArticles: Record<string, ToolkitArticle> = Object.assign(Object.create(null), articleIndex)
+const variantFiles = import.meta.glob('../../docs/figma-source/toolkit-revision/*/desktop-variant-2026-10-22.json', { import: 'root' }) as Record<string, () => Promise<SourceNode>>
+const loadedArticles = new Map<string, SourceNode>()
+const pendingArticles = new Map<string, Promise<SourceNode>>()
+export async function loadToolkitArticle(key: string) {
+  if (!toolkitArticles[key] || loadedArticles.has(key)) return
+  let pending = pendingArticles.get(key)
+  if (!pending) {
+    pending = variantFiles[`../../docs/figma-source/toolkit-revision/${key}/desktop-variant-2026-10-22.json`]!()
+      .then(root => { loadedArticles.set(key, root); return root })
+      .finally(() => pendingArticles.delete(key))
+    pendingArticles.set(key, pending)
+  }
+  await pending
+}
 const files = import.meta.glob('../../docs/figma-source/content-revision/**/source-tree-2026-10-21.json', { eager: true, import: 'default' }) as Record<string, SourceFile>
 export const contentSources: Record<string, SourceFile> = {}
 for (const [path, source] of Object.entries(files)) {
@@ -19,7 +33,11 @@ export function contentDescendants(node: SourceNode): SourceNode[] {
 // Keep the original locked Figma data unchanged; only repair these two
 // literal typos in the derived DOM runs, never its hierarchy or geometry.
 export function contentArticleRoot(source: string, article?: string): SourceNode {
-  if (source === 'toolkit' && article && toolkitArticles[article]) return toolkitArticles[article].root
+  if (source === 'toolkit' && article && toolkitArticles[article]) {
+    const root = loadedArticles.get(article)
+    if (!root) throw new Error(`Toolkit article was not loaded before navigation: ${article}`)
+    return root
+  }
   const fix = (text: string) => text.replace('为**规整', '为规整').replace('全球患者可安心四、', '全球患者可安心。四、')
   const visit = (node: SourceNode): SourceNode => {
     const result = { ...node, children: node.children.map(visit) }

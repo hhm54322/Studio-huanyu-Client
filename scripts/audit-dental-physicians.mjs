@@ -2,11 +2,12 @@ import assert from 'node:assert/strict'
 import { access, readFile, stat } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { join } from 'node:path'
+import { assertCurrentDentalSource } from './assert-current-dental-source.mjs'
 
 const root = process.cwd()
 const archive = join(root, 'docs/source/dental-physicians')
 const dataFile = 'src/data/dentalPhysicians.json'
-const evidence = join(root, 'artifacts/dental-physicians-2026-10-30/development')
+const evidence = join(root, 'artifacts/patient-updates-2026-10-31/dental')
 const readJson = async file => JSON.parse(await readFile(file, 'utf8'))
 const digest = async file => createHash('sha256').update(await readFile(file)).digest('hex')
 const names = ['车英林', '万前程', '李腾', '黄建荣', '郑锐', '蒋刚']
@@ -51,9 +52,8 @@ for (const asset of cardAssets.assets) {
   assert.ok(asset.bytes < 12000)
 }
 
-const sourceGate = await readJson(join(root, 'artifacts/figma-source-gate/latest-dental.json'))
+const sourceGate = assertCurrentDentalSource()
 assert.equal(sourceGate.scopes.length, 13)
-assert.ok(sourceGate.scopes.every(scope => scope.status === 'unchanged'), 'A dental Figma source scope changed after extraction')
 assert.deepEqual(sourceGate.unresolvedImages, [])
 assert.deepEqual(sourceGate.unresolvedBlobs, [])
 assert.deepEqual(sourceGate.integrityErrors, [])
@@ -62,52 +62,58 @@ const connection = await readJson(join(root, 'artifacts/dental-physicians-2026-1
 assert.equal(connection.verified, true)
 assert.equal(connection.checks.design && connection.checks.layers && connection.checks.properties, true)
 const qa = await readJson(join(evidence, 'behavior-qa.json'))
-const production = await readJson(join(root, 'artifacts/dental-physicians-2026-10-30/production/behavior-qa.json'))
+const production = await readJson(join(root, process.env.HUANYU_QA_PRODUCTION_OUTPUT || 'artifacts/patient-updates-2026-10-31/dental-production', 'behavior-qa.json'))
 for (const key of ['doctors', 'filters', 'layouts', 'submission', 'motion', 'dataSHA256', 'codeSHA256', 'errors', 'failedRequests']) assert.deepEqual(production[key], qa[key], `Production differs for ${key}`)
 assert.ok(production.visual.heroNMAE < 0.01)
 assert.ok(production.visual.footerNMAE < 0.01)
 for (const result of [qa, production]) {
-  assert.equal(result.visual.casePreview.omitted, true, 'No real detail cases: production cards must not show illustrative case previews')
+  assert.ok(result.visual.casePreview.nMAE < .01)
+  assert.ok(result.visual.casePreview.pixelmatch < .01)
   assert.ok(result.visual.rating.nMAE < .01)
   assert.ok(result.visual.rating.pixelmatch < .01)
-  if (!result.visual.casePreview.omitted) {
-    assert.ok(result.visual.casePreview.nMAE < .01)
-    assert.ok(result.visual.casePreview.pixelmatch < .01)
-  }
 }
 const caseRegression = await readJson(join(root, 'artifacts/dental-physicians-2026-10-30/case-regression/result.json'))
 assert.deepEqual(caseRegression.cardsWithRealDetailCases, [101, 104])
+assert.deepEqual(caseRegression.retainedSourceCases, [5])
 for (const key of ['staleCountIgnored', 'incompleteCaseIgnored', 'perDoctorImagesMatchDetail', 'mixedRows', 'emptyFilter', 'reset']) assert.equal(caseRegression[key], true)
 assert.equal(caseRegression.realDataSent, false)
 assert.deepEqual(caseRegression.errors, [])
-assert.equal(qa.doctors.length, 6)
-assert.deepEqual(qa.doctors.map(item => item.id), data.records.map(record => record.id))
+assert.equal(qa.doctors.length, 7)
+assert.deepEqual(qa.doctors.map(item => item.id), [5, ...data.records.map(record => record.id)])
 for (const item of qa.doctors) for (const key of ['content', 'bottomReachable', 'institution', 'directCases', 'focusRestore', 'scrollRestore', 'keyboard']) assert.equal(item[key], true, `${item.id}: ${key}`)
 assert.equal(qa.filters.length, 15)
 assert.deepEqual(qa.layouts.map(item => item.width), [1024, 1280, 1440, 1920])
-for (const layout of qa.layouts) { assert.equal(layout.width, layout.scrollWidth); assert.equal(layout.cards, 6); assert.deepEqual(layout.broken, []) }
+for (const layout of qa.layouts) { assert.equal(layout.width, layout.scrollWidth); assert.equal(layout.cards, 7); assert.deepEqual(layout.broken, []) }
 assert.deepEqual(qa.errors, [])
 assert.deepEqual(qa.failedRequests, [])
 assert.ok(qa.visual.heroNMAE < 0.01)
 assert.ok(qa.visual.footerNMAE < 0.01)
 assert.ok(Math.abs(qa.visual.cardGeometry.first.width - 389.33334) < 0.02)
-assert.equal(qa.visual.cardGeometry.first.height, data.records[0].cases === '0' ? 338 : 496)
-assert.deepEqual(qa.submission, { doctorIds: [101, 102, 103, 104, 105, 106], failureRetry: true, duplicateBlocked: true, reusedRequestId: true, realDataSent: false })
+assert.equal(qa.visual.cardGeometry.first.height, 496)
+assert.equal(qa.visual.cardGeometry.second.height, 338)
+assert.equal(qa.visual.cardGeometry.fourth.y - qa.visual.cardGeometry.first.y, 520)
+assert.equal(qa.doctors[0].sourceProfile, true)
+assert.equal(qa.doctors[0].name, '谭兆林')
+assert.deepEqual(qa.submission, { doctorIds: [5, 101, 102, 103, 104, 105, 106], failureRetry: true, duplicateBlocked: true, reusedRequestId: true, realDataSent: false })
 assert.deepEqual(qa.motion, { settled: true, reduced: true })
 
-const modified = Math.max(...await Promise.all([
+const modified = Math.max(...await Promise.all(['scripts/packed-home-source.ts','vite.config.ts','src/data/dentalPhysicianPresentation.ts','src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts','src/components/common/dentalSourceDialog.ts',
   dataFile,
   'src/components/common/DentalDesktopFlow.vue',
   'src/components/common/DentalDoctorSourceDialog.vue',
   'src/components/common/DentalPhysicianDocumentContent.vue',
   'src/components/common/DentalSourceCanvas.vue',
   'src/components/common/HomeSourceNode.vue',
+  'src/components/common/WhatsAppContact.vue',
+  'src/components/layout/PatientLayout.vue',
   'src/data/dentalPhysicianData.ts',
   'src/data/dentalPhysicianSource.ts',
+  'src/data/dentalFigmaSource.ts',
+  'src/data/dentalFigmaDetails.ts',
   'src/views/patient/DentalView.vue',
 ].map(async file => (await stat(join(root, file))).mtimeMs)))
 assert.ok((await stat(join(evidence, 'behavior-qa.json'))).mtimeMs >= modified, 'QA evidence predates current implementation')
 for (const [file, expected] of Object.entries(qa.codeSHA256)) assert.equal(await digest(join(root, file)), expected, `${file}: changed after QA`)
 assert.equal(qa.dataSHA256, await digest(join(root, dataFile)))
 
-console.log('Dental physician gate passed: archived DOCX hashes, six records, six portraits, 13 current Figma scopes, profile/tabs/institution content, filters, responsive desktop widths, quote retry and reduced-motion evidence.')
+console.log('Dental physician gate passed: archived DOCX hashes, six document doctors plus retained Tan Zhaolin source profile, 13 current Figma scopes, profile/tabs/institution/case content, filters, responsive desktop widths, quote retry and reduced-motion evidence.')

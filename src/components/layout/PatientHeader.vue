@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, shallowRef, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import {
@@ -11,13 +11,22 @@ import BrandLogo from "@/components/common/BrandLogo.vue";
 import { useAppStore } from "@/stores/app";
 import { useScroll } from "@/composables/useScroll";
 import type { Locale } from "@/stores/app";
-import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
-import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
 import MedicalServicesMenu from '@/components/layout/MedicalServicesMenu.vue'
+import PatientDesktopNavigation from '@/components/layout/PatientDesktopNavigation.vue'
 import { homeFigmaActions } from '@/data/homeFigmaActions'
-import { homeDesktopNodes, homeMobileNodes } from '@/data/homeFigmaSource'
+
+// The source-linked homepage header is only needed on `/`. Keep both its
+// renderer and the full homepage source out of secondary route chunks; this
+// avoids parsing 1.6 MB of homepage node data before a hospital, doctor or
+// dental page can paint its own header.
+const HomeFigmaSection = defineAsyncComponent(() => import('@/components/common/HomeFigmaSection.vue'))
+const HomeSourceNode = defineAsyncComponent(() => import('@/components/common/HomeSourceNode.vue'))
 
 const route = useRoute();
+const homeSource = shallowRef<typeof import('@/data/homeSourceRegistry')>()
+watch(() => route.path, async path => {
+  if (path === '/' && !homeSource.value) homeSource.value = await import('@/data/homeSourceRegistry')
+}, { immediate: true })
 withDefaults(defineProps<{ consultationIcon?: string; languageIcon?: string }>(), { consultationIcon: '/images/figma/about-icons/Icon.svg', languageIcon: '/images/figma/about-icons/Icon-8.svg' });
 const { locale } = useI18n();
 const appStore = useAppStore();
@@ -205,17 +214,18 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
     }"
   >
     <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" label="主导航" :actions="homeFigmaActions" :styles="headerWidth > 700 ? { '1523:75':'background:transparent;' } : undefined" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
-    <div v-if="route.path === '/' && headerWidth > 700 && desktopServicesOpen" id="home-services-menu" class="home-desktop-services" :style="desktopServicesStyle">
-      <HomeSourceNode :node="homeDesktopNodes.get('1524:26')!" root :actions="homeFigmaActions" />
+    <div v-if="route.path === '/' && headerWidth > 700 && desktopServicesOpen && homeSource" id="home-services-menu" class="home-desktop-services" :style="desktopServicesStyle">
+      <HomeSourceNode :node="homeSource.homeDesktopNodes.get('1524:26')!" root :actions="homeFigmaActions" />
     </div>
     <div v-if="route.path !== '/'" class="header-inner">
       <RouterLink to="/" class="header-logo" aria-label="寰宇云医首页"
         ><BrandLogo compact
       /></RouterLink>
-      <button class="ask-aning" type="button" @click="openConsultation">
+      <button v-if="headerWidth <= 700" class="ask-aning" type="button" @click="openConsultation">
         <img :src="consultationIcon" alt="" aria-hidden="true" />问阿宁
       </button>
-      <nav class="desktop-nav" aria-label="主导航">
+      <PatientDesktopNavigation v-if="headerWidth > 700" class="shared-desktop-nav" />
+      <nav v-if="headerWidth <= 700" class="desktop-nav" aria-label="主导航">
         <template v-for="item in navItems" :key="item.name">
           <RouterLink
             v-if="item.name === '医疗服务'"
@@ -238,7 +248,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
           </button>
         </template>
       </nav>
-      <div class="header-actions">
+      <div v-if="headerWidth <= 700" class="header-actions">
         <div class="language-control" @click.stop>
           <button
             class="language-button"
@@ -285,8 +295,8 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
         </button>
       </div>
     </Transition>
-    <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/'" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" aria-label="移动端导航">
-      <HomeSourceNode :node="homeMobileNodes.get(serviceMenuOpen ? '1555:500' : '1555:422')!" root :actions="serviceMenuOpen ? mobileExpandedActions : mobileMenuActions" @activate="onMobileSourceAction" />
+    <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/' && homeSource" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" aria-label="移动端导航">
+      <HomeSourceNode :node="homeSource.homeMobileNodes.get(serviceMenuOpen ? '1555:500' : '1555:422')!" root :actions="serviceMenuOpen ? mobileExpandedActions : mobileMenuActions" @activate="onMobileSourceAction" />
     </div></Transition>
     <Transition name="mobile-menu"
       ><div v-if="menuOpen && route.path !== '/'" class="mobile-nav">
@@ -350,6 +360,10 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
   gap: 0;
   padding: 0 32px;
   pointer-events: auto;
+}
+.shared-desktop-nav { position:relative; width:853px; margin-left:auto; flex:none; }
+@media (min-width:701px) and (max-width:1439px) {
+  .header-inner:has(.shared-desktop-nav) { position:absolute; left:50%; width:1280px; padding:0 32px; transform:translateX(-50%) scale(calc(100vw / 1440px)); transform-origin:top center; }
 }
 .patient-header--scrolled,
 .patient-header--open {

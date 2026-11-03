@@ -22,7 +22,6 @@ const baselines = computed(() => dentalDescendants(props.node).filter(node => no
   </div>
 </template>
 <style scoped>
-@import url('/fonts/home-source-fonts.css');
 .dental-source-canvas { position:relative; width:100%; }
 .dental-source-canvas__inner { position:absolute; top:0; left:50%; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .dental-source-canvas :deep(button:focus-visible), .dental-source-canvas :deep(a:focus-visible), .dental-source-canvas :deep(input:focus-visible), .dental-source-canvas :deep(select:focus-visible), .dental-source-canvas :deep(textarea:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }

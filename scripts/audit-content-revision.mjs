@@ -87,13 +87,13 @@ if (!process.argv.includes('--source-only')) {
   }
   assert.deepEqual(behavior.desktop, productionBehavior.desktop)
   assert.deepEqual(behavior.motion, productionBehavior.motion)
-  const files = [
+  const files = ['src/utils/sourceBaseline.ts','src/composables/usePatientMotion.ts',
     'src/components/common/HomeSourceNode.vue', 'src/components/common/HospitalFigmaCanvas.vue',
     'src/components/layout/PatientLayout.vue', 'src/assets/styles/main.css',
     name === 'toolkit' ? 'src/views/patient/ToolkitDetailView.vue' : 'src/components/common/TrustArticleDialog.vue',
     `docs/figma-source/${folder}/baseline-lock-${date}.json`,
   ]
-  if (name === 'trust') files.push('src/views/patient/TrustView.vue')
+  if (name === 'trust') files.push('src/views/patient/TrustView.vue','src/data/trustArticleSource.ts','src/components/common/trustArticleDialog.ts')
   else files.push('src/components/common/ContentArticleCanvas.vue', 'src/data/contentFigmaSource.ts')
   const newest = Math.max(...await Promise.all(files.map(async file => (await stat(join(root, file))).mtimeMs)))
   for (const report of reports) assert.ok(Date.parse(report.createdAt) >= newest, 'Evidence predates implementation/source lock')

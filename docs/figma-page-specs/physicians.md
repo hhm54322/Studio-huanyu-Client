@@ -1,5 +1,28 @@
 # 中国医生（桌面）
 
+## 2026-11-03 补齐头像与统一公共导航
+
+- 用户授权将提供的通用头像按性别分配给缺头像医生。原有周莉莉、柳光宇、谭兆林、徐宇、陈疾忤5个源头像保留；新增55张（男30/女25），未改名录、资料和科室筛选。
+- 依据为归档文档明确性别、正文明确代词和用户补充（柳光宇男、徐化梅女、苗华栋男、陈骏良男），不按姓名猜测。稳定ID映射及每张原图/输出SHA256见 `docs/source/physicians/avatar-assignments.json`，生成器 `scripts/build-physician-avatars.py`，运行数据 `src/data/physicianAvatars.json`。
+- 头像延续源 `1741:5819/5820` 的图片框/裁切/圆角，320×320 WebP；原20,778,152B压至404,918B，约98.1%缩减。既有源卡结构和本人原头像优先。
+- 当前官方源 `(35).fig`，2026-11-03T04:07:25.377Z，SHA256 `00ef223839b8cfdf6be3eddbd18a691d5e96030201bd07b24ddfec9b74c0b2ca`。对原实施 `(9).fig` 的 `1689:4814/1432:7741`全节点/资源/依赖无变化。当前连接及公共导航参数见 `patient-navigation.md`。
+- 开发和正式构建 `20261103210000` 均验证全部60个详情、36科室+6快捷筛选、55个分配头像原件哈希/唯一性/实际解码和卡片/详情一致性，1024/1280/1440/1920无溢出、破图或页面错误；医生资料与原3位专家详情保留。
+- 已个人复看列表及公共导航截图。生产未改Hero内容区nMAE0.98765%、Footer0.57848%；授权变更的顶部64px导航单独由导航专项验证。证据 `artifacts/patient-navigation-avatars-20261103/physicians-production/behavior-qa.json` 与 `all-desktop-1440.png`；开发证据保留默认路径，专项目录门禁通过。本轮未发布公网，移动端设计冻结。
+
+## 2026-10-31 当前精简名录、原有医生与验收
+
+- Status: verified — 60 merged desktop doctors, 42 filters and production preview; mobile deferred by user. This batch is not deployed.
+- 当前源：本会话 IAB 验证 Design/Layers/Properties（2026-10-31T15:03:29.138Z，browser6/tab4）；官方导出 `(25).fig`，2026-10-31T15:08:23.937Z，SHA256 `b8e39c0623027d2db8c3a2e90400a4a353304c508ca64f916302c506a7f67854`。`current-physicians-directory.json` 的 `1689:4814`、`1432:7741` 节点、图片/矢量及依赖均 unchanged，沿用下方Dev参数。
+- 新原件 `docs/source/physicians/曜影医疗专家信息汇总-精简发布版.docx` 含57位/34科室，替代同来源历史177位名单；旧原件保留。原网站谭兆林、徐宇、周莉莉、柳光宇、陈疾忤保留，同名采用新文档内容，合并为60位/36科室。首页专家不改。
+- 谭兆林、徐宇、陈疾忤非重复，保留各自原卡片/原详情（源卡 `1741:5785`、`2324:8478`、`1741:5869`），不借用其他医生资料；文档缺头像不显示。
+- 周莉莉血液病擅长沿用原网站，其他字段按新文档；用户批准及原节点 `1432:7784/7790/7795/7800` 记录在 `publication-overrides.json`。原DOCX不改，导入仅覆盖批准的 specialty/professionalExpertise 两字段并记录哈希。
+- 保留6个快捷筛选和全部36科室下拉，共42组合，逐一比对完整医生ID。60个详情的非空标签、关闭、键盘、焦点/滚动恢复通过；原3人保留自身3/4/5标签及原案例/机构。
+- 资料独立校验直接读取DOCX ZIP/XML，不调用导入器：57条/969字段与运行JSON一致，差异0；明确应用上述已批准字段。原件、导入器、JSON与override的SHA256见 `artifacts/patient-updates-2026-10-31/physicians/data-verification.json`。
+- 开发与 production preview 证据：`artifacts/patient-updates-2026-10-31/physicians/behavior-qa.json`、`production-physicians/behavior-qa.json`。1024/1280/1440/1920无溢出、破图或页面错误。未改源区域Hero nMAE **0.91644%**、Footer **0.57849%**；卡片389.33334×284、x112/y646。60人扩展名录不宣称与旧5人样例整页像素一致。
+- 已亲自复看列表、周莉莉血液病详情和缺头像详情；`scripts/audit-physician-directory.mjs`、类型检查及生产构建通过。本轮未发布外网；下方177位信息仅记录历史版本。
+
+## 历史参数与验证记录
+
 - Route: `/doctors`
 - Figma frame: `07寰宇云医 - 中国医生`
 - Node ID: `1689:4814`
@@ -92,3 +115,10 @@ All 177 doctor details use the new document source, including known doctors; old
 - Current gate: `scripts/audit-physician-directory.mjs` runs after the locked historical Figma baseline audit. It requires fresh unchanged current Figma sources, the archived document hash, current implementation/data hashes, all 177 detail checks, all department IDs and fresh desktop screenshots. Historical sample screenshots are never accepted as current directory evidence.
 - Mobile geometry: frozen by the user's desktop-only instruction; no new mobile scope is claimed.
 - Validation commands: scoped `audit:figma physicians.md`, `build:app` (image preparation, `vue-tsc -b`, Vite production build), and `git diff --check` passed. Logs: `artifacts/physicians-directory-2026-10-30/app-build.log` and `behavior-qa.json`. The full-site audit remains blocked by unrelated pages' historical screenshot/evidence freshness; see `full-site-gate.log`. The doctors scope itself passes. No deployment was performed in this task.
+
+
+## 2026-11-01 当前数据与第五轮回归（80000）
+
+- 当前以精简发布文档为准：57位文档医生与3位原站保留医生，共60位、36科室；上文177位为历史版本。保留用户确认的周莉莉血液病擅长覆盖，其余字段按精简文档。首页专家未按此目录替换。
+- 全部60医生详情及36科室筛选、6快捷入口、4桌面宽度、无头像状态、关闭/焦点/滚动恢复回归通过；共享加载/基线测量优化未改变医生数据。首次主图预请求在实测不利后未采纳。
+- 同条件LCP中位3364→3404ms，约1%差值视为持平。专项源及证据门禁通过；证据为`artifacts/patient-updates-2026-10-31/physicians/behavior-qa.json`及`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,final-source-summary.json,slow-final/qa.json}`。移动设计冻结。

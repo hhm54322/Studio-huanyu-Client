@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import DentalSourceCanvas from './DentalSourceCanvas.vue'
+import HomeSourceNode from './HomeSourceNode.vue'
+import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { dentalActions, dentalCompleteSource, dentalDescendants, dentalFilterControls, dentalNode, dentalProjectNodes, dentalSources } from '@/data/dentalFigmaSource'
 import { createDentalPhysicianMatching } from '@/data/dentalPhysicianSource'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
@@ -29,22 +31,28 @@ const source = computed(() => {
 })
 const detailHeights = ref<Record<string, number>>({})
 let observer: ResizeObserver | undefined
+let measureFrame=0
 const detailElements = new Map<Element, string>()
 function measureDetails() {
+  measureFrame=0
+  const updates:Record<string,number>={}
   detailElements.forEach((id, element) => {
     const height = (element as HTMLElement).offsetHeight
-    if (height && detailHeights.value[id] !== height) detailHeights.value[id] = height
+    if (height && detailHeights.value[id] !== height) updates[id]=height
   })
+  if(Object.keys(updates).length)detailHeights.value={...detailHeights.value,...updates}
+  scheduleAction()
 }
+function scheduleMeasure(){if(!measureFrame)measureFrame=requestAnimationFrame(measureDetails)}
 function detailElement(value: unknown, id: string) {
   for (const [element, key] of detailElements) if (key === id && element !== value) { observer?.unobserve(element); detailElements.delete(element) }
   if (!(value instanceof HTMLElement)) return
   detailElements.set(value, id)
   observer?.observe(value)
-  measureDetails()
+  scheduleMeasure()
 }
-onMounted(() => { observer = new ResizeObserver(measureDetails); detailElements.forEach((_, element) => observer!.observe(element)); measureDetails() })
-onBeforeUnmount(() => observer?.disconnect())
+onMounted(() => { observer = new ResizeObserver(scheduleMeasure); detailElements.forEach((_, element) => observer!.observe(element)); scheduleMeasure() })
+onBeforeUnmount(() => {observer?.disconnect();if(measureFrame)cancelAnimationFrame(measureFrame)})
 
 // Resting coordinates, padding, and typography come from the locked source.
 const detailTemplate = dentalNode('2294:8297')
@@ -67,6 +75,36 @@ const projectLayout = computed(() => {
   return { gridHeight, rowTops, buttonTop, contentHeight, height: contentHeight + dentalCompleteSource.footer.height }
 })
 const canvasHeight = computed(() => props.step === 1 ? projectLayout.value.height : source.value.height)
+// Keep the authored action's space in the canvas. Only its rendering floats,
+// so changing its viewport position never moves a project or the footer.
+const floatingAction = computed(() => {
+  if (props.step === 3) return undefined
+  const node = dentalDescendants(source.value).find(node => dentalActions[node.id]?.label?.startsWith('下一步'))
+  return node ? sourceAtOrigin(node) : undefined
+})
+const actionPosition = ref({ top: 0, scale: 1, released: false, ready: false })
+let actionFrame = 0
+function measureAction() {
+  actionFrame = 0
+  if (!floatingAction.value || !root.value) return
+  const footer = dentalDescendants(source.value).find(node => node.name === 'Footer')
+  const footerElement = footer && root.value.querySelector<HTMLElement>(`[data-figma-node="${footer.id}"]`)
+  if (!footerElement) return
+  const scale = Math.min(1, props.width / source.value.width)
+  const bottomGap = dentalCompleteSource.action.bottomGap * scale
+  const height = floatingAction.value.height * scale
+  const footerTop = footerElement.getBoundingClientRect().top
+  actionPosition.value = { top: Math.min(innerHeight, footerTop) - bottomGap - height, scale, released: footerTop < innerHeight, ready: true }
+}
+function scheduleAction() { if (!actionFrame) actionFrame = requestAnimationFrame(measureAction) }
+watch([source, projectLayout, () => props.width], async () => { await nextTick(); scheduleAction() }, { flush: 'post' })
+onMounted(() => {
+  window.addEventListener('scroll', scheduleAction, { passive: true })
+  window.addEventListener('resize', scheduleAction, { passive: true })
+  observer?.observe(root.value!)
+  scheduleAction()
+})
+onBeforeUnmount(() => { window.removeEventListener('scroll', scheduleAction); window.removeEventListener('resize', scheduleAction); if (actionFrame) cancelAnimationFrame(actionFrame) })
 const actions = computed(() => {
   const result = { ...dentalActions, ...(props.step === 2 ? matching.value.actions : {}) }
   dentalProjectNodes.forEach((id, index) => { result[id] = { action: `project:${props.projects[index]!.id}`, label: props.projects[index]!.title } })
@@ -137,7 +175,7 @@ const styles = computed(() => {
   }
   return result
 })
-const hidden: string[] = []
+const hidden = computed(() => floatingAction.value ? [floatingAction.value.id] : [])
 function activate(action: string) {
   if (action.startsWith('step:')) emit('step', Number(action.slice(5)) as 1 | 2 | 3)
   else if (action.startsWith('project:')) emit('project', action.slice(8))
@@ -181,10 +219,18 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
         <div v-if="node.id === '2294:8047' && feedback" class="dental-upload-feedback" :style="feedbackStyle" :role="status === 'error' ? 'alert' : 'status'" aria-live="polite">{{ feedback }} <button v-if="status === 'error' && files.length" type="button" @click="emit('submit')">重试提交</button></div>
       </template>
     </DentalSourceCanvas>
+    <Teleport to="body">
+      <div v-if="floatingAction && actionPosition.ready" class="dental-floating-action" :data-dental-action-state="actionPosition.released ? 'released' : 'fixed'"
+        :style="{ top: `${actionPosition.top}px`, width: `${floatingAction.width}px`, height: `${floatingAction.height}px`, transform: `translateX(-50%) scale(${actionPosition.scale})` }">
+        <HomeSourceNode :node="floatingAction" root :actions="actions" @activate="activate" />
+      </div>
+    </Teleport>
   </div>
 </template>
 <style scoped>
 .dental-desktop-flow { width:100%; }
+.dental-floating-action { position:fixed; left:50%; z-index:45; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
+.dental-floating-action :deep(button:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
 .dental-native-overlay { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:inherit; padding:0; background:transparent; color:transparent; appearance:none; cursor:pointer; }
 select.dental-native-overlay option { color:#1e3a5f; background:#fff; }
 .dental-file-picker input { display:block; width:100%; height:100%; opacity:0; cursor:pointer; }

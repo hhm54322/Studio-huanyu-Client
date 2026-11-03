@@ -1,11 +1,7 @@
 import type { HomeSourceAction, HomeSourceNodeData as SourceNode } from '@/components/common/HomeSourceNode.vue'
 import { dentalDescendants, dentalDoctorCardAliases, dentalDoctorCardSource, dentalMatchingSource } from './dentalFigmaSource'
 import { dentalPhysicianById, dentalPhysicianCases, type DentalPhysician } from './dentalPhysicianData'
-
-/** Keep authored descriptive labels intact; append the source suffix only to bare year values. */
-export function displayDentalExperience(value: string) {
-  return /(经验|专家)\s*$/.test(value.trim()) ? value : `${value}经验`
-}
+import { displayDentalExperience } from './dentalPhysicianPresentation'
 
 export function replaceDentalText(node: SourceNode, text: string) {
   node.text = text
@@ -43,8 +39,13 @@ export function replaceDentalPortrait(node: SourceNode, portrait: string) {
   node.css += `;left:0;transform:none;overflow:hidden;background:${portrait ? `url("${portrait}") center top / cover no-repeat` : 'none'};`
 }
 
+const matchingCache = new Map<string, { root: SourceNode; actions: Record<string, HomeSourceAction>; attributes: Record<string, Record<string, string | number | boolean>> }>()
+
 export function createDentalPhysicianMatching(ids: number[]) {
-  const root = structuredClone(dentalMatchingSource)
+  const cacheKey = ids.join(',')
+  const cached = matchingCache.get(cacheKey)
+  if (cached) return cached
+  const root = structuredClone(dentalMatchingSource())
   const nodes = new Map(dentalDescendants(root).map(node => [node.id, node]))
   const grid = nodes.get('2294:7060')!
   const template = grid.children[0]!
@@ -59,7 +60,7 @@ export function createDentalPhysicianMatching(ids: number[]) {
     // The preview and detail tab share the physician's actual case collection.
     // Figma illustrations and numeric case counts are not clinical case data.
     const preview = dentalPhysicianCases(doctor)[0]
-    const hasCases = Boolean(preview)
+    const hasCases = Boolean(doctor.sourceProfile || preview)
     const previewPanel = at('2294:7088')
     const sourceGap = at('2294:7093').y - previewPanel.y - previewPanel.height
     const removedHeight = hasCases ? 0 : previewPanel.height + sourceGap
@@ -71,11 +72,12 @@ export function createDentalPhysicianMatching(ids: number[]) {
       resize(at('2294:7098'), { y: at('2294:7098').y - removedHeight })
     }
     if (preview) text('2294:7089', preview.title)
-    for (const [index, id] of ['2294:7091', '2294:7092'].entries()) {
+    if (!doctor.sourceProfile) for (const [index, id] of ['2294:7091', '2294:7092'].entries()) {
       const image = preview?.images.filter(item => item.src.trim())[index]
       at(id).visible = Boolean(image)
       at(id).css += `;background-image:${image ? `url(${JSON.stringify(image.src)})` : 'none'};`
     }
+    if (!doctor.sourceProfile) {
     replaceDentalPortrait(at('2294:7063'), doctor.portrait)
     text('2294:7068', doctor.name)
     text('2294:7070', doctor.title)
@@ -95,6 +97,7 @@ export function createDentalPhysicianMatching(ids: number[]) {
     text('2294:7087', doctor.specialty)
     at('2294:7087').css += ';display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;white-space:normal;'
     text('2294:7097', '深圳牙科机构')
+    }
     const idFor = (source: string) => `${source}::dental-physician-${doctor.id}`
     for (const node of dentalDescendants(card)) {
       const sourceId = node.id.split('::')[0]!
@@ -130,8 +133,15 @@ export function createDentalPhysicianMatching(ids: number[]) {
   for (const id of ['2294:7209', '2294:7214']) resize(nodes.get(id)!, { y: nodes.get(id)!.y + delta })
   replaceDentalText(nodes.get('2294:7059')!, `共 ${doctors.length} 位医生`)
   // Preserve the immutable source tree; the document-backed repeated tree
-  // alone owns the six records and their unique action/DOM identities.
-  return { root, actions, attributes }
+  // alone owns the merged records and their unique action/DOM identities.
+  const result = { root, actions, attributes }
+  // Filtering and sorting frequently revisit the same directory state. Keep
+  // a small bounded cache so those interactions do not clone and rewrite the
+  // complete authored matching tree again. The source tree is immutable after
+  // composition, so reusing a result cannot change its rendered geometry.
+  matchingCache.set(cacheKey, result)
+  if (matchingCache.size > 12) matchingCache.delete(matchingCache.keys().next().value!)
+  return result
 }
 
 export function populateDentalPhysicianIdentity(panel: SourceNode, doctor: DentalPhysician) {

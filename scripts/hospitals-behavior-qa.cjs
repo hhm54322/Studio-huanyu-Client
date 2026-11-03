@@ -6,6 +6,12 @@ const out=path.resolve(process.env.HUANYU_QA_OUT || 'artifacts/figma-hospitals-2
 const selector=id=>`[data-figma-node="${id}"]`
 const base=process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174'
 async function main(){
+  // Read the maintained directory independently of the browser's dev server,
+  // so the same behavior checks can verify the actual production chunks.
+  const ts=require('typescript')
+  const {outputText}=ts.transpileModule(await fs.readFile('src/data/hospitals.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ES2022}})
+  const {hospitals}=await import('data:text/javascript;base64,'+Buffer.from(outputText).toString('base64'))
+  const data=[...hospitals,{id:52,name:'上海曜影医院',city:'上海'}]
   const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'})
   const results=[],errors=[]
   try{
@@ -15,10 +21,6 @@ async function main(){
       await page.goto(base+'/hospitals',{waitUntil:'networkidle'})
       await page.evaluate(()=>document.fonts.ready)
       const record={width,filters:[],details:[]};results.push(record)
-      const data=await page.evaluate(async()=>{
-        const source=await import('/src/data/hospitalFigmaSource.ts')
-        return source.hospitalRecords.map(item=>({id:item.id,name:item.name,nameEn:item.nameEn,city:item.city,services:item.services,website:item.website}))
-      })
       assert.equal(await page.locator('[data-hospital-card]').count(),9,'Default authored list')
       for(const [index,city] of ['全部','北京','上海','广州','深圳'].entries()){
         const id=['144:4733','144:4736','144:4739','144:4742','144:4745'][index]

@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..')
 const out = path.resolve(process.env.HUANYU_QA_OUTPUT || path.join(root, 'artifacts/figma-dental-2026-10-28/behavior'))
 const url = (process.env.HUANYU_QA_URL || 'http://127.0.0.1:5174').replace(/\/$/, '') + '/dental'
 const selector = id => `[data-figma-node="${id}"]`
+const composedSelector = id => `[data-figma-node^="${id}::dental-physician-"]`
 const projects = ['2294:8281', '2294:8302', '2294:8319', '231:184', '231:201', '231:217', '231:235', '231:253']
 const projectNames = ['implant', 'whitening', 'veneer', 'aligner', 'crown', 'periodontal', 'root-canal', 'children']
 const frames = ['2294:7751', '2294:7487', '2294:7334', '231:1421', '2294:7557']
@@ -18,11 +19,13 @@ const sourceCoverage = {
 }
 const file = { name: 'qa-dental.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl6wAAAAABJRU5ErkJggg==', 'base64') }
 const pause = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+const waitTab = (page, index) => page.waitForFunction(index => document.querySelector('dialog[open]')?.getAttribute('data-active-tab') === String(index) && document.querySelector('.dental-source-dialog__clip')?.getAttribute('aria-busy') !== 'true', index)
 async function waitForAssets(page) {
   await page.waitForFunction(() => [...document.images].every(image => image.complete && image.naturalWidth > 0), null, { timeout: 15000 })
 }
 async function step(page, number) {
   await page.getByRole('button', { name: `${String(number).padStart(2, '0')} ${['选择牙科项目', '城市与医生匹配', '上传影像资料'][number - 1]}`, exact: true }).click()
+  await page.locator(`[data-dental-step="${number}"]`).waitFor()
   await pause(page)
   assert.equal(await page.locator('.dental-desktop-flow').getAttribute('data-dental-step'), String(number))
 }
@@ -73,17 +76,31 @@ async function main() {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
       checks.projectFit = true
       await page.getByRole('button', { name: '下一步 城市与医生匹配', exact: true }).click()
+      await page.locator('[data-dental-step="2"]').waitFor()
       await pause(page)
-      assert.equal(await page.locator('[data-doctor]').count(), 1)
-      assert.equal(await page.locator('[data-doctor][data-figma-component="2323:8392"]').count(), 1, 'Standalone Doctor Card source is not consumed by the matching result')
-      for (const [source, target] of cardConsumption.nodePairs) assert.equal(await page.locator(selector(target)).getAttribute('data-figma-source-node'), source, `${source}: standalone card node not composed into matching result`)
+      // The current matching source includes the retained original doctor
+      // plus the six document-backed records. The previous assertion only
+      // covered the pre-directory prototype (one card) and made this legacy
+      // regression suite fail after the approved directory expansion.
+      assert.equal(await page.locator('[data-doctor]').count(), 7)
+      assert.equal(await page.locator('[data-doctor][data-figma-component="2323:8392"]').count(), 7, 'Standalone Doctor Card source is not consumed by every matching result')
+      for (const [source, target] of cardConsumption.nodePairs) {
+        // The retained original keeps the complete authored subtree. Added
+        // doctors replace its portrait/identity with their supplied content;
+        // those records are checked by dental-physicians-qa.cjs.
+        const composed = target === cardConsumption.consumerRoot
+          ? page.locator('[data-doctor="5"]')
+          : page.locator('[data-doctor="5"]').locator(composedSelector(target))
+        assert.equal(await composed.count(), 1, `${source}: standalone card node missing from retained original`)
+        assert.equal(await composed.getAttribute('data-figma-source-node'), source, `${source}: standalone card node not composed into matching result`)
+      }
       await page.getByRole('combobox', { name: '城市', exact: true }).selectOption('广州')
-      assert.equal(await page.locator('[data-doctor]').count(), 1, 'Filter applied before confirmation')
+      assert.equal(await page.locator('[data-doctor]').count(), 7, 'Filter applied before confirmation')
       await page.getByRole('button', { name: '筛选医生' }).click()
       assert.equal(await page.locator('[data-doctor]').count(), 0)
       await page.getByText('暂无符合条件的医生，请调整筛选条件。', { exact: true }).waitFor({ state: 'visible' })
       await page.getByRole('button', { name: '重置筛选' }).click()
-      for (const [label, value, expected] of [['价格区间', '¥10,000-30,000', 0], ['价格区间', '¥10,000 以下', 1], ['城市', '上海', 1], ['医生职称', '主治医生', 1], ['经验标签', '20年以上', 1], ['机构背景', '口腔专科', 1], ['语言能力', 'English', 1]]) {
+      for (const [label, value, expected] of [['价格区间', '¥10,000-30,000', 0], ['价格区间', '¥10,000 以下', 7], ['城市', '上海', 1], ['医生职称', '主治医师', 5], ['经验标签', '20年以上', 5], ['机构背景', '口腔专科', 7], ['语言能力', 'English', 0]]) {
         await page.getByRole('combobox', { name: label, exact: true }).selectOption(value)
         await page.getByRole('button', { name: '筛选医生' }).click()
         assert.equal(await page.locator('[data-doctor]').count(), expected, label)
@@ -94,7 +111,7 @@ async function main() {
         await page.getByRole('button', { name, exact: true }).click()
         assert.equal(await page.getByRole('button', { name, exact: true }).getAttribute('aria-pressed'), 'true')
         assert.equal(await page.locator('button[aria-pressed="true"]').count(), 1)
-        assert.equal(await page.locator('[data-doctor]').count(), 1)
+        assert.equal(await page.locator('[data-doctor]').count(), 7)
       }
       checks.sortAndReset = true
       await screenshot(page, `matching-${width}`)
@@ -108,6 +125,7 @@ async function main() {
       const states = []
       for (let index = 0; index < frames.length; index++) {
         if (index) await page.getByRole('tab').nth(index).click()
+        await waitTab(page, index)
         assert.equal(await dialog.getAttribute('data-figma-node'), frames[index])
         assert.equal(await page.getByRole('tab', { selected: true }).count(), 1)
         if (index === 1) for (const text of ['01', '02', '03', '04', '05', '06']) assert.ok((await dialog.textContent()).includes(text))
@@ -120,6 +138,7 @@ async function main() {
       // Focus remains in the modal and arrow/Home/End navigation updates tabs.
       for (const [key, expected] of [['Home', 0], ['ArrowRight', 1], ['End', 4], ['ArrowLeft', 3]]) {
         await page.getByRole('tab', { selected: true }).press(key)
+        await waitTab(page, expected)
         assert.equal(await dialog.getAttribute('data-active-tab'), String(expected))
       }
       for (let index = 0; index < 9; index++) {
@@ -132,12 +151,13 @@ async function main() {
       assert.equal(await page.evaluate(() => scrollY), scroll, 'Doctor close scrolled the page')
       report.dialogs.push({ width, states, keyboard: true, focusTrap: true, focusRestore: true, scrollRestore: true })
       checks.doctorDialog = true
-      await page.getByRole('button', { name: '查看谭兆林种植修复案例', exact: true }).click()
+      await page.getByRole('button', { name: '查看谭兆林案例集', exact: true }).click()
+      await waitTab(page, 2)
       assert.equal(await page.locator('dialog[open]').getAttribute('data-active-tab'), '2')
       await page.getByRole('button', { name: '关闭医生详情', exact: true }).click()
       await page.locator('dialog[open]').waitFor({ state: 'detached' })
       checks.directCases = true
-      const institution = page.getByRole('button', { name: '查看上海牙科机构', exact: true })
+      const institution = page.getByRole('button', { name: '查看博远口腔', exact: true })
       await institution.click()
       await page.locator('dialog[data-dental-dialog="institution"][open]').waitFor({ state: 'visible' })
       assert.equal(await page.locator('dialog[open]').getAttribute('data-figma-node'), '2294:7631')
@@ -149,6 +169,7 @@ async function main() {
       assert.ok(await institution.evaluate(el => document.activeElement === el))
       checks.institutionAndEightPhotos = true
       await page.getByRole('button', { name: '获取谭兆林医生免费报价', exact: true }).click()
+      await page.locator('[data-dental-step="3"]').waitFor()
       await pause(page)
       assert.equal(await page.locator('.dental-desktop-flow').getAttribute('data-dental-step'), '3')
       await waitForAssets(page)
