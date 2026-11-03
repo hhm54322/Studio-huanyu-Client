@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import articleIndex from './toolkitArticleIndex.json'
 
@@ -62,8 +63,8 @@ export function articleControls(source: string, article?: string) {
     '疾病中心': '/diseases-technologies', '中国医院': '/hospitals', '患者案例': '/cases',
     '保险指南': '/insurance', '关于我们': '/about', '费用对比': '/cost', '报告体验': '/report',
     '就医步骤': '/steps', '返回信任与常见问题': '/trust',
-    'contact@huanyuyunyi.com': 'mailto:contact@huanyuyunyi.com',
-    '+86 400-888-XXXX': 'tel:+864008886688', 'WhatsApp': 'https://wa.me/864008886688',
+    'contact@huanyuyunyi.com': publicContacts.emailHref,
+    '+86 400-888-XXXX': 'tel:+864008886688', 'WhatsApp': publicContacts.whatsappHref,
   }
   for (const node of nodes) {
     if (['Link', 'List Item'].includes(node.name)) {

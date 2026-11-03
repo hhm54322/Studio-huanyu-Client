@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { publicContacts } from '@/data/publicContacts'
 import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
@@ -3319,7 +3320,7 @@ const resetWizard = () => {
             </div>
             <div class="pro-upgrade-actions">
               <button type="button" @click="openConsultation">联系客服 / Contact</button>
-              <a href="mailto:contact@huanyuyunyi.com">邮件咨询 / Email</a>
+              <a :href="publicContacts.emailHref">邮件咨询 / Email</a>
             </div>
             <small>已有 2,847 位国际患者通过专业版报告成功规划了海外就医行程 / 2,847 international patients have successfully planned their medical travel</small>
           </div>
@@ -3354,9 +3355,9 @@ const resetWizard = () => {
         </div>
         <div>
           <strong>联系</strong>
-          <a href="mailto:contact@huanyuyunyi.com">contact@huanyuyunyi.com</a>
+          <a :href="publicContacts.emailHref">{{ publicContacts.email }}</a>
           <a href="tel:+864008886688">+86 400-888-6688</a>
-          <span>WhatsApp · 24小时客服</span>
+          <a :href="publicContacts.whatsappHref" target="_blank" rel="noopener noreferrer">WhatsApp · 24小时客服</a>
         </div>
       </div>
       <p class="pro-report-footer__copyright">Copyright 2026 寰宇云医. All rights reserved.</p>

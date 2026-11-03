@@ -9,6 +9,14 @@
 - 发布目录：`/opt/huanyu/releases/<version>`；回滚备份：`/opt/huanyu/backups/website-before-<version>.tar.gz`。
 - 本次仅更新主站前端；专家工作台、API、数据库和报告生成服务不随此静态发布更新。
 
+## 2026-11-03 公司邮箱与 WhatsApp 接入（20261103220000）
+
+- 版本 `20261103220000` 已发布至 `https://www.huanyumedical.com/`，发布完成时间 `2026-11-03T07:16:15.555568+00:00`。公司邮箱统一为 `gh20260826@qq.com`；页脚及桌面常驻 WhatsApp 使用用户确认的官方客服链接。Facebook 由用户确认待补充，未使用邮箱猜测主页地址。配置与 Figma 联系区域核验见 `docs/public-contacts.md`。
+- 3,243 个文件上传前后逐项 SHA256 校验通过，发布包 SHA256 为 `6b15d1f25fbc9c546c72198ca6a9a4e8758f537b1fbf450262fd51c869e9481f`。Nginx 配置及 API 健康检查通过，回滚备份为 `/opt/huanyu/backups/website-before-20261103220000.tar.gz`。保留旧哈希资源，按资源、页面入口、Worker 顺序切换；未改后台、数据库或报告生成行为。
+- 开发环境与实际生产预览均通过 13 路由联系方式专项检查、真实点击目标检查及手机/平板溢出检查。公网首次加载出现一次连接关闭，独立完整复测 13/13 路由通过，版本正确，无脚本异常或横向溢出；首次失败证据保留。官方 WhatsApp 页面在当前网络超时，仅确认链接格式和跳转目标，未验证账户状态或邮箱投递能力。
+- CDN 两域名共 32 项公共入口 URL 刷新、37 项新版资源/页面壳预热已逐项与提交清单核对，69/69 显示完成 100%，无缺项。记录：`artifacts/deployment/20261103220000/{cdn-summary.json,cdn-record-pages.json,published.json}`；公网结果：`online-recheck/qa.json`。
+- 类型检查、直接 Vite 生产构建及 diff 检查通过。全站 `pnpm run build` 的 Figma 门禁仍因历史页面证据时效及共享代码哈希变化失败；未放宽门禁，本次联系方式专项回归不代表全站最新 Figma 验收完成。截图与导出档案保持 Git 忽略。
+
 ## 2026-11-03 版本发布（20261103210000）
 
 - 已发布 20261103210000 至 https://www.huanyumedical.com/。发布包 SHA256 为 e867949d62eee88689c504bd36ba66226d696047684d6c3fd8dd7489ce80c43d，共 3,242 个文件；服务器逐文件校验、Nginx 配置检查和 API 健康检查均通过。回滚备份为 /opt/huanyu/backups/website-before-20261103210000.tar.gz。

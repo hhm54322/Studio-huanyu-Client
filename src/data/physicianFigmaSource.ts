@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import source from '../../docs/figma-source/physicians/revision-2026-10-29/source-tree-2026-10-29.json'
 import directory from './yaoyingPhysicians.json'
 import assignedAvatars from './physicianAvatars.json'
@@ -86,7 +87,7 @@ for (const [id, href] of [
   ['1689:5412', '/diseases-technologies'], ['1689:5414', '/dental'], ['1689:5418', '/cases'], ['1689:5420', '/insurance'], ['1689:5422', '/about'],
   ['1732:5717', '/hospitals'], ['1732:5719', '/doctors'], ['1689:5333', '/diseases-technologies'], ['1689:5335', '/cost'], ['1689:5337', '/report'],
   ['1689:5341', '/steps'], ['1689:5347', '/cases'], ['1689:5349', '/insurance'], ['1689:5351', '/steps'], ['1689:5353', '/about'],
-  ['1689:5363', 'mailto:contact@huanyuyunyi.com'], ['1689:5368', 'tel:+864008886688'], ['1689:5373', 'https://wa.me/864008886688'],
+  ['1689:5363', publicContacts.emailHref], ['1689:5368', 'tel:+864008886688'], ['1689:5373', publicContacts.whatsappHref],
 ] as const) link(id, href)
 action('1689:5401', 'consultation', '问阿宁')
 action('1689:5425', 'language', '选择语言')

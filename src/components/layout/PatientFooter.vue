@@ -3,6 +3,7 @@ import { defineAsyncComponent } from 'vue'
 import BrandLogo from '@/components/common/BrandLogo.vue'
 import { useRoute } from 'vue-router'
 import { homeFigmaActions } from '@/data/homeFigmaActions'
+import { publicContacts } from '@/data/publicContacts'
 const HomeFigmaSection = defineAsyncComponent(() => import('@/components/common/HomeFigmaSection.vue'))
 const route = useRoute()
 withDefaults(defineProps<{ contactIcons?: string[] }>(), { contactIcons: () => ['/images/figma/about-icons/Icon-9.svg', '/images/figma/about-icons/Icon-6.svg', '/images/figma/about-icons/Icon-10.svg'] })
@@ -18,9 +19,9 @@ const resourceLinks = [{ label:'患者案例',path:'/cases' },{ label:'保险指
       <div class="footer-column"><h3>资源</h3><RouterLink v-for="item in resourceLinks" :key="item.label" :to="item.path">{{ item.label }}</RouterLink></div>
       <div class="footer-column footer-contact">
         <h3>联系</h3>
-        <a href="mailto:contact@huanyuyunyi.com"><img :src="contactIcons[0]" alt="" aria-hidden="true" />contact@huanyuyunyi.com</a>
+        <a :href="publicContacts.emailHref"><img :src="contactIcons[0]" alt="" aria-hidden="true" />{{ publicContacts.email }}</a>
         <a href="tel:+864008886688"><img :src="contactIcons[1]" alt="" aria-hidden="true" />+86 400-888-XXXX</a>
-        <a href="https://wa.me/864008886688" target="_blank" rel="noopener noreferrer"><img :src="contactIcons[2]" alt="" aria-hidden="true" />WhatsApp</a>
+        <a :href="publicContacts.whatsappHref" target="_blank" rel="noopener noreferrer"><img :src="contactIcons[2]" alt="" aria-hidden="true" />WhatsApp</a>
         <div class="footer-service"><b>24小时客服</b><i>扫码加微信</i></div>
       </div>
     </div>

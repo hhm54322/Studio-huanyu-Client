@@ -103,7 +103,7 @@ async function main(){
       await page.keyboard.press('Escape');await page.locator(selector('1741:5732')).waitFor({state:'hidden'})
       await page.locator(selector('484:1582')).click();await page.locator('.hospital-languages').waitFor({state:'visible'});await page.keyboard.press('Escape');assert.equal(await page.locator('.hospital-languages').count(),0)
       record.navigation=true
-      for(const [id,prefix] of [['144:5202','mailto:'],['144:5207','tel:'],['144:5212','https://wa.me/']])assert.ok((await page.locator(selector(id)).getAttribute('href')).startsWith(prefix))
+      for(const [id,prefix] of [['144:5202','mailto:'],['144:5207','tel:'],['144:5212','https://api.whatsapp.com/message/']])assert.ok((await page.locator(selector(id)).getAttribute('href')).startsWith(prefix))
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width)
       await page.close()
     }

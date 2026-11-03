@@ -89,9 +89,9 @@ async function main() {
         await page.locator('.home-language-menu').waitFor({state:'hidden'})
         result.language=true
       }
-      const contacts=width<=700?['1528:836','1528:841','1528:846']:['1412:6716','1412:6721','1412:6726']
+      const contacts=width<=700?['1528:835','1528:841','1528:846']:['1412:6715','1412:6721','1412:6726']
       result.contacts=await Promise.all(contacts.map(id=>page.locator(node(id)).getAttribute('href')))
-      assert.ok(result.contacts[0].startsWith('mailto:')&&result.contacts[1].startsWith('tel:')&&result.contacts[2].startsWith('https://wa.me/'))
+      assert.ok(result.contacts[0].startsWith('mailto:')&&result.contacts[1].startsWith('tel:')&&result.contacts[2].startsWith('https://api.whatsapp.com/message/'))
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width)
       result.scrollBeforeConsultation=before
       await page.close()

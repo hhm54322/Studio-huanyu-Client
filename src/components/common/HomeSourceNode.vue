@@ -9,6 +9,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, provide, inject, ref, w
 import { RouterLink } from 'vue-router'
 import { alignSourceText, cancelSourceText } from '@/utils/sourceBaseline'
 import PatientDesktopNavigation from '@/components/layout/PatientDesktopNavigation.vue'
+import { publicContacts, publicContactText } from '@/data/publicContacts'
 
 export interface HomeSourceNodeData {
   id: string
@@ -57,6 +58,8 @@ defineSlots<{
   after(props: { node: HomeSourceNodeData }): unknown
 }>()
 const control = computed(() => props.actions?.[props.node.id])
+const textOverride = computed(() => props.texts?.[props.node.id] ?? publicContactText(props.node.text))
+const controlLabel = computed(() => publicContactText(control.value?.label || '') ?? control.value?.label)
 // Source pages keep their own exact header shell/logo, but all desktop
 // Navigation instances share route state and both dropdown interactions.
 const desktopNavigationSource = props.node.name === 'Navigation' && props.node.width > 700
@@ -72,7 +75,10 @@ if (desktopNavigationSource) {
 }
 const fluidLayout = computed(() => !props.fixedRoots?.includes(props.node.id) && (props.fluid || props.flowRoots?.includes(props.node.id)))
 const tag = computed(() => control.value?.href ? control.value.href.startsWith('/') ? RouterLink : 'a' : control.value?.action ? 'button' : props.node.type === 'TEXT' ? 'p' : 'div')
-const linkAttributes = computed(() => !control.value?.href ? {} : control.value.href.startsWith('/') ? { to:control.value.href } : { href:control.value.href })
+const linkAttributes = computed(() => !control.value?.href ? {} : control.value.href.startsWith('/') ? { to:control.value.href } : {
+  href:control.value.href,
+  ...(control.value.href === publicContacts.whatsappHref ? { target:'_blank', rel:'noopener noreferrer' } : {}),
+})
 const inheritedImageReady = inject<Ref<boolean> | null>(IMAGE_READY, null)
 const ownsDeferredImages = Boolean(!inheritedImageReady && props.root && props.deferImages || props.deferImageRoots?.includes(props.node.id))
 const imageReady = ownsDeferredImages ? ref(false) : inheritedImageReady ?? ref(!props.deferImages)
@@ -112,7 +118,7 @@ async function alignSourceBaselines() {
 const tracksBaselines = props.node.textLines?.some(line => line.baseline !== undefined)
 if (tracksBaselines) {
   onMounted(alignSourceBaselines)
-  watch([() => props.node, () => props.preserveTextLines, () => props.baselineScale, fluidLayout, () => props.texts?.[props.node.id]], alignSourceBaselines, { flush:'post' })
+  watch([() => props.node, () => props.preserveTextLines, () => props.baselineScale, fluidLayout, textOverride], alignSourceBaselines, { flush:'post' })
 }
 if (ownsDeferredImages) onMounted(() => {
   if (imageReady.value || !imageElement.value) return
@@ -129,13 +135,13 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
 
 <template>
   <PatientDesktopNavigation v-if="patientNavigation && node.visible && !hidden?.includes(node.id)" :source="node" :style="style" :data-figma-node="node.id" :data-figma-name="node.name" />
-  <component ref="imageElement" :is="tag" v-else-if="node.visible && !hidden?.includes(node.id)" v-bind="{...linkAttributes,...attributes?.[node.id]}" :data-figma-node="replica ? undefined : node.id" :data-figma-name="replica ? undefined : node.name" :data-source-images="root && deferImages || ownsDeferredImages ? imageReady ? 'loaded' : 'deferred' : undefined" :type="tag === 'button' ? 'button' : undefined" :aria-label="control?.label" :style="style" :class="{ 'home-source-node--root': root, 'home-source-node--text':node.type==='TEXT' }" @click="control?.action && emit('activate', control.action, $event)">
+  <component ref="imageElement" :is="tag" v-else-if="node.visible && !hidden?.includes(node.id)" v-bind="{...linkAttributes,...attributes?.[node.id]}" :data-figma-node="replica ? undefined : node.id" :data-figma-name="replica ? undefined : node.name" :data-source-images="root && deferImages || ownsDeferredImages ? imageReady ? 'loaded' : 'deferred' : undefined" :type="tag === 'button' ? 'button' : undefined" :aria-label="controlLabel" :style="style" :class="{ 'home-source-node--root': root, 'home-source-node--text':node.type==='TEXT' }" @click="control?.action && emit('activate', control.action, $event)">
     <img v-if="node.svg" :src="imageReady ? node.svg : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
     <img v-else-if="node.text === '\uf005'" class="home-source-node__font-awesome-glyph" :src="imageReady ? '/images/figma/doctor-review-star.svg' : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
-    <template v-else-if="node.textLines && (preserveTextLines || !fluidLayout) && !texts?.[node.id]"><span class="home-source-node__accessible-text">{{ node.text }}</span><span ref="sourceLines" aria-hidden="true"><span v-for="(line,index) in node.textLines" :key="index" :style="[line.css, { transform: `translateY(${baselineOffsets[index] || 0}px)` }]"><span v-for="(run,runIndex) in line.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></span></template>
-    <template v-else-if="node.textParagraphs && !texts?.[node.id]"><span v-for="(paragraph,index) in node.textParagraphs" :key="index" :style="paragraph.css"><span v-for="(run,runIndex) in paragraph.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></template>
-    <template v-else-if="node.textRuns && !texts?.[node.id]"><span v-for="(run,index) in node.textRuns" :key="index" :style="run.css">{{ run.text }}</span></template>
-    <template v-else-if="node.text">{{ texts?.[node.id] ?? node.text }}</template>
+    <template v-else-if="node.textLines && (preserveTextLines || !fluidLayout) && !textOverride"><span class="home-source-node__accessible-text">{{ node.text }}</span><span ref="sourceLines" aria-hidden="true"><span v-for="(line,index) in node.textLines" :key="index" :style="[line.css, { transform: `translateY(${baselineOffsets[index] || 0}px)` }]"><span v-for="(run,runIndex) in line.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></span></template>
+    <template v-else-if="node.textParagraphs && !textOverride"><span v-for="(paragraph,index) in node.textParagraphs" :key="index" :style="paragraph.css"><span v-for="(run,runIndex) in paragraph.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></template>
+    <template v-else-if="node.textRuns && !textOverride"><span v-for="(run,index) in node.textRuns" :key="index" :style="run.css">{{ run.text }}</span></template>
+    <template v-else-if="node.text">{{ textOverride ?? node.text }}</template>
     <slot v-if="node.chart === 'radar'" name="radar" :node="node" />
     <slot v-if="node.chart === 'cost'" name="cost" :node="node" />
     <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :replica="replica" :defer-images="deferImages" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action, event) => emit('activate', action, event)">

@@ -136,7 +136,7 @@ async function main() {
       assert.ok(Math.abs(geometry.footerGap - 96 * geometry.scale) < 1)
       assert.ok(Math.abs(geometry.gridGap - 48 * geometry.scale) < 1)
       assert.ok(!['fixed', 'sticky'].includes(geometry.position))
-      assert.ok(geometry.hrefs.includes('mailto:contact@huanyuyunyi.com'))
+      assert.ok(geometry.hrefs.includes('mailto:gh20260826@qq.com'))
       await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' })); await settle(page)
       await page.screenshot({ path: path.join(output, `dental-${width}-footer.png`) })
       report.dental.push({ width, cards: 8, independentExpansion: true, keyboardSelection: true, ...geometry })

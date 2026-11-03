@@ -86,8 +86,8 @@ async function main() {
         await page.keyboard.press('Escape'); await page.locator('.consult-overlay').waitFor({ state: 'detached' })
         assert.equal(await cta.evaluate(el => document.activeElement === el), true)
       }
-      assert.equal(await page.getByRole('link', { name: 'contact@huanyuyunyi.com', exact: true }).getAttribute('href'), 'mailto:contact@huanyuyunyi.com')
-      assert.ok((await page.getByRole('link', { name: 'WhatsApp', exact: true }).getAttribute('href')).startsWith('https://wa.me/'))
+      assert.equal(await page.getByRole('link', { name: 'gh20260826@qq.com', exact: true }).getAttribute('href'), 'mailto:gh20260826@qq.com')
+      assert.ok((await page.getByRole('link', { name: 'WhatsApp', exact: true }).getAttribute('href')).startsWith('https://api.whatsapp.com/message/'))
       const reduced = await page.locator('.proof-card__detail').first().evaluate(el => ({ duration: getComputedStyle(el).transitionDuration, heroOpacity: getComputedStyle(document.querySelector('.about-hero__content')).opacity }))
       assert.ok(parseFloat(reduced.duration) <= 0.00001); assert.equal(reduced.heroOpacity, '1')
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width)

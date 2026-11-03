@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import doctorCardConsumption from '../../docs/figma-source/dental-revision-2026-10-28/matching-card-consumption-2026-10-28.json'
 import completeSource from '../../docs/figma-source/dental-complete-2026-10-30/source-extension.json'
@@ -71,8 +72,8 @@ export const dentalActions: Record<string, HomeSourceAction> = {}
 const routes: Record<string, string> = {
   首页: '/', 为什么选择中国: '/why-china', 信任与常见问题: '/trust', 医疗服务: '/diseases-technologies', 疾病中心: '/diseases-technologies',
   牙科: '/dental', 中国医院: '/hospitals', 患者案例: '/cases', 保险指南: '/insurance', 关于我们: '/about', 费用对比: '/cost',
-  报告体验: '/report', 就医步骤: '/steps', 'contact@huanyuyunyi.com': 'mailto:contact@huanyuyunyi.com',
-  '+86 400-888-XXXX': 'tel:+864008886688', WhatsApp: 'https://wa.me/864008886688',
+  报告体验: '/report', 就医步骤: '/steps', 'contact@huanyuyunyi.com': publicContacts.emailHref,
+  '+86 400-888-XXXX': 'tel:+864008886688', WhatsApp: publicContacts.whatsappHref,
 }
 function registerDentalActions(sources: { root: SourceNode }[]) {
 for (const source of sources) {

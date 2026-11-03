@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import { hospitals, type Hospital } from './hospitals'
 
@@ -40,8 +41,8 @@ const footer=[
   [['144:5172','1620:1088'],'/diseases-technologies'],[['144:5174','1620:1089'],'/cost'],
   [['144:5176','1620:1090'],'/report'],[['144:5180','144:5190','1620:1092','1620:1099'],'/steps'],
   [['144:5186','1620:1097'],'/cases'],[['144:5188','1620:1098'],'/insurance'],
-  [['144:5192','1620:1100'],'/about'],[['144:5202','1620:1110'],'mailto:contact@huanyuyunyi.com'],
-  [['144:5207','1620:1115'],'tel:+864008886688'],[['144:5212','1620:1120'],'https://wa.me/864008886688'],
+  [['144:5192','1620:1100'],'/about'],[['144:5202','1620:1110'],publicContacts.emailHref],
+  [['144:5207','1620:1115'],'tel:+864008886688'],[['144:5212','1620:1120'],publicContacts.whatsappHref],
 ] as const
 footer.forEach(([ids,href])=>link([...ids],href))
 

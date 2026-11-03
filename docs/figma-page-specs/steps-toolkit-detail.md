@@ -1,3 +1,5 @@
+> 2026-11-03：用户授权更新公开邮箱/WhatsApp，公共入口参数、源比较及专项截图回归见 [public-contacts.md](../public-contacts.md)。本次不重新声明全页 Figma 验收通过。
+
 # 08 来华就医全流程工具包详情 · 桌面改版
 
 - Route: `/steps/toolkit-detail`

@@ -6,13 +6,15 @@ const path = require('node:path')
 const { createHash } = require('node:crypto')
 const { chromium } = require('/Users/hhm/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')
 const root = path.resolve(__dirname, '..')
-const out = path.join(root, 'artifacts/patient-updates-2026-10-31/whatsapp')
+const out = process.env.HUANYU_QA_OUTPUT || path.join(root, 'artifacts/contact-update-20261103/qa')
 const dev = process.env.HUANYU_QA_URL || 'http://127.0.0.1:5317'
 const production = process.env.HUANYU_QA_PRODUCTION_URL || 'http://127.0.0.1:5318'
 // The router deliberately blocks the three destinations without approved
 // designs. Test every published patient route without bypassing that guard.
 const routes = ['/', '/why-china', '/trust', '/insurance', '/hospitals', '/doctors', '/cases', '/dental', '/diseases-technologies', '/steps', '/steps/toolkit-detail', '/about', '/report']
 const pendingDesignRoutes = ['/equipment', '/visa', '/professional-report']
+const email = 'gh20260826@qq.com'
+const whatsapp = 'https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0'
 
 async function fixed(page) {
   const contact = page.locator('.whatsapp-contact')
@@ -41,11 +43,26 @@ async function main() {
         await page.goto(base + route, { waitUntil: 'networkidle' })
         const geometry = await fixed(page)
         const button = page.locator('.whatsapp-contact')
-        assert.equal(await button.evaluate(el => el.tagName), 'BUTTON')
-        assert.equal(await button.isDisabled(), true)
-        assert.equal(await button.getAttribute('href'), null)
-        assert.equal(await button.getAttribute('title'), 'WhatsApp 咨询即将开放')
+        assert.equal(await button.evaluate(el => el.tagName), 'A')
+        assert.equal(await button.getAttribute('href'), whatsapp)
+        assert.equal(await button.getAttribute('target'), '_blank')
+        assert.equal(await button.getAttribute('rel'), 'noopener noreferrer')
+        assert.equal(await button.getAttribute('title'), '通过 WhatsApp 联系寰宇医疗客服')
+        await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }))
+        const mail = page.locator(`a[href="mailto:${email}"]`).filter({ visible:true })
+        await mail.first().waitFor({ state:'visible' })
+        assert.equal(await page.locator('a[href="mailto:contact@huanyuyunyi.com"],a[href="https://wa.me/864008886688"]').count(), 0)
+        assert.ok((await mail.first().textContent()).includes(email))
+        const footerWhatsApp = page.locator(`a[href="${whatsapp}"]`).filter({ visible:true })
+        assert.ok(await footerWhatsApp.count() >= 2, `${route}: footer and fixed WhatsApp entry`)
+        for (const entry of await footerWhatsApp.all()) {
+          assert.equal(await entry.getAttribute('target'), '_blank')
+          assert.equal(await entry.getAttribute('rel'), 'noopener noreferrer')
+        }
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+        await page.screenshot({path:path.join(out,`${environment}-${route.replaceAll('/','_')||'home'}-footer.png`)})
         if (route === '/') {
+          await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }))
           const assistant = await page.locator('.home-source-hero__assistant').boundingBox()
           assert.equal(assistant.y - geometry.bottom, 12)
           await page.screenshot({ path: path.join(out, `${environment}-home.png`) })
@@ -71,12 +88,17 @@ async function main() {
     for (const [input, expected] of [
       ['+12025550123', 'https://wa.me/12025550123'],
       ['https://wa.me/12025550123?text=Hello', 'https://wa.me/12025550123?text=Hello'],
-      ['', null], ['400-888-XXXX', null], ['https://evil.example/support', null], ['https://wa.me/012345678', null],
+      [whatsapp, whatsapp],
+      ['', whatsapp], ['400-888-XXXX', whatsapp], ['https://evil.example/support', whatsapp], ['https://wa.me/012345678', whatsapp],
+      ['https://api.whatsapp.com.evil.example/message/ABC', whatsapp],
+      ['https://api.whatsapp.com@evil.example/message/ABC', whatsapp],
+      ['http://api.whatsapp.com/message/ABC', whatsapp],
+      ['https://api.whatsapp.com/send?phone=123', whatsapp],
     ]) {
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
       page.on('pageerror', error => errors.push({ input, message: error.message }))
       let intercepted = false
-      await page.route(url => url.pathname === '/src/components/common/WhatsAppContact.vue' && !url.searchParams.has('type'), async route => {
+      await page.route(url => url.pathname === '/src/data/publicContacts.ts', async route => {
         const response = await route.fetch()
         const code = await response.text()
         assert.ok(code.includes('import.meta.env.VITE_WHATSAPP_CONTACT'))
@@ -97,7 +119,7 @@ async function main() {
       await page.close()
     }
     assert.deepEqual(errors, [])
-    const codeSHA256 = Object.fromEntries(await Promise.all(['src/components/common/WhatsAppContact.vue', 'src/components/layout/PatientLayout.vue'].map(async file => [file, createHash('sha256').update(await fs.readFile(path.join(root, file))).digest('hex')])))
+    const codeSHA256 = Object.fromEntries(await Promise.all(['src/data/publicContacts.ts', 'src/components/common/HomeSourceNode.vue', 'src/components/common/WhatsAppContact.vue', 'src/components/layout/PatientFooter.vue'].map(async file => [file, createHash('sha256').update(await fs.readFile(path.join(root, file))).digest('hex')])))
     const report = { checkedAt: new Date().toISOString(), environments, configurations, codeSHA256, pendingDesignRoutes, externalMessagesSent: false, errors }
     await fs.writeFile(path.join(out, 'qa.json'), JSON.stringify(report, null, 2) + '\n')
     console.log(JSON.stringify(report, null, 2))

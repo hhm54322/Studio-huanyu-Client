@@ -59,8 +59,8 @@ async function main() {
         const restored = await page.locator(node('143:3082')).boundingBox()
         assert.ok(Math.abs(restored.y - start.y) < 1); checks.scrollRestores = true
       }
-      const mail = page.getByRole('link', { name: 'contact@huanyuyunyi.com', exact: true })
-      if (await mail.count()) assert.equal(await mail.getAttribute('href'), 'mailto:contact@huanyuyunyi.com')
+      const mail = page.getByRole('link', { name: 'gh20260826@qq.com', exact: true })
+      if (await mail.count()) assert.equal(await mail.getAttribute('href'), 'mailto:gh20260826@qq.com')
       checks.contactLinks = true
       const consult = page.getByRole('button', { name: '问阿宁', exact: true })
       if (await consult.count()) {

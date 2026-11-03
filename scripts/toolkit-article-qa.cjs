@@ -136,9 +136,9 @@ async function main() {
       await page.goBack({ waitUntil: 'networkidle' })
       await page.waitForSelector('[data-toolkit-article="' + key + '"]')
       const links = {
-        'contact@huanyuyunyi.com': 'mailto:contact@huanyuyunyi.com',
+        'gh20260826@qq.com': 'mailto:gh20260826@qq.com',
         '+86 400-888-XXXX': 'tel:+864008886688',
-        'WhatsApp': 'https://wa.me/864008886688',
+        'WhatsApp': 'https://api.whatsapp.com/message/Y42GUI2UUXBVB1?autoload=1&app_absent=0',
       }
       checks.contactLinks = true
       for (const [label, href] of Object.entries(links)) {

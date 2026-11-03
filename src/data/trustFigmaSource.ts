@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import type { HomeSourceNodeData as Node, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import source from '../../docs/figma-source/trust/revision-2026-10-29/source-tree-2026-10-29.json'
 import travel from '../../docs/figma-source/trust/revision-2026-10-29/travel/source-tree-2026-10-29.json'
@@ -33,7 +34,7 @@ link('484:1465', '/')
 for (const [id, href] of [
   ['143:2941', '/'], ['143:2954', '/diseases-technologies'], ['143:2956', '/cost'], ['143:2958', '/report'],
   ['143:2962', '/steps'], ['143:2968', '/cases'], ['143:2970', '/insurance'], ['143:2972', '/steps'], ['143:2974', '/about'],
-  ['143:2980', 'mailto:contact@huanyuyunyi.com'], ['143:2986', 'tel:+864008886688'], ['143:2991', 'https://wa.me/864008886688'],
+  ['143:2980', publicContacts.emailHref], ['143:2986', 'tel:+864008886688'], ['143:2991', publicContacts.whatsappHref],
   ['204:5660', '/steps/toolkit-detail'], ['204:5846', '/steps/toolkit-detail?article=visa'],
   ['204:6040', '/steps/toolkit-detail?article=steps-flow'], ['1582:2014', '/report'],
 ]) link(id!, href!)

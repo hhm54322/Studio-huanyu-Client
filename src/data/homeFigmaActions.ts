@@ -1,3 +1,4 @@
+import { publicContacts } from './publicContacts'
 import type { HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 
 // Explicit source-node bindings. Content and geometry remain in the locked source tree.
@@ -47,8 +48,8 @@ const footer = [
   [['1412:6703','1528:826'],'/cases'],
   [['1412:6705','1528:827'],'/insurance'],
   [['1412:6709','1528:829'],'/about'],
-  [['1412:6716','1528:836'],'mailto:contact@huanyuyunyi.com'],
+  [['1412:6715','1528:835'],publicContacts.emailHref],
   [['1412:6721','1528:841'],'tel:+864008886688'],
-  [['1412:6726','1528:846'],'https://wa.me/864008886688'],
+  [['1412:6726','1528:846'],publicContacts.whatsappHref],
 ] as const
 footer.forEach(([ids,href]) => link([...ids],href))
