@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{ kicker?: string; title: string; description?: string; align?: 'left' | 'center'; light?: boolean }>(), {
@@ -10,8 +13,8 @@ const titleCharacters = computed(() => Array.from(props.title))
 
 <template>
   <div class="section-heading" :class="[`section-heading--${align}`, { 'section-heading--light': light }]" data-reveal>
-    <span v-if="kicker" class="hy-kicker">{{ kicker }}</span>
-    <h2 class="hy-title motion-text" :aria-label="title">
+    <span v-if="kicker" class="hy-kicker">{{ tx(kicker) }}</span>
+    <h2 class="hy-title motion-text" :aria-label="tx(title)">
       <span
         v-for="(character, index) in titleCharacters"
         :key="`${character}-${index}`"
@@ -19,7 +22,7 @@ const titleCharacters = computed(() => Array.from(props.title))
         :style="{ '--motion-index': index }"
       >{{ character === ' ' ? '\u00a0' : character }}</span>
     </h2>
-    <p v-if="description" class="hy-copy">{{ description }}</p>
+    <p v-if="description" class="hy-copy">{{ tx(description) }}</p>
   </div>
 </template>
 

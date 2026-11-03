@@ -81,7 +81,7 @@ export const physicianFilters = physicianNode('1689:4839').children.map((node, i
 
 export const physicianActions: Record<string, HomeSourceAction> = {}
 const link = (id: string, href: string) => { physicianActions[id] = { href } }
-const action = (id: string, value: string, label?: string) => { physicianActions[id] = { action: value, label } }
+const action = (id: string, value: string, label?: string, labelValues?:Record<string,string|number>) => { physicianActions[id] = { action: value, label, labelValues } }
 for (const [id, href] of [
   ['1689:5319', '/'], ['1689:5394', '/'], ['1689:5406', '/'], ['1689:5408', '/why-china'], ['1689:5410', '/trust'],
   ['1689:5412', '/diseases-technologies'], ['1689:5414', '/dental'], ['1689:5418', '/cases'], ['1689:5420', '/insurance'], ['1689:5422', '/about'],
@@ -93,7 +93,7 @@ action('1689:5401', 'consultation', '问阿宁')
 action('1689:5425', 'language', '选择语言')
 action('1689:5416', 'hospital-menu', '中国医院')
 physicianFilters.forEach((node, index) => action(node.id, `filter:${index}`, node.text))
-physicianRecords.forEach(record => action(`physician-card:${record.id}`, `doctor:${record.id}`, `查看${record.name}（${record.departmentSource}）详情`))
+physicianRecords.forEach(record => action(`physician-card:${record.id}`, `doctor:${record.id}`, '查看{name}（{department}）详情', {name:record.name,department:record.departmentSource}))
 
 function replaceText(node: SourceNode, text: string, css = '') {
   node.text = text

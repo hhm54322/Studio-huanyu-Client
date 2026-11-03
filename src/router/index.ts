@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { watch } from 'vue'
+import i18n from '@/i18n'
+import { translateSiteCopy } from '@/i18n/siteCopy'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(to, _from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
+    if (to.name === 'patient-dental-doctor' && from.name === to.name && to.params.slug === from.params.slug) return false
     if (savedPosition) return savedPosition
     if (to.hash) return { el: to.hash, behavior: 'smooth' }
     return { top: 0 }
@@ -82,8 +86,26 @@ const router = createRouter({
         {
           path: 'dental',
           name: 'patient-dental',
+          beforeEnter: async to => {
+            const { getDentalFlowSession } = await import('@/data/dentalFlowSession')
+            const step = to.query.step === '3' ? 3 : to.query.step === '2' ? 2 : getDentalFlowSession()?.step || 1
+            if (step !== 1) await import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step))
+          },
           component: () => import('@/views/patient/DentalView.vue'),
           meta: { title: '牙科服务' },
+        },
+        {
+          path: 'dental/doctors/:slug',
+          name: 'patient-dental-doctor',
+          beforeEnter: async to => {
+            if (window.innerWidth <= 700) return { path:'/dental', query:{ step:'2' } }
+            const { dentalPhysicians } = await import('@/data/dentalPhysicianData')
+            if (!dentalPhysicians.some(doctor => doctor.slug === to.params.slug)) return { path:'/dental', query:{ step:'2' } }
+            const source = await import('@/data/dentalDoctorPageSource')
+            await source.loadDentalDoctorPage(source.parseDentalDoctorTab(to.query.tab))
+          },
+          component: () => import('@/views/patient/DentalDoctorView.vue'),
+          meta: { title: '牙科医生详情' },
         },
         {
           path: 'diseases-technologies',
@@ -177,7 +199,13 @@ const pendingDesignRoutes = new Set(['/equipment', '/visa', '/professional-repor
 router.beforeEach((to) => {
   if (pendingDesignRoutes.has(to.path)) return false
   const title = to.meta.title as string | undefined
-  document.title = title ? `${title} - 寰宇云医` : '寰宇云医'
+  document.title = title ? `${to.meta.side==='hospital'?title:translateSiteCopy(title)} - ${to.meta.side==='hospital'?'寰宇云医':translateSiteCopy('寰宇云医')}` : translateSiteCopy('寰宇云医')
+})
+watch(i18n.global.locale,()=>{
+  const route=router.currentRoute.value
+  if(route.meta.side==='hospital')return
+  const title=route.meta.title as string|undefined
+  document.title=title?`${translateSiteCopy(title)} - ${translateSiteCopy('寰宇云医')}`:translateSiteCopy('寰宇云医')
 })
 
 export default router

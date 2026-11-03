@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeFigmaSection from './HomeFigmaSection.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
@@ -111,13 +114,13 @@ onBeforeUnmount(()=>{
 </script>
 
 <template>
-  <div ref="root" class="home-source-hero" tabindex="0" :data-figma-node="width>700 && active===3 ? '1523:31' : undefined" :data-hero-state="active+1" aria-roledescription="轮播" aria-label="寰宇云医介绍" @keydown.left.prevent="select(active-1)" @keydown.right.prevent="select(active+1)">
+  <div ref="root" class="home-source-hero" tabindex="0" :data-figma-node="width>700 && active===3 ? '1523:31' : undefined" :data-hero-state="active+1" :aria-roledescription="tx('轮播')" :aria-label="tx('寰宇云医介绍')" @keydown.left.prevent="select(active-1)" @keydown.right.prevent="select(active+1)">
     <Transition name="home-hero-fade">
-    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" label="寰宇云医介绍" :actions="actions" :attributes="attributes" :styles="styles" :defer-images="false" @activate="activate" />
+    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" :label="tx('寰宇云医介绍')" :actions="actions" :attributes="attributes" :styles="styles" :defer-images="false" @activate="activate" />
     <section v-else :key="`mobile-${active}`" class="home-source-hero__mobile" :data-figma-desktop-state="selected.frame">
       <div class="home-source-hero__mobile-image" :style="{backgroundImage:homeDesktopNodes.get(selected.image)!.css.match(/background:\s*(url\([^;]*?\))/)?.[1]}" />
       <div class="home-source-hero__mobile-copy" :class="{'is-assurance':active===2}"><HomeSourceNode :node="homeDesktopNodes.get(selected.content)!" root fluid :styles="mobileStyles" :actions="actions" @activate="activate" /></div>
-      <div class="home-source-hero__mobile-dots"><button v-for="(state,index) in mobileOrder" :key="state" type="button" :aria-label="`第${index+1}张`" :aria-pressed="state===active" @click="select(state)" /></div>
+      <div class="home-source-hero__mobile-dots"><button v-for="(state,index) in mobileOrder" :key="state" type="button" :aria-label="tx(`第${index+1}张`)" :aria-pressed="state===active" @click="select(state)" /></div>
     </section>
     </Transition>
     <Teleport to="body"><div v-if="width>700" class="home-source-hero__assistant"><HomeSourceNode :node="homeDesktopNodes.get('1523:119')!" root :actions="actions" @activate="activate" /></div></Teleport>

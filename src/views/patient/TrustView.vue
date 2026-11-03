@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { X } from "lucide-vue-next";
 import { trustArticleDialog } from '@/components/common/trustArticleDialog';
@@ -221,8 +224,8 @@ function openConsultation() {
       <div class="trust-hero__media" />
       <div class="hy-container">
         <header data-reveal>
-          <h1>就医保障 · 信任中心</h1>
-          <p>透明资质｜正规合作｜全程直连｜权益保障</p>
+          <h1>{{ tx("就医保障 · 信任中心") }}</h1>
+          <p>{{ tx("透明资质｜正规合作｜全程直连｜权益保障") }}</p>
         </header>
         <div class="assurance-grid">
           <article
@@ -238,15 +241,15 @@ function openConsultation() {
             @keydown.space.prevent="toggleAssurance(index)"
           >
             <img class="assurance-icon" :src="item.icon" alt="" aria-hidden="true" />
-            <h2>{{ item.title }}</h2>
+            <h2>{{ tx(item.title) }}</h2>
             <span
-              >查看详情<img
+              >{{ tx("查看详情") }}<img
                 class="assurance-chevron"
                 :src="trustAsset('Icon-14.svg')"
                 alt=""
                 aria-hidden="true"
             /></span>
-            <p>{{ item.copy }}</p>
+            <p>{{ tx(item.copy) }}</p>
           </article>
         </div>
       </div>
@@ -255,12 +258,12 @@ function openConsultation() {
     <section class="faq-section">
       <div class="hy-container faq-layout">
         <aside data-reveal>
-          <h2>20个高频就医疑问</h2>
-          <p>汇总海外患者来华就医最关心的核心问题</p>
+          <h2>{{ tx("20个高频就医疑问") }}</h2>
+          <p>{{ tx("汇总海外患者来华就医最关心的核心问题") }}</p>
         </aside>
         <div>
           <nav>
-            <strong>医疗资质与诊疗保障</strong>
+            <strong>{{ tx("医疗资质与诊疗保障") }}</strong>
           </nav>
           <div class="faq-list">
             <article
@@ -274,7 +277,7 @@ function openConsultation() {
                 :aria-controls="`trust-faq-answer-${index}`"
                 @click="activeFaq = activeFaq === index ? -1 : index"
               >
-                <span>{{ item.q }}</span
+                <span>{{ tx(item.q) }}</span
                 ><img
                   class="faq-chevron"
                   :src="
@@ -287,7 +290,7 @@ function openConsultation() {
                 /></button>
               <Transition name="accordion" @before-enter="faqBeforeEnter" @enter="faqEnter" @after-enter="faqAfterEnter" @before-leave="faqBeforeLeave" @leave="faqLeave">
                 <div v-if="activeFaq === index" :id="`trust-faq-answer-${index}`" class="accordion-panel">
-                  <p v-html="item.a"></p>
+                  <p v-html="tx(item.a)"></p>
                 </div>
               </Transition>
             </article>
@@ -299,8 +302,8 @@ function openConsultation() {
     <section class="articles-section">
       <div class="hy-container">
         <header class="section-title" data-reveal>
-          <h2>8篇信任深度长文</h2>
-          <p>专家·费用·合规，你想知道的都在这里</p>
+          <h2>{{ tx("8篇信任深度长文") }}</h2>
+          <p>{{ tx("专家·费用·合规，你想知道的都在这里") }}</p>
         </header>
         <div class="article-grid">
           <article
@@ -316,8 +319,8 @@ function openConsultation() {
             :style="{ '--reveal-delay': `${(index % 3) * 55}ms` }"
           >
             <img class="article-icon" :src="item.icon" alt="" aria-hidden="true" />
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.copy }}</p>
+            <h3>{{ tx(item.title) }}</h3>
+            <p>{{ tx(item.copy) }}</p>
             <button
               v-if="item.article && (desktopArticle || item.article === 'jci')"
               :ref="item.article === 'jci' ? setJciTrigger : undefined"
@@ -326,8 +329,7 @@ function openConsultation() {
               :aria-expanded="jciModalOpen && activeArticle === item.article"
               :aria-controls="item.article === 'jci' ? 'jci-truth-dialog' : `trust-${item.article}-dialog`"
               @click.stop="openJciArticle(item.article, $event)"
-            >
-              阅读全文<img
+            >{{ tx(" 阅读全文") }}<img
                 class="arrow-icon"
                 :src="trustAsset('Icon-2.svg')"
                 alt=""
@@ -360,53 +362,49 @@ function openConsultation() {
             ref="jciCloseButton"
             class="jci-dialog-close"
             type="button"
-            aria-label="关闭JCI认证真相"
+            :aria-label="tx('关闭JCI认证真相')"
             @click="closeJciArticle"
           >
             <X :size="16" aria-hidden="true" />
           </button>
-          <h2 id="jci-dialog-title">JCI认证真相</h2>
-          <p class="jci-dialog-lead">137家JCI认证，院内感染率0.5%仅为欧美一半</p>
+          <h2 id="jci-dialog-title">{{ tx("JCI认证真相") }}</h2>
+          <p class="jci-dialog-lead">{{ tx("137家JCI认证，院内感染率0.5%仅为欧美一半") }}</p>
           <div class="jci-dialog-copy">
-            <p>很多海外患者规划来华就医时，首要顾虑：中国医院的医疗标准是否和国际接轨，是否得到全球认可。</p>
-            <p>JCI（Joint Commission International）是国际公认的医疗质量与安全评审体系，执行全球统一标准，不存在国别专属版本。</p>
-            <p>我们合作的医疗机构中，共计137家取得JCI国际认证，在患者安全、诊疗流程、手术质控、院感管理、护理规范上全部对标国际行业要求。</p>
-            <p>公开统计数据显示，这类JCI认证医院院内感染率仅0.5%，对比欧美医院平均1.2%的感染水平，拥有更严格的无菌管控与术后安全体系。</p>
-            <p>从术前评估、手术操作到术后监护，整套诊疗流程完全同步欧美、新加坡等国际医疗规范。对海外患者而言，JCI认证是判断医院正规性、安全性的重要参考依据。</p>
-            <p>JCI认证不是宣传噱头，代表医院的医疗安全体系达到国际统一标准，为跨境就医提供基础安全保障。</p>
+            <p>{{ tx("很多海外患者规划来华就医时，首要顾虑：中国医院的医疗标准是否和国际接轨，是否得到全球认可。") }}</p>
+            <p>{{ tx("JCI（Joint Commission International）是国际公认的医疗质量与安全评审体系，执行全球统一标准，不存在国别专属版本。") }}</p>
+            <p>{{ tx("我们合作的医疗机构中，共计137家取得JCI国际认证，在患者安全、诊疗流程、手术质控、院感管理、护理规范上全部对标国际行业要求。") }}</p>
+            <p>{{ tx("公开统计数据显示，这类JCI认证医院院内感染率仅0.5%，对比欧美医院平均1.2%的感染水平，拥有更严格的无菌管控与术后安全体系。") }}</p>
+            <p>{{ tx("从术前评估、手术操作到术后监护，整套诊疗流程完全同步欧美、新加坡等国际医疗规范。对海外患者而言，JCI认证是判断医院正规性、安全性的重要参考依据。") }}</p>
+            <p>{{ tx("JCI认证不是宣传噱头，代表医院的医疗安全体系达到国际统一标准，为跨境就医提供基础安全保障。") }}</p>
           </div>
         </section>
       </div>
     </Transition>
 
-    <div class="toolkit-scroll" aria-label="来华就医全流程工具包">
+    <div class="toolkit-scroll" :aria-label="tx('来华就医全流程工具包')">
       <div class="hy-container toolkit-layout">
         <aside class="toolkit-sticky">
-          <h2>来华就医全流程<br />工具包</h2>
-          <p>确认来华就医，获取全套办理模板、清单与流程指引</p>
+          <h2>{{ tx("来华就医全流程") }}<br />{{ tx("工具包") }}</h2>
+          <p>{{ tx("确认来华就医，获取全套办理模板、清单与流程指引") }}</p>
         </aside>
         <div class="toolkit-stages">
           <section v-for="(stage, stageIndex) in toolkitStages" :key="stage.heading" class="toolkit-section" :class="`toolkit-section--stage-${stageIndex}`">
             <header>
-              <h3>{{ stage.heading }}</h3>
-              <p>{{ stage.description }}</p>
+              <h3>{{ tx(stage.heading) }}</h3>
+              <p>{{ tx(stage.description) }}</p>
             </header>
             <div class="tool-grid">
               <article v-for="(item, itemIndex) in stage.items" :key="item.title" data-reveal>
                 <img class="tool-icon" :src="item.icon" alt="" aria-hidden="true" />
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.copy }}</p>
-                <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">
-                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <h3>{{ tx(item.title) }}</h3>
+                <p>{{ tx(item.copy) }}</p>
+                <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="desktopArticle && stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">
-                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="desktopArticle && stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="desktopArticle && stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">
-                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="desktopArticle && stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <span v-else-if="(stageIndex === 1 && itemIndex === 0) || (stageIndex === 2 && itemIndex === 0)" class="tool-action-pending" aria-disabled="true">
-                  阅读全文<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <span v-else-if="(stageIndex === 1 && itemIndex === 0) || (stageIndex === 2 && itemIndex === 0)" class="tool-action-pending" aria-disabled="true">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </span>
               </article>
             </div>
@@ -417,8 +415,8 @@ function openConsultation() {
 
     <section class="trust-cta">
       <div class="hy-container" data-reveal>
-        <h2>准备好开启您的来华就医之旅了吗？</h2>
-        <p>我们的医疗顾问团队随时为您提供免费咨询</p>
+        <h2>{{ tx("准备好开启您的来华就医之旅了吗？") }}</h2>
+        <p>{{ tx("我们的医疗顾问团队随时为您提供免费咨询") }}</p>
         <div>
           <button type="button" @click="openConsultation">
             <img
@@ -426,16 +424,15 @@ function openConsultation() {
               :src="trustAsset('Icon-1.svg')"
               alt=""
               aria-hidden="true"
-            />免费问阿宁</button
+            />{{ tx("免费问阿宁") }}</button
           ><RouterLink to="/report"
             ><img
               class="cta-icon"
               :src="trustAsset('Icon-17.svg')"
               alt=""
               aria-hidden="true"
-            />生成可行性报告</RouterLink
-          ><button class="dark" type="button" @click="openConsultation">
-            预约专家面诊 $200起<img
+            />{{ tx("生成可行性报告") }}</RouterLink
+          ><button class="dark" type="button" @click="openConsultation">{{ tx(" 预约专家面诊 $200起") }}<img
               class="cta-icon"
               :src="trustAsset('Icon-10.svg')"
               alt=""
@@ -445,11 +442,11 @@ function openConsultation() {
         </div>
         <small
           ><span
-            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />免费咨询</span
+            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />{{ tx("免费咨询") }}</span
           ><span
-            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />无隐藏费用</span
+            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />{{ tx("无隐藏费用") }}</span
           ><span
-            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />24小时响应</span
+            ><img :src="trustAsset('Icon-19.svg')" alt="" aria-hidden="true" />{{ tx("24小时响应") }}</span
           ></small
         >
       </div>

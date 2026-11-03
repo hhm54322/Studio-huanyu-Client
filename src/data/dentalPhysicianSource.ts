@@ -10,13 +10,13 @@ export function replaceDentalText(node: SourceNode, text: string) {
   delete node.textParagraphs
 }
 
-function replaceDentalPrice(node: SourceNode, value: string) {
+export function replaceDentalPrice(node: SourceNode, value: string) {
   const label = value.replace(/\s*起\s*$/, '')
   const match = label.match(/^(.*?)(\/.*)$/)
   const amount = match?.[1] || label
   const unit = match?.[2] || ''
-  const amountCss = node.textRuns![0]!.css
-  const unitCss = node.textRuns![1]!.css
+  const amountCss = node.textRuns?.[0]?.css || ''
+  const unitCss = node.textRuns?.[1]?.css || ''
   node.text = label
   node.textRuns = [{ text: amount, css: amountCss }, ...(unit ? [{ text: unit, css: unitCss }] : [])]
   node.textParagraphs = undefined
@@ -75,7 +75,7 @@ export function createDentalPhysicianMatching(ids: number[]) {
     if (!doctor.sourceProfile) for (const [index, id] of ['2294:7091', '2294:7092'].entries()) {
       const image = preview?.images.filter(item => item.src.trim())[index]
       at(id).visible = Boolean(image)
-      at(id).css += `;background-image:${image ? `url(${JSON.stringify(image.src)})` : 'none'};`
+      at(id).css += `;background-image:${image ? `url(${JSON.stringify(image.thumbnail || image.src)})` : 'none'};`
     }
     if (!doctor.sourceProfile) {
     replaceDentalPortrait(at('2294:7063'), doctor.portrait)

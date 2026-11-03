@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeFigmaSection from './HomeFigmaSection.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
@@ -25,8 +28,8 @@ const loopStyle={'--partner-desktop-cycle':`${desktopCycle}px`,'--partner-mobile
 </script>
 
 <template>
-  <div ref="root" class="home-partners-source" :style="loopStyle" :class="{'is-paused':!visible||!documentVisible||touching}" tabindex="0" aria-label="合作伙伴，悬停或聚焦暂停滚动" @touchstart.passive="touching=true" @touchend.passive="touching=false" @touchcancel.passive="touching=false">
-    <HomeFigmaSection desktop-id="1412:6495" mobile-id="1528:762" label="合作伙伴" defer-render>
+  <div ref="root" class="home-partners-source" :style="loopStyle" :class="{'is-paused':!visible||!documentVisible||touching}" tabindex="0" :aria-label="tx('合作伙伴，悬停或聚焦暂停滚动')" @touchstart.passive="touching=true" @touchend.passive="touching=false" @touchcancel.passive="touching=false">
+    <HomeFigmaSection desktop-id="1412:6495" mobile-id="1528:762" :label="tx('合作伙伴')" defer-render>
       <template #after="{node}">
         <div v-if="node.id==='1412:6501'" class="home-partners-source__copy home-partners-source__copy--desktop" aria-hidden="true" inert><HomeSourceNode :node="desktopTrack" root replica defer-images /></div>
         <div v-if="node.id==='1528:766'" class="home-partners-source__copy home-partners-source__copy--mobile" aria-hidden="true" inert><HomeSourceNode :node="mobileTrack" root replica defer-images /></div>

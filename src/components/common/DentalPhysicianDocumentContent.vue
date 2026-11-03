@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { dentalNode } from '@/data/dentalFigmaSource'
 import { dentalPhysicianCases, type DentalPhysician } from '@/data/dentalPhysicianData'
@@ -32,42 +35,42 @@ onBeforeUnmount(() => observer?.disconnect())
 <template>
   <section id="dental-document-content" ref="element" class="dental-document-content" :class="`dental-document-content--${mode}`" :data-doctor-content="doctor.id" role="tabpanel" :aria-labelledby="mode === 'institution' ? 'dental-source-dialog-title' : undefined" tabindex="0">
     <template v-if="mode === 'profile'">
-      <p class="dental-document-content__institution" :style="sourceStyle('2294:7774')">{{ doctor.hospital }}</p>
-      <p :style="sourceStyle('2294:7790')" data-figma-source-node="2294:7790">{{ doctor.bio }}</p>
+      <p class="dental-document-content__institution" :style="sourceStyle('2294:7774')">{{ tx(doctor.hospital) }}</p>
+      <p :style="sourceStyle('2294:7790')" data-figma-source-node="2294:7790">{{ tx(doctor.bio) }}</p>
       <div v-for="section in sections" :key="section.title" class="dental-document-content__section" data-figma-source-node="2294:7791">
-        <h3 :style="sourceStyle('2294:7793')">{{ section.title }}</h3>
+        <h3 :style="sourceStyle('2294:7793')">{{ tx(section.title) }}</h3>
         <ul>
           <li v-for="(row, index) in section.rows" :key="index" data-figma-source-node="2294:7794">
             <img :src="dentalNode('2294:7796').svg" alt="" aria-hidden="true" />
-            <span :style="sourceStyle('2294:7799')">{{ row }}</span>
+            <span :style="sourceStyle('2294:7799')">{{ tx(row) }}</span>
           </li>
         </ul>
       </div>
-      <p class="dental-document-content__reference-price" :style="sourceStyle('2294:7774')">{{ doctor.priceDescription }}；具体费用以书面报价为准。</p>
+      <p class="dental-document-content__reference-price" :style="sourceStyle('2294:7774')">{{ tx(doctor.priceDescription) }}{{ tx("；具体费用以书面报价为准。") }}</p>
     </template>
     <template v-else-if="mode === 'cases'">
       <article v-for="item in cases" :key="item.id" :style="sourceStyle('2294:7375')" class="dental-document-content__case" :data-physician-case="item.id" data-figma-source-node="2294:7375">
-        <h3 :style="sourceStyle('2294:7376')">{{ item.title }}</h3>
+        <h3 :style="sourceStyle('2294:7376')">{{ tx(item.title) }}</h3>
         <div :style="`${dentalNode('2294:7377').layoutCss};width:100%;flex-wrap:wrap;`">
-          <img v-for="image in item.images.filter(image => image.src.trim())" :key="image.src" :src="image.src" :alt="image.alt || item.title" :style="`${dentalNode('2294:7378').layoutCss};object-fit:cover;background:none;`" loading="lazy" />
+          <img v-for="image in item.images.filter(image => image.src.trim())" :key="image.src" :src="image.src" :alt="tx(image.alt || item.title)" :style="`${dentalNode('2294:7378').layoutCss};object-fit:cover;background:none;`" loading="lazy" />
         </div>
       </article>
       <div v-if="!cases.length" :style="sourceStyle('2294:7375')" data-figma-source-node="2294:7375">
-        <p :style="sourceStyle('2294:7376')">暂无已公开案例</p>
+        <p :style="sourceStyle('2294:7376')">{{ tx("暂无已公开案例") }}</p>
       </div>
     </template>
     <template v-else-if="mode === 'reviews'">
       <article v-for="(review, index) in doctor.reviews" :key="index" :style="sourceStyle('231:1458')" class="dental-document-content__review" data-figma-source-node="231:1458">
-        <h3 :style="sourceStyle('231:1464')">{{ review.service }}</h3>
-        <p :style="sourceStyle('231:1465')">{{ review.content }}</p>
-        <p :style="sourceStyle('231:1471')">{{ review.source }}</p>
+        <h3 :style="sourceStyle('231:1464')">{{ tx(review.service) }}</h3>
+        <p :style="sourceStyle('231:1465')">{{ tx(review.content) }}</p>
+        <p :style="sourceStyle('231:1471')">{{ tx(review.source) }}</p>
       </article>
-      <p v-if="!doctor.reviews.length" :style="sourceStyle('2294:7375')">暂无已公开患者评价</p>
+      <p v-if="!doctor.reviews.length" :style="sourceStyle('2294:7375')">{{ tx("暂无已公开患者评价") }}</p>
     </template>
     <template v-else>
-      <p class="dental-document-content__institution" :style="sourceStyle('2294:7774')">{{ doctor.hospital }}</p>
-      <p :style="sourceStyle('2294:7790')">{{ doctor.institutionIntro }}</p>
-      <p :style="sourceStyle('2294:7790')">{{ doctor.institutionEnvironment }}</p>
+      <p class="dental-document-content__institution" :style="sourceStyle('2294:7774')">{{ tx(doctor.hospital) }}</p>
+      <p :style="sourceStyle('2294:7790')">{{ tx(doctor.institutionIntro) }}</p>
+      <p :style="sourceStyle('2294:7790')">{{ tx(doctor.institutionEnvironment) }}</p>
     </template>
   </section>
 </template>

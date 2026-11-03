@@ -19,9 +19,12 @@ function updateSidebar() {
   const { sidebar, layout } = model.value
   if (!sidebar || !layout || !container.value) return
   const scale = Math.min(1, props.width / model.value.root.width)
-  const pageTop = container.value.getBoundingClientRect().top
-  const desired = (24 - pageTop) / scale - layout.y
-  sidebarOffset.value = Math.max(0, Math.min(layout.height - sidebar.height, desired))
+  const layoutElement=container.value.querySelector<HTMLElement>(`[data-figma-node="${layout.id}"]`)
+  const sidebarElement=container.value.querySelector<HTMLElement>(`[data-figma-node="${sidebar.id}"]`)
+  if(!layoutElement||!sidebarElement)return
+  const desired = (24-layoutElement.getBoundingClientRect().top)/scale
+  const available=parseFloat(getComputedStyle(layoutElement).height)-parseFloat(getComputedStyle(sidebarElement).height)
+  sidebarOffset.value = Math.max(0, Math.min(available, desired))
 }
 function requestSidebar() {
   if (!frame) frame = requestAnimationFrame(updateSidebar)

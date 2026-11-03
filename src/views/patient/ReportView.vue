@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx, tf } = useSiteCopy()
+
 import { publicContacts } from '@/data/publicContacts'
+import { useWhatsAppContact, useWhatsAppTopic } from '@/composables/useWhatsAppContact'
+const { whatsappHref } = useWhatsAppContact('footer-report')
 import { ref, reactive, computed, nextTick, onMounted, onBeforeUnmount, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
@@ -83,7 +88,7 @@ onBeforeUnmount(() => {
 
 onBeforeRouteLeave(() => {
   if (!generating.value) return true
-  return window.confirm(generatingLeaveMessage)
+  return window.confirm(tx(generatingLeaveMessage))
 })
 
 // 基础信息表单
@@ -104,6 +109,7 @@ const form = reactive({
   expectedTreatmentTime: '',
   chiefComplaint: '',
 })
+useWhatsAppTopic(computed(() => form.visitPurpose))
 
 type FormField = keyof typeof form
 type SupportedLocale = 'zh' | 'en' | 'id' | 'ru' | 'mn'
@@ -190,7 +196,13 @@ const localText = {
   },
 } satisfies Record<string, LocalizedText | Record<string, LocalizedText>>
 
-const lt = (entry: LocalizedText) => entry[activeLocale.value] || entry.zh
+// UI localization is independent of the report language sent to the existing
+// generation API. In particular, never machine-translate a generated diagnosis.
+const lt = (entry: LocalizedText) => {
+  const translated = tx(entry.zh)
+  return locale.value === 'zh' || translated !== entry.zh || ['ms','pt'].includes(locale.value)
+    ? translated : entry[activeLocale.value] || entry.zh
+}
 
 const touched = reactive<Record<FormField, boolean>>({
   fullName: false,
@@ -1556,21 +1568,15 @@ const resetWizard = () => {
   <div v-if="showReport" class="free-report-page mx-auto text-slate-900">
     <div class="free-report-toolbar flex items-center justify-between gap-4">
       <button type="button" class="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-[#c05621]" @click="resetWizard">
-        <ArrowLeft class="h-4 w-4" />
-        返回
-      </button>
+        <ArrowLeft class="h-4 w-4" />{{ tx(" 返回 ") }}</button>
       <div class="free-report-toolbar__title min-w-0 flex-1">
-        <span>可行性评估报告</span>
-        <h1>海外就医可行性评估报告</h1>
+        <span>{{ tx("可行性评估报告") }}</span>
+        <h1>{{ tx("海外就医可行性评估报告") }}</h1>
       </div>
       <div class="free-report-toolbar__actions flex items-center gap-3">
         <button type="button" class="free-report-action free-report-action--secondary" @click="downloadFreeReport">
-          <Download class="h-4 w-4" />
-          下载PDF
-        </button>
-        <router-link :to="professionalReportLink" class="free-report-action free-report-action--primary">
-          升级到专业版
-        </router-link>
+          <Download class="h-4 w-4" />{{ tx(" 下载PDF ") }}</button>
+        <router-link :to="professionalReportLink" class="free-report-action free-report-action--primary">{{ tx(" 升级到专业版 ") }}</router-link>
       </div>
     </div>
 
@@ -1587,30 +1593,28 @@ const resetWizard = () => {
           <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <DollarSign class="h-5 w-5 text-[#dd6b20]" />
-                您的治疗方案预估总费用
-              </h2>
-              <p class="mt-1 text-sm text-slate-500">以下为预估区间，最终以医院正式报价、检查结果和治疗强度为准。</p>
+                <DollarSign class="h-5 w-5 text-[#dd6b20]" />{{ tx(" 您的治疗方案预估总费用 ") }}</h2>
+              <p class="mt-1 text-sm text-slate-500">{{ tx("以下为预估区间，最终以医院正式报价、检查结果和治疗强度为准。") }}</p>
             </div>
             <button type="button" class="free-report-detail-toggle" :aria-expanded="showCostDetails" @click="showCostDetails = !showCostDetails">
-              {{ showCostDetails ? '收起费用明细' : '查看费用明细' }}
+              {{ tx(showCostDetails ? '收起费用明细' : '查看费用明细') }}
               <component :is="showCostDetails ? ChevronUp : ChevronDown" class="h-4 w-4" />
             </button>
           </div>
 
           <div class="free-report-cost-summary mb-5 grid gap-4 md:grid-cols-3">
             <div class="rounded-[14px] bg-orange-50 p-5">
-              <div class="text-xs font-semibold text-[#9a4a1e]">治疗总费用（中国）</div>
+              <div class="text-xs font-semibold text-[#9a4a1e]">{{ tx("治疗总费用（中国）") }}</div>
               <div class="mt-2 text-2xl font-black text-slate-950">{{ chinaCostCountry?.fee || renderedReport.totalCost }}</div>
-              <div class="mt-1 text-xs text-slate-500">{{ chinaCostCountry?.name || '中国方案' }}</div>
+              <div class="mt-1 text-xs text-slate-500">{{ tx(chinaCostCountry?.name || '中国方案') }}</div>
             </div>
             <div class="rounded-[14px] bg-slate-50 p-5">
-              <div class="text-xs font-semibold text-slate-500">本国同等治疗预估</div>
+              <div class="text-xs font-semibold text-slate-500">{{ tx("本国同等治疗预估") }}</div>
               <div class="mt-2 text-2xl font-black text-slate-950">{{ referenceCostCountry?.fee || '-' }}</div>
-              <div class="mt-1 text-xs text-slate-500">{{ referenceCostCountry?.name || '对比地区' }}</div>
+              <div class="mt-1 text-xs text-slate-500">{{ tx(referenceCostCountry?.name || '对比地区') }}</div>
             </div>
             <div class="rounded-[14px] bg-emerald-50 p-5">
-              <div class="text-xs font-semibold text-emerald-700">预计可节省</div>
+              <div class="text-xs font-semibold text-emerald-700">{{ tx("预计可节省") }}</div>
               <div class="mt-2 text-lg font-black text-emerald-700">{{ costSavingsText }}</div>
             </div>
           </div>
@@ -1663,7 +1667,7 @@ const resetWizard = () => {
                   </span>
                   <div v-if="hospital.matchScore !== undefined" class="text-right">
                     <div class="text-2xl font-black leading-none text-[#14B8A6]">{{ hospital.matchScore }}%</div>
-                    <div class="mt-1 text-[11px] font-medium text-slate-400">匹配度 / Match</div>
+                    <div class="mt-1 text-[11px] font-medium text-slate-400">{{ tx("匹配度 / Match") }}</div>
                   </div>
                 </div>
 
@@ -1690,11 +1694,11 @@ const resetWizard = () => {
 
                 <dl v-if="hospital.internationalPatients || hospital.waitTime" class="mt-4 grid gap-2 text-sm">
                   <div v-if="hospital.internationalPatients" class="flex items-center justify-between gap-3">
-                    <dt class="text-slate-500">国际患者 / Intl Patients</dt>
+                    <dt class="text-slate-500">{{ tx("国际患者 / Intl Patients") }}</dt>
                     <dd class="font-bold text-slate-900">{{ hospital.internationalPatients }}</dd>
                   </div>
                   <div v-if="hospital.waitTime" class="flex items-center justify-between gap-3">
-                    <dt class="text-slate-500">等待时间 / Wait Time</dt>
+                    <dt class="text-slate-500">{{ tx("等待时间 / Wait Time") }}</dt>
                     <dd class="font-bold text-[#14B8A6]">{{ hospital.waitTime }}</dd>
                   </div>
                 </dl>
@@ -1702,7 +1706,7 @@ const resetWizard = () => {
                 <div class="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-sm font-semibold">
                   <span :class="hospital.bestMatch ? 'text-[#123F67]' : 'text-slate-500'">
                     <Star v-if="hospital.bestMatch" class="mr-1 inline h-4 w-4 align-[-2px] text-[#FF8A34]" />
-                    {{ hospital.bestMatch ? '最佳匹配 / Best Match' : '点击查看详情 / View Details' }}
+                    {{ tx(hospital.bestMatch ? '最佳匹配 / Best Match' : '点击查看详情 / View Details') }}
                   </span>
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
@@ -1730,9 +1734,7 @@ const resetWizard = () => {
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
                 <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#1685C3]" />
-                <p>
-                  想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
-                </p>
+                <p>{{ tx(" 想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。 ") }}</p>
               </div>
               <router-link
                 :to="professionalReportLink"
@@ -1747,24 +1749,22 @@ const resetWizard = () => {
         <section v-if="showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5">
             <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-              <HeartPulse class="h-5 w-5 text-[#1685C3]" />
-              我的治疗路径与费用拆分
-            </h2>
-            <p class="mt-1 text-sm text-slate-500">先完成资料复核和专科判断，再确认治疗方案、预算和在华停留时间。</p>
+              <HeartPulse class="h-5 w-5 text-[#1685C3]" />{{ tx(" 我的治疗路径与费用拆分 ") }}</h2>
+            <p class="mt-1 text-sm text-slate-500">{{ tx("先完成资料复核和专科判断，再确认治疗方案、预算和在华停留时间。") }}</p>
           </div>
 
           <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <div class="space-y-3">
               <div class="rounded-lg border border-sky-100 bg-sky-50 p-4">
-                <div class="text-xs font-semibold text-[#123F67]">推荐诊疗方向</div>
+                <div class="text-xs font-semibold text-[#123F67]">{{ tx("推荐诊疗方向") }}</div>
                 <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.direction }}</p>
               </div>
               <div class="rounded-lg border border-slate-100 bg-slate-50 p-4">
-                <div class="text-xs font-semibold text-slate-500">预计在华安排</div>
+                <div class="text-xs font-semibold text-slate-500">{{ tx("预计在华安排") }}</div>
                 <p class="mt-2 text-sm leading-6 text-slate-800">{{ renderedReport.duration }}</p>
               </div>
               <div class="rounded-lg border border-slate-100 bg-white p-4">
-                <div class="text-xs font-semibold text-slate-500">核心诉求</div>
+                <div class="text-xs font-semibold text-slate-500">{{ tx("核心诉求") }}</div>
                 <p class="mt-2 text-sm leading-6 text-slate-700">{{ renderedReport.need }}</p>
               </div>
             </div>
@@ -1772,10 +1772,8 @@ const resetWizard = () => {
             <div class="self-start rounded-lg border border-sky-100 bg-white p-4">
               <div class="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h3 class="font-semibold text-slate-950">AI费用汇总</h3>
-                  <p class="mt-1 text-xs leading-5 text-slate-500">
-                    费用细项、美元折算和节省比例由医疗模型按本次信息返回。
-                  </p>
+                  <h3 class="font-semibold text-slate-950">{{ tx("AI费用汇总") }}</h3>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">{{ tx(" 费用细项、美元折算和节省比例由医疗模型按本次信息返回。 ") }}</p>
                 </div>
                 <span class="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
                   {{ modelCostSummary?.chinaTotal || renderedReport.totalCost }}
@@ -1783,12 +1781,12 @@ const resetWizard = () => {
               </div>
               <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <div class="rounded-lg bg-slate-50 p-3">
-                  <div class="text-xs text-slate-500">本次中国方案</div>
+                  <div class="text-xs text-slate-500">{{ tx("本次中国方案") }}</div>
                   <div class="mt-1 text-lg font-black text-slate-950">{{ modelCostSummary?.chinaTotal || renderedReport.totalCost }}</div>
                 </div>
                 <div class="rounded-lg bg-slate-50 p-3">
-                  <div class="text-xs text-slate-500">{{ modelCostSummary?.referenceCountry || '对比治疗地' }}</div>
-                  <div class="mt-1 text-lg font-black text-slate-950">{{ modelCostSummary?.referenceCost || '需模型返回' }}</div>
+                  <div class="text-xs text-slate-500">{{ tx(modelCostSummary?.referenceCountry || '对比治疗地') }}</div>
+                  <div class="mt-1 text-lg font-black text-slate-950">{{ tx(modelCostSummary?.referenceCost || '需模型返回') }}</div>
                 </div>
               </div>
               <p v-if="renderedReport.costBreakdown?.currencyNote" class="mt-3 rounded-lg bg-sky-50 px-3 py-2 text-xs leading-5 text-[#9A4A1E]">
@@ -1813,7 +1811,7 @@ const resetWizard = () => {
                 </div>
               </div>
               <div class="mb-3 flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2">
-                <span class="text-xs font-semibold text-slate-500">小计</span>
+                <span class="text-xs font-semibold text-slate-500">{{ tx("小计") }}</span>
                 <span class="text-sm font-bold text-[#123F67]">{{ group.category.subtotal }}</span>
               </div>
               <div class="space-y-2">
@@ -1836,8 +1834,8 @@ const resetWizard = () => {
           </div>
           <div v-else class="mt-5 overflow-hidden rounded-lg border border-amber-100 bg-amber-50/60">
             <div class="border-b border-amber-100 px-4 py-3">
-              <h3 class="font-semibold text-slate-950">医疗模型暂未返回三类费用细分</h3>
-              <p class="mt-1 text-xs leading-5 text-slate-500">以下仅展示兼容字段中的原始费用项，系统不会自行归类或补算。</p>
+              <h3 class="font-semibold text-slate-950">{{ tx("医疗模型暂未返回三类费用细分") }}</h3>
+              <p class="mt-1 text-xs leading-5 text-slate-500">{{ tx("以下仅展示兼容字段中的原始费用项，系统不会自行归类或补算。") }}</p>
             </div>
             <table class="w-full text-sm">
               <tbody class="divide-y divide-amber-100 bg-white">
@@ -1853,23 +1851,17 @@ const resetWizard = () => {
             <p class="text-sm font-bold leading-6 text-[#123F67]">{{ modelCostSummary.formula }}</p>
             <p class="mt-2 text-sm font-bold leading-6 text-slate-900">{{ modelCostSummary.savingsText }}</p>
           </div>
-          <div v-else class="mt-4 rounded-lg border border-sky-100 bg-sky-50 px-4 py-3 text-center text-sm font-semibold text-[#123F67]">
-            费用细分、总公式和节省比例需由医疗模型返回；最终以医院正式报价、检查结果和治疗强度为准。
-          </div>
+          <div v-else class="mt-4 rounded-lg border border-sky-100 bg-sky-50 px-4 py-3 text-center text-sm font-semibold text-[#123F67]">{{ tx(" 费用细分、总公式和节省比例需由医疗模型返回；最终以医院正式报价、检查结果和治疗强度为准。 ") }}</div>
         </section>
 
         <section v-if="advancedCareInsights && !showCostDetails" class="free-report-panel rounded-[14px] border bg-white p-5 md:p-6">
           <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Microscope class="h-5 w-5 text-[#1685C3]" />
-                前沿疗法与新药可及性推荐
-              </h2>
+                <Microscope class="h-5 w-5 text-[#1685C3]" />{{ tx(" 前沿疗法与新药可及性推荐 ") }}</h2>
               <p class="mt-1 text-sm leading-6 text-slate-500">{{ advancedCareInsights.context }}</p>
             </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
-              AI医疗模型生成
-            </span>
+            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">{{ tx(" AI医疗模型生成 ") }}</span>
           </div>
 
           <div class="grid gap-4 xl:grid-cols-3">
@@ -1890,25 +1882,25 @@ const resetWizard = () => {
               <p class="text-sm leading-6 text-slate-700">{{ therapy.summary }}</p>
               <div class="mt-4 grid gap-2 text-xs">
                 <div class="rounded-lg bg-white p-3">
-                  <div class="font-semibold text-slate-500">适用前提</div>
+                  <div class="font-semibold text-slate-500">{{ tx("适用前提") }}</div>
                   <p class="mt-1 leading-5 text-slate-700">{{ therapy.applicableFor }}</p>
                 </div>
                 <div class="rounded-lg bg-white p-3">
-                  <div class="font-semibold text-slate-500">治疗机制</div>
+                  <div class="font-semibold text-slate-500">{{ tx("治疗机制") }}</div>
                   <p class="mt-1 leading-5 text-slate-700">{{ therapy.mechanism }}</p>
                 </div>
                 <div class="rounded-lg bg-white p-3">
-                  <div class="font-semibold text-slate-500">中国可及性</div>
+                  <div class="font-semibold text-slate-500">{{ tx("中国可及性") }}</div>
                   <p class="mt-1 leading-5 text-slate-700">{{ therapy.chinaAccess }}</p>
                 </div>
               </div>
               <div class="mt-4 grid gap-2 sm:grid-cols-2">
                 <div class="rounded-lg bg-sky-50 p-3">
-                  <div class="text-xs font-semibold text-[#123F67]">中国预估</div>
+                  <div class="text-xs font-semibold text-[#123F67]">{{ tx("中国预估") }}</div>
                   <div class="mt-1 text-sm font-black text-slate-950">{{ therapy.estimatedCost }}</div>
                 </div>
                 <div v-if="therapy.referenceCost" class="rounded-lg bg-white p-3">
-                  <div class="text-xs font-semibold text-slate-500">参考市场</div>
+                  <div class="text-xs font-semibold text-slate-500">{{ tx("参考市场") }}</div>
                   <div class="mt-1 text-sm font-black text-slate-950">{{ therapy.referenceCost }}</div>
                 </div>
               </div>
@@ -2002,7 +1994,7 @@ const resetWizard = () => {
                 </article>
               </div>
               <div v-if="advancedCareInsights.newDrugCureAssessment.ctaItems.length" class="mt-4 rounded-lg bg-white p-3">
-                <div class="text-xs font-semibold text-[#123F67]">下一步确认事项</div>
+                <div class="text-xs font-semibold text-[#123F67]">{{ tx("下一步确认事项") }}</div>
                 <ul class="mt-2 space-y-1 text-xs leading-5 text-slate-700">
                   <li v-for="item in advancedCareInsights.newDrugCureAssessment.ctaItems" :key="item" class="flex gap-2">
                     <CheckCircle class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
@@ -2035,17 +2027,17 @@ const resetWizard = () => {
           <div v-if="section.key === 'technology'" class="mb-5 rounded-lg border border-slate-100 bg-slate-50 p-4">
             <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h3 class="font-semibold text-slate-950">维度评分展开</h3>
-                <p class="mt-1 text-xs leading-5 text-slate-500">基于本报告中的费用、等待、技术、服务和随访信息做预审可视化，最终选择仍需医生和医院复核。</p>
+                <h3 class="font-semibold text-slate-950">{{ tx("维度评分展开") }}</h3>
+                <p class="mt-1 text-xs leading-5 text-slate-500">{{ tx("基于本报告中的费用、等待、技术、服务和随访信息做预审可视化，最终选择仍需医生和医院复核。") }}</p>
               </div>
-              <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#123F67]">1-10 分参考</span>
+              <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#123F67]">{{ tx("1-10 分参考") }}</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full min-w-[760px] text-xs">
                 <thead>
                   <tr class="text-left text-slate-500">
-                    <th class="px-3 py-2 font-medium">国家/地区</th>
-                    <th class="px-3 py-2 font-medium">综合</th>
+                    <th class="px-3 py-2 font-medium">{{ tx("国家/地区") }}</th>
+                    <th class="px-3 py-2 font-medium">{{ tx("综合") }}</th>
                     <th
                       v-for="dimension in countryScoreRows[0]?.scores || []"
                       :key="dimension.label"
@@ -2173,25 +2165,17 @@ const resetWizard = () => {
           <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div class="max-w-2xl">
               <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
-                <BookOpen class="h-3.5 w-3.5" />
-                专业版报告示例 / Pro Report Sample
-              </div>
+                <BookOpen class="h-3.5 w-3.5" />{{ tx(" 专业版报告示例 / Pro Report Sample ") }}</div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <FileText class="h-5 w-5 text-[#1685C3]" />
-                想知道专业版报告包含哪些内容? / What's in the Pro Report?
-              </h2>
-              <p class="mt-2 text-sm leading-6 text-slate-500">
-                以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。
-              </p>
+                <FileText class="h-5 w-5 text-[#1685C3]" />{{ tx(" 想知道专业版报告包含哪些内容? / What's in the Pro Report? ") }}</h2>
+              <p class="mt-2 text-sm leading-6 text-slate-500">{{ tx(" 以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。 ") }}</p>
             </div>
             <button
               type="button"
               class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#123F67]"
               @click="openProSampleReport"
             >
-              <BookOpen class="h-4 w-4" />
-              查看专业版报告示例 View Sample Report
-            </button>
+              <BookOpen class="h-4 w-4" />{{ tx(" 查看专业版报告示例 View Sample Report ") }}</button>
           </div>
         </section>
 
@@ -2199,14 +2183,10 @@ const resetWizard = () => {
           <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Sparkles class="h-5 w-5 text-[#1685C3]" />
-                专业评估服务包
-              </h2>
-              <p class="mt-1 text-sm leading-6 text-slate-500">从书面评估到专家视频面诊，再到多学科深度会诊，按资料完整度和决策复杂度选择。</p>
+                <Sparkles class="h-5 w-5 text-[#1685C3]" />{{ tx(" 专业评估服务包 ") }}</h2>
+              <p class="mt-1 text-sm leading-6 text-slate-500">{{ tx("从书面评估到专家视频面诊，再到多学科深度会诊，按资料完整度和决策复杂度选择。") }}</p>
             </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
-              副主任医师审核起
-            </span>
+            <span class="inline-flex w-fit items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">{{ tx(" 副主任医师审核起 ") }}</span>
           </div>
 
           <div class="grid gap-4 xl:grid-cols-3">
@@ -2277,17 +2257,13 @@ const resetWizard = () => {
           <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                <Sparkles class="h-5 w-5 text-[#1685C3]" />
-                专业版评估报告
-              </h2>
-              <p class="mt-2 text-sm leading-6 text-slate-500">补充完整资料后生成带多 Tab 排版的专业报告。</p>
+                <Sparkles class="h-5 w-5 text-[#1685C3]" />{{ tx(" 专业版评估报告 ") }}</h2>
+              <p class="mt-2 text-sm leading-6 text-slate-500">{{ tx("补充完整资料后生成带多 Tab 排版的专业报告。") }}</p>
             </div>
             <router-link
               :to="professionalReportLink"
               class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-semibold text-white shadow hover:bg-[#123F67] transition-colors"
-            >
-              生成专业报告
-              <ArrowRight class="h-4 w-4" />
+            >{{ tx(" 生成专业报告 ") }}<ArrowRight class="h-4 w-4" />
             </router-link>
           </div>
         </section>
@@ -2466,17 +2442,17 @@ const resetWizard = () => {
                 </div>
                 <dl v-if="hospital.internationalPatients || hospital.waitTime" class="mt-4 grid gap-2 text-sm">
                   <div v-if="hospital.internationalPatients" class="flex items-center justify-between gap-3">
-                    <dt class="text-gray-500">国际患者 / Intl Patients</dt>
+                    <dt class="text-gray-500">{{ tx("国际患者 / Intl Patients") }}</dt>
                     <dd class="font-bold text-gray-900">{{ hospital.internationalPatients }}</dd>
                   </div>
                   <div v-if="hospital.waitTime" class="flex items-center justify-between gap-3">
-                    <dt class="text-gray-500">等待时间 / Wait Time</dt>
+                    <dt class="text-gray-500">{{ tx("等待时间 / Wait Time") }}</dt>
                     <dd class="font-bold text-[#14B8A6]">{{ hospital.waitTime }}</dd>
                   </div>
                 </dl>
                 <p class="mt-3 text-sm leading-6 text-gray-600">{{ hospital.reason }}</p>
                 <div class="mt-4 flex items-center justify-between border-t border-sky-100 pt-3 text-sm font-semibold text-[#123F67]">
-                  <span>{{ expandedHospital === hospital.key ? '收起详情' : '点击展开医院详情' }}</span>
+                  <span>{{ tx(expandedHospital === hospital.key ? '收起详情' : '点击展开医院详情') }}</span>
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
               </button>
@@ -2502,9 +2478,7 @@ const resetWizard = () => {
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div class="flex items-start gap-3 text-sm font-semibold leading-6 text-[#9A4A1E]">
                 <AlertTriangle class="mt-0.5 h-5 w-5 shrink-0 text-[#1685C3]" />
-                <p>
-                  想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。
-                </p>
+                <p>{{ tx(" 想要更精准的医院推荐?升级到专业版，获取包含副主任医师审核的个性化医院匹配分析、指定专家预约、以及VIP号源预留服务。 ") }}</p>
               </div>
               <router-link
                 :to="professionalReportLink"
@@ -2556,25 +2530,17 @@ const resetWizard = () => {
             <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
               <div class="max-w-2xl">
                 <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-[#123F67]">
-                  <BookOpen class="h-3.5 w-3.5" />
-                  专业版报告示例 / Pro Report Sample
-                </div>
+                  <BookOpen class="h-3.5 w-3.5" />{{ tx(" 专业版报告示例 / Pro Report Sample ") }}</div>
                 <h2 class="flex items-center gap-2 text-lg font-bold text-slate-950">
-                  <FileText class="h-5 w-5 text-[#1685C3]" />
-                  想知道专业版报告包含哪些内容? / What's in the Pro Report?
-                </h2>
-                <p class="mt-2 text-sm leading-6 text-slate-500">
-                  以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。
-                </p>
+                  <FileText class="h-5 w-5 text-[#1685C3]" />{{ tx(" 想知道专业版报告包含哪些内容? / What's in the Pro Report? ") }}</h2>
+                <p class="mt-2 text-sm leading-6 text-slate-500">{{ tx(" 以下是一份专业版精准评估报告的完整示例，包含病情解读、治疗路径、费用明细、保险评估和防复发随访体系。 ") }}</p>
               </div>
               <button
                 type="button"
                 class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#1685C3] px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#123F67]"
                 @click="openProSampleReport"
               >
-                <BookOpen class="h-4 w-4" />
-                查看专业版报告示例 View Sample Report
-              </button>
+                <BookOpen class="h-4 w-4" />{{ tx(" 查看专业版报告示例 View Sample Report ") }}</button>
             </div>
           </div>
         </section>
@@ -2666,34 +2632,32 @@ const resetWizard = () => {
       <div class="report-form-intro text-center">
         <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-[#123F67]">
           <img class="h-4 w-4" src="/images/figma/report/input-preview-sparkles.svg" data-figma-node="2:1925" alt="" aria-hidden="true" />
-          <span>报告样例预览</span>
+          <span>{{ tx("报告样例预览") }}</span>
         </div>
-        <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">海外就医可行性评估报告</h1>
-        <p class="text-sm text-slate-500">填写以下表单生成您的专属报告</p>
+        <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{{ tx("海外就医可行性评估报告") }}</h1>
+        <p class="text-sm text-slate-500">{{ tx("填写以下表单生成您的专属报告") }}</p>
       </div>
 
       <div class="report-form-card mb-8 rounded-2xl bg-white p-6 md:p-8">
         <h2 class="report-form-section-title mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <User class="h-5 w-5 text-[#1685C3]" />
-          基本信息
-        </h2>
+          <User class="h-5 w-5 text-[#1685C3]" />{{ tx(" 基本信息 ") }}</h2>
 
         <div class="report-form-grid grid grid-cols-1 gap-5 md:grid-cols-2">
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">姓名 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("姓名 *") }}</label>
             <input
               v-model="form.fullName"
               type="text"
-              placeholder="您的名字"
+              :placeholder="tx('您的名字')"
               class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
               :class="shouldShowError('fullName') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('fullName')"
             />
-            <p v-if="shouldShowError('fullName')" class="mt-1 text-xs text-red-400">{{ validationErrors.fullName }}</p>
+            <p v-if="shouldShowError('fullName')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.fullName) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">性别 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("性别 *") }}</label>
             <select
               v-model="form.gender"
               class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 outline-none transition"
@@ -2701,67 +2665,67 @@ const resetWizard = () => {
               @change="markTouched('gender')"
               @blur="markTouched('gender')"
             >
-              <option value="">Select / 请选择</option>
-              <option value="male">Male / 男</option>
-              <option value="female">Female / 女</option>
-              <option value="other">Other / 其他</option>
+              <option value="">{{ tx("Select / 请选择") }}</option>
+              <option value="male">{{ tx("Male / 男") }}</option>
+              <option value="female">{{ tx("Female / 女") }}</option>
+              <option value="other">{{ tx("Other / 其他") }}</option>
             </select>
-            <p v-if="shouldShowError('gender')" class="mt-1 text-xs text-red-400">{{ validationErrors.gender }}</p>
+            <p v-if="shouldShowError('gender')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.gender) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">出生日期</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("出生日期") }}</label>
             <input
               v-model="form.dateOfBirth"
               type="date"
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('dateOfBirth')"
             />
-            <p v-if="shouldShowError('dateOfBirth')" class="mt-1 text-xs text-red-400">{{ validationErrors.dateOfBirth }}</p>
+            <p v-if="shouldShowError('dateOfBirth')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.dateOfBirth) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">国籍</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("国籍") }}</label>
             <input
               v-model="form.nationality"
               type="text"
-              placeholder="美国"
+              :placeholder="tx('美国')"
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('nationality')"
             />
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">证件类型</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("证件类型") }}</label>
             <select
               v-model="form.idType"
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="markTouched('idType'); markTouched('idNumber')"
               @blur="markTouched('idType')"
             >
-              <option value="">Select / 请选择</option>
-              <option value="passport">Passport / 护照</option>
-              <option value="id_card">National ID / 身份证</option>
-              <option value="driving_license">Driving License / 驾照</option>
+              <option value="">{{ tx("Select / 请选择") }}</option>
+              <option value="passport">{{ tx("Passport / 护照") }}</option>
+              <option value="id_card">{{ tx("National ID / 身份证") }}</option>
+              <option value="driving_license">{{ tx("Driving License / 驾照") }}</option>
             </select>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">证件号码</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("证件号码") }}</label>
             <input
               v-model="form.idNumber"
               type="text"
-              placeholder="您的证件号码"
+              :placeholder="tx('您的证件号码')"
               autocomplete="off"
               class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
               :class="shouldShowError('idNumber') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('idNumber')"
             />
-            <p v-if="shouldShowError('idNumber')" class="mt-1 text-xs text-red-400">{{ validationErrors.idNumber }}</p>
+            <p v-if="shouldShowError('idNumber')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.idNumber) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">电话 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("电话 *") }}</label>
             <input
               v-model="form.phone"
               type="tel"
@@ -2771,55 +2735,53 @@ const resetWizard = () => {
               :class="shouldShowError('phone') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('phone')"
             />
-            <p v-if="shouldShowError('phone')" class="mt-1 text-xs text-red-400">{{ validationErrors.phone }}</p>
+            <p v-if="shouldShowError('phone')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.phone) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">邮箱</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("邮箱") }}</label>
             <input
               v-model="form.email"
               type="email"
-              placeholder="您的邮箱"
+              :placeholder="tx('您的邮箱')"
               autocomplete="email"
               class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:ring-1"
               :class="shouldShowError('email') ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-slate-200 focus:border-[#1685C3] focus:ring-sky-200'"
               @blur="markTouched('email')"
             />
-            <p v-if="shouldShowError('email')" class="mt-1 text-xs text-red-400">{{ validationErrors.email }}</p>
+            <p v-if="shouldShowError('email')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.email) }}</p>
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">所在城市</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("所在城市") }}</label>
             <input
               v-model="form.city"
               type="text"
-              placeholder="您的城市"
+              :placeholder="tx('您的城市')"
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('city')"
             />
           </div>
 
           <div>
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">首选语言</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("首选语言") }}</label>
             <select
               v-model="form.preferredLanguage"
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="markTouched('preferredLanguage')"
               @blur="markTouched('preferredLanguage')"
             >
-              <option value="">Select / 请选择</option>
-              <option v-for="l in languageOptions" :key="l.value" :value="l.value">{{ l.label }}</option>
+              <option value="">{{ tx("Select / 请选择") }}</option>
+              <option v-for="l in languageOptions" :key="l.value" :value="l.value">{{ tx(l.label) }}</option>
             </select>
           </div>
         </div>
 
         <h2 class="report-form-section-title mb-6 mt-8 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <Stethoscope class="h-5 w-5 text-[#1685C3]" />
-          就医信息
-        </h2>
+          <Stethoscope class="h-5 w-5 text-[#1685C3]" />{{ tx(" 就医信息 ") }}</h2>
         <div class="report-form-grid report-form-grid--medical grid grid-cols-1 gap-5 md:grid-cols-2">
           <div class="md:col-span-2">
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">就医目的 *</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("就医目的 *") }}</label>
             <select
               v-model="form.visitPurpose"
               class="w-full rounded-lg border bg-white px-4 py-3 text-slate-900 outline-none transition"
@@ -2827,27 +2789,27 @@ const resetWizard = () => {
               @change="markTouched('visitPurpose')"
               @blur="markTouched('visitPurpose')"
             >
-              <option value="">Select / 请选择</option>
+              <option value="">{{ tx("Select / 请选择") }}</option>
               <option v-for="p in purposeOptions" :key="p.value" :value="p.value">
-                {{ p.display }}
+                {{ tx(p.display) }}
               </option>
             </select>
-            <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-400">{{ validationErrors.visitPurpose }}</p>
+            <p v-if="shouldShowError('visitPurpose')" class="mt-1 text-xs text-red-400">{{ tx(validationErrors.visitPurpose) }}</p>
           </div>
 
           <div class="md:col-span-2">
-            <label class="mb-1.5 block text-sm font-medium text-slate-700">症状及病史</label>
+            <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ tx("症状及病史") }}</label>
             <textarea
               v-model="form.chiefComplaint"
               rows="4"
               maxlength="500"
-              placeholder="请描述您的症状、诊断和当前治疗情况..."
+              :placeholder="tx('请描述您的症状、诊断和当前治疗情况...')"
               class="w-full resize-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#1685C3]"
               @blur="markTouched('chiefComplaint')"
             />
             <div class="mt-1 flex items-center justify-between gap-3 text-xs text-slate-500">
-              <p v-if="shouldShowError('chiefComplaint')" class="text-red-400">{{ validationErrors.chiefComplaint }}</p>
-              <p v-else>限500字以内</p>
+              <p v-if="shouldShowError('chiefComplaint')" class="text-red-400">{{ tx(validationErrors.chiefComplaint) }}</p>
+              <p v-else>{{ tx("限500字以内") }}</p>
               <span>{{ form.chiefComplaint.length }} / 500</span>
             </div>
           </div>
@@ -2858,12 +2820,12 @@ const resetWizard = () => {
           <div class="flex items-start gap-3">
             <AlertTriangle class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#1685C3]" />
             <div>
-              <h3 class="mb-2 font-semibold text-[#123F67]">费用透明声明</h3>
+              <h3 class="mb-2 font-semibold text-[#123F67]">{{ tx("费用透明声明") }}</h3>
               <ul class="list-inside list-disc space-y-1.5 text-sm leading-6 text-[#9A4A1E]">
-                <li>以上费用为全周期治疗预估区间，实际费用可能因病情分期、个体差异、并发症、住院标准等因素产生±15-25%波动</li>
-                <li>进口靶向药与国产替代药价格差异可达3-10倍</li>
-                <li>费用区间基于公开信息、医院预审口径和服务项目拆分整理，最终以医院正式报价、检查结果和治疗强度为准；不作为固定收费承诺</li>
-                <li>如何获得更精准的费用预估？升级到「专业版评估报告」，由副主任医师审核后提供精准到千位的个性化费用清单</li>
+                <li>{{ tx("以上费用为全周期治疗预估区间，实际费用可能因病情分期、个体差异、并发症、住院标准等因素产生±15-25%波动") }}</li>
+                <li>{{ tx("进口靶向药与国产替代药价格差异可达3-10倍") }}</li>
+                <li>{{ tx("费用区间基于公开信息、医院预审口径和服务项目拆分整理，最终以医院正式报价、检查结果和治疗强度为准；不作为固定收费承诺") }}</li>
+                <li>{{ tx("如何获得更精准的费用预估？升级到「专业版评估报告」，由副主任医师审核后提供精准到千位的个性化费用清单") }}</li>
               </ul>
             </div>
           </div>
@@ -2871,17 +2833,15 @@ const resetWizard = () => {
 
         <div class="report-insurance-card mt-8 rounded-[14px] border border-slate-300 bg-white p-6">
           <h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-950">
-            <Shield class="h-5 w-5 text-[#1685C3]" />
-            保险覆盖自检
-          </h3>
+            <Shield class="h-5 w-5 text-[#1685C3]" />{{ tx(" 保险覆盖自检 ") }}</h3>
           <div class="relative">
             <select
               :value="selectedInsurance ?? ''"
               class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#1685C3]"
               @change="selectedInsurance = ($event.target as HTMLSelectElement).value === '' ? null : Number(($event.target as HTMLSelectElement).value)"
             >
-              <option value="">Select your insurance company / 选择您的保险公司</option>
-              <option v-for="(ins, i) in insuranceOptions" :key="ins.name" :value="i">{{ ins.name }}</option>
+              <option value="">{{ tx("Select your insurance company / 选择您的保险公司") }}</option>
+              <option v-for="(ins, i) in insuranceOptions" :key="ins.name" :value="i">{{ tx(ins.name) }}</option>
             </select>
             <ChevronDown class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
           </div>
@@ -2889,7 +2849,7 @@ const resetWizard = () => {
           <div v-if="selectedInsuranceOption" class="mt-5 rounded-lg border border-slate-100 bg-slate-50 p-5">
             <h4 class="mb-4 flex items-center gap-2 font-semibold text-slate-950">
               <Search class="h-4 w-4 text-[#1685C3]" />
-              Coverage Results for {{ selectedInsuranceOption.name }}
+              {{ tf('Coverage results for {name}',{name:tx(selectedInsuranceOption.name)}) }}
             </h4>
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div
@@ -2902,8 +2862,8 @@ const resetWizard = () => {
               >
                 <component :is="item.icon" :class="['h-4 w-4', item.covered ? 'text-emerald-400' : 'text-slate-500']" />
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs text-slate-500">{{ item.label }}</div>
-                  <div :class="['text-sm font-medium', item.covered ? 'text-emerald-400' : 'text-slate-400']">{{ item.value }}</div>
+                  <div class="text-xs text-slate-500">{{ tx(item.label) }}</div>
+                  <div :class="['text-sm font-medium', item.covered ? 'text-emerald-400' : 'text-slate-400']">{{ tx(item.value) }}</div>
                 </div>
                 <CheckCircle v-if="item.covered" class="h-4 w-4 flex-shrink-0 text-emerald-500" />
                 <XCircle v-else class="h-4 w-4 flex-shrink-0 text-red-400" />
@@ -2911,15 +2871,14 @@ const resetWizard = () => {
             </div>
             <div v-if="selectedInsuranceOption.note" class="mt-3 flex items-center gap-2 text-sm text-amber-600">
               <AlertTriangle class="h-4 w-4" />
-              <span>{{ selectedInsuranceOption.note }}</span>
+              <span>{{ tx(selectedInsuranceOption.note) }}</span>
             </div>
             <div class="mt-3 flex items-center gap-2 text-sm text-[#123F67]">
               <DollarSign class="h-4 w-4" />
-              <span>直付网络 Direct Pay: {{ selectedInsuranceOption.directPay }}</span>
+              <span>{{ tx("直付网络 Direct Pay: ") }}{{ tx(selectedInsuranceOption.directPay) }}</span>
             </div>
             <div class="mt-3 rounded-lg border border-sky-100 bg-sky-50 p-3 text-sm text-[#9A4A1E]">
-              <span class="font-semibold">建议：</span>联系保险公司国际部，告知计划编号即可查询中国就医覆盖详情
-            </div>
+              <span class="font-semibold">{{ tx("建议：") }}</span>{{ tx("联系保险公司国际部，告知计划编号即可查询中国就医覆盖详情 ") }}</div>
           </div>
         </div>
 
@@ -2932,7 +2891,7 @@ const resetWizard = () => {
               : 'border-red-400/30 bg-red-500/10 text-red-300',
           ]"
         >
-          {{ submissionError }}
+          {{ tx(submissionError) }}
         </p>
 
         <div class="report-form-actions mt-8 flex flex-col justify-center gap-4 sm:flex-row">
@@ -2943,24 +2902,20 @@ const resetWizard = () => {
           >
             <Loader2 v-if="generating" class="h-5 w-5 animate-spin" />
             <FileText v-else class="h-5 w-5" />
-            {{ generating ? '生成报告中...' : '生成评估报告' }}
+            {{ tx(generating ? '生成报告中...' : '生成评估报告') }}
           </button>
           <router-link
             to="/cases"
             class="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#334155] px-8 py-4 font-semibold text-white transition-all hover:bg-slate-600"
           >
-            <BookOpen class="h-5 w-5" />
-            查看案例
-          </router-link>
+            <BookOpen class="h-5 w-5" />{{ tx(" 查看案例 ") }}</router-link>
         </div>
       </div>
 
       <div class="report-preview-card rounded-2xl bg-white p-6 md:p-8">
         <h2 class="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-950">
-          <BarChart3 class="h-5 w-5 text-[#1685C3]" />
-          报告预览样例
-        </h2>
-        <p class="mb-6 text-sm text-slate-500">以下为基于乳腺癌中国治疗的样例报告。您的实际报告将根据您的病情定制。</p>
+          <BarChart3 class="h-5 w-5 text-[#1685C3]" />{{ tx(" 报告预览样例 ") }}</h2>
+        <p class="mb-6 text-sm text-slate-500">{{ tx("以下为基于乳腺癌中国治疗的样例报告。您的实际报告将根据您的病情定制。") }}</p>
         <div class="report-preview-list space-y-4">
           <div
             v-for="item in reportPreviewItems"
@@ -2971,8 +2926,8 @@ const resetWizard = () => {
               <component :is="item.icon" class="h-5 w-5" />
             </div>
             <div class="min-w-0 flex-1">
-              <div class="font-medium text-slate-950">{{ item.title }}</div>
-              <div class="text-sm text-slate-500">{{ item.desc }}</div>
+              <div class="font-medium text-slate-950">{{ tx(item.title) }}</div>
+              <div class="text-sm text-slate-500">{{ tx(item.desc) }}</div>
             </div>
             <Lock class="h-4 w-4 flex-shrink-0 text-slate-600" />
           </div>
@@ -2992,23 +2947,23 @@ const resetWizard = () => {
     >
       <div class="pro-report-header px-5 pb-5 pt-6 md:px-0">
         <div class="pro-report-kicker">
-          <span>报告体验</span>
+          <span>{{ tx("报告体验") }}</span>
           <ArrowRight class="h-3.5 w-3.5" />
-          <strong>专业版报告生成</strong>
+          <strong>{{ tx("专业版报告生成") }}</strong>
         </div>
         <div class="flex items-start justify-between gap-4">
           <div class="min-w-0">
             <div class="pro-report-demo-badge">
               <img class="pro-report-figma-icon pro-report-figma-icon--demo" src="/images/figma/report/pro-demo-file.svg" data-figma-node="43:6180" alt="" aria-hidden="true" />
-              {{ proSampleReport.meta.badge }}
+              {{ tx(proSampleReport.meta.badge) }}
             </div>
-            <h2 class="pro-report-title">{{ proSampleReport.meta.title }}</h2>
-            <p class="pro-report-patient">{{ proSampleReport.meta.patient }}</p>
+            <h2 class="pro-report-title">{{ tx(proSampleReport.meta.title) }}</h2>
+            <p class="pro-report-patient">{{ tx(proSampleReport.meta.patient) }}</p>
           </div>
           <button
             type="button"
             class="rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
-            aria-label="关闭示例报告"
+            :aria-label="tx('关闭示例报告')"
             @click="closeProSampleReport"
           >
             <X class="h-5 w-5" aria-hidden="true" />
@@ -3018,10 +2973,10 @@ const resetWizard = () => {
 
       <div class="pro-report-body flex-1 bg-[#0f172a] px-5 md:px-0">
         <div class="pro-report-meta-grid">
-          <div><span>报告编号 / Report ID:</span><strong>DEMO-20260530-SP-001</strong></div>
-          <div><span>患者编号 / Patient ID:</span><strong>国际患者专属编码 / International Patient ID</strong></div>
-          <div><span>生成时间 / Generated:</span><strong>2026年05月30日（北京时间） / May 30, 2026 (Beijing Time)</strong></div>
-          <div><span>版本 / Version:</span><strong>专业完整版V1.0 / Professional Full Version V1.0</strong></div>
+          <div><span>{{ tx("报告编号 / Report ID:") }}</span><strong>DEMO-20260530-SP-001</strong></div>
+          <div><span>{{ tx("患者编号 / Patient ID:") }}</span><strong>{{ tx("国际患者专属编码 / International Patient ID") }}</strong></div>
+          <div><span>{{ tx("生成时间 / Generated:") }}</span><strong>{{ tx("2026年05月30日（北京时间） / May 30, 2026 (Beijing Time)") }}</strong></div>
+          <div><span>{{ tx("版本 / Version:") }}</span><strong>{{ tx("专业完整版V1.0 / Professional Full Version V1.0") }}</strong></div>
         </div>
 
         <div class="pro-report-tabs flex gap-2 overflow-x-auto pb-1">
@@ -3044,54 +2999,52 @@ const resetWizard = () => {
               :data-figma-node="tab.nodeId"
               aria-hidden="true"
             />
-            {{ tab.label }}
+            {{ tx(tab.label) }}
           </button>
         </div>
 
         <div class="pro-report-section-label">
           <img class="pro-report-section-chevron" src="/images/figma/report/pro-section-chevron.svg" data-figma-node="43:6292" alt="" aria-hidden="true" />
-          <span>{{ activeProSampleTabDefinition.label }}</span>
+          <span>{{ tx(activeProSampleTabDefinition.label) }}</span>
           <span>/</span>
-          <span>{{ activeProSampleTab === 'pathology' ? 'Core Pathology' : 'Professional Report' }}</span>
+          <span>{{ tx(activeProSampleTab === 'pathology' ? 'Core Pathology' : 'Professional Report') }}</span>
         </div>
 
         <section v-if="activeProSampleTab === 'pathology'" class="space-y-4">
           <div class="pro-pathology-panel rounded-[14px] border border-slate-700 bg-slate-900/80 p-5 shadow-sm md:p-8">
             <h3 class="mb-4 flex items-center gap-2 font-bold text-white">
-              <img class="pro-pathology-heading-icon" src="/images/figma/report/pro-pathology-heading.svg" data-figma-node="43:6299" alt="" aria-hidden="true" />
-              核心病理诊断 / Core Pathology Diagnosis
-            </h3>
+              <img class="pro-pathology-heading-icon" src="/images/figma/report/pro-pathology-heading.svg" data-figma-node="43:6299" alt="" aria-hidden="true" />{{ tx(" 核心病理诊断 / Core Pathology Diagnosis ") }}</h3>
             <div class="pro-diagnosis-grid grid gap-4 md:grid-cols-2">
               <div
                 v-for="(pair, pairIndex) in [proSampleReport.analysis.basics.slice(0, 2), proSampleReport.analysis.basics.slice(2, 4)]"
                 :key="pairIndex"
                 class="pro-diagnosis-card rounded-lg border border-slate-700 bg-slate-950/70 p-6"
               >
-                <div class="text-xs font-semibold text-slate-400">{{ pair[0]?.label }}</div>
-                <div class="mt-1 text-sm font-bold leading-5 text-white">{{ pair[0]?.value }}</div>
-                <div class="mt-1 text-xs leading-4 text-slate-400">{{ pair[1]?.value }}</div>
+                <div class="text-xs font-semibold text-slate-400">{{ tx(pair[0]?.label) }}</div>
+                <div class="mt-1 text-sm font-bold leading-5 text-white">{{ tx(pair[0]?.value) }}</div>
+                <div class="mt-1 text-xs leading-4 text-slate-400">{{ tx(pair[1]?.value) }}</div>
               </div>
             </div>
 
           <div class="pro-indicator-list mt-5 grid gap-3">
-            <h4 class="text-sm font-semibold text-slate-200">核心病理指标解读 / Core Pathology Indicators</h4>
+            <h4 class="text-sm font-semibold text-slate-200">{{ tx("核心病理指标解读 / Core Pathology Indicators") }}</h4>
             <article
               v-for="group in proSampleReport.analysis.groups"
               :key="group.title"
               class="rounded-lg border border-slate-700 bg-slate-950/50 p-4 shadow-sm"
             >
-              <h4 class="mb-3 font-bold text-teal-200">{{ group.title }}</h4>
+              <h4 class="mb-3 font-bold text-teal-200">{{ tx(group.title) }}</h4>
               <ul class="space-y-2 text-sm leading-6 text-slate-300">
                 <li v-for="item in group.items" :key="item" class="flex gap-2">
                   <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>{{ item }}</span>
+                  <span>{{ tx(item) }}</span>
                 </li>
               </ul>
             </article>
           </div>
 
           <div class="mt-5 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-5 text-amber-200">
-            {{ proSampleReport.analysis.warning }}
+            {{ tx(proSampleReport.analysis.warning) }}
           </div>
           </div>
         </section>
@@ -3099,25 +3052,23 @@ const resetWizard = () => {
         <section v-else-if="activeProSampleTab === 'treatment'" class="space-y-4">
           <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-5 flex items-center gap-2 font-bold text-slate-950">
-              <Stethoscope class="h-5 w-5 text-[#1685C3]" />
-              二、治疗路径方案（预估）
-            </h3>
+              <Stethoscope class="h-5 w-5 text-[#1685C3]" />{{ tx(" 二、治疗路径方案（预估） ") }}</h3>
             <div class="space-y-4">
               <div v-for="(step, index) in proSampleReport.treatment.steps" :key="step.title" class="flex gap-3">
                 <div class="flex shrink-0 flex-col items-center">
-                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-[#123F67]">{{ index + 1 }}</div>
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-[#123F67]">{{ tx(index + 1) }}</div>
                   <div v-if="index < proSampleReport.treatment.steps.length - 1" class="my-1 h-full min-h-10 w-px bg-sky-100"></div>
                 </div>
                 <div class="flex-1 rounded-lg border border-slate-100 bg-slate-50 p-4">
-                  <h4 class="font-bold text-slate-950">{{ step.title }}</h4>
+                  <h4 class="font-bold text-slate-950">{{ tx(step.title) }}</h4>
                   <ul class="mt-2 space-y-1 text-sm leading-6 text-slate-600">
                     <li v-for="detail in step.details" :key="detail" class="flex gap-2">
                       <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1685C3]"></span>
-                      <span>{{ detail }}</span>
+                      <span>{{ tx(detail) }}</span>
                     </li>
                   </ul>
                   <div v-if="step.badge" class="mt-3 inline-flex rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                    {{ step.badge }}
+                    {{ tx(step.badge) }}
                   </div>
                 </div>
               </div>
@@ -3125,40 +3076,38 @@ const resetWizard = () => {
           </div>
 
           <div class="rounded-lg border border-emerald-100 bg-white p-5 shadow-sm">
-            <h4 class="mb-4 font-bold text-slate-950">治愈率预估</h4>
+            <h4 class="mb-4 font-bold text-slate-950">{{ tx("治愈率预估") }}</h4>
             <div class="grid grid-cols-3 gap-3 text-center">
               <div v-for="item in proSampleReport.treatment.outcome" :key="item.label" class="rounded-lg bg-emerald-50 p-4">
-                <div class="text-2xl font-black text-emerald-600">{{ item.value }}</div>
-                <div class="mt-1 text-xs leading-5 text-slate-500">{{ item.label }}</div>
+                <div class="text-2xl font-black text-emerald-600">{{ tx(item.value) }}</div>
+                <div class="mt-1 text-xs leading-5 text-slate-500">{{ tx(item.label) }}</div>
               </div>
             </div>
-            <p class="mt-3 text-xs leading-5 text-slate-500">{{ proSampleReport.treatment.source }}</p>
+            <p class="mt-3 text-xs leading-5 text-slate-500">{{ tx(proSampleReport.treatment.source) }}</p>
           </div>
         </section>
 
         <section v-else-if="activeProSampleTab === 'cost'" class="space-y-4">
           <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
-              <DollarSign class="h-5 w-5 text-[#1685C3]" />
-              三、费用明细 - 0猫腻透明报价
-            </h3>
+              <DollarSign class="h-5 w-5 text-[#1685C3]" />{{ tx(" 三、费用明细 - 0猫腻透明报价 ") }}</h3>
             <div class="overflow-x-auto rounded-lg border border-slate-100">
               <table class="w-full min-w-[560px] text-sm">
                 <thead class="bg-slate-50 text-slate-500">
                   <tr>
-                    <th class="px-4 py-3 text-left font-semibold">第一类：核心医疗费用</th>
-                    <th class="px-4 py-3 text-right font-semibold">人民币</th>
-                    <th class="px-4 py-3 text-right font-semibold">美元</th>
+                    <th class="px-4 py-3 text-left font-semibold">{{ tx("第一类：核心医疗费用") }}</th>
+                    <th class="px-4 py-3 text-right font-semibold">{{ tx("人民币") }}</th>
+                    <th class="px-4 py-3 text-right font-semibold">{{ tx("美元") }}</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 bg-white">
                   <tr v-for="row in proSampleReport.cost.core" :key="row[0]">
-                    <td class="px-4 py-3 text-slate-700">{{ row[0] }}</td>
-                    <td class="px-4 py-3 text-right font-semibold text-slate-700">{{ row[1] }}</td>
-                    <td class="px-4 py-3 text-right font-semibold text-[#123F67]">{{ row[2] }}</td>
+                    <td class="px-4 py-3 text-slate-700">{{ tx(row[0]) }}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-slate-700">{{ tx(row[1]) }}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-[#123F67]">{{ tx(row[2]) }}</td>
                   </tr>
                   <tr class="bg-sky-50">
-                    <td class="px-4 py-3 font-bold text-slate-950">核心医疗小计</td>
+                    <td class="px-4 py-3 font-bold text-slate-950">{{ tx("核心医疗小计") }}</td>
                     <td class="px-4 py-3 text-right font-bold text-slate-950">¥79,000</td>
                     <td class="px-4 py-3 text-right font-bold text-[#123F67]">~$11,280</td>
                   </tr>
@@ -3169,47 +3118,45 @@ const resetWizard = () => {
 
           <div class="grid gap-4 md:grid-cols-2">
             <div class="rounded-lg border border-emerald-100 bg-emerald-50 p-5">
-              <h4 class="mb-3 font-bold text-emerald-800">第二类：配套服务（全免费）</h4>
+              <h4 class="mb-3 font-bold text-emerald-800">{{ tx("第二类：配套服务（全免费）") }}</h4>
               <ul class="space-y-2 text-sm leading-6 text-emerald-800">
                 <li v-for="item in proSampleReport.cost.support" :key="item" class="flex gap-2">
                   <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>{{ item }}</span>
+                  <span>{{ tx(item) }}</span>
                 </li>
               </ul>
-              <div class="mt-3 font-bold text-emerald-700">小计：{{ proSampleReport.cost.totals.support }}</div>
+              <div class="mt-3 font-bold text-emerald-700">{{ tx("小计：") }}{{ tx(proSampleReport.cost.totals.support) }}</div>
             </div>
 
             <div class="rounded-lg border border-amber-100 bg-amber-50 p-5">
-              <h4 class="mb-3 font-bold text-amber-800">第三类：生活预估（自理）</h4>
+              <h4 class="mb-3 font-bold text-amber-800">{{ tx("第三类：生活预估（自理）") }}</h4>
               <div class="space-y-2 text-sm">
                 <div v-for="row in proSampleReport.cost.living" :key="row[0]" class="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-2">
-                  <span class="text-slate-700">{{ row[0] }}</span>
-                  <span class="shrink-0 font-semibold text-[#123F67]">{{ row[1] }} / {{ row[2] }}</span>
+                  <span class="text-slate-700">{{ tx(row[0]) }}</span>
+                  <span class="shrink-0 font-semibold text-[#123F67]">{{ tx(row[1]) }} / {{ tx(row[2]) }}</span>
                 </div>
               </div>
-              <div class="mt-3 font-bold text-amber-800">小计：{{ proSampleReport.cost.totals.living }}</div>
+              <div class="mt-3 font-bold text-amber-800">{{ tx("小计：") }}{{ tx(proSampleReport.cost.totals.living) }}</div>
             </div>
           </div>
 
           <div class="rounded-lg border border-sky-200 bg-sky-50 p-5">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div>
-                <div class="font-bold text-slate-950">预估总费用</div>
-                <p class="mt-1 text-sm text-[#9A4A1E]">核心医疗 + 配套服务（免费）+ 生活预估</p>
+                <div class="font-bold text-slate-950">{{ tx("预估总费用") }}</div>
+                <p class="mt-1 text-sm text-[#9A4A1E]">{{ tx("核心医疗 + 配套服务（免费）+ 生活预估") }}</p>
               </div>
-              <div class="text-2xl font-black text-[#123F67]">{{ proSampleReport.cost.totals.total }}</div>
+              <div class="text-2xl font-black text-[#123F67]">{{ tx(proSampleReport.cost.totals.total) }}</div>
             </div>
-            <p class="mt-3 text-sm leading-6 text-[#9A4A1E]">{{ proSampleReport.cost.totals.note }}</p>
+            <p class="mt-3 text-sm leading-6 text-[#9A4A1E]">{{ tx(proSampleReport.cost.totals.note) }}</p>
           </div>
         </section>
 
         <section v-else-if="activeProSampleTab === 'insurance'" class="space-y-4">
           <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
             <h3 class="mb-4 flex items-center gap-2 font-bold text-slate-950">
-              <Shield class="h-5 w-5 text-[#1685C3]" />
-              四、保险报销评估
-            </h3>
-            <h4 class="mb-3 font-semibold text-slate-950">{{ proSampleReport.insurance.name }}</h4>
+              <Shield class="h-5 w-5 text-[#1685C3]" />{{ tx(" 四、保险报销评估 ") }}</h3>
+            <h4 class="mb-3 font-semibold text-slate-950">{{ tx(proSampleReport.insurance.name) }}</h4>
             <div class="grid gap-3 md:grid-cols-2">
               <div
                 v-for="coverage in proSampleReport.insurance.coverages"
@@ -3219,18 +3166,18 @@ const resetWizard = () => {
                   coverage[2] ? 'border-emerald-100 bg-emerald-50 text-emerald-800' : 'border-slate-100 bg-slate-50 text-slate-600',
                 ]"
               >
-                <span>{{ coverage[0] }}</span>
-                <span class="font-bold">{{ coverage[1] }}</span>
+                <span>{{ tx(coverage[0]) }}</span>
+                <span class="font-bold">{{ tx(coverage[1]) }}</span>
               </div>
             </div>
           </div>
 
           <div class="rounded-lg border border-amber-100 bg-amber-50 p-5">
-            <h4 class="mb-3 font-bold text-amber-800">报销建议</h4>
+            <h4 class="mb-3 font-bold text-amber-800">{{ tx("报销建议") }}</h4>
             <ul class="space-y-2 text-sm leading-6 text-amber-800">
               <li v-for="item in proSampleReport.insurance.suggestions" :key="item" class="flex gap-2">
                 <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-amber-600" />
-                <span>{{ item }}</span>
+                <span>{{ tx(item) }}</span>
               </li>
             </ul>
           </div>
@@ -3239,20 +3186,18 @@ const resetWizard = () => {
         <section v-else-if="activeProSampleTab === 'service'" class="space-y-4">
           <div class="rounded-lg border border-red-100 bg-red-50 p-5">
             <h3 class="mb-2 flex items-center gap-2 font-bold text-red-700">
-              <HeartPulse class="h-5 w-5" />
-              五、术后防复发随访体系
-            </h3>
-            <p class="text-sm leading-6 text-red-700">{{ proSampleReport.followup.reason }}</p>
+              <HeartPulse class="h-5 w-5" />{{ tx(" 五、术后防复发随访体系 ") }}</h3>
+            <p class="text-sm leading-6 text-red-700">{{ tx(proSampleReport.followup.reason) }}</p>
           </div>
 
           <div class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
-            <h4 class="mb-4 font-bold text-slate-950">随访时间线</h4>
+            <h4 class="mb-4 font-bold text-slate-950">{{ tx("随访时间线") }}</h4>
             <div class="space-y-3">
               <div v-for="item in proSampleReport.followup.timeline" :key="`${item.time}-${item.title}`" class="flex gap-3 rounded-lg border border-slate-100 bg-slate-50 p-3">
-                <div class="w-20 shrink-0 text-sm font-bold text-[#123F67]">{{ item.time }}</div>
+                <div class="w-20 shrink-0 text-sm font-bold text-[#123F67]">{{ tx(item.time) }}</div>
                 <div>
-                  <div class="font-semibold text-slate-950">{{ item.title }}</div>
-                  <p class="mt-1 text-sm leading-6 text-slate-600">{{ item.desc }}</p>
+                  <div class="font-semibold text-slate-950">{{ tx(item.title) }}</div>
+                  <p class="mt-1 text-sm leading-6 text-slate-600">{{ tx(item.desc) }}</p>
                 </div>
               </div>
             </div>
@@ -3264,30 +3209,30 @@ const resetWizard = () => {
               :key="service.title"
               class="rounded-lg border border-sky-100 bg-white p-5 shadow-sm"
             >
-              <h4 class="mb-3 font-bold text-[#123F67]">{{ service.title }}</h4>
+              <h4 class="mb-3 font-bold text-[#123F67]">{{ tx(service.title) }}</h4>
               <ul class="space-y-2 text-sm leading-6 text-slate-700">
                 <li v-for="item in service.items" :key="item" class="flex gap-2">
                   <CheckCircle class="mt-1 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>{{ item }}</span>
+                  <span>{{ tx(item) }}</span>
                 </li>
               </ul>
             </article>
           </div>
 
           <div class="rounded-lg border border-emerald-100 bg-emerald-50 p-5 text-center font-bold text-emerald-700">
-            {{ proSampleReport.followup.fee }}
+            {{ tx(proSampleReport.followup.fee) }}
           </div>
         </section>
 
         <section v-else class="rounded-lg border border-slate-700 bg-slate-900/80 p-6 text-slate-300">
-          <h3 class="text-lg font-bold text-white">{{ proSampleTabs.find((tab) => tab.key === activeProSampleTab)?.label }}</h3>
-          <p class="mt-3 text-sm leading-6">该模块将在真实专业报告中根据完整病历、影像与专家审核结果生成。</p>
+          <h3 class="text-lg font-bold text-white">{{ tx(proSampleTabs.find((tab) => tab.key === activeProSampleTab)?.label) }}</h3>
+          <p class="mt-3 text-sm leading-6">{{ tx("该模块将在真实专业报告中根据完整病历、影像与专家审核结果生成。") }}</p>
         </section>
 
         <section class="pro-package-section">
           <div class="pro-package-heading">
-            <h3>选择您的评估报告套餐 / Choose Your Assessment Package</h3>
-            <p>所有费用均以美元标价 / All prices displayed in USD</p>
+            <h3>{{ tx("选择您的评估报告套餐 / Choose Your Assessment Package") }}</h3>
+            <p>{{ tx("所有费用均以美元标价 / All prices displayed in USD") }}</p>
           </div>
 
           <div class="pro-package-grid">
@@ -3296,38 +3241,36 @@ const resetWizard = () => {
               :key="pkg.name"
               :class="['pro-package-card', { 'pro-package-card--featured': pkg.featured }]"
             >
-              <span v-if="pkg.badge" class="pro-package-badge">{{ pkg.badge }}</span>
-              <h4>{{ pkg.name }}</h4>
-              <div class="pro-package-price">{{ pkg.price }}</div>
-              <div class="pro-package-original">{{ pkg.originalPrice }}</div>
-              <p class="pro-package-summary"><CheckCircle class="h-4 w-4" />{{ pkg.summary }}</p>
+              <span v-if="pkg.badge" class="pro-package-badge">{{ tx(pkg.badge) }}</span>
+              <h4>{{ tx(pkg.name) }}</h4>
+              <div class="pro-package-price">{{ tx(pkg.price) }}</div>
+              <div class="pro-package-original">{{ tx(pkg.originalPrice) }}</div>
+              <p class="pro-package-summary"><CheckCircle class="h-4 w-4" />{{ tx(pkg.summary) }}</p>
               <ul>
                 <li v-for="feature in pkg.features" :key="feature">
                   <Check class="h-4 w-4" />
-                  <span>{{ feature }}</span>
+                  <span>{{ tx(feature) }}</span>
                 </li>
               </ul>
-              <router-link to="/professional-report">{{ pkg.action }}</router-link>
-              <p class="pro-package-footnote">{{ pkg.footnote }}</p>
+              <router-link to="/professional-report">{{ tx(pkg.action) }}</router-link>
+              <p class="pro-package-footnote">{{ tx(pkg.footnote) }}</p>
             </article>
           </div>
 
           <div class="pro-upgrade-cta">
             <div>
-              <h4><Sparkles class="h-5 w-5" />想要获得属于您的专业版精准评估报告？</h4>
-              <p>Want your own professional assessment report?</p>
-              <p>联系客服升级，享受副主任医师1v1面诊、精准费用预估、个性化治疗方案</p>
+              <h4><Sparkles class="h-5 w-5" />{{ tx("想要获得属于您的专业版精准评估报告？") }}</h4>
+              <p>{{ tx('Want your own professional assessment report?') }}</p>
+              <p>{{ tx("联系客服升级，享受副主任医师1v1面诊、精准费用预估、个性化治疗方案") }}</p>
             </div>
             <div class="pro-upgrade-actions">
-              <button type="button" @click="openConsultation">联系客服 / Contact</button>
-              <a :href="publicContacts.emailHref">邮件咨询 / Email</a>
+              <button type="button" @click="openConsultation">{{ tx("联系客服 / Contact") }}</button>
+              <a :href="publicContacts.emailHref">{{ tx("邮件咨询 / Email") }}</a>
             </div>
-            <small>已有 2,847 位国际患者通过专业版报告成功规划了海外就医行程 / 2,847 international patients have successfully planned their medical travel</small>
+            <small>{{ tx("已有 2,847 位国际患者通过专业版报告成功规划了海外就医行程 / 2,847 international patients have successfully planned their medical travel") }}</small>
           </div>
 
-          <button type="button" class="pro-report-back" @click="closeProSampleReport">
-            返回重新上传 / Back to Upload
-          </button>
+          <button type="button" class="pro-report-back" @click="closeProSampleReport">{{ tx(" 返回重新上传 / Back to Upload ") }}</button>
         </section>
       </div>
     </div>
@@ -3335,35 +3278,35 @@ const resetWizard = () => {
     <footer class="pro-report-footer">
       <div class="pro-report-footer__inner">
         <div>
-          <strong>寰宇云医</strong>
-          <p>全球患者来华就医首选平台</p>
-          <span>蚂蚁集团技术保障 × 好大夫94万医生</span>
+          <strong>{{ tx("寰宇云医") }}</strong>
+          <p>{{ tx("全球患者来华就医首选平台") }}</p>
+          <span>{{ tx("蚂蚁集团技术保障 × 好大夫94万医生") }}</span>
         </div>
         <div>
-          <strong>服务</strong>
-          <router-link to="/diseases-technologies">疾病中心</router-link>
-          <router-link to="/cost">费用对比</router-link>
-          <router-link to="/report">报告体验</router-link>
-          <router-link to="/visa">签证办理</router-link>
+          <strong>{{ tx("服务") }}</strong>
+          <router-link to="/diseases-technologies">{{ tx("疾病中心") }}</router-link>
+          <router-link to="/cost">{{ tx("费用对比") }}</router-link>
+          <router-link to="/report">{{ tx("报告体验") }}</router-link>
+          <router-link to="/visa">{{ tx("签证办理") }}</router-link>
         </div>
         <div>
-          <strong>资源</strong>
-          <router-link to="/cases">患者案例</router-link>
-          <router-link to="/insurance">保险指南</router-link>
-          <router-link to="/steps">就医步骤</router-link>
-          <router-link to="/about">关于我们</router-link>
+          <strong>{{ tx("资源") }}</strong>
+          <router-link to="/cases">{{ tx("患者案例") }}</router-link>
+          <router-link to="/insurance">{{ tx("保险指南") }}</router-link>
+          <router-link to="/steps">{{ tx("就医步骤") }}</router-link>
+          <router-link to="/about">{{ tx("关于我们") }}</router-link>
         </div>
         <div>
-          <strong>联系</strong>
-          <a :href="publicContacts.emailHref">{{ publicContacts.email }}</a>
+          <strong>{{ tx("联系") }}</strong>
+          <a :href="publicContacts.emailHref">{{ tx(publicContacts.email) }}</a>
           <a href="tel:+864008886688">+86 400-888-6688</a>
           <div class="pro-report-footer__social">
-            <a :href="publicContacts.whatsappHref" target="_blank" rel="noopener noreferrer">WhatsApp · 24小时客服</a>
+            <a :href="whatsappHref" data-contact-entry="footer-report" target="_blank" rel="noopener noreferrer">{{ tx("WhatsApp · 24小时客服") }}</a>
             <a :href="publicContacts.facebookHref" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
         </div>
       </div>
-      <p class="pro-report-footer__copyright">Copyright 2026 寰宇云医. All rights reserved.</p>
+      <p class="pro-report-footer__copyright">{{ tx("Copyright 2026 寰宇云医. All rights reserved.") }}</p>
     </footer>
   </div>
 </template>

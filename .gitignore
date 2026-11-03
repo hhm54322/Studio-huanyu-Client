@@ -5,6 +5,7 @@ node_modules/
 # Local verification evidence, raw design exports and one-off demos.
 # Runtime Figma modules are explicitly allowed below; do not blanket-ignore them.
 /artifacts/
+/docs/source/dental-physicians/original/
 /docs/figma-verification/**
 !/docs/figma-verification/*.md
 /docs/figma-revision-inventory-*.json
@@ -25,6 +26,13 @@ node_modules/
 !/docs/figma-source/content-revision/toolkit/source-tree-2026-10-21.json
 !/docs/figma-source/dental-complete-2026-10-30/source-extension.json
 !/docs/figma-source/dental-revision-2026-11-03/profile-frame-name.json
+!/docs/figma-source/dental-pages-2026-11-03/profile/source-tree-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/profile/text-layout-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/treatment/source-tree-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/cases/source-tree-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/reviews/source-tree-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/services/source-tree-2026-11-03.json
+!/docs/figma-source/dental-pages-2026-11-03/case-detail/source-tree-2026-11-03.json
 !/docs/figma-source/dental-revision-2026-10-28/cases/dialog-model-2026-10-28.json
 !/docs/figma-source/dental-revision-2026-10-28/cases/source-tree-2026-10-28.json
 !/docs/figma-source/dental-revision-2026-10-28/doctor-card/source-tree-2026-10-28.json

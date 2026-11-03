@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData } from '@/components/common/HomeSourceNode.vue'
 import oncologySource from '../../../docs/figma-source/about/specialties-revision-2026-10-29/oncology/source-tree-2026-10-29.json'
@@ -163,25 +166,25 @@ onUnmounted(() => {
     <section class="about-hero" aria-labelledby="about-title">
       <div class="about-hero__content" data-reveal>
         <div class="about-hero__copy">
-          <h1 id="about-title">把你的病情<br />交给最适合接住<br class="about-hero-mobile-break" />它的那双手</h1>
-          <p>适合你的方案、清楚的费用、合理的节奏<br />先看明白，再决定要不要来</p>
+          <h1 id="about-title">{{ tx("把你的病情") }}<br />{{ tx("交给最适合接住") }}<br class="about-hero-mobile-break" />{{ tx("它的那双手") }}</h1>
+          <p>{{ tx("适合你的方案、清楚的费用、合理的节奏") }}<br />{{ tx("先看明白，再决定要不要来") }}</p>
         </div>
       </div>
-      <button class="about-primary-button" type="button" @click="openConsultation">免费远程评估 <img class="about-cta-icon" src="/images/figma/about-icons/Icon-13.svg" alt="" aria-hidden="true" /></button>
+      <button class="about-primary-button" type="button" @click="openConsultation">{{ tx("免费远程评估 ") }}<img class="about-cta-icon" src="/images/figma/about-icons/Icon-13.svg" alt="" aria-hidden="true" /></button>
     </section>
 
     <section class="about-network" aria-labelledby="network-title">
       <div class="about-content">
         <header class="about-section-heading" data-reveal>
-          <h2 id="network-title">不是名单越长越好，<br class="about-hero-mobile-break" />是能接住你的有多少</h2>
-          <p>覆盖全国100+医疗机构，从头部三甲国际部到区域特色专科先筛选，再给清单</p>
+          <h2 id="network-title">{{ tx("不是名单越长越好，") }}<br class="about-hero-mobile-break" />{{ tx("是能接住你的有多少") }}</h2>
+          <p>{{ tx("覆盖全国100+医疗机构，从头部三甲国际部到区域特色专科先筛选，再给清单") }}</p>
         </header>
         <div class="network-stats" data-reveal>
-          <div v-for="item in networkStats" :key="item.label" class="network-stat"><strong>{{ item.value }}</strong><span>{{ item.label }}</span></div>
+          <div v-for="item in networkStats" :key="item.label" class="network-stat"><strong>{{ tx(item.value) }}</strong><span>{{ tx(item.label) }}</span></div>
         </div>
         <div class="network-cards">
           <article v-for="(item, index) in networkCards" :key="item.title" class="network-card" data-reveal :style="{ '--reveal-delay': `${index * 70}ms` }">
-            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p></div>
+            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ tx(item.title) }}</h3><p>{{ tx(item.copy) }}</p></div>
           </article>
         </div>
       </div>
@@ -190,12 +193,12 @@ onUnmounted(() => {
     <section class="about-complex" aria-labelledby="complex-title">
       <div class="about-content">
         <header class="about-section-heading about-section-heading--light" data-reveal>
-          <h2 id="complex-title">复杂病例，一人一策</h2><p>点击切换，看我们如何为不同情况做个性化方案。</p>
+          <h2 id="complex-title">{{ tx("复杂病例，一人一策") }}</h2><p>{{ tx("点击切换，看我们如何为不同情况做个性化方案。") }}</p>
         </header>
         <div class="complex-grid">
           <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms`, '--complex-image': `url(${item.background})`, '--complex-desktop-image': `url(${item.desktopBackground})` }" data-reveal role="button" tabindex="0" @click="openComplexCase(index)" @keydown.enter.self.prevent="openComplexCase(index)" @keydown.space.self.prevent="openComplexCase(index)">
-            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p>
-            <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">阅读全文 <img src="/images/figma/about-revision/node-484-2534.svg" alt="" aria-hidden="true" /></button></div>
+            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ tx(item.title) }}</h3><p>{{ tx(item.copy) }}</p>
+            <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">{{ tx("阅读全文 ") }}<img src="/images/figma/about-revision/node-484-2534.svg" alt="" aria-hidden="true" /></button></div>
           </article>
         </div>
       </div>
@@ -204,11 +207,11 @@ onUnmounted(() => {
     <section class="about-matching" aria-labelledby="matching-title">
       <div class="about-content">
         <header class="about-section-heading" data-reveal>
-          <h2 id="matching-title">匹配的全流程，每一步都可解释</h2><p>不是给你一份标准套餐，而是从你的情况出发，一步步缩到最适合的那一个选项</p>
+          <h2 id="matching-title">{{ tx("匹配的全流程，每一步都可解释") }}</h2><p>{{ tx("不是给你一份标准套餐，而是从你的情况出发，一步步缩到最适合的那一个选项") }}</p>
         </header>
         <div class="matching-grid">
           <article v-for="(item, index) in matchingSteps" :key="item.title" class="matching-card" data-reveal :style="{ '--reveal-delay': `${index * 55}ms` }">
-            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p></div>
+            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ tx(item.title) }}</h3><p>{{ tx(item.copy) }}</p></div>
           </article>
         </div>
       </div>
@@ -217,13 +220,13 @@ onUnmounted(() => {
     <section class="about-proof" aria-labelledby="proof-title">
       <div class="about-content">
         <header class="about-section-heading" data-reveal>
-          <h2 id="proof-title">可信度，靠证据不靠形容词</h2><p>主体、隐私、边界——每一项都能被核实</p>
+          <h2 id="proof-title">{{ tx("可信度，靠证据不靠形容词") }}</h2><p>{{ tx("主体、隐私、边界——每一项都能被核实") }}</p>
         </header>
         <div class="proof-grid">
           <article v-for="(item, index) in proofCards" :key="item.title" class="proof-card" :class="{ 'proof-card--expanded': expandedTrustCards.includes(index) }" data-reveal :style="{ '--reveal-delay': `${index * 65}ms` }" @click="toggleTrustDetail(index)">
-            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ item.title }}</h3><p>{{ item.copy }}</p>
-            <button type="button" :aria-expanded="expandedTrustCards.includes(index)" :aria-controls="`trust-detail-${index}`" :aria-label="expandedTrustCards.includes(index) ? '收起可信度详情' : '查看可信度详情'"><span>{{ expandedTrustCards.includes(index) ? '收起详情' : '查看详情' }}</span><img src="/images/figma/about-icons/Icon-4.svg" alt="" aria-hidden="true" /></button>
-            <div :id="`trust-detail-${index}`" class="proof-card__detail" :class="{ 'proof-card__detail--open': expandedTrustCards.includes(index) }" :aria-hidden="!expandedTrustCards.includes(index)"><div class="proof-card__detail-inner"><div class="proof-card__detail-heading"><img :src="trustDetailAssets[item.title]?.path || item.icon" :data-figma-node="trustDetailAssets[item.title]?.nodeId" alt="" aria-hidden="true" /><strong>{{ item.title }}</strong></div><p>{{ trustDetailCards[index]?.evidence }}</p></div></div></div>
+            <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ tx(item.title) }}</h3><p>{{ tx(item.copy) }}</p>
+            <button type="button" :aria-expanded="expandedTrustCards.includes(index)" :aria-controls="`trust-detail-${index}`" :aria-label="tx(expandedTrustCards.includes(index) ? '收起可信度详情' : '查看可信度详情')"><span>{{ tx(expandedTrustCards.includes(index) ? '收起详情' : '查看详情') }}</span><img src="/images/figma/about-icons/Icon-4.svg" alt="" aria-hidden="true" /></button>
+            <div :id="`trust-detail-${index}`" class="proof-card__detail" :class="{ 'proof-card__detail--open': expandedTrustCards.includes(index) }" :aria-hidden="!expandedTrustCards.includes(index)"><div class="proof-card__detail-inner"><div class="proof-card__detail-heading"><img :src="trustDetailAssets[item.title]?.path || item.icon" :data-figma-node="trustDetailAssets[item.title]?.nodeId" alt="" aria-hidden="true" /><strong>{{ tx(item.title) }}</strong></div><p>{{ tx(trustDetailCards[index]?.evidence) }}</p></div></div></div>
           </article>
         </div>
       </div>
@@ -231,23 +234,23 @@ onUnmounted(() => {
 
     <section class="about-cta" aria-labelledby="about-cta-title">
       <div class="about-cta__content" data-reveal>
-        <h2 id="about-cta-title">先听医生怎么说，再决定要不要飞过来</h2><p>免费远程二次评估，把病情与合适的医院、医生、方案先讲清楚。来华前的这一步，不花在"碰运气"上</p>
-        <button class="about-primary-button" type="button" @click="openConsultation">开始免费评估 <img class="about-cta-icon" src="/images/figma/about-icons/Icon-13.svg" alt="" aria-hidden="true" /></button>
+        <h2 id="about-cta-title">{{ tx("先听医生怎么说，再决定要不要飞过来") }}</h2><p>{{ tx("免费远程二次评估，把病情与合适的医院、医生、方案先讲清楚。来华前的这一步，不花在\"碰运气\"上") }}</p>
+        <button class="about-primary-button" type="button" @click="openConsultation">{{ tx("开始免费评估 ") }}<img class="about-cta-icon" src="/images/figma/about-icons/Icon-13.svg" alt="" aria-hidden="true" /></button>
       </div>
     </section>
 
     <Transition name="complex-detail">
       <div v-if="complexModalOpen" class="complex-detail-backdrop" role="presentation" @click.self="closeComplexCase">
-        <section ref="complexModal" class="complex-detail-modal" :class="{ 'complex-detail-modal--specialty': specialtySource }" role="dialog" aria-modal="true" :aria-labelledby="specialtySource ? undefined : 'complex-detail-title'" :aria-label="specialtySource ? complexCases[activeCase]?.title : undefined">
-          <button ref="modalCloseButton" class="complex-detail-close" type="button" aria-label="关闭复杂病例详情" @click="closeComplexCase"><img src="/images/figma/about-complex/icon-close.svg" alt="" aria-hidden="true" /></button>
+        <section ref="complexModal" class="complex-detail-modal" :class="{ 'complex-detail-modal--specialty': specialtySource }" role="dialog" aria-modal="true" :aria-labelledby="specialtySource ? undefined : 'complex-detail-title'" :aria-label="tx(specialtySource ? complexCases[activeCase]?.title : undefined)">
+          <button ref="modalCloseButton" class="complex-detail-close" type="button" :aria-label="tx('关闭复杂病例详情')" @click="closeComplexCase"><img src="/images/figma/about-complex/icon-close.svg" alt="" aria-hidden="true" /></button>
           <HomeSourceNode v-if="specialtySource" :node="specialtySource" root />
           <template v-else>
-          <div class="complex-detail-row complex-detail-row--title"><h2 id="complex-detail-title">{{ complexDetail.title }}</h2></div>
-          <section class="complex-detail-row"><h3>1、疾病是什么？</h3><p>{{ complexDetail.disease }}</p></section>
-          <section class="complex-detail-row complex-detail-row--trust"><h3>2、中国为什么做得好（信任核心）</h3><p class="complex-detail-trust-copy"><span v-for="paragraph in complexDetail.trustIntro.split('\n')" :key="paragraph">{{ paragraph }}</span><strong>{{ complexDetail.trustLead }}</strong></p><div class="complex-detail-capabilities"><article v-for="capability in complexDetail.capabilities" :key="capability.title"><img :src="capability.asset" :data-figma-node="capability.nodeId" alt="" aria-hidden="true" /><div><h4>{{ capability.title }}</h4><p>{{ capability.copy }}</p></div></article></div></section>
-          <section class="complex-detail-row"><h3>3、我们能解决什么？</h3><div class="complex-detail-solutions"><span v-for="solution in complexDetail.solutions" :key="solution">{{ solution }}</span></div></section>
-          <section class="complex-detail-row"><h3>4、典型治疗路径</h3><div class="complex-detail-path"><template v-for="(step, index) in complexDetail.path" :key="step"><span>{{ step }}</span><b v-if="index < complexDetail.path.length - 1" aria-hidden="true">→</b></template></div></section>
-          <section class="complex-detail-row"><h3>5、适合谁来</h3><p>{{ complexDetail.suitable }}</p></section>
+          <div class="complex-detail-row complex-detail-row--title"><h2 id="complex-detail-title">{{ tx(complexDetail.title) }}</h2></div>
+          <section class="complex-detail-row"><h3>{{ tx("1、疾病是什么？") }}</h3><p>{{ tx(complexDetail.disease) }}</p></section>
+          <section class="complex-detail-row complex-detail-row--trust"><h3>{{ tx("2、中国为什么做得好（信任核心）") }}</h3><p class="complex-detail-trust-copy"><span v-for="paragraph in complexDetail.trustIntro.split('\n')" :key="paragraph">{{ tx(paragraph) }}</span><strong>{{ tx(complexDetail.trustLead) }}</strong></p><div class="complex-detail-capabilities"><article v-for="capability in complexDetail.capabilities" :key="capability.title"><img :src="capability.asset" :data-figma-node="capability.nodeId" alt="" aria-hidden="true" /><div><h4>{{ tx(capability.title) }}</h4><p>{{ tx(capability.copy) }}</p></div></article></div></section>
+          <section class="complex-detail-row"><h3>{{ tx("3、我们能解决什么？") }}</h3><div class="complex-detail-solutions"><span v-for="solution in complexDetail.solutions" :key="solution">{{ tx(solution) }}</span></div></section>
+          <section class="complex-detail-row"><h3>{{ tx("4、典型治疗路径") }}</h3><div class="complex-detail-path"><template v-for="(step, index) in complexDetail.path" :key="step"><span>{{ tx(step) }}</span><b v-if="index < complexDetail.path.length - 1" aria-hidden="true">→</b></template></div></section>
+          <section class="complex-detail-row"><h3>{{ tx("5、适合谁来") }}</h3><p>{{ tx(complexDetail.suitable) }}</p></section>
           </template>
         </section>
       </div>

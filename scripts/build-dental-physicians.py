@@ -3,6 +3,7 @@
 import hashlib
 import json
 import re
+import zipfile
 from io import BytesIO
 from pathlib import Path
 
@@ -18,6 +19,10 @@ PLATFORM = ARCHIVE / '寰宇云医牙科平台-医生信息文字版.docx'
 ORIGINAL = ARCHIVE / '医生介绍（全）.docx'
 NAMES = ['车英林', '万前程', '李腾', '黄建荣', '郑锐', '蒋刚']
 SLUGS = ['che-yinglin', 'wan-qiancheng', 'li-teng', 'huang-jianrong', 'zheng-rui', 'jiang-gang']
+AVATARS = ARCHIVE / '牙科医生.zip'
+# Matched against the named photos in the original DOCX; preserve the newer
+# user-supplied square portraits when regenerating the document-backed data.
+AVATAR_SUFFIXES = ['', '-2', '-4', '-1', '-3', '-5']
 
 def blocks(document):
     for element in document.element.body:
@@ -52,7 +57,16 @@ for index, name in enumerate(NAMES):
     blips = [element for block in original_section for element in block['element'].iter(qn('a:blip'))]
     assert len(blips) == 1, f'{name}: portrait mapping ambiguous'
     relation = original_doc.part.rels[blips[0].get(qn('r:embed'))]
-    image = Image.open(BytesIO(relation.target_part.blob)).convert('RGBA')
+    image_data = relation.target_part.blob
+    asset_source = {'source': str(ORIGINAL.relative_to(ROOT)), 'relationship': relation.rId}
+    if AVATARS.exists():
+        with zipfile.ZipFile(AVATARS) as archive:
+            portrait_file = f'Image (Shanti Bansal picture){AVATAR_SUFFIXES[index]}.png'
+            entry = next(item for item in archive.infolist()
+                         if not item.filename.startswith('__MACOSX/') and Path(item.filename).name == portrait_file)
+            image_data = archive.read(entry)
+            asset_source = {'source': str(AVATARS.relative_to(ROOT)), 'archiveEntry': portrait_file}
+    image = Image.open(BytesIO(image_data)).convert('RGBA')
     # The source document remains intact. A top-aligned square derivative fits
     # the Figma 60px portrait mask and removes only unused transparent margins.
     bbox = image.getchannel('A').getbbox()
@@ -61,7 +75,7 @@ for index, name in enumerate(NAMES):
     target = ROOT / f'public/images/dental-physicians/{slug}.webp'
     target.parent.mkdir(parents=True, exist_ok=True)
     image.save(target, 'WEBP', quality=86, method=6)
-    assets.append({'name': name, 'source': str(ORIGINAL.relative_to(ROOT)), 'relationship': relation.rId, 'sourceSHA256': hashlib.sha256(relation.target_part.blob).hexdigest(), 'projectPath': str(target.relative_to(ROOT)), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(), 'bytes': target.stat().st_size})
+    assets.append({'name': name, **asset_source, 'sourceSHA256': hashlib.sha256(image_data).hexdigest(), 'projectPath': str(target.relative_to(ROOT)), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(), 'bytes': target.stat().st_size})
     records.append({
         'id': 101 + index, 'slug': slug, 'name': name, 'title': fields['职务职称'],
         'hospital': fields['机构'], 'institutionLabel': '寰宇云医齿科', 'city': fields['城市'],
@@ -80,7 +94,7 @@ for index, name in enumerate(NAMES):
     assert len(records[-1]['credentials']) == 4
 
 payload = {
-    'sources': [{'path': str(file.relative_to(ROOT)), 'sha256': hashlib.sha256(file.read_bytes()).hexdigest()} for file in [PLATFORM, ORIGINAL]],
+    'sources': [{'path': str(file.relative_to(ROOT)), 'sha256': hashlib.sha256(file.read_bytes()).hexdigest()} for file in [PLATFORM, ORIGINAL, *([AVATARS] if AVATARS.exists() else [])]],
     'records': records,
     'treatment': [{'time': row[1], 'title': row[2], 'description': row[3]} for row in common_tables[1][1:]],
     'services': [{'title': row[1], 'description': row[2]} for row in common_tables[2][1:]],

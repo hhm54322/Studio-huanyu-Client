@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData } from './HomeSourceNode.vue'
 import { homeStoryDetailPhotoIds } from '@/data/homeFigmaSource'
@@ -45,6 +48,8 @@ const storyScrollContent=props.photoCarousel ? homeDesktopNodes.get('1407:30')! 
 const storyBottomContent=props.photoCarousel ? homeDesktopNodes.get('1414:7363')! : undefined
 const storyBottomInset=storyBottomContent ? homeDesktopNodes.get('1414:7361')!.height-(storyBottomContent.height+storyBottomContent.y) : 0
 const node = computed(()=>(mobile.value?homeMobileNodes.get(props.mobilePanel):homeDesktopNodes.get(props.desktopPanel))!)
+const localizedHeight=ref(0)
+const renderHeight=computed(()=>Math.max(node.value.height,localizedHeight.value))
 const scale = computed(()=>mobile.value?1:Math.min(1,(width.value-48)/node.value.width))
 const adaptive = computed(()=>mobile.value&&width.value!==375)
 const titleId = computed(()=>mobile.value?props.mobileTitle:props.desktopTitle)
@@ -110,7 +115,7 @@ onMounted(async()=>{
   window.addEventListener('resize',resize,{passive:true})
   dialog.value?.showModal()
   await nextTick()
-  dialog.value?.querySelector<HTMLElement>('[aria-label="关闭详情"]')?.focus({preventScroll:true})
+  dialog.value?.querySelector<HTMLElement>('[data-source-action$=":close"]')?.focus({preventScroll:true})
 })
 onBeforeUnmount(()=>{
   dialog.value?.close()
@@ -123,16 +128,16 @@ onBeforeUnmount(()=>{
 <template>
   <Teleport to="body">
     <dialog ref="dialog" class="home-source-dialog" :class="{'is-mobile':mobile}" aria-labelledby="home-source-dialog-title" @cancel.prevent="emit('close')" @click="closeOutside">
-      <div class="home-source-dialog__position" :style="mobile?undefined:{width:`${node.width*scale}px`,height:`${node.height*scale}px`}">
-        <div class="home-source-dialog__canvas" :style="mobile?undefined:{width:`${node.width}px`,height:`${node.height}px`,transform:`scale(${scale})`}">
-          <HomeSourceNode :node="node" root :fluid="adaptive" :fixed-roots="fixedRoots" :actions="sourceActions" :texts="texts" :styles="nodeStyles" :attributes="attributes" :hidden="showPhotos ? ['1407:20','1466:858'] : undefined" @activate="activate">
+      <div class="home-source-dialog__position" :style="mobile?undefined:{width:`${node.width*scale}px`,height:`${renderHeight*scale}px`}">
+        <div class="home-source-dialog__canvas" :style="mobile?undefined:{width:`${node.width}px`,height:`${renderHeight}px`,transform:`scale(${scale})`}">
+          <HomeSourceNode :node="node" root :fluid="adaptive" :fixed-roots="fixedRoots" :actions="sourceActions" :texts="texts" :styles="nodeStyles" :attributes="attributes" :hidden="showPhotos ? ['1407:20','1466:858'] : undefined" @layout="localizedHeight=$event" @activate="activate">
             <template #after="{node:sourceNode}">
-              <div v-if="showPhotos && sourceNode.id==='1407:19'" ref="photoViewport" class="home-story-photos" role="region" aria-roledescription="轮播" aria-label="患者就医照片" :data-story-detail-state="photoIndex+1" @keydown="photoKey">
-                <div ref="photoHoverViewport" class="home-story-photos__images" aria-label="患者照片">
-                  <div v-for="(photo,index) in photos" :key="photo.id" class="home-story-photos__photo" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" :data-detail-photo="index+1" role="img" :aria-label="`Michael W. 的第${index+1}张就医照片`"><HomeSourceNode :node="photo" root /></div>
+              <div v-if="showPhotos && sourceNode.id==='1407:19'" ref="photoViewport" class="home-story-photos" role="region" :aria-roledescription="tx('轮播')" :aria-label="tx('患者就医照片')" :data-story-detail-state="photoIndex+1" @keydown="photoKey">
+                <div ref="photoHoverViewport" class="home-story-photos__images" :aria-label="tx('患者照片')">
+                  <div v-for="(photo,index) in photos" :key="photo.id" class="home-story-photos__photo" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" :data-detail-photo="index+1" role="img" :aria-label="tx(`Michael W. 的第${index+1}张就医照片`)"><HomeSourceNode :node="photo" root /></div>
                 </div>
                 <HomeSourceNode :node="homeDesktopNodes.get('1466:858')!" :actions="sourceActions" :styles="photoDotStyles" :attributes="photoAttributes" @activate="activate" />
-                <button class="home-story-photos__pause" type="button" :aria-pressed="photosPaused" @click="togglePhotos">{{photosPaused?'播放患者照片':'暂停患者照片'}}</button>
+                <button class="home-story-photos__pause" type="button" :aria-pressed="photosPaused" @click="togglePhotos">{{tx(photosPaused?'播放患者照片':'暂停患者照片')}}</button>
               </div>
               <div v-if="showPhotos && sourceNode.id==='1407:28'" aria-hidden="true" class="home-story-scroll-spacer" :style="{top:`${storyScrollContent!.height}px`,height:`${storyBottomInset}px`}" />
             </template>

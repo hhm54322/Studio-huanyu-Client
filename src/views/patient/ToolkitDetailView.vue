@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx, locale } = useSiteCopy()
+
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import ContentArticleCanvas from '@/components/common/ContentArticleCanvas.vue'
@@ -15,7 +18,7 @@ watch(() => route.query.article, value => {
   // Unknown article keys must not silently display an unrelated article.
   if (value && (typeof value !== 'string' || !toolkitArticles[value])) void router.replace({ path: route.path })
 }, { immediate: true })
-watch(article, key => { document.title = `${key ? toolkitArticles[key]!.title : '病历翻译与整理工具'} | 寰宇云医` }, { immediate: true })
+watch([article, locale], ([key]) => { document.title = `${tx(key ? toolkitArticles[key]!.title : '病历翻译与整理工具')} | ${tx('寰宇云医')}` }, { immediate: true })
 const viewportWidth = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
 watch([article, viewportWidth], ([key, width]) => {
   // New content is desktop-only until the user confirms the mobile design.
@@ -92,18 +95,18 @@ const bottomLines = [
   <div v-else class="toolkit-detail-page" data-page="steps-toolkit-detail">
     <div class="toolkit-detail-shell">
       <article class="toolkit-detail-article">
-        <RouterLink class="toolkit-detail-back" to="/trust" data-figma-node="143:3065"><span aria-hidden="true">‹</span> 返回信任与常见问题</RouterLink>
+        <RouterLink class="toolkit-detail-back" to="/trust" data-figma-node="143:3065"><span aria-hidden="true">‹</span>{{ tx(" 返回信任与常见问题") }}</RouterLink>
         <div class="toolkit-detail-heading-gap" aria-hidden="true" />
-        <span class="toolkit-detail-kicker" data-figma-node="143:3071">01 出行前 · 决策评估工具</span>
-        <h1 data-figma-node="143:3074">病历翻译与整理工具</h1>
-        <div class="toolkit-detail-copy toolkit-detail-copy--top" data-figma-node="143:3077"><p v-for="(line, index) in topLines" :id="line.id" :key="index" class="toolkit-detail-line" :class="{ 'is-strong': line.strong, 'is-heading': line.heading, 'is-lead': line.lead }" :style="{ '--line-y': `${line.y}px` }">{{ line.text }}</p></div>
+        <span class="toolkit-detail-kicker" data-figma-node="143:3071">{{ tx("01 出行前 · 决策评估工具") }}</span>
+        <h1 data-figma-node="143:3074">{{ tx("病历翻译与整理工具") }}</h1>
+        <div class="toolkit-detail-copy toolkit-detail-copy--top" data-figma-node="143:3077"><p v-for="(line, index) in topLines" :id="line.id" :key="index" class="toolkit-detail-line" :class="{ 'is-strong': line.strong, 'is-heading': line.heading, 'is-lead': line.lead }" :style="{ '--line-y': `${line.y}px` }">{{ tx(line.text) }}</p></div>
         <div class="toolkit-detail-images" data-figma-node="143:3078">
-          <img src="/images/figma/toolkit-source-record.webp" alt="标准化病历整理示例" data-figma-node="143:3079" />
-          <img src="/images/figma/toolkit-source-report.webp" alt="海外病历可行性评估报告示例" data-figma-node="143:3080" />
+          <img src="/images/figma/toolkit-source-record.webp" :alt="tx('标准化病历整理示例')" data-figma-node="143:3079" />
+          <img src="/images/figma/toolkit-source-report.webp" :alt="tx('海外病历可行性评估报告示例')" data-figma-node="143:3080" />
         </div>
-        <div class="toolkit-detail-copy toolkit-detail-copy--bottom" data-figma-node="143:3081"><p v-for="(line, index) in bottomLines" :key="index" class="toolkit-detail-line" :class="{ 'is-strong': line.strong, 'is-heading': line.heading, 'is-lead': line.lead }" :style="{ '--line-y': `${line.y}px` }">{{ line.text }}</p></div>
+        <div class="toolkit-detail-copy toolkit-detail-copy--bottom" data-figma-node="143:3081"><p v-for="(line, index) in bottomLines" :key="index" class="toolkit-detail-line" :class="{ 'is-strong': line.strong, 'is-heading': line.heading, 'is-lead': line.lead }" :style="{ '--line-y': `${line.y}px` }">{{ tx(line.text) }}</p></div>
       </article>
-      <aside class="toolkit-detail-sidebar" data-figma-node="143:3082"><strong>来华就医全流程工具包</strong><nav aria-label="工具包目录"><a v-for="section in sections" :key="section.id" :href="`#${section.id}`">{{ section.label }}</a></nav></aside>
+      <aside class="toolkit-detail-sidebar" data-figma-node="143:3082"><strong>{{ tx("来华就医全流程工具包") }}</strong><nav :aria-label="tx('工具包目录')"><a v-for="section in sections" :key="section.id" :href="`#${section.id}`">{{ tx(section.label) }}</a></nav></aside>
     </div>
   </div>
 </template>

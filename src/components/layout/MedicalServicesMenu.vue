@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const { tx, localized } = useSiteCopy()
 const items = [
   { id: '1524:4', label: '健康体检', href: '' },
   { id: '1524:14', label: '专科诊疗', href: '/diseases-technologies' },
@@ -13,7 +15,7 @@ const isActive = computed(() => route.path === '/diseases-technologies')
 </script>
 
 <template>
-  <div class="medical-services-menu" data-figma-node="1524:2" aria-label="医疗服务菜单">
+  <div class="medical-services-menu" :class="{'is-localized':localized}" data-figma-node="1524:2" :aria-label="tx('医疗服务菜单')">
     <template v-for="(item, index) in items" :key="item.id">
       <RouterLink
         v-if="item.href"
@@ -23,16 +25,16 @@ const isActive = computed(() => route.path === '/diseases-technologies')
         :data-figma-node="index === 1 ? '1524:13' : `1524:${index === 0 ? 3 : index === 2 ? 7 : 9}`"
         :aria-current="isActive ? 'page' : undefined"
       >
-        <span :data-figma-node="item.id">{{ item.label }}</span>
+        <span :data-figma-node="item.id">{{ tx(item.label) }}</span>
       </RouterLink>
       <button
         v-else
         type="button"
         class="medical-services-menu__item"
         :data-figma-node="index === 0 ? '1524:3' : index === 2 ? '1524:7' : '1524:9'"
-        title="内容正在准备中"
+        :title="tx('内容正在准备中')"
       >
-        <span :data-figma-node="item.id">{{ item.label }}</span>
+        <span :data-figma-node="item.id">{{ tx(item.label) }}</span>
       </button>
     </template>
   </div>
@@ -74,4 +76,7 @@ const isActive = computed(() => route.path === '/diseases-technologies')
 .medical-services-menu__item:hover,
 .medical-services-menu__item:focus-visible { background: #f5f8ff; outline: none; }
 .medical-services-menu__item span { display: block; width: 48px; height: 16px; }
+.medical-services-menu.is-localized { width:max-content; max-width:calc(100vw - 32px); height:auto; }
+.is-localized .medical-services-menu__item { width:100%; }
+.is-localized .medical-services-menu__item span { width:auto; max-width:100%; height:auto; overflow-wrap:anywhere; }
 </style>

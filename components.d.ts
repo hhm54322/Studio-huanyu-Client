@@ -12,6 +12,7 @@ declare module 'vue' {
     ContentArticleCanvas: typeof import('./src/components/common/ContentArticleCanvas.vue')['default']
     CountUpNumber: typeof import('./src/components/common/CountUpNumber.vue')['default']
     DentalDesktopFlow: typeof import('./src/components/common/DentalDesktopFlow.vue')['default']
+    DentalDoctorPageContent: typeof import('./src/components/common/DentalDoctorPageContent.vue')['default']
     DentalDoctorSourceDialog: typeof import('./src/components/common/DentalDoctorSourceDialog.vue')['default']
     DentalPhysicianDocumentContent: typeof import('./src/components/common/DentalPhysicianDocumentContent.vue')['default']
     DentalSourceCanvas: typeof import('./src/components/common/DentalSourceCanvas.vue')['default']

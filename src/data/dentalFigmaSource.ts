@@ -98,7 +98,7 @@ export function registerDentalSources(sources: Record<string, SourceFile>) {
   indexCompleteSource()
   registerDentalActions(Object.values(sources))
 }
-dentalStepNodes.forEach(ids => ids.forEach((id, index) => { dentalActions[id] = { action: `step:${index + 1}`, label: `0${index + 1} ${['选择牙科项目', '城市与医生匹配', '上传影像资料'][index]}` } }))
+dentalStepNodes.forEach(ids => ids.forEach((id, index) => { dentalActions[id] = { action: `step:${index + 1}`, label: ['01 选择牙科项目', '02 城市与医生匹配', '03 上传影像资料'][index] } }))
 dentalActions['2294:8336'] = { action: 'step:2', label: '下一步 城市与医生匹配' }
 dentalActions['2294:7209'] = { action: 'step:3', label: '下一步 上传影像资料' }
 dentalActions['2294:7036'] = { action: 'filter', label: '筛选医生' }

@@ -57,3 +57,20 @@
 - 同批牙科按钮在1024/1280/1440/1920两步骤共8状态核验固定间距及页脚让位；320/390/430首页与牙科共6次回归确认没有新增桌面控件或横向溢出。证据 `artifacts/patient-navigation-avatars-20261103/production/qa.json`，含当前实现SHA256，无页面错误或资源失败。
 - 类型检查、生产构建和diff检查通过。其他页面历史全站门禁的截图/时效问题保留在 `full-figma-gate.log`，本记录不宣称全站重新验收或公网发布。
 - Remaining differences: none
+
+## 2026-11-03：下拉菜单间距修正
+
+- 用户反馈「下拉间距太大了」：本次明确将触发项底边至菜单顶边从26px收紧至8px（设计坐标，随导航缩放）。这是用户授权的间距修正，非Figma原始参数；选项gap4、padding12/14/12/12、radius16、border0.5及原文字/图标保持原始参数。
+- 连接：唯一入口在2026-11-03T13:55:34.409Z验证当前会话IAB2/tab4；随后实时选择`1524:26`并读取Layers和Inspect，证据`artifacts/dropdown-spacing-20261103/connection.json`、`figma-menu-live.txt`。源菜单top72，触发项底边46；源距离确为26。
+- 当前官方导出：`/Users/hhm/Downloads/寰宇云医 (42).fig`；比较原实施源的`dropdown-spacing-start-home.json`、`dropdown-spacing-start-hospitals.json`、`dropdown-spacing-start-physicians.json`均确认本次Header/菜单子树不变；全文件差异属于其他模块，不自动更新基线。
+- 交付前导出：`/Users/hhm/Downloads/寰宇云医 (43).fig`，2026-11-03T14:09:34.702Z，SHA256 `e0d762d0771ae80e15c120dd37de2a8fa53a0de52af7e3e11aaef0973e4a5736`；`dropdown-spacing-final-home.json`、`dropdown-spacing-final-hospitals.json`、`dropdown-spacing-final-physicians.json`的目标子树、依赖及同名候选均unchanged。14:11:12.115Z再次验证同会话Design/Layers/Inspect可读，证据`connection-final.json`。
+- 节点映射继续使用上表；仅改变`PatientDesktopNavigation.vue`中的浮层定位及其透明悬停衔接区，医疗服务、中国医院和语言菜单共用一致间距。
+- 实施参数：浮层偏移8px，透明衔接区9px（额外1px跨过边框），共享同一间距变量，维持140ms关闭延迟。仅桌面端。
+- Verification: 2026-11-03T14:11:41.656Z；`artifacts/dropdown-spacing-20261103/qa.json`。开发预览在1024/1280/1440/1920检查首页、牙科、专科诊疗的两组菜单，共24状态；实际间距均为8px（按导航缩放），慢速经过衔接区不收起；ArrowDown、Escape焦点恢复、外部点击及医院菜单跳转通过。生产预览1440再次核验8px间距并截图，菜单内部图像平均归一化差异0.3369%，含抗锯齿与半透明边框背景差异；尺寸、文字、内部间距均未改。个人复看`diseases-technologies-hospitals-after.png`、`production-after.png`。牙科详情既有完整dev/production截图与交互检查亦重新通过；`vue-tsc -b`、Vite生产构建及diff检查通过。Remaining differences: none.
+
+## 2026-11-03：M02 五语联系入口与长度兼容
+
+- M02 复用本页已锁定的 Header/Navigation 节点；当前源稿 `/Users/hhm/Downloads/寰宇云医 (45).fig` 的 Header、医疗服务菜单、中国医院菜单子树及依赖与实施源一致，未将全文件其他变化接受为导航基线。连接与比较证据在 `artifacts/m02-20261103/connection-final.json` 和 `artifacts/m02-20261103/source/final-*.json`。
+- 在共享导航和联系入口上增加五语兼容：顶部导航使用紧凑显示文案并保留完整 `title`/ARIA，菜单按内容宽度并受视口限制，长项换行；中文原布局保持不变。移动端继续冻结。
+- 最终开发与生产预览均通过75个布局场景（5语言×5桌面宽度×3页面，每页检查两组下拉与语言菜单）；个人复看最终葡语/印尼语1024和1440截图，无文字重叠、截断或超出视口。中文首页和牙科导航与变更前像素一致。直接源菜单图片比较保留了原有149px/150px边框栅格化差异，不声称本轮完成全站Figma重新验收。
+- M02 详细行为、主题映射、WhatsApp 来源字段和验证结果见 `docs/implementation/m02-contact-localization.md`。

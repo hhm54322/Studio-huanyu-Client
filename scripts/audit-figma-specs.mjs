@@ -38,6 +38,13 @@ if (!requestedFiles.size || requestedFiles.has('why-china.md')) {
 
 console.log('Figma-first gate: source inventory -> Dev Mode parameters -> node mapping -> implementation -> evidence')
 
+if (!requestedFiles.size || requestedFiles.has('dental-doctor-pages.md')) {
+  const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-dental-doctor-pages.mjs')], { encoding: 'utf8' })
+  if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)
+  if (sourceAudit.stderr) process.stderr.write(sourceAudit.stderr)
+  if (sourceAudit.status !== 0) errors.push('dental-doctor-pages.md: current source coverage, immutable baseline, assets, case allocation or final dev/production evidence failed')
+}
+
 if (!requestedFiles.size || requestedFiles.has('steps-toolkit-detail.md')) {
   const sourceAudit = spawnSync(process.execPath, [join(process.cwd(), 'scripts', 'audit-content-revision.mjs')], { encoding: 'utf8' })
   if (sourceAudit.stdout) process.stdout.write(sourceAudit.stdout)

@@ -7,6 +7,10 @@
     {
       "path": "docs/source/dental-physicians/医生介绍（全）.docx",
       "sha256": "5b09591e6c4a541cc7476a23fa16579cedf50f92a068491dd8fac78a36d66b3a"
+    },
+    {
+      "path": "docs/source/dental-physicians/牙科医生.zip",
+      "sha256": "5e778f3576af87ad13fc0da01b840a92412806bce8985a9f83f41fd74a901af3"
     }
   ],
   "records": [
@@ -441,57 +445,57 @@
   "assets": [
     {
       "name": "车英林",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId4",
-      "sourceSHA256": "dacbd1ca266bc1c695b59a80952bddd2bd0e14298199affcc31aa12cd7d136b6",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture).png",
+      "sourceSHA256": "42bb1642d3301f2d021ad92b7c82fb62c1bd8885ae9a483ee82e92f4e84e3c23",
       "projectPath": "public/images/dental-physicians/che-yinglin.webp",
-      "sha256": "e3cebbb7cc2b6cefa874d9531518205102c267a071b8362076518778cad451b6",
-      "bytes": 14676
+      "sha256": "5d40256a32054dde20dae91ae61cb21fec6fd21879c7bf9d7af7bbc9f8a5c735",
+      "bytes": 13194
     },
     {
       "name": "万前程",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId5",
-      "sourceSHA256": "bde29d454f117f5553de8431ba8667b1614cc93911a4e1adf35cde50264af914",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture)-2.png",
+      "sourceSHA256": "c73b45a94ea968b30f3138fc6aed7c32d7eebf7aaaeb953b4acf4ec28016347e",
       "projectPath": "public/images/dental-physicians/wan-qiancheng.webp",
-      "sha256": "770a76122312ae483658ef802001d049385001117aa992b67f5a3bb62fe7fbd5",
-      "bytes": 8240
+      "sha256": "8292c5e94a910cfbc4d0969f0604afed89bbd39f4726a30f8a45fb8ad89aa408",
+      "bytes": 10436
     },
     {
       "name": "李腾",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId6",
-      "sourceSHA256": "aa7d50a65c695be810dab952f25abb39cf72b3f17d3ae4fee9b0260472a47b07",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture)-4.png",
+      "sourceSHA256": "6cdb7f2293ef8cc6f8b2f7d8a71aad2b26c6606a55e92495f1f06bf406867db9",
       "projectPath": "public/images/dental-physicians/li-teng.webp",
-      "sha256": "797c12b8b217537786ceb4c067c1d217505235088a1fe6a19b1a2b7c5b5b69f6",
-      "bytes": 11032
+      "sha256": "5ebcc5af8ddd127c27b180b726f1feeee7ef191464d717ed8b268e9b5047ffce",
+      "bytes": 11172
     },
     {
       "name": "黄建荣",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId7",
-      "sourceSHA256": "6787ce3d9e57e1e8d0e4214b4f3a063b23b27442a0e0e120e7ce878acbd45ae9",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture)-1.png",
+      "sourceSHA256": "1815823a090b5f85e0fb5beb548f191bed37a1dbfe7d66682842083c0e74c50e",
       "projectPath": "public/images/dental-physicians/huang-jianrong.webp",
-      "sha256": "4d0bfe2e470f0f633157ddf887b9db44961e6354f50985979a2f5c55694d7900",
-      "bytes": 9434
+      "sha256": "8f768f755d2d374c670a86f07a82ac14ecf203074d50188598b202e7d92bcfe2",
+      "bytes": 10520
     },
     {
       "name": "郑锐",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId8",
-      "sourceSHA256": "3f22877149c396dc0dfc275939d48f865d08fdec1df475fdfff4abfa33e8d535",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture)-3.png",
+      "sourceSHA256": "98df34c1a2120770b52d254ebd22855952483f7853cc5d599b8942377080d3c0",
       "projectPath": "public/images/dental-physicians/zheng-rui.webp",
-      "sha256": "2a778ad45daa35c85eacf0f2c0829c9b8956ec2744d309ad81575556528f7477",
-      "bytes": 14420
+      "sha256": "af9429b9228d5af145bd30bb60bbc1ead24ecbcd864762ce2720a284ba232a0c",
+      "bytes": 11462
     },
     {
       "name": "蒋刚",
-      "source": "docs/source/dental-physicians/医生介绍（全）.docx",
-      "relationship": "rId9",
-      "sourceSHA256": "e199a7a0ac690ecb962756bca457b6ba63ca68bcf0fa8085a0d37db3e7d36531",
+      "source": "docs/source/dental-physicians/牙科医生.zip",
+      "archiveEntry": "Image (Shanti Bansal picture)-5.png",
+      "sourceSHA256": "c7106054ceb14ecd58cee85c3537203c38ea4eafe16f07d063b6396fb1d6d111",
       "projectPath": "public/images/dental-physicians/jiang-gang.webp",
-      "sha256": "04d1f823ed06a1094ce902202c50571638a06faf87fd414f5993108b6f3cc54d",
-      "bytes": 10402
+      "sha256": "cbd11be1c9851e614fb2360179c1cc1c96aa518a081926068ac5cc8b97a4857e",
+      "bytes": 11618
     }
   ]
 }

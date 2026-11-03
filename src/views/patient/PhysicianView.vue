@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+import { useRoute, useRouter } from 'vue-router'
+const { tx, tf } = useSiteCopy()
+const route=useRoute(), router=useRouter()
+
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HospitalFigmaCanvas from '@/components/common/HospitalFigmaCanvas.vue'
 import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
@@ -15,6 +20,7 @@ import {
 } from '@/data/physicianFigmaSource'
 import { useAppStore, type Locale } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import { patientLanguages } from '@/i18n/languages'
 
 const PhysicianProfileDialog = defineAsyncComponent(() => import('@/components/common/PhysicianProfileDialog.vue'))
 import { homeExpertDialog } from '@/components/common/homeExpertDialog'
@@ -28,7 +34,26 @@ const languageMenu = ref(false)
 const page = ref<HTMLElement | null>(null)
 const { locale } = useI18n()
 const app = useAppStore()
-const source = computed(() => filteredPhysicianSource(filter.value, department.value))
+const source = computed(() => {
+  const tree=filteredPhysicianSource(filter.value, department.value)
+  if(locale.value==='zh')return tree
+  // The added department select shares no Figma node with the six shortcuts.
+  // Give it a separate row; long translated shortcuts may use the whole row.
+  const shortcuts=physicianDescendants(tree).find(node=>node.id==='1689:4839')!
+  const row={...shortcuts,id:'physician-shortcut-row',x:0,y:0,
+    css:`${shortcuts.css};left:0px;top:0px;`,children:shortcuts.children}
+  const field={id:'physician-department-row',name:'Department select',type:'FRAME',x:0,y:shortcuts.height+16,
+    width:shortcuts.width,height:42,visible:true,text:'',children:[],
+    css:`left:0px;top:${shortcuts.height+16}px;width:${shortcuts.width}px;height:42px;`}
+  shortcuts.children=[row,field]
+  shortcuts.height+=58
+  shortcuts.css+=`;height:${shortcuts.height}px;`
+  shortcuts.layoutCss='display:flex;flex-direction:column;gap:16px;'
+  const results=physicianDescendants(tree).find(node=>node.id==='1741:5784')!
+  results.y+=58
+  results.css+=`;top:${results.y}px;`
+  return tree
+})
 const visibleRecords = computed(() => filteredPhysicianRecords(filter.value, department.value))
 const scale = computed(() => Math.min(1, width.value / 1440))
 
@@ -54,7 +79,7 @@ const attributes = computed(() => {
     result[item.id] = { role: 'tab', 'aria-selected': filter.value === index, 'aria-controls': 'physician-results', tabindex: filter.value === index || filter.value === -1 && index === 0 ? 0 : -1 }
   })
   result['1741:5784'] = { id: 'physician-results', role: 'tabpanel', 'aria-label': department.value || physicianFilters[filter.value]?.text || '全部医生' }
-  physicianRecords.forEach(record => { result[`physician-card:${record.id}`] = { 'data-physician-card': true, 'data-physician-id': record.id, 'data-physician-department': record.departmentSource, title: `${record.name}｜${record.departmentSource}\n${record.workplace}` } })
+  physicianRecords.forEach(record => { result[`physician-card:${record.id}`] = { 'data-physician-card': true, 'data-physician-id': record.id, 'data-physician-department': record.departmentSource, title: `${tx(record.name)}｜${tx(record.departmentSource)}\n${tx(record.workplace)}` } })
   return result
 })
 
@@ -111,7 +136,7 @@ async function keydown(event: KeyboardEvent) {
   else if (event.key === 'End') next = physicianFilters.length - 1
   if (next !== null) { event.preventDefault(); department.value = ''; filter.value = next; await nextTick(); page.value?.querySelector<HTMLElement>(`[data-figma-node="${physicianFilters[next]!.id}"]`)?.focus({ preventScroll: true }); void bindMotion() }
 }
-function changeLanguage(code: Locale) { locale.value = code; app.setLocale(code); languageMenu.value = false }
+async function changeLanguage(code: Locale) { if(await app.setLocale(code)){languageMenu.value = false;await router.replace({query:{...route.query,lang:code}})} }
 function outside(event: MouseEvent) { if (!(event.target as HTMLElement).closest('.physician-languages,[data-figma-node="1689:5425"]')) languageMenu.value = false }
 
 onMounted(() => { window.addEventListener('resize', resize, { passive: true }); document.addEventListener('click', outside); void bindMotion() })
@@ -120,25 +145,25 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 
 <template>
   <div ref="page" class="physician-page" @mouseover="enter" @mouseout="leave" @focusin="enter" @focusout="leave" @keydown="keydown">
-    <HospitalFigmaCanvas :node="source" :width="width" :actions="physicianActions" :styles="styles" :attributes="attributes" :full-bleed="['1689:4817', ...source.children.flatMap(body => body.children.filter(node => node.name === 'Footer').map(node => node.id))]" :hidden="['1689:5392', '1732:5716']" label="中国医生" @activate="activate">
+    <HospitalFigmaCanvas :node="source" :width="width" :actions="physicianActions" :styles="styles" :attributes="attributes" :full-bleed="['1689:4817', ...source.children.flatMap(body => body.children.filter(node => node.name === 'Footer').map(node => node.id))]" :hidden="['1689:5392', '1732:5716']" :label="tx('中国医生')" @activate="activate">
       <template #after="{ node: sourceNode }">
         <div v-if="sourceNode.id === '1689:4839'" class="physician-department-filter">
-          <label for="physician-department">按科室筛选</label>
-          <select id="physician-department" :value="department" aria-label="按科室筛选医生" @change="selectDepartment(($event.target as HTMLSelectElement).value)">
-            <option value="">全部科室（{{ physicianRecords.length }}）</option>
-            <option v-for="item in physicianDepartments" :key="item" :value="item">{{ item }}</option>
+          <label for="physician-department">{{ tx("按科室筛选") }}</label>
+          <select id="physician-department" :value="department" :aria-label="tx('按科室筛选医生')" @change="selectDepartment(($event.target as HTMLSelectElement).value)">
+            <option value="">{{ tf('全部科室（{count}）',{count:physicianRecords.length}) }}</option>
+            <option v-for="item in physicianDepartments" :key="item" :value="item">{{ tx(item) }}</option>
           </select>
-          <span class="physician-result-count" aria-live="polite">共 {{ visibleRecords.length }} 位医生</span>
+          <span class="physician-result-count" aria-live="polite">{{ tf('共 {count} 位医生',{count:visibleRecords.length}) }}</span>
         </div>
-        <div v-if="sourceNode.id === '1741:5784' && !visibleRecords.length" class="physician-empty">暂无符合条件的医生</div>
+        <div v-if="sourceNode.id === '1741:5784' && !visibleRecords.length" class="physician-empty">{{ tx("暂无符合条件的医生") }}</div>
       </template>
     </HospitalFigmaCanvas>
     <header class="physician-source-header">
-      <HospitalFigmaCanvas :node="physicianNode('1689:5392')" :width="width" :actions="physicianActions" :attributes="attributes" label="主导航" @activate="activate" />
+      <HospitalFigmaCanvas :node="physicianNode('1689:5392')" :width="width" :actions="physicianActions" :attributes="attributes" :label="tx('主导航')" @activate="activate" />
       <Transition name="physician-dropdown"><div v-if="hospitalMenu" id="physician-hospital-menu" class="physician-menu">
         <div :style="{ width: '1440px', transform: `translateX(-50%) scale(${scale})` }"><HomeSourceNode :node="physicianNode('1732:5716')" :actions="physicianActions" @activate="activate" /></div>
       </div></Transition>
-      <div v-if="languageMenu" class="physician-languages"><button v-for="language in [{ code: 'zh', name: '中文' }, { code: 'en', name: 'English' }, { code: 'id', name: 'Bahasa Indonesia' }, { code: 'ru', name: 'Русский' }, { code: 'mn', name: 'Монгол' }]" :key="language.code" type="button" @click="changeLanguage(language.code as Locale)">{{ language.name }}</button></div>
+      <div v-if="languageMenu" class="physician-languages"><button v-for="language in patientLanguages" :key="language.code" type="button" @click="changeLanguage(language.code)">{{ language.label }}</button></div>
     </header>
     <component :is="dentalSourceDialog()" v-if="selected?.sourceExpert === -1" :doctor="{ id: 5, name: selected.name }" @close="selected = null" />
     <component :is="homeExpertDialog(selected.sourceExpert)" v-else-if="selected?.sourceExpert !== undefined" :expert="selected.sourceExpert" @close="selected = null" />
@@ -151,6 +176,9 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 .physician-department-filter { position:absolute; z-index:4; top:0; right:0; display:flex; align-items:center; gap:10px; height:42px; }
 .physician-department-filter label { color:#4B5563; font-size:14px; line-height:20px; white-space:nowrap; }
 .physician-department-filter select { height:42px; min-width:220px; padding:0 32px 0 14px; border:1px solid #DBDEE6; border-radius:10px; background:#fff; color:#1E3A5F; font:inherit; font-size:14px; cursor:pointer; }
+.physician-page:not(:lang(zh)) .physician-department-filter { top:auto; bottom:0; max-width:100%; }
+.physician-page:not(:lang(zh)) .physician-department-filter label { min-width:0; white-space:normal; }
+.physician-page:not(:lang(zh)) .physician-department-filter select { min-width:0; max-width:100%; flex:1; }
 .physician-result-count { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 .physician-empty { position:absolute; left:0; right:0; top:48px; color:#9CA3AF; text-align:center; font-size:16px; line-height:24px; }
 .physician-source-header { position:fixed; inset:0 0 auto; height:64px; z-index:60; pointer-events:none; }
@@ -161,6 +189,9 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 .physician-languages button { padding:9px 16px; border:0; text-align:left; background:transparent; color:#143162; cursor:pointer; }
 .physician-dropdown-enter-active,.physician-dropdown-leave-active { transition:opacity .2s ease; }
 .physician-dropdown-enter-from,.physician-dropdown-leave-to { opacity:0; }
+/* No mobile physician header was authored. Use the existing shared mobile
+   header rather than shrink all desktop labels to a few pixels. */
+@media (max-width:700px) { .physician-source-header { display:none; } }
 @media (max-width:1100px) and (min-width:701px) { .physician-department-filter label { display:none; } .physician-department-filter select { min-width:170px; } }
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
   .physician-page :deep([data-physician-card]) { transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease; }

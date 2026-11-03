@@ -18,7 +18,9 @@ function load(folder: string): Promise<void> {
   return request
 }
 export function loadDentalDetail(tab = 0, institution = false): Promise<unknown> {
-  return Promise.all((institution ? ['institution-scroll', 'institution'] : tabFolders[tab]!).map(load))
+  // Document-backed institution copy also reuses profile typography. It must
+  // work when opened directly, before any of the old doctor tabs was visited.
+  return Promise.all((institution ? ['institution-scroll', 'institution', 'profile'] : tabFolders[tab]!).map(load))
 }
 
 export function loadDentalStep(step: 1 | 2 | 3): Promise<unknown> {

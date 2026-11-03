@@ -1,0 +1,373 @@
+{
+  "sourceFrame": "3423:5936",
+  "sourceSHA256": "226e87c1db70c194a959bf0a74a5549f8592ed6d2f6b02fe2031adadd71d02cc",
+  "root": {
+    "id": "3423:5936",
+    "name": "案例集",
+    "type": "FRAME",
+    "width": 888,
+    "height": 478,
+    "x": 34679,
+    "y": 5373,
+    "visible": true,
+    "css": "display: flex;\nwidth: 888px;\npadding: 20px 32px 32px 32px;\nflex-direction: column;\nalign-items: flex-end;\ngap: 24px;\nborder-radius: 24px;\nbackground: #FFF;\nposition:relative;left:0px;top:0px;right:auto;bottom:auto;width:888px;height:478px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+    "layoutCss": "display: flex;\nwidth: 888px;\npadding: 20px 32px 32px 32px;\nflex-direction: column;\nalign-items: flex-end;\ngap: 24px;\nborder-radius: 24px;\nbackground: #FFF;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+    "text": "",
+    "children": [
+      {
+        "id": "3423:5958",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 824,
+        "height": 238,
+        "x": 32,
+        "y": 20,
+        "visible": true,
+        "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 12px;\nalign-self: stretch;\nborder-radius: 24px;\nbackground: #F3F4F6;\nposition:absolute;left:32px;top:20px;right:auto;bottom:auto;width:824px;height:238px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 12px;\nalign-self: stretch;\nborder-radius: 24px;\nbackground: #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+        "text": "",
+        "children": [
+          {
+            "id": "3423:5959",
+            "name": "Frame 715",
+            "type": "FRAME",
+            "width": 776,
+            "height": 98,
+            "x": 24,
+            "y": 24,
+            "visible": true,
+            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:776px;height:98px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "text": "",
+            "children": [
+              {
+                "id": "3423:5960",
+                "name": "Frame 714",
+                "type": "FRAME",
+                "width": 776,
+                "height": 24,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "display: flex;\njustify-content: space-between;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:776px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\njustify-content: space-between;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "3423:5961",
+                    "name": "“By aligning clinical efficiency with financial su",
+                    "type": "TEXT",
+                    "width": 112,
+                    "height": 24,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "color: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:112px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                    "layoutCss": "color: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:112px;height:24px;white-space:pre;",
+                    "text": "上前牙外伤缺失",
+                    "textLines": [
+                      {
+                        "runs": [
+                          {
+                            "text": "上",
+                            "css": ";position:absolute;left:0px;top:0;"
+                          },
+                          {
+                            "text": "前",
+                            "css": ";position:absolute;left:16px;top:0;"
+                          },
+                          {
+                            "text": "牙",
+                            "css": ";position:absolute;left:32px;top:0;"
+                          },
+                          {
+                            "text": "外",
+                            "css": ";position:absolute;left:48px;top:0;"
+                          },
+                          {
+                            "text": "伤",
+                            "css": ";position:absolute;left:64px;top:0;"
+                          },
+                          {
+                            "text": "缺",
+                            "css": ";position:absolute;left:80px;top:0;"
+                          },
+                          {
+                            "text": "失",
+                            "css": ";position:absolute;left:96px;top:0;"
+                          }
+                        ],
+                        "baseline": 17.760000000000005,
+                        "css": "display:block;position:absolute;left:0px;top:0px;width:112px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "id": "3423:5962",
+                    "name": "Container:transform",
+                    "type": "FRAME",
+                    "width": 24,
+                    "height": 24,
+                    "x": 752,
+                    "y": 0,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 24px;\nheight: 24px;\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:752px;top:0px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                    "layoutCss": "display: flex;\nwidth: 24px;\nheight: 24px;\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "3423:5963",
+                        "name": "Icon",
+                        "type": "FRAME",
+                        "width": 24,
+                        "height": 24,
+                        "x": 24,
+                        "y": 24,
+                        "visible": true,
+                        "css": "width: 24px;\nheight: 24px;\ntransform: rotate(-180deg);\nposition: absolute;\nbottom: 0;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(-1,1.2246468525851679e-16,0,-1,0,0);overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:0px;top:0px;",
+                        "layoutCss": "width: 24px;\nheight: 24px;\ntransform: rotate(-180deg);\nposition: absolute;\nbottom: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:24px;top:24px;right:auto;bottom:auto;width:24px;height:24px;transform-origin:0 0;transform:matrix(-1,1.2246468525851679e-16,0,-1,0,0);overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;left:0px;top:0px;",
+                        "text": "",
+                        "svg": "/images/figma/dental-pages-20261103/node-3423-5963.svg",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "3423:5965",
+                "name": "A remote cardiac device monitoring solution enable",
+                "type": "TEXT",
+                "width": 776,
+                "height": 66,
+                "x": 0,
+                "y": 32,
+                "visible": true,
+                "css": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nposition:absolute;left:0px;top:32px;right:auto;bottom:auto;width:776px;height:66px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre-wrap;overflow-wrap:normal;",
+                "layoutCss": "align-self: stretch;\ncolor: #4B5563;\nfont-family: \"PingFang SC\";\nfont-size: 14px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 22px; /* 157.143% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;height:66px;white-space:pre-wrap;",
+                "text": "李女士，32岁，因意外摔倒导致3颗上前牙磕断，前牙区大面积缺损严重影响外貌与发音。经检查后采用数字化种植技术修复，植入种植体并安装牙冠。患者反馈种植过程几乎没有疼痛感，完成后的种植牙外观逼真自然，完全不像假牙，解决了说话漏风、进食不便的困扰，重拾笑容自信。",
+                "textLines": [
+                  {
+                    "runs": [
+                      {
+                        "text": "李女士，32岁，因意外摔倒导致3颗上前牙磕断，前牙区大面积缺损严重影响外貌与发音。经检查后采用数字化种植技术修",
+                        "css": ""
+                      }
+                    ],
+                    "baseline": 16.04000000000002,
+                    "css": "display:block;position:absolute;left:0px;top:0px;width:753.18359px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                  },
+                  {
+                    "runs": [
+                      {
+                        "text": "复，植入种植体并安装牙冠。患者反馈种植过程几乎没有疼痛感，完成后的种植牙外观逼真自然，完全不像假牙，解决了说话",
+                        "css": ""
+                      }
+                    ],
+                    "baseline": 16.040000915527344,
+                    "css": "display:block;position:absolute;left:0px;top:22px;width:770px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                  },
+                  {
+                    "runs": [
+                      {
+                        "text": "漏风、进食不便的困扰，重拾笑容自信。",
+                        "css": ""
+                      }
+                    ],
+                    "baseline": 16.040000915527344,
+                    "css": "display:block;position:absolute;left:0px;top:44px;width:252px;height:22px;line-height:22px;white-space:pre;text-align:left;"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "3423:5966",
+            "name": "Frame 703",
+            "type": "FRAME",
+            "width": 80,
+            "height": 80,
+            "x": 24,
+            "y": 134,
+            "visible": true,
+            "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition:absolute;left:24px;top:134px;right:auto;bottom:auto;width:80px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:80px;",
+            "text": "",
+            "children": [
+              {
+                "id": "3423:5967",
+                "name": "Gemini_Generated_Image_sc794qsc794qsc79 1",
+                "type": "ROUNDED_RECTANGLE",
+                "width": 80,
+                "height": 80,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "width: 80px;\nheight: 80px;\naspect-ratio: 1/1;\nborder-radius: 16px;\nbackground: url(/images/figma/dental-pages-20261103/image-5e73deecabf1c474ec7bec3e8493b090deb42f9f.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:80px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "width: 80px;\nheight: 80px;\naspect-ratio: 1/1;\nborder-radius: 16px;\nbackground: url(/images/figma/dental-pages-20261103/image-5e73deecabf1c474ec7bec3e8493b090deb42f9f.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:80px;",
+                "text": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "3423:6058",
+        "name": "Container",
+        "type": "FRAME",
+        "width": 824,
+        "height": 164,
+        "x": 32,
+        "y": 282,
+        "visible": true,
+        "css": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 12px;\nalign-self: stretch;\nborder-radius: 24px;\nbackground: #F3F4F6;\nposition:absolute;left:32px;top:282px;right:auto;bottom:auto;width:824px;height:164px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+        "layoutCss": "display: flex;\npadding: 24px;\nflex-direction: column;\nalign-items: flex-start;\ngap: 12px;\nalign-self: stretch;\nborder-radius: 24px;\nbackground: #F3F4F6;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+        "text": "",
+        "children": [
+          {
+            "id": "3423:6059",
+            "name": "Frame 715",
+            "type": "FRAME",
+            "width": 776,
+            "height": 24,
+            "x": 24,
+            "y": 24,
+            "visible": true,
+            "css": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:776px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nflex-direction: column;\nalign-items: flex-start;\ngap: 8px;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+            "text": "",
+            "children": [
+              {
+                "id": "3423:6060",
+                "name": "Frame 714",
+                "type": "FRAME",
+                "width": 776,
+                "height": 24,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "display: flex;\njustify-content: space-between;\nalign-items: flex-start;\nalign-self: stretch;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:776px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "display: flex;\njustify-content: space-between;\nalign-items: flex-start;\nalign-self: stretch;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:100%;",
+                "text": "",
+                "children": [
+                  {
+                    "id": "3423:6061",
+                    "name": "“By aligning clinical efficiency with financial su",
+                    "type": "TEXT",
+                    "width": 112,
+                    "height": 24,
+                    "x": 0,
+                    "y": 0,
+                    "visible": true,
+                    "css": "color: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 24px; /* 150% */\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:112px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;white-space:pre;overflow-wrap:normal;",
+                    "layoutCss": "color: #1E3A5F;\ntext-align: justify;\nfont-family: \"PingFang SC\";\nfont-size: 16px;\nfont-style: normal;\nfont-weight: 600;\nline-height: 24px; /* 150% */\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:112px;height:24px;white-space:pre;",
+                    "text": "上前牙外伤缺失",
+                    "textLines": [
+                      {
+                        "runs": [
+                          {
+                            "text": "上",
+                            "css": ";position:absolute;left:0px;top:0;"
+                          },
+                          {
+                            "text": "前",
+                            "css": ";position:absolute;left:16px;top:0;"
+                          },
+                          {
+                            "text": "牙",
+                            "css": ";position:absolute;left:32px;top:0;"
+                          },
+                          {
+                            "text": "外",
+                            "css": ";position:absolute;left:48px;top:0;"
+                          },
+                          {
+                            "text": "伤",
+                            "css": ";position:absolute;left:64px;top:0;"
+                          },
+                          {
+                            "text": "缺",
+                            "css": ";position:absolute;left:80px;top:0;"
+                          },
+                          {
+                            "text": "失",
+                            "css": ";position:absolute;left:96px;top:0;"
+                          }
+                        ],
+                        "baseline": 17.760000000000005,
+                        "css": "display:block;position:absolute;left:0px;top:0px;width:112px;height:24px;line-height:24px;white-space:pre;text-align:left;"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "id": "3423:6062",
+                    "name": "Container:transform",
+                    "type": "FRAME",
+                    "width": 24,
+                    "height": 24,
+                    "x": 752,
+                    "y": 24,
+                    "visible": true,
+                    "css": "display: flex;\nwidth: 24px;\nheight: 24px;\ntransform: scaleY(-1);\nflex-direction: column;\nalign-items: flex-start;\nposition:absolute;left:752px;top:24px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(1,0,0,-1,0,0);",
+                    "layoutCss": "display: flex;\nwidth: 24px;\nheight: 24px;\ntransform: scaleY(-1);\nflex-direction: column;\nalign-items: flex-start;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:24px;",
+                    "text": "",
+                    "children": [
+                      {
+                        "id": "3423:6063",
+                        "name": "Icon",
+                        "type": "FRAME",
+                        "width": 24,
+                        "height": 24,
+                        "x": 24,
+                        "y": 24,
+                        "visible": true,
+                        "css": "width: 24px;\nheight: 24px;\ntransform: rotate(-180deg);\nposition: absolute;\nbottom: 0;\nposition:absolute;left:24px;top:24px;right:auto;bottom:auto;width:24px;height:24px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform-origin:0 0;transform:matrix(-1,1.2246468525851679e-16,0,-1,0,0);overflow:hidden;background-image:none;background:none;opacity:1;transform:none;width:24px;height:24px;left:0px;top:0px;",
+                        "layoutCss": "width: 24px;\nheight: 24px;\ntransform: rotate(-180deg);\nposition: absolute;\nbottom: 0;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:absolute;left:24px;top:24px;right:auto;bottom:auto;width:24px;height:24px;transform-origin:0 0;transform:matrix(-1,1.2246468525851679e-16,0,-1,0,0);overflow:hidden;background:none;opacity:1;transform:none;width:24px;height:24px;left:0px;top:0px;",
+                        "text": "",
+                        "svg": "/images/figma/dental-pages-20261103/node-3423-6063.svg",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3423:6066",
+            "name": "Frame 703",
+            "type": "FRAME",
+            "width": 80,
+            "height": 80,
+            "x": 24,
+            "y": 60,
+            "visible": true,
+            "css": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nposition:absolute;left:24px;top:60px;right:auto;bottom:auto;width:80px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+            "layoutCss": "display: flex;\nalign-items: flex-start;\ngap: 8px;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;width:80px;",
+            "text": "",
+            "children": [
+              {
+                "id": "3423:6067",
+                "name": "Gemini_Generated_Image_sc794qsc794qsc79 1",
+                "type": "ROUNDED_RECTANGLE",
+                "width": 80,
+                "height": 80,
+                "x": 0,
+                "y": 0,
+                "visible": true,
+                "css": "width: 80px;\nheight: 80px;\naspect-ratio: 1/1;\nborder-radius: 16px;\nbackground: url(/images/figma/dental-pages-20261103/image-5e73deecabf1c474ec7bec3e8493b090deb42f9f.webp) 50% / cover no-repeat;\nposition:absolute;left:0px;top:0px;right:auto;bottom:auto;width:80px;height:80px;min-width:0;max-width:none;min-height:0;max-height:none;padding:0;margin:0;box-sizing:border-box;display:block;flex:none;transform:none;",
+                "layoutCss": "width: 80px;\nheight: 80px;\naspect-ratio: 1/1;\nborder-radius: 16px;\nbackground: url(/images/figma/dental-pages-20261103/image-5e73deecabf1c474ec7bec3e8493b090deb42f9f.webp) 50% / cover no-repeat;\nbox-sizing:border-box;margin:0;min-width:0;flex-shrink:0;position:relative;height:80px;",
+                "text": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

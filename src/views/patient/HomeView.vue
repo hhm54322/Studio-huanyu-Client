@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx, locale } = useSiteCopy()
+
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { ECharts } from 'echarts/core'
 import type { ComponentPublicInstance } from 'vue'
@@ -255,8 +258,9 @@ async function initCharts() {
     ...chart.texts.map(label => ({
       type: 'group', x: label.x, y: label.y, rotation: label.rotation, silent: true,
       children: [{ type: 'text', style: {
-        text: label.text, fill: label.fill, opacity: 'opacity' in label ? Number(label.opacity) : 1, fontFamily: `"${label.fontFamily}", "PingFang SC", sans-serif`,
+        text: tx(label.text), fill: label.fill, opacity: 'opacity' in label ? Number(label.opacity) : 1, fontFamily: `"${label.fontFamily}", "PingFang SC", sans-serif`,
         fontSize: label.fontSize, lineHeight: label.height, verticalAlign: 'top',
+        ...(tx(label.text)!==label.text ? { width:Math.max(label.width,Math.min(120,chart.width-label.x)),overflow:'break' as const } : {}),
       } }],
     })),
     ...chart.legendSymbols.map(symbol => ({
@@ -271,7 +275,7 @@ async function initCharts() {
     animation: false,
     radar: {
       center: source.radar.center, radius: source.radar.radius,
-      startAngle: 90, splitNumber: 4, shape: 'polygon', indicator: radarIndicators,
+      startAngle: 90, splitNumber: 4, shape: 'polygon', indicator: radarIndicators.map(item=>({...item,name:tx(item.name)})),
       axisName: { show: false },
       axisLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
       splitLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
@@ -280,7 +284,7 @@ async function initCharts() {
     series: [{
       type: 'radar', symbol: 'none', silent: true,
       data: radarSeries.map(item => ({
-        value: item.value, name: item.name, lineStyle: { color: item.color, width: 2 },
+        value: item.value, name: tx(item.name), lineStyle: { color: item.color, width: 2 },
         areaStyle: { color: item.fill, opacity: 1 },
       })),
     }],
@@ -292,13 +296,13 @@ async function initCharts() {
     grid: { left: grid.x, top: grid.y, width: grid.width, height: grid.height },
     // Axes/labels/ticks are graphic primitives at their actual Figma positions;
     // the bars and coordinate system remain a genuine ECharts data series.
-    xAxis: { type: 'category', data: costs.map(item => item.label), show: false },
+    xAxis: { type: 'category', data: costs.map(item => tx(item.label)), show: false },
     yAxis: { type: 'value', min: 0, max: 120, show: false },
     series: [
       { name: '中国', field: 'china', color: '#2563EB' }, { name: '美国', field: 'usa', color: '#1E3A5F' },
       { name: '德国', field: 'germany', color: '#C9A84C' }, { name: '日本', field: 'japan', color: '#94A3B8' },
     ].map(item => ({
-      name: item.name, type: 'bar', silent: true, barWidth: source.cost.barWidth, barGap: source.cost.barGap,
+      name: tx(item.name), type: 'bar', silent: true, barWidth: source.cost.barWidth, barGap: source.cost.barGap,
       itemStyle: { color: item.color, borderRadius: source.cost.width < 542 ? [2.4328, 2.4328, 0, 0] : [4, 4, 0, 0] },
       data: costs.map(cost => cost[item.field as 'china' | 'usa' | 'germany' | 'japan']),
     })),
@@ -333,6 +337,7 @@ function observeCharts() {
   chartViewportObserver.observe(costChartEl.value)
 }
 function openConsultation() { window.dispatchEvent(new CustomEvent('open-consultation')) }
+watch(locale,()=>{if(chartsRequested)void initCharts()})
 function activateFigmaAction(action:string, event:MouseEvent) {
   const [name, value] = action.split(':')
   if (name === 'consultation') openConsultation()
@@ -384,16 +389,16 @@ onBeforeUnmount(() => {
   <div class="home-page" :data-figma-node="homeWidth>700 ? '1412:5684' : undefined">
     <HomeHeroSection class="home-source-hero" @activate="activateFigmaAction" />
 
-    <HomeFigmaSection desktop-id="1412:5718" mobile-id="1528:148" label="来华就医流程" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:5718" mobile-id="1528:148" :label="tx('来华就医流程')" :actions="homeFigmaActions" @activate="activateFigmaAction" />
 
     <template v-if="bodyReady">
     <div ref="processSection" class="home-source-journey">
       <template v-if="homeWidth <= 700">
         <div v-for="(sourceId, index) in ['1528:184', '1528:223', '1528:252', '1528:316']" :id="`process-stage-${flowSteps[index]!.no}`" :key="sourceId" :ref="el => setProcessStageRef(el, index)">
-          <HomeFigmaSection class="journey-mobile-source" desktop-id="1412:5765" :mobile-id="sourceId" :label="`来华就医·${flowSteps[index]!.label}`" :actions="journeyActions" :styles="mobileFaqStyles" :attributes="mobileFaqAttributes" @activate="activateFigmaAction">
+          <HomeFigmaSection class="journey-mobile-source" desktop-id="1412:5765" :mobile-id="sourceId" :label="tx(`来华就医·${flowSteps[index]!.label}`)" :actions="journeyActions" :styles="mobileFaqStyles" :attributes="mobileFaqAttributes" @activate="activateFigmaAction">
             <template #after="{ node }">
               <div v-if="mobileFaqRows.includes(node.id)" :id="`home-faq-answer-${mobileFaqRows.indexOf(node.id)}`" class="home-source-faq-answer" :class="{ 'is-open':expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id)) }" :inert="!expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id))" :aria-hidden="!expandedMobileFaqs.has(mobileFaqRows.indexOf(node.id))">
-                <div><div class="home-source-faq-answer__copy"><strong v-if="processFaqs[mobileFaqRows.indexOf(node.id)]!.lead">{{ processFaqs[mobileFaqRows.indexOf(node.id)]!.lead }}</strong><p>{{ processFaqs[mobileFaqRows.indexOf(node.id)]!.answer }}</p></div></div>
+                <div><div class="home-source-faq-answer__copy"><strong v-if="processFaqs[mobileFaqRows.indexOf(node.id)]!.lead">{{ tx(processFaqs[mobileFaqRows.indexOf(node.id)]!.lead) }}</strong><p>{{ tx(processFaqs[mobileFaqRows.indexOf(node.id)]!.answer) }}</p></div></div>
               </div>
             </template>
           </HomeFigmaSection>
@@ -401,7 +406,7 @@ onBeforeUnmount(() => {
       </template>
       <div v-else class="journey-desktop" :style="{ '--journey-scale': journeyScale }">
         <div id="process-stage-01" :ref="el => setProcessStageRef(el, 0)">
-          <HomeFigmaSection desktop-id="1412:5765" defer-render label="来华就医·认知" :actions="homeFigmaActions" :attributes="whyCardAttributes" :hidden="['1412:5780']" @activate="activateFigmaAction">
+          <HomeFigmaSection desktop-id="1412:5765" defer-render :label="tx('来华就医·认知')" :actions="homeFigmaActions" :attributes="whyCardAttributes" :hidden="['1412:5780']" @activate="activateFigmaAction">
             <template #after="{ node }">
               <div v-if="whyCopyNodes.indexOf(node.id)>0 && whyMoreSource" class="home-why-card__more" :style="{left:`${whyMoreSource.x}px`,top:`${whyMoreSource.y}px`,width:`${whyMoreSource.width}px`,height:`${whyMoreSource.height}px`}" aria-hidden="true">
                 <HomeSourceNode :node="whyMoreSource" root replica />
@@ -410,7 +415,7 @@ onBeforeUnmount(() => {
           </HomeFigmaSection>
         </div>
         <div v-for="(sourceId, index) in ['1401:18','1401:281','1401:49']" :id="`process-stage-${flowSteps[index+1]!.no}`" :key="sourceId" :ref="el => setProcessStageRef(el, index+1)">
-          <HomeFigmaSection :desktop-id="sourceId" :defer-render="sourceId !== '1401:281'" :label="`来华就医·${flowSteps[index+1]!.label}`" :hidden="['1401:26','1401:282','1401:50','1401:303']" :flow-roots="['1401:289']" :content-height-id="sourceId === '1401:281' ? '1401:289' : undefined" :actions="journeyActions" :styles="desktopFaqStyles" :attributes="desktopFaqAttributes" @activate="activateFigmaAction">
+          <HomeFigmaSection :desktop-id="sourceId" :defer-render="sourceId !== '1401:281'" :label="tx(`来华就医·${flowSteps[index+1]!.label}`)" :hidden="['1401:26','1401:282','1401:50','1401:303']" :flow-roots="['1401:289']" :content-height-id="sourceId === '1401:281' ? '1401:289' : undefined" :actions="journeyActions" :styles="desktopFaqStyles" :attributes="desktopFaqAttributes" @activate="activateFigmaAction">
             <template #after="{ node }">
               <div v-if="desktopFaqRows.includes(node.id)" :id="`home-desktop-faq-answer-${desktopFaqRows.indexOf(node.id)}`" class="home-source-faq-answer" :class="{ 'is-open':expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id)) }" :inert="!expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id))" :aria-hidden="!expandedDesktopFaqs.has(desktopFaqRows.indexOf(node.id))">
                 <div><HomeSourceNode :node="homeDesktopNodes.get('1401:303')!" root fluid :hidden="processFaqs[desktopFaqRows.indexOf(node.id)]!.lead ? [] : ['1401:304']" :texts="{ '1401:304': processFaqs[desktopFaqRows.indexOf(node.id)]!.lead || '', '1401:305': processFaqs[desktopFaqRows.indexOf(node.id)]!.answer }" :styles="{ '1401:305':'height:auto!important;white-space:pre-wrap;' }" /></div>
@@ -419,7 +424,7 @@ onBeforeUnmount(() => {
           </HomeFigmaSection>
         </div>
         <div class="journey-desktop__rail-lane">
-          <aside class="journey-desktop__rail" aria-label="当前流程阶段">
+          <aside class="journey-desktop__rail" :aria-label="tx('当前流程阶段')">
             <HomeSourceNode :node="homeDesktopNodes.get('1412:5780')!" root :texts="{ '1412:5782': flowSteps[activeProcessIndex]!.label, '1412:5786': flowSteps[activeProcessIndex]!.no }" />
           </aside>
         </div>
@@ -427,24 +432,24 @@ onBeforeUnmount(() => {
     </div>
 
     <HomePatientStories id="patient-story" @activate="activateFigmaAction" />
-    <HomeFigmaSection id="care-section" desktop-id="1412:6019" defer-render mobile-id="1528:391" label="就医全程陪伴" :actions="homeFigmaActions" @activate="activateFigmaAction" />
-    <HomeFigmaSection desktop-id="1412:6055" defer-render mobile-id="1528:412" label="陪你走全程的人" />
-    <HomeFigmaSection id="data-section" desktop-id="1412:6092" defer-render mobile-id="1528:429" label="中国医疗数据优势">
-      <template #radar><div ref="radarChartEl" class="revision-chart" role="img" aria-label="中国、美国、德国医疗能力雷达图" /></template>
-      <template #cost><div ref="costChartEl" class="revision-chart" role="img" aria-label="治疗费用对比" /></template>
+    <HomeFigmaSection id="care-section" desktop-id="1412:6019" defer-render mobile-id="1528:391" :label="tx('就医全程陪伴')" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6055" defer-render mobile-id="1528:412" :label="tx('陪你走全程的人')" />
+    <HomeFigmaSection id="data-section" desktop-id="1412:6092" defer-render mobile-id="1528:429" :label="tx('中国医疗数据优势')">
+      <template #radar><div ref="radarChartEl" class="revision-chart" role="img" :aria-label="tx('中国、美国、德国医疗能力雷达图')" /></template>
+      <template #cost><div ref="costChartEl" class="revision-chart" role="img" :aria-label="tx('治疗费用对比')" /></template>
     </HomeFigmaSection>
-    <HomeFigmaSection desktop-id="1412:6313" defer-render mobile-id="1528:621" label="权威合作医院" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
-    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" label="权威专家团队" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6313" defer-render mobile-id="1528:621" :label="tx('权威合作医院')" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" @activate="activateFigmaAction" />
     <HomeStrengthSection />
     <HomePartnersSection />
-    <HomeFigmaSection id="home-cta" desktop-id="1412:6635" defer-render mobile-id="1528:771" label="开启来华就医之旅" :actions="homeFigmaActions" :texts="{ '1412:6652': '预约专家面诊 $200起' }" @activate="activateFigmaAction" />
+    <HomeFigmaSection id="home-cta" desktop-id="1412:6635" defer-render mobile-id="1528:771" :label="tx('开启来华就医之旅')" :actions="homeFigmaActions" :texts="{ '1412:6652': '预约专家面诊 $200起' }" @activate="activateFigmaAction" />
 
     <component :is="homeSourceDialog(whyDesktopPanels[selectedWhyIndex]!)" v-if="whyModalOpen" :desktop-panel="whyDesktopPanels[selectedWhyIndex]!" :mobile-panel="whyMobilePanels[selectedWhyIndex]!" :desktop-title="whyDesktopTitles[selectedWhyIndex]!" :mobile-title="whyMobileTitles[selectedWhyIndex]!" :actions="whySourceActions" @close="closeWhyDetail" />
     <component :is="homeSourceDialog('1407:8')" v-if="storyModalOpen" desktop-panel="1407:8" mobile-panel="1543:42" desktop-title="1407:14" mobile-title="1543:134" :actions="storySourceActions" scroll-node="1407:28" photo-carousel @close="closeStoryDetail" />
     <component :is="homeExpertDialog(selectedExpert)" v-if="selectedExpert!==null" :expert="selectedExpert" @close="selectedExpert=null" />
     </template>
     <div v-else class="home-page__pending" :style="{ height: pendingHeight }" :aria-hidden="!bodyFailed">
-      <button v-if="bodyFailed" type="button" @click="retryBody">内容暂未加载成功，点击重试</button>
+      <button v-if="bodyFailed" type="button" @click="retryBody">{{ tx("内容暂未加载成功，点击重试") }}</button>
     </div>
   </div>
 </template>

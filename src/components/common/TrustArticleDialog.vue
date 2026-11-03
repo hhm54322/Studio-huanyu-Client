@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData } from './HomeSourceNode.vue'
+import { useSiteCopy } from '@/i18n/siteCopy'
 import { trustArticleSource } from '@/data/trustArticleSource'
 import templateModel from '../../../docs/figma-source/trust-content-revision/trust/dialog-model-2026-10-21.json'
 
 const props = withDefaults(defineProps<{ article?: 'jci' | 'cost' | 'doctor' | 'medicine' | 'infection' | 'rights' | 'privacy' | 'muslim' }>(), { article: 'jci' })
+const { localized } = useSiteCopy()
 const emit = defineEmits<{ close: [] }>()
 const dialog = ref<HTMLDialogElement | null>(null)
 const closing = ref(false)
@@ -20,7 +22,8 @@ const attributes: Record<string, Record<string, string | number | boolean>> = {
   [model.title]: { id: 'jci-source-title', role: 'heading', 'aria-level': 2 },
   [model.description]: { id: 'jci-source-description' },
 }
-const frameStyle = computed(() => ({ width: `${model.width}px`, height: props.article === 'jci' ? `${model.height}px` : 'auto' }))
+const localizedHeight=ref(0)
+const frameStyle = computed(() => ({ width: `${model.width}px`, height: props.article === 'jci' ? `${Math.max(model.height,localizedHeight.value)}px` : 'auto' }))
 let trigger: HTMLElement | null = null
 let oldOverflow = '', oldScrollBehavior = '', scrollPosition = 0
 let openingFrame = 0
@@ -86,7 +89,7 @@ onBeforeUnmount(() => {
     <dialog :id="dialogId" ref="dialog" class="trust-source-dialog" :class="{ 'is-closing': closing }" :data-figma-node="model.frame" :data-article-source="articleSource.articleFrame" aria-labelledby="jci-source-title" aria-describedby="jci-source-description" @cancel.prevent="requestClose" @keydown="keydown" @click="outside">
       <div class="trust-source-dialog__overlay" data-trust-source-overlay :data-figma-node="model.overlay">
         <div class="trust-source-dialog__frame" :style="frameStyle">
-          <HomeSourceNode :node="root" root :actions="actions" :attributes="attributes" :baseline-nodes="baselineNodes" @activate="requestClose" />
+          <HomeSourceNode :node="root" root :actions="actions" :attributes="attributes" :baseline-nodes="baselineNodes" :flow-roots="localized && article!=='jci' ? [root.id] : undefined" :fixed-roots="[model.close]" @layout="localizedHeight=$event" @activate="requestClose" />
         </div>
       </div>
     </dialog>

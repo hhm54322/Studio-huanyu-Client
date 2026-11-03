@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData, type HomeSourceAction } from './HomeSourceNode.vue'
 import { homeDesktopNodes as desktop, homeMobileNodes as mobile } from '@/data/homeSourceRegistry'
@@ -9,6 +12,7 @@ const emit = defineEmits<{ activate: [action: string, event: MouseEvent] }>()
 const width = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
 const canvas = ref<HTMLElement | null>(null)
 const contentDelta = ref(0)
+const localizedHeight = ref(0)
 const section = ref<HTMLElement | null>(null)
 const rendered = ref(!props.deferRender || width.value <= 700 || Boolean(props.contentHeightId))
 let cancelMount: (() => void) | undefined
@@ -29,6 +33,7 @@ const isMobile = computed(() => width.value <= 700 && props.mobileId)
 const node = computed(() => (isMobile.value ? mobile.get(props.mobileId!) : desktop.get(props.desktopId))!)
 const scale = computed(() => isMobile.value ? 1 : Math.min(1, width.value / 1440))
 const contentHeight = computed(() => node.value.height + contentDelta.value)
+const renderHeight = computed(() => Math.max(contentHeight.value,localizedHeight.value))
 watch([canvas, () => props.contentHeightId, node], async () => {
   heightObserver?.disconnect()
   contentDelta.value = 0
@@ -42,15 +47,15 @@ watch([canvas, () => props.contentHeightId, node], async () => {
 }, { flush:'post' })
 const sourceStyles = computed(() => props.contentHeightId ? { ...props.styles, [node.value.id]:`${props.styles?.[node.value.id] || ''}height:${contentHeight.value}px;` } : props.styles)
 const sectionStyle = computed(() => ({
-  ...(!isMobile.value || props.fixedMobile ? { height:`${contentHeight.value * scale.value}px` } : {}),
+  ...(!isMobile.value || props.fixedMobile ? { height:`${renderHeight.value * scale.value}px` } : {}),
   background: node.value.css.match(/(?:^|\n)background:\s*([^;]+);/)?.[1] || '#fff',
 }))
 </script>
 
 <template>
-  <section ref="section" class="home-figma-section" :class="{ 'home-figma-section--mobile': isMobile, 'home-figma-section--deferred': !isMobile && !contentHeightId }" :aria-label="label" :style="sectionStyle" :data-source-render="rendered ? 'ready' : 'queued'">
-    <div v-if="rendered || isMobile" ref="canvas" class="home-figma-section__canvas" :style="isMobile ? undefined : { width: `${node.width}px`, height: `${contentHeight}px`, transform: `translateX(-50%) scale(${scale})` }">
-      <HomeSourceNode :node="node" :fluid="Boolean(isMobile) && !fixedMobile" :flow-roots="flowRoots" :baseline-nodes="baselineNodes" :preserve-text-lines="Boolean(isMobile) && width === node.width" :actions="actions" :texts="texts" :styles="sourceStyles" :hidden="hidden" :attributes="attributes" root :defer-images="deferImages" @activate="(action, event) => emit('activate', action, event)">
+  <section ref="section" class="home-figma-section" :class="{ 'home-figma-section--mobile': isMobile, 'home-figma-section--deferred': !isMobile && !contentHeightId }" :aria-label="tx(label)" :style="sectionStyle" :data-source-render="rendered ? 'ready' : 'queued'">
+    <div v-if="rendered || isMobile" ref="canvas" class="home-figma-section__canvas" :style="isMobile ? undefined : { width: `${node.width}px`, height: `${renderHeight}px`, transform: `translateX(-50%) scale(${scale})` }">
+      <HomeSourceNode :node="node" :fluid="Boolean(isMobile) && !fixedMobile" :flow-roots="flowRoots" :baseline-nodes="baselineNodes" :preserve-text-lines="Boolean(isMobile) && width === node.width" :actions="actions" :texts="texts" :styles="sourceStyles" :hidden="hidden" :attributes="attributes" root :defer-images="deferImages" @layout="localizedHeight=$event" @activate="(action, event) => emit('activate', action, event)">
         <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
         <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
         <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>

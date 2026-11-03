@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import source from '../../../docs/figma-source/diseases/content-2026-09-29.json'
 
 const query = ref('')
 const services = source.cards
 const filtered = computed(() => services.filter(item =>
-  `${item.name}${item.cases}${item.feature}`.toLocaleLowerCase().includes(query.value.trim().toLocaleLowerCase()),
+  `${item.name}${item.cases}${item.feature}${tx(item.name)}${tx(item.cases)}${tx(item.feature)}`.toLocaleLowerCase().includes(query.value.trim().toLocaleLowerCase()),
 ))
 const icon = (id: string) => `/images/figma/disease-source/node-${id.replace(':', '-')}.svg`
 function openConsultation() {
@@ -40,8 +43,8 @@ onBeforeUnmount(() => cardObserver?.disconnect())
         <section class="disease-hero" data-figma-node="144:4383">
           <div class="disease-hero__content" data-figma-node="144:4384" data-reveal>
             <div class="disease-hero__copy" data-figma-node="144:4385">
-              <div data-figma-node="144:4386"><h1 data-figma-node="144:4387">专科诊疗</h1></div>
-              <div data-figma-node="144:4388"><p data-figma-node="144:4389">按疾病查找治疗方案，获取权威专家建议</p></div>
+              <div data-figma-node="144:4386"><h1 data-figma-node="144:4387">{{ tx("专科诊疗") }}</h1></div>
+              <div data-figma-node="144:4388"><p data-figma-node="144:4389">{{ tx("按疾病查找治疗方案，获取权威专家建议") }}</p></div>
             </div>
           </div>
         </section>
@@ -51,7 +54,7 @@ onBeforeUnmount(() => cardObserver?.disconnect())
             <label class="disease-search" data-figma-node="144:4397">
               <img :src="icon('144:4398')" data-figma-node="144:4398" alt="" />
               <div class="disease-input-wrap" data-figma-node="144:4401">
-                <input v-model="query" data-figma-node="144:4402" type="search" aria-label="搜索疾病" placeholder="搜索疾病" />
+                <input v-model="query" data-figma-node="144:4402" type="search" :aria-label="tx('搜索疾病')" :placeholder="tx('搜索疾病')" />
               </div>
             </label>
           </div>
@@ -60,28 +63,28 @@ onBeforeUnmount(() => cardObserver?.disconnect())
               :to="item.path || undefined" :data-figma-node="item.nodeId" class="disease-card">
               <img class="disease-card-icon" :src="item.icon" :data-figma-node="item.iconNodeId" alt="" />
               <div class="disease-card__body" :data-figma-node="item.bodyNodeId">
-                <div :data-figma-node="item.headingNodeId"><h2 :data-figma-node="item.titleNodeId">{{ item.name }}</h2></div>
+                <div :data-figma-node="item.headingNodeId"><h2 :data-figma-node="item.titleNodeId">{{ tx(item.name) }}</h2></div>
                 <div class="disease-card__rows" :data-figma-node="item.rowsNodeId">
-                  <p :data-figma-node="item.hospitalNodeId">合作医院：<strong>{{ item.hospitals }}</strong></p>
-                  <p :data-figma-node="item.casesNodeId">{{ item.cases }}</p>
-                  <p :data-figma-node="item.featureNodeId">{{ item.feature }}</p>
+                  <p :data-figma-node="item.hospitalNodeId">{{ tx("合作医院：") }}<strong>{{ tx(item.hospitals) }}</strong></p>
+                  <p :data-figma-node="item.casesNodeId">{{ tx(item.cases) }}</p>
+                  <p :data-figma-node="item.featureNodeId">{{ tx(item.feature) }}</p>
                 </div>
               </div>
             </component>
           </div>
           <div v-if="!filtered.length" class="disease-empty" role="status">
-            <h2>暂未找到相关疾病</h2>
-            <p>可以直接向阿宁描述病情，我们会协助匹配对应方向。</p>
-            <button type="button" @click="query = ''">查看全部疾病</button>
+            <h2>{{ tx("暂未找到相关疾病") }}</h2>
+            <p>{{ tx("可以直接向阿宁描述病情，我们会协助匹配对应方向。") }}</p>
+            <button type="button" @click="query = ''">{{ tx("查看全部疾病") }}</button>
           </div>
         </section>
         <section class="disease-cta" data-figma-node="144:4572">
           <div data-figma-node="144:4573">
             <div class="disease-cta__content" data-figma-node="144:4574" data-reveal>
-              <div class="disease-cta__heading" data-figma-node="144:4575"><h2 data-figma-node="144:4576">没有找到您的疾病？问阿宁帮您解答</h2></div>
+              <div class="disease-cta__heading" data-figma-node="144:4575"><h2 data-figma-node="144:4576">{{ tx("没有找到您的疾病？问阿宁帮您解答") }}</h2></div>
               <div class="disease-cta__actions" data-figma-node="144:4577">
-                <RouterLink to="/report" data-figma-node="144:4578"><img :src="icon('144:4579')" data-figma-node="144:4579" alt="" /><span data-figma-node="144:4581">提交病历</span></RouterLink>
-                <button type="button" data-figma-node="144:4582" @click="openConsultation"><img :src="icon('144:4583')" data-figma-node="144:4583" alt="" /><span data-figma-node="144:4585">免费咨询阿宁</span></button>
+                <RouterLink to="/report" data-figma-node="144:4578"><img :src="icon('144:4579')" data-figma-node="144:4579" alt="" /><span data-figma-node="144:4581">{{ tx("提交病历") }}</span></RouterLink>
+                <button type="button" data-figma-node="144:4582" @click="openConsultation"><img :src="icon('144:4583')" data-figma-node="144:4583" alt="" /><span data-figma-node="144:4585">{{ tx("免费咨询阿宁") }}</span></button>
               </div>
             </div>
           </div>

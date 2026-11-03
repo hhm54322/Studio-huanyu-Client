@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData, type HomeSourceAction } from './HomeSourceNode.vue'
 import { dentalDescendants } from '@/data/dentalFigmaSource'
 const props = defineProps<{
@@ -7,15 +7,17 @@ const props = defineProps<{
   actions?: Record<string, HomeSourceAction>; styles?: Record<string, string>; texts?: Record<string, string>
   attributes?: Record<string, Record<string, string | number | boolean>>; flowRoots?: string[]; hidden?: string[]
 }>()
-const emit = defineEmits<{ activate: [action: string, event: MouseEvent] }>()
+const emit = defineEmits<{ activate: [action: string, event: MouseEvent]; layout: [height:number] }>()
 const scale = computed(() => Math.min(1, props.width / props.node.width))
+const localizedHeight=ref(0)
+const renderHeight=computed(()=>Math.max(props.height??props.node.height,localizedHeight.value))
 const root = computed(() => ({ ...props.node, css: props.node.css + ';position:relative;left:0;top:0;' }))
 const baselines = computed(() => dentalDescendants(props.node).filter(node => node.textLines).map(node => node.id))
 </script>
 <template>
-  <div class="dental-source-canvas" :style="{ height: `${(height ?? node.height) * scale}px` }">
-    <div class="dental-source-canvas__inner" :style="{ width: `${node.width}px`, height: `${height ?? node.height}px`, transform: `translateX(-50%) scale(${scale})` }">
-      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" :baseline-scale="scale" preserve-text-lines @activate="(action, event) => emit('activate', action, event)">
+  <div class="dental-source-canvas" :style="{ height: `${renderHeight * scale}px` }">
+    <div class="dental-source-canvas__inner" :style="{ width: `${node.width}px`, height: `${renderHeight}px`, transform: `translateX(-50%) scale(${scale})` }">
+      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" :baseline-scale="scale" preserve-text-lines @layout="height=>{localizedHeight=height;emit('layout',height)}" @activate="(action, event) => emit('activate', action, event)">
         <template #after="data"><slot name="after" v-bind="data" /></template>
       </HomeSourceNode>
     </div>

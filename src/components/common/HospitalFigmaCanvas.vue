@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
+import { computed, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceNodeData, type HomeSourceAction } from './HomeSourceNode.vue'
 import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
@@ -13,6 +16,8 @@ const props=defineProps<{
 const emit=defineEmits<{activate:[action:string,event:MouseEvent]}>()
 const root=computed(()=>sourceAtOrigin(props.node))
 const scale=computed(()=>props.phone?1:Math.min(1,props.width/(props.node.width || 1440)))
+const localizedHeight=ref(0)
+const renderHeight=computed(()=>Math.max(props.height??props.node.height,localizedHeight.value))
 const sourceStyles=computed(()=>({ ...(!props.phone ? figmaFullBleedStyles(props.node,props.width,props.fullBleed||[]) : {}),...props.styles }))
 const baselineNodes=computed(()=>{
   const result:string[]=[]
@@ -22,9 +27,9 @@ const baselineNodes=computed(()=>{
 })
 </script>
 <template>
-  <section class="hospital-source-canvas" :class="{'is-phone':phone,'is-fluid':fluid}" :aria-label="label" :style="!fluid?{height:`${(height??node.height)*scale}px`}:undefined">
-    <div class="hospital-source-canvas__inner" :style="phone?undefined:{width:`${node.width}px`,height:`${height??node.height}px`,transform:`translateX(-50%) scale(${scale})`}">
-      <HomeSourceNode :node="root" root :fluid="fluid" :actions="actions" :styles="sourceStyles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :preserve-text-lines="width===375" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action,event)=>emit('activate',action,event)">
+  <section class="hospital-source-canvas" :class="{'is-phone':phone,'is-fluid':fluid}" :aria-label="tx(label)" :style="!fluid?{height:`${renderHeight*scale}px`}:undefined">
+    <div class="hospital-source-canvas__inner" :style="phone?undefined:{width:`${node.width}px`,height:`${renderHeight}px`,transform:`translateX(-50%) scale(${scale})`}">
+      <HomeSourceNode :node="root" root :fluid="fluid" :actions="actions" :styles="sourceStyles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :preserve-text-lines="width===375" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @layout="localizedHeight=$event" @activate="(action,event)=>emit('activate',action,event)">
         <template #after="data"><slot name="after" v-bind="data" /></template>
         <template #radar="data"><slot name="radar" v-bind="data" /></template>
       </HomeSourceNode>

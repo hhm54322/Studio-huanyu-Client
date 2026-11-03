@@ -1,0 +1,65 @@
+/* Hand-authored patient layouts use their original Chinese Figma geometry.
+   Translated copy can grow naturally without changing typography or images.
+   The absolute source renderer handles its own Auto Layout geometry separately. */
+.why-page:not(:lang(zh)) :is(.capability-section,.cost-section,.wait-section,.national-section,.stories-section,.why-cta),
+.why-page:not(:lang(zh)) :is(.capability-layout,.capability-grid,.section-title,.wait-grid,.national-grid,.story-grid),
+.why-page:not(:lang(zh)) .why-cta>div,
+.why-page:not(:lang(zh)) .why-cta>div>div { height:auto; }
+.why-page:not(:lang(zh)) :is(.why-hero,.why-hero>.hy-container) { height:auto; min-height:757px; }
+.why-page:not(:lang(zh)) .why-hero>.hy-container { padding-bottom:84px; }
+.why-page:not(:lang(zh)) :is(.why-hero h1 span:last-child,.button-label) { min-width:0; white-space:normal; overflow-wrap:anywhere; }
+.why-page:not(:lang(zh)) .button-label { flex:1 1 auto; width:auto; height:auto; }
+.why-page:not(:lang(zh)) .cost-actions { height:auto; align-items:stretch; }
+.why-page:not(:lang(zh)) :is(.why-hero button,.why-hero a,.cost-actions button,.cost-actions a,.why-cta button,.why-cta a,.national-section a) { max-width:100%; height:auto; min-height:52px; white-space:normal; }
+.why-page:not(:lang(zh)) :is(.capability-grid article,.capability-grid article.open) { height:auto; min-width:0; min-height:254px; }
+.why-page:not(:lang(zh)) .capability-grid article.open { min-height:390px; }
+.why-page:not(:lang(zh)) .saving-tags { height:auto; flex-wrap:wrap; overflow:visible; mask-image:none; }
+.why-page:not(:lang(zh)) .saving-tags span:nth-child(n) { width:auto; max-width:100%; white-space:normal; }
+.why-page:not(:lang(zh)) .comparison-chart { height:520px; }
+.why-page:not(:lang(zh)) .wait-grid { grid-template-columns:repeat(3,minmax(0,271fr)) minmax(0,331fr); }
+.why-page:not(:lang(zh)) .wait-grid article { min-width:0; max-width:100%; height:auto; min-height:232px; text-align:center; overflow-wrap:anywhere; }
+.why-page:not(:lang(zh)) .wait-grid article.highlight .wait-value { height:auto; flex-wrap:wrap; justify-content:center; white-space:normal; }
+.why-page:not(:lang(zh)) .story-grid article { height:auto; min-height:273px; }
+.why-page:not(:lang(zh)) .why-cta small { flex-wrap:wrap; }
+
+.case-page:not(:lang(zh)) :is(.case-hero__content,.case-hero__copy,.case-hero h1,.case-hero p) { max-width:100%; height:auto; white-space:normal; overflow-wrap:anywhere; }
+.case-page:not(:lang(zh)) .case-hero { height:auto; min-height:460px; padding-bottom:96px; }
+.case-page:not(:lang(zh)) :is(.case-match-button,.case-filter-submit,.case-filter-reset) { max-width:100%; height:auto; min-height:50px; }
+.case-page:not(:lang(zh)) .case-match-button { width:fit-content; }
+.case-page:not(:lang(zh)) .button-label { min-width:0; width:auto; height:auto; flex-shrink:1; white-space:normal; overflow-wrap:anywhere; }
+.case-page:not(:lang(zh)) :is(.case-card,.case-card__body,.case-summary) { height:auto; }
+.case-page:not(:lang(zh)) .case-identity { width:auto; min-width:0; flex:1; }
+.case-page:not(:lang(zh)) .case-grid header p { width:auto; height:auto; white-space:normal; }
+.case-page:not(:lang(zh)) .case-grid header>.case-recommendation { width:auto; max-width:calc(100% - 48px); height:auto; overflow-wrap:anywhere; }
+.case-page:not(:lang(zh)) .case-card__body dl>div { flex-wrap:wrap; column-gap:8px; }
+.case-page:not(:lang(zh)) .case-card__body :is(dt,dd) { max-width:100%; overflow-wrap:anywhere; }
+.matcher-dialog:not(:lang(zh)) :is(legend>span,.matcher-option-label,.matcher-submit-label) { width:auto; max-width:100%; height:auto; min-width:0; white-space:normal; overflow-wrap:anywhere; }
+.matcher-dialog:not(:lang(zh)) .matcher-options button { padding:12px 8px; }
+.matcher-dialog:not(:lang(zh)) :is(.matcher-options button,footer button) { max-width:100%; height:auto; min-height:48px; }
+
+.about-page:not(:lang(zh)) .about-hero h1 { max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+.about-page:not(:lang(zh)) :is(.network-stats,.network-cards,.complex-grid,.matching-grid) { height:auto; grid-auto-rows:minmax(248px,auto); }
+.about-page:not(:lang(zh)) .network-stats { grid-auto-rows:auto; }
+.about-page:not(:lang(zh)) :is(.network-card,.matching-card) { height:auto; }
+.about-page:not(:lang(zh)) :is(.about-primary-button,.complex-detail-path span) { max-width:100%; height:auto; white-space:normal; overflow-wrap:anywhere; }
+.complex-detail-modal:not(:lang(zh)) .complex-detail-path span { max-width:100%; white-space:normal; }
+
+.insurance-page:not(:lang(zh)) :is(.insurance-scenarios,.insurance-steps,.insurance-paths,.insurance-compare,.insurance-partners,.insurance-faq,.insurance-cta) { height:auto; }
+.insurance-page:not(:lang(zh)) .insurance-hero { height:auto; min-height:757px; }
+.insurance-page:not(:lang(zh)) :is(.insurance-scenario-grid article,.insurance-path-grid article) { height:auto; min-height:302px; }
+.insurance-page:not(:lang(zh)) .insurance-path-grid header { flex-direction:column-reverse; align-items:flex-start; }
+.insurance-page:not(:lang(zh)) .insurance-path-grid header>span { position:static; max-width:100%; height:auto; white-space:normal; overflow-wrap:anywhere; }
+.insurance-page:not(:lang(zh)) .insurance-path-grid header>div { min-width:0; width:100%; }
+.insurance-page:not(:lang(zh)) :is(.insurance-primary,.insurance-secondary) { height:auto; }
+.insurance-page:not(:lang(zh)) :is(.insurance-faq-list p,.insurance-assessment-method) { max-width:100%; overflow-wrap:anywhere; }
+
+@media(max-width:900px) {
+  .why-page:not(:lang(zh)) .wait-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .why-page:not(:lang(zh)) .comparison-chart { height:680px; }
+}
+@media(max-width:700px) {
+  .why-page:not(:lang(zh)) :is(.why-hero,.why-hero>.hy-container) { min-height:680px; }
+  .why-page:not(:lang(zh)) .wait-grid { grid-template-columns:minmax(0,1fr); }
+  .why-page:not(:lang(zh)) .wait-grid article { min-height:190px; }
+  .why-page:not(:lang(zh)) .story-grid article { min-height:0; }
+}

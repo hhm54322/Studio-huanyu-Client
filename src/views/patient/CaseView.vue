@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx, tf, localized } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import { Check, Search } from 'lucide-vue-next'
 import CountUpNumber from '@/components/common/CountUpNumber.vue'
@@ -21,7 +24,8 @@ interface StoryCase {
   title: string
   background: string
   path: string
-  timing: string
+  timingLabel: string
+  timingValue: string
   image: string
   objectPosition: string
   recommended?: boolean
@@ -38,7 +42,8 @@ const storyCases: StoryCase[] = [
     title: '消化系统疑难疾病',
     background: '40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断',
     path: '远程会诊-到院检查-MDT讨论-制定方案',
-    timing: '咨询到首诊：约 7 天 · 广州',
+    timingLabel: '咨询到首诊：',
+    timingValue: '约 7 天 · 广州',
     image: caseSource.cards[0]!.avatar.src,
     objectPosition: '50% 50%',
   },
@@ -52,7 +57,8 @@ const storyCases: StoryCase[] = [
     title: '脊柱复杂病变',
     background: '50+岁，男性，颈椎病变面临神经压迫风险，多地评估手术风险较高',
     path: '国际转诊-影像评估-手术方案-术后康复',
-    timing: '咨询到手术：约 14 天 · 广州',
+    timingLabel: '咨询到手术：',
+    timingValue: '约 14 天 · 广州',
     image: caseSource.cards[1]!.avatar.src,
     objectPosition: '50% 50%',
     recommended: true,
@@ -197,11 +203,11 @@ onBeforeUnmount(() => {
       <div class="case-hero__shape" aria-hidden="true" />
       <div class="hy-container case-hero__content" data-reveal>
         <div class="case-hero__copy">
-        <h1>患者真实就医经历</h1>
-        <p>按科室、来源地区、治疗类型筛选了解国际患者从咨询到康复的完整路径</p>
+        <h1>{{ tx("患者真实就医经历") }}</h1>
+        <p>{{ tx("按科室、来源地区、治疗类型筛选了解国际患者从咨询到康复的完整路径") }}</p>
         <button class="case-match-button" type="button" @click="openMatcher">
           <img :src="sourceIcon(190, 5324)" alt="" />
-          <span class="button-label">开始智能匹配</span>
+          <span class="button-label">{{ tx("开始智能匹配") }}</span>
         </button>
         </div>
       </div>
@@ -209,48 +215,48 @@ onBeforeUnmount(() => {
 
     <section id="case-results" class="case-directory hy-section">
       <div class="hy-container">
-        <form class="case-filters" aria-label="患者案例筛选" @submit.prevent="applyFilters">
+        <form class="case-filters" :aria-label="tx('患者案例筛选')" @submit.prevent="applyFilters">
           <label>
-            <span>科室/病种</span>
+            <span>{{ tx("科室/病种") }}</span>
             <select v-model="draftFilters.specialty">
-              <option value="">科室/病种</option>
-              <option v-for="item in filterOptions.specialty" :key="item" :value="item">{{ item }}</option>
+              <option value="">{{ tx("科室/病种") }}</option>
+              <option v-for="item in filterOptions.specialty" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
             <span class="filter-arrow"><img :src="sourceIcon(221, 6196)" alt="" /></span>
           </label>
           <label>
-            <span>来源地区</span>
+            <span>{{ tx("来源地区") }}</span>
             <select v-model="draftFilters.region">
-              <option value="">来源地区</option>
-              <option v-for="item in filterOptions.region" :key="item" :value="item">{{ item }}</option>
+              <option value="">{{ tx("来源地区") }}</option>
+              <option v-for="item in filterOptions.region" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
             <span class="filter-arrow"><img :src="sourceIcon(221, 6201)" alt="" /></span>
           </label>
           <label>
-            <span>治疗类型</span>
+            <span>{{ tx("治疗类型") }}</span>
             <select v-model="draftFilters.treatment">
-              <option value="">治疗类型</option>
-              <option v-for="item in filterOptions.treatment" :key="item" :value="item">{{ item }}</option>
+              <option value="">{{ tx("治疗类型") }}</option>
+              <option v-for="item in filterOptions.treatment" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
             <span class="filter-arrow"><img :src="sourceIcon(221, 6206)" alt="" /></span>
           </label>
           <label>
-            <span>就诊时长</span>
+            <span>{{ tx("就诊时长") }}</span>
             <select v-model="draftFilters.duration">
-              <option value="">就诊时长</option>
-              <option v-for="item in filterOptions.duration" :key="item" :value="item">{{ item }}</option>
+              <option value="">{{ tx("就诊时长") }}</option>
+              <option v-for="item in filterOptions.duration" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
             <span class="filter-arrow"><img :src="sourceIcon(221, 6211)" alt="" /></span>
           </label>
-          <button class="case-filter-submit" type="submit"><img :src="sourceIcon(221, 6214)" alt="" /><span class="button-label">筛选</span></button>
-          <button class="case-filter-reset" type="button" @click="resetFilters"><img :src="sourceIcon(221, 6218)" alt="" /><span class="button-label">重置</span></button>
+          <button class="case-filter-submit" type="submit"><img :src="sourceIcon(221, 6214)" alt="" /><span class="button-label">{{ tx("筛选") }}</span></button>
+          <button class="case-filter-reset" type="button" @click="resetFilters"><img :src="sourceIcon(221, 6218)" alt="" /><span class="button-label">{{ tx("重置") }}</span></button>
         </form>
 
         <Transition name="match-note">
           <div v-if="matchApplied" class="case-match-note" role="status">
             <Check class="h-5 w-5" />
-            <span>已根据“{{ matcher.focus }}”{{ matcher.age ? `、${matcher.age}岁` : '' }}{{ matcher.timing ? `、${matcher.timing}` : '' }}为你优先展示相似案例。</span>
-            <button type="button" @click="openMatcher">重新匹配</button>
+            <span>{{ tf('已根据“{focus}”{age}{timing}为你优先展示相似案例。', { focus:tx(matcher.focus),age:matcher.age ? tf('、{age}岁',{age:matcher.age}) : '',timing:matcher.timing ? (localized ? ', ' : '、')+tx(matcher.timing) : '' }) }}</span>
+            <button type="button" @click="openMatcher">{{ tx("重新匹配") }}</button>
           </div>
         </Transition>
 
@@ -265,20 +271,20 @@ onBeforeUnmount(() => {
           >
             <header>
               <div class="case-avatar">
-                <img :src="item.image" :alt="`${item.name} 匿名患者头像`" :style="avatarStyle(item.id)" />
+                <img :src="item.image" :alt="tx(`${item.name} 匿名患者头像`)" :style="avatarStyle(item.id)" />
               </div>
               <div class="case-identity">
-                <h2>{{ item.name }}</h2>
-                <p>{{ item.region }} · {{ item.specialty }} · {{ item.treatment }}</p>
+                <h2>{{ tx(item.name) }}</h2>
+                <p>{{ tx(item.region) }} · {{ tx(item.specialty) }} · {{ tx(item.treatment) }}</p>
               </div>
-              <span v-if="item.recommended" class="case-recommendation">为您推荐</span>
+              <span v-if="item.recommended" class="case-recommendation">{{ tx("为您推荐") }}</span>
             </header>
             <div class="case-card__body">
-              <h3>{{ item.title }}</h3>
+              <h3>{{ tx(item.title) }}</h3>
               <dl>
-                <div><dt>患者背景：</dt><dd>{{ item.background }}</dd></div>
-                <div><dt>诊疗路径：</dt><dd>{{ item.path }}</dd></div>
-                <div><dt>{{ item.timing.split('：')[0] }}：</dt><dd>{{ item.timing.split('：')[1] }}</dd></div>
+                <div><dt>{{ tx("患者背景：") }}</dt><dd>{{ tx(item.background) }}</dd></div>
+                <div><dt>{{ tx("诊疗路径：") }}</dt><dd>{{ tx(item.path) }}</dd></div>
+                <div><dt>{{ tx(item.timingLabel) }}</dt><dd>{{ tx(item.timingValue) }}</dd></div>
               </dl>
             </div>
           </article>
@@ -286,17 +292,17 @@ onBeforeUnmount(() => {
 
         <div v-else class="case-empty">
           <Search class="h-7 w-7" />
-          <h2>暂未找到完全匹配的案例</h2>
-          <p>调整筛选条件，或使用智能匹配获取更接近的参考路径。</p>
-          <button type="button" @click="resetFilters">查看全部案例</button>
+          <h2>{{ tx("暂未找到完全匹配的案例") }}</h2>
+          <p>{{ tx("调整筛选条件，或使用智能匹配获取更接近的参考路径。") }}</p>
+          <button type="button" @click="resetFilters">{{ tx("查看全部案例") }}</button>
         </div>
       </div>
     </section>
 
-    <section class="case-summary" aria-label="服务数据">
+    <section class="case-summary" :aria-label="tx('服务数据')">
       <div class="hy-container">
         <div v-for="metric in caseSource.metrics" :key="metric.nodeId" class="summary-metric">
-          <CountUpNumber :value="metric.value" /><span>{{ metric.label }}</span>
+          <CountUpNumber :value="metric.value" /><span>{{ tx(metric.label) }}</span>
         </div>
         <i v-for="index in 3" :key="index" class="summary-divider" aria-hidden="true" />
       </div>
@@ -308,15 +314,15 @@ onBeforeUnmount(() => {
           <section ref="matcherDialog" class="matcher-dialog" role="dialog" aria-modal="true" aria-labelledby="matcher-title">
             <header>
               <div>
-                <h2 id="matcher-title">智能匹配</h2>
+                <h2 id="matcher-title">{{ tx("智能匹配") }}</h2>
               </div>
-              <button ref="closeButton" type="button" aria-label="关闭智能匹配" @click="closeMatcher"><img src="/images/figma/smart-match-close.svg" alt="" /></button>
+              <button ref="closeButton" type="button" :aria-label="tx('关闭智能匹配')" @click="closeMatcher"><img src="/images/figma/smart-match-close.svg" alt="" /></button>
             </header>
 
             <div class="matcher-dialog__body">
               <fieldset>
-                  <legend><b>1</b><span>您主要关注哪类健康问题? <em>*</em></span></legend>
-                <p>选择大类即可，无需填写具体病情</p>
+                  <legend><b>1</b><span>{{ tx("您主要关注哪类健康问题? ") }}<em>*</em></span></legend>
+                <p>{{ tx("选择大类即可，无需填写具体病情") }}</p>
                 <div class="matcher-options matcher-options--wide">
                   <button
                     v-for="item in ['肿瘤科', '心血管', '骨科', '生殖医学', '消化系统', '体检筛查', '牙科', '其他']"
@@ -325,13 +331,13 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.focus === item }"
                     :aria-pressed="matcher.focus === item"
                     @click="matcher.focus = item"
-                  ><span class="matcher-option-label">{{ item }}</span></button>
+                  ><span class="matcher-option-label">{{ tx(item) }}</span></button>
                 </div>
               </fieldset>
 
               <fieldset>
-                <legend><b>2</b><span>方便分享一下年龄吗？</span></legend>
-                <p>仅用于匹配相似案例，不作为健康判断依据</p>
+                <legend><b>2</b><span>{{ tx("方便分享一下年龄吗？") }}</span></legend>
+                <p>{{ tx("仅用于匹配相似案例，不作为健康判断依据") }}</p>
                 <div class="matcher-options">
                   <button
                     v-for="item in ['18-30', '31-45', '46-60', '60+']"
@@ -340,13 +346,13 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.age === item }"
                     :aria-pressed="matcher.age === item"
                     @click="matcher.age = item"
-                  ><span class="matcher-option-label">{{ item }}</span></button>
+                  ><span class="matcher-option-label">{{ tx(item) }}</span></button>
                 </div>
               </fieldset>
 
               <fieldset>
-                  <legend><b>2</b><span>您计划在哪个时间段就医?</span></legend>
-                <p>选择您方便就诊的时段，便于我们提前为您安排与准备</p>
+                  <legend><b>2</b><span>{{ tx("您计划在哪个时间段就医?") }}</span></legend>
+                <p>{{ tx("选择您方便就诊的时段，便于我们提前为您安排与准备") }}</p>
                 <div class="matcher-options">
                   <button
                     v-for="item in ['1个月内', '1-3个月', '3-6个月', '暂未确定']"
@@ -355,14 +361,14 @@ onBeforeUnmount(() => {
                     :class="{ active: matcher.timing === item }"
                     :aria-pressed="matcher.timing === item"
                     @click="matcher.timing = item"
-                  ><span class="matcher-option-label">{{ item }}</span></button>
+                  ><span class="matcher-option-label">{{ tx(item) }}</span></button>
                 </div>
               </fieldset>
             </div>
 
             <footer>
               <button type="button" :disabled="!canMatch" @click="submitMatch">
-                <span class="matcher-submit-label">为我推荐相似病例</span><img src="/images/figma/smart-match-arrow.svg" alt="" />
+                <span class="matcher-submit-label">{{ tx("为我推荐相似病例") }}</span><img src="/images/figma/smart-match-arrow.svg" alt="" />
               </button>
             </footer>
           </section>

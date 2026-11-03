@@ -1,6 +1,12 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+export const patientNavigationTranslationKeys: Record<string, string> = {
+  首页:'home', 为什么选择中国:'whyChina', 信任与常见问题:'trust', 医疗服务:'services', 牙科:'dental',
+  中国医院:'hospitals', 中国医生:'doctors', 患者案例:'cases', 保险指南:'insurance', 关于我们:'about',
+  健康体检:'checkup', 专科诊疗:'specialty', 中医康养:'traditional', 细胞治疗:'cell', 问阿宁:'ask',
+}
+
 export const patientNavigationItems = [
   { label: '首页', path: '/' },
   { label: '为什么选择中国', path: '/why-china' },

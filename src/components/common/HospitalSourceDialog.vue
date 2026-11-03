@@ -4,11 +4,15 @@ import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData as Sourc
 import { hospitalSources, hospitalNode, hospitalText, descendants, hospitalCards, hospitalRecord } from '@/data/hospitalFigmaSource'
 import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { loadHospitalTab } from '@/data/hospitalFigmaDetails'
+import { useSiteCopy } from '@/i18n/siteCopy'
 
 const HospitalRadar = defineAsyncComponent(() => import('./HospitalRadar.vue'))
 
 const props=defineProps<{hospitalName:string}>()
 const emit=defineEmits<{close:[];consultation:[]}>()
+const { localized } = useSiteCopy()
+const localizedFooterHeight=ref(0)
+const localizedContentHeight=ref(0)
 const width=ref(typeof window==='undefined'?1440:window.innerWidth)
 const height=ref(typeof window==='undefined'?900:window.innerHeight)
 const phone=computed(()=>width.value<=700)
@@ -35,7 +39,13 @@ const model=computed(()=>{
 const panelWidth=computed(()=>phone.value?width.value-32:Math.min(model.value.width,width.value-48))
 const desktopScale=computed(()=>phone.value||!yaoying.value?1:panelWidth.value/model.value.width)
 const panelHeight=computed(()=>Math.min(phone.value?640:650,(height.value-32)/desktopScale.value))
-const tabTop=computed(()=>model.value.tabs?model.value.body.y+model.value.tabs.y:Infinity)
+const footerHeight=computed(()=>localized.value?Math.max(model.value.cta.height,localizedFooterHeight.value):model.value.cta.height)
+function contentOffset(id:string) {
+  void localizedContentHeight.value
+  const element=scroller.value?.querySelector<HTMLElement>(`[data-figma-node="${id}"]`)
+  return element&&scroller.value?(element.getBoundingClientRect().top-scroller.value.getBoundingClientRect().top)/desktopScale.value+scroller.value.scrollTop:undefined
+}
+const tabTop=computed(()=>model.value.tabs?(localized.value?contentOffset(model.value.tabs.id):undefined)??model.value.body.y+model.value.tabs.y:Infinity)
 const stuck=computed(()=>scrollTop.value>=tabTop.value-(phone.value?model.value.hero.height:0))
 const showFloatingClose=computed(()=>!phone.value&&scrollTop.value>model.value.hero.height-40)
 const showIntroSummary=computed(()=>yaoying.value&&!phone.value&&activeTab.value===0&&!overviewEntered.value)
@@ -222,7 +232,7 @@ onMounted(async()=>{
   trigger=document.activeElement instanceof HTMLElement?document.activeElement:null;savedY=scrollY;oldOverflow=document.body.style.overflow
   document.body.style.overflow='hidden';window.addEventListener('resize',resize,{passive:true})
   dialog.value?.showModal();await nextTick()
-  dialog.value?.querySelector<HTMLElement>('[aria-label="关闭医院详情"]')?.focus({preventScroll:true})
+  dialog.value?.querySelector<HTMLElement>('[data-source-action="close"]')?.focus({preventScroll:true})
 })
 onBeforeUnmount(()=>{
   disposed=true;tabRequest++
@@ -236,8 +246,8 @@ onBeforeUnmount(()=>{
     <dialog ref="dialog" class="hospital-dialog" :class="{'is-phone':phone,'is-fluid':fluid,'is-generic':!yaoying}" aria-labelledby="hospital-detail-title" @cancel.prevent="emit('close')" @click="outside" @keydown="keydown">
       <div class="hospital-dialog__position" :style="{width:`${panelWidth}px`,height:`${panelHeight*desktopScale}px`}">
         <section class="hospital-dialog__panel" :data-hospital-panel="model.panel.id" :style="{width:`${phone?panelWidth:model.width}px`,height:`${panelHeight}px`,transform:`scale(${desktopScale})`}">
-          <div ref="scroller" class="hospital-dialog__scroll" :aria-busy="loadingTab" :style="{height:`${panelHeight-model.cta.height}px`}" @scroll="onScroll">
-            <HomeSourceNode :node="rootNode" root :fluid="fluid||!phone&&!yaoying" :actions="actions" :styles="nodeStyles" :texts="genericData" :hidden="hidden" :attributes="attributes" :baseline-nodes="baselineNodes" :preserve-text-lines="!fluid&&(phone||yaoying)" @activate="activate">
+          <div ref="scroller" class="hospital-dialog__scroll" :aria-busy="loadingTab" :style="{height:`${panelHeight-footerHeight}px`}" @scroll="onScroll">
+            <HomeSourceNode :node="rootNode" root :fluid="fluid||!phone&&!yaoying" :actions="actions" :styles="nodeStyles" :texts="genericData" :hidden="hidden" :attributes="attributes" :baseline-nodes="baselineNodes" :preserve-text-lines="!fluid&&(phone||yaoying)" @layout="localizedContentHeight=$event" @activate="activate">
               <template #radar><HospitalRadar :phone="phone" /></template>
             </HomeSourceNode>
             <div v-if="showIntroSummary" class="hospital-dialog__summary" :style="{left:'24px',top:'462.59375px'}">
@@ -250,8 +260,8 @@ onBeforeUnmount(()=>{
           <div v-if="showFloatingClose" class="hospital-dialog__floating-close">
             <HomeSourceNode :node="hospitalNode('1487:121')" :actions="actions" @activate="activate" />
           </div>
-          <footer class="hospital-dialog__cta" :style="{height:`${model.cta.height}px`}">
-            <HomeSourceNode :node="footerNode" root :fluid="fluid||!phone&&!yaoying" :actions="actions" :styles="nodeStyles" @activate="activate" />
+          <footer class="hospital-dialog__cta" :style="{height:`${footerHeight}px`}">
+            <HomeSourceNode :node="footerNode" root :fluid="fluid||!phone&&!yaoying" :actions="actions" :styles="nodeStyles" @layout="localizedFooterHeight=$event" @activate="activate" />
           </footer>
         </section>
       </div>

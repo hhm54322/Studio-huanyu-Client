@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, ref } from 'vue'
 import HomeFigmaSection from './HomeFigmaSection.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
@@ -46,19 +49,19 @@ function handleKey(event: KeyboardEvent) {
 </script>
 
 <template>
-  <div ref="root" class="home-patient-stories" role="region" aria-roledescription="轮播" aria-label="患者故事" :data-story-state="activeIndex + 1" @keydown="handleKey">
-    <HomeFigmaSection desktop-id="1412:5853" mobile-id="1528:360" label="患者故事 · 真实见证" :actions="actions" :attributes="attributes" :styles="styles" defer-render @activate="activate">
+  <div ref="root" class="home-patient-stories" role="region" :aria-roledescription="tx('轮播')" :aria-label="tx('患者故事')" :data-story-state="activeIndex + 1" @keydown="handleKey">
+    <HomeFigmaSection desktop-id="1412:5853" mobile-id="1528:360" :label="tx('患者故事 · 真实见证')" :actions="actions" :attributes="attributes" :styles="styles" defer-render @activate="activate">
       <template #after="{ node }">
         <template v-if="node.id === '1466:843'">
-          <div ref="photoViewport" class="home-patient-stories__photos" aria-label="患者照片">
-            <div v-for="(photo,index) in photos" :key="photo.id" class="home-patient-stories__photo" :class="{'is-active':index === activeIndex}" :aria-hidden="index !== activeIndex" :data-story-photo="index + 1" role="img" :aria-label="`Michael W. 的第${index + 1}张就医照片`">
+          <div ref="photoViewport" class="home-patient-stories__photos" :aria-label="tx('患者照片')">
+            <div v-for="(photo,index) in photos" :key="photo.id" class="home-patient-stories__photo" :class="{'is-active':index === activeIndex}" :aria-hidden="index !== activeIndex" :data-story-photo="index + 1" role="img" :aria-label="tx(`Michael W. 的第${index + 1}张就医照片`)">
               <HomeSourceNode :node="photo" root :replica="index === 0" defer-images />
             </div>
           </div>
         </template>
       </template>
     </HomeFigmaSection>
-    <button class="home-patient-stories__pause" type="button" :aria-pressed="paused" @click="togglePause">{{ paused ? '播放患者照片' : '暂停患者照片' }}</button>
+    <button class="home-patient-stories__pause" type="button" :aria-pressed="paused" @click="togglePause">{{ tx(paused ? '播放患者照片' : '暂停患者照片') }}</button>
   </div>
 </template>
 

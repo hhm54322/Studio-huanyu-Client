@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx, tf } = useSiteCopy()
+
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { getDentalFlowSession, saveDentalFlowSession } from '@/data/dentalFlowSession'
 import {
   ArrowRight,
   CheckCircle2,
@@ -19,6 +24,9 @@ import { dentalPhysicians as dentalCurrentDoctors, dentalPhysicianTitleMatches }
 import { displayDentalExperience } from '@/data/dentalPhysicianPresentation'
 import { createDentalAssessment, getSubmissionErrorMessage } from '@/services/patientSubmissions'
 import { dentalSourceDialog } from '@/components/common/dentalSourceDialog'
+import { useWhatsAppTopic } from '@/composables/useWhatsAppContact'
+const route=useRoute(), router=useRouter()
+const savedFlow=getDentalFlowSession()
 const DentalDesktopFlow=defineAsyncComponent(()=>import('@/components/common/DentalDesktopFlow.vue'))
 const desktopDoctors=ref(typeof window!=='undefined'&&window.innerWidth>700)
 const desktopWidth=ref(typeof window!=='undefined'?window.innerWidth:1440)
@@ -89,6 +97,13 @@ const projects: DentalProject[] = [
   { id: 'children', title: '儿童齿科', price: '¥200 起', copy: '涂氟/窝沟封闭/早期矫正', image: '/images/hospital-sh.jpg', icon: '/images/figma/dental-source/icon-children.svg', detail: '围绕儿童龋齿预防、早期咬合干预和舒适化就诊设计。', duration: '按治疗计划', suitable: '儿童口腔保健及早期矫正需求' },
 ]
 
+// Translate the complete price so languages can put “from” before the amount,
+// while keeping the source amount's emphasis and its actual currency.
+function pricePresentation(price:string) {
+  const value=tx(price), amount=price.match(/^¥[\d,]+/)?.[0]||'', index=value.indexOf(amount)
+  return amount&&index>=0 ? {before:value.slice(0,index),amount,after:value.slice(index+amount.length)} : {before:'',amount:value,after:''}
+}
+
 function detailBeforeEnter(element: Element) {
   const panel = element as HTMLElement
   panel.style.height = '0px'
@@ -125,27 +140,39 @@ const doctors: DentalDoctor[] = [
   { id: 1, name: '吴一龙', title: '终身首席教授', hospital: '广东省人民医院', city: '广州', experience: '18年经验', languages: ['中文', 'English'], background: '公立三甲 · 国际医疗部', specialty: '牙齿硬组织修复与牙髓治疗，擅长显微根管治疗、补牙', rating: '4.9', cases: '1,200+', portrait: '/images/figma/expert-wu-yilong-avatar.png', tags: ['显微根管', '舒适化治疗'], startingPrice: 12000 },
 ]
 
-const activeStep = ref<DentalStep>(1)
-const selectedProjectId = ref('whitening')
-const expandedProjectIds = ref<Set<string>>(new Set(['implant']))
+const activeStep = ref<DentalStep>(route.query.step==='3'?3:route.query.step==='2'?2:savedFlow?.step||1)
+const selectedProjectId = ref(typeof route.query.project==='string'?route.query.project:savedFlow?.project||'whitening')
+useWhatsAppTopic(selectedProjectId)
+const expandedProjectIds = ref<Set<string>>(new Set(savedFlow?.expanded||['implant']))
 const filters = ref({ city: '', title: '', experience: '', background: '', language: '', price: '' })
-const appliedFilters = ref({ ...filters.value })
-const sortMode = ref<'recommended' | 'experience' | 'cases' | 'rating' | 'price'>('recommended')
+if(savedFlow)filters.value={...savedFlow.filters}
+const appliedFilters = ref({ ...(savedFlow?.appliedFilters||filters.value) })
+const sortMode = ref<'recommended' | 'experience' | 'cases' | 'rating' | 'price'>(savedFlow?.sort||'recommended')
 const selectedDoctor = ref<DentalDoctor | null>(null)
 const desktopDoctorTab=ref(0)
 const institutionOpen=ref(false)
 const institutionDoctorId=ref<number|null>(null)
-const quoteDoctorId=ref<number|null>(null)
+const requestedDoctorId=dentalCurrentDoctors.find(doctor=>doctor.slug===route.query.doctor)?.id
+const quoteChanged=Boolean(savedFlow&&requestedDoctorId!==undefined&&requestedDoctorId!==savedFlow.quoteDoctorId)
+const quoteDoctorId=ref<number|null>(requestedDoctorId??savedFlow?.quoteDoctorId??null)
 const doctorTab = ref<'profile' | 'cases' | 'reviews'>('profile')
 const modalCloseButton = ref<HTMLButtonElement | null>(null)
-const uploadFiles = ref<File[]>([])
-const uploadStatus = ref<'idle' | 'ready' | 'submitting' | 'success' | 'error'>('idle')
-const submitted = ref(false)
+const uploadFiles = ref<File[]>(savedFlow?.files||[])
+const uploadStatus = ref<'idle' | 'ready' | 'submitting' | 'success' | 'error'>(savedFlow?.submitted&&!quoteChanged?'success':uploadFiles.value.length?'ready':'idle')
+const submitted = ref(Boolean(savedFlow?.submitted&&!quoteChanged))
 const submitError = ref('')
-const form = ref({ notes: '', visitTime: '', budget: '' })
+const form = ref(savedFlow?.form||{ notes: '', visitTime: '', budget: '' })
 const modalTrigger = ref<HTMLButtonElement | null>(null)
 const modalPanel = ref<HTMLElement | null>(null)
-let assessmentRequestId = crypto.randomUUID()
+let assessmentRequestId = !quoteChanged&&savedFlow?.requestId||crypto.randomUUID()
+// Returning from details preserves a completed request. Changing the doctor
+// or its submitted input starts a new request rather than reusing its ID.
+watch(() => [quoteDoctorId.value,selectedProjectId.value,...Object.values(form.value)], () => {
+  assessmentRequestId=crypto.randomUUID()
+  submitted.value=false
+  submitError.value=''
+  uploadStatus.value=uploadFiles.value.length?'ready':'idle'
+})
 
 const filteredDoctors = computed(() => {
   const filtered = (desktopDoctors.value?dentalCurrentDoctors:doctors).filter((doctor) => {
@@ -209,7 +236,12 @@ function applyFilters() {
   appliedFilters.value = { ...filters.value }
 }
 
-function openDoctor(doctor: DentalDoctor) {
+function openDoctor(doctor: DentalDoctor, tab='profile') {
+  if(desktopDoctors.value){
+    const selected=dentalCurrentDoctors.find(item=>item.id===doctor.id)!
+    void router.push({path:`/dental/doctors/${selected.slug}`,query:{tab,project:selectedProjectId.value}})
+    return
+  }
   modalTrigger.value = document.activeElement instanceof HTMLButtonElement ? document.activeElement : null
   selectedDoctor.value = doctor
   doctorTab.value = 'profile'
@@ -296,30 +328,31 @@ watch(selectedDoctor, async (doctor) => {
 })
 
 onBeforeUnmount(() => {
+  saveDentalFlowSession({step:activeStep.value,project:selectedProjectId.value,expanded:[...expandedProjectIds.value],filters:{...filters.value},appliedFilters:{...appliedFilters.value},sort:sortMode.value,files:uploadFiles.value,form:{...form.value},quoteDoctorId:quoteDoctorId.value,requestId:assessmentRequestId,submitted:submitted.value})
   document.body.style.overflow = ''
   window.removeEventListener('keydown', handleKeydown)
 })
 </script>
 
 <template>
-  <span v-if="loadingStep" class="dental-step-loading" role="status" aria-live="polite">正在准备下一步…</span>
-  <div v-if="failedStep" class="dental-step-error" role="alert">下一步暂时未能加载，请重试。<button type="button" @click="desktopDoctors ? setStep(failedStep) : updateDoctorViewport()">重新加载</button></div>
-  <DentalDesktopFlow v-if="desktopDoctors" :aria-busy="Boolean(loadingStep)" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>{openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!);desktopDoctorTab=2}" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
+  <span v-if="loadingStep" class="dental-step-loading" role="status" aria-live="polite">{{ tx("正在准备下一步…") }}</span>
+  <div v-if="failedStep" class="dental-step-error" role="alert">{{ tx("下一步暂时未能加载，请重试。") }}<button type="button" @click="desktopDoctors ? setStep(failedStep) : updateDoctorViewport()">{{ tx("重新加载") }}</button></div>
+  <DentalDesktopFlow v-if="desktopDoctors" :aria-busy="Boolean(loadingStep)" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!,'cases')" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
   <div v-else class="dental-page" :class="`dental-page--step-${activeStep}`">
     <section class="dental-hero" :class="`dental-hero--step-${activeStep}`">
       <div class="dental-hero__backdrop" />
       <div class="hy-container dental-hero__content" data-reveal>
-        <h1>匹配城市与医生<br />获取个性化治疗方案</h1>
-        <p>种植牙、牙齿美白、牙齿贴面、正畸、修复一一先了解项目，再自主选择城市与医生，最后获取书面报价</p>
+        <h1>{{ tx("匹配城市与医生") }}<br />{{ tx("获取个性化治疗方案") }}</h1>
+        <p>{{ tx("种植牙、牙齿美白、牙齿贴面、正畸、修复一一先了解项目，再自主选择城市与医生，最后获取书面报价") }}</p>
       </div>
     </section>
 
-    <section class="dental-steps" aria-label="牙科服务流程">
+    <section class="dental-steps" :aria-label="tx('牙科服务流程')">
       <div class="hy-container dental-steps__inner">
         <template v-for="step in ([1, 2, 3] as DentalStep[])" :key="step">
           <button type="button" :class="{ active: activeStep === step }" @click="setStep(step)">
-            <span>0{{ step }}</span>
-            <strong>{{ step === 1 ? '选择牙科项目' : step === 2 ? '城市与医生匹配' : '上传影像资料' }}</strong>
+            <span>0{{ tx(step) }}</span>
+            <strong>{{ tx(step === 1 ? '选择牙科项目' : step === 2 ? '城市与医生匹配' : '上传影像资料') }}</strong>
           </button>
           <i v-if="step < 3" class="dental-step-connector" aria-hidden="true" />
         </template>
@@ -329,69 +362,69 @@ onBeforeUnmount(() => {
     <main class="dental-workspace">
       <section v-if="activeStep === 1" class="dental-section dental-projects hy-container">
         <div class="dental-section__heading">
-          <div><span class="hy-kicker">01 · DENTAL SERVICES</span><h2>选择适合你的牙科项目</h2><p>固定示例价格用于方案预览，最终费用以医院检查和书面报价为准。</p></div>
-          <span class="dental-section__counter">{{ projects.length }} 个项目</span>
+          <div><span class="hy-kicker">{{ tx('01 · DENTAL SERVICES') }}</span><h2>{{ tx("选择适合你的牙科项目") }}</h2><p>{{ tx("固定示例价格用于方案预览，最终费用以医院检查和书面报价为准。") }}</p></div>
+          <span class="dental-section__counter">{{ tx(projects.length) }}{{ tx(" 个项目") }}</span>
         </div>
         <div class="dental-project-grid">
           <button v-for="project in projects" :key="project.id" type="button" class="dental-project-card" :class="{ selected: selectedProjectId === project.id, expanded: isProjectExpanded(project.id) }" :aria-expanded="isProjectExpanded(project.id)" :aria-controls="`dental-project-detail-${project.id}`" @click="chooseProject(project)">
             <img class="dental-project-card__icon" :src="project.icon" alt="" aria-hidden="true" />
-            <div class="dental-project-card__content"><h3>{{ project.title }}</h3><p class="dental-project-price"><span>参考价格：</span><strong>{{ project.price.match(/^¥[\d,]+/)?.[0] }}</strong><span>{{ project.price.replace(/^¥[\d,]+/, '') }}</span></p><p>{{ project.copy }}</p><b>查看详情 <ChevronDown class="h-4 w-4" /></b><Transition name="dental-accordion" @before-enter="detailBeforeEnter" @enter="detailEnter" @after-enter="detailAfterEnter" @before-leave="detailBeforeLeave" @leave="detailLeave"><div v-if="isProjectExpanded(project.id)" class="dental-project-detail-shell"><dl :id="`dental-project-detail-${project.id}`" class="dental-project-detail"><div><dt>适用人群：</dt><dd>{{ project.suitable }}</dd></div><div><dt>治疗流程：</dt><dd>{{ project.detail }}</dd></div><div><dt>周期：</dt><dd>{{ project.duration }}</dd></div><div v-if="project.note"><dt>注意事项：</dt><dd>{{ project.note }}</dd></div></dl></div></Transition></div>
+            <div class="dental-project-card__content"><h3>{{ tx(project.title) }}</h3><p class="dental-project-price"><span>{{ tx("参考价格：") }}</span><span>{{ pricePresentation(project.price).before }}</span><strong>{{ pricePresentation(project.price).amount }}</strong><span>{{ pricePresentation(project.price).after }}</span></p><p>{{ tx(project.copy) }}</p><b>{{ tx("查看详情 ") }}<ChevronDown class="h-4 w-4" /></b><Transition name="dental-accordion" @before-enter="detailBeforeEnter" @enter="detailEnter" @after-enter="detailAfterEnter" @before-leave="detailBeforeLeave" @leave="detailLeave"><div v-if="isProjectExpanded(project.id)" class="dental-project-detail-shell"><dl :id="`dental-project-detail-${project.id}`" class="dental-project-detail"><div><dt>{{ tx("适用人群：") }}</dt><dd>{{ tx(project.suitable) }}</dd></div><div><dt>{{ tx("治疗流程：") }}</dt><dd>{{ tx(project.detail) }}</dd></div><div><dt>{{ tx("周期：") }}</dt><dd>{{ tx(project.duration) }}</dd></div><div v-if="project.note"><dt>{{ tx("注意事项：") }}</dt><dd>{{ tx(project.note) }}</dd></div></dl></div></Transition></div>
           </button>
         </div>
-        <div class="dental-project-next"><button type="button" class="dental-next-button" @click="setStep(2)">下一步 城市与医生匹配 <ArrowRight class="h-4 w-4" /></button></div>
+        <div class="dental-project-next"><button type="button" class="dental-next-button" @click="setStep(2)">{{ tx("下一步 城市与医生匹配 ") }}<ArrowRight class="h-4 w-4" /></button></div>
       </section>
 
       <section v-else-if="activeStep === 2" class="dental-section dental-doctors hy-container">
         <div class="dental-section__heading">
-          <div><span class="hy-kicker">02 · CITY & DOCTOR MATCH</span><h2>匹配城市与医生</h2><p>先筛选，再查看医生经历、语言和案例，获得更适合你的治疗方向。</p></div>
-          <span class="dental-section__counter">共 {{ filteredDoctors.length }} 位医生</span>
+          <div><span class="hy-kicker">{{ tx('02 · CITY & DOCTOR MATCH') }}</span><h2>{{ tx("匹配城市与医生") }}</h2><p>{{ tx("先筛选，再查看医生经历、语言和案例，获得更适合你的治疗方向。") }}</p></div>
+          <span class="dental-section__counter">{{ tf('共 {count} 位医生',{count:filteredDoctors.length}) }}</span>
         </div>
         <div class="dental-filter-bar" data-reveal>
-          <label><span>城市</span><select v-model="filters.city"><option value="">全部城市</option><option>上海</option><option>广州</option><option>北京</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>医生职称</span><select v-model="filters.title"><option value="">全部职称</option><option>主任医师</option><option>教授</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>经验标签</span><select v-model="filters.experience"><option value="">全部经验</option><option>10-20年</option><option>20年以上</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>机构背景</span><select v-model="filters.background"><option value="">全部机构</option><option>公立三甲</option><option>口腔修复科</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>语言能力</span><select v-model="filters.language"><option value="">全部语言</option><option>English</option><option>Русский</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>价格区间</span><select v-model="filters.price"><option value="">全部价格</option><option>¥10,000 以下</option><option>¥10,000-30,000</option></select><ChevronDown class="h-4 w-4" /></label>
-          <button type="button" class="dental-filter-submit" @click="applyFilters"><Search class="h-4 w-4" />筛选</button>
-          <button type="button" title="重置筛选" class="dental-reset" @click="resetFilters"><RotateCcw class="h-4 w-4" />重置</button>
+          <label><span>{{ tx("城市") }}</span><select v-model="filters.city"><option value="">{{ tx("全部城市") }}</option><option value="上海">{{ tx("上海") }}</option><option value="广州">{{ tx("广州") }}</option><option value="北京">{{ tx("北京") }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("医生职称") }}</span><select v-model="filters.title"><option value="">{{ tx("全部职称") }}</option><option value="主任医师">{{ tx("主任医师") }}</option><option value="教授">{{ tx("教授") }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("经验标签") }}</span><select v-model="filters.experience"><option value="">{{ tx("全部经验") }}</option><option value="10-20年">{{ tx("10-20年") }}</option><option value="20年以上">{{ tx("20年以上") }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("机构背景") }}</span><select v-model="filters.background"><option value="">{{ tx("全部机构") }}</option><option value="公立三甲">{{ tx("公立三甲") }}</option><option value="口腔修复科">{{ tx("口腔修复科") }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("语言能力") }}</span><select v-model="filters.language"><option value="">{{ tx("全部语言") }}</option><option>English</option><option>Русский</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("价格区间") }}</span><select v-model="filters.price"><option value="">{{ tx("全部价格") }}</option><option value="¥10,000 以下">{{ tx("¥10,000 以下") }}</option><option>¥10,000-30,000</option></select><ChevronDown class="h-4 w-4" /></label>
+          <button type="button" class="dental-filter-submit" @click="applyFilters"><Search class="h-4 w-4" />{{ tx("筛选") }}</button>
+          <button type="button" :title="tx('重置筛选')" class="dental-reset" @click="resetFilters"><RotateCcw class="h-4 w-4" />{{ tx("重置") }}</button>
         </div>
-        <div class="dental-sort-row" aria-label="医生排序"><button type="button" :class="{ active: sortMode === 'recommended' }" @click="sortMode = 'recommended'">综合推荐</button><button type="button" :class="{ active: sortMode === 'experience' }" @click="sortMode = 'experience'">经验优先</button><button type="button" :class="{ active: sortMode === 'cases' }" @click="sortMode = 'cases'">案例最多</button><button type="button" :class="{ active: sortMode === 'rating' }" @click="sortMode = 'rating'">评价最高</button><button type="button" :class="{ active: sortMode === 'price' }" @click="sortMode = 'price'">价格排序</button></div>
-        <p class="dental-doctor-count">共 <strong>{{ filteredDoctors.length }}</strong> 位医生</p>
+        <div class="dental-sort-row" :aria-label="tx('医生排序')"><button type="button" :class="{ active: sortMode === 'recommended' }" @click="sortMode = 'recommended'">{{ tx("综合推荐") }}</button><button type="button" :class="{ active: sortMode === 'experience' }" @click="sortMode = 'experience'">{{ tx("经验优先") }}</button><button type="button" :class="{ active: sortMode === 'cases' }" @click="sortMode = 'cases'">{{ tx("案例最多") }}</button><button type="button" :class="{ active: sortMode === 'rating' }" @click="sortMode = 'rating'">{{ tx("评价最高") }}</button><button type="button" :class="{ active: sortMode === 'price' }" @click="sortMode = 'price'">{{ tx("价格排序") }}</button></div>
+        <p class="dental-doctor-count">{{ tf('共 {count} 位医生',{count:filteredDoctors.length}) }}</p>
         <div class="dental-doctor-grid">
           <article v-for="doctor in filteredDoctors" :key="doctor.id" class="dental-doctor-card" :class="{ selected: doctor.id === 1 }" data-reveal>
-            <div class="dental-doctor-card__top"><div class="dental-doctor-card__portrait"><img :src="doctor.portrait" :alt="doctor.name" /></div><div><h3>{{ doctor.name }}</h3><span>{{ doctor.title }}</span><small><MapPin class="h-3.5 w-3.5" />{{ doctor.hospital }}</small></div><span class="dental-doctor-card__rating"><Star class="h-3.5 w-3.5" />{{ doctor.rating }}</span></div>
-            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ displayDentalExperience(doctor.experience) }}</span><span><Globe2 class="h-4 w-4" />{{ doctor.languages.join(' / ') }}</span></div>
-            <p>{{ doctor.specialty }}</p>
-            <div class="dental-doctor-card__tags"><span v-for="tag in doctor.tags" :key="tag">{{ tag }}</span></div>
-            <button type="button" class="dental-doctor-card__button" @click="openDoctor(doctor)">了解更多 <ArrowRight class="h-4 w-4" /></button>
+            <div class="dental-doctor-card__top"><div class="dental-doctor-card__portrait"><img :src="doctor.portrait" :alt="tx(doctor.name)" /></div><div><h3>{{ tx(doctor.name) }}</h3><span>{{ tx(doctor.title) }}</span><small><MapPin class="h-3.5 w-3.5" />{{ tx(doctor.hospital) }}</small></div><span class="dental-doctor-card__rating"><Star class="h-3.5 w-3.5" />{{ tx(doctor.rating) }}</span></div>
+            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ tx(displayDentalExperience(doctor.experience)) }}</span><span><Globe2 class="h-4 w-4" />{{ doctor.languages.map(language=>tx(language)).join(' / ') }}</span></div>
+            <p>{{ tx(doctor.specialty) }}</p>
+            <div class="dental-doctor-card__tags"><span v-for="tag in doctor.tags" :key="tag">{{ tx(tag) }}</span></div>
+            <button type="button" class="dental-doctor-card__button" @click="openDoctor(doctor)">{{ tx("了解更多 ") }}<ArrowRight class="h-4 w-4" /></button>
           </article>
         </div>
-        <div v-if="!filteredDoctors.length" class="dental-empty"><Search class="h-6 w-6" /><p>暂无符合条件的医生，请调整筛选条件。</p></div>
-        <div class="dental-step-actions"><button type="button" class="dental-ghost-button" @click="setStep(1)">返回选择项目</button><button type="button" class="dental-next-button" @click="setStep(3)">下一步：上传影像资料 <ArrowRight class="h-4 w-4" /></button></div>
+        <div v-if="!filteredDoctors.length" class="dental-empty"><Search class="h-6 w-6" /><p>{{ tx("暂无符合条件的医生，请调整筛选条件。") }}</p></div>
+        <div class="dental-step-actions"><button type="button" class="dental-ghost-button" @click="setStep(1)">{{ tx("返回选择项目") }}</button><button type="button" class="dental-next-button" @click="setStep(3)">{{ tx("下一步：上传影像资料 ") }}<ArrowRight class="h-4 w-4" /></button></div>
       </section>
 
       <section v-else class="dental-section dental-upload hy-container">
-        <div class="dental-section__heading"><div><span class="hy-kicker">03 · MEDICAL FILES</span><h2>上传影像资料</h2><p>上传牙片或口腔照片，医生会根据资料准备初步评估和书面报价。</p></div><span class="dental-section__counter">24h 内获取评估</span></div>
+        <div class="dental-section__heading"><div><span class="hy-kicker">{{ tx('03 · MEDICAL FILES') }}</span><h2>{{ tx("上传影像资料") }}</h2><p>{{ tx("上传牙片或口腔照片，医生会根据资料准备初步评估和书面报价。") }}</p></div><span class="dental-section__counter">{{ tx("24h 内获取评估") }}</span></div>
         <form class="dental-upload-layout" @submit.prevent="submitForm">
-          <div class="dental-upload-media"><span class="dental-upload-label">上传牙片/口腔照片 <em>(JPG/PNG/PDF，≤10MB)</em></span><label class="dental-dropzone" :class="{ 'has-files': uploadFiles.length, 'is-uploading': uploadStatus === 'submitting', 'is-error': uploadStatus === 'error' }"><input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple @change="handleFiles" /><UploadCloud class="h-10 w-10" /><strong>{{ uploadStatus === 'submitting' ? '提交中…' : uploadFiles.length ? `已选择 ${uploadFiles.length} 个文件` : '+' }}</strong><span>JPG / PNG / PDF，单个文件不超过 10MB</span><button type="button" class="dental-inline-action" @click.prevent="openPhotoExample">查看照片示例</button><ul v-if="uploadFiles.length"><li v-for="file in uploadFiles" :key="file.name"><FileImage class="h-4 w-4" />{{ file.name }}</li></ul></label><p class="dental-upload-status" aria-live="polite"><template v-if="uploadStatus === 'submitting'">正在安全上传资料…</template><template v-else-if="uploadStatus === 'ready'">文件已准备好，可提交评估</template><template v-else-if="uploadStatus === 'success'">资料提交成功</template><template v-else-if="uploadStatus === 'error'">{{ submitError }} <button v-if="uploadFiles.length" type="button" @click="retryUpload">重试</button></template></p></div>
-          <div class="dental-upload-form"><div class="dental-form-grid"><label><span>预算范围</span><select v-model="form.budget"><option value="">请输入您的预算</option><option>¥5,000 - ¥20,000</option><option>¥20,000 - ¥50,000</option><option>¥50,000以上</option></select></label><label><span>计划到访时间</span><select v-model="form.visitTime"><option value="">请选择</option><option>1个月内</option><option>1-3个月</option><option>时间待定</option></select></label></div><label><span>其他说明</span><textarea v-model="form.notes" rows="5" placeholder="其他说明..." /></label><div class="dental-upload-trust"><ShieldCheck class="h-5 w-5" /><span>资料仅用于医疗评估，我们会保护你的隐私。</span></div><button class="dental-submit" type="submit" :disabled="uploadStatus === 'submitting' || submitted"><MessageCircle class="h-4 w-4" />{{ uploadStatus === 'submitting' ? '正在提交…' : '提交评估 · 24h 内获取书面报价' }} <ArrowRight class="h-4 w-4" /></button><p v-if="submitted" class="dental-success"><CheckCircle2 class="h-5 w-5" />资料已记录，顾问会尽快与你联系。</p></div>
+          <div class="dental-upload-media"><span class="dental-upload-label">{{ tx("上传牙片/口腔照片 ") }}<em>(JPG/PNG/PDF，≤10MB)</em></span><label class="dental-dropzone" :class="{ 'has-files': uploadFiles.length, 'is-uploading': uploadStatus === 'submitting', 'is-error': uploadStatus === 'error' }"><input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple @change="handleFiles" /><UploadCloud class="h-10 w-10" /><strong>{{ tx(uploadStatus === 'submitting' ? '提交中…' : uploadFiles.length ? `已选择 ${uploadFiles.length} 个文件` : '+') }}</strong><span>{{ tx("JPG / PNG / PDF，单个文件不超过 10MB") }}</span><button type="button" class="dental-inline-action" @click.prevent="openPhotoExample">{{ tx("查看照片示例") }}</button><ul v-if="uploadFiles.length"><li v-for="file in uploadFiles" :key="file.name"><FileImage class="h-4 w-4" />{{ file.name }}</li></ul></label><p class="dental-upload-status" aria-live="polite"><template v-if="uploadStatus === 'submitting'">{{ tx("正在安全上传资料…") }}</template><template v-else-if="uploadStatus === 'ready'">{{ tx("文件已准备好，可提交评估") }}</template><template v-else-if="uploadStatus === 'success'">{{ tx("资料提交成功") }}</template><template v-else-if="uploadStatus === 'error'">{{ tx(submitError) }} <button v-if="uploadFiles.length" type="button" @click="retryUpload">{{ tx("重试") }}</button></template></p></div>
+          <div class="dental-upload-form"><div class="dental-form-grid"><label><span>{{ tx("预算范围") }}</span><select v-model="form.budget"><option value="">{{ tx("请输入您的预算") }}</option><option>¥5,000 - ¥20,000</option><option>¥20,000 - ¥50,000</option><option value="¥50,000以上">{{ tx("¥50,000以上") }}</option></select></label><label><span>{{ tx("计划到访时间") }}</span><select v-model="form.visitTime"><option value="">{{ tx("请选择") }}</option><option value="1个月内">{{ tx("1个月内") }}</option><option value="1-3个月">{{ tx("1-3个月") }}</option><option value="时间待定">{{ tx("时间待定") }}</option></select></label></div><label><span>{{ tx("其他说明") }}</span><textarea v-model="form.notes" rows="5" :placeholder="tx('其他说明...')" /></label><div class="dental-upload-trust"><ShieldCheck class="h-5 w-5" /><span>{{ tx("资料仅用于医疗评估，我们会保护你的隐私。") }}</span></div><button class="dental-submit" type="submit" :disabled="uploadStatus === 'submitting' || submitted"><MessageCircle class="h-4 w-4" />{{ tx(uploadStatus === 'submitting' ? '正在提交…' : '提交评估 · 24h 内获取书面报价') }} <ArrowRight class="h-4 w-4" /></button><p v-if="submitted" class="dental-success"><CheckCircle2 class="h-5 w-5" />{{ tx("资料已记录，顾问会尽快与你联系。") }}</p></div>
         </form>
-        <div class="dental-upload-footer"><button type="button" class="dental-ghost-button" @click="setStep(2)">返回匹配城市与医生</button><span>不确定如何准备？<button type="button" @click="contactSupport">联系 24 小时客服</button></span></div>
+        <div class="dental-upload-footer"><button type="button" class="dental-ghost-button" @click="setStep(2)">{{ tx("返回匹配城市与医生") }}</button><span>{{ tx("不确定如何准备？") }}<button type="button" @click="contactSupport">{{ tx("联系 24 小时客服") }}</button></span></div>
       </section>
     </main>
 
     <Teleport to="body">
       <Transition name="dental-modal">
         <div v-if="selectedDoctor&&!desktopDoctors" class="dental-modal-backdrop" @click.self="closeDoctor">
-          <section ref="modalPanel" class="dental-doctor-modal" :class="`dental-doctor-modal--${doctorTab}`" role="dialog" aria-modal="true" aria-label="医生详情">
-            <button ref="modalCloseButton" type="button" class="dental-modal-close" aria-label="关闭医生详情" @click="closeDoctor"><img src="/images/figma/doctor-modal-close.svg" alt="" /></button>
-            <h2>医生详情</h2>
-            <header class="dental-modal-profile"><div class="dental-modal-profile__portrait"><img :src="selectedDoctor.portrait" :alt="selectedDoctor.name" /></div><div class="dental-modal-profile__details"><div class="dental-modal-profile__identity"><h3>{{ selectedDoctor.name }}</h3><p>{{ selectedDoctor.title }}</p></div><span><img src="/images/figma/doctor-modal-hospital.svg" alt="" />{{ selectedDoctor.hospital }}</span><small><img src="/images/figma/doctor-modal-experience.svg" alt="" />{{ displayDentalExperience(selectedDoctor.experience) }}</small></div></header>
-            <nav class="dental-modal-tabs"><button v-for="tab in ([['profile', '医生简介'], ['cases', '案例集'], ['reviews', '患者评价']] as const)" :key="tab[0]" type="button" :class="{ active: doctorTab === tab[0] }" @click="doctorTab = tab[0]">{{ tab[1] }}<template v-if="doctorTab !== 'profile'"><span v-if="tab[0] === 'cases'">（32）</span><span v-if="tab[0] === 'reviews'">（128）</span></template></button></nav>
-            <div v-if="doctorTab === 'profile'" class="dental-modal-panel"><p>{{ selectedDoctor.bio ?? `${selectedDoctor.name}，${selectedDoctor.title}，从事口腔临床工作${selectedDoctor.experience.replace('经验', '')}。擅长复杂种植、数字化修复和跨境患者治疗方案设计，为国际患者提供清晰的治疗路径。` }}</p><h4>专业资质</h4><ul><li v-for="credential in (selectedDoctor.credentials ?? ['医师执业证书（可查）', '主任医师职称', '国际口腔种植学会会员', '多语种医疗沟通经验'])" :key="credential"><img src="/images/figma/doctor-modal-credential.svg" alt="" />{{ credential }}</li></ul></div>
-            <div v-else-if="doctorTab === 'cases'" class="dental-modal-list dental-modal-list--cases"><article><b>半口种植 · 数字化导板</b><p>美国患者，半口缺牙多年。采用数字化导板精准种植，2次到诊完成。整体费用较美国节省约65%。</p><small>上海 · 2025.08 · 已匿名授权</small></article><article><b>单颗后牙种植</b><p>新加坡患者，后牙缺失伴骨量不足。完成植骨+种植，全程1次到诊+远程复诊。</p><small>上海 · 2025.05 · 已匿名授权</small></article><article><b>美学区种植修复</b><p>菲律宾患者，上颌半口牙缺失伴重度骨吸收。完成4枚植体半口即刻负重，全程2次到诊+远程复诊。</p><small>上海 · 2025.03 · 已匿名授权</small></article></div>
-            <div v-else class="dental-modal-list dental-modal-list--reviews"><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>美国 · 半口种植</h3><p>从咨询到回国的每一步都有人安排妥当，翻译全程陪同，和医生沟通毫无障碍。种牙过程比想象中轻松太多。</p><small><i>—</i>2025.08 · 已匿名授权 · 来自生活服务平台</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>澳大利亚 · 隐形矫正</h3><p>出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。</p><small><i>—</i>2025.06 · 已匿名授权 · 来自生活服务平台</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>澳大利亚 · 隐形矫正</h3><p>出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。</p><small><i>—</i>2025.06 · 已匿名授权 · 来自生活服务平台</small></article></div>
+          <section ref="modalPanel" class="dental-doctor-modal" :class="`dental-doctor-modal--${doctorTab}`" role="dialog" aria-modal="true" :aria-label="tx('医生详情')">
+            <button ref="modalCloseButton" type="button" class="dental-modal-close" :aria-label="tx('关闭医生详情')" @click="closeDoctor"><img src="/images/figma/doctor-modal-close.svg" alt="" /></button>
+            <h2>{{ tx("医生详情") }}</h2>
+            <header class="dental-modal-profile"><div class="dental-modal-profile__portrait"><img :src="selectedDoctor.portrait" :alt="tx(selectedDoctor.name)" /></div><div class="dental-modal-profile__details"><div class="dental-modal-profile__identity"><h3>{{ tx(selectedDoctor.name) }}</h3><p>{{ tx(selectedDoctor.title) }}</p></div><span><img src="/images/figma/doctor-modal-hospital.svg" alt="" />{{ tx(selectedDoctor.hospital) }}</span><small><img src="/images/figma/doctor-modal-experience.svg" alt="" />{{ tx(displayDentalExperience(selectedDoctor.experience)) }}</small></div></header>
+            <nav class="dental-modal-tabs"><button v-for="tab in ([['profile', '医生简介'], ['cases', '案例集'], ['reviews', '患者评价']] as const)" :key="tab[0]" type="button" :class="{ active: doctorTab === tab[0] }" @click="doctorTab = tab[0]">{{ tx(tab[1]) }}<template v-if="doctorTab !== 'profile'"><span v-if="tab[0] === 'cases'">（32）</span><span v-if="tab[0] === 'reviews'">（128）</span></template></button></nav>
+            <div v-if="doctorTab === 'profile'" class="dental-modal-panel"><p>{{ tx(selectedDoctor.bio ?? `${selectedDoctor.name}，${selectedDoctor.title}，从事口腔临床工作${selectedDoctor.experience.replace('经验', '')}。擅长复杂种植、数字化修复和跨境患者治疗方案设计，为国际患者提供清晰的治疗路径。`) }}</p><h4>{{ tx("专业资质") }}</h4><ul><li v-for="credential in (selectedDoctor.credentials ?? ['医师执业证书（可查）', '主任医师职称', '国际口腔种植学会会员', '多语种医疗沟通经验'])" :key="credential"><img src="/images/figma/doctor-modal-credential.svg" alt="" />{{ tx(credential) }}</li></ul></div>
+            <div v-else-if="doctorTab === 'cases'" class="dental-modal-list dental-modal-list--cases"><article><b>{{ tx("半口种植 · 数字化导板") }}</b><p>{{ tx("美国患者，半口缺牙多年。采用数字化导板精准种植，2次到诊完成。整体费用较美国节省约65%。") }}</p><small>{{ tx("上海 · 2025.08 · 已匿名授权") }}</small></article><article><b>{{ tx("单颗后牙种植") }}</b><p>{{ tx("新加坡患者，后牙缺失伴骨量不足。完成植骨+种植，全程1次到诊+远程复诊。") }}</p><small>{{ tx("上海 · 2025.05 · 已匿名授权") }}</small></article><article><b>{{ tx("美学区种植修复") }}</b><p>{{ tx("菲律宾患者，上颌半口牙缺失伴重度骨吸收。完成4枚植体半口即刻负重，全程2次到诊+远程复诊。") }}</p><small>{{ tx("上海 · 2025.03 · 已匿名授权") }}</small></article></div>
+            <div v-else class="dental-modal-list dental-modal-list--reviews"><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("美国 · 半口种植") }}</h3><p>{{ tx("从咨询到回国的每一步都有人安排妥当，翻译全程陪同，和医生沟通毫无障碍。种牙过程比想象中轻松太多。") }}</p><small><i>—</i>{{ tx("2025.08 · 已匿名授权 · 来自生活服务平台") }}</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("澳大利亚 · 隐形矫正") }}</h3><p>{{ tx("出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。") }}</p><small><i>—</i>{{ tx("2025.06 · 已匿名授权 · 来自生活服务平台") }}</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("澳大利亚 · 隐形矫正") }}</h3><p>{{ tx("出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。") }}</p><small><i>—</i>{{ tx("2025.06 · 已匿名授权 · 来自生活服务平台") }}</small></article></div>
           </section>
         </div>
       </Transition>

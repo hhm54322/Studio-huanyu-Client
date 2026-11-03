@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import DentalSourceCanvas from './DentalSourceCanvas.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
@@ -203,20 +206,20 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
         <template v-for="project in projects" :key="project.id">
           <div v-if="!project.detail && node.id === project.content.id" :id="`dental-details-${project.data.id}`" class="dental-live-detail dental-added-detail" :aria-hidden="!project.expanded" :style="{ top: `${project.summaryHeight}px`, height: `${project.expanded ? project.extraHeight : 0}px` }">
             <div :ref="element => detailElement(element, project.id)" :style="detailTemplate.layoutCss">
-              <p v-for="(row,index) in [['适用人群：',project.data.suitable],['治疗流程：',project.data.detail],['周期：',project.data.duration],...(project.data.note ? [['注意事项：',project.data.note]] : [])]" :key="index" :style="`${dentalNode('2294:8298').layoutCss};height:auto;white-space:normal;`"><span :style="dentalNode('2294:8298').textRuns?.[0]?.css">{{ row[0] }}</span>{{ row[1] }}</p>
+              <p v-for="(row,index) in [['适用人群：',project.data.suitable],['治疗流程：',project.data.detail],['周期：',project.data.duration],...(project.data.note ? [['注意事项：',project.data.note]] : [])]" :key="index" :style="`${dentalNode('2294:8298').layoutCss};height:auto;white-space:normal;`"><span :style="dentalNode('2294:8298').textRuns?.[0]?.css">{{ tx(row[0]) }}</span>{{ tx(row[1]) }}</p>
             </div>
           </div>
         </template>
         <template v-for="control in dentalFilterControls" :key="control.node">
-          <select v-if="node.id === control.node" class="dental-native-overlay" :aria-label="control.label" :value="filters[control.key]" @change="filterChanged(control.key, $event)"><option value="">{{ control.label }}</option><option v-for="option in control.options" :key="option">{{ option }}</option></select>
+          <select v-if="node.id === control.node" class="dental-native-overlay" :aria-label="tx(control.label)" :value="filters[control.key]" @change="filterChanged(control.key, $event)"><option value="">{{ tx(control.label) }}</option><option :value="option" v-for="option in control.options" :key="option">{{ tx(option) }}</option></select>
         </template>
-        <p v-if="node.id === '2294:7060' && filtered && !filteredDoctorIds.length" class="dental-empty-results" role="status" :style="typography('2294:7059')">暂无符合条件的医生，请调整筛选条件。</p>
-        <label v-if="node.id === '2294:8078'" class="dental-native-overlay dental-file-picker" aria-label="上传牙片或口腔照片"><input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple :disabled="status === 'submitting' || submitted" aria-label="上传牙片或口腔照片" @change="emit('files', $event)" /></label>
-        <ul v-if="node.id === '2294:8073' && files.length" class="dental-upload-files" :style="typography('2294:8084')" aria-label="已选择的资料"><li v-for="(file,index) in files" :key="`${index}-${file.name}`" :title="file.name">{{ file.name }}</li></ul>
-        <select v-if="node.id === '2294:8093'" class="dental-native-overlay dental-editable-control" aria-label="预算范围" :style="controlStyle('2294:8093','2294:8095',form.budget)" :value="form.budget" :disabled="status === 'submitting' || submitted" @change="formChanged('budget', $event)"><option value="">请输入您的预算</option><option>¥5,000 - ¥20,000</option><option>¥20,000 - ¥50,000</option><option>¥50,000以上</option></select>
-        <input v-if="node.id === '2294:8099'" type="date" class="dental-native-overlay dental-editable-control" :class="{ 'is-empty': !form.visitTime }" aria-label="计划到访时间" :style="controlStyle('2294:8099','2294:8103',form.visitTime)" :value="form.visitTime" :disabled="status === 'submitting' || submitted" @input="formChanged('visitTime', $event)" />
-        <textarea v-if="node.id === '2294:8111'" class="dental-native-overlay dental-editable-control" aria-label="其他说明" :style="controlStyle('2294:8111','2294:8113',form.notes)" :value="form.notes" :disabled="status === 'submitting' || submitted" @input="formChanged('notes', $event)" />
-        <div v-if="node.id === '2294:8047' && feedback" class="dental-upload-feedback" :style="feedbackStyle" :role="status === 'error' ? 'alert' : 'status'" aria-live="polite">{{ feedback }} <button v-if="status === 'error' && files.length" type="button" @click="emit('submit')">重试提交</button></div>
+        <p v-if="node.id === '2294:7060' && filtered && !filteredDoctorIds.length" class="dental-empty-results" role="status" :style="typography('2294:7059')">{{ tx("暂无符合条件的医生，请调整筛选条件。") }}</p>
+        <label v-if="node.id === '2294:8078'" class="dental-native-overlay dental-file-picker" :aria-label="tx('上传牙片或口腔照片')"><input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple :disabled="status === 'submitting' || submitted" :aria-label="tx('上传牙片或口腔照片')" @change="emit('files', $event)" /></label>
+        <ul v-if="node.id === '2294:8073' && files.length" class="dental-upload-files" :style="typography('2294:8084')" :aria-label="tx('已选择的资料')"><li v-for="(file,index) in files" :key="`${index}-${file.name}`" :title="file.name">{{ file.name }}</li></ul>
+        <select v-if="node.id === '2294:8093'" class="dental-native-overlay dental-editable-control" :aria-label="tx('预算范围')" :style="controlStyle('2294:8093','2294:8095',form.budget)" :value="form.budget" :disabled="status === 'submitting' || submitted" @change="formChanged('budget', $event)"><option value="">{{ tx("请输入您的预算") }}</option><option>¥5,000 - ¥20,000</option><option>¥20,000 - ¥50,000</option><option value="¥50,000以上">{{ tx("¥50,000以上") }}</option></select>
+        <input v-if="node.id === '2294:8099'" type="date" class="dental-native-overlay dental-editable-control" :class="{ 'is-empty': !form.visitTime }" :aria-label="tx('计划到访时间')" :style="controlStyle('2294:8099','2294:8103',form.visitTime)" :value="form.visitTime" :disabled="status === 'submitting' || submitted" @input="formChanged('visitTime', $event)" />
+        <textarea v-if="node.id === '2294:8111'" class="dental-native-overlay dental-editable-control" :aria-label="tx('其他说明')" :style="controlStyle('2294:8111','2294:8113',form.notes)" :value="form.notes" :disabled="status === 'submitting' || submitted" @input="formChanged('notes', $event)" />
+        <div v-if="node.id === '2294:8047' && feedback" class="dental-upload-feedback" :style="feedbackStyle" :role="status === 'error' ? 'alert' : 'status'" aria-live="polite">{{ tx(feedback) }} <button v-if="status === 'error' && files.length" type="button" @click="emit('submit')">{{ tx("重试提交") }}</button></div>
       </template>
     </DentalSourceCanvas>
     <Teleport to="body">

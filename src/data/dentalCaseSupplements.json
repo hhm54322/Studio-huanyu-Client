@@ -1,0 +1,476 @@
+{
+  "importedAt": "2026-11-03",
+  "sources": [
+    {
+      "path": "docs/source/dental-physicians/诺德齿科种植牙案例合集 (1).docx",
+      "sha256": "24619466003d5fe5cb8de8a2f9470dc3d3ae50e2f44a05bcc2f6c45893bfa0b0"
+    },
+    {
+      "path": "docs/source/dental-physicians/original/案例图(1).zip",
+      "sha256": "468b2df31c31488a146cc2c2deee58fa62222eb08256511e7a5d29e2c95a0d7b"
+    },
+    {
+      "path": "docs/source/dental-physicians/牙科医生.zip",
+      "sha256": "5e778f3576af87ad13fc0da01b840a92412806bce8985a9f83f41fd74a901af3"
+    }
+  ],
+  "allocation": "用户授权：六位新医生依列表顺序各三个；19–20补入谭兆林，保留原有案例。",
+  "records": [
+    {
+      "id": "nord-01",
+      "number": 1,
+      "doctorId": 101,
+      "title": "上前牙外伤缺失",
+      "description": "李女士，32岁，因意外摔倒导致3颗上前牙磕断，前牙区大面积缺损严重影响外貌与发音。经检查后采用数字化种植技术修复，植入种植体并安装牙冠。患者反馈种植过程几乎没有疼痛感，完成后的种植牙外观逼真自然，完全不像假牙，解决了说话漏风、进食不便的困扰，重拾笑容自信。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-01.webp",
+          "thumbnail": "/images/dental-cases/case-01-thumb.webp",
+          "alt": "上前牙外伤缺失治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例一.png",
+      "sourceImageSHA256": "4840d075c5281cc6b7ddc103c1e09ea9ef481ce89290ab2101ec4b0a816d9d20",
+      "webpBytes": 69822,
+      "thumbnailBytes": 10482
+    },
+    {
+      "id": "nord-02",
+      "number": 2,
+      "doctorId": 101,
+      "title": "下颌烤瓷桥脱落多牙缺失",
+      "description": "患者下颌烤瓷桥整体脱落，口内多颗牙齿缺失，余留牙也存在折断、松动等问题，咀嚼功能严重受损。经诊断后采用数字化即刻种植技术，在原有条件下精准植入种植体并完成修复。患者表示手术过程很快、几乎没有不适，种植牙坚固耐用如同真牙，现在啃排骨都不费劲，吃什么都香。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-02.webp",
+          "thumbnail": "/images/dental-cases/case-02-thumb.webp",
+          "alt": "下颌烤瓷桥脱落多牙缺失治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例二.png",
+      "sourceImageSHA256": "d7bf1d6785e3d7b3236493b1c1aa04fee3f6eb22942e264a4543685665663878",
+      "webpBytes": 109976,
+      "thumbnailBytes": 13486
+    },
+    {
+      "id": "nord-03",
+      "number": 3,
+      "doctorId": 101,
+      "title": "全口残根残冠种植修复",
+      "description": "方女士，64岁，全口牙齿仅剩几颗残根残冠，饮食长期受限，生活质量严重下降。到院检查后发现其口腔条件较差，牙槽骨高度和宽度均不足。采用数字化种植技术进行全口修复后，方女士自述种植牙的效果甚至比真牙还好用，终于可以想吃什么就吃什么，真正回归正常生活。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-03.webp",
+          "thumbnail": "/images/dental-cases/case-03-thumb.webp",
+          "alt": "全口残根残冠种植修复治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例三.png",
+      "sourceImageSHA256": "8a2e3a7045409a9dabe09e0217e5da5b35d10eb9a0acc49e870b0e61843786dc",
+      "webpBytes": 86922,
+      "thumbnailBytes": 11874
+    },
+    {
+      "id": "nord-04",
+      "number": 4,
+      "doctorId": 102,
+      "title": "上前牙外伤缺失即刻种植",
+      "description": "李女士，37岁，因意外外伤导致上前牙缺失，门牙缺损既影响美观又影响咀嚼，迫切希望修复。采用数字化即刻种植技术，在微创条件下精准植入种植体并即刻修复。术后种植牙形态自然、色泽逼真，与真牙几乎无异，帮助患者重拾良好的个人形象，笑起来更加自信从容。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-04.webp",
+          "thumbnail": "/images/dental-cases/case-04-thumb.webp",
+          "alt": "上前牙外伤缺失即刻种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例四.png",
+      "sourceImageSHA256": "5a40f151d885343e31d08483349318abd32774c800c34416be9d280c422d6632",
+      "webpBytes": 90528,
+      "thumbnailBytes": 11524
+    },
+    {
+      "id": "nord-05",
+      "number": 5,
+      "doctorId": 102,
+      "title": "全口牙齿脱落即刻负重",
+      "description": "陈先生，65岁，身体虽然硬朗，但因长期不良用牙习惯导致近几年牙齿逐渐脱落，造成咀嚼困难、食欲下降。经检查后采用全口即刻种植技术进行修复。戴上牙后陈叔叔感觉非常满意，咀嚼功能全面恢复，重拾口福后直呼这口牙种得非常值。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-05.webp",
+          "thumbnail": "/images/dental-cases/case-05-thumb.webp",
+          "alt": "全口牙齿脱落即刻负重治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例五.png",
+      "sourceImageSHA256": "2aa6572547775b8c69ba28c65eec0b09d8858cdc7b4e3acf5cf997e4c2b4997b",
+      "webpBytes": 65668,
+      "thumbnailBytes": 10352
+    },
+    {
+      "id": "nord-06",
+      "number": 6,
+      "doctorId": 102,
+      "title": "长期吸烟全口牙松动脱落",
+      "description": "患者因长期吸烟导致全口牙齿松动、脱落，一日三餐都成了负担，食物嚼不烂、吃不下、睡不好，长期受缺牙困扰。通过种植修复重建咬合后，患者自述戴牙后使用感很好，咀嚼效率大幅提高，口腔内完全没有异物感，整体对修复效果非常满意。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-06.webp",
+          "thumbnail": "/images/dental-cases/case-06-thumb.webp",
+          "alt": "长期吸烟全口牙松动脱落治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例六.png",
+      "sourceImageSHA256": "977ceb8dc09c37c3e1508698c24cbda0a48b1a25505db8866cecf6da4a60e19f",
+      "webpBytes": 122952,
+      "thumbnailBytes": 11208
+    },
+    {
+      "id": "nord-07",
+      "number": 7,
+      "doctorId": 103,
+      "title": "高龄牙槽骨萎缩全口种植",
+      "description": "谢先生，74岁，常年受口腔问题困扰，到院检查时牙齿已所剩无几，更棘手的是牙槽骨萎缩严重，种植难度极大。通过添加骨粉骨膜+精准定位种植避开牙槽骨薄弱区域的方式，顺利完成全口数字化即刻种植。术后谢叔叔终于可以吃上以前很多不敢碰的食物，生活质量显著提升。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-07.webp",
+          "thumbnail": "/images/dental-cases/case-07-thumb.webp",
+          "alt": "高龄牙槽骨萎缩全口种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例七.png",
+      "sourceImageSHA256": "1a15f71c9fe9aed103731787b0cae1262641c1e09dfab38f8414d551ae5b15ee",
+      "webpBytes": 79678,
+      "thumbnailBytes": 11408
+    },
+    {
+      "id": "nord-08",
+      "number": 8,
+      "doctorId": 103,
+      "title": "全口精准即刻种植",
+      "description": "周女士，58岁，因长期缺牙导致咀嚼食物不便，严重影响日常生活。采用数字化全口即刻种植方案，运用数字化导板技术+即刻负重，精准微创植入种植体。最终戴牙后稳固耐用、美观舒适，效果媲美真牙，让周阿姨乐享口福、绽放笑容。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-08.webp",
+          "thumbnail": "/images/dental-cases/case-08-thumb.webp",
+          "alt": "全口精准即刻种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例八.png",
+      "sourceImageSHA256": "55516e91a096c5153df13b78fa03d723a877cb882635f88a0d448a284f6db4af",
+      "webpBytes": 79276,
+      "thumbnailBytes": 9680
+    },
+    {
+      "id": "nord-09",
+      "number": 9,
+      "doctorId": 103,
+      "title": "牙槽骨重度萎缩全口修复",
+      "description": "张先生，65岁，牙槽骨重度萎缩，全口牙齿缺失，咀嚼功能基本丧失，给日常生活带来极大不便。采用全口数字化种植修复方案，分阶段完成种植体植入、取模、基台连接与牙冠佩戴。整个过程非常顺利，现在张先生可以正常吃饭，感觉整个人都变年轻了。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-09.webp",
+          "thumbnail": "/images/dental-cases/case-09-thumb.webp",
+          "alt": "牙槽骨重度萎缩全口修复治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例九.png",
+      "sourceImageSHA256": "a772db47019d0972cea8273b6d0244043fc3a6351f88833d55226a7fcb56f058",
+      "webpBytes": 91038,
+      "thumbnailBytes": 9472
+    },
+    {
+      "id": "nord-10",
+      "number": 10,
+      "doctorId": 104,
+      "title": "全口缺牙当天种当天用",
+      "description": "陈先生，53岁，因长期缺牙导致咀嚼食物不便，严重影响正常生活。采用全口数字化即刻种植技术，实现当天种牙当天使用。陈叔叔说种植牙真的非常方便，种完当天就能吃东西，恢复咀嚼后感觉整个人更有精神、更有活力了。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-10.webp",
+          "thumbnail": "/images/dental-cases/case-10-thumb.webp",
+          "alt": "全口缺牙当天种当天用治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十.png",
+      "sourceImageSHA256": "237a24b174738fed83fd5d1fd98baca65f3fd73ae30a9f3d130ba0fe764a959d",
+      "webpBytes": 102344,
+      "thumbnailBytes": 12292
+    },
+    {
+      "id": "nord-11",
+      "number": 11,
+      "doctorId": 104,
+      "title": "长期缺牙活动牙替换种植",
+      "description": "患者牙齿缺失已有十多年，日常一直靠活动假牙凑合，饮食困难，检查发现牙槽骨已有中度萎缩吸收。采用数字化即刻负重种植修复方案，彻底解决缺牙问题。戴牙后使用感很好，完全没有异物感，恢复满口好牙后吃饭更香，对整体效果十分满意。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-11.webp",
+          "thumbnail": "/images/dental-cases/case-11-thumb.webp",
+          "alt": "长期缺牙活动牙替换种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十一.png",
+      "sourceImageSHA256": "53f864233051432efd74ac157071120cd30e5d9861ec6fb91a30ec81b7bc3a60",
+      "webpBytes": 123640,
+      "thumbnailBytes": 12676
+    },
+    {
+      "id": "nord-12",
+      "number": 12,
+      "doctorId": 104,
+      "title": "年轻半口牙缺失数字化种植",
+      "description": "李先生，43岁，因遗传原因年纪轻轻就出现半口牙齿松动脱落，不仅影响日常生活，还严重影响工作和社交。此前看过不少牙医都未能有效治疗，反而让牙齿状况更糟。到院后通过精准有效的数字化种植技术，快速完成半口修复，效果让李先生又惊又喜。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-12.webp",
+          "thumbnail": "/images/dental-cases/case-12-thumb.webp",
+          "alt": "年轻半口牙缺失数字化种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十二.png",
+      "sourceImageSHA256": "873957bf0a0ff7ed8938dffa2b5091a31474ae2bbbab1d5cee676729648f420f",
+      "webpBytes": 132618,
+      "thumbnailBytes": 10956
+    },
+    {
+      "id": "nord-13",
+      "number": 13,
+      "doctorId": 105,
+      "title": "严重牙周病半口种植",
+      "description": "患者66岁，患有严重牙周病，牙齿松动脱落后咀嚼功能受限，生活质量下降。来院进行了半口种植牙手术，手术过程顺利。恢复健康好牙后，说话利索了、吃饭香了，最重要的是整体生活质量得到了明显提升。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-13.webp",
+          "thumbnail": "/images/dental-cases/case-13-thumb.webp",
+          "alt": "严重牙周病半口种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十三.png",
+      "sourceImageSHA256": "b2dca3aba0d9e56531c2e9893263be2a2f08249f94307f063b91539d1bda2b9e",
+      "webpBytes": 146504,
+      "thumbnailBytes": 12280
+    },
+    {
+      "id": "nord-14",
+      "number": 14,
+      "doctorId": 105,
+      "title": "牙列缺损种植修复",
+      "description": "患者牙列缺损，既影响美观又影响饮食，食物嚼不烂、吃不香、睡不好，长期受缺牙煎熬。通过种植修复后，患者自述感受到了真牙一样的咀嚼力，戴牙后使用感很好，口腔内完全没有异物感，对整体修复效果非常满意。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-14.webp",
+          "thumbnail": "/images/dental-cases/case-14-thumb.webp",
+          "alt": "牙列缺损种植修复治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十四.png",
+      "sourceImageSHA256": "3055f275b1b107467b59bdb75bb6a0fcd7e6b1177b0c3ed1584678e70c97d8ff",
+      "webpBytes": 142752,
+      "thumbnailBytes": 11724
+    },
+    {
+      "id": "nord-15",
+      "number": 15,
+      "doctorId": 105,
+      "title": "后牙缺失多年伴骨萎缩种植",
+      "description": "患者上颌右侧两颗牙齿缺失多年，牙槽骨萎缩严重，咀嚼功能长期受限，只能勉强对付吃饭。采用数字化种植技术精准植入种植体并修复。患者反馈种植过程舒适，完成后的种植牙外观自然逼真，不像假牙，彻底解决了吃东西不方便的问题。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-15.webp",
+          "thumbnail": "/images/dental-cases/case-15-thumb.webp",
+          "alt": "后牙缺失多年伴骨萎缩种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十五.png",
+      "sourceImageSHA256": "82910152ad285779eaa900cf952fb4a4393855d6dff850f8353192c97b149ef3",
+      "webpBytes": 107624,
+      "thumbnailBytes": 10818
+    },
+    {
+      "id": "nord-16",
+      "number": 16,
+      "doctorId": 106,
+      "title": "下半口牙周病缺失即刻种植",
+      "description": "赵先生，63岁，因长期牙周病导致下半口牙齿松动脱落，一日三餐都成了负担，曾佩戴活动假牙但感觉很不舒服。采用半口即刻种植技术完成修复后，赵先生表示非常开心和满足，时隔多年终于可以正常饮食，这种感觉太好了。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-16.webp",
+          "thumbnail": "/images/dental-cases/case-16-thumb.webp",
+          "alt": "下半口牙周病缺失即刻种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十六.png",
+      "sourceImageSHA256": "af38bcb898d1ab0a9481bc6aa7f403dbc8c7198c8aae6c3bea1c92be40f59d3d",
+      "webpBytes": 133942,
+      "thumbnailBytes": 12890
+    },
+    {
+      "id": "nord-17",
+      "number": 17,
+      "doctorId": 106,
+      "title": "吸烟致全口牙脱落即刻种植",
+      "description": "钱先生，43岁，因长期吸烟且不注重口腔卫生，30多岁就饱受牙龈炎困扰，牙齿逐渐松动、脱落，剩余牙齿也无法保留。采用全口即刻种植技术重建满口好牙，全程微创、无痛，修复后的牙齿使用感就像真牙一样。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-17.webp",
+          "thumbnail": "/images/dental-cases/case-17-thumb.webp",
+          "alt": "吸烟致全口牙脱落即刻种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十七.png",
+      "sourceImageSHA256": "8b519a8255439ab4576b476306fb4b7b99d69abc15848470c1c2f2357fab1ae2",
+      "webpBytes": 154528,
+      "thumbnailBytes": 13092
+    },
+    {
+      "id": "nord-18",
+      "number": 18,
+      "doctorId": 106,
+      "title": "全口牙周病缺失当天种植当天用",
+      "description": "李先生，55岁，因长期牙周病导致全口牙齿逐渐松动脱落，严重影响生活质量，看到想吃的东西也只能望而却步。在家人动员下决定通过种植手术彻底解决牙齿问题。采用全口即刻种植方案，手术过程快、几乎没有不适，当天种好当天就能吃东西，现在啃排骨都不费劲。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-18.webp",
+          "thumbnail": "/images/dental-cases/case-18-thumb.webp",
+          "alt": "全口牙周病缺失当天种植当天用治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十八.png",
+      "sourceImageSHA256": "35774139a149cf4a72dfae38835d81861bf00d8b7799af5c0a18ee5ce895d956",
+      "webpBytes": 146796,
+      "thumbnailBytes": 12464
+    },
+    {
+      "id": "nord-19",
+      "number": 19,
+      "doctorId": 5,
+      "title": "全口牙周炎缺失即刻种植",
+      "description": "刘阿姨，60岁，因长期牙周炎导致牙齿松动最终缺失。采用全口数字化即刻种植技术，由专业医师一对一设计手术方案，种植过程无疼痛感，实现当天种牙当天用。术后咀嚼功能完全恢复，刘阿姨重新拥有了整齐美观的牙齿。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-19.webp",
+          "thumbnail": "/images/dental-cases/case-19-thumb.webp",
+          "alt": "全口牙周炎缺失即刻种植治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例十九.png",
+      "sourceImageSHA256": "1bd3f84f6707098febf1b1ded90d78b6bd43429be4bf6dfff6d021a7498abcf4",
+      "webpBytes": 86668,
+      "thumbnailBytes": 10402
+    },
+    {
+      "id": "nord-20",
+      "number": 20,
+      "doctorId": 5,
+      "title": "下颌长期缺牙即刻负重",
+      "description": "张先生，57岁，下颌缺牙多年，原先一直使用活动假牙，咀嚼力量无法满足日常需要，而且受活动牙挂钩影响，其他好牙也陆续出现松动、脱落。采用数字化即刻负重种植技术，实现当天种牙当天用，张先生从吃软食稀粥到下饭硬菜都能轻松应对。",
+      "images": [
+        {
+          "src": "/images/dental-cases/case-20.webp",
+          "thumbnail": "/images/dental-cases/case-20-thumb.webp",
+          "alt": "下颌长期缺牙即刻负重治疗前后对比",
+          "width": 1440,
+          "height": 1068
+        }
+      ],
+      "sourceImage": "案例二十.png",
+      "sourceImageSHA256": "be1fac57da932c8f0f423250bbbd3372e6ac19dd95f4d74b496f3798bdebc3e4",
+      "webpBytes": 113142,
+      "thumbnailBytes": 11816
+    }
+  ],
+  "portraits": [
+    {
+      "name": "车英林",
+      "slug": "che-yinglin",
+      "sourceFile": "Image (Shanti Bansal picture).png",
+      "sourceSHA256": "42bb1642d3301f2d021ad92b7c82fb62c1bd8885ae9a483ee82e92f4e84e3c23",
+      "projectPath": "public/images/dental-physicians/che-yinglin.webp",
+      "sha256": "5d40256a32054dde20dae91ae61cb21fec6fd21879c7bf9d7af7bbc9f8a5c735",
+      "bytes": 13194
+    },
+    {
+      "name": "万前程",
+      "slug": "wan-qiancheng",
+      "sourceFile": "Image (Shanti Bansal picture)-2.png",
+      "sourceSHA256": "c73b45a94ea968b30f3138fc6aed7c32d7eebf7aaaeb953b4acf4ec28016347e",
+      "projectPath": "public/images/dental-physicians/wan-qiancheng.webp",
+      "sha256": "8292c5e94a910cfbc4d0969f0604afed89bbd39f4726a30f8a45fb8ad89aa408",
+      "bytes": 10436
+    },
+    {
+      "name": "李腾",
+      "slug": "li-teng",
+      "sourceFile": "Image (Shanti Bansal picture)-4.png",
+      "sourceSHA256": "6cdb7f2293ef8cc6f8b2f7d8a71aad2b26c6606a55e92495f1f06bf406867db9",
+      "projectPath": "public/images/dental-physicians/li-teng.webp",
+      "sha256": "5ebcc5af8ddd127c27b180b726f1feeee7ef191464d717ed8b268e9b5047ffce",
+      "bytes": 11172
+    },
+    {
+      "name": "黄建荣",
+      "slug": "huang-jianrong",
+      "sourceFile": "Image (Shanti Bansal picture)-1.png",
+      "sourceSHA256": "1815823a090b5f85e0fb5beb548f191bed37a1dbfe7d66682842083c0e74c50e",
+      "projectPath": "public/images/dental-physicians/huang-jianrong.webp",
+      "sha256": "8f768f755d2d374c670a86f07a82ac14ecf203074d50188598b202e7d92bcfe2",
+      "bytes": 10520
+    },
+    {
+      "name": "郑锐",
+      "slug": "zheng-rui",
+      "sourceFile": "Image (Shanti Bansal picture)-3.png",
+      "sourceSHA256": "98df34c1a2120770b52d254ebd22855952483f7853cc5d599b8942377080d3c0",
+      "projectPath": "public/images/dental-physicians/zheng-rui.webp",
+      "sha256": "af9429b9228d5af145bd30bb60bbc1ead24ecbcd864762ce2720a284ba232a0c",
+      "bytes": 11462
+    },
+    {
+      "name": "蒋刚",
+      "slug": "jiang-gang",
+      "sourceFile": "Image (Shanti Bansal picture)-5.png",
+      "sourceSHA256": "c7106054ceb14ecd58cee85c3537203c38ea4eafe16f07d063b6396fb1d6d111",
+      "projectPath": "public/images/dental-physicians/jiang-gang.webp",
+      "sha256": "cbd11be1c9851e614fb2360179c1cc1c96aa518a081926068ac5cc8b97a4857e",
+      "bytes": 11618
+    }
+  ]
+}

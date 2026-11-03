@@ -19,6 +19,8 @@ const model = computed(()=>{
   // this long list. Use it when the complete 560px version cannot fit.
   return records.value[phone.value&&key==='liu-guang-yu-mobile-02'&&height.value<records.value[key]!.height+32?`${key}-alternate`:key]!
 })
+const localizedHeight=ref(0)
+const renderHeight=computed(()=>Math.max(model.value.height,localizedHeight.value))
 const scale = computed(()=>phone.value?1:Math.min(1,(width.value-48)/model.value.width))
 const actions = computed<Record<string,HomeSourceAction>>(()=>({
   [model.value.close]:{action:'close',label:'关闭专家详情'},
@@ -127,7 +129,7 @@ onMounted(async()=>{
   window.addEventListener('resize',resize,{passive:true})
   dialog.value?.showModal()
   await nextTick()
-  dialog.value?.querySelector<HTMLElement>('[aria-label="关闭专家详情"]')?.focus({preventScroll:true})
+  dialog.value?.querySelector<HTMLElement>('[data-source-action="close"]')?.focus({preventScroll:true})
 })
 onBeforeUnmount(()=>{
   dialog.value?.close()
@@ -141,9 +143,9 @@ onBeforeUnmount(()=>{
   <Teleport to="body">
     <dialog ref="dialog" class="expert-source-dialog" :class="{'is-phone':phone}" :data-figma-node="model.frame" aria-labelledby="expert-dialog-title" @cancel.prevent="emit('close')" @click="outside" @keydown="keydown">
       <div class="expert-source-dialog__overlay" data-expert-overlay :data-figma-node="model.overlay">
-        <div class="expert-source-dialog__position" :style="phone?undefined:{width:`${model.width*scale}px`,height:`${model.height*scale}px`}">
-          <div class="expert-source-dialog__canvas" :style="phone?undefined:{width:`${model.width}px`,height:`${model.height}px`,transform:`scale(${scale})`}">
-            <HomeSourceNode :key="model.panel" :node="model.root" root :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" @activate="activate" />
+        <div class="expert-source-dialog__position" :style="phone?undefined:{width:`${model.width*scale}px`,height:`${renderHeight*scale}px`}">
+          <div class="expert-source-dialog__canvas" :style="phone?undefined:{width:`${model.width}px`,height:`${renderHeight}px`,transform:`scale(${scale})`}">
+            <HomeSourceNode :key="model.panel" :node="model.root" root :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" @layout="localizedHeight=$event" @activate="activate" />
           </div>
         </div>
       </div>

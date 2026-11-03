@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { ArrowRight, CheckCircle2, MessageCircle, Phone, X } from 'lucide-vue-next'
 import { createConsultation, getSubmissionErrorMessage } from '@/services/patientSubmissions'
@@ -93,34 +96,34 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button class="consult-float" type="button" aria-label="免费咨询" @click="openPanel">
+  <button class="consult-float" type="button" :aria-label="tx('免费咨询')" @click="openPanel">
     <MessageCircle class="h-5 w-5" />
-    <span>问阿宁</span>
+    <span>{{ tx("问阿宁") }}</span>
   </button>
 
   <Teleport to="body">
     <Transition name="consult">
       <div v-if="open" class="consult-overlay" role="dialog" aria-modal="true" aria-labelledby="consult-title" @click.self="closePanel">
         <section ref="panel" class="consult-panel">
-          <button class="consult-close" type="button" aria-label="关闭" @click="closePanel"><X class="h-5 w-5" /></button>
+          <button class="consult-close" type="button" :aria-label="tx('关闭')" @click="closePanel"><X class="h-5 w-5" /></button>
           <template v-if="!submitted">
-            <span class="hy-kicker">FREE CONSULTATION</span>
-            <h2 id="consult-title">把情况告诉阿宁</h2>
-            <p>医疗顾问将在收到信息后尽快联系您，协助整理病历、匹配医院与专家。</p>
+            <span class="hy-kicker">{{ tx('FREE CONSULTATION') }}</span>
+            <h2 id="consult-title">{{ tx("把情况告诉阿宁") }}</h2>
+            <p>{{ tx("医疗顾问将在收到信息后尽快联系您，协助整理病历、匹配医院与专家。") }}</p>
             <form class="consult-form" @submit.prevent="submit">
-              <label><span>怎么称呼您</span><input id="consult-name" v-model="name" required placeholder="请输入姓名" /></label>
-              <label><span>联系方式</span><input v-model="contact" required placeholder="手机号 / WhatsApp / 微信" /></label>
-              <label><span>希望咨询的问题</span><textarea v-model="concern" rows="4" placeholder="可简要描述疾病、治疗需求或预算" /></label>
-              <p v-if="submitError" class="consult-error" role="alert">{{ submitError }}</p>
-              <button class="hy-button-primary" type="submit" :disabled="submitting">{{ submitting ? '提交中…' : '提交咨询' }} <ArrowRight class="h-4 w-4" /></button>
+              <label><span>{{ tx("怎么称呼您") }}</span><input id="consult-name" v-model="name" required :placeholder="tx('请输入姓名')" /></label>
+              <label><span>{{ tx("联系方式") }}</span><input v-model="contact" required :placeholder="tx('手机号 / WhatsApp / 微信')" /></label>
+              <label><span>{{ tx("希望咨询的问题") }}</span><textarea v-model="concern" rows="4" :placeholder="tx('可简要描述疾病、治疗需求或预算')" /></label>
+              <p v-if="submitError" class="consult-error" role="alert">{{ tx(submitError) }}</p>
+              <button class="hy-button-primary" type="submit" :disabled="submitting">{{ tx(submitting ? '提交中…' : '提交咨询') }} <ArrowRight class="h-4 w-4" /></button>
             </form>
-            <div class="consult-hotline"><Phone class="h-4 w-4" /> 服务时间：北京时间 09:00-21:00</div>
+            <div class="consult-hotline"><Phone class="h-4 w-4" />{{ tx(" 服务时间：北京时间 09:00-21:00") }}</div>
           </template>
           <div v-else class="consult-success">
             <CheckCircle2 class="h-12 w-12" />
-            <h2 id="consult-title">信息已收到</h2>
-            <p>医疗顾问会通过您留下的方式尽快联系。</p>
-            <button ref="successButton" class="hy-button-secondary" type="button" @click="closePanel">完成</button>
+            <h2 id="consult-title">{{ tx("信息已收到") }}</h2>
+            <p>{{ tx("医疗顾问会通过您留下的方式尽快联系。") }}</p>
+            <button ref="successButton" class="hy-button-secondary" type="button" @click="closePanel">{{ tx("完成") }}</button>
           </div>
         </section>
       </div>

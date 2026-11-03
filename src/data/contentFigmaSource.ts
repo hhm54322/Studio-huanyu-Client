@@ -1,6 +1,7 @@
 import { publicContacts } from './publicContacts'
 import type { HomeSourceNodeData as SourceNode, HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import articleIndex from './toolkitArticleIndex.json'
+import copyCorrections from './publicCopyCorrections.json'
 
 type SourceFile = { sourceFrame: string; sourceSHA256: string; root: SourceNode }
 type ToolkitArticle = { key: string; title: string; articleFrame: string }
@@ -39,7 +40,7 @@ export function contentArticleRoot(source: string, article?: string): SourceNode
     if (!root) throw new Error(`Toolkit article was not loaded before navigation: ${article}`)
     return root
   }
-  const fix = (text: string) => text.replace('为**规整', '为规整').replace('全球患者可安心四、', '全球患者可安心。四、')
+  const fix = (text: string) => Object.entries(copyCorrections).reduce((value,[before,after])=>value.split(before).join(after),text)
   const visit = (node: SourceNode): SourceNode => {
     const result = { ...node, children: node.children.map(visit) }
     if (source !== 'toolkit' || node.id !== '143:3081') return result

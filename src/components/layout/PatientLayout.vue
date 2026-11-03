@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import '@/i18n/patient-layout.css'
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePatientMotion } from '@/composables/usePatientMotion'
@@ -6,13 +10,18 @@ import ConsultationPanel from '@/components/common/ConsultationPanel.vue'
 import PatientFooter from './PatientFooter.vue'
 import PatientHeader from './PatientHeader.vue'
 import WhatsAppContact from '@/components/common/WhatsAppContact.vue'
+import { providePatientContact } from '@/composables/useWhatsAppContact'
+import { useAppStore } from '@/stores/app'
 
 const route = useRoute()
+const app = useAppStore()
+providePatientContact()
 const homeMobile = ref(typeof window !== 'undefined' && window.innerWidth <= 700)
 const articleDesktop = ref(typeof window === 'undefined' || window.innerWidth > 900)
 const sourceArticle = computed(() => articleDesktop.value && route.path === '/steps/toolkit-detail')
 const sourceDirectory = computed(() => ['/hospitals', '/doctors'].includes(route.path))
 const sourceTrust = computed(() => articleDesktop.value && route.path === '/trust')
+const dentalPage = computed(() => route.path === '/dental' || route.name === 'patient-dental-doctor')
 function updateHomeViewport() {
   homeMobile.value = window.innerWidth <= 700
   articleDesktop.value = window.innerWidth > 900
@@ -37,17 +46,18 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateHomeViewport))
       'patient-shell--why-china': route.path === '/why-china',
       'patient-shell--hospitals': sourceDirectory,
       'patient-shell--cases': route.path === '/cases',
-      'patient-shell--dental': route.path === '/dental',
+      'patient-shell--dental': dentalPage,
       'patient-shell--insurance': route.path === '/insurance',
       'patient-shell--cost': route.path === '/cost' || route.path === '/cost-generated',
     }"
   >
     <div class="patient-shell__body" :data-figma-node="route.path === '/' && !homeMobile ? '1412:5683' : undefined">
-    <PatientHeader v-if="!sourceArticle && !sourceDirectory && !sourceTrust && (route.path !== '/dental' || homeMobile)" :consultation-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1559.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1602.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1516.svg' : undefined" :language-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1583.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1626.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1540.svg' : undefined" />
+    <PatientHeader v-if="!sourceArticle && (!sourceDirectory || homeMobile && route.path === '/doctors') && !sourceTrust && (!dentalPage || homeMobile)" :consultation-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1559.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1602.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1516.svg' : undefined" :language-icon="route.path === '/hospitals' ? '/images/figma/hospital-source/node-484-1583.svg' : route.path === '/cases' ? '/images/figma/case-source/node-484-1626.svg' : route.path === '/diseases-technologies' ? '/images/figma/disease-source/node-484-1540.svg' : undefined" />
     <main class="flex-1"><RouterView /></main>
-    <PatientFooter v-if="!sourceArticle && !sourceDirectory && !sourceTrust && (route.path !== '/dental' || homeMobile)" :contact-icons="route.path === '/hospitals' ? [5198, 5204, 5209].map(id => `/images/figma/hospital-source/node-144-${id}.svg`) : route.path === '/cases' ? [5473, 5479, 5484].map(id => `/images/figma/case-source/node-190-${id}.svg`) : route.path === '/diseases-technologies' ? [4630, 4636, 4641].map(id => `/images/figma/disease-source/node-144-${id}.svg`) : undefined" />
+    <PatientFooter v-if="!sourceArticle && !sourceDirectory && !sourceTrust && (!dentalPage || homeMobile)" :contact-icons="route.path === '/hospitals' ? [5198, 5204, 5209].map(id => `/images/figma/hospital-source/node-144-${id}.svg`) : route.path === '/cases' ? [5473, 5479, 5484].map(id => `/images/figma/case-source/node-190-${id}.svg`) : route.path === '/diseases-technologies' ? [4630, 4636, 4641].map(id => `/images/figma/disease-source/node-144-${id}.svg`) : undefined" />
     <ConsultationPanel />
     <WhatsAppContact />
+    <div v-if="app.localeLoadError" class="patient-language-error" role="alert">{{ tx(app.localeLoadError) }}</div>
     </div>
   </div>
 </template>
@@ -57,6 +67,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateHomeViewport))
    and dialogs reuse these faces instead of repeating their @font-face rules.
    Keep this in the patient shell so hospital administration is unaffected. */
 @import url('/fonts/home-source-fonts.css');
+.patient-language-error { position:fixed; top:80px; left:50%; transform:translateX(-50%); z-index:10000; max-width:calc(100vw - 32px); padding:12px 20px; border-radius:8px; color:#fff; background:#1e3a5f; }
 .patient-shell__body { display:contents; }
 .patient-shell--source-article :deep(.consult-float) { display:none; }
 .patient-shell--disease :deep(.footer-intro .brand-logo__mark) { font-size:14px; font-weight:700; line-height:20px; letter-spacing:0; }

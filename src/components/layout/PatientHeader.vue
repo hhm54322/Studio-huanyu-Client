@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, shallowRef, watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import {
   Check,
   Menu,
@@ -14,6 +17,7 @@ import type { Locale } from "@/stores/app";
 import MedicalServicesMenu from '@/components/layout/MedicalServicesMenu.vue'
 import PatientDesktopNavigation from '@/components/layout/PatientDesktopNavigation.vue'
 import { homeFigmaActions } from '@/data/homeFigmaActions'
+import { patientLanguages } from '@/i18n/languages'
 
 // The source-linked homepage header is only needed on `/`. Keep both its
 // renderer and the full homepage source out of secondary route chunks; this
@@ -23,6 +27,7 @@ const HomeFigmaSection = defineAsyncComponent(() => import('@/components/common/
 const HomeSourceNode = defineAsyncComponent(() => import('@/components/common/HomeSourceNode.vue'))
 
 const route = useRoute();
+const router = useRouter();
 const homeSource = shallowRef<typeof import('@/data/homeSourceRegistry')>()
 watch(() => route.path, async path => {
   if (path === '/' && !homeSource.value) homeSource.value = await import('@/data/homeSourceRegistry')
@@ -117,21 +122,15 @@ const navItems = [
   { name: "关于我们", path: "/about" },
 ];
 
-const languages: { code: Locale; label: string; short: string }[] = [
-  { code: "zh", label: "中文", short: "ZH" },
-  { code: "en", label: "English", short: "EN" },
-  { code: "id", label: "Bahasa Indonesia", short: "ID" },
-  { code: "ru", label: "Русский", short: "RU" },
-  { code: "mn", label: "Монгол", short: "MN" },
-];
+const languages = patientLanguages;
 
 const currentLang = computed(
   () => languages.find((item) => item.code === locale.value) || languages[0],
 );
 
-function switchLang(code: Locale) {
-  locale.value = code;
-  appStore.setLocale(code);
+async function switchLang(code: Locale) {
+  if (!await appStore.setLocale(code)) return;
+  void router.replace({query:{ ...route.query, lang:code }});
   langOpen.value = false;
 }
 
@@ -213,19 +212,18 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
       'patient-header--open': menuOpen,
     }"
   >
-    <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" label="主导航" :actions="homeFigmaActions" :styles="headerWidth > 700 ? { '1523:75':'background:transparent;' } : undefined" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
+    <HomeFigmaSection v-if="route.path === '/'" class="home-source-header" desktop-id="1523:75" mobile-id="1528:117" :label="tx('主导航')" :actions="homeFigmaActions" :styles="headerWidth > 700 ? { '1523:75':'background:transparent;' } : undefined" :attributes="{ '1523:95': { 'aria-expanded':desktopServicesOpen, 'aria-controls':'home-services-menu', 'aria-haspopup':'true' } }" @activate="onHomeAction" />
     <div v-if="route.path === '/' && headerWidth > 700 && desktopServicesOpen && homeSource" id="home-services-menu" class="home-desktop-services" :style="desktopServicesStyle">
       <HomeSourceNode :node="homeSource.homeDesktopNodes.get('1524:26')!" root :actions="homeFigmaActions" />
     </div>
     <div v-if="route.path !== '/'" class="header-inner">
-      <RouterLink to="/" class="header-logo" aria-label="寰宇云医首页"
+      <RouterLink to="/" class="header-logo" :aria-label="tx('寰宇云医首页')"
         ><BrandLogo compact
       /></RouterLink>
       <button v-if="headerWidth <= 700" class="ask-aning" type="button" @click="openConsultation">
-        <img :src="consultationIcon" alt="" aria-hidden="true" />问阿宁
-      </button>
+        <img :src="consultationIcon" alt="" aria-hidden="true" />{{ tx("问阿宁 ") }}</button>
       <PatientDesktopNavigation v-if="headerWidth > 700" class="shared-desktop-nav" />
-      <nav v-if="headerWidth <= 700" class="desktop-nav" aria-label="主导航">
+      <nav v-if="headerWidth <= 700" class="desktop-nav" :aria-label="tx('主导航')">
         <template v-for="item in navItems" :key="item.name">
           <RouterLink
             v-if="item.name === '医疗服务'"
@@ -236,15 +234,15 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
             :aria-expanded="desktopServicesOpen"
             aria-controls="desktop-services-menu"
             @click.stop.prevent="desktopServicesOpen = true"
-          >{{ item.name }}<span v-if="route.path === '/diseases-technologies'" class="disease-services-chevron" data-figma-node="1524:22" aria-hidden="true"><img src="/images/figma/disease-source/node-1524-23.svg" data-figma-node="1524:23" alt="" /></span></RouterLink>
+          >{{ tx(item.name) }}<span v-if="route.path === '/diseases-technologies'" class="disease-services-chevron" data-figma-node="1524:22" aria-hidden="true"><img src="/images/figma/disease-source/node-1524-23.svg" data-figma-node="1524:23" alt="" /></span></RouterLink>
           <RouterLink
             v-else-if="item.path"
             :to="item.path"
             :class="{ active: route.path === item.path }"
-            >{{ item.name }}</RouterLink
+            >{{ tx(item.name) }}</RouterLink
           >
-          <button v-else type="button" title="内容正在准备中">
-            {{ item.name }}
+          <button v-else type="button" :title="tx('内容正在准备中')">
+            {{ tx(item.name) }}
           </button>
         </template>
       </nav>
@@ -257,7 +255,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
             @click="langOpen = !langOpen"
           >
             <img :src="languageIcon" alt="" aria-hidden="true" /><span class="language-flag">🇨🇳</span
-            ><b>{{ currentLang?.short }}</b
+            ><b>{{ tx(currentLang?.short) }}</b
             >
           </button>
           <Transition name="dropdown"
@@ -276,7 +274,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
         <button
           class="menu-button"
           type="button"
-          :aria-label="menuOpen ? '关闭菜单' : '打开菜单'"
+          :aria-label="tx(menuOpen ? '关闭菜单' : '打开菜单')"
           @click="menuOpen = !menuOpen"
         >
           <X v-if="menuOpen" class="h-5 w-5" /><Menu v-else class="h-5 w-5" />
@@ -295,24 +293,23 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
         </button>
       </div>
     </Transition>
-    <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/' && homeSource" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" aria-label="移动端导航">
+    <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/' && homeSource" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" :aria-label="tx('移动端导航')">
       <HomeSourceNode :node="homeSource.homeMobileNodes.get(serviceMenuOpen ? '1555:500' : '1555:422')!" root :actions="serviceMenuOpen ? mobileExpandedActions : mobileMenuActions" @activate="onMobileSourceAction" />
     </div></Transition>
     <Transition name="mobile-menu"
       ><div v-if="menuOpen && route.path !== '/'" class="mobile-nav">
-        <nav aria-label="移动端导航">
+        <nav :aria-label="tx('移动端导航')">
           <template v-for="item in navItems" :key="item.name"
             ><RouterLink v-if="item.path" :to="item.path">{{
-              item.name
+              tx(item.name)
             }}</RouterLink
-            ><button v-else type="button" title="内容正在准备中">
-              {{ item.name }}
+            ><button v-else type="button" :title="tx('内容正在准备中')">
+              {{ tx(item.name) }}
             </button></template
-          ><RouterLink to="/steps">来华就医流程</RouterLink>
+          ><RouterLink to="/steps">{{ tx("来华就医流程") }}</RouterLink>
         </nav>
         <button class="mobile-consult" type="button" @click="openConsultation">
-          <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />问阿宁
-        </button>
+          <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />{{ tx("问阿宁 ") }}</button>
       </div></Transition
     >
   </header>

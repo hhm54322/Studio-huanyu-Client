@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { PhysicianRecord } from '@/data/physicianFigmaSource'
 
@@ -52,7 +55,7 @@ onMounted(async () => {
   document.body.style.overflow = 'hidden'
   dialog.value?.showModal()
   await nextTick()
-  dialog.value?.querySelector<HTMLElement>('[aria-label="关闭医生详情"]')?.focus({ preventScroll: true })
+  dialog.value?.querySelector<HTMLElement>('.physician-profile-dialog__close')?.focus({ preventScroll: true })
 })
 onBeforeUnmount(() => {
   dialog.value?.close(); document.body.style.overflow = previousOverflow
@@ -65,26 +68,26 @@ onBeforeUnmount(() => {
     <dialog ref="dialog" class="physician-profile-dialog" aria-labelledby="physician-dialog-title" @cancel.prevent="emit('close')" @click="closeOutside" @keydown="keydown">
       <div class="physician-profile-dialog__backdrop" data-physician-dialog-overlay @click.self="emit('close')">
         <article class="physician-profile-dialog__panel">
-          <button class="physician-profile-dialog__close" type="button" aria-label="关闭医生详情" @click="emit('close')"><img src="/images/figma/home-revision/node-1432-7746.svg" alt="" aria-hidden="true" /></button>
-          <h2 id="physician-dialog-title">专家介绍</h2>
+          <button class="physician-profile-dialog__close" type="button" :aria-label="tx('关闭医生详情')" @click="emit('close')"><img src="/images/figma/home-revision/node-1432-7746.svg" alt="" aria-hidden="true" /></button>
+          <h2 id="physician-dialog-title">{{ tx("专家介绍") }}</h2>
           <header class="physician-profile-dialog__header">
-            <div v-if="record.avatar" class="physician-profile-dialog__avatar"><img :src="record.avatar" :alt="`${record.name}医生头像`" /></div>
+            <div v-if="record.avatar" class="physician-profile-dialog__avatar"><img :src="record.avatar" :alt="tx(`${record.name}医生头像`)" /></div>
             <div class="physician-profile-dialog__identity">
-              <div class="physician-profile-dialog__name-row"><h3>{{ record.name }}</h3><span v-if="record.title">{{ record.title }}</span></div>
-              <p v-if="record.workplace">任职：{{ record.workplace }}</p>
-              <p v-for="(item, index) in record.basicInfo" :key="index">{{ item.replace(/^[•□]\s*/, '') }}</p>
+              <div class="physician-profile-dialog__name-row"><h3>{{ tx(record.name) }}</h3><span v-if="record.title">{{ tx(record.title) }}</span></div>
+              <p v-if="record.workplace">{{ tx("任职：") }}{{ tx(record.workplace) }}</p>
+              <p v-for="(item, index) in record.basicInfo" :key="index">{{ tx(item.replace(/^[•□]\s*/, '')) }}</p>
             </div>
           </header>
-          <div class="physician-profile-dialog__tabs" role="tablist" aria-label="医生资料">
-            <button v-for="(tab, index) in tabs" :id="`physician-tab-${index}`" :key="tab.label" type="button" role="tab" :aria-selected="activeTab === index" :tabindex="activeTab === index ? 0 : -1" :aria-controls="`physician-panel-${index}`" @click="activeTab = index">{{ tab.label }}</button>
+          <div class="physician-profile-dialog__tabs" role="tablist" :aria-label="tx('医生资料')">
+            <button v-for="(tab, index) in tabs" :id="`physician-tab-${index}`" :key="tab.label" type="button" role="tab" :aria-selected="activeTab === index" :tabindex="activeTab === index ? 0 : -1" :aria-controls="`physician-panel-${index}`" @click="activeTab = index">{{ tx(tab.label) }}</button>
           </div>
           <section v-for="(tab, index) in tabs" v-show="activeTab === index" :id="`physician-panel-${index}`" :key="tab.label" class="physician-profile-dialog__content" role="tabpanel" :aria-labelledby="`physician-tab-${index}`" :tabindex="activeTab === index ? 0 : -1">
             <ul v-if="activeTab === index && activeContent.length">
-              <li v-for="(item, itemIndex) in activeContent" :key="`${itemIndex}-${item}`">{{ item.replace(/^(?:[•□]\s*|\d+[.．]\s*)/, '') }}</li>
+              <li v-for="(item, itemIndex) in activeContent" :key="`${itemIndex}-${item}`">{{ tx(item.replace(/^(?:[•□]\s*|\d+[.．]\s*)/, '')) }}</li>
             </ul>
-            <p v-else-if="activeTab === index" class="physician-profile-dialog__empty">暂无该项资料</p>
+            <p v-else-if="activeTab === index" class="physician-profile-dialog__empty">{{ tx("暂无该项资料") }}</p>
           </section>
-          <p v-if="record.footerLabel" class="physician-profile-dialog__source-label">{{ record.footerLabel }}</p>
+          <p v-if="record.footerLabel" class="physician-profile-dialog__source-label">{{ tx(record.footerLabel) }}</p>
         </article>
       </div>
     </dialog>

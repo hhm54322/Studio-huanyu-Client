@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
+
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HomeSourceNode from './HomeSourceNode.vue'
 import { trustArticleDialog } from './trustArticleDialog'
@@ -6,6 +9,7 @@ import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 import { trustSource, trustTravel, trustAftercare, trustAssuranceState, trustNode, trustNodes, trustDescendants, trustArticles, trustAssurances, trustFaqRows, trustActions, type TrustArticleKey } from '@/data/trustFigmaSource'
 const width = ref(innerWidth)
+const localizedHeight = ref(0)
 // Keep reading state in the route owner, so a responsive branch switch does
 // not discard cards and FAQ answers the visitor has already opened.
 const expanded = defineModel<Set<number>>('expandedAssurances', { required: true })
@@ -117,12 +121,14 @@ async function closeArticle(){article.value=null;await nextTick();trigger?.focus
 function updateToolkitSticky(){
   stickyFrame=0
   const toolkit=root.value?.querySelector<HTMLElement>('[data-figma-node="204:5636"]')
-  if(!toolkit)return
+  const rail=root.value?.querySelector<HTMLElement>('[data-figma-node="204:5638"]')
+  if(!toolkit||!rail)return
   // Use the copied 273px resting position and 96px bottom section padding.
   // A source canvas is scaled below 1440px; native CSS sticky would then use
   // unscaled viewport coordinates and let the title scroll out of view.
-  const offset=165-toolkit.getBoundingClientRect().top/scale.value-273
-  toolkitOffset.value=Math.min(Math.max(0,offset),754+extraHeight-96-204-273)
+  const top=parseFloat(getComputedStyle(rail).top),height=parseFloat(getComputedStyle(rail).height)
+  const offset=165-toolkit.getBoundingClientRect().top/scale.value-top
+  toolkitOffset.value=Math.min(Math.max(0,offset),Math.max(0,parseFloat(getComputedStyle(toolkit).height)-96-height-top))
 }
 function scheduleSticky(){if(!stickyFrame)stickyFrame=requestAnimationFrame(updateToolkitSticky)}
 function resize(){width.value=innerWidth;languageOpen.value=false;void nextTick(updateToolkitSticky)}
@@ -139,17 +145,17 @@ onMounted(()=>{
 onBeforeUnmount(()=>{removeEventListener('resize',resize);removeEventListener('scroll',scheduleSticky);if(stickyFrame)cancelAnimationFrame(stickyFrame);document.removeEventListener('click',outside);observer?.disconnect();animations.forEach(a=>a.cancel())})
 </script>
 <template>
-  <div ref="root" class="trust-desktop-source" :style="{height:`${pageHeight*scale}px`}" @click="openArticle" @keydown="openArticle">
+  <div ref="root" class="trust-desktop-source" :style="{height:`${Math.max(pageHeight,localizedHeight)*scale}px`}" @click="openArticle" @keydown="openArticle">
     <div class="trust-desktop-source__canvas" :style="{transform:`translateX(-50%) scale(${scale})`}">
-      <HomeSourceNode :node="pageTree" root :actions="trustActions" :attributes="attributes" :texts="texts" :styles="styles" :baseline-nodes="baselineNodes" @activate="activate">
+      <HomeSourceNode :node="pageTree" root :actions="trustActions" :attributes="attributes" :texts="texts" :styles="styles" :baseline-nodes="baselineNodes" @layout="localizedHeight=$event" @activate="activate">
         <template #after="{node}">
-          <div v-if="trustFaqRows.includes(node.id)&&trustFaqRows.indexOf(node.id)>0" :id="`trust-answer-${trustFaqRows.indexOf(node.id)}`" class="trust-source-faq-answer" :style="{height:expandedFaq.has(trustFaqRows.indexOf(node.id))?`${answerHeight}px`:'0px'}" :aria-hidden="!expandedFaq.has(trustFaqRows.indexOf(node.id))"><div class="trust-source-faq-copy">{{ faqCopy[trustFaqRows.indexOf(node.id)] }}</div></div>
+          <div v-if="trustFaqRows.includes(node.id)&&trustFaqRows.indexOf(node.id)>0" :id="`trust-answer-${trustFaqRows.indexOf(node.id)}`" class="trust-source-faq-answer" :style="{height:expandedFaq.has(trustFaqRows.indexOf(node.id))?`${answerHeight}px`:'0px'}" :aria-hidden="!expandedFaq.has(trustFaqRows.indexOf(node.id))"><div class="trust-source-faq-copy">{{ tx(faqCopy[trustFaqRows.indexOf(node.id)]) }}</div></div>
         </template>
       </HomeSourceNode>
     </div>
     <header class="trust-desktop-source__header">
       <div :style="{transform:`translateX(-50%) scale(${scale})`}"><HomeSourceNode :node="sourceAtOrigin(trustNode('484:1463'))" root :actions="trustActions" :baseline-nodes="baselineNodes" @activate="activate" /></div>
-      <div v-if="languageOpen" class="trust-source-languages"><button type="button" @click="languageOpen=false">中文</button></div>
+      <div v-if="languageOpen" class="trust-source-languages"><button type="button" @click="languageOpen=false">{{ tx("中文") }}</button></div>
     </header>
     <component :is="trustArticleDialog(article)" v-if="article" :key="article" :article="article" @close="closeArticle" />
   </div>

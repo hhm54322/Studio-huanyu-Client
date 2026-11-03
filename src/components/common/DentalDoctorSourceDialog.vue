@@ -83,6 +83,8 @@ const contentRoots=computed(()=>{
   return body.children.filter(node=>node.y>=tabs.y+tabs.height).map(node=>node.id)
 })
 const scale=computed(()=>Math.min(1,(width.value-48)/model.value.width))
+const localizedHeight=ref(0)
+const renderHeight=computed(()=>Math.max(root.value.height,localizedHeight.value))
 const viewportHeight=computed(()=>Math.min(model.value.mask?.height??model.value.height,(height.value-80)/scale.value))
 const actions=computed<Record<string,HomeSourceAction>>(()=>({
   [model.value.close]:{action:'close',label:props.institution?'关闭机构介绍':'关闭医生详情'},
@@ -142,8 +144,8 @@ onBeforeUnmount(()=>{disposed=true;tabRequest++;window.removeEventListener('resi
       <div class="dental-source-dialog__overlay" data-dental-source-overlay :data-figma-node="model.overlay">
         <div class="dental-source-dialog__position" :style="{width:`${model.width*scale}px`,height:`${viewportHeight*scale}px`}">
           <div ref="clip" class="dental-source-dialog__clip" :aria-busy="loadingTab" :data-figma-node="model.mask?.id" :style="{width:`${model.width}px`,height:`${viewportHeight}px`,transform:`scale(${scale})`}">
-            <div class="dental-source-dialog__canvas" :style="{width:`${model.width}px`,height:`${root.height}px`}">
-              <HomeSourceNode :key="model.panel" :node="root" root :actions="actions" :attributes="attributes" :styles="styles" :hidden="hidden" :baseline-nodes="baselines" preserve-text-lines @activate="activate">
+            <div class="dental-source-dialog__canvas" :style="{width:`${model.width}px`,height:`${renderHeight}px`}">
+              <HomeSourceNode :key="model.panel" :node="root" root :actions="actions" :attributes="attributes" :styles="styles" :hidden="hidden" :baseline-nodes="baselines" preserve-text-lines @layout="localizedHeight=$event" @activate="activate">
                 <template #after="{node}">
                   <DentalPhysicianDocumentContent v-if="record&&documentMode&&node.id===bodyId" :key="documentMode" :doctor="record" :mode="documentMode" :aria-labelledby="institution?'dental-source-dialog-title':`dental-source-tab-${active}`" :style="{top:`${institution?32:189}px`}" @height="value=>documentHeight=value" />
                 </template>
