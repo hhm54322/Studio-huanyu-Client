@@ -17,5 +17,5 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["node"]
   },
-  "include": ["vite.config.ts", "scripts/packed-home-source.ts", "scripts/public-asset-cache.ts", "scripts/patient-cache-plugin.ts"]
+  "include": ["vite.config.ts", "scripts/packed-home-source.ts", "scripts/public-asset-cache.ts", "scripts/patient-cache-plugin.ts", "src/i18n/patientCopyScopes.ts"]
 }

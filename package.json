@@ -25,7 +25,8 @@
     "test:i18n:copy": "node --test scripts/site-i18n-copy.test.cjs",
     "qa:i18n:site": "node scripts/site-i18n-qa.cjs",
     "qa:i18n:states": "node scripts/site-i18n-states-qa.cjs",
-    "qa:i18n:stress": "node scripts/site-i18n-qa.cjs --stress"
+    "qa:i18n:stress": "node scripts/site-i18n-qa.cjs --stress",
+    "qa:m10": "node scripts/m10-boot-qa.cjs"
   },
   "dependencies": {
     "@vant/touch-emulator": "^1.4.0",

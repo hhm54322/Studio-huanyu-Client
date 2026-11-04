@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { watch } from 'vue'
 import i18n from '@/i18n'
 import { translateSiteCopy } from '@/i18n/siteCopy'
+import { patientCopyScope } from '@/i18n/patientCopyScopes'
+import { resolveLocale, savedLocale } from '@/i18n/languages'
+import { useAppStore } from '@/stores/app'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -195,9 +198,29 @@ const router = createRouter({
 // from entering an unapproved design surface.
 const pendingDesignRoutes = new Set(['/equipment', '/visa', '/professional-report'])
 
-// 动态页面标题
-router.beforeEach((to) => {
+router.onError((error, to) => {
+  const message = String(error instanceof Error ? error.message : error)
+  if (!/(?:dynamically imported module|Importing a module script failed|ChunkLoadError|Unable to preload CSS|Failed to fetch module|Patient language resource failed)/i.test(message)) return
+  if (to.meta.side === 'hospital' || to.path.startsWith('/hospital')) return
+  // The inlined coordinator owns the sole retry budget and checks whether the
+  // first page is still untouched. SPA failures retain the current page.
+  window.__huanyuPatientLoad?.failed(to.fullPath)
+})
+
+router.afterEach((_to, _from, failure) => {
+  if (!failure && document.documentElement.dataset.huanyuAppReady === 'true') window.__huanyuPatientLoad?.ready()
+})
+
+// Resolve the complete target-page copy before committing navigation. A slow
+// or failed pack never exposes untranslated UI or overwrites a newer choice.
+router.beforeEach(async (to) => {
   if (pendingDesignRoutes.has(to.path)) return false
+  if (to.meta.side !== 'hospital') {
+    const language = resolveLocale(to.query.lang) || resolveLocale(i18n.global.locale.value) || savedLocale()
+    if (!await useAppStore().setLocale(language, patientCopyScope(to.path))) {
+      throw new Error('Patient language resource failed')
+    }
+  }
   const title = to.meta.title as string | undefined
   document.title = title ? `${to.meta.side==='hospital'?title:translateSiteCopy(title)} - ${to.meta.side==='hospital'?'寰宇云医':translateSiteCopy('寰宇云医')}` : translateSiteCopy('寰宇云医')
 })

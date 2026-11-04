@@ -9,6 +9,8 @@ import { resolve } from 'node:path'
 import { homeEntrySourcePlugin, packedHomeSourcePlugin } from './scripts/packed-home-source'
 import { publicAssetCache } from './scripts/public-asset-cache'
 import { patientCachePlugin } from './scripts/patient-cache-plugin'
+import { patientLocalePlugin } from './scripts/patient-locale-plugin.mjs'
+import { patientCopyViews } from './src/i18n/patientCopyScopes'
 
 const assetCache = publicAssetCache(fileURLToPath(new URL('./public', import.meta.url)))
 
@@ -75,6 +77,14 @@ const patientEntryPreloadPlugin = (): Plugin => ({
         '/steps/toolkit-detail': 'ToolkitDetailView', '/about': 'AboutView',
       }
       const entries: Record<string, [string, string][]> = {}
+      const localeChunks: Record<string, Record<string, string>> = {}
+      for (const chunk of Object.values(bundle)) {
+        if (chunk.type !== 'chunk') continue
+        for (const id of Object.keys(chunk.modules)) {
+          const match = id.match(/virtual:huanyu-patient-copy\/(en|id|ms|pt)\/([^/]+)/)
+          if (match) (localeChunks[match[1]!] ||= {})[match[2]!] = chunk.fileName
+        }
+      }
       for (const [route, view] of Object.entries(routes)) {
         const files = new Set<string>(), styles = new Set<string>()
         const visit = (file: string) => {
@@ -113,11 +123,12 @@ const patientEntryPreloadPlugin = (): Plugin => ({
       // stylesheet otherwise waits for that CSS before it can start requests.
       // Only the current desktop route is preloaded, never other page/dialog
       // dependencies. CSS keeps the same CORS mode as Vite's stylesheet links.
-      const script = `if(matchMedia('(min-width: 701px)').matches){const entries=${JSON.stringify(entries)};const route=location.pathname.endsWith('/')?location.pathname.slice(0,-1)||'/':location.pathname;const article=route==='/steps/toolkit-detail'?entries[route+'?article='+new URLSearchParams(location.search).get('article')]||[]:[];for(const [rel,href] of [...entries[route]||[],...article]){if([...document.querySelectorAll('link')].some(link=>link.getAttribute('href')===href&&(link.rel===rel||rel==='preload'&&link.rel==='stylesheet')))continue;const link=document.createElement('link');link.rel=rel;link.href=href;link.crossOrigin='anonymous';if(rel==='preload')link.as='style';link.dataset.huanyuPreload='patient-entry';document.head.appendChild(link)}}`
+      const scopeRoutes = Object.fromEntries(Object.entries(routes).map(([path, view]) => [path, Object.keys(patientCopyViews).find(key => patientCopyViews[key] === view)]))
+      const script = `(function(){const entries=${JSON.stringify(entries)};const locales=${JSON.stringify(localeChunks)};const scopes=${JSON.stringify(scopeRoutes)};const route=location.pathname.replace(/\\/$/,'')||'/';let locale=(new URLSearchParams(location.search).get('lang')||'').toLowerCase().split(/[-_]/)[0];if(!['zh','en','id','ms','pt'].includes(locale)){try{locale=(localStorage.getItem('locale')||'zh').toLowerCase().split(/[-_]/)[0]}catch{locale='zh'}}const scope=route.startsWith('/dental/doctors/')?'dental-doctor':scopes[route];const links=[];for(const key of new Set(['common',scope])){const href=scope&&locales[locale]?.[key];if(href)links.push(['modulepreload','/'+href,'patient-locale'])}if(matchMedia('(min-width: 701px)').matches){const article=route==='/steps/toolkit-detail'?entries[route+'?article='+new URLSearchParams(location.search).get('article')]||[]:[];links.push(...[...entries[route]||[],...article].map(link=>[...link,'patient-entry']))}for(const [rel,href,kind] of links){if([...document.querySelectorAll('link')].some(link=>link.getAttribute('href')===href&&(link.rel===rel||rel==='preload'&&link.rel==='stylesheet')))continue;const link=document.createElement('link');link.rel=rel;link.href=href;link.crossOrigin='anonymous';if(rel==='preload')link.as='style';if(rel==='preload'&&link.as==='style'){link.dataset.huanyuStyleState='loading';link.addEventListener('load',()=>{link.dataset.huanyuStyleState='loaded'},{once:true});link.addEventListener('error',()=>{link.dataset.huanyuStyleState='error'},{once:true})}link.dataset.huanyuPreload=kind;document.head.appendChild(link)}})()`
       const recoverySource = readFileSync(fileURLToPath(new URL('./src/bootstrap/patientLoadRecovery.js', import.meta.url)), 'utf8')
-      // Reports and administration are excluded: never reload a form or an
-      // in-progress workflow to recover an optional component download.
-      const recoverableRoutes = Object.keys(routes).filter(route => route !== '/report')
+      // The coordinator excludes reports/mobile from automatic retry and
+      // never reloads any page once it is ready or the visitor has interacted.
+      const recoverableRoutes = Object.keys(routes)
       const recovery = `(function(){${recoverySource}\ninstallPatientLoadRecovery(${JSON.stringify(buildVersion)},${JSON.stringify(recoverableRoutes)})})()`
       // Exact first-screen assets verified against the rendered source nodes.
       // Only this route's image is requested; phone/tablet loading is unchanged.
@@ -169,6 +180,7 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(buildVersion),
   },
   plugins: [
+    patientLocalePlugin(patientCopyViews),
     homeExpertSourcePlugin(),
     homeEntrySourcePlugin(assetCache.rewrite),
     optimizedImagePlugin(),

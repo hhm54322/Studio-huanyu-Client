@@ -20,9 +20,9 @@ export const useAppStore = defineStore('app', () => {
 
   let localeRequest = 0
   const localeLoadError = ref('')
-  async function setLocale(lang: Locale) {
+  async function setLocale(lang: Locale, scope?: string) {
     const request = ++localeRequest
-    try { await ensurePatientLocale(lang) } catch {
+    try { await ensurePatientLocale(lang, scope) } catch {
       const errors = { zh:'语言包加载失败，请重试。', en:'Language download failed. Please try again.', id:'Gagal memuat bahasa. Silakan coba lagi.', ms:'Gagal memuatkan bahasa. Sila cuba lagi.', pt:'Não foi possível carregar o idioma. Tente novamente.' }
       if (request === localeRequest) localeLoadError.value = errors[lang]
       return false

@@ -24,9 +24,6 @@ export function translateSiteCopy(value: unknown, language: string = i18n.global
   const catalog = (i18n.global.getLocaleMessage(targetLocale) as Record<string, unknown>).siteCopy as Record<string, string> | undefined
   const translated = catalog?.[siteCopyKey(text)]
   if (typeof translated === 'string') return value.replace(text, () => translated)
-  // Public data combines independently translated labels with a visual
-  // separator (for example a city and a medical department).
-  if (text.includes(' · ')) return value.split(' · ').map(part => translateSiteCopy(part, language)).join(' · ')
   // Lists in the source documents are rendered without their source bullets.
   const stripped = text.replace(/^(?:[•□●]\s*|\d+[.．](?!\d)\s*)/, '')
   if (stripped !== text && catalog?.[siteCopyKey(stripped)]) return value.replace(stripped, () => catalog[siteCopyKey(stripped)]!)
@@ -42,6 +39,10 @@ export function translateSiteCopy(value: unknown, language: string = i18n.global
     })
     return value.replace(text,()=>translated)
   }
+  // Match a complete counted label before splitting its separator. A scoped
+  // page pack may contain "Patient reviews · {arg0}" without the standalone
+  // "Patient reviews" label used on a different page.
+  if (text.includes(' · ')) return value.split(' · ').map(part => translateSiteCopy(part, language)).join(' · ')
   // Source biographies contain paragraphs and lists that are also displayed
   // separately. Resolve those exact entries without translating patient data.
   if (text.includes('\n')) return value.split('\n').map(line => translateSiteCopy(line, language)).join('\n')

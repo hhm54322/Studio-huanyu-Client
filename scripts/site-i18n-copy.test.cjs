@@ -22,6 +22,7 @@ const catalog = Object.fromEntries([
   ['上海曜影医院', 'Shanghai SinoUnited Hospital'],
   ['打开{arg0}官网', 'Open {arg0} website'],
   ['共 {count} 位医生', '{count} physicians'],
+  ['患者评价 · {arg0}', 'Patient reviews · {arg0}'],
   ['上海', 'Shanghai'], ['治疗', 'Treatment'], ['随访', 'Follow-up'],
   ['0T磁共振', 'Zero-tesla MRI'],
 ].map(([source, target]) => [siteCopyKey(source), target]))
@@ -49,6 +50,11 @@ test('composite public labels and document lines resolve independently', () => {
   assert.equal(tx('上海 · 中医科'), 'Shanghai · Traditional Chinese medicine')
   assert.equal(tx('治疗\n随访'), 'Treatment\nFollow-up')
   assert.equal(tx('3.0T磁共振'), '3.0T磁共振')
+})
+test('a route-scoped counted label translates without a standalone prefix entry', () => {
+  assert.equal(catalog[siteCopyKey('患者评价')], undefined)
+  assert.equal(tx('患者评价 · 1'), 'Patient reviews · 1')
+  assert.equal(tx('患者评价 · 128'), 'Patient reviews · 128')
 })
 test('Chinese and unknown values are unchanged; only supplied static copy is translated', () => {
   assert.equal(tx('查看张医生详情', 'zh'), '查看张医生详情')

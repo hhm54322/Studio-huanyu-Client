@@ -7,6 +7,39 @@
     <meta name="theme-color" content="#C05621" />
     <meta name="description" content="寰宇云医 - 全球医疗智能导航平台" />
     <title>寰宇云医</title>
+    <style>
+      #huanyu-boot{position:fixed;inset:0;z-index:2147483646;display:grid;place-items:center;padding:32px;box-sizing:border-box;background:#f7fafc;color:#1e3a5f;font:14px/1.7 Arial,"PingFang SC",sans-serif;text-align:center}
+      #huanyu-boot__card{width:min(420px,100%);padding:36px 32px;border:1px solid #e5edf5;border-radius:20px;background:#fff;box-shadow:0 16px 48px rgba(30,58,95,.08)}
+      #huanyu-boot__brand{margin:0;font-size:24px;font-weight:700;letter-spacing:.04em}#huanyu-boot__message{margin:12px 0 0;color:#64748b}
+      #huanyu-boot__retry{display:none;margin:20px auto 0;border:0;border-radius:999px;padding:10px 20px;color:#fff;background:#2563eb;font:inherit;font-weight:600;cursor:pointer}#huanyu-boot[data-state="error"] #huanyu-boot__retry{display:inline-flex}#huanyu-boot[data-state="error"] #huanyu-boot__message{color:#b45309}
+    </style>
+    <script>
+      (function () {
+        var boot = function () { return document.getElementById('huanyu-boot') }
+        var value = new URLSearchParams(location.search).get('lang') || ''
+        if (!value) { try { value = localStorage.getItem('locale') || '' } catch (_) {} }
+        var locale = String(value).toLowerCase().split(/[-_]/)[0]
+        var copy = {
+          zh:['正在加载页面…','页面资源加载失败，请重试。','重新加载'],
+          en:['Loading…','Page resources could not be loaded. Please try again.','Reload'],
+          id:['Memuat halaman…','Sumber daya halaman gagal dimuat. Silakan coba lagi.','Muat ulang'],
+          ms:['Memuatkan halaman…','Sumber halaman gagal dimuatkan. Sila cuba lagi.','Muat semula'],
+          pt:['A carregar a página…','Não foi possível carregar os recursos da página. Tente novamente.','Recarregar']
+        }[locale] || ['正在加载页面…','页面资源加载失败，请重试。','重新加载']
+        window.__huanyuShowRecovery = function (message) {
+          var node = boot(); if (!node) return
+          node.dataset.state = 'error'
+          node.querySelector('#huanyu-boot__message').textContent = message || copy[1]
+          node.querySelector('#huanyu-boot__retry').textContent = copy[2]
+        }
+        window.__huanyuRemoveBoot = function () { var node = boot(); if (node) node.remove() }
+        window.__huanyuInitBoot = function () {
+          if (/^\/hospital(?:\/|$)/.test(location.pathname)) { window.__huanyuRemoveBoot(); return }
+          var node = boot()
+          if (node && node.dataset.state !== 'error') node.querySelector('#huanyu-boot__message').textContent = copy[0]
+        }
+      })()
+    </script>
     <script>
       // The desktop homepage paints its first hero as a CSS background after
       // Vue mounts. Start the exact source asset while the app bundle parses,
@@ -31,6 +64,8 @@
   </head>
   <body>
     <div id="app"></div>
+    <div id="huanyu-boot" role="status" aria-live="polite"><div id="huanyu-boot__card"><p id="huanyu-boot__brand">寰宇云医</p><p id="huanyu-boot__message">正在加载页面…</p><button id="huanyu-boot__retry" type="button" onclick="location.reload()">重新加载</button></div></div>
+    <script>window.__huanyuInitBoot()</script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

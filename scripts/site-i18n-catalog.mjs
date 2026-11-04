@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 // Offline public-copy extraction/translation. No patient uploads, generated
 // reports, runtime cookies or private application data are read by this tool.
 import fs from 'node:fs'
@@ -13,7 +12,6 @@ import { isCopyResource, skipJsonCopyField, stripCopyListMarker } from './site-i
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const directory = path.join(root, 'src/i18n/site-copy')
 const artifact = path.join(root, 'artifacts/i18n-20261104')
-fs.mkdirSync(directory, { recursive: true }); fs.mkdirSync(artifact, { recursive: true })
 const locales = ['zh', 'en', 'id', 'ms', 'pt']
 const han = /[\u3400-\u9fff]/
 const normalize = value => value.replace(/\r\n/g, '\n').trim()
@@ -40,10 +38,11 @@ const flatten = (obj, prefix = '') => Object.fromEntries(Object.entries(obj).fla
 // Follow the actual public application imports. Historical Figma exports and
 // unopened route prototypes must not inflate translation coverage or ship old
 // copy. Glob imports are included because several detail pages load on demand.
-function publicFiles() {
+export function publicFiles(seeds) {
   const excluded = new Set(['EquipmentView.vue', 'VisaView.vue', 'ProfessionalReportView.vue'])
-  const queue = files(path.join(root, 'src/views/patient'), ['.vue']).filter(file => !excluded.has(path.basename(file)))
-  queue.push(path.join(root, 'src/components/layout/PatientLayout.vue'))
+  const queue = seeds ? seeds.map(file => path.resolve(root, file))
+    : files(path.join(root, 'src/views/patient'), ['.vue']).filter(file => !excluded.has(path.basename(file)))
+  if (!seeds) queue.push(path.join(root, 'src/components/layout/PatientLayout.vue'))
   const components = new Map(files(path.join(root, 'src/components'), ['.vue']).map(file => [path.basename(file, '.vue'), file]))
   const found = new Set()
   function resolveImport(reference, parent) {
@@ -98,7 +97,7 @@ function publicFiles() {
   }
   return [...found].sort()
 }
-function extract(check = false) {
+export function extract(check = false) {
   const sources = {}, locations = {}
   const copyCorrections=read(path.join(root,'src/data/publicCopyCorrections.json'))
   function add(raw, file, includeEnglish = false) {
@@ -276,8 +275,11 @@ async function translate() {
   if (failures.length) { console.log(JSON.stringify(failures)); process.exitCode = 1 }
 }
 
-const action = process.argv[2]
-if (action === 'extract') extract()
-else if (action === 'translate') await translate()
-else if (action === 'audit') audit()
-else throw Error('Usage: node scripts/site-i18n-catalog.mjs extract|translate|audit [--sample]')
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  fs.mkdirSync(directory, { recursive: true }); fs.mkdirSync(artifact, { recursive: true })
+  const action = process.argv[2]
+  if (action === 'extract') extract()
+  else if (action === 'translate') await translate()
+  else if (action === 'audit') audit()
+  else throw Error('Usage: node scripts/site-i18n-catalog.mjs extract|translate|audit [--sample]')
+}

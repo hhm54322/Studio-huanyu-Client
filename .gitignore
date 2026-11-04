@@ -219,6 +219,7 @@ node_modules/
 /scripts/public-asset-cache.d.ts
 /scripts/patient-cache-plugin.d.ts
 /scripts/packed-home-source.d.ts
+/src/i18n/patientCopyScopes.d.ts
 
 # Local environment, uploaded/exported data, logs and caches
 tmp/
