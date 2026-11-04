@@ -1,11 +1,11 @@
 # 患者独立站五语适配记录
 
-- Status: implementation — 未完成翻译与真实译文视觉验收，不能标记 verified。
-- Scope: 全部已开放患者路由和其详情/弹窗/表单状态；中文、英语、印尼语、马来语、葡语。
-- Source of truth: 原页面 Figma 参数与节点映射继续有效，未替换或自动接受变更基线。
-- Live connection: `figma-connect.mjs`，2026-11-03T19:17:00.097Z；session `01a0bebd-b6f9-7fd3-bf5a-b79501589b80`，IAB browser2/tab4，Design/Layers/Properties 均可读；选中 `1523:75`。证据 `artifacts/i18n-20261104/connection-last.json`。
-- Latest obtained official export: `/Users/hhm/Downloads/寰宇云医 (48).fig`，exportedAt `2026-11-03T18:32:42.464Z`，SHA256 `2d1ee146a6f80b0076073b23708d40ff049b9eaa5ad29f788bf2cb9bb3f13849`。扫描 36,318 节点、19,255 帧；这是实施中的源核验，不是最终交付确认。
-- Comparison evidence: `artifacts/i18n-20261104/source-start-home.json`、`source-start-dental.json`、`source-groups.json`、`source-summary.json` 和逐历史基线报告。扫描实现导出的全部节点、隐藏状态、共享依赖及同名候选，未以帧大小/名称代替检查。
+- Status: implementation — 五语文案及专项排版回归已完成并以 `20261104100320` 正式发布；全站当前Figma设计门禁仍有明确差异，不标记全站设计verified。
+- Scope: 全部14条已开放患者路由及其详情/弹窗/表单状态；`zh/en/id/ms/pt`。移动端仅做已有布局语言兼容，不开展设计改版。
+- Static baseline: 各原页面的节点树、原HTML/CSS、资产及逐节点参数映射保留，未自动替换历史设计基线；详见对应page spec和 `docs/figma-source/`。
+- Live connection: `figma-connect.mjs`，2026-11-04T09:05:54.799Z，session `01a0bebd-b6f9-7fd3-bf5a-b79501589b80`，IAB browser2/tab4；Design/Layers/Properties均可读。证据 `artifacts/i18n-20261104/direct/connection-delivery.json`。另已逐一读取并留存首页、信任页、牙科新增节点、医院按钮/标签的Dev Mode。
+- Current official source: `/Users/hhm/Downloads/寰宇云医 (51).fig`，exportedAt `2026-11-04T09:24:57.573Z`，SHA256 `039c559b7c0292b79f3f4626d37e16805baa027099e59dbc6b56889e4c1ee4b1`，35,986节点/19,050帧。
+- Current-source comparison: `artifacts/i18n-20261104/direct/delivery-source-summary.json`及各逐历史基线报告。包括全部节点、小/隐藏状态、同名候选及共享依赖；缺失历史导出保留为缺失，不用帧大小、名称或截图代替检查。
 
 ## 参数和映射
 
@@ -28,20 +28,57 @@
 
 节点的准确字号、行高、字重、填充、圆角、原位置及图源以对应源树/原 page spec 为准。本次没有替换为估测值。
 
-## 当前源差异
 
-- 最新牙科七个独立页/状态相对 2026-11-03 实现导出，无该范围内节点差异。全文件仍有其他候选变化，不自动采用。
-- 部分旧牙科弹窗源已删除，已有独立页替代；不是本次遗漏页面。
-- 首页专家 `1432:7917` 有同名新候选 `3424:6069`，其他部分历史/移动源有差异；没有因 i18n 任务自动改写设计基线。
-- 历史基线 `f46e9364d…` 的原 native 导出缺失，保留 unresolved，不把缺失当相同。需以后续页面设计核验处理。
-- 后续在当前 IAB 再次执行官方 `Save local copy…` 后未取得新下载；最新实际取得的文件仍为 `(48).fig`。不能将重新运行比较脚本表述为已取得最终新源。本次整体仍不交付、不自动更新任何基线。
+## 本轮精确参数补充
 
-## 验证
+| Node ID | Live Dev Mode / 原值 | 映射与适配 |
+| --- | --- | --- |
+| `204:5638`、`204:5639` | 原左侧工具包固定列；标题局部top=0px，原字号/行高保留 | `TrustDesktopPage.vue`，拆出的固定列继续保留absolute元信息，译文不挤入右列；0px显式保留单位 |
+| `1620:769`（TEXT `1620:770`） | 按钮149.64 Fill×38，padding10px 0，gap4，圆角10，#DD6B20；兄弟间gap8 | `HospitalView.vue`，仅外语的fluid窄屏两操作等宽分配，长标签换行、容器可增高；中文原几何不改 |
+| `1620:2030`、`1620:2032` | Mask 311×23；内部Container394 Hug×23 Hug；父padding16；底边1px #F1F5F9 | `HospitalSourceDialog.vue`，四语标签保留Hug宽度并横向滚动，静止和上滑固定两状态一致 |
+| `1620:1213`、`1620:1215`、按钮 `1620:1216`–`1620:1226` | 原概况页标签Mask、inline-flex容器，padding-top24；文字12/12，tracking .064 | 同组件原有手机自然流，仅外语避免flex强缩窄及absolute行不撑高 |
+| `1541:1100` | 费用弹窗医疗项目，12/18，600，tracking−.15；原列宽84 | `site-copy/pt.json`，“Quimioterapia / terapia-alvo / imunoterapia”保留治疗含义并添加正常断词空格，未缩小字体 |
+| `190:5323`（TEXT `190:5327`） | 案例主CTA原199×62，padding16/24，gap8，圆角14，文字20/30、600；完整源参数沿用 `cases.md` 的248节点记录 | `CaseView.vue`，仅外语以内容宽高覆盖生产懒加载的固定高度，保留最小高度62；中文不改 |
+| `221:6192` | 案例筛选原4×220及104/106操作按钮，gap16，高42；同上原源记录 | 同组件，仅外语操作列使用内容宽度，≤1000px两列、≤650px操作按钮全宽自然高度，避免标签被强行断字或截断 |
 
-- `scripts/site-i18n-layout.test.cjs` 与 `site-i18n-copy.test.cjs`：20 项回归通过，不能代替截图。
-- `scripts/m02-contact-qa.cjs`：五语/5档桌面宽度/3种公共导航，共75组布局检查通过；原70组路由联络信息回归另有记录。
-- `scripts/site-i18n-qa.cjs`：主页面顶部/中段/底部、逐屏扫描和本地截图。加长文案仅用于应力测试，真实译文检查仍待完成。
-- `scripts/site-i18n-states-qa.cjs`：覆盖详情、筛选、五标签、案例展开、信任文章与 FAQ、报告空表单校验；全部为本地 QA，不向真实接口提交资料。
-- 中文牙科：`artifacts/i18n-20261104/dental-zh-baseline/qa.json`，7 个 Figma 对照区域差异均 <1%，完整流程自动化回归通过。曾有图像工具空输出，不能将那些调用记为视觉检查。后续已通过正常图像输出检查首页手机导航、牙科医生资料、医生目录、医院卡片、为什么选择中国、保险路径、文章和手机表单等部分截图，并修复可见问题；没有逐张检查所有状态，更不等于四套真实译文的完整视觉验收。
-- 全文目录当前 5,936 条；英/印尼语各缺 5,656 条，马来语/葡语各缺 5,881 条，受 GPT 403 阻塞。`prebuild`/`build:app` 已加入完整度检查，未补齐前阻止发布。
-- Remaining differences: 未完成，完整语言包和真实译文截图未验收。维护与阻塞见 `docs/implementation/site-i18n.md`。
+Live证据：`direct/live-trust-5638.txt`、`live-trust-5639.txt`、`live-hospital-button-769.txt`、`live-hospital-tabs-2030.txt`；医院相关源在最终全节点比较中保留其既有历史差异。
+
+## Assets
+
+| 精确源节点 | 资产处理 |
+| --- | --- |
+| `1523:59` 首页首图容器 | 原Figma图片与铺满裁切保留；本次只约束译文最大宽度 |
+| `204:5638` 固定列下TEXT节点 | 无新增位图，以原TEXT字体渲染四语 |
+| `1620:769`、`1620:2030` | 无新增位图，保留原按钮/标签颜色、圆角及图标资产 |
+
+其他图源、导出路径和NodeID沿用各页面既有Assets表；本次没有新增或替换照片。
+
+## Behavior And Verification
+
+- 语言切换通过真实 `setLocale()` 并同步 `html[lang]`、URL、存储，异步包先加载后统一切换；过滤值、路由、业务字段保持原值。私有病例、上传文件名及报告原文不翻译。
+- `direct/audit-delivery.log`：四套语言包均5837/5837，零缺项/无效/未同步源；`tests-with-case-final.log`最后代码34项回归通过；`types-final.log`类型通过。
+- 主路由210组，其中168组外语所检边界/漏翻/脚本无问题；交互668组中的1处葡语初次失败已修并另20组复验。额外168组窄屏中的医院4组问题已修并另16组路由/96组详情复验。完整原始失败保留，不将初次报告改写为全绿。
+- 实际译文截图逐页生成，并人工查看关键长文、按钮、手机标签和弹窗。中文信任页五区域截图nMAE最高0.50848%、pixelmatch最高0.37897%；中文牙科此前7区域均<1%。详细路径与范围见 `docs/implementation/site-i18n.md`。
+- Prototype/业务：首页原因/故事/专家、医生筛选/详情、医院六标签、牙科五标签/案例展开/报价、工具文章、信任FAQ/长文、报告空表单和咨询均回归；QA拦截非GET，不向真实接口提交病例或发消息。
+- 最终生产包 `artifacts/deployment/20261104100320/production-qa/report.json`：95组主路由检查中76组外语无所检异常，中文19组原观察保留；医院/牙科44组标签状态通过。生产CSS顺序导致的案例按钮问题已修，`case-controls-qa/report.json`四语×五宽20组全部通过，原始失败另档保留。公网70组通过，旧版升级后57项已加载资源重复访问传输为0；CDN34刷新+184预热全部完成100%。部署不包含后台或报告生成行为变更。
+- Remaining differences: 全站当前设计验收仍有历史源删除/替换、证据时效、共享代码哈希以及当前牙科简介分隔线新增等差异。缺失历史 `f46e9364d…` 原始导出未被视为相同。不得将本次语言专项回归写成全站Figma门禁通过；当前未放宽门禁或接受变更基线。
+
+## 2026-11-04 首页真实译文兼容复核
+
+本轮唯一入口连接时间 `2026-11-04T04:25:16.285Z`，当前会话 IAB browser2/tab4，源 `1528:135`，Design/Layers/Properties 可读。已实际取得官方副本 `/Users/hhm/Downloads/寰宇云医 (49).fig`（2026-11-04T04:05:56.589Z，SHA256 `2e3b24ce24a2f555f94f2c61bcd4586c16816a97488355e1924ddcc4667508fe`）；全节点、隐藏状态、共享依赖及同名候选比较记录在 `artifacts/i18n-20261104/direct/home-mobile-source-before.json`。移动主帧的尺寸/行高差异已逐项回查 live Dev Mode，未自动替换历史 native 基线。
+
+| Node ID | 父节点 | 当前 Dev Mode 原值 | 具体映射与本轮适配 |
+| --- | --- | --- | --- |
+| `1528:134` Container | `1528:127` Section | 375×118 Hug，纵向居中，gap20 | `HomeFigmaSection.vue [data-figma-node="1528:134"]`，仅非中文恢复 Hug 高度 |
+| `1528:135` Heading 1 | `1528:134` | 327×64 Hug，column，align center，gap12 | 同节点元素，仅非中文随文案自然增高 |
+| `1528:136` Frame 77 | `1528:135` | 327×34 Hug，row，center/start，gap4 | 同节点元素，译文标题的自然行高 |
+| `1528:138` 标题 | `1528:136` | PingFang SC22/34，600，#143162，居中，291×34 | 同节点 TEXT，保留字体，允许换行 |
+| `1528:141` 副标题 | `1528:135` | 313×18 Hug，12/18，400，#5B606A，letter-spacing−0.439 | 同节点 TEXT；live 证据 `live-mobile-141.txt` |
+| `1528:142` CTA Container | `1528:134` | 124×34 Hug，column/start，gap32，前间距20 | 同节点元素，随前文推移；live `live-mobile-142.txt` |
+| `1528:149` 流程标题 Container | `1528:148` | 156×52 Hug，column/start，gap4，父padding40/16 | 同节点元素，非中文利用父容器可用宽度；live `live-mobile-149.txt` |
+| `1528:152` Frame83 | `1528:148` | 343 Fill×116 Hug，row，space-between，align center，前gap32 | 同节点流程行；live `live-mobile-152.txt`，译文各列按可用宽度分配，顶部数字对齐 |
+| `1528:153/160/167/174` Frame79–82 | `1528:152` | 每列61 Hug×116，column/center，gap10 | 同节点4个可点击阶段列，保留4列与圆圈原尺寸，译文等宽使用剩余空间 |
+| `1528:157/164/171/178` Heading7 | 上述对应阶段 | column/center，gap8，原宽61/61/49/49 | 同节点标题说明组，非中文使用阶段列宽 |
+| `1528:154/161/168/175` 数字圆圈 | 上述对应阶段 | 52×52 | 同节点原图形，尺寸不变 |
+
+这是已有移动布局的语言兼容修复，不是移动设计改版。中文和桌面原几何不变。验证仍须使用真实译文截图；前次 DOM 零溢出未发现 CTA/副标题相叠，不能作为视觉通过依据。

@@ -73,6 +73,20 @@ const sectionStyle = computed(() => ({
 .home-figma-section__canvas { position:absolute; top:0; left:50%; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .home-figma-section--mobile .home-figma-section__canvas { position:relative; left:0; width:100%; transform:none; }
 .home-figma-section--mobile :deep(.home-source-node--root) { width:100%!important; }
+/* Source containers use Hug height. Translated text must push the CTA down
+   rather than overflow the copied Chinese height. */
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:134"]),
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:135"]),
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:136"]) { height:auto!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:134"]) { width:100%!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:135"]) { width:calc(100% - 48px)!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:149"]) { width:100%!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:152"]) { align-items:flex-start!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:153"],[data-figma-node="1528:160"],[data-figma-node="1528:167"],[data-figma-node="1528:174"])) { flex:1 1 0!important; width:0!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:157"],[data-figma-node="1528:164"],[data-figma-node="1528:171"],[data-figma-node="1528:178"])) { width:100%!important; }
+/* These source badges and their inner rows both use Hug width. */
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:186"],[data-figma-node="1528:187"],[data-figma-node="1528:225"],[data-figma-node="1528:226"],[data-figma-node="1528:254"],[data-figma-node="1528:255"],[data-figma-node="1528:318"],[data-figma-node="1528:319"])) { width:max-content!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:188"],[data-figma-node="1528:227"],[data-figma-node="1528:256"],[data-figma-node="1528:320"])) { white-space:pre!important; }
 .home-figma-section--mobile :deep([data-figma-node="1528:181"]),
 .home-figma-section--mobile :deep([data-figma-node="1528:182"]),
 .home-figma-section--mobile :deep([data-figma-node="1528:183"]) { width:calc((100% - 61px)/3 - 46px)!important; }

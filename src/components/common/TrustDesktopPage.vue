@@ -74,8 +74,12 @@ const staticPageTree = (() => {
   const toolkit=nodes.get('204:5636')!;toolkit.height+=extraHeight;toolkit.css+=`;height:${toolkit.height}px;overflow:visible;`
   const first=nodes.get('204:5637')!,fixed=nodes.get('204:5638')!
   first.children=first.children.filter(n=>n.id!==fixed.id)
+  first.layoutCss+=';position:absolute;'
   fixed.css+=';position:absolute;left:112px;top:273px;height:204px;z-index:1;'
-  nodes.get('204:5639')!.css+=';top:0;'
+  // The rail is lifted out of its source grid for sticky scrolling. Its
+  // reflow metadata must retain that absolute column, too.
+  fixed.layoutCss+=';position:absolute;'
+  nodes.get('204:5639')!.css+=';top:0px;'
   toolkit.children.unshift(fixed)
   for(const [source,offset,left] of [[trustTravel,754,'204:5815'],[trustAftercare,2029,'204:6015']] as const){
     const stage=structuredClone(source);stage.css+=`;position:absolute;left:0;top:${offset}px;`

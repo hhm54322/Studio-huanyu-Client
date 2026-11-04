@@ -19,7 +19,7 @@ async function inject(page,language){
  await page.evaluate(async({copy,language})=>{const {default:i}=await import('/src/i18n/index.ts');const {useAppStore}=await import('/src/stores/app.ts');i.global.mergeLocaleMessage(language,{siteCopy:copy});await useAppStore().setLocale('zh')},{copy,language})
  await page.evaluate(async language=>{const {useAppStore}=await import('/src/stores/app.ts');await useAppStore().setLocale(language)},language)
 }
-async function scan(page){return page.evaluate(async()=>{
+async function scan(page,{canvas=true}={}){return page.evaluate(async({canvas})=>{
  const outside=[],clipped=[],han=[]
  const candidates=[...document.querySelectorAll('.home-source-node--text,main p,main h1,main h2,main h3,main button,dialog p,dialog h2,dialog h3')]
  const shown=el=>{const r=el.getBoundingClientRect(),c=getComputedStyle(el);if(r.width<=1||r.height<=1||r.bottom<=0||r.top>=innerHeight||c.visibility==='hidden'||c.display==='none'||c.clipPath==='inset(50%)'||el.closest('[inert]'))return false;for(let p=el;p;p=p.parentElement)if(getComputedStyle(p).opacity==='0'||p.getAttribute('aria-hidden')==='true'&&!p.closest('.home-source-node--text'))return false;return true}
@@ -31,6 +31,22 @@ async function scan(page){return page.evaluate(async()=>{
   if(!horizontalScroll&&(r.left < -2 || r.right > innerWidth+2))outside.push(entry)
   if(c.webkitLineClamp==='none'&&['hidden','clip'].includes(c.overflowY)&&el.scrollHeight>el.clientHeight+5)clipped.push(entry)
   if(!horizontalScroll&&['nowrap','pre'].includes(c.whiteSpace)&&el.scrollWidth>el.clientWidth+5)clipped.push({...entry,reason:'unwrapped text wider than its box'})
+  if(!document.documentElement.lang.startsWith('zh')&&el.classList.contains('home-source-node--text')){
+   for(const child of el.childNodes){
+    if(child.nodeType!==Node.TEXT_NODE||!/[\p{L}\p{N}]/u.test(child.textContent))continue
+    const range=document.createRange()
+    const rects=[]
+    // Trailing spaces have a range box even when CSS drops them at a wrap.
+    // Natural font ascenders also extend beyond a tight authored line-height.
+    for(const word of child.textContent.matchAll(/\S+/g)){
+     range.setStart(child,word.index);range.setEnd(child,word.index+word[0].length)
+     rects.push(...range.getClientRects())
+    }
+    const scale=el.offsetHeight?r.height/el.offsetHeight:1
+    const verticalAllowance=Math.max(3,(Math.max(0,...rects.map(x=>x.height))-parseFloat(c.lineHeight)*scale)/2+1)
+    if(rects.some(text=>text.left<r.left-3||text.right>r.right+3||text.top<r.top-verticalAllowance||text.bottom>r.bottom+verticalAllowance))clipped.push({...entry,reason:'translated text exceeds measured box after font leading allowance'})
+   }
+  }
  }
  for(const label of document.querySelectorAll('.button-label')){
   if(!shown(label))continue
@@ -40,12 +56,26 @@ async function scan(page){return page.evaluate(async()=>{
   if(text.left<box.left-2||text.right>box.right+2||text.top<box.top-2||text.bottom>box.bottom+2)clipped.push({id:control.className,text:label.textContent?.slice(0,100),reason:'label exceeds its control'})
  }
  const overlaps=(a,b)=>Math.min(a.right,b.right)-Math.max(a.left,b.left)>2&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2
+ const heroCopy=document.querySelector('[data-figma-node="1528:135"]')
+ const heroAction=document.querySelector('[data-figma-node="1528:142"]')
+ if(heroCopy&&heroAction&&shown(heroCopy)&&shown(heroAction)&&overlaps(heroCopy.getBoundingClientRect(),heroAction.getBoundingClientRect()))clipped.push({id:'1528:142',reason:'homepage hero action overlaps heading or subtitle'})
+ const toolkitRail=document.querySelector('.trust-desktop-source [data-figma-node="204:5638"]')
+ if(toolkitRail&&shown(toolkitRail))for(const column of document.querySelectorAll('.trust-desktop-source :is([data-figma-node="204:5644"],[data-figma-node="204:5820"],[data-figma-node="204:6018"])'))if(shown(column)&&overlaps(toolkitRail.getBoundingClientRect(),column.getBoundingClientRect()))clipped.push({id:'204:5638',reason:'toolkit sticky title overlaps its content column'})
  const department=document.querySelector('.physician-department-filter')
  if(department&&shown(department))for(const tab of document.querySelectorAll('.physician-page [role="tab"]'))if(shown(tab)&&overlaps(department.getBoundingClientRect(),tab.getBoundingClientRect()))clipped.push({id:tab.dataset.figmaNode,reason:'department selector overlaps a shortcut'})
  if(department&&shown(department))for(const card of document.querySelectorAll('[data-physician-card]'))if(shown(card)&&overlaps(department.getBoundingClientRect(),card.getBoundingClientRect()))clipped.push({id:card.dataset.figmaNode,reason:'department selector overlaps a physician card'})
  for(const header of document.querySelectorAll('.insurance-path-grid header')){
   const heading=header.querySelector('h3'),badge=header.querySelector(':scope>span')
-  if(heading&&badge&&shown(header)&&overlaps(heading.getBoundingClientRect(),badge.getBoundingClientRect()))clipped.push({id:header.parentElement.className,reason:'insurance badge overlaps heading'})
+  if(heading&&badge&&shown(header)){
+   // The heading block also spans the wider subtitle. Check rendered title
+   // glyphs, since the badge can safely share the block's unused space.
+   const range=document.createRange();range.selectNodeContents(heading)
+   if([...range.getClientRects()].some(rect=>overlaps(rect,badge.getBoundingClientRect())))clipped.push({id:header.parentElement.className,reason:'insurance badge overlaps heading'})
+  }
+ }
+ for(const strip of document.querySelectorAll('[data-hospital-tabs]'))if(shown(strip)){
+  if(strip.clientHeight<12)clipped.push({id:strip.dataset.figmaNode,reason:'hospital tab strip has no readable height'})
+  for(const text of strip.querySelectorAll('.home-source-node--text'))if(text.getBoundingClientRect().height>parseFloat(getComputedStyle(text).lineHeight)*1.5)clipped.push({id:text.dataset.figmaNode,reason:'translated hospital tab wraps into a narrow column'})
  }
  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT)
  while(walker.nextNode()){
@@ -60,7 +90,7 @@ async function scan(page){return page.evaluate(async()=>{
  // Canvas labels are absent from the DOM text walker. Inspect the chart's
  // actual option after the same language-switch path used by the UI.
  const charts=[...document.querySelectorAll('[_echarts_instance_]')].filter(shown)
- if(charts.length&&!document.documentElement.lang.startsWith('zh')){
+ if(canvas&&charts.length&&!document.documentElement.lang.startsWith('zh')){
   const {getInstanceByDom}=await import('/node_modules/.vite/deps/echarts_core.js')
   for(const element of charts){
    const option=getInstanceByDom(element)?.getOption();if(!option)continue
@@ -69,7 +99,7 @@ async function scan(page){return page.evaluate(async()=>{
   }
  }
  return {width:innerWidth,documentWidth:document.documentElement.scrollWidth,outside:outside.slice(0,30),clipped:clipped.slice(0,30),untranslated:han.slice(0,50)}
-})}
+},{canvas})}
 async function settle(page){await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))))}
 module.exports={inject,scan,settle}
 if(require.main===module)(async()=>{

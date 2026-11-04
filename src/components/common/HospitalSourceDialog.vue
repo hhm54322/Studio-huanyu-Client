@@ -16,7 +16,7 @@ const localizedContentHeight=ref(0)
 const width=ref(typeof window==='undefined'?1440:window.innerWidth)
 const height=ref(typeof window==='undefined'?900:window.innerHeight)
 const phone=computed(()=>width.value<=700)
-const fluid=computed(()=>phone.value&&width.value!==375)
+const fluid=computed(()=>phone.value&&(width.value!==375||localized.value))
 const activeTab=ref(0)
 const loadingTab=ref(false)
 const scrollTop=ref(0)
@@ -172,6 +172,11 @@ const attributes=computed(()=>{
       result[node.id]={role:'tab','aria-selected':activeTab.value===index,tabindex:activeTab.value===index?0:-1,'aria-controls':'hospital-tab-content'}
     }
   }
+  if(phone.value&&localized.value)for(const tabs of [model.value.tabs,stickyTabNode.value].filter(Boolean) as SourceNode[]) {
+    result[tabs.id]={...result[tabs.id],'data-hospital-tabs':true}
+    for(const row of descendants(tabs).filter(node=>node.children.some(child=>child.name==='Button'&&tabNames.includes(hospitalText(child)))))
+      result[row.id]={...result[row.id],'data-hospital-tab-row':true}
+  }
   return result
 })
 let trigger:HTMLElement|null=null,oldOverflow='',savedY=0
@@ -291,6 +296,10 @@ onBeforeUnmount(()=>{
 .hospital-dialog :deep(button:focus-visible),.hospital-dialog :deep(a:focus-visible) { outline:2px solid #2563eb; outline-offset:2px; }
 .is-fluid :deep(.home-source-node--root) { width:100%!important; }
 .is-fluid .hospital-dialog__scroll :deep([data-figma-name="Mask group"]) { max-width:100%; }
+.is-phone :deep([data-hospital-tabs]) { width:100%!important; height:auto!important; overflow-x:auto!important; overflow-y:hidden!important; }
+.is-phone :deep([data-hospital-tab-row]) { position:relative!important; inset:auto!important; display:inline-flex!important; width:max-content!important; max-width:none!important; height:auto!important; }
+.is-phone :deep([data-hospital-tab-row] > [role="tab"]) { position:relative!important; inset:auto!important; display:flex!important; flex:0 0 auto!important; width:max-content!important; max-width:none!important; height:auto!important; }
+.is-phone :deep([data-hospital-tab-row] .home-source-node--text) { position:relative!important; inset:auto!important; flex:0 0 auto!important; width:auto!important; max-width:none!important; height:auto!important; white-space:nowrap!important; overflow-wrap:normal!important; }
 .is-generic:not(.is-phone) .hospital-dialog__scroll { font-size:14px; }
 @media (prefers-reduced-motion:reduce) { .hospital-dialog :deep([data-figma-node]) { animation:none!important;transition:none!important; } }
 </style>

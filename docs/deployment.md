@@ -9,6 +9,16 @@
 - 发布目录：`/opt/huanyu/releases/<version>`；回滚备份：`/opt/huanyu/backups/website-before-<version>.tar.gz`。
 - 主站静态发布与后端发布独立执行；API、数据库是否更新以各次记录为准。用户上传目录不纳入主站静态同步。
 
+## 2026-11-04 全站五语及排版兼容发布（20261104100320）
+
+- 已发布至 `https://www.huanyumedical.com/`，构建时间 `2026-11-04T10:07:50.601Z`，服务器切换完成 `2026-11-04T10:20:14.880485+00:00`。患者站公开静态UI支持中文、英语、印尼语、马来语、葡语；四套外语均5,837/5,837，缺项、无效项及未同步源为0。用户输入、病历、上传文件名和报告原文不进行界面翻译。
+- 本地最终生产包95组主路由检查中，76组外语无所检超框、截断、漏翻，中文19组原字形/收起容器观察保留；脚本及资源HTTP错误为0。医院/牙科44组标签状态、案例按钮四语×五宽20组通过。已修复生产懒加载CSS顺序导致的外语案例按钮超框，中文原布局不改；初次失败报告另档保留。34项回归、类型及生产构建通过。
+- 3,522个前端文件上传前、远端暂存后、发布后逐文件SHA256一致；包SHA256 `6cea4aad0fbf98e86a659987d2d9450ab0aebf31dbf3e0f7a83741743f4220f6`。Nginx及API健康正常；后端、数据库、专家工作台和报告生成行为未改。发布目录 `/opt/huanyu/releases/20261104100320`，回滚备份 `/opt/huanyu/backups/website-before-20261104100320.tar.gz`。
+- 保留旧哈希资源和页面壳，先上传资源，再原子切换入口/版本，最后切换Worker。公网14条开放路由×五语共70组通过，无页面脚本或资源HTTP错误；旧版访客升级至新入口及缓存壳成功，重复访问57项已加载静态资源传输总量为0。该结果不构成全球首开秒开承诺。
+- 用户重新登录阿里云后，两域名34条入口刷新于北京时间18:27:27提交，184条新版资源预热于18:32:23提交；逐页与清单核对218条唯一任务，全部完成100%，无漏项。仅刷新公共入口，不全域清除旧哈希资源；未购买新的加速产品或扩容。
+- CDN完成后又抽查两域名版本/Worker、首页、牙科及四套外语资源共10项，全部HTTP200且SHA256与最终发布包一致。版本与Worker为no-store，语言包为一年immutable；控制台预热完成不等于所有地区边缘节点都已命中。证据位于忽略目录 `artifacts/deployment/20261104100320/`：`published.json`、`dist-manifest.json`、`production-qa/report.json`、`case-controls-qa/report.json`、`online-public-qa.json`、`cache-before.json`、`cache-after.json`、`cdn-summary.json`、`cdn-record-pages.json`、`cdn-complete.png`、`post-cdn-http.json`。
+- 本次为全站语言/排版专项，最新Figma全站验收仍有牙科简介新增分隔线、历史源删除/替换、证据时效等差异，未放宽门禁或自动接受新基线。详见 `docs/implementation/site-i18n.md` 与 `docs/figma-page-specs/site-i18n.md`。
+
 ## 2026-11-03 M02/M05 发布（20261103194530）
 
 - 已发布至 `https://www.huanyumedical.com/`，服务器切换时间 `2026-11-03T19:52:59.627476+00:00`。本次上线 M02 五语咨询入口、病种与来源预填，以及 M05 自有 WhatsApp 点击采集和管理员统计查询。

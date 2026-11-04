@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import ts from 'typescript'
 import { parse as parseVue } from 'vue/compiler-sfc'
+import { copyNumbers as numbers } from './site-i18n-values.mjs'
+import { isCopyResource, skipJsonCopyField, stripCopyListMarker } from './site-i18n-scope.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const directory = path.join(root, 'src/i18n/site-copy')
@@ -26,7 +28,6 @@ const read = file => JSON.parse(fs.readFileSync(file, 'utf8'))
 const write = (file, data) => fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`)
 const placeholders = text => [...text.matchAll(/\{[A-Za-z][\w]*\}/g)].map(x => x[0]).sort().join('|')
 const protectedCopy = text => [...text.matchAll(/https?:\/\/[^\s<>"']+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|<\/?[A-Za-z][^>]*>/g)].map(x => x[0]).sort().join('\n')
-const numbers = text => [...text.normalize('NFKC').matchAll(/\d+(?:[,，]\d{3})*(?:\.\d+)?/g)].map(match=>match[0].replaceAll(',','').replaceAll('，','')).sort().join('|')
 const validTranslation = (source, target) => typeof target === 'string' && Boolean(target.trim()) && !han.test(target)
   && placeholders(target) === placeholders(source) && protectedCopy(target) === protectedCopy(source) && numbers(target) === numbers(source)
 function files(folder, suffix) {
@@ -104,7 +105,7 @@ function extract(check = false) {
     if (typeof raw !== 'string') return
     const text = normalize(raw)
     const literal = text.replace(/\{[A-Za-z]\w*\}/g, '')
-    if ((!han.test(literal) && !(includeEnglish && /[A-Za-z]{3}/.test(literal))) || text.includes('docs/figma-source/') || text.startsWith('/images/') || text.length > 14000) return
+    if ((!han.test(literal) && !(includeEnglish && /[A-Za-z]{3}/.test(literal))) || isCopyResource(text) || text.length > 14000) return
     const key = copyKey(text)
     if (sources[key] && sources[key] !== text) throw Error('Translation key collision')
     sources[key] = text
@@ -112,7 +113,7 @@ function extract(check = false) {
     const corrected=Object.entries(copyCorrections).reduce((value,[before,after])=>value.replaceAll(before,after),text)
     if(corrected!==text)add(corrected,file,includeEnglish)
     if (text.includes('\n')) text.split('\n').forEach(line=>add(line,file,includeEnglish))
-    const stripped=text.replace(/^(?:[•□●]\s*|\d+[.．]\s*)/,'')
+    const stripped=stripCopyListMarker(text)
     if(stripped!==text)add(stripped,file,includeEnglish)
   }
   function jsonWalk(value, file, all = false) {
@@ -120,7 +121,7 @@ function extract(check = false) {
     if (Array.isArray(value)) { value.forEach(item => jsonWalk(item, file, all)); return }
     if (!value || typeof value !== 'object') return
     if (typeof value.text === 'string') add(value.text, file, true)
-    for (const [key, child] of Object.entries(value)) if (!['textRuns', 'textLines', 'textParagraphs', 'css', 'layoutCss', 'hiddenHtml'].includes(key)) {
+    for (const [key, child] of Object.entries(value)) if (!skipJsonCopyField(key, value)) {
       jsonWalk(child, file, all)
       // Physician cards omit the trailing 起 while retaining the original
       // amount/unit. This derived label is a public display value too.
@@ -129,6 +130,8 @@ function extract(check = false) {
   }
   const reachable = publicFiles()
   for (const file of reachable.filter(file => file.endsWith('.json'))) {
+    // Used to correct the actual display strings above, not displayed itself.
+    if(file.endsWith('/publicCopyCorrections.json'))continue
     const value = read(file)
     jsonWalk(value, file, !file.includes('/docs/figma-source/') || !value.root)
   }
@@ -139,7 +142,11 @@ function extract(check = false) {
     const ast = ts.createSourceFile(file, script, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
     function visit(node) {
       const explicitCopy = Boolean(node.parent && ts.isCallExpression(node.parent) && /^(?:tx|tf|translateSiteCopy|formatSiteCopy)$/.test(node.parent.expression.getText()) && node.parent.arguments[0] === node)
-      if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) add(node.text, file, explicitCopy)
+      const sourceIdentity = node.parent && (
+        (file.endsWith('/DentalDoctorView.vue') && ts.isBinaryExpression(node.parent) && node.parent.left.getText() === 'node.name')
+        || (file.endsWith('/physicianFigmaSource.ts') && ts.isPropertyAssignment(node.parent) && node.parent.name === node && node.text?.includes('::'))
+      )
+      if ((ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) && !sourceIdentity) add(node.text, file, explicitCopy)
       if (ts.isTemplateExpression(node)) {
         const parts = [node.head.text, ...node.templateSpans.map(span => span.literal.text)]
         parts.forEach(part => add(part, file))

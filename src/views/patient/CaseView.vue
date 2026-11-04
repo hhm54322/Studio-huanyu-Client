@@ -981,6 +981,62 @@ onBeforeUnmount(() => {
 .summary-divider:nth-of-type(1) { left: 298px; }
 .summary-divider:nth-of-type(2) { right: 607px; }
 .summary-divider:nth-of-type(3) { right: 298px; }
+/* Translated labels must be allowed to size the controls in the compiled
+   lazy-loaded page chunk. The source frame remains fixed for Chinese; these
+   higher-specificity rules only apply to the non-Chinese presentation. */
+.case-page:not(:lang(zh)) .case-hero__content .case-match-button {
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+  min-height: 62px;
+  white-space: normal;
+}
+.case-page:not(:lang(zh)) .case-hero__content .case-match-button .button-label {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.case-page:not(:lang(zh)) .case-filters :is(.case-filter-submit, .case-filter-reset) {
+  width: max-content;
+  min-width: 104px;
+  max-width: 100%;
+  height: 42px;
+  min-height: 42px;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+.case-page:not(:lang(zh)) .case-filters :is(.case-filter-submit, .case-filter-reset) .button-label {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.case-page:not(:lang(zh)) .case-filters {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) max-content max-content;
+}
+@media (max-width: 1000px) {
+  .case-page:not(:lang(zh)) .case-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .case-page:not(:lang(zh)) .case-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .case-page:not(:lang(zh)) .case-filters :is(.case-filter-submit, .case-filter-reset) {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding-block: 10px;
+  }
+  .case-page:not(:lang(zh)) .case-filters :is(.case-filter-submit, .case-filter-reset) .button-label {
+    white-space: normal;
+  }
+}
 @media (max-width: 1300px) {
   .case-filters { grid-template-columns: repeat(4,minmax(0,1fr)) 104px 106px; }
 }

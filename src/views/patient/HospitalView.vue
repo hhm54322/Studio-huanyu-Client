@@ -2,7 +2,7 @@
 import { useSiteCopy } from '@/i18n/siteCopy'
 import { useRoute, useRouter } from 'vue-router'
 import { patientLanguages } from '@/i18n/languages'
-const { tx } = useSiteCopy()
+const { tx, localized } = useSiteCopy()
 const route=useRoute(), router=useRouter()
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -49,6 +49,11 @@ const nodeStyles=computed(()=>{
       if(node.id==='1620:583')css+='height:52px;'
       if(node.id==='1620:589')css+='left:auto;right:16px;'
       result[node.id]=(result[node.id]||'')+css
+    }
+    if(localized.value)for(const card of hospitalCards.mobile)for(const id of [card.detail,card.consult]) {
+      // Both authored actions share one row. Let translated labels wrap in
+      // equal columns instead of retaining two fixed Chinese button widths.
+      result[id]=(result[id]||'')+'flex:1 1 0;width:0;height:auto;min-height:38px;'
     }
   }
   return result

@@ -2,11 +2,12 @@ import type { HomeSourceNodeData } from '@/components/common/HomeSourceNode.vue'
 
 type Box = { x:number; y:number; width:number; height:number }
 type Options = { texts?:Record<string,string>; styles?:Record<string,string>; hidden?:string[] }
+const withoutComments = (css:string) => css.replace(/\/\*[\s\S]*?\*\//g, '')
 const number = (css:string, property:string, fallback:number) => {
-  const values = [...css.matchAll(new RegExp(`(?:^|;)\\s*${property}:\\s*(-?[\\d.]+)px(?=\\s*(?:;|$))`, 'g'))]
+  const values = [...withoutComments(css).matchAll(new RegExp(`(?:^|;)\\s*${property}:\\s*(-?[\\d.]+)px(?=\\s*(?:;|$))`, 'g'))]
   return values.length ? Number(values[values.length-1]![1]) : fallback
 }
-const declarations = (css:string, property:string) => { const values=[...css.matchAll(new RegExp(`(?:^|;)\\s*${property}:\\s*([^;]+)`, 'g'))]; return values[values.length-1]?.[1]?.trim() }
+const declarations = (css:string, property:string) => { const values=[...withoutComments(css).matchAll(new RegExp(`(?:^|;)\\s*${property}:\\s*([^;]+)`, 'g'))]; return values[values.length-1]?.[1]?.trim() }
 let context:CanvasRenderingContext2D|null
 const widths = new Map<string,number>()
 function textWidth(text:string,font:string) {
@@ -46,6 +47,14 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
     const expression=value.match(/^calc\(\s*(-?[\d.]+)%\s*([+-])\s*([\d.]+)px\s*\)$/)
     return expression ? Number(expression[1])*base/100+(expression[2]==='+'?1:-1)*Number(expression[3]) : fallback
   }
+  function maxWidth(node:HomeSourceNodeData, base:number) {
+    const css=node.css+';'+(node.layoutCss||'')
+    const value=declarations(css,'max-width')
+    if(!value)return Number.POSITIVE_INFINITY
+    if(/^-?[\d.]+px$/.test(value))return parseFloat(value)
+    if(/^-?[\d.]+%$/.test(value))return parseFloat(value)*base/100
+    return Number.POSITIVE_INFINITY
+  }
   const box = (node:HomeSourceNodeData):Box => {
     if (!original.has(node.id)) {
       // Business data can append updated geometry to the copied source CSS
@@ -83,7 +92,10 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
     const font=`${declarations(css,'font-weight')||'400'} ${size}px ${declarations(css,'font-family')||'sans-serif'}`
     const raw=options.texts?.[node.id]??node.text, text=translate(raw)
     const spacing=number(css,'letter-spacing',0)
-    const measure=(value:string)=>textWidth(value,font)+Math.max(0,[...value].length-1)*spacing
+    // CSS adds tracking to each character, including the final character.
+    // Dev Mode often places a percentage comment after line-height; parsing
+    // through that comment must not drop the following letter-spacing rule.
+    const measure=(value:string)=>textWidth(value,font)+[...value].length*spacing
     return {text,font,line,measure,changed:text!==node.text,natural:Math.max(0,...text.split('\n').map(measure))}
   }
   function desired(node:HomeSourceNodeData):number {
@@ -93,13 +105,14 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
     let width=b.width
     if(node.type==='TEXT'&&node.text) {
       const m=metrics(node)
-      if(m.changed&&b.height<=m.line*1.5&&!node.text.includes('\n'))width=Math.max(width,m.natural+1)
+      if(m.changed&&b.height<=m.line*1.5)width=Math.max(width,m.natural+1)
     } else if(kids.length&&mode==='row') {
       const ordered=[...kids].sort((a,b)=>box(a).x-box(b).x)
       width+=ordered.reduce((sum,child)=>sum+Math.max(0,desired(child)-box(child).width),0)
     } else if(kids.length&&(mode==='column'||mode==='free'&&!node.svg&&!/url\(/.test(node.css)&&kids.every(hasText))) {
       width=Math.max(width,...kids.map(child=>b.width-box(child).width+desired(child)))
     }
+    width=Math.min(width,maxWidth(node,b.width))
     preferred.set(node.id,width)
     return width
   }
@@ -131,11 +144,13 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
       let used=0; lines++
       for(const token of paragraph.match(/\s+|\S+/g)||[]) {
         const measured=m.measure(token)
-        if(used&&used+measured>width+.1&&!/^\s+$/.test(token)){lines++;used=0}
-        if(measured>width) {
+        // Browser glyph advances round per run. Leave one CSS pixel at a
+        // wrap boundary instead of accepting a nearly fitting extra word.
+        if(used&&used+measured>width-1&&!/^\s+$/.test(token)){lines++;used=0}
+        if(measured>width-1) {
           for(const char of token) {
             const size=m.measure(char)
-            if(used&&used+size>width+.1){lines++;used=0}
+            if(used&&used+size>width-1){lines++;used=0}
             used+=size
           }
         } else used+=used||!/^\s+$/.test(token)?measured:0
@@ -195,7 +210,7 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
       const blockers=mode==='free'?ordered.filter(s=>s!==k&&box(s).x>=c.x+c.width-1&&box(s).y<c.y+c.height&&box(s).y+box(s).height>c.y):[]
       const edge=Math.min(width-(overlayLabel?insets.right:right),...blockers.map(s=>box(s).x-Math.max(0,box(s).x-c.x-c.width)))
       const available=Math.max(1,edge-(mode==='column'&&!positioned?left:c.x))
-      sizes.set(k.id,!hasText(k)||c.width>b.width ? c.width : cardColumn||positioned&&!overlayLabel ? Math.min(c.width,available) : mode==='column'&&k.type==='TEXT' ? available : Math.min(Math.max(c.width,desired(k)),available))
+      sizes.set(k.id,!hasText(k) ? c.width : cardColumn||positioned&&!overlayLabel ? Math.min(c.width,available) : mode==='column'&&k.type==='TEXT' ? available : Math.min(Math.max(c.width,desired(k)),available))
     }
     const laid=ordered.map(k=>({node:k,old:box(k),next:visit(k,sizes.get(k.id)!)}))
     // Keep authored equal-size card rows aligned when one translation needs

@@ -11,6 +11,18 @@ vm.runInNewContext(output,{module:moduleObject,exports:moduleObject.exports,docu
 const {sourceLocaleLayout}=moduleObject.exports
 const node=(id,{x=0,y=0,width=300,height=40,text='',css='',layout='',children=[]}={})=>({id,name:id,type:text?'TEXT':'FRAME',x,y,width,height,visible:true,text,css:`position:absolute;left:${x}px;top:${y}px;width:${width}px;height:${height}px;${text?'font-size:16px;line-height:20px;':''}${css}`,layoutCss:layout,children})
 const px=(layout,id,property)=>Number([...layout.styles[id].matchAll(new RegExp(`${property}:(-?[\\d.]+)px`,'g'))].at(-1)[1])
+test('Dev Mode comments preserve following tracking and exact line measurement',()=>{
+ const title=node('title',{width:100,height:20,text:'标题',css:'font-size:16px;line-height:20px; /* 125% */\nletter-spacing:2px;'})
+ const root=node('root',{width:300,height:20,layout:'display:flex;flex-direction:column;',children:[title]})
+ const result=sourceLocaleLayout(root,()=> 'Translated heading')
+ // The browser adds 2px to every character, not just between words.
+ assert.equal(px(result,'title','width'),300)
+ assert.equal(px(result,'title','height'),20)
+ const hugging=node('hugging',{width:100,height:20,layout:'display:flex;flex-direction:column;',children:[title]})
+ const row=node('row',{width:600,height:20,layout:'display:flex;',children:[hugging]})
+ const hug=sourceLocaleLayout(row,()=> 'Translated heading')
+ assert.ok(px(hug,'title','width')>=180)
+})
 test('mirrored portrait keeps its native anchor; translated identity uses the remaining column',()=>{
  const image=node('portrait',{x:60,width:60,height:60,css:'transform-origin:0 0;transform:matrix(-1,0,0,1,0,0);'})
  const title=node('title',{width:100,height:20,text:'医生'})
@@ -29,6 +41,12 @@ test('collapsed accordion stays collapsed after long-copy translation',()=>{
  const result=sourceLocaleLayout(root,()=> 'A long translated explanation '.repeat(20),{styles:{detail:'height:0px;overflow:hidden;'}})
  assert.equal(px(result,'detail','height'),0)
  assert.equal(result.height,120)
+})
+test('translated authored line breaks reflow within the same column',()=>{
+ const title=node('title',{width:120,height:40,text:'标题\n说明',css:'font-size:16px;line-height:20px;white-space:pre-wrap;'})
+ const root=node('root',{width:120,height:40,children:[title]})
+ const result=sourceLocaleLayout(root,()=> 'A long heading that wraps\nwith a second line')
+ assert.ok(px(result,'title','height')>=40)
 })
 test('card widths and gaps stay fixed; rows move below their tallest translated card',()=>{
  const card=(id,x,y,text)=>node(id,{x,y,width:300,height:100,children:[node(`${id}-copy`,{width:300,height:20,text})]})
@@ -50,6 +68,16 @@ test('wide background images keep their full-bleed dimensions',()=>{
  const result=sourceLocaleLayout(root,text=>text)
  assert.equal(px(result,'image','width'),1920)
  assert.equal(px(result,'image','left'),-240)
+})
+test('an oversize hero wrapper keeps its photo crop but constrains translated copy to the viewport',()=>{
+ const image=node('image',{width:1600,height:500,css:'background:url(/hero.webp) center/cover;'})
+ const copy=node('copy',{x:112,width:1216,height:20,text:'患者故事'})
+ const wrapper=node('wrapper',{width:1600,height:500,children:[image,copy]})
+ const root=node('root',{width:1440,height:500,children:[wrapper]})
+ const result=sourceLocaleLayout(root,()=> 'Patient story '.repeat(20))
+ assert.equal(px(result,'image','width'),1600)
+ assert.ok(px(result,'wrapper','width')<=1440)
+ assert.ok(px(result,'copy','left')+px(result,'copy','width')<=1440)
 })
 test('centered headings grow around the center instead of inheriting their old alignment offset as padding',()=>{
  const heading=node('heading',{x:350,width:300,height:20,layout:'display:flex;flex-direction:column;align-items:center;',children:[node('copy',{width:300,height:20,text:'标题',css:'text-align:center;'})]})

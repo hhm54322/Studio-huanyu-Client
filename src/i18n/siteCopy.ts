@@ -28,7 +28,7 @@ export function translateSiteCopy(value: unknown, language: string = i18n.global
   // separator (for example a city and a medical department).
   if (text.includes(' · ')) return value.split(' · ').map(part => translateSiteCopy(part, language)).join(' · ')
   // Lists in the source documents are rendered without their source bullets.
-  const stripped = text.replace(/^(?:[•□●]\s*|\d+[.．]\s*)/, '')
+  const stripped = text.replace(/^(?:[•□●]\s*|\d+[.．](?!\d)\s*)/, '')
   if (stripped !== text && catalog?.[siteCopyKey(stripped)]) return value.replace(stripped, () => catalog[siteCopyKey(stripped)]!)
   for(const pattern of patterns) {
     const target=catalog?.[pattern.key]
