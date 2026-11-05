@@ -13,14 +13,25 @@
 - `schemaVersion: 2` 保存国家、病种、报告情况、预算、时间、语言、流程模式、人工需求类型和来源上下文。
 - 公开埋点只保留来源、入口、语言、病种和国家；姓名、号码、摘要不进入 M05 埋点。
 - `POST /api/consultations` 使用同源校验、每 IP 限流、国际 WhatsApp 号码校验和 requestId 幂等。重复 requestId 携带不同内容会返回冲突，不覆盖首次记录。
-- `GET/PATCH /api/expert/consultations` 仅 `admin` 可访问；返回 `private, no-store`，PATCH 要求专家 CSRF，并写入审计日志。状态包括待处理、处理中、待用户回复、专业人员接管、已解决和已关闭。
+- `GET /api/expert/consultations` 与状态保存接口仅 `admin` 可访问；返回 `private, no-store`。工作台使用 `POST /api/expert/consultations/:id/status`，服务端同时保留 PATCH 兼容；写操作要求专家 CSRF，并写入审计日志。状态包括待处理、处理中、待用户回复、专业人员接管、已解决和已关闭。
 - 旧版客户端字段仍可在滚动部署期间提交；新入口不依赖旧版报告生成接口。
 
 ## 验证记录
 
 - 客户端：`vue-tsc --noEmit`、五语 M02 审计、站点 i18n 目录审计、WhatsApp 与埋点单元测试通过。
-- 服务端：TypeScript 构建通过；隔离数据库 `huanyu_consultation_qa` 验证新提交、非法号码拒绝、旧 payload 兼容、重复提交幂等、管理员列表、状态更新、CSRF 和 no-store 响应。
+- 服务端：TypeScript 构建通过；隔离数据库 `huanyu_consultation_qa` 的 8 项流程测试通过，覆盖新提交、非法号码拒绝、旧 payload 兼容、重复提交幂等、管理员列表、状态更新、CSRF 和 no-store 响应。M05 的 7 项埋点流程测试通过。
+- 主站及专家工作台生产构建通过；WhatsApp 与客户端埋点测试各 4 项通过。五语布局检查覆盖 320、390、768、1440px，共 135 个状态；未发现横向溢出。
 - 本轮未重新宣称全站 Figma 设计验收通过；Figma 源连接/页面设计门禁与本次咨询功能属于独立验证范围。
+
+## 发布记录：2026-11-05
+
+- 主站版本：`20261105062500`；主功能提交为客户端 `15b5e2f`、服务端 `9c3711c`，均已推送远端。
+- 公网验收发现 CDN 拒绝 PATCH 请求，因此状态更新改用 POST；修复提交为客户端 `dc20aba`、服务端 `6e20748`，均已推送并发布。管理员权限、CSRF 和审计保护保持有效。
+- 数据库只执行 `consultation_submissions` 增量迁移；保留发布前的网站、服务端及咨询表备份，并校验部署文件哈希。
+- 公网实测通过：真实页面提交合成咨询、WhatsApp 预填摘要、管理员登录与搜索、保存“处理中”、匿名访问返回 401；浏览器运行错误为 0。验收记录按咨询 ID、requestId、专用标记三重匹配清除，确认无残留；未发送外部 WhatsApp 消息。
+- CDN 已提交 34 个入口刷新及 182 个新版资源预热。主站 `version.json`、专家入口和咨询接口采用不缓存策略，旧哈希资源继续保留以兼容已打开的页面。
+- 用户入口：<https://www.huanyumedical.com/>；管理员入口：<https://www.huanyumedical.com/expert-review/?screen=consultations>。
+- 本地详细证据保存在忽略目录 `artifacts/m06-m08/release-20261105/` 与 `artifacts/deployment/20261105062500/`。
 
 ## 运行边界
 
