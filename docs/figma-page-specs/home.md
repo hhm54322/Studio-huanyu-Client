@@ -565,3 +565,25 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 - Final screenshot comparison: `visual-final/comparison.json`; physician hover nMAE0.9010%/pixelmatch0.2798%, homepage expert hover0.3984%/0.1090%, dental card0.3636%/0.2681%, profile content0.1632%/0.0028%. Actual source DPR/fractional crop used, without stretching the card to the export's pixel width. Desktop, hover, pinned/released and English captures personally reviewed.
 - Type checking, five-language catalog checks, image preparation, production build and diff checks passed. Full `audit:figma` still fails historical whole-site evidence/source locks, including old expert dialogs replaced in current Design. This scoped evidence does not mark those pages complete and no historical gate was weakened.
 - Homepage expert cards use the why-China interaction: the summary moves up 32px and the CTA fades in on hover/keyboard focus. Stable translate3d compositing preserves the source glyph baselines; the card itself has no shadow or movement.
+
+## 2026-11-05 首页流程、详情入口与图表修复（实施前参数记录）
+
+- 用户反馈范围：02–04 编号未居中；第五张优势卡的“查看详情”贴底；医疗数据图表首次滚动出现空白。桌面修复，手机仅回归既有功能。
+- 唯一连接入口重新验证于 `2026-11-05T09:58:23.174Z`，session `01a0bebd-b6f9-7fd3-bf5a-b79501589b80`，IAB browser2/tab22，Design/Layers/Properties 全部可读。证据 `artifacts/home-layout-charts-20261105/connection-start.json`。
+- 本轮从当前 IAB File → Save local copy 导出 `(57).fig`，保存为 `artifacts/home-layout-charts-20261105/current.fig`，SHA256 `81af68ed54ff56e021156447e9b7826af08fc43ba9046ca8ff5d63737696c4d9`。完整源比较 `latest-home.json` 显示首页主帧、流程和六优势详情均 unchanged；四位专家旧根已移除，属于此前已接入新详情的源迁移，不能据此声明全页门禁通过。所有同名候选和新增/删除清单保留于报告，未自动接受。
+
+| 源节点 → 运行 DOM | 精确参数与本轮处理 |
+| --- | --- |
+| `1412:5780/1401:26/1401:282/1401:50` → `.journey-desktop__rail > HomeSourceNode` | 均220×650；内部圆120×120，y265；说明文字x160、y301、60×48；渐变虚线保留。滚动切换整组对应源节点，沿用各自子节点字体/位置，避免用01的文字框替换所有数字。 |
+| `1412:5786`、`1401:32/288/56` → 各组编号文字 | Poppins500，48/120px；01为x38/w45，02为x31/w58，03为x31/w59，04为x30/w61，y均1.5。当前浏览器长数字溢出45px框后从左边开始排，造成偏右。 |
+| `1412:5799/5814/5822/5830/5839/5848` → 六优势内容块 | 首卡已包含32px入口，高120；其他内容块高88/88/88/64/88。入口复制`1412:5804`，341×32，padding-top16，文字/箭头16px。其他卡入口放在内容块实际底部（top100%），不用固定88px。hover仍整体上移32px，卡片389×280和24px内边距不变。 |
+| `1412:6092 > 6103/6176` → 数据区、两`.revision-chart` | 区域1440×740；图表542×316。保留已锁定chart-spec和现有数据/绘制方式。提前取得图表模块，避免滚进区域才开始网络请求；字体等待设上限，提供加载/失败反馈与重新加载入口，组件卸载/引用替换时取消过期绘制。 |
+
+Live Design 数字字体与Group参数证据：`live-1412-5786.txt`、`live-1412-5780.txt`。其余几何采用当前官方源逐节点unchanged的原始完整Layers/Dev Mode记录。
+
+### 本轮最终验证
+
+- 交付前连接：`2026-11-05T12:39:03.206Z`，当前会话 IAB browser `3` / tab `22`，经唯一入口检查 Design、Layers、Inspect/Properties 均可读。新官方导出 `/Users/hhm/Downloads/寰宇云医 (58).fig`，SHA-256 `6f8effaec77d43fd23d4fafcce47f9b7aec16a89503307ba9d8a1fb19785421d`。`final-home-original.json` 再次与原始实现导出比较：首页主帧、流程与六优势详情 unchanged，旧专家详情根已删除的历史迁移仍单独保留。`final-current.json` 比较本轮实施与交付导出：PC 页 16,636 节点及依赖 unchanged，全文件新增/删除/变更与未解析图片/blob 均为 0；没有自动接受新基线。
+- 最终生产包截图：`artifacts/home-layout-charts-20261105/production/qa.json`。01–04 侧栏 nMAE `0.303%/0.272%/0.347%/0.293%`；六卡详情入口 nMAE `0.056%`；数据图表 nMAE `0.573%`，相同尺寸原图对照均低于 1%。已亲自检查侧栏、第五张卡及图表对照图。
+- 桌面 `1024/1440/1920px × 五语`，四个流程切换、六卡 hover、图表绘制与无横向溢出通过；手机/平板既有布局 `320/390/430/768px` 回归通过。移动设计继续冻结。`production-loading/qa.json` 覆盖模块下载延迟、下载失败后重试、尺寸切换及离开/返回首页，图表恢复且无脚本错误。
+- 类型检查与生产构建已验证。全站 `audit:figma` 仍因历史源迁移及其他页面证据时效失败，原日志保存在本轮目录；未放宽门禁，本轮不声明整页/全站 Figma 验收完成。

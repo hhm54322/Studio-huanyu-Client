@@ -37,6 +37,9 @@ onMounted(() => {
       ]).then(async () => {
         if (bodyDisposed) return
         bodyReady.value = true
+        // The hero has painted and the deferred page source has arrived. Warm
+        // the renderer now, before the user reaches the distant data section.
+        void loadChartModule().catch(() => {})
         await nextTick()
         if (pendingProcessIndex !== null) {
           scrollToProcessStep(pendingProcessIndex)
@@ -89,6 +92,12 @@ const pendingHeight = computed(() => {
 const whyCards = ['1412:5795','1412:5810','1412:5819','1412:5827','1412:5835','1412:5844']
 const whyCopyNodes = ['1412:5799','1412:5814','1412:5822','1412:5830','1412:5839','1412:5848']
 const whyMoreSource = computed(() => bodyReady.value ? homeDesktopNodes.get('1412:5804')! : undefined)
+// Figma uses a separate rail frame for each stage. The number text boxes are
+// deliberately different widths (01 is narrower than 02–04), so reusing the
+// 01 node makes the later labels look off-centre.
+const flowRailNodes = computed(() => ['1412:5780', '1401:26', '1401:282', '1401:50']
+  .map(id => homeDesktopNodes.get(id))
+  .filter((node): node is NonNullable<typeof node> => Boolean(node)))
 const whyCardAttributes = Object.fromEntries([
   ...whyCards.map((id,index) => [id,{ 'data-home-why-card':index,'aria-haspopup':'dialog' }]),
   ...whyCopyNodes.map((id,index) => [id,{ 'data-home-why-copy':index }]),
@@ -238,6 +247,18 @@ let chartSize = ''
 let chartViewportObserver: IntersectionObserver | undefined
 let chartsRequested = false
 let chartRun = 0
+let chartModulePromise: Promise<typeof import('@/utils/homeCharts')> | undefined
+const chartsLoading = ref(false)
+const chartsError = ref(false)
+function loadChartModule() {
+  if (!chartModulePromise) {
+    chartModulePromise = import('@/utils/homeCharts')
+    // A speculative preload must never produce an unhandled rejection. The
+    // visible section reports the error and offers a clean page retry.
+    void chartModulePromise.catch(() => {})
+  }
+  return chartModulePromise
+}
 
 const radarIndicators = [
   { name: '治疗费用', max: 100 },
@@ -256,74 +277,92 @@ const radarSeries = [
 async function initCharts() {
   if (!radarChartEl.value || !costChartEl.value) return
   const run = ++chartRun
-  const { init } = await import('@/utils/homeCharts')
-  await document.fonts.ready
-  if (run !== chartRun || !radarChartEl.value?.isConnected || !costChartEl.value?.isConnected) return
-  radarChart?.dispose()
-  costChart?.dispose()
-  // Mobile has its own authored chart, not a percentage-scaled desktop option.
-  const source = window.matchMedia('(max-width: 700px)').matches ? mobileChartSource : desktopChartSource
-  const graphics = (chart: typeof source.radar | typeof source.cost) => [
-    ...chart.texts.map(label => ({
-      type: 'group', x: label.x, y: label.y, rotation: label.rotation, silent: true,
-      children: [{ type: 'text', style: {
-        text: tx(label.text), fill: label.fill, opacity: 'opacity' in label ? Number(label.opacity) : 1, fontFamily: `"${label.fontFamily}", "PingFang SC", sans-serif`,
-        fontSize: label.fontSize, lineHeight: label.height, verticalAlign: 'top',
-        ...(tx(label.text)!==label.text ? { width:Math.max(label.width,Math.min(120,chart.width-label.x)),overflow:'break' as const } : {}),
-      } }],
-    })),
-    ...chart.legendSymbols.map(symbol => ({
-      type: 'rect', silent: true, shape: { x: symbol.x, y: symbol.y, width: symbol.width, height: symbol.height },
-      style: { fill: symbol.fill, opacity: 'opacity' in symbol ? Number(symbol.opacity) : 1 },
-    })),
-  ]
-  const devicePixelRatio = Math.max(2, window.devicePixelRatio || 1)
-  radarChart = init(radarChartEl.value, undefined, { renderer: 'canvas', width: source.radar.width, height: source.radar.height, devicePixelRatio })
-  costChart = init(costChartEl.value, undefined, { renderer: 'canvas', width: source.cost.width, height: source.cost.height, devicePixelRatio })
-  radarChart.setOption({
-    animation: false,
-    radar: {
-      center: source.radar.center, radius: source.radar.radius,
-      startAngle: 90, splitNumber: 4, shape: 'polygon', indicator: radarIndicators.map(item=>({...item,name:tx(item.name)})),
-      axisName: { show: false },
-      axisLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
-      splitLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
-      splitArea: { areaStyle: { color: ['transparent'] } },
-    },
-    series: [{
-      type: 'radar', symbol: 'none', silent: true,
-      data: radarSeries.map(item => ({
-        value: item.value, name: tx(item.name), lineStyle: { color: item.color, width: 2 },
-        areaStyle: { color: item.fill, opacity: 1 },
+  chartsLoading.value = true
+  chartsError.value = false
+  try {
+    const { init } = await loadChartModule()
+    // Only the chart's Inter face is required; offscreen page fonts must not
+    // hold the chart's first drawing hostage to document.fonts.ready.
+    let fontTimer: ReturnType<typeof setTimeout> | undefined
+    let fontReady = false
+    const font = document.fonts.load('400 12px Inter').then(() => { fontReady = true }, () => {})
+    await Promise.race([font, new Promise<void>(resolve => { fontTimer = setTimeout(resolve, 1500) })])
+    clearTimeout(fontTimer)
+    if (!fontReady) void font.then(() => {
+      if (fontReady && run === chartRun && !bodyDisposed) void initCharts()
+    })
+    if (run !== chartRun || !radarChartEl.value?.isConnected || !costChartEl.value?.isConnected) return
+    radarChart?.dispose()
+    costChart?.dispose()
+    // Mobile has its own authored chart, not a percentage-scaled desktop option.
+    const source = window.matchMedia('(max-width: 700px)').matches ? mobileChartSource : desktopChartSource
+    const graphics = (chart: typeof source.radar | typeof source.cost) => [
+      ...chart.texts.map(label => ({
+        type: 'group', x: label.x, y: label.y, rotation: label.rotation, silent: true,
+        children: [{ type: 'text', style: {
+          text: tx(label.text), fill: label.fill, opacity: 'opacity' in label ? Number(label.opacity) : 1, fontFamily: `"${label.fontFamily}", "PingFang SC", sans-serif`,
+          fontSize: label.fontSize, lineHeight: label.height, verticalAlign: 'top',
+          ...(tx(label.text)!==label.text ? { width:Math.max(label.width,Math.min(120,chart.width-label.x)),overflow:'break' as const } : {}),
+        } }],
       })),
-    }],
-    graphic: graphics(source.radar),
-  })
-  const grid = source.cost.grid
-  costChart.setOption({
-    animation: false,
-    grid: { left: grid.x, top: grid.y, width: grid.width, height: grid.height },
-    // Axes/labels/ticks are graphic primitives at their actual Figma positions;
-    // the bars and coordinate system remain a genuine ECharts data series.
-    xAxis: { type: 'category', data: costs.map(item => tx(item.label)), show: false },
-    yAxis: { type: 'value', min: 0, max: 120, show: false },
-    series: [
-      { name: '中国', field: 'china', color: '#2563EB' }, { name: '美国', field: 'usa', color: '#1E3A5F' },
-      { name: '德国', field: 'germany', color: '#C9A84C' }, { name: '日本', field: 'japan', color: '#94A3B8' },
-    ].map(item => ({
-      name: tx(item.name), type: 'bar', silent: true, barWidth: source.cost.barWidth, barGap: source.cost.barGap,
-      itemStyle: { color: item.color, borderRadius: source.cost.width < 542 ? [2.4328, 2.4328, 0, 0] : [4, 4, 0, 0] },
-      data: costs.map(cost => cost[item.field as 'china' | 'usa' | 'germany' | 'japan']),
-    })),
-    graphic: [
-      ...source.cost.lines.map(line => ({
-        type: 'line', silent: true, z: -1,
-        shape: { x1: line.x, y1: line.y, x2: line.x + line.width, y2: line.y + line.height },
-        style: { stroke: line.stroke, lineWidth: line.lineWidth, lineDash: line.lineDash, opacity: 'opacity' in line ? Number(line.opacity) : 1 },
+      ...chart.legendSymbols.map(symbol => ({
+        type: 'rect', silent: true, shape: { x: symbol.x, y: symbol.y, width: symbol.width, height: symbol.height },
+        style: { fill: symbol.fill, opacity: 'opacity' in symbol ? Number(symbol.opacity) : 1 },
       })),
-      ...graphics(source.cost),
-    ],
-  })
+    ]
+    const devicePixelRatio = Math.max(2, window.devicePixelRatio || 1)
+    radarChart = init(radarChartEl.value, undefined, { renderer: 'canvas', width: source.radar.width, height: source.radar.height, devicePixelRatio })
+    costChart = init(costChartEl.value, undefined, { renderer: 'canvas', width: source.cost.width, height: source.cost.height, devicePixelRatio })
+    radarChart.setOption({
+      animation: false,
+      radar: {
+        center: source.radar.center, radius: source.radar.radius,
+        startAngle: 90, splitNumber: 4, shape: 'polygon', indicator: radarIndicators.map(item=>({...item,name:tx(item.name)})),
+        axisName: { show: false },
+        axisLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
+        splitLine: { lineStyle: { color: '#E5E7EB', width: 1 } },
+        splitArea: { areaStyle: { color: ['transparent'] } },
+      },
+      series: [{
+        type: 'radar', symbol: 'none', silent: true,
+        data: radarSeries.map(item => ({
+          value: item.value, name: tx(item.name), lineStyle: { color: item.color, width: 2 },
+          areaStyle: { color: item.fill, opacity: 1 },
+        })),
+      }],
+      graphic: graphics(source.radar),
+    })
+    const grid = source.cost.grid
+    costChart.setOption({
+      animation: false,
+      grid: { left: grid.x, top: grid.y, width: grid.width, height: grid.height },
+      // Axes/labels/ticks are graphic primitives at their actual Figma positions;
+      // the bars and coordinate system remain a genuine ECharts data series.
+      xAxis: { type: 'category', data: costs.map(item => tx(item.label)), show: false },
+      yAxis: { type: 'value', min: 0, max: 120, show: false },
+      series: [
+        { name: '中国', field: 'china', color: '#2563EB' }, { name: '美国', field: 'usa', color: '#1E3A5F' },
+        { name: '德国', field: 'germany', color: '#C9A84C' }, { name: '日本', field: 'japan', color: '#94A3B8' },
+      ].map(item => ({
+        name: tx(item.name), type: 'bar', silent: true, barWidth: source.cost.barWidth, barGap: source.cost.barGap,
+        itemStyle: { color: item.color, borderRadius: source.cost.width < 542 ? [2.4328, 2.4328, 0, 0] : [4, 4, 0, 0] },
+        data: costs.map(cost => cost[item.field as 'china' | 'usa' | 'germany' | 'japan']),
+      })),
+      graphic: [
+        ...source.cost.lines.map(line => ({
+          type: 'line', silent: true, z: -1,
+          shape: { x1: line.x, y1: line.y, x2: line.x + line.width, y2: line.y + line.height },
+          style: { stroke: line.stroke, lineWidth: line.lineWidth, lineDash: line.lineDash, opacity: 'opacity' in line ? Number(line.opacity) : 1 },
+        })),
+        ...graphics(source.cost),
+      ],
+    })
+    chartsLoading.value = false
+  } catch {
+    if (run !== chartRun) return
+    chartsLoading.value = false
+    chartsError.value = true
+  }
 }
 function disposeCharts() {
   chartRun++
@@ -331,6 +370,7 @@ function disposeCharts() {
   costChart?.dispose()
   radarChart = undefined
   costChart = undefined
+  chartsLoading.value = false
 }
 function observeCharts() {
   chartViewportObserver?.disconnect()
@@ -417,7 +457,7 @@ onBeforeUnmount(() => {
         <div id="process-stage-01" :ref="el => setProcessStageRef(el, 0)">
           <HomeFigmaSection desktop-id="1412:5765" defer-render :label="tx('来华就医·认知')" :actions="homeFigmaActions" :attributes="whyCardAttributes" :hidden="['1412:5780']" @activate="activateFigmaAction">
             <template #after="{ node }">
-              <div v-if="whyCopyNodes.indexOf(node.id)>0 && whyMoreSource" class="home-why-card__more" :style="{left:`${whyMoreSource.x}px`,top:`${whyMoreSource.y}px`,width:`${whyMoreSource.width}px`,height:`${whyMoreSource.height}px`}" aria-hidden="true">
+              <div v-if="whyCopyNodes.indexOf(node.id)>0 && whyMoreSource" class="home-why-card__more" :style="{left:`${whyMoreSource.x}px`,top:'100%',width:`${whyMoreSource.width}px`,height:`${whyMoreSource.height}px`}" aria-hidden="true">
                 <HomeSourceNode :node="whyMoreSource" root replica />
               </div>
             </template>
@@ -434,7 +474,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="journey-desktop__rail-lane">
           <aside class="journey-desktop__rail" :aria-label="tx('当前流程阶段')">
-            <HomeSourceNode :node="homeDesktopNodes.get('1412:5780')!" root :texts="{ '1412:5782': flowSteps[activeProcessIndex]!.label, '1412:5786': flowSteps[activeProcessIndex]!.no }" />
+            <HomeSourceNode :node="flowRailNodes[activeProcessIndex]!" root />
           </aside>
         </div>
       </div>
@@ -444,8 +484,20 @@ onBeforeUnmount(() => {
     <HomeFigmaSection id="care-section" desktop-id="1412:6019" defer-render mobile-id="1528:391" :label="tx('就医全程陪伴')" :actions="homeFigmaActions" @activate="activateFigmaAction" />
     <HomeFigmaSection desktop-id="1412:6055" defer-render mobile-id="1528:412" :label="tx('陪你走全程的人')" />
     <HomeFigmaSection id="data-section" desktop-id="1412:6092" defer-render mobile-id="1528:429" :label="tx('中国医疗数据优势')">
-      <template #radar><div ref="radarChartEl" class="revision-chart" role="img" :aria-label="tx('中国、美国、德国医疗能力雷达图')" /></template>
-      <template #cost><div ref="costChartEl" class="revision-chart" role="img" :aria-label="tx('治疗费用对比')" /></template>
+      <template #radar>
+        <div class="revision-chart-frame" :aria-busy="chartsLoading">
+          <div ref="radarChartEl" class="revision-chart" role="img" :aria-label="tx('中国、美国、德国医疗能力雷达图')" />
+          <span v-if="chartsLoading" class="revision-chart__status" role="status">{{ tx('加载中...') }}</span>
+          <button v-else-if="chartsError" type="button" class="revision-chart__retry" @click="retryBody">{{ tx('重新加载') }}</button>
+        </div>
+      </template>
+      <template #cost>
+        <div class="revision-chart-frame" :aria-busy="chartsLoading">
+          <div ref="costChartEl" class="revision-chart" role="img" :aria-label="tx('治疗费用对比')" />
+          <span v-if="chartsLoading" class="revision-chart__status" role="status">{{ tx('加载中...') }}</span>
+          <button v-else-if="chartsError" type="button" class="revision-chart__retry" @click="retryBody">{{ tx('重新加载') }}</button>
+        </div>
+      </template>
     </HomeFigmaSection>
     <HomeFigmaSection desktop-id="1412:6313" defer-render mobile-id="1528:621" :label="tx('权威合作医院')" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
     <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" :attributes="expertCardAttributes" :hidden="['1412:6444']" @activate="activateFigmaAction">
@@ -466,7 +518,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.revision-chart-frame { position:relative; width:100%; height:100%; }
 .revision-chart { width:100%; height:100%; }
+.revision-chart__status,.revision-chart__retry { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2; color:#6b7280; font:400 14px/22px 'PingFang SC',sans-serif; }
+.revision-chart__retry { border:1px solid #2563eb; border-radius:999px; padding:8px 16px; background:#fff; color:#2563eb; cursor:pointer; }
 .home-page__pending { min-height:100vh; }
 .home-source-faq-answer { display:grid; grid-template-rows:0fr; width:100%; opacity:0; transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),opacity .24s ease; }
 .home-source-faq-answer.is-open { grid-template-rows:1fr; opacity:1; }
