@@ -110,7 +110,7 @@ function cloneCard(template: SourceNode, record: PhysicianRecord): SourceNode {
     const card = structuredClone(physicianNode(record.sourceCardId))
     for (const item of physicianDescendants(card)) item.id += suffix
     card.id = `physician-card:${record.id}`
-    return card
+    return withHoverSummary(card, record.id)
   }
   const textValues: Record<string, string> = {
     '1741:5822': record.name,
@@ -144,6 +144,25 @@ function cloneCard(template: SourceNode, record: PhysicianRecord): SourceNode {
   card.id = `physician-card:${record.id}`
   card.name = `医生卡片 ${record.name}`
   card.css += ';content-visibility:auto;contain-intrinsic-size:389.33334px 284px;'
+  return withHoverSummary(card, record.id)
+}
+
+// Keep the ordinary card's y=211 summary and the hover source's y=180
+// summary in the same card. The CTA is rendered once by SourceLearnMore;
+// it must not remain visible in the original hover-template subtree.
+function withHoverSummary(card: SourceNode, id: string): SourceNode {
+  const details = card.children[1]!
+  const summary = details.children[1]!
+  summary.id = `physician-summary:${id}`
+  summary.x = 0; summary.y = 103; summary.height = 48
+  summary.css += ';left:0;top:103px;height:48px;'
+  // Hover source cards have the CTA as a descendant of the same summary
+  // wrapper. Remove that authored CTA and use the shared translated element.
+  summary.children = summary.children.filter(node => node.type === 'TEXT')
+  for (const text of physicianDescendants(summary).filter(node => node.type === 'TEXT')) {
+    text.x = 0; text.y = 0
+    text.css += ';left:0;top:0;height:48px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;'
+  }
   return card
 }
 

@@ -781,6 +781,12 @@ onBeforeUnmount(() => {
 .dental-doctor-card__button {
   font-size: 14px;
 }
+@media (hover:hover) {
+  .dental-doctor-card,.dental-doctor-card:hover,.dental-doctor-card.selected { box-shadow:none; transform:none; }
+  .dental-doctor-card__button { opacity:0; transition:opacity 180ms ease; }
+  .dental-doctor-card:hover .dental-doctor-card__button,.dental-doctor-card:focus-within .dental-doctor-card__button { opacity:1; }
+}
+@media (prefers-reduced-motion:reduce) { .dental-doctor-card__button { transition:none; } }
 .dental-doctor-modal {
   width: min(900px, 100%);
   max-height: min(720px, calc(100vh - 48px));

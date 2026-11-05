@@ -27,15 +27,6 @@ const isActive = computed(() => route.path === '/diseases-technologies')
       >
         <span :data-figma-node="item.id">{{ tx(item.label) }}</span>
       </RouterLink>
-      <button
-        v-else
-        type="button"
-        class="medical-services-menu__item"
-        :data-figma-node="index === 0 ? '1524:3' : index === 2 ? '1524:7' : '1524:9'"
-        :title="tx('内容正在准备中')"
-      >
-        <span :data-figma-node="item.id">{{ tx(item.label) }}</span>
-      </button>
     </template>
   </div>
 </template>
@@ -44,7 +35,7 @@ const isActive = computed(() => route.path === '/diseases-technologies')
 .medical-services-menu {
   display: flex;
   width: 111px;
-  height: 149px;
+  height: auto;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;

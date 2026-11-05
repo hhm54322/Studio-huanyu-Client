@@ -39,6 +39,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SectionHeading: typeof import('./src/components/common/SectionHeading.vue')['default']
+    SourceLearnMore: typeof import('./src/components/common/SourceLearnMore.vue')['default']
     TrustArticleDialog: typeof import('./src/components/common/TrustArticleDialog.vue')['default']
     TrustDesktopPage: typeof import('./src/components/common/TrustDesktopPage.vue')['default']
     WhatsAppContact: typeof import('./src/components/common/WhatsAppContact.vue')['default']

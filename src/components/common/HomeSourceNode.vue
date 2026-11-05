@@ -14,6 +14,7 @@ import { publicContacts, publicContactText } from '@/data/publicContacts'
 import { patientContactKey } from '@/composables/useWhatsAppContact'
 import { useSiteCopy } from '@/i18n/siteCopy'
 import { sourceLocaleLayout, clearSourceFontMeasurements } from '@/i18n/sourceLayout'
+import { unavailablePatientHref } from '@/data/patientEntryAvailability'
 
 export interface HomeSourceNodeData {
   id: string
@@ -35,6 +36,7 @@ export interface HomeSourceNodeData {
   children: HomeSourceNodeData[]
 }
 export interface HomeSourceAction { action?: string; href?: string; label?: string; labelValues?:Record<string,string|number> }
+export interface SourceSticky { top: number; boundaryHeight?: string; zIndex: number }
 const props = defineProps<{
   node: HomeSourceNodeData; root?: boolean; fluid?: boolean
   actions?: Record<string, HomeSourceAction>
@@ -54,6 +56,9 @@ const props = defineProps<{
   /** Independently defer these authored subtrees, preserving their geometry. */
   deferImageRoots?: string[]
   imagePreloadMargin?: string
+  stickyNodes?: Record<string, SourceSticky>
+  stickyPosition?: SourceSticky
+  preservePendingEntries?: boolean
 }>()
 const emit = defineEmits<{ activate: [action: string, event: MouseEvent]; layout: [height:number] }>()
 defineSlots<{
@@ -61,6 +66,18 @@ defineSlots<{
   cost(props: { node: HomeSourceNodeData }): unknown
   after(props: { node: HomeSourceNodeData }): unknown
 }>()
+const entryLabel = computed(() => ['Link','List Item','Button'].includes(props.node.name)
+  ? (function text(node:HomeSourceNodeData):string { return node.type==='TEXT' ? node.text.trim() : node.children.map(text).join('').trim() })(props.node)
+  : props.node.text.trim())
+// Do not offer unfinished destinations as working links. Retain the locked
+// source data; closing these public entrances is an explicit user request.
+const preservePendingEntries = computed(() => props.preservePendingEntries || props.node.name === 'Footer')
+const unavailableEntry = computed(() => !preservePendingEntries.value && (['pending','destination-pending'].includes(props.actions?.[props.node.id]?.action || '')
+  || unavailablePatientHref(props.actions?.[props.node.id]?.href)
+  || props.actions?.[props.node.id]?.href?.startsWith('tel:+86400')
+  || !props.actions?.[props.node.id]?.href && props.attributes?.[props.node.id]?.['aria-disabled'] === true
+  || ['长寿医学','会员中心','隐私政策','服务条款','扫码加微信','签证办理','+86 400-888-XXXX'].includes(entryLabel.value)
+  || props.node.children.some(child=>child.text==='隐私政策') && props.node.children.every(child=>['隐私政策','服务条款','|'].includes(child.text))))
 const control = computed(() => props.actions?.[props.node.id])
 const { tx, tf, localized } = useSiteCopy()
 const patientContact = inject(patientContactKey, null)
@@ -69,6 +86,16 @@ const isWhatsApp = computed(() => control.value?.href === publicContacts.whatsap
 // Translating them inside their locked logo shell breaks the mobile header.
 const sourceBrandCopy=(text:string)=>text==='寰'||text==='寰宇云医'
 const brandMark=props.node.type==='TEXT'&&sourceBrandCopy(props.node.text)
+// The older source snapshots used a two-part wordmark in the desktop header.
+// Keep the authored footer shell, but replace this exact header shell with the
+// current 148×48 Univadoc+ artwork.
+const sourceBrandShell = computed(() => props.node.type === 'FRAME'
+  && props.node.name === 'Link'
+  && props.node.width === 111
+  && props.node.height === 32
+  && props.node.children.some(child => child.children.some(text => text.text === '寰宇云医')))
+const sourceBrandImage = computed(() => props.node.type === 'ROUNDED_RECTANGLE'
+  && /^未标题-1 [12]$/.test(props.node.name) && props.node.width === 148 && props.node.height === 48)
 const textOverride = computed(() => {
   const override=props.texts?.[props.node.id] ?? publicContactText(props.node.text)
   const translated=brandMark?props.node.text:tx(override ?? props.node.text)
@@ -146,13 +173,22 @@ const style = computed(() => {
   const localization = !localized.value ? '' : fluidLayout.value
     ? props.node.type==='TEXT' ? 'max-width:100%;width:auto;height:auto;white-space:pre-wrap;overflow-wrap:anywhere;flex-shrink:1;' : 'max-width:100%;'
     : localeLayout.value.styles[props.node.id] || ''
-  const authored = `${control.value ? 'font:inherit;text-align:inherit;border:0;background:transparent;' : ''}${fluidLayout.value ? props.node.layoutCss : props.node.css};${control.value ? 'text-decoration:none;cursor:pointer;appearance:none;' : ''}${props.styles?.[props.node.id] || ''};${localization}`
+  const authored = `${control.value ? 'font:inherit;text-align:inherit;border:0;background:transparent;' : ''}${fluidLayout.value ? props.node.layoutCss : props.node.css};${control.value ? 'text-decoration:none;cursor:pointer;appearance:none;' : ''}${props.styles?.[props.node.id] || ''};${localization};${sourceBrandShell.value ? `width:148px!important;height:48px!important;top:${props.node.y-8}px!important;` : ''}${sourceBrandImage.value ? 'background:none!important;' : ''}${props.stickyPosition ? `;position:sticky;left:0;top:${props.stickyPosition.top}px;transform:none;pointer-events:auto;` : ''}`
   // Replacing only url() leaves the copied dimensions, gradients, colors and
   // border geometry intact while the section is still outside the preload
   // window. The original CSS is restored as soon as it approaches the view.
   if (!authored.includes('url(')) return authored
   return imageReady.value ? authored : authored.replace(/url\([^)]*\)/g, 'none')
 })
+const sticky = computed(() => props.stickyNodes?.[props.node.id])
+const stickyTrackStyle = computed(() => {
+  if (!sticky.value) return
+  const geometry = (localized.value ? localeLayout.value.styles[props.node.id] : '') || ''
+  const heights = [...geometry.matchAll(/(?:^|;)\s*height:\s*([\d.]+)px/g)]
+  const height = heights[heights.length-1]?.[1] || props.node.height
+  return `position:absolute;left:${props.node.x}px;top:${props.node.y}px;width:${props.node.width}px;${geometry};height:${sticky.value.boundaryHeight ? `calc(100% - ${sticky.value.boundaryHeight} + ${height}px)` : '100%'};pointer-events:none;z-index:${sticky.value.zIndex};`
+})
+const nestedStickies = computed(() => Object.fromEntries(Object.entries(props.stickyNodes || {}).filter(([id]) => id !== props.node.id)))
 const sourceLines = ref<HTMLElement | null>(null)
 const baselineOffsets = ref<number[]>([])
 let alignmentRun = 0
@@ -194,22 +230,30 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
 </script>
 
 <template>
-  <PatientDesktopNavigation v-if="patientNavigation && node.visible && !hidden?.includes(node.id)" :source="node" :style="style" :data-figma-node="node.id" :data-figma-name="node.name" />
-  <component ref="imageElement" :is="tag" v-else-if="node.visible && !hidden?.includes(node.id)" v-bind="{...linkAttributes,...sourceAttributes}" :data-figma-node="replica ? undefined : node.id" :data-figma-name="replica ? undefined : node.name" :data-source-brand="brandMark || undefined" :data-source-locale-height="ownsLocaleLayout && localized ? localeLayout.height : undefined" :data-source-images="root && deferImages || ownsDeferredImages ? imageReady ? 'loaded' : 'deferred' : undefined" :data-source-action="control?.action" :type="tag === 'button' ? 'button' : undefined" :aria-label="controlLabel" :style="style" :class="{ 'home-source-node--root': root, 'home-source-node--text':node.type==='TEXT' }" @click="control?.action && emit('activate', control.action, $event)">
-    <img v-if="node.svg" :src="imageReady ? node.svg : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
-    <img v-else-if="node.text === '\uf005'" class="home-source-node__font-awesome-glyph" :src="imageReady ? '/images/figma/doctor-review-star.svg' : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
-    <template v-else-if="node.textLines && (preserveTextLines || !fluidLayout) && !textOverride"><span class="home-source-node__accessible-text">{{ node.text }}</span><span ref="sourceLines" aria-hidden="true"><span v-for="(line,index) in node.textLines" :key="index" :style="[line.css, { transform: `translateY(${baselineOffsets[index] || 0}px)` }]"><span v-for="(run,runIndex) in line.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></span></template>
-    <template v-else-if="node.textParagraphs && !textOverride"><span v-for="(paragraph,index) in node.textParagraphs" :key="index" :style="paragraph.css"><span v-for="(run,runIndex) in paragraph.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></template>
-    <template v-else-if="node.textRuns && !textOverride"><span v-for="(run,index) in node.textRuns" :key="index" :style="run.css">{{ run.text }}</span></template>
-    <template v-else-if="node.text">{{ textOverride ?? node.text }}</template>
-    <slot v-if="node.chart === 'radar'" name="radar" :node="node" />
-    <slot v-if="node.chart === 'cost'" name="cost" :node="node" />
-    <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :replica="replica" :defer-images="deferImages" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action, event) => emit('activate', action, event)">
-      <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
-      <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
+  <div v-if="sticky && node.visible && !unavailableEntry && !hidden?.includes(node.id)" data-source-sticky-track :style="stickyTrackStyle">
+    <HomeSourceNode :node="node" :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :sticky-position="sticky" :sticky-nodes="nestedStickies" :preserve-pending-entries="preservePendingEntries" @activate="(action,event)=>emit('activate',action,event)">
       <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>
     </HomeSourceNode>
-    <slot name="after" :node="node" />
+  </div>
+  <PatientDesktopNavigation v-else-if="patientNavigation && node.visible && !unavailableEntry && !hidden?.includes(node.id)" :source="node" :style="style" :data-figma-node="node.id" :data-figma-name="node.name" />
+  <component ref="imageElement" :is="tag" v-else-if="node.visible && !unavailableEntry && !hidden?.includes(node.id)" v-bind="{...linkAttributes,...sourceAttributes}" :data-figma-node="replica ? undefined : node.id" :data-figma-name="replica ? undefined : node.name" :data-preserve-pending-entries="preservePendingEntries || undefined" :data-source-brand="brandMark || undefined" :data-source-locale-height="ownsLocaleLayout && localized ? localeLayout.height : undefined" :data-source-images="root && deferImages || ownsDeferredImages ? imageReady ? 'loaded' : 'deferred' : undefined" :data-source-action="control?.action" :type="tag === 'button' ? 'button' : undefined" :aria-label="controlLabel" :style="style" :class="{ 'home-source-node--root': root, 'home-source-node--text':node.type==='TEXT' }" @click="control?.action && emit('activate', control.action, $event)">
+    <img v-if="sourceBrandShell || sourceBrandImage" class="home-source-brand-logo" src="/images/brand/univadoc-plus.png" alt="Univadoc+" draggable="false" />
+    <template v-else>
+      <img v-if="node.svg" :src="imageReady ? node.svg : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
+      <img v-else-if="node.text === '\uf005'" class="home-source-node__font-awesome-glyph" :src="imageReady ? '/images/figma/doctor-review-star.svg' : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
+      <template v-else-if="node.textLines && (preserveTextLines || !fluidLayout) && !textOverride"><span class="home-source-node__accessible-text">{{ node.text }}</span><span ref="sourceLines" aria-hidden="true"><span v-for="(line,index) in node.textLines" :key="index" :style="[line.css, { transform: `translateY(${baselineOffsets[index] || 0}px)` }]"><span v-for="(run,runIndex) in line.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></span></template>
+      <template v-else-if="node.textParagraphs && !textOverride"><span v-for="(paragraph,index) in node.textParagraphs" :key="index" :style="paragraph.css"><span v-for="(run,runIndex) in paragraph.runs" :key="runIndex" :style="run.css">{{ run.text }}</span></span></template>
+      <template v-else-if="node.textRuns && !textOverride"><span v-for="(run,index) in node.textRuns" :key="index" :style="run.css">{{ run.text }}</span></template>
+      <template v-else-if="node.text">{{ textOverride ?? node.text }}</template>
+      <slot v-if="node.chart === 'radar'" name="radar" :node="node" />
+      <slot v-if="node.chart === 'cost'" name="cost" :node="node" />
+      <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :sticky-nodes="stickyNodes" :preserve-pending-entries="preservePendingEntries" :replica="replica" :defer-images="deferImages" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action, event) => emit('activate', action, event)">
+        <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
+        <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
+        <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>
+      </HomeSourceNode>
+      <slot name="after" :node="node" />
+    </template>
   </component>
   <a v-if="facebookStyle" class="home-source-node__facebook" :style="facebookStyle" :href="publicContacts.facebookHref" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
 </template>
@@ -218,6 +262,7 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
 [data-figma-node] { font-synthesis:none; }
 img { display:block; width:100%; height:auto; max-width:none; }
 .home-source-node--root { position:relative!important; left:0!important; top:0!important; }
+.home-source-brand-logo { position:absolute!important; left:0!important; top:0!important; display:block!important; width:148px!important; height:48px!important; max-width:none!important; object-fit:contain!important; object-position:left center!important; }
 .home-source-node__accessible-text { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:pre; }
 .home-source-node__font-awesome-glyph { width:100%!important; height:100%!important; object-fit:fill; }
 .home-source-node__facebook { display:block; width:max-content; margin:0; padding:0; text-decoration:none; white-space:nowrap; }

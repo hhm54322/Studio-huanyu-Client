@@ -6,7 +6,7 @@ import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, r
 import { useRoute, useRouter } from 'vue-router'
 import DentalSourceCanvas from '@/components/common/DentalSourceCanvas.vue'
 import DentalDoctorPageContent from '@/components/common/DentalDoctorPageContent.vue'
-import type { HomeSourceAction, HomeSourceNodeData as SourceNode } from '@/components/common/HomeSourceNode.vue'
+import type { HomeSourceAction, HomeSourceNodeData as SourceNode, SourceSticky } from '@/components/common/HomeSourceNode.vue'
 import { dentalPhysicians, dentalPhysicianCases } from '@/data/dentalPhysicianData'
 import { replaceDentalPortrait, replaceDentalPrice, replaceDentalText } from '@/data/dentalPhysicianSource'
 import { displayDentalExperience } from '@/data/dentalPhysicianPresentation'
@@ -25,8 +25,9 @@ const loaded = shallowRef(getDentalDoctorPage(activeTab.value) || getDentalDocto
 const loading = ref(false), error = ref(false), width = ref(innerWidth)
 const rootElement = ref<HTMLElement>(), institution = ref(false)
 const image = ref<{ src: string; alt: string }>(), imageDialog = ref<HTMLDialogElement>()
-const contentHeight = ref(0), scrollOffset = ref(0), headerOffset = ref(0)
-let frame = 0, request = 0, disposed = false
+const contentHeight = ref(0), stickyCardHeight = ref(0)
+let request = 0, disposed = false
+let geometryObserver: ResizeObserver | undefined
 const originalModel = computed(() => dentalDoctorPageModel(loaded.value))
 const customMode = computed(() => activeTab.value === 'cases' ? 'cases' : !doctor.value?.sourceProfile && (activeTab.value === 'profile' || activeTab.value === 'reviews') ? activeTab.value : null)
 const contentTop = computed(() => originalModel.value.content[0]!.y)
@@ -47,7 +48,7 @@ const composition = computed(() => {
   for (const node of all) {
     if (node.type === 'TEXT' && titleRoutes[node.text]) actions[node.id] = { href:titleRoutes[node.text] }
     if (node.text === '隐私政策' || node.text === '服务条款') actions[node.id] = { action:'pending', label:node.text }
-    if (node.name === '未标题-1 1') actions[node.id] = { href:'/', label:'寰宇云医首页' }
+    if (/^未标题-1 [12]$/.test(node.name)) actions[node.id] = { href:'/', label:'寰宇云医首页' }
   }
   const cardNodes = doctorPageDescendants(model.card)
   const cardText = (text: string) => cardNodes.find(node => node.text.trim() === text)
@@ -56,23 +57,27 @@ const composition = computed(() => {
     // Figma's portrait mask is mirrored in the source. Supplied portraits are
     // already upright square exports, so keep its actual center in the card.
     replaceDentalPortrait(portrait, doctor.value.portrait)
-    resize(portrait, { x:65 })
+    resize(portrait, { x:0 })
     const name = cardText('谭兆林')!, title = cardText('院长 / 主治医生')!
     replaceDentalText(name, doctor.value.name)
     replaceDentalText(title, doctor.value.title)
-    // Keep the supplied longer titles within the source identity column,
-    // retaining its authored 122/26/50/78px vertical positions.
+    // The 2026-11-05 identity lives above a separate divider and metadata
+    // group. Expand only this column for supplied longer titles, preserving
+    // the authored 122/26px text positions and centered 110px portrait.
+    resize(model.card.children[0]!,{x:32,width:240})
+    resize(portrait,{x:65})
     const identity = model.card.children[0]!.children[1]!
-    const nameGroup = identity.children[0]!
-    resize(identity,{x:0,width:240});resize(nameGroup,{x:0,width:240})
-    for (const wrapper of nameGroup.children) resize(wrapper,{x:0,width:240})
+    resize(identity,{x:0,width:240})
+    for (const wrapper of identity.children) resize(wrapper,{x:0,width:240})
     resize(name,{x:0,width:240});resize(title,{x:0,width:240})
     name.css += ';text-align:center;'
     title.css += ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;'
     attributes[title.id] = { title:doctor.value.title }
     const location = cardText('上海 · 口腔专科')!
     replaceDentalText(location, `${doctor.value.city} · ${doctor.value.department}`)
-    const locationRow = identity.children[1]!, experienceRow = identity.children[2]!
+    const metadata = model.card.children.find(node => doctorPageDescendants(node).some(child => child.id === location.id))!
+    const locationRow = metadata.children.find(node => doctorPageDescendants(node).some(child => child.id === location.id))!
+    const experienceRow = metadata.children.find(node => doctorPageDescendants(node).some(child => child.text === '20年经验'))!
     for (const row of [locationRow,experienceRow]) {
       resize(row,{x:0,width:240})
       if(localized.value) row.layoutCss+=';justify-content:center;'
@@ -91,10 +96,11 @@ const composition = computed(() => {
   replaceDentalPrice(price, doctor.value.priceLabel)
   price.css += ';white-space:nowrap;'
   attributes[price.id] = { title:doctor.value.priceDescription }
-  const institutionButton = model.card.children[1]!.children[0]!
+  const buttonGroup = model.card.children.find(node => node.children.some(child => child.name === 'Button'))!
+  const institutionButton = buttonGroup.children[0]!
   if (!doctor.value.sourceProfile) replaceDentalText(institutionButton.children[0]!, `${doctor.value.city}牙科机构`)
   actions[institutionButton.id] = { action:'institution', label:`查看${doctor.value.hospital}` }
-  actions[model.card.children[1]!.children[1]!.id] = { action:'quote', label:`获取${doctor.value.name}医生免费报价` }
+  actions[buttonGroup.children[1]!.id] = { action:'quote', label:`获取${doctor.value.name}医生免费报价` }
   const labels = ['医生简介','治疗流程',`案例集 · ${dentalPhysicianCases(doctor.value).length}`,`患者评价 · ${doctor.value.sourceProfile ? 128 : doctor.value.reviews.length}`,'在华就诊保障服务 · 10']
   attributes[model.menu.id] = { role:'tablist', 'aria-label':'医生资料' }
   model.tabs.forEach((tab,index) => {
@@ -149,42 +155,38 @@ const composition = computed(() => {
   attributes[model.right.id] = { role:'tabpanel', id:'dental-doctor-panel', 'aria-labelledby':`dental-doctor-tab-${dentalDoctorTabs.indexOf(activeTab.value)}` }
   return { root, model, actions, attributes, contentId }
 })
-const styles = computed(() => {
+// Native sticky positioning is evaluated by the browser during scrolling.
+// Keep the source geometry and shared lower boundary without reactive writes
+// for every scroll frame (or the 4px first-scroll menu jump).
+const stickyNodes = computed<Record<string, SourceSticky>>(() => {
   const { model } = composition.value
-  const pinned = scrollOffset.value > 0
-  const sourceMenuTop = model.menuWrap.id === model.menu.id ? model.menu.y : model.menuWrap.y+model.menu.y
-  const menuAdjustment = pinned ? 24-sourceMenuTop : 0
+  const top = model.header.height + model.section.y
+  const menuTop = model.menuWrap.y
   return {
-    [model.card.id]:`transform:translateY(${scrollOffset.value}px);z-index:4;`,
-    [model.menuWrap.id]:`transform:translateY(${scrollOffset.value+menuAdjustment}px);z-index:5;`,
-    [model.right.id]:`overflow:visible;clip-path:inset(${scrollOffset.value}px 0 0 round 24px);`,
-    [model.header.id]:`z-index:6;transform:translateY(${headerOffset.value}px);`,
+    [model.card.id]: { top, zIndex:4 },
+    [model.menuWrap.id]: { top:top+menuTop, boundaryHeight:'var(--dental-sticky-card-height)', zIndex:5 },
+    [model.header.id]: { top:0, zIndex:6 },
   }
 })
-function measureScroll() {
-  frame=0
-  if (!rootElement.value) return
-  const section = rootElement.value.querySelector<HTMLElement>('[data-dental-doctor-section]')
-  if (!section) return
-  const scale = Math.min(1,width.value/1440), top = section.getBoundingClientRect().top
-  headerOffset.value = Math.max(0,-rootElement.value.getBoundingClientRect().top/scale)
-  const pinnedTop = (composition.value.model.header.height + composition.value.model.section.y)*scale
-  // Both pinned elements share the card's 448px boundary; their exit begins
-  // together, with the authored 48px gap still before Related recommendations.
-  const card=rootElement.value.querySelector<HTMLElement>('[data-dental-doctor-card]')
-  const sectionHeight=section.getBoundingClientRect().height/scale
-  const cardHeight=card?card.getBoundingClientRect().height/scale:minRightHeight.value
-  scrollOffset.value = Math.max(0,Math.min((pinnedTop-top)/scale, Math.max(0,sectionHeight-cardHeight)))
+function measureGeometry() {
+  const card = rootElement.value?.querySelector<HTMLElement>('[data-dental-doctor-card]')
+  if (card) stickyCardHeight.value = card.getBoundingClientRect().height / Math.min(1,width.value/1440)
 }
-function scheduleScroll() { if (!frame) frame=requestAnimationFrame(measureScroll) }
+async function observeGeometry() {
+  await nextTick()
+  geometryObserver?.disconnect()
+  const card = rootElement.value?.querySelector<HTMLElement>('[data-dental-doctor-card]')
+  if (card) geometryObserver?.observe(card)
+  measureGeometry()
+}
 function updateViewport() {
   width.value=innerWidth
   if (width.value<=700) { void router.replace({path:'/dental',query:{step:'2'}});return }
-  scheduleScroll()
+  void nextTick(measureGeometry)
 }
 async function loadTab() {
-  const current=++request;loading.value=true;error.value=false;contentHeight.value=0;scrollOffset.value=0
-  try { const source=await loadDentalDoctorPage(activeTab.value);if(disposed||current!==request)return;loaded.value=source;await nextTick();scheduleScroll() }
+  const current=++request;loading.value=true;error.value=false;contentHeight.value=0
+  try { const source=await loadDentalDoctorPage(activeTab.value);if(disposed||current!==request)return;loaded.value=source;await observeGeometry() }
   catch { if (!disposed&&current===request) error.value=true }
   finally { if (!disposed&&current===request) loading.value=false }
 }
@@ -194,7 +196,7 @@ async function activate(action: string) {
     await router.replace({ query:{...route.query,tab:action.slice(4)} })
     // A shorter new panel must start at its first row rather than inherit a
     // deep position in the previous panel and hide content behind the menu.
-    window.scrollTo({top:0,behavior:'instant'});measureScroll();return
+    window.scrollTo({top:0,behavior:'instant'});return
   }
   if (action==='institution') institution.value=true
   if (action==='quote') await router.push({path:'/dental',query:{step:'3',doctor:doctor.value.slug,...(typeof route.query.project==='string'?{project:route.query.project}:{})}})
@@ -211,16 +213,16 @@ watch(() => [route.params.slug,activeTab.value], () => {
   if (!dentalPhysicians.some(item => item.slug === route.params.slug)) { void router.replace('/dental');return }
   image.value=undefined;institution.value=false;void loadTab()
 }, {immediate:true})
-watch(rightHeight,async()=>{await nextTick();scheduleScroll()})
+watch(rightHeight,observeGeometry)
 watch(image, async value => { await nextTick();if(value)imageDialog.value?.showModal();else imageDialog.value?.close() })
-onMounted(()=>{window.addEventListener('scroll',scheduleScroll,{passive:true});window.addEventListener('resize',updateViewport,{passive:true});scheduleScroll()})
-onBeforeUnmount(()=>{disposed=true;request++;window.removeEventListener('scroll',scheduleScroll);window.removeEventListener('resize',updateViewport);if(frame)cancelAnimationFrame(frame);imageDialog.value?.close()})
+onMounted(()=>{geometryObserver=new ResizeObserver(measureGeometry);window.addEventListener('resize',updateViewport,{passive:true});void observeGeometry()})
+onBeforeUnmount(()=>{disposed=true;request++;window.removeEventListener('resize',updateViewport);geometryObserver?.disconnect();imageDialog.value?.close()})
 </script>
 
 <template>
-  <div ref="rootElement" class="dental-doctor-page" :class="{'dental-doctor-page--pinned':scrollOffset>0}" :data-dental-doctor-page="doctor.id" :data-active-tab="activeTab" :aria-busy="loading" @keydown="keydown">
+  <div ref="rootElement" class="dental-doctor-page" :style="{'--dental-sticky-card-height':`${stickyCardHeight || composition.model.card.height}px`}" :data-dental-doctor-page="doctor.id" :data-active-tab="activeTab" :aria-busy="loading" @keydown="keydown">
     <p v-if="error" class="dental-doctor-page__error" role="alert">{{ tx("内容暂时未能加载，") }}<button type="button" @click="loadTab">{{ tx("重新加载") }}</button></p>
-    <DentalSourceCanvas :key="`${doctor.id}-${loaded.id}`" :node="composition.root" :width="width" :actions="composition.actions" :attributes="composition.attributes" :styles="styles" @layout="()=>nextTick(scheduleScroll)" @activate="activate">
+    <DentalSourceCanvas :key="`${doctor.id}-${loaded.id}`" :node="composition.root" :width="width" :actions="composition.actions" :attributes="composition.attributes" native-sticky :sticky-nodes="stickyNodes" @layout="observeGeometry" @activate="activate">
       <template #after="{node}">
         <DentalDoctorPageContent v-if="customMode && node.id === composition.contentId" :key="`${doctor.id}-${customMode}`" :doctor="doctor" :mode="customMode" :source="loaded" @height="value=>contentHeight=value" @image="value=>image=value" />
       </template>
@@ -237,7 +239,8 @@ onBeforeUnmount(()=>{disposed=true;request++;window.removeEventListener('scroll'
 
 <style scoped>
 .dental-doctor-page { position:relative; background:#f3f4f6; }
-.dental-doctor-page--pinned :deep([data-dental-doctor-menu]::before) { content:''; position:absolute; left:-32px; top:-24px; width:888px; height:65px; border-radius:24px 24px 0 0; background:linear-gradient(180deg,#fff 0%,#fff 100%); z-index:-1; }
+.dental-doctor-page :deep([data-dental-doctor-menu]::before) { content:''; position:absolute; left:-32px; top:-20px; width:888px; height:calc(100% + 44px); border-radius:24px 24px 0 0; background:linear-gradient(180deg,#fff 0%,#fff 100%); z-index:-1; }
+.dental-doctor-page :deep([data-dental-doctor-menu]::after) { content:'';position:absolute;left:-32px;top:-68px;width:888px;height:48px;background:#f3f4f6;z-index:-1;pointer-events:none; }
 .dental-doctor-page__error { position:fixed; z-index:40; top:12px; left:50%; transform:translateX(-50%); background:white; padding:12px 20px; border:1px solid #e5e7eb; border-radius:12px; }
 .dental-doctor-page :deep(button:focus-visible),.dental-doctor-page :deep(a:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
 .dental-case-image { width:max-content; max-width:94vw; max-height:92vh; border:0; padding:40px 16px 16px; border-radius:16px; background:white; margin:auto; }

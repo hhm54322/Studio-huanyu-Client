@@ -513,6 +513,12 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 - Existing API/report generation remains unchanged. Assistant dispatches the existing consultation event. Specialty menu points to the existing disease service route; categories without designed destinations remain non-navigating.
 - Status: verified desktop; source locks and eight current QA groups passed; mobile deferred by user.
 
+## 2026-11-05：专家卡片 hover 与页头 Logo
+
+- Source comparison: `1689:4814` 中国医生、`1412:6350` 权威专家团队及共享依赖在 `寰宇云医 (53).fig` → `寰宇云医 (54).fig` 中均 unchanged；证据 `artifacts/doctor-brand-20261105/final/source-53-54.json`。
+- 首页四张专家卡按 Figma resting/hover 层级实现：常态摘要 y232，hover/focus 摘要 y200，真实“了解更多”入口使用 `1412:6447` SVG，固定在卡片 x24/y272；整卡保留原专家详情点击，移除阴影。
+- Verification screenshots: `artifacts/doctor-brand-20261105/final/home-experts-rest.png`、`home-experts-hover.png`；1440桌面无横向溢出、无页面错误，中文/英文入口文案已检查。移动版式按用户要求冻结，仅回归。
+
 ### 2026-11-01 最终性能回归
 
 - 当前静态源参数、节点层级、图片及文案不变。生产版`20261101024500`重跑首页9组回归与13路由首屏/页脚对照；首页专项Figma门禁通过，整体加载改动的对照最高nMAE 0.0092%。
@@ -547,3 +553,15 @@ Figma contains positive or negative letter-spacing values on some text nodes. Th
 - 最新官方源导出 `/Users/hhm/Downloads/寰宇云医 (32).fig`，SHA256 `647b79b83961afbbbfb58e1d788f2ab146304da79da7a5ff0fa499d3afeabad6`；`latest-home`、`current-home-hero`、`current-home-photos` 对应源组 unchanged。
 - 代码侧最终包 `20261101111000` 对线上 `20261101080000` 的受控慢网中位：LCP `3004→2668ms`、FCP `2828→2428ms`、CLS `0`；JS 解码 `2,105,400→1,017,183B`，gzip `260,620→248,731B`。完整截图、首屏恢复、9组首页专项与 320/390/430/768/1440 静态回归均通过。
 - 证据：`artifacts/performance-home-dental-2026-11-01/{slow-final/qa.json,runtime-final/home-interleaved.json,home-loading-final/qa.json,home-final-gate-2.log,visual-final/qa.json}`。本轮只在本地构建验证，尚未部署公网；剩余瓶颈为源树体量和公网链路。
+
+
+## 2026-11-05 scoped entry, hover and scroll fixes
+
+- Scope: the reported interaction defects, not a new whole-page or whole-site design acceptance. Per the latest user instruction, all unfinished footer links and placeholder contact details are retained; shared and report footers are unchanged. Source Footer subtrees explicitly preserve their existing entries.
+- Connection: current-session browser2/tab22 verified through the unique connector at 2026-11-05T07:57:35.089Z; Design/Layers/Properties readable. Evidence: `artifacts/entry-hover-scroll-20261105/connection-final.json`.
+- Official final export: exportedAt `2026-11-05T08:03:05.948Z`, SHA256 `0c82c204361fb010701848646b65c42c6bbe51152113e81bc5d46df5e50d2442`. Reports `final-home-original.json` and `final-physicians-original.json` compare with the original implementation exports. The homepage main frame and the physician 306-node frame remain unchanged. `final-dental-original.json` compares the current dental implementation export (52): card/content/tabs unchanged, header navigation changed. `final-current.json` verifies all 16636 pc-page nodes and dependencies unchanged between (54) and final (56). Reports are in `artifacts/entry-hover-scroll-20261105/`; historical locks are untouched.
+- Live navigation reread: 853x28, gap2; Home44x28 with24x16 text; services text/arrow #4B5563. Header replacement IDs map to the existing semantic public navigation component by label/route; dental and its detail routes highlight Dental only. Live `1523:59` unbound its variable, retaining the #1E3A5F over #DD6B20 fill,14 radius,52 height already rendered as resolved CSS.
+- Final production build: `20261105083000`. `production-final/qa.json`:60 physician cards,4 homepage cards,5 dental tabs,6 supplied doctors,12 translated checks,12 narrow-screen regressions; no browser errors, failed assets or horizontal overflow. `production-behavior-final/qa.json`:14 route entrance checks, frame-by-frame hover,3 desktop widths x5 languages; card/name drift0, scroll style mutations0, synchronized release. No patient data submitted.
+- Final screenshot comparison: `visual-final/comparison.json`; physician hover nMAE0.9010%/pixelmatch0.2798%, homepage expert hover0.3984%/0.1090%, dental card0.3636%/0.2681%, profile content0.1632%/0.0028%. Actual source DPR/fractional crop used, without stretching the card to the export's pixel width. Desktop, hover, pinned/released and English captures personally reviewed.
+- Type checking, five-language catalog checks, image preparation, production build and diff checks passed. Full `audit:figma` still fails historical whole-site evidence/source locks, including old expert dialogs replaced in current Design. This scoped evidence does not mark those pages complete and no historical gate was weakened.
+- Homepage expert cards use the why-China interaction: the summary moves up 32px and the CTA fades in on hover/keyboard focus. Stable translate3d compositing preserves the source glyph baselines; the card itself has no shadow or movement.

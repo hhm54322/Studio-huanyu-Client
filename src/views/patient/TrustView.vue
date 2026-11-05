@@ -404,8 +404,6 @@ function openConsultation() {
                 </RouterLink>
                 <RouterLink v-else-if="desktopArticle && stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <span v-else-if="(stageIndex === 1 && itemIndex === 0) || (stageIndex === 2 && itemIndex === 0)" class="tool-action-pending" aria-disabled="true">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
-                </span>
               </article>
             </div>
           </section>
@@ -1342,18 +1340,6 @@ function openConsultation() {
   width: 16px;
   height: 16px;
 }
-.tool-action-pending {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 16px;
-  color: #dd6b20;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 16px;
-  cursor: default;
-}
-.tool-action-pending .arrow-icon { display: block; width: 16px; height: 16px; }
 .trust-cta {
   height: 412px;
   padding: 96px 0;

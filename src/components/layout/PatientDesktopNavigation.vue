@@ -155,10 +155,9 @@ onBeforeUnmount(() => {
         :aria-label="tx(open === 'language' ? t('conversion.navigation.language') : label(open === 'services' ? '医疗服务' : '中国医院'))"
         @pointerenter="cancelClose" @pointerleave="scheduleClose" @focusin="cancelClose" @focusout="leaveFocus" @keydown.stop="panelKey">
         <template v-if="open !== 'language'">
-          <template v-for="item in patientNavigationGroups[open]" :key="item.label">
-            <RouterLink v-if="item.path" :to="item.path" class="patient-navigation-menu__item" :class="{ 'is-active': route.path === item.path }"
+          <template v-for="item in patientNavigationGroups[open].filter(item=>item.path)" :key="item.label">
+            <RouterLink :to="item.path" class="patient-navigation-menu__item" :class="{ 'is-active': route.path === item.path }"
               :aria-current="route.path === item.path ? 'page' : undefined" @click="close">{{ label(item.label) }}</RouterLink>
-            <button v-else class="patient-navigation-menu__item" type="button" disabled :title="t('conversion.navigation.preparing')">{{ label(item.label) }}</button>
           </template>
         </template>
         <template v-else><button v-for="language in languages" :key="language.code" type="button" class="patient-navigation-menu__item"

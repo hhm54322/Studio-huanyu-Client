@@ -5,6 +5,7 @@ import { translateSiteCopy } from '@/i18n/siteCopy'
 import { patientCopyScope } from '@/i18n/patientCopyScopes'
 import { resolveLocale, savedLocale } from '@/i18n/languages'
 import { useAppStore } from '@/stores/app'
+import { pendingPatientDesignRoutes } from '@/data/patientEntryAvailability'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -196,7 +197,6 @@ const router = createRouter({
 // These destinations have no authored patient-facing Figma frame yet. Keep the
 // implementation available for later work, but prevent production navigation
 // from entering an unapproved design surface.
-const pendingDesignRoutes = new Set(['/equipment', '/visa', '/professional-report'])
 
 router.onError((error, to) => {
   const message = String(error instanceof Error ? error.message : error)
@@ -214,7 +214,7 @@ router.afterEach((_to, _from, failure) => {
 // Resolve the complete target-page copy before committing navigation. A slow
 // or failed pack never exposes untranslated UI or overwrites a newer choice.
 router.beforeEach(async (to) => {
-  if (pendingDesignRoutes.has(to.path)) return false
+  if (pendingPatientDesignRoutes.has(to.path)) return false
   if (to.meta.side !== 'hospital') {
     const language = resolveLocale(to.query.lang) || resolveLocale(i18n.global.locale.value) || savedLocale()
     if (!await useAppStore().setLocale(language, patientCopyScope(to.path))) {

@@ -249,8 +249,8 @@ select.dental-native-overlay option { color:#1e3a5f; background:#fff; }
 .dental-desktop-flow[data-dental-step="1"] :deep(.dental-source-canvas), .dental-desktop-flow[data-dental-step="1"] :deep(.dental-source-canvas__inner) { transition:height 420ms cubic-bezier(.22,1,.36,1); }
 .dental-desktop-flow :deep(.dental-live-detail), .dental-live-detail { transition:height 420ms cubic-bezier(.22,1,.36,1),opacity 180ms ease; }
 .dental-desktop-flow :deep(.dental-live-arrow) { transition:transform 420ms cubic-bezier(.22,1,.36,1); }
-.dental-desktop-flow :deep(.dental-doctor-card__button) { transition:box-shadow 240ms ease,filter 180ms ease; }
-.dental-desktop-flow :deep(.dental-doctor-card__button:hover) { filter:brightness(.985); box-shadow:0 4px 10px rgba(0,0,0,.10); }
+.dental-desktop-flow :deep(.dental-doctor-card__button) { transition:filter 180ms ease; }
+.dental-desktop-flow :deep(.dental-doctor-card__button:hover) { filter:brightness(.985); }
 .dental-desktop-flow :deep(button:not(.dental-live-project)), .dental-desktop-flow :deep(a) { transition:filter 180ms ease; }
 .dental-desktop-flow :deep(button:not(.dental-live-project):hover), .dental-desktop-flow :deep(a:hover) { filter:brightness(.96); }
 .dental-desktop-flow :deep(.dental-live-picker:focus-within) { outline:2px solid #2563eb; outline-offset:3px; }

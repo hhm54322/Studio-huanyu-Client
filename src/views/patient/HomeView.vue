@@ -7,6 +7,7 @@ import type { ECharts } from 'echarts/core'
 import type { ComponentPublicInstance } from 'vue'
 import HomeFigmaSection from '@/components/common/HomeFigmaSection.vue'
 import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
+import SourceLearnMore from '@/components/common/SourceLearnMore.vue'
 import HomeHeroSection from '@/components/common/HomeHeroSection.vue'
 import { homeSourceDialog } from '@/components/common/homeSourceDialog'
 import { homeExpertDialog } from '@/components/common/homeExpertDialog'
@@ -49,6 +50,14 @@ onMounted(() => {
 onBeforeUnmount(() => { bodyDisposed = true; cancelAnimationFrame(bodyFrame) })
 
 const selectedExpert=ref<number|null>(null)
+const expertCards = ['1412:6419','1414:7095','1414:7128','1414:7161']
+// Apply the motion to the authored summary wrappers, not their text child,
+// so the copy and the hidden CTA move together as one Figma layer.
+const expertSummaries = ['1412:6442','1414:7119','1414:7152','1414:7185']
+const expertCardAttributes = Object.fromEntries([
+  ...expertCards.map(id => [id, { 'data-home-expert-card': true }]),
+  ...expertSummaries.map((id,index) => [id, { 'data-home-expert-summary': index === 0 ? 'hover-source' : 'rest-source' }]),
+])
 
 const flowSteps = [
   { no: '01', label: '认知', title: '了解为什么选择中国', anchor: '#process-stage-01' },
@@ -439,7 +448,9 @@ onBeforeUnmount(() => {
       <template #cost><div ref="costChartEl" class="revision-chart" role="img" :aria-label="tx('治疗费用对比')" /></template>
     </HomeFigmaSection>
     <HomeFigmaSection desktop-id="1412:6313" defer-render mobile-id="1528:621" :label="tx('权威合作医院')" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
-    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" @activate="activateFigmaAction" />
+    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" :attributes="expertCardAttributes" :hidden="['1412:6444']" @activate="activateFigmaAction">
+      <template #after="{ node }"><SourceLearnMore v-if="expertCards.includes(node.id)" class="home-expert-learn-more" icon="/images/figma/home-revision/node-1412-6447.svg" /></template>
+    </HomeFigmaSection>
     <HomeStrengthSection />
     <HomePartnersSection />
     <HomeFigmaSection id="home-cta" desktop-id="1412:6635" defer-render mobile-id="1528:771" :label="tx('开启来华就医之旅')" :actions="homeFigmaActions" :texts="{ '1412:6652': '预约专家面诊 $200起' }" @activate="activateFigmaAction" />
@@ -475,7 +486,16 @@ onBeforeUnmount(() => {
 .journey-desktop :deep([data-home-why-card]:hover [data-figma-node="1412:5804"]),.journey-desktop :deep([data-home-why-card]:focus-visible [data-figma-node="1412:5804"]),
 .journey-desktop :deep([data-home-why-card]:hover .home-why-card__more),.journey-desktop :deep([data-home-why-card]:focus-visible .home-why-card__more) { opacity:1; }
 .journey-desktop :deep([data-home-why-card]:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
-@media (prefers-reduced-motion:reduce) { .journey-desktop :deep([data-home-why-copy]),.journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more { transition:none; } }
+.home-figma-section :deep([data-home-expert-card]) { box-shadow:none!important; }
+.home-figma-section :deep([data-home-expert-summary]) { top:124px!important; height:72px!important; transform:translate3d(0,0,0);will-change:transform;transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.home-figma-section :deep([data-home-expert-summary] > .home-source-node--text) { top:0!important; height:72px!important; max-height:72px!important; overflow:hidden!important; display:-webkit-box!important; -webkit-line-clamp:3; -webkit-box-orient:vertical; }
+.home-figma-section :deep([data-home-expert-summary="hover-source"]) { transform:translate3d(0,0,0)!important; }
+.home-expert-learn-more { position:absolute; left:24px; bottom:24px; opacity:0; transition:opacity .18s ease; }
+.home-figma-section :deep([data-home-expert-card]:hover [data-home-expert-summary="hover-source"]),.home-figma-section :deep([data-home-expert-card]:focus-visible [data-home-expert-summary="hover-source"]) { transform:translate3d(0,-32px,0)!important; }
+.home-figma-section :deep([data-home-expert-card]:hover [data-home-expert-summary="rest-source"]),.home-figma-section :deep([data-home-expert-card]:focus-visible [data-home-expert-summary="rest-source"]) { transform:translate3d(0,-32px,0)!important; }
+.home-figma-section :deep([data-home-expert-card]:hover .home-expert-learn-more),.home-figma-section :deep([data-home-expert-card]:focus-visible .home-expert-learn-more) { opacity:1; }
+@media (hover:none) { .home-expert-learn-more { opacity:1; } }
+@media (prefers-reduced-motion:reduce) { .journey-desktop :deep([data-home-why-copy]),.journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more,.home-expert-learn-more,.home-figma-section :deep([data-home-expert-summary]) { transition:none; } }
 .journey-desktop__rail-lane { position:absolute; z-index:2; top:calc(279px * var(--journey-scale)); bottom:calc(279px * var(--journey-scale)); left:calc(50% - 588px * var(--journey-scale)); width:calc(220px * var(--journey-scale)); pointer-events:none; }
 .journey-desktop__rail { position:sticky; top:88px; height:calc(650px * var(--journey-scale)); }
 .journey-desktop__rail > :deep([data-figma-node]) { transform:scale(var(--journey-scale))!important; transform-origin:top left!important; }

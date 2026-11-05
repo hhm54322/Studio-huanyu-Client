@@ -118,9 +118,30 @@ All 177 doctor details use the new document source, including known doctors; old
 - Mobile geometry: frozen by the user's desktop-only instruction; no new mobile scope is claimed.
 - Validation commands: scoped `audit:figma physicians.md`, `build:app` (image preparation, `vue-tsc -b`, Vite production build), and `git diff --check` passed. Logs: `artifacts/physicians-directory-2026-10-30/app-build.log` and `behavior-qa.json`. The full-site audit remains blocked by unrelated pages' historical screenshot/evidence freshness; see `full-site-gate.log`. The doctors scope itself passes. No deployment was performed in this task.
 
+## 2026-11-05：医生卡片与品牌交互更新
+
+- Current source check: `寰宇云医 (53).fig` → `寰宇云医 (54).fig`，官方导出差异检查覆盖 `1689:4814`（中国医生）及共享依赖，结果 `unchanged`；证据 `artifacts/doctor-brand-20261105/final/source-53-54.json`。
+- Figma source card `1741:5785` 的 hover summary 使用 `SourceLearnMore.vue` 映射到真实 `1741:5814` SVG。常态 summary 保持卡片相对 y211，hover/focus 上移31px至y180，入口位于 x24/y244；整卡可点击、键盘可聚焦，卡片无阴影。
+- 首页专家卡 `1412:6419`、`1414:7095`、`1414:7128`、`1414:7161` 使用真实 `1412:6447` 箭头资源；常态 summary y232、hover/focus y200，入口 x24/y272，四张卡无阴影。文案由 i18n 提供，触屏保持可见入口。
+- 新页头 Logo 使用 Figma 148×48 资源 `/images/brand/univadoc-plus.png`；首页源图 `2326:8518`、中国医生页头 `1689:5394`、牙科及医生详情页均已检查。深色 footer 保留当前稿的浅色寰宇云医字标，避免深色背景上的深色新字标不可读。
+- Verification: `artifacts/doctor-brand-20261105/final/{physicians-rest.png,physicians-hover.png,home-experts-rest.png,home-experts-hover.png,dental-profile-rest.png}`；中国医生 60 张卡、首页4张专家卡及牙科详情5标签在 1440 桌面回归无资源错误/横向溢出；医生详情卡截图 nMAE 0.3635%、右侧简介 nMAE 0.1632%。`vue-tsc -b`、Vite build、`git diff --check` passed。全站 `audit:figma` 仍会报告其他历史页面证据过期，不将其误报为本项失败。
+- Status: verified for this desktop batch; mobile layout remains frozen per user instruction. This batch is local and has not been published.
+
 
 ## 2026-11-01 当前数据与第五轮回归（80000）
 
 - 当前以精简发布文档为准：57位文档医生与3位原站保留医生，共60位、36科室；上文177位为历史版本。保留用户确认的周莉莉血液病擅长覆盖，其余字段按精简文档。首页专家未按此目录替换。
 - 全部60医生详情及36科室筛选、6快捷入口、4桌面宽度、无头像状态、关闭/焦点/滚动恢复回归通过；共享加载/基线测量优化未改变医生数据。首次主图预请求在实测不利后未采纳。
 - 同条件LCP中位3364→3404ms，约1%差值视为持平。专项源及证据门禁通过；证据为`artifacts/patient-updates-2026-10-31/physicians/behavior-qa.json`及`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,final-source-summary.json,slow-final/qa.json}`。移动设计冻结。
+
+
+## 2026-11-05 scoped entry, hover and scroll fixes
+
+- Scope: the reported interaction defects, not a new whole-page or whole-site design acceptance. Per the latest user instruction, all unfinished footer links and placeholder contact details are retained; shared and report footers are unchanged. Source Footer subtrees explicitly preserve their existing entries.
+- Connection: current-session browser2/tab22 verified through the unique connector at 2026-11-05T07:57:35.089Z; Design/Layers/Properties readable. Evidence: `artifacts/entry-hover-scroll-20261105/connection-final.json`.
+- Official final export: exportedAt `2026-11-05T08:03:05.948Z`, SHA256 `0c82c204361fb010701848646b65c42c6bbe51152113e81bc5d46df5e50d2442`. Reports `final-home-original.json` and `final-physicians-original.json` compare with the original implementation exports. The homepage main frame and the physician 306-node frame remain unchanged. `final-dental-original.json` compares the current dental implementation export (52): card/content/tabs unchanged, header navigation changed. `final-current.json` verifies all 16636 pc-page nodes and dependencies unchanged between (54) and final (56). Reports are in `artifacts/entry-hover-scroll-20261105/`; historical locks are untouched.
+- Live navigation reread: 853x28, gap2; Home44x28 with24x16 text; services text/arrow #4B5563. Header replacement IDs map to the existing semantic public navigation component by label/route; dental and its detail routes highlight Dental only. Live `1523:59` unbound its variable, retaining the #1E3A5F over #DD6B20 fill,14 radius,52 height already rendered as resolved CSS.
+- Final production build: `20261105083000`. `production-final/qa.json`:60 physician cards,4 homepage cards,5 dental tabs,6 supplied doctors,12 translated checks,12 narrow-screen regressions; no browser errors, failed assets or horizontal overflow. `production-behavior-final/qa.json`:14 route entrance checks, frame-by-frame hover,3 desktop widths x5 languages; card/name drift0, scroll style mutations0, synchronized release. No patient data submitted.
+- Final screenshot comparison: `visual-final/comparison.json`; physician hover nMAE0.9010%/pixelmatch0.2798%, homepage expert hover0.3984%/0.1090%, dental card0.3636%/0.2681%, profile content0.1632%/0.0028%. Actual source DPR/fractional crop used, without stretching the card to the export's pixel width. Desktop, hover, pinned/released and English captures personally reviewed.
+- Type checking, five-language catalog checks, image preparation, production build and diff checks passed. Full `audit:figma` still fails historical whole-site evidence/source locks, including old expert dialogs replaced in current Design. This scoped evidence does not mark those pages complete and no historical gate was weakened.
+- Physician summaries move up 31px on hover/keyboard focus; identity and card geometry remain stable. Keep authored glyph positions for original source cards and the existing text clamp for document records. No physician data or department filtering was changed.

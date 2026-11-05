@@ -71,3 +71,28 @@
 - 390/430宽保留旧移动流程，新详情链接回到原移动列表；本次不开发移动端版式。
 - 类型检查和Vite生产构建通过。本次页面门禁单独运行；全站审计仍会报告其他历史页面的旧证据失效，原历史基线和门禁未放宽。
 - Remaining differences: none
+
+
+## 2026-11-05：医生资料卡与品牌更新（实施前参数记录）
+
+- 当前源：`/Users/hhm/Downloads/寰宇云医 (52).fig`，导出 `2026-11-05T02:39:46.682Z`，SHA256 `40cfc2a778a324a311807aa26d51799bdfde168e33c00bfb9800f28d62ea1de5`。历史2026-11-03锁与截图保留。
+- 连接：唯一入口 `figma-connect.mjs`，本会话 IAB tab22，Design/Layers/Inspect 均通过；证据 `artifacts/doctor-brand-20261105/connection-start.json`。
+- 当前源比较：`artifacts/doctor-brand-20261105/source-start-dental.json`；五个标签与滚动状态的卡片已替换为新子树。未改变节点保留此前逐节点 Dev Mode 记录，比较器逐字段及共享依赖确认一致；变更及新增节点重新选中 live Layers，抄录 Dev Mode。完整当前层级与 Node→DOM 映射记录在 `docs/figma-source/dental-pages-2026-11-05/<state>/`。
+- 新资料卡：profile `3800:7081`、treatment `3800:7116`、cases `3800:7151`、reviews `3800:7186`、services `3800:7221`；滚动样式 `3796:7024`。对应 `HomeSourceNode[data-dental-doctor-card]`，每个子节点精确映射 `[data-figma-node="ID"]`。
+- 资料卡304×489，padding32，圆角24，白底，无阴影；垂直gap20。头像110×110在x97/y32；姓名/职称组y154；分隔线`3800:7090/7091` x32/y216、240×1，#F3F4F6。资料组`3800:7092` x32/y237、240×52，两行gap12；评分/参考价组`3800:7103` x61/y309、182×32；按钮组`3800:7110` x32/y361、240×96，两按钮240×42、gap12。
+- profile右侧同时新增分隔线`3741:6491/6492` x32/y177、824×1，说明内容`3421:2625`由y177变为202；右侧与主区高度489，相关推荐y585。对应尺寸由新的精确源树承接。
+- 头像、姓名、职称、城市及经验、参考价继续使用既有供稿数据；长文本需在授权内容替换时居中并保持原分隔线与模块间距，不能依赖旧child索引。
+- Logo节点 `3796:7061/7063/7065/7067/7069/7071` 均148×48、FILL，图像SHA1 `db2b7822dd673324ce608b02dd62b1f1ca8bdc36`，与用户提供图2核对。所有品牌入口保留各页原Logo容器与首页导航行为。
+- Status: static implementation；当前仅桌面修改，移动版式冻结，仅回归。
+
+
+## 2026-11-05 scoped entry, hover and scroll fixes
+
+- Scope: the reported interaction defects, not a new whole-page or whole-site design acceptance. Per the latest user instruction, all unfinished footer links and placeholder contact details are retained; shared and report footers are unchanged. Source Footer subtrees explicitly preserve their existing entries.
+- Connection: current-session browser2/tab22 verified through the unique connector at 2026-11-05T07:57:35.089Z; Design/Layers/Properties readable. Evidence: `artifacts/entry-hover-scroll-20261105/connection-final.json`.
+- Official final export: exportedAt `2026-11-05T08:03:05.948Z`, SHA256 `0c82c204361fb010701848646b65c42c6bbe51152113e81bc5d46df5e50d2442`. Reports `final-home-original.json` and `final-physicians-original.json` compare with the original implementation exports. The homepage main frame and the physician 306-node frame remain unchanged. `final-dental-original.json` compares the current dental implementation export (52): card/content/tabs unchanged, header navigation changed. `final-current.json` verifies all 16636 pc-page nodes and dependencies unchanged between (54) and final (56). Reports are in `artifacts/entry-hover-scroll-20261105/`; historical locks are untouched.
+- Live navigation reread: 853x28, gap2; Home44x28 with24x16 text; services text/arrow #4B5563. Header replacement IDs map to the existing semantic public navigation component by label/route; dental and its detail routes highlight Dental only. Live `1523:59` unbound its variable, retaining the #1E3A5F over #DD6B20 fill,14 radius,52 height already rendered as resolved CSS.
+- Final production build: `20261105083000`. `production-final/qa.json`:60 physician cards,4 homepage cards,5 dental tabs,6 supplied doctors,12 translated checks,12 narrow-screen regressions; no browser errors, failed assets or horizontal overflow. `production-behavior-final/qa.json`:14 route entrance checks, frame-by-frame hover,3 desktop widths x5 languages; card/name drift0, scroll style mutations0, synchronized release. No patient data submitted.
+- Final screenshot comparison: `visual-final/comparison.json`; physician hover nMAE0.9010%/pixelmatch0.2798%, homepage expert hover0.3984%/0.1090%, dental card0.3636%/0.2681%, profile content0.1632%/0.0028%. Actual source DPR/fractional crop used, without stretching the card to the export's pixel width. Desktop, hover, pinned/released and English captures personally reviewed.
+- Type checking, five-language catalog checks, image preparation, production build and diff checks passed. Full `audit:figma` still fails historical whole-site evidence/source locks, including old expert dialogs replaced in current Design. This scoped evidence does not mark those pages complete and no historical gate was weakened.
+- Replace per-scroll reactive transforms with native sticky tracks: header top0, card top113, tab container top133 with the original text baseline. Card and tabs release at the same content boundary, 48px above related recommendations. CSS zoom preserves source coordinates at scaled desktop widths. ResizeObserver only updates translated card height; scrolling writes no styles.

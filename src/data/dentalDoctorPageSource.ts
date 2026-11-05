@@ -1,5 +1,5 @@
 import type { HomeSourceNodeData as SourceNode } from '@/components/common/HomeSourceNode.vue'
-import profile from '../../docs/figma-source/dental-pages-2026-11-03/profile/source-tree-2026-11-03.json'
+import profile from '../../docs/figma-source/dental-pages-2026-11-05/profile/source-tree-2026-11-05.json'
 import profileTypography from '../../docs/figma-source/dental-pages-2026-11-03/profile/text-layout-2026-11-03.json'
 
 export const dentalDoctorTabs = ['profile', 'treatment', 'cases', 'reviews', 'services'] as const
@@ -15,7 +15,7 @@ function profileSource(): SourceNode {
 }
 const cached = new Map<DentalDoctorTab, SourceNode>([['profile', profileSource()]])
 const pending = new Map<DentalDoctorTab, Promise<SourceNode>>()
-const loaders = import.meta.glob('../../docs/figma-source/dental-pages-2026-11-03/*/source-tree-2026-11-03.json', { import: 'default' }) as Record<string, () => Promise<{ root: SourceNode }>>
+const loaders = import.meta.glob('../../docs/figma-source/dental-pages-2026-11-05/*/source-tree-2026-11-05.json', { import: 'default' }) as Record<string, () => Promise<{ root: SourceNode }>>
 export function parseDentalDoctorTab(value: unknown): DentalDoctorTab {
   return dentalDoctorTabs.includes(value as DentalDoctorTab) ? value as DentalDoctorTab : 'profile'
 }
@@ -24,7 +24,7 @@ export function loadDentalDoctorPage(tab: DentalDoctorTab): Promise<SourceNode> 
   if (available) return Promise.resolve(available)
   const loading = pending.get(tab)
   if (loading) return loading
-  const request = loaders[`../../docs/figma-source/dental-pages-2026-11-03/${tab}/source-tree-2026-11-03.json`]!()
+  const request = loaders[`../../docs/figma-source/dental-pages-2026-11-05/${tab}/source-tree-2026-11-05.json`]!()
     .then(source => { cached.set(tab, source.root); return source.root })
     .finally(() => pending.delete(tab))
   pending.set(tab, request)

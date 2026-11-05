@@ -7,6 +7,7 @@ const route=useRoute(), router=useRouter()
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HospitalFigmaCanvas from '@/components/common/HospitalFigmaCanvas.vue'
 import HomeSourceNode from '@/components/common/HomeSourceNode.vue'
+import SourceLearnMore from '@/components/common/SourceLearnMore.vue'
 import {
   filteredPhysicianRecords,
   filteredPhysicianSource,
@@ -79,7 +80,10 @@ const attributes = computed(() => {
     result[item.id] = { role: 'tab', 'aria-selected': filter.value === index, 'aria-controls': 'physician-results', tabindex: filter.value === index || filter.value === -1 && index === 0 ? 0 : -1 }
   })
   result['1741:5784'] = { id: 'physician-results', role: 'tabpanel', 'aria-label': department.value || physicianFilters[filter.value]?.text || '全部医生' }
-  physicianRecords.forEach(record => { result[`physician-card:${record.id}`] = { 'data-physician-card': true, 'data-physician-id': record.id, 'data-physician-department': record.departmentSource, title: `${tx(record.name)}｜${tx(record.departmentSource)}\n${tx(record.workplace)}` } })
+  physicianRecords.forEach(record => {
+    result[`physician-card:${record.id}`] = { 'data-physician-card': true, 'data-physician-id': record.id, 'data-physician-department': record.departmentSource, title: `${tx(record.name)}｜${tx(record.departmentSource)}\n${tx(record.workplace)}` }
+    result[`physician-summary:${record.id}`] = { 'data-physician-summary': true }
+  })
   return result
 })
 
@@ -156,6 +160,7 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
           <span class="physician-result-count" aria-live="polite">{{ tf('共 {count} 位医生',{count:visibleRecords.length}) }}</span>
         </div>
         <div v-if="sourceNode.id === '1741:5784' && !visibleRecords.length" class="physician-empty">{{ tx("暂无符合条件的医生") }}</div>
+        <SourceLearnMore v-if="sourceNode.id.startsWith('physician-card:')" class="physician-learn-more" icon="/images/figma/physicians-revision/node-1741-5814.svg" />
       </template>
     </HospitalFigmaCanvas>
     <header class="physician-source-header">
@@ -183,6 +188,13 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 .physician-empty { position:absolute; left:0; right:0; top:48px; color:#9CA3AF; text-align:center; font-size:16px; line-height:24px; }
 .physician-source-header { position:fixed; inset:0 0 auto; height:64px; z-index:60; pointer-events:none; }
 .physician-source-header :deep(a),.physician-source-header :deep(button),.physician-menu,.physician-languages { pointer-events:auto; }
+.physician-page :deep([data-physician-card]) { box-shadow:none!important; }
+.physician-page :deep([data-physician-summary]) { top:103px!important; bottom:auto!important; height:48px!important; transform:translate3d(0,0,0);will-change:transform;transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.physician-page :deep([data-physician-summary] .home-source-node--text) { height:48px!important; max-height:48px!important; overflow:hidden!important; display:-webkit-box!important; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+.physician-learn-more { position:absolute; left:24px; bottom:24px; opacity:0; transition:opacity .18s ease; }
+.physician-page :deep([data-physician-card]:hover [data-physician-summary]),.physician-page :deep([data-physician-card]:focus-visible [data-physician-summary]) { transform:translate3d(0,-31px,0)!important; }
+.physician-page :deep([data-physician-card]:hover .physician-learn-more),.physician-page :deep([data-physician-card]:focus-visible .physician-learn-more) { opacity:1; }
+@media (hover:none) { .physician-learn-more { opacity:1; } }
 .physician-menu { position:absolute; inset:0 0 auto; }
 .physician-menu>div { position:absolute; top:0; left:50%; height:0; transform-origin:top center; }
 .physician-languages { position:absolute; top:56px; right:max(16px,calc((100vw - 1216px)/2)); display:grid; padding:8px; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 12px 30px #0002; }
@@ -193,9 +205,5 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
    header rather than shrink all desktop labels to a few pixels. */
 @media (max-width:700px) { .physician-source-header { display:none; } }
 @media (max-width:1100px) and (min-width:701px) { .physician-department-filter label { display:none; } .physician-department-filter select { min-width:170px; } }
-@media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .physician-page :deep([data-physician-card]) { transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease; }
-  .physician-page :deep([data-physician-card]:hover),.physician-page :deep([data-physician-card]:focus-within) { transform:translateY(-4px)!important; box-shadow:0 12px 28px #14316214!important; }
-}
-@media (prefers-reduced-motion:reduce) { .physician-dropdown-enter-active,.physician-dropdown-leave-active { transition:none; } }
+@media (prefers-reduced-motion:reduce) { .physician-dropdown-enter-active,.physician-dropdown-leave-active,.physician-learn-more,.physician-page :deep([data-physician-summary]) { transition:none; } }
 </style>
