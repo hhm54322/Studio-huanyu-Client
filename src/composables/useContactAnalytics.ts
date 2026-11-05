@@ -1,5 +1,7 @@
 import { onBeforeUnmount, onMounted } from 'vue'
 import { publicContacts } from '@/data/publicContacts'
+import { resolveContactTopic } from '@/data/contactTopics'
+import { contactCountry } from '@/utils/whatsappContact'
 import type { WhatsAppContext } from '@/utils/whatsappContact'
 import { createContactAnalytics } from '@/utils/contactAnalytics'
 
@@ -15,7 +17,9 @@ export function useContactAnalytics(metadata: (entry: string) => WhatsAppContext
     try {
       const expected = new URL(publicContacts.whatsappHref), actual = new URL(anchor.href)
       if (actual.origin !== expected.origin || actual.pathname !== expected.pathname) return
-      tracker?.track(metadata(anchor.dataset.contactEntry || ''))
+      const context = metadata(anchor.dataset.contactEntry || '')
+      tracker?.track({ ...context, topic: resolveContactTopic(anchor.dataset.contactTopic) || context.topic,
+        country: contactCountry(anchor.dataset.contactCountry) || context.country })
     } catch { /* An optional statistic must never break a valid contact link. */ }
   }
   onMounted(() => {

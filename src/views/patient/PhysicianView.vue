@@ -104,7 +104,7 @@ async function bindMotion() {
 }
 
 function activate(action: string) {
-  if (action === 'consultation') window.dispatchEvent(new CustomEvent('open-consultation'))
+  if (action === 'consultation') window.dispatchEvent(new CustomEvent('open-consultation', { detail: { intent: 'appointment' } }))
   else if (action === 'language') languageMenu.value = !languageMenu.value
   else if (action === 'hospital-menu') { clearTimeout(menuTimer); hospitalMenu.value = true }
   else if (action.startsWith('doctor:')) selected.value = physicianRecords.find(record => record.id === action.slice(7)) ?? null

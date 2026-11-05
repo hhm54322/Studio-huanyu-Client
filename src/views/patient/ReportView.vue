@@ -1324,7 +1324,7 @@ const openProSampleReport = () => {
   showProSampleReport.value = true
 }
 const openConsultation = () => {
-  window.dispatchEvent(new CustomEvent('open-consultation'))
+  window.dispatchEvent(new CustomEvent('open-consultation', { detail: { intent: 'report' } }))
 }
 const closeProSampleReport = () => {
   showProSampleReport.value = false

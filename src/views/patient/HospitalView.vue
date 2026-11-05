@@ -95,7 +95,7 @@ async function bindCardMotion(){
 function resize(){viewport.value=window.innerWidth;menuOpen.value=false;hospitalMenuOpen.value=false}
 function openConsultation(){
   selectedName.value=null;menuOpen.value=false
-  nextTick(()=>window.dispatchEvent(new CustomEvent('open-consultation')))
+  nextTick(()=>window.dispatchEvent(new CustomEvent('open-consultation', { detail: { intent: 'appointment' } })))
 }
 function activate(action:string){
   if(action==='consultation')openConsultation()

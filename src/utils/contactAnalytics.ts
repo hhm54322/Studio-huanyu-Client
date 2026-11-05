@@ -7,7 +7,7 @@ const sessionKey = 'huanyu.contact-session.v1'
 const queueKey = 'huanyu.contact-events.v1'
 const day = 86400_000
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
-const entry = /^(?:floating|footer-shared|footer-report|footer-\d+-\d+)$/
+const entry = /^(?:floating|footer-shared|footer-report|footer-\d+-\d+|m06-whatsapp|m08-whatsapp|m08-direct)$/
 let memoryVisitor: { id: string; expires: number } | undefined
 let memorySession: string | undefined
 export type ContactClickEvent = WhatsAppContext & {

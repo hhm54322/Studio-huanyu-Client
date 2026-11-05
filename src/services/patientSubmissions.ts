@@ -13,14 +13,36 @@ export type SubmissionResponse = {
   createdAt: string
 }
 
-export const createConsultation = async (payload: {
+export type ConsultationPayload = {
+  schemaVersion: 2
   requestId: string
   name: string
   contact: string
-  concern: string
-}) => {
+  country: string
+  topic: string
+  reportStatus?: string
+  budget?: string
+  timeWindow?: string
+  locale: string
+  mode: 'quick' | 'guided'
+  handoffReason: string
+  sourceContext: string
+  concern?: string
+}
+
+export const createConsultation = async (payload: ConsultationPayload) => {
   const response = await api.post<SubmissionResponse>('/consultations', payload)
   return response.data
+}
+
+/** Patient-facing consultation errors are translated locally; never display raw server/internal text. */
+export const getConsultationErrorKey = (error: unknown) => {
+  if (axios.isAxiosError(error)) {
+    if (error.response?.status === 429) return 'conversion.flow.rateLimitError'
+    if (error.response?.status === 409) return 'conversion.flow.conflictError'
+    if (error.response?.status === 400) return 'conversion.flow.validationError'
+  }
+  return 'conversion.flow.submitError'
 }
 
 export const createDentalAssessment = async (

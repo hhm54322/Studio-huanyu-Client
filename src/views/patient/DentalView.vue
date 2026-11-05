@@ -299,7 +299,7 @@ async function submitForm() {
 }
 
 function contactSupport() {
-  window.dispatchEvent(new CustomEvent('open-consultation'))
+  window.dispatchEvent(new CustomEvent('open-consultation', { detail: { intent: 'quote' } }))
 }
 
 function handleKeydown(event: KeyboardEvent) {
