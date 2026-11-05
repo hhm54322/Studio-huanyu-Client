@@ -28,7 +28,7 @@ async function load() {
 }
 function apply() { page.value = 1; void run(load) }
 function changePage(change: number) { page.value += change; void run(load) }
-function save(item: Item) { void run(async () => { await api(`/consultations/${item.id}/status`, 'PATCH', { status: selected.value[item.id] }); await load() }) }
+function save(item: Item) { void run(async () => { await api(`/consultations/${item.id}/status`, 'POST', { status: selected.value[item.id] }); await load() }) }
 onMounted(() => void run(load))
 </script>
 
