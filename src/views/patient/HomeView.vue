@@ -37,9 +37,8 @@ onMounted(() => {
       ]).then(async () => {
         if (bodyDisposed) return
         bodyReady.value = true
-        // The hero has painted and the deferred page source has arrived. Warm
-        // the renderer now, before the user reaches the distant data section.
-        void loadChartModule().catch(() => {})
+        // Charts load when the data section approaches the viewport. Keep
+        // their heavy renderer out of the initial network and CPU queue.
         await nextTick()
         if (pendingProcessIndex !== null) {
           scrollToProcessStep(pendingProcessIndex)
@@ -381,7 +380,7 @@ function observeCharts() {
     chartsRequested = true
     chartViewportObserver?.disconnect()
     void initCharts()
-  }, { rootMargin: '900px 0px' })
+  }, { rootMargin: '1400px 0px' })
   chartViewportObserver.observe(radarChartEl.value)
   chartViewportObserver.observe(costChartEl.value)
 }
