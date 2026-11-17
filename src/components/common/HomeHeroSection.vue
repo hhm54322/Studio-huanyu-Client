@@ -14,6 +14,9 @@ const root=ref<HTMLElement|null>(null)
 const {activeIndex:active,select:selectSlide}=useAutoplayCarousel(root,4,{initialIndex:3})
 const width=ref(typeof window==='undefined'?1440:window.innerWidth)
 const mobileOrder=[3,0,1,2]
+// The design's monthly count is an unfilled placeholder. Keep the supported
+// specialties while omitting the unknown number until it is provided.
+const heroTexts = { '143:1239': '覆盖肿瘤、齿科、康养、心脑血管等专科' }
 const states=[
   {frame:'143:1190',content:'143:1196',image:'143:1194',previous:'143:1211',next:'143:1214',dots:['143:1218','143:1219','143:1220','143:1221']},
   {frame:'143:1222',content:'143:1228',image:'143:1226',previous:'143:1240',next:'143:1243',dots:['143:1247','143:1248','143:1249','143:1250']},
@@ -116,10 +119,10 @@ onBeforeUnmount(()=>{
 <template>
   <div ref="root" class="home-source-hero" tabindex="0" :data-figma-node="width>700 && active===3 ? '1523:31' : undefined" :data-hero-state="active+1" :aria-roledescription="tx('轮播')" :aria-label="tx('寰宇云医介绍')" @keydown.left.prevent="select(active-1)" @keydown.right.prevent="select(active+1)">
     <Transition name="home-hero-fade">
-    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" :label="tx('寰宇云医介绍')" :actions="actions" :attributes="attributes" :styles="styles" :defer-images="false" @activate="activate" />
+    <HomeFigmaSection v-if="width>700 || active===3" :key="selected.frame" :data-figma-node="width>700 && active===3 ? '1523:32' : undefined" :desktop-id="selected.frame" mobile-id="1528:127" :label="tx('寰宇云医介绍')" :actions="actions" :texts="heroTexts" :attributes="attributes" :styles="styles" :defer-images="false" @activate="activate" />
     <section v-else :key="`mobile-${active}`" class="home-source-hero__mobile" :data-figma-desktop-state="selected.frame">
       <div class="home-source-hero__mobile-image" :style="{backgroundImage:homeDesktopNodes.get(selected.image)!.css.match(/background:\s*(url\([^;]*?\))/)?.[1]}" />
-      <div class="home-source-hero__mobile-copy" :class="{'is-assurance':active===2}"><HomeSourceNode :node="homeDesktopNodes.get(selected.content)!" root fluid :styles="mobileStyles" :actions="actions" @activate="activate" /></div>
+      <div class="home-source-hero__mobile-copy" :class="{'is-assurance':active===2}"><HomeSourceNode :node="homeDesktopNodes.get(selected.content)!" root fluid :styles="mobileStyles" :texts="heroTexts" :actions="actions" @activate="activate" /></div>
       <div class="home-source-hero__mobile-dots"><button v-for="(state,index) in mobileOrder" :key="state" type="button" :aria-label="tx(`第${index+1}张`)" :aria-pressed="state===active" @click="select(state)" /></div>
     </section>
     </Transition>

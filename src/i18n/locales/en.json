@@ -561,5 +561,23 @@
       "budgetHint": "All amounts are in USD and only describe your budget. They are not medical quotes.",
       "request": "Request"
     }
+  },
+  "dentalScan": {
+    "label": "AI PLAN SCAN · DENTAL SCAN",
+    "choose": "Choose a dental service",
+    "duration": "Duration",
+    "whiten": "Whitening preview",
+    "price": "Reference price",
+    "hint": "Hover over a tooth to see the service and reference price",
+    "whitenOn": "Whitening preview · On",
+    "description": {
+      "whitening": "In-office or home whitening",
+      "veneer": "Porcelain veneers · Anterior aesthetics",
+      "aligner": "Clear aligners · Remote follow-up",
+      "periodontal": "Ultrasonic cleaning · Periodontal care",
+      "root-canal": "Microscopic root canal · Warm filling",
+      "crown": "Zirconia · Aesthetic restoration",
+      "implant": "Digitally guided implants · Immediate restoration"
+    }
   }
 }

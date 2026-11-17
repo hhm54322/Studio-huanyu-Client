@@ -2,6 +2,159 @@
 
 # 牙科服务 · 项目选择与城市医生匹配
 
+## 2026-11-16 动画接入与核对（进行中）
+
+- 本会话通过 `scripts/figma-connect.mjs` 成功连接 IAB：2026-11-16T02:39:19Z，Design/Layers/Inspect 均可读；牙科项目选择源节点 `2294:8240` 已在 Dev Mode 打开。此前初始化后过早读取了尚在加载的页面，不能据此判断连接不可用。
+- 当前官方源 `/Users/hhm/Downloads/寰宇云医.fig`，导出时间 2026-11-16T02:40:07Z，SHA-256 `303bbc4d0d6df5a749d538a8d3cef2e3b68bb2d36baecaaee7bf83cfa98ec9b4`。针对既有实施基线运行 `figma-source-gate.cjs --page dental`，报告 `artifacts/figma-source-gate/latest-dental.json` 为 changed；三步页面 Header 子树被替换，若干历史详情源节点已移除，尚须核对新节点与具体变化，不能自动接受基线。
+- 2026-11-16T03:09Z：已在当前 Figma Inspect 分别读取 Header `3824:8431` 的 42 个节点，逐节点快照位于 `artifacts/dental-animation-20261116/header/live/`；Layers 已核对 Header、Container、Navigation 及大部分一级导航，随后通过调整视口展开完整 42 个节点，已核对 ID、名称与层级并记录映射；页面最终视觉验收尚未完成。
+- 用户要求新增的牙齿动画以所提供的在线演示为设计依据，放在顶部图与步骤导航之间；不接入演示左侧文案。演示页当前网络请求返回连接关闭，未取得源码；交互曾观察到扫描、牙齿信息和美白预览。已在本地接入，尚未完成设计门禁或发布。
+- 2026-11-16T02:48Z 重新核验当前会话连接及导出，源节点 `2294:8240`，导出 SHA-256 `202397a1358d3ee2be6e5365fbad50ebbd5f362254efd0d2073b0047450c3dcb`。Dev Mode 已确认替换后的 Header `3824:8431` 为 1440×64，原生文件中包含首页、医疗服务、牙科、中国医院等导航；临时节点清单 `artifacts/dental-animation-20261116/current/native-inventory-2026-11-16.json` 为待 Layers 交叉检查的发现记录。顶部图节点 `2294:8243` 与内容区域 `2294:8250` 位于同一 Main Content，步骤位于 `2294:8256`；桌面页面按坐标渲染，插入模块需同步调整后续内容及画布高度。
+- 2026-11-16T02:53Z 最新导出 `/Users/hhm/Downloads/寰宇云医 (2).fig`，SHA-256 `c69e41c82153774cd413451859834c1e9df0e8ee48a839155004987b704be811`。原生 Header 对比见 `artifacts/dental-animation-20261116/header/native-header-comparison.json`：旧文字标识被 148×48 图像替换，医疗服务、中国医院增加箭头，导航宽度/横向位置及部分字色、字体有变化。38 组节点仅按同级顺序暂配对，尚须 Layers/Dev Mode 核对；实际导航由 `PatientDesktopNavigation` 消费原 Header 节点，不能将原生数据对照误记为已实现。
+
+### 2026-11-16 current dental page mapping
+
+- Current Figma export `(4).fig`, 2026-11-16T03:21:32Z, SHA256 `7acd3aa3f05cb5d7ab40667c9a2123f96fc6c92f527e181dce093c3416a46c65`; verified IAB connection 03:18:03Z. Baseline comparison shows the project frame header subtree replaced and Body child references updated; other hero/content nodes and dependencies unchanged. Removed old detail frames remain separately unverified.
+- All 42 new Header nodes cross-checked by ID, name and level against live Layers (`artifacts/dental-animation-20261116/header/layers-live.json`). Inspect parameters recorded individually in `header/live/<node>.txt`. Mapping identifies existing component owners; visual fidelity remains to be checked.
+- The new dental scan is user-requested demonstration content outside the Figma design, inserted in `2294:8242` between hero `2294:8243` and step content `2294:8250`.
+
+| Node | Layer | Parent | Component / element | Inspect record |
+| --- | --- | --- | --- | --- |
+| `3824:8431` | Header | `2294:8241` | HomeSourceNode: Header | `header/live/3824-8431.txt` |
+| `3824:8432` | Container | `3824:8431` | HomeSourceNode: Header container | `header/live/3824-8432.txt` |
+| `3824:8433` | 未标题-1 2 | `3824:8432` | HomeSourceNode: logo | `header/live/3824-8433.txt` |
+| `3824:8434` | Navigation | `3824:8432` | PatientDesktopNavigation: navigation | `header/live/3824-8434.txt` |
+| `3824:8435` | Link:margin | `3824:8434` | PatientDesktopNavigation: consult wrapper | `header/live/3824-8435.txt` |
+| `3824:8436` | Link | `3824:8435` | PatientDesktopNavigation: consult button | `header/live/3824-8436.txt` |
+| `3824:8437` | Icon | `3824:8436` | PatientDesktopNavigation: consult icon | `header/live/3824-8437.txt` |
+| `3824:8438` | Vector | `3824:8437` | PatientDesktopNavigation: consult icon | `header/live/3824-8438.txt` |
+| `3824:8439` | Text | `3824:8436` | PatientDesktopNavigation: consult text | `header/live/3824-8439.txt` |
+| `3824:8440` | 问阿宁 | `3824:8439` | PatientDesktopNavigation: consult text | `header/live/3824-8440.txt` |
+| `3824:8441` | Link | `3824:8434` | PatientDesktopNavigation: home link | `header/live/3824-8441.txt` |
+| `3824:8442` | 首页 | `3824:8441` | PatientDesktopNavigation: home text | `header/live/3824-8442.txt` |
+| `3824:8443` | Link | `3824:8434` | PatientDesktopNavigation: why China link | `header/live/3824-8443.txt` |
+| `3824:8444` | 为什么选择中国 | `3824:8443` | PatientDesktopNavigation: why China text | `header/live/3824-8444.txt` |
+| `3824:8445` | Link | `3824:8434` | PatientDesktopNavigation: FAQ link | `header/live/3824-8445.txt` |
+| `3824:8446` | 信任与常见问题 | `3824:8445` | PatientDesktopNavigation: FAQ text | `header/live/3824-8446.txt` |
+| `3824:8447` | Link | `3824:8434` | PatientDesktopNavigation: service button | `header/live/3824-8447.txt` |
+| `3824:8448` | 医疗服务 | `3824:8447` | PatientDesktopNavigation: service text | `header/live/3824-8448.txt` |
+| `3824:8449` | Container:margin | `3824:8447` | PatientDesktopNavigation: service arrow | `header/live/3824-8449.txt` |
+| `3824:8450` | Vector | `3824:8449` | PatientDesktopNavigation: service arrow | `header/live/3824-8450.txt` |
+| `3824:8451` | Link | `3824:8434` | PatientDesktopNavigation: dental link | `header/live/3824-8451.txt` |
+| `3824:8452` | 牙科 | `3824:8451` | PatientDesktopNavigation: dental text | `header/live/3824-8452.txt` |
+| `3824:8453` | Link | `3824:8434` | PatientDesktopNavigation: hospital button | `header/live/3824-8453.txt` |
+| `3824:8454` | 中国医院 | `3824:8453` | PatientDesktopNavigation: hospital text | `header/live/3824-8454.txt` |
+| `3824:8455` | Container:margin | `3824:8453` | PatientDesktopNavigation: hospital arrow | `header/live/3824-8455.txt` |
+| `3824:8456` | Vector | `3824:8455` | PatientDesktopNavigation: hospital arrow | `header/live/3824-8456.txt` |
+| `3824:8457` | Link | `3824:8434` | PatientDesktopNavigation: cases link | `header/live/3824-8457.txt` |
+| `3824:8458` | 患者案例 | `3824:8457` | PatientDesktopNavigation: cases text | `header/live/3824-8458.txt` |
+| `3824:8459` | Link | `3824:8434` | PatientDesktopNavigation: insurance link | `header/live/3824-8459.txt` |
+| `3824:8460` | 保险指南 | `3824:8459` | PatientDesktopNavigation: insurance text | `header/live/3824-8460.txt` |
+| `3824:8461` | Link | `3824:8434` | PatientDesktopNavigation: about link | `header/live/3824-8461.txt` |
+| `3824:8462` | 关于我们 | `3824:8461` | PatientDesktopNavigation: about text | `header/live/3824-8462.txt` |
+| `3824:8463` | Container:margin | `3824:8434` | PatientDesktopNavigation: language margin | `header/live/3824-8463.txt` |
+| `3824:8464` | Button | `3824:8463` | PatientDesktopNavigation: language button | `header/live/3824-8464.txt` |
+| `3824:8465` | Icon | `3824:8464` | PatientDesktopNavigation: language icon | `header/live/3824-8465.txt` |
+| `3824:8466` | Vector | `3824:8465` | PatientDesktopNavigation: language icon | `header/live/3824-8466.txt` |
+| `3824:8467` | Vector | `3824:8465` | PatientDesktopNavigation: language icon | `header/live/3824-8467.txt` |
+| `3824:8468` | Vector | `3824:8465` | PatientDesktopNavigation: language icon | `header/live/3824-8468.txt` |
+| `3824:8469` | Text | `3824:8464` | PatientDesktopNavigation: language flag | `header/live/3824-8469.txt` |
+| `3824:8470` | 🇨🇳 | `3824:8469` | PatientDesktopNavigation: language flag | `header/live/3824-8470.txt` |
+| `3824:8471` | Text | `3824:8464` | PatientDesktopNavigation: language text | `header/live/3824-8471.txt` |
+| `3824:8472` | ZH | `3824:8471` | PatientDesktopNavigation: language text | `header/live/3824-8472.txt` |
+
+### 2026-11-16 本地实现及验证
+
+- `DentalScanShowcase.vue` 按用户演示截图重绘 14 颗牙齿、扫描线、项目切换信息与美白预览；价格与周期引用现有牙科项目，非扫描诊断结果。新增区域位于桌面三个步骤页的顶部图与步骤区之间；随顶部图翻译后的实际高度调整位置，不改变移动端分支。
+- 动画在页面离开视口时暂停，支持减少动态效果、键盘选择及开关。五语文案已同步，中文、英语、印尼语、马来语、葡语及 1024/1440/1920 宽度检查通过，见 `artifacts/dental-animation-20261116/qa/qa.json` 和对应截图。
+- 生产预览的三步骤、上海筛选及重置、医生详情跳转、上传入口检查通过；类型检查、五语完整性审计和 `vite build` 通过。旧的 `dental-current-behavior-qa.cjs` 仍要求打开已改为独立页面的旧弹窗，不能作为本次通过证据。
+- 最终官方源 `(5).fig` 导出于 2026-11-16T03:37:05Z，SHA256 `2af5711dad06601ac9cde1a8a93e3be67b5a1ec0441fa5b53303e09071f76b04`。与本轮 `(4).fig` 比较，三步主帧无新变化；与原实施基线比较仍为 changed（Header 替换及已移除的旧详情源），禁止标记全页 verified。
+- 全站 `audit:figma` 未通过：包括牙科历史详情源变化、原截图证据过期，以及其他页面的过期或缺失证据；未绕过这些门禁。原始 Hero 静态对比截图位于 `artifacts/dental-animation-20261116/qa/hero-ref.png` 和 `hero-local.png`；当前 Figma 的 2× 官方导出顶部与生产预览对比：Hero nMAE 0.648%，导航区域 0.676%；截图 `artifacts/dental-animation-20261116/qa/hero-current-figma.png` 和 `hero-local.png`。尚未发布。
+
+### 2026-11-16 牙科医生详情基线复核
+
+- 实际详情页使用 `dental-pages-2026-11-05`，不是 10 月 28 日旧弹窗。旧审计的 11 月 3 日详情源无法作为当前实现基线。使用 `artifacts/home-layout-charts-20261105/current.fig`（2026-11-05，已记录的官方导出，SHA256 `81af68ed54ff56e021156447e9b7826af08fc43ba9046ca8ff5d63737696c4d9`）与 2026-11-16 最新官方导出 `(6).fig` 比对，医生简介、治疗流程、案例集、患者评价、在华保障、滑动状态与案例图七个当前帧均 `unchanged`，无未解析图片、矢量或依赖；详见 `artifacts/dental-animation-20261116/doctor-regression/current-source-comparison.json`。该比较以 11 月 5 日晚的源为基准，未能替代丢失的原始 `(52).fig` 逐字节比较；11 月 5 日记录已有 `(52)` 至后来官方源的逐字段比较，历史证据保留。
+- 本地生产预览逐一访问 7 位医生，切换 5 个详情标签、检查内容可见、页面无横向溢出和运行时错误；证据 `artifacts/dental-animation-20261116/doctor-regression/seven-doctors.json`。原 `doctor-brand-update-qa.cjs` 在部分路径耗时过久后手动停止，未声称其通过。全站设计门禁其他旧来源、截图鲜度和未完成的导航视觉比较仍未通过。
+
+### 2026-11-16 原始动画代码适配
+
+- 通过已打开的原演示标签读取实际 SVG、CSS 和脚本，原始抓取保存在本地忽略目录 `artifacts/dental-animation-20261116/original/`。`DentalScanShowcase.vue` 按原 640×520 坐标、14 颗不同形状牙齿、牙龈曲线、扫描速度 215 单位/秒、3400ms 自动轮换、2600ms 展示、6000ms 人工交互停顿、美白闪光及鼠标倾斜实现；文案和参考价格接入现有五语与牙科项目数据。
+- 正式预览 5 种语言 × 1024/1440/1920 三种宽度共 15 组，逐颗牙齿的焦点与提示框边界、扫描进度、美白开关、自动轮换、减少动态效果及页面错误检查通过，证据 `artifacts/dental-animation-20261116/qa/final-check.json`。原页及本地截图分别见 `original/card-live.png` 和 `qa/card-exact.png`；页面宽度和扫描进度不同，不能将两张图片直接作为像素级一致证明。
+- 最终官方源 `(9).fig` 导出于 2026-11-16T04:36:25Z，SHA256 `f44e1655459c0e29f663f1e09d2431c3f3a90327a24615415ebf4dea1ce05a3e`；按已记录的 11 月 5 日官方源比较，三步主页面及现有 7 个医生详情状态均 unchanged。原演示与本地的 14 个牙齿 SVG 路径、14 个变换和牙龈路径逐项完全一致。步骤加载、切换、失败重试和草稿保留最终生产回归通过（`artifacts/dental-animation-20261116/step-loading-complete/qa.json`）。减少动态效果状态下美白切换仍保持扫描完成状态；五语、三个宽度、所有牙齿的提示框及底部控制在界限内。
+- 本地直接 `vite build`、类型检查、i18n 审计通过；项目全站 Figma 审计仍有其他页面过期证据和旧牙科弹窗检查未通过，未对其伪造通过状态，尚未发布。
+
+### 2026-11-16 动画最终状态检查（进行中）
+
+- 原演示原始源码与本地组件在相同 1216px 卡片宽度下做静态截图对照；暂时隐藏扫描线、百分比、脉冲及随机粒子，以避免动态帧差异，整体 nMAE 0.3345%。截图位于 `artifacts/dental-animation-20261116/qa/reference-neutral.png` 与 `local-neutral.png`。运行时的动态状态另由专项交互测试核对。
+- 修复了鼠标或键盘持续停留时自动展示切换覆盖用户选择的问题：实际持续停留 7.6 秒仍保持对应提示，离开后恢复；减少动态效果下切换美白不再重置扫描进度。
+- 最终官方源 `(10).fig`，导出 `2026-11-16T04:42:59Z`，SHA256 `fdaf7217c43de8692ad067404d13b5638bc11a2ebe657f993bfce27d072f41bb`；与现有 11 月 5 日设计源比较，三步主页面和 7 个当前详情状态均 unchanged，见 `artifacts/dental-animation-20261116/qa/acceptance-source.txt`。
+- 最终生产预览 15 组语言/宽度检查、步骤数据延迟与失败重试通过；类型检查、i18n 与直接 Vite 构建通过。全站 `audit:figma` 仍因其他页面证据过期和牙科旧源门禁而失败（`artifacts/dental-animation-20261116/qa/final-figma-audit.log`），当前页面不可标记为 verified，尚未发布。
+
+### 2026-11-16 最终原型状态对照（进行中）
+
+- 原始代码的 1216px 卡片在美白、贴面、种植三个悬停状态与当前生产版本比较，暂时隐藏随机粒子及扫描线：nMAE 分别 0.328%、0.356%、0.340%；卡片像素尺寸均为 1216×641。中文周期空格因采用既有项目数据与原型略有区别。截图及结果在 `artifacts/dental-animation-20261116/qa/states-comparison.json` 同目录。
+
+### 2026-11-16 提示框坐标修正和美白状态复核
+
+- 原演示按视口宽度直接计算提示框坐标；牙科页加宽卡片后，SVG 使用 `xMidYMid meet` 居中，沿用该计算会使提示框偏离对应牙齿。现按 SVG 实际缩放和居中偏移计算，1024、1440、1920 宽度的 14 颗牙均逐个核对提示框与牙齿对齐，证据 `artifacts/dental-animation-20261116/qa/tooltip-alignment.json`。这项修正有意改变原演示在宽卡片下的位置，上段悬停像素结果是修正前的历史记录。
+- 修正后同尺寸重新比对，美白开关状态在隐藏随机粒子、扫描线和百分比后 nMAE 为 0.325%，两侧均为 6 个闪光；悬停的美白、贴面、种植分别为 0.679%、1.206%、3.314%，主要区别为提示框现随牙齿对齐。截图及计算脚本位于 `artifacts/dental-animation-20261116/qa/`。
+- 重新验证自动轮换顺序为种植牙、牙齿贴面、牙齿美白、全瓷牙冠；键盘焦点停留 7.6 秒不会被自动播放抢走，见 `artifacts/dental-animation-20261116/qa/autoplay-check.json`。最终生产预览的五语 × 三种宽度复测通过。
+- 类型检查、五语审计和直接 Vite 生产构建通过。正常 `pnpm run build` 在 `audit:figma` 阶段失败：全站其他页面证据未通过，牙科审计仍使用更早的基线并将之后已实施的设计变动判为 changed（`qa/final-build-gate.log` 和 `qa/dental-focused-gate.log`）。未绕过门禁，不能将页面标为 verified；动画尚未发布。
+
+### 2026-11-16 多语言提示框复查
+
+- 较长翻译可能换行而使提示框遮住牙齿，现使用提示框实际高度确定纵向位置，语言切换后重新测量；五语 × 1024/1440/1920 宽度共 210 个牙齿状态的文字框均未越界、未压住牙齿中心，见 `artifacts/dental-animation-20261116/qa/tooltip-multilingual.json`。最终组件再次通过类型检查、直接 Vite 构建和五语交互回归。
+- 本轮通过同会话 `scripts/figma-connect.mjs` 验证 Figma Design/Layers/Inspect，可读源节点 `2294:8240`，连接时间 `2026-11-16T05:01:13Z`、IAB 3、tab 2。尝试从菜单保存官方本地副本，但未观察到新导出文件；之前的 `(11).fig` 是 `2026-11-16T04:50:44Z` 的官方导出，SHA-256 `93a6ab27b36dca3ef3e29d904bdb5cb5283d09038bb2eb289db079dd68247c55`，不把本轮未成功的导出当作新的源比较。
+
+### 2026-11-16 当前源及三步骤布局复核
+
+- 同会话连接 `2026-11-16T05:06:15Z`：IAB 3 / tab 2，节点 `2294:8240`，Design、Layers、Inspect 均可读。使用下载事件取得官方导出 `/Users/hhm/Downloads/寰宇云医 (12).fig`，导出 `2026-11-16T05:06:42Z`，SHA-256 `5572f2cf655f9d6deae82e197c3b0d32559b39f6c9ad202c0a470c3f86315922`。对照 11 月 5 日使用的实际实现源，三个步骤和七个现行医生详情状态均 unchanged；全文件有其他页面新增及变更，故报告整体仍为 changed，并未将其误记为全文件无变化。详见 `artifacts/dental-animation-20261116/qa/current-source-0506.json`。
+- 最终代码在生产预览重新运行步骤切换、草稿保留、并发切换及失败重试，五项通过，见 `qa/step-regression-final/qa.json`。五语、三个桌面宽度、三个步骤共 45 种布局中，动画均在 Hero 与步骤内容之间，浮动操作按钮未覆盖动画，见 `qa/flow-layout.json`。
+- 已将三步骤布局、14 颗牙齿提示边界、美白开关及五语桌面宽度回归固化为 `pnpm run qa:dental:scan`，以生产预览实际运行通过；报告 `artifacts/dental-animation-20261116/qa/reusable-qa.json`。此专项回归不代替仍失败的全站 Figma 构建门禁。
+
+### 2026-11-16 离屏后返回状态
+
+- 修复自动展示提示期间滚离动画、再返回时旧提示因计时器取消而残留的问题；用户鼠标悬停或键盘聚焦的选择仍保持优先。离屏返回场景已加入 `scripts/dental-scan-qa.cjs`，并重新运行生产预览的三步加载与失败重试验证。
+
+### 2026-11-16 混合输入与项目数据回归
+
+- 当键盘聚焦和鼠标悬停分别处于不同牙齿时，离开一个输入目标后恢复另一个仍然有效的目标，避免提示意外消失。五语、三个桌面宽度逐颗检查提示标题与牙齿一致且价格和周期非空；包括离屏返回、混合输入在内的 `pnpm run qa:dental:scan` 在最终生产预览运行通过，日志 `artifacts/dental-animation-20261116/qa/project-mixed-final.log`。三步切换和失败重试回归通过，见 `qa/step-regression-mixed/qa.json`。类型检查和直接 Vite 构建通过；全站 Figma 审计仍未通过，未发布。
+
+### 2026-11-16 倾斜动画对照
+
+- 动画卡片外新增与演示 `.stage` 同尺寸的鼠标感应区域，修复原先因将外侧页面留白纳入计算导致倾斜幅度偏小。使用相同宽度的演示原始代码，在 15%/25%、50%/50%、85%/75% 三个鼠标位置对比，X/Y 旋转角度一致（`qa/tilt-reference.cjs`）。
+- 演示 CSS 中的百分比右对齐声明被原始 HTML 的行内样式覆盖，实际与标题同行；按运行中的原始 HTML 实现，位置、字号、字重、颜色和字间距与原版逐项相同（`qa/progress-reference.cjs`）。美白开启的同尺寸静态对照 nMAE 0.320%，排除动态粒子和扫描线。
+- 最后源码改动后再次通过类型检查、直接 Vite 构建、五语/三宽度/三步骤及交互回归（`qa/tilt-final-qa.log`）、步骤状态及失败重试回归（`qa/step-regression-tilt/qa.json`）。
+- 连接证据：2026-11-16T05:27:28Z，同会话 IAB 3 / tab 2，源节点 `2294:8240`，Design、Layers、Inspect 可读；最终官方导出 `/Users/hhm/Downloads/寰宇云医 (14).fig`，2026-11-16T05:29:48Z，SHA-256 `9273ef3ccfc6937857c8d3f76f4560da60681780acf4143c10d3f1c923bc7d4e`。与实际使用的 11 月 5 日基线比较，牙科三个步骤及现行七个详情状态 unchanged；文件其他页面有变更，整体报告为 changed，见 `qa/source-tilt-final.json`。全站审计和牙科历史基线门禁仍未通过，未标记 verified，未发布。
+
+### 2026-11-16 移动端内容与桌面一致性修复
+
+- 用户要求移动设计未定稿时以桌面内容和流程为准，按手机屏幕适配，不要求逐像素还原。手机牙科医生列表改用桌面相同的七位医生资料、头像及各自的真实案例和评价；城市及机构筛选来源同步数据，不展示无资料的评分或虚构评价。手机保留原有详情容器和筛选布局。
+- 本会话通过 `figma-connect.mjs` 连接 `iab` 3 / tab 2，2026-11-16T14:20:12Z Design/Layers/Inspect 可读；移动候选 `2839:354` 为 375×812，另有同名旧帧，参考该设计的手机呈现而不视其为最终稿。实施前官方源 `/Users/hhm/Downloads/寰宇云医 (18).fig` SHA256 `34730279f8bdc447e206a9c54c13939689cf4819c517ebad3799b0e9fc20c5ed`，交付前 `/Users/hhm/Downloads/寰宇云医 (19).fig` SHA256 `3c331c0b71b2d9f6b4f59b938d32757cf585222c21f53e8710019c6c2378fdd1`；`artifacts/seo-phase1/figma-dental-{before,after}.txt` 显示既有桌面节点替换和历史源缺失，整体仍为 changed，不标记全页 verified。
+- 320/390px 手机检查医生列表、深圳筛选、真实案例、弹窗及五语姓名；390px 六篇工具文章及五语抽查，线上生产版确认牙科名单和签证文章。更多视觉调整待移动设计定稿。
+
+### 2026-11-16 牙齿点击焦点框
+
+- 随后按用户要求改为鼠标悬停查看详情，移开即收起；鼠标点击不获得焦点、不产生持续选中。无悬停时保留原有定时自动展示详情；键盘聚焦可查看对应详情，移开焦点后收起。
+- 用户要求移除动画牙齿鼠标点击后的蓝色矩形焦点框；仅对该 SVG 控件去掉浏览器默认 outline，保留键盘 `:focus-visible` 的牙齿轮廓提示。Codex 内置浏览器 1440px 点击验证 outline 为 none、提示信息正常；Tab 切换验证键盘聚焦和牙齿轮廓生效。
+- 本次仅修复用户提供的动画控件交互，无 Figma 对应动画节点；当前 Figma 连接 `2026-11-16T10:12:13Z`，IAB 3 / tab 2，源节点 `143:2`，Design/Layers/Properties 可读。未重新导出当前设计并执行全量源比较，不将本次修复视为牙科整页或全站设计验收。
+
+### 2026-11-16 满幅背景与上下间距
+
+- 用户要求动画背景铺满屏幕，且动画与上下内容的间距沿用原设计。原设计顶部图底边到步骤容器 `2294:8256` 顶边为 96px，现将顶部图到动画卡片、卡片到各步骤容器的间距均设为 96px；窄于 1440px 时随原页面画布等比例缩放。卡片实际高度变化时由 ResizeObserver 更新后续内容位置，避免多语言和开关状态导致重叠。
+- 蓝色渐变由铺满视口的背景层绘制，动画卡片仍按原画布居中。1024/1440/1660/1920/2560 宽度截图采样验证背景左右无白边、无横向溢出、卡片居中及上下间距，结果见 `qa/fullbleed-spacing.json`；五语 × 三宽度 × 三步骤布局及交互回归见 `qa/equal-spacing-all-qa.log`，步骤切换、草稿保留和失败重试见 `qa/step-regression-equal-spacing/qa.json`。类型检查、直接 Vite 构建及 `git diff --check` 通过。历史全站 Figma 门禁未解除，未发布。
+- 扩展专项回归：五语、三宽度逐颗选中 14 颗牙齿时，检查卡片高度变化后下方步骤仍保持设计间距，并对视口两侧实际像素采样确认背景满幅；`qa/fullbleed-active-final.log` 通过。
+- `pnpm run qa:dental:scan` 现额外覆盖 1660px 和 2560px 的实际背景边缘像素、动画居中、上下间距以及横向溢出；最终回归日志 `qa/wide-reusable-final.log` 通过。
+- 扩展验证在选中牙齿后改变窗口宽度（1440→1920→1024→1440），焦点与提示框保持对齐；五语、宽屏和交互回归重新通过，见 `qa/resize-final.log`。
+- 普通动画模式下五种语言并行观察完整四项自动轮换；1024px 画布中卡片到步骤间距始终为按比例缩放的 68.27px，下方步骤位置无漂移，见 `qa/autoplay-layout.json`。
+- 最终复核连接 `2026-11-16T05:47:50Z`，同会话 IAB 3 / tab 2，节点 `2294:8240`、Design/Layers/Inspect 可读；官方导出 `/Users/hhm/Downloads/寰宇云医 (16).fig`，`2026-11-16T05:48:09Z`，SHA-256 `1b40878c64afa4a6a525b4d7bda6ac13849906b12eee831c710a9592232f0171`。对照 11 月 5 日官方源，三个主步骤及七个医生详情状态均 unchanged；全文件其他页面有变化，整体为 changed，见 `qa/final-equal-spacing-source.json`。原医生详情实施导出的 `.fig` 不在磁盘上，仍不能以较晚源比较替代其逐字节验证。
+
+### 2026-11-16 医生详情历史版本交叉检查
+
+- 从 Figma 版本历史只读打开 11 月 5 日 10:29 的自动保存版本，导出 `/Users/hhm/Downloads/寰宇云医 (17).fig`，SHA-256 `60158dd1a2cc02f3e21a480a671de7766627f09b9eda01dbeba6f78d6c497368`；随后已返回当前版本，未恢复或修改设计文件。
+- 对照已保留的 11 月 5 日较晚官方源，并与当时从实际实施源 `(52).fig` 得出的历史差异报告比对：医生详情六个状态的节点增删、变更内容和依赖差异逐项相同；脚本 `scripts/check-dental-historical-evidence.mjs` 和结果 `qa/historical-evidence-chain.json`。这加强了历史设计变化记录，但不能证明已丢失的 `(52).fig` 与重新导出的历史快照字节相同，也不构成通过现行全站验收门禁。
+- 五语与 1024/1440/1920 宽度最终生产检查通过；三步骤与减少动态效果模式验证通过，完整构建、类型检查和 diff 检查通过。源码 `DentalScanShowcase.vue`、集成 `DentalDesktopFlow.vue`。
+- 最新 Figma 官方源 `(11).fig`，2026-11-16T04:50:44Z，SHA256 `93a6ab27b36dca3ef3e29d904bdb5cb5283d09038bb2eb289db079dd68247c55`；三步及七个当前详情状态相对于 11 月 5 日实际设计源均 unchanged，`artifacts/dental-animation-20261116/qa/acceptance-final-source.txt`。全站 Figma 强制门禁仍不通过，未更改门禁或标记页面 verified；未发布。
+
 ## 2026-11-03 桌面悬浮下一步与公共导航修正
 
 - 用户本次重新要求下一步底部悬浮，覆盖下方历史非悬浮记录。第一步 `2294:8336`、第二步 `2294:7209` 保留各自源按钮和点击逻辑，第三步不增加按钮。原位置保留布局空间，页面只出现一个可操作按钮。
@@ -201,3 +354,8 @@
 - 最新官方源导出 `/Users/hhm/Downloads/寰宇云医 (32).fig`，SHA256 `647b79b83961afbbbfb58e1d788f2ab146304da79da7a5ff0fa499d3afeabad6`；13 个登记源帧、1358 个节点和125个资源均 unchanged。
 - 最终包 `20261101111000` 对线上 `20261101080000` 的受控慢网中位：LCP `2332→2100ms`、FCP `1768→1536ms`、CLS `0`；JS 解码 `1,138,150→542,513B`，gzip `205,730→176,154B`。匹配、上传和详情源按步骤/标签加载，7位医生、15组筛选、8个项目、上传失败重试、步骤过期请求和五种宽度对照均通过。
 - 证据：`artifacts/performance-home-dental-2026-11-01/{slow-final/qa.json,runtime-final/dental-interleaved.json,step-loading-final/qa.json,visual-final/qa.json}`及`artifacts/figma-dental-2026-10-28/behavior/behavior-qa.json`。原始医生卡/页脚的既有 Figma 残差与 WhatsApp 独立控件仍按源稿门禁单独记录，未放宽1%阈值；本轮尚未部署公网。
+
+### 2026-11-17 手机可用性复核（进行中）
+- 320px 下牙医列表“了解更多”在有鼠标能力的窄屏设备也保持可见；桌面保留 hover 显示。葡语首屏较长时容器自适应，避免标题与说明被固定高度裁切。
+- 320px 实际打开谭兆林五个资料标签；另六位各自三例和患者评价可打开。320/390/430px 中文、320px 五语各步骤基础宽度检查通过；这不是全站 Figma 设计完成验收。
+- 2026-11-17 补查：7位牙医的桌面详情分享地址在手机跳转时保留医生身份，案例标签可直达；生产预览逐一验证7位，公网验证谭兆林案例。无视图截图可视为全站Figma验收。

@@ -561,5 +561,23 @@
       "budgetHint": "Semua nominal dalam USD dan hanya menunjukkan anggaran Anda, bukan penawaran biaya medis.",
       "request": "Permintaan"
     }
+  },
+  "dentalScan": {
+    "label": "PEMINDAIAN RENCANA AI · DENTAL SCAN",
+    "choose": "Pilih layanan gigi",
+    "duration": "Durasi",
+    "whiten": "Pratinjau pemutihan",
+    "price": "Harga referensi",
+    "hint": "Arahkan ke gigi untuk melihat layanan dan harga referensi",
+    "whitenOn": "Pratinjau pemutihan · Aktif",
+    "description": {
+      "whitening": "Pemutihan di klinik atau di rumah",
+      "veneer": "Veneer porselen · Estetika gigi depan",
+      "aligner": "Aligner bening · Kontrol jarak jauh",
+      "periodontal": "Pembersihan ultrasonik · Perawatan gusi",
+      "root-canal": "Saluran akar mikroskopis · Pengisian hangat",
+      "crown": "Zirkonia · Restorasi estetik",
+      "implant": "Implan berpanduan digital · Restorasi segera"
+    }
   }
 }

@@ -561,5 +561,23 @@
       "budgetHint": "以下均为美元（USD），仅用于了解您的预算，不代表医疗报价。",
       "request": "咨询需求"
     }
+  },
+  "dentalScan": {
+    "label": "AI 方案扫描 · DENTAL SCAN",
+    "choose": "选择牙科项目",
+    "duration": "周期",
+    "whiten": "美白预览",
+    "price": "参考价格",
+    "hint": "悬停任意牙齿，查看对应项目与参考价",
+    "whitenOn": "美白预览 · 已开",
+    "description": {
+      "whitening": "冷光美白 / 家庭美白，单次见效",
+      "veneer": "全瓷贴面 · 前牙美学修复",
+      "aligner": "隐形矫治器 · 远程复诊",
+      "periodontal": "超声波洁牙 · 牙周系统治疗",
+      "root-canal": "显微根管 · 热牙胶充填",
+      "crown": "二氧化锆 · 美学修复",
+      "implant": "数字化导板种植 · 即刻修复"
+    }
   }
 }

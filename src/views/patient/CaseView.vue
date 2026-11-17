@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSiteCopy } from '@/i18n/siteCopy'
-const { tx, tf, localized } = useSiteCopy()
+const { tx } = useSiteCopy()
 
 import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import { Check, Search } from 'lucide-vue-next'
@@ -83,6 +83,9 @@ let matcherTrigger: HTMLElement | null = null
 const matcher = reactive({ focus: '', age: '', timing: '' })
 
 const filteredCases = computed(() => storyCases.filter((item) => {
+  // Only two existing cases have verifiable specialties. Avoid presenting an
+  // unrelated case as a match when the visitor selected another condition.
+  if (matchApplied.value && !['消化系统','骨科'].includes(matcher.focus)) return false
   if (activeFilters.specialty && item.specialty !== activeFilters.specialty) return false
   if (activeFilters.region && item.region !== activeFilters.region) return false
   if (activeFilters.treatment && item.treatment !== activeFilters.treatment) return false
@@ -255,7 +258,7 @@ onBeforeUnmount(() => {
         <Transition name="match-note">
           <div v-if="matchApplied" class="case-match-note" role="status">
             <Check class="h-5 w-5" />
-            <span>{{ tf('已根据“{focus}”{age}{timing}为你优先展示相似案例。', { focus:tx(matcher.focus),age:matcher.age ? tf('、{age}岁',{age:matcher.age}) : '',timing:matcher.timing ? (localized ? ', ' : '、')+tx(matcher.timing) : '' }) }}</span>
+            <span>{{ filteredCases.length ? tx('已按所选健康问题筛选案例。') : tx('暂未找到与所选健康问题匹配的案例。') }}</span>
             <button type="button" @click="openMatcher">{{ tx("重新匹配") }}</button>
           </div>
         </Transition>
@@ -277,7 +280,7 @@ onBeforeUnmount(() => {
                 <h2>{{ tx(item.name) }}</h2>
                 <p>{{ tx(item.region) }} · {{ tx(item.specialty) }} · {{ tx(item.treatment) }}</p>
               </div>
-              <span v-if="item.recommended" class="case-recommendation">{{ tx("为您推荐") }}</span>
+              <span v-if="item.recommended&&!matchApplied" class="case-recommendation">{{ tx("为您推荐") }}</span>
             </header>
             <div class="case-card__body">
               <h3>{{ tx(item.title) }}</h3>
@@ -337,7 +340,7 @@ onBeforeUnmount(() => {
 
               <fieldset>
                 <legend><b>2</b><span>{{ tx("方便分享一下年龄吗？") }}</span></legend>
-                <p>{{ tx("仅用于匹配相似案例，不作为健康判断依据") }}</p>
+                <p>{{ tx("年龄暂不参与案例筛选，不作为健康判断依据") }}</p>
                 <div class="matcher-options">
                   <button
                     v-for="item in ['18-30', '31-45', '46-60', '60+']"
@@ -351,8 +354,8 @@ onBeforeUnmount(() => {
               </fieldset>
 
               <fieldset>
-                  <legend><b>2</b><span>{{ tx("您计划在哪个时间段就医?") }}</span></legend>
-                <p>{{ tx("选择您方便就诊的时段，便于我们提前为您安排与准备") }}</p>
+                  <legend><b>3</b><span>{{ tx("您计划在哪个时间段就医?") }}</span></legend>
+                <p>{{ tx("就医时间暂不参与案例筛选") }}</p>
                 <div class="matcher-options">
                   <button
                     v-for="item in ['1个月内', '1-3个月', '3-6个月', '暂未确定']"

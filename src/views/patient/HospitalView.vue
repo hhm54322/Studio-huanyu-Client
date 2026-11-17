@@ -7,8 +7,9 @@ const route=useRoute(), router=useRouter()
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HospitalFigmaCanvas from '@/components/common/HospitalFigmaCanvas.vue'
+import PatientFooter from '@/components/layout/PatientFooter.vue'
 import HomeSourceNode, { type HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
-import { hospitalActions, hospitalSources, hospitalNode, hospitalCities, hospitalCityNodes, hospitalCards, descendants, filteredHospitalSource } from '@/data/hospitalFigmaSource'
+import { hospitalActions, hospitalSources, hospitalNode, hospitalCities, hospitalCityNodes, hospitalCards, hospitalRecords, hospitalRecord, descendants, filteredHospitalSource } from '@/data/hospitalFigmaSource'
 import { homeMobileNodes } from '@/data/homeMobileNavigation'
 import { useAppStore, type Locale } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
@@ -26,6 +27,13 @@ const hospitalMenuOpen=ref(false)
 const {locale}=useI18n()
 const app=useAppStore()
 const filtered=computed(()=>hasFiltered.value&&!phone.value?filteredHospitalSource(selectedCity.value):undefined)
+const mobileHospitals=computed(()=>hasFiltered.value
+  ? hospitalRecords.filter(item=>selectedCity.value==='全部'||item.city===selectedCity.value)
+  : [...hospitalCards.mobile].sort((a,b)=>a.node.y-b.node.y||a.node.x-b.node.x).map(card=>hospitalRecord(card.name)).filter((item): item is NonNullable<typeof item> => Boolean(item)))
+function mobileImage(name:string,fallback:string){
+  const card=hospitalCards.mobile.find(item=>item.name===name)
+  return card ? descendants(card.photo).map(node=>node.css.match(/url\(["']?([^)'";]+)["']?\)/)?.[1]).find(Boolean)||fallback : ''
+}
 const source=computed(()=>filtered.value?.root||hospitalSources[phone.value?'list-mobile':'desktop']!.root)
 const cardNodes=computed(()=>filtered.value?.root?descendants(filtered.value.root).filter(node=>node.id.includes('::hospital-')&&node.name===hospitalCards.desktop[0]!.node.name&&node.height===398):hospitalCards[phone.value?'mobile':'desktop'].map(card=>card.node))
 const deferredImageRoots=computed(()=>phone.value?[]:cardNodes.value.map(node=>node.id))
@@ -136,8 +144,20 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
 
 <template>
   <div ref="page" class="hospital-page" :class="{'is-phone':phone,'is-fluid':fluid}" @mouseover="hover" @mouseout="leaveMenu" @focusin="hover" @focusout="leaveMenu">
-    <HospitalFigmaCanvas :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" :defer-image-roots="deferredImageRoots" image-preload-margin="200px 0px" :label="tx('中国医院列表')" @activate="activate" />
-    <header class="hospital-source-header">
+    <template v-if="phone">
+      <section class="hospital-phone-hero"><h1>{{tx('中国顶尖国际医疗资源')}}</h1><p>{{tx('51家涉外认证医院')}}</p><p>{{tx('覆盖肿瘤/心血管/神经/骨科/慢性病等全病种')}}</p></section>
+      <section class="hospital-phone-directory" :aria-label="tx('中国医院列表')">
+        <RouterLink class="hospital-phone-doctors" to="/doctors">{{tx('中国医生')}} →</RouterLink>
+        <div class="hospital-phone-cities" role="group" :aria-label="tx('按城市筛选')"><button v-for="city in hospitalCities" :key="city" type="button" :aria-pressed="hasFiltered&&selectedCity===city" @click="selectedCity=city;hasFiltered=true">{{tx(city)}}</button></div>
+        <div class="hospital-phone-cards"><article v-for="hospital in mobileHospitals" :key="hospital.id" class="hospital-phone-card">
+          <div class="hospital-phone-photo" :style="{backgroundImage:mobileImage(hospital.name,hospital.image)?`url('${mobileImage(hospital.name,hospital.image)}')`:undefined}"><span v-if="hospital.jci">JCI</span><span>{{tx(hospital.type)}}</span><span class="hospital-phone-city">{{tx(hospital.city)}}</span></div>
+          <div class="hospital-phone-content"><h2>{{tx(hospital.name)}}</h2><div class="hospital-phone-tags"><span v-for="tag in hospital.specialties.slice(0,3)" :key="tag">{{tx(tag)}}</span></div><p>{{hospital.established}} · {{hospital.beds}} {{tx('床')}} · {{hospital.departments}} {{tx('科室')}}</p><div class="hospital-phone-actions"><button type="button" @click="selectedName=hospital.name">{{tx('查看详情')}}</button><button type="button" @click="openConsultation">{{tx('预约咨询')}}</button></div></div>
+        </article></div>
+      </section>
+      <PatientFooter />
+    </template>
+    <HospitalFigmaCanvas v-else :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" :defer-image-roots="deferredImageRoots" image-preload-margin="200px 0px" :label="tx('中国医院列表')" @activate="activate" />
+    <header v-if="!phone" class="hospital-source-header">
       <HospitalFigmaCanvas :node="hospitalNode(headerId)" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :label="tx('主导航')" @activate="activate" />
       <Transition name="hospital-dropdown"><div v-if="!phone&&hospitalMenuOpen" class="hospital-nav-dropdown">
         <div :style="{width:'1440px',transform:`translateX(-50%) scale(${Math.min(1,viewport/1440)})`}">
@@ -173,4 +193,6 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
 .hospital-dropdown-enter-from,.hospital-dropdown-leave-to { opacity:0; }
 @media (prefers-reduced-motion:reduce) { .hospital-dropdown-enter-active,.hospital-dropdown-leave-active { transition:none; } }
 .is-phone .hospital-source-header { height:52px; background:#fff; }
+.hospital-phone-doctors{display:inline-block;margin-bottom:16px;color:#2563eb;font-size:15px;font-weight:600;text-decoration:none}
+.hospital-phone-hero{box-sizing:border-box;min-height:400px;padding:32px 20px 220px;text-align:center;color:#1e3a5f;background:linear-gradient(180deg,#eff4f9 0%,rgba(239,244,249,.8) 38%,transparent 57%),url('/images/figma/hospital-revision/image-ded16e6e38437219c4b5a6aa20f61c740a19ba87.webp') right 88px / 266.133% 77.847% no-repeat,#dceefe}.hospital-phone-hero h1{margin:0 0 12px;font-size:24px;line-height:1.35}.hospital-phone-hero p{margin:4px 0;font-size:13px;line-height:1.5}.hospital-phone-directory{padding:32px 16px 48px}.hospital-phone-cities{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px}.hospital-phone-cities button{flex:none;border:1px solid #dbdee6;border-radius:24px;padding:8px 16px;background:#fff;color:#1e3a5f;white-space:nowrap}.hospital-phone-cities button[aria-pressed=true]{background:#dd6b20;color:#fff;border-color:#dd6b20}.hospital-phone-cards{display:grid;gap:16px;margin-top:12px}.hospital-phone-card{overflow:hidden;border-radius:20px;background:#f5f6f8}.hospital-phone-photo{position:relative;min-height:170px;background-position:center;background-size:cover;padding:12px;display:flex;align-items:flex-start;gap:8px}.hospital-phone-photo span{padding:4px 8px;border-radius:6px;color:#1e3a5f;background:#ffffffe6;font-size:12px}.hospital-phone-photo .hospital-phone-city{position:absolute;bottom:12px;left:12px;color:white;background:#4678dd}.hospital-phone-content{padding:16px}.hospital-phone-content h2{margin:0 0 12px;font-size:18px;line-height:1.4;color:#1e3a5f}.hospital-phone-tags{display:flex;flex-wrap:wrap;gap:7px}.hospital-phone-tags span{padding:4px 8px;border-radius:6px;background:#e8eefb;color:#5671ae;font-size:12px}.hospital-phone-content p{color:#64748b;font-size:13px}.hospital-phone-actions{display:flex;gap:8px}.hospital-phone-actions button{flex:1;min-width:0;min-height:42px;border:1px solid #1e3a5f;border-radius:8px;background:transparent;color:#1e3a5f;padding:7px;overflow-wrap:anywhere}.hospital-phone-actions button+button{background:#dd762d;color:#fff;border-color:#dd762d}
 </style>

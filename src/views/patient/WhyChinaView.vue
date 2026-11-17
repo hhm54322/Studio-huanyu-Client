@@ -2,7 +2,7 @@
 import { useSiteCopy } from '@/i18n/siteCopy'
 const { tx, locale, localized } = useSiteCopy()
 
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { init, use, type ECharts } from 'echarts/core'
 import { BarChart, CustomChart } from 'echarts/charts'
@@ -54,6 +54,13 @@ const costDetailCards = [
 const costChartEl = ref<HTMLElement | null>(null)
 const route = useRoute()
 const costDetailsExpanded = ref(route.hash === '#cost-comparison')
+function scrollToCost() {
+  if (route.hash !== '#cost-comparison') return
+  costDetailsExpanded.value = true
+  void nextTick(() => document.getElementById('cost-comparison')?.scrollIntoView({ block: 'start', behavior: 'instant' }))
+}
+onMounted(scrollToCost)
+watch(() => route.hash, scrollToCost)
 let costChart: ECharts | undefined
 let chartObserver: IntersectionObserver | undefined
 let chartResizeObserver: ResizeObserver | undefined

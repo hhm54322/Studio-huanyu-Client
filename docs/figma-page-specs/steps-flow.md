@@ -174,3 +174,9 @@ Nodes after `204:6052` are off-frame content outside the visible source composit
 ### 2026-10-29 exact desktop toolkit cards
 
 The seven desktop cards use the complete already-extracted Design subtrees (`204:5828/5836/5851/5859/5867`, `204:6028/6045`) from `trust/revision-2026-10-29/{travel,aftercare}/source-tree-2026-10-29.json`. This copies all text line/glyph baselines, native fractional geometry, icons and child hierarchy without deriving a CSS offset from screenshots. All 377 native nodes retain their original extraction and immutable locks. The updated concrete desktop mapping is `steps/revision-2026-10-29/{travel,aftercare}/runtime-node-to-code-2026-10-29.json`; it supplements, rather than overwrites, the historical map. Original narrow cards remain unchanged while the mobile design is frozen. The continuous two-stage layout and one sticky title remain the product composition. Only authored visa and steps-flow links are enabled.
+
+### 2026-11-17 手机操作复核（进行中）
+- 用户已允许按桌面已确认内容适配手机，保留签证清单 `204:5846` 与就诊流程 `204:6040` 两个已有文章入口；此前移动模板误将其限制为桌面显示，已恢复移动端可见。
+- 来源比对 `artifacts/figma-source-gate/mobile-steps-20261117.json`：采用本次 IAB 导出与本机存档的 `204:5813`、`204:6013` 对比，结果 unchanged；存档文件名重用，不能据此独立证明相对 10 月 29 日原始版本无变化。最终历史基线及全页面设计验收仍待核查。
+- 320px 实际访问签证文章、六篇目录文章均渲染，入口、文字和整页宽度已检查；桌面设计验收未在此宣称通过。
+- 交付前通过当前会话 IAB 官方保存的新源 `寰宇云医 (22).fig` 与本次检查源 `寰宇云医 (21).fig` 对比，两节点无变化，证据 `artifacts/figma-source-gate/mobile-steps-delivery-20261117.json`；历史基线限制仍保留。

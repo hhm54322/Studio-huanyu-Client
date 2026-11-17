@@ -99,10 +99,10 @@ const form = ref({ name: '', contact: '', phone: '', dept: '' })
           <div
             v-for="(s, i) in heroStats"
             :key="i"
-            class="text-center p-6 rounded-xl bg-[#F7FAFC] border border-gray-100"
+            class="min-w-0 text-center p-3 sm:p-6 rounded-xl bg-[#F7FAFC] border border-gray-100"
           >
             <component :is="iconMap[s.icon]" class="w-8 h-8 mx-auto mb-3 text-[#319795]" />
-            <div class="text-3xl font-bold text-[#1A365D]">{{ s.value }}</div>
+            <div class="break-words text-xl sm:text-3xl font-bold text-[#1A365D]">{{ s.value }}</div>
             <div class="text-sm text-gray-500 mt-1">{{ s.label }}</div>
           </div>
         </div>

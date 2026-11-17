@@ -161,5 +161,23 @@
       "budgetHint": "Todos os valores estão em USD e indicam apenas seu orçamento. Não são cotações médicas.",
       "request": "Pedido"
     }
+  },
+  "dentalScan": {
+    "label": "ANÁLISE DO PLANO COM IA · DENTAL SCAN",
+    "choose": "Escolha um serviço dentário",
+    "duration": "Duração",
+    "whiten": "Prévia de clareamento",
+    "price": "Preço de referência",
+    "hint": "Passe sobre um dente para ver o serviço e o preço de referência",
+    "whitenOn": "Prévia de clareamento · Ativada",
+    "description": {
+      "whitening": "Clareamento no consultório ou em casa",
+      "veneer": "Facetas de porcelana · Estética anterior",
+      "aligner": "Alinhadores transparentes · Revisão remota",
+      "periodontal": "Limpeza ultrassônica · Cuidado periodontal",
+      "root-canal": "Canal microscópico · Obturação a quente",
+      "crown": "Zircônia · Restauração estética",
+      "implant": "Implante guiado digital · Restauração imediata"
+    }
   }
 }

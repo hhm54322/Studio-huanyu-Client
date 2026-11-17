@@ -26,6 +26,16 @@ const actions = computed<Record<string,HomeSourceAction>>(()=>({
   [model.value.close]:{action:'close',label:'关闭专家详情'},
   ...Object.fromEntries(model.value.tabs.map((tab,index)=>[tab.id,{action:`tab:${index}`,label:tab.text}])),
 }))
+// The mobile design accidentally reused a patient's CAR-T journey in Xu Yu's
+// specialties. Reuse the four corresponding desktop-source specialties.
+const sourceTexts = computed<Record<string,string>>(()=>{
+  if(!phone.value||props.expert!==0||activeTab.value!==0)return {}
+  const desktop=records.value['xu-yu-01']?.root
+  const all=(node:HomeSourceNodeData):HomeSourceNodeData[]=>[node,...node.children.flatMap(all)]
+  const nodes=desktop?all(desktop):[]
+  const desktopIds=['1432:7960','1432:7965','1432:7970','1432:7975']
+  return Object.fromEntries(['1552:82','1552:87','1552:93','1552:99'].map((id,index)=>[id,nodes.find(node=>node.id===desktopIds[index])?.text||'']))
+})
 const tabLayout=computed(()=>{
   let row:{id:string;bottom:number}|undefined
   const positioned:{node:HomeSourceNodeData;y:number;ancestors:string[]}[]=[]
@@ -145,7 +155,7 @@ onBeforeUnmount(()=>{
       <div class="expert-source-dialog__overlay" data-expert-overlay :data-figma-node="model.overlay">
         <div class="expert-source-dialog__position" :style="phone?undefined:{width:`${model.width*scale}px`,height:`${renderHeight*scale}px`}">
           <div class="expert-source-dialog__canvas" :style="phone?undefined:{width:`${model.width}px`,height:`${renderHeight}px`,transform:`scale(${scale})`}">
-            <HomeSourceNode :key="model.panel" :node="model.root" root :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" @layout="localizedHeight=$event" @activate="activate" />
+            <HomeSourceNode :key="model.panel" :node="model.root" root :fluid="fluid" :actions="actions" :texts="sourceTexts" :styles="nodeStyles" :attributes="attributes" @layout="localizedHeight=$event" @activate="activate" />
           </div>
         </div>
       </div>

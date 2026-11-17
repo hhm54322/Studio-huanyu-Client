@@ -27,6 +27,7 @@ const PhysicianProfileDialog = defineAsyncComponent(() => import('@/components/c
 import { homeExpertDialog } from '@/components/common/homeExpertDialog'
 import { dentalSourceDialog } from '@/components/common/dentalSourceDialog'
 const width = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
+const phone = computed(() => width.value <= 700)
 const filter = ref(0)
 const department = ref('')
 const selected = ref<PhysicianRecord | null>(null)
@@ -56,6 +57,11 @@ const source = computed(() => {
   return tree
 })
 const visibleRecords = computed(() => filteredPhysicianRecords(filter.value, department.value))
+const mobilePortrait = (record:PhysicianRecord) => record.avatar || ({
+  '谭兆林':'/images/figma/physicians-revision/image-3d917ce08391a294490b64fe755d5643e23f6093.webp',
+  '徐宇':'/images/figma/physicians-revision/image-252a3f9503f22967be08dff82505a9bd5f7cf33f.webp',
+  '陈疾忤':'/images/figma/physicians-revision/image-56f78245a05bde4bd8cc14881640b6f0a1bf9d29.webp',
+} as Record<string,string>)[record.name]
 const scale = computed(() => Math.min(1, width.value / 1440))
 
 const styles = computed(() => {
@@ -149,7 +155,17 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 
 <template>
   <div ref="page" class="physician-page" @mouseover="enter" @mouseout="leave" @focusin="enter" @focusout="leave" @keydown="keydown">
-    <HospitalFigmaCanvas :node="source" :width="width" :actions="physicianActions" :styles="styles" :attributes="attributes" :full-bleed="['1689:4817', ...source.children.flatMap(body => body.children.filter(node => node.name === 'Footer').map(node => node.id))]" :hidden="['1689:5392', '1732:5716']" :label="tx('中国医生')" @activate="activate">
+    <template v-if="phone">
+      <section class="physician-mobile-hero"><h1>{{ tx('中国顶尖医生资源') }}</h1><p>{{ tx('三甲医院权威专家，覆盖肿瘤/心血管/神经/骨科/微创等全病种') }}</p></section>
+      <section class="physician-mobile-directory" :aria-label="tx('中国医生')">
+        <div class="physician-mobile-shortcuts" role="group" :aria-label="tx('医生科室快捷筛选')"><button v-for="(item,index) in physicianFilters" :key="item.id" type="button" :class="{active:filter===index}" :aria-pressed="filter===index" @click="department='';filter=index">{{ tx(item.text) }}</button></div>
+        <label class="physician-mobile-filter">{{ tx('按科室筛选') }}<select :value="department || (filter > 0 ? physicianFilters[filter]?.department : '')" :aria-label="tx('按科室筛选医生')" @change="selectDepartment(($event.target as HTMLSelectElement).value)"><option value="">{{ tf('全部科室（{count}）',{count:physicianRecords.length}) }}</option><option v-for="item in physicianDepartments" :key="item" :value="item">{{ tx(item) }}</option></select></label>
+        <p class="physician-mobile-count" aria-live="polite">{{ tf('共 {count} 位医生',{count:visibleRecords.length}) }}</p>
+        <div class="physician-mobile-grid"><button v-for="record in visibleRecords" :key="record.id" type="button" class="physician-mobile-card" @click="selected=record"><span class="physician-mobile-identity"><img v-if="mobilePortrait(record)" :src="mobilePortrait(record)" :alt="tx(`${record.name}医生头像`)" loading="lazy" /><span><strong>{{ tx(record.name) }}</strong><small v-if="record.title">{{ tx(record.title) }}</small><small v-if="record.workplace">{{ tx(record.workplace) }}</small></span></span><span v-if="record.specialty" class="physician-mobile-specialty">{{ tx(record.specialty) }}</span><span class="physician-mobile-more">{{ tx('了解更多') }} →</span></button></div>
+        <p v-if="!visibleRecords.length" class="physician-mobile-no-results">{{ tx('暂无符合条件的医生') }}</p>
+      </section>
+    </template>
+    <HospitalFigmaCanvas v-else :node="source" :width="width" :actions="physicianActions" :styles="styles" :attributes="attributes" :full-bleed="['1689:4817', ...source.children.flatMap(body => body.children.filter(node => node.name === 'Footer').map(node => node.id))]" :hidden="['1689:5392', '1732:5716']" :label="tx('中国医生')" @activate="activate">
       <template #after="{ node: sourceNode }">
         <div v-if="sourceNode.id === '1689:4839'" class="physician-department-filter">
           <label for="physician-department">{{ tx("按科室筛选") }}</label>
@@ -178,6 +194,26 @@ onBeforeUnmount(() => { window.removeEventListener('resize', resize); document.r
 
 <style scoped>
 .physician-page { position:relative; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
+.physician-mobile-hero { box-sizing:border-box; min-height:280px; padding:110px 20px 55px; background:#eef6fb url('/images/figma/physicians-revision/image-2f9239c0bd99a390d832a82b3671215ba66d1401.webp') center/cover no-repeat; color:#1e3a5f; }
+.physician-mobile-hero h1 { margin:0 0 14px; font-size:28px; line-height:1.3; }
+.physician-mobile-hero p { max-width:28em; margin:0; font-size:14px; line-height:1.6; }
+.physician-mobile-directory { box-sizing:border-box; padding:28px 16px 56px; color:#1e3a5f; background:#fff; }
+.physician-mobile-shortcuts { display:flex; gap:8px; overflow-x:auto; padding-bottom:10px; }
+.physician-mobile-shortcuts button { flex:none; padding:8px 14px; border:1px solid #dbe1e9; border-radius:20px; background:#fff; color:#1e3a5f; font-size:14px; }
+.physician-mobile-shortcuts button.active { border-color:#dd6b20; background:#dd6b20; color:#fff; }
+.physician-mobile-filter { display:grid; gap:8px; margin-top:12px; font-size:14px; font-weight:600; }
+.physician-mobile-filter select { width:100%; min-height:44px; padding:0 12px; border:1px solid #dbe1e9; border-radius:10px; background:#fff; color:#1e3a5f; font:inherit; }
+.physician-mobile-count { margin:18px 0 12px; color:#64748b; font-size:14px; }
+.physician-mobile-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+.physician-mobile-card { width:100%; min-width:0; padding:20px; border:0; border-radius:16px; background:#f4f6f8; text-align:left; color:#1e3a5f; font:inherit; }
+.physician-mobile-identity { display:flex; align-items:flex-start; gap:14px; }
+.physician-mobile-identity img { width:60px; height:60px; flex:none; object-fit:cover; border-radius:12px; }
+.physician-mobile-identity>span { display:grid; min-width:0; gap:6px; }
+.physician-mobile-identity strong { font-size:18px; line-height:1.3; }
+.physician-mobile-identity small { font-size:13px; line-height:1.5; color:#64748b; overflow-wrap:anywhere; }
+.physician-mobile-specialty { display:-webkit-box; margin-top:14px; overflow:hidden; -webkit-line-clamp:3; -webkit-box-orient:vertical; font-size:14px; line-height:1.6; }
+.physician-mobile-more { display:block; margin-top:14px; color:#147cb8; font-size:14px; font-weight:600; }
+.physician-mobile-no-results { padding:32px 0; text-align:center; color:#64748b; }
 .physician-department-filter { position:absolute; z-index:4; top:0; right:0; display:flex; align-items:center; gap:10px; height:42px; }
 .physician-department-filter label { color:#4B5563; font-size:14px; line-height:20px; white-space:nowrap; }
 .physician-department-filter select { height:42px; min-width:220px; padding:0 32px 0 14px; border:1px solid #DBDEE6; border-radius:10px; background:#fff; color:#1E3A5F; font:inherit; font-size:14px; cursor:pointer; }

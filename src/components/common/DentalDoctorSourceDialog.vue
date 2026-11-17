@@ -3,7 +3,9 @@ import { loadDentalDetail } from '@/data/dentalFigmaDetails'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeSourceNode, { type HomeSourceAction, type HomeSourceNodeData as SourceNode } from './HomeSourceNode.vue'
 import { dentalDescendants, dentalNode, dentalSources } from '@/data/dentalFigmaSource'
-import { dentalPhysicianById } from '@/data/dentalPhysicianData'
+import { dentalPhysicianById, dentalPhysicianCases, dentalPhysicianTreatment, dentalPhysicianServices } from '@/data/dentalPhysicianData'
+import { useSiteCopy } from '@/i18n/siteCopy'
+const { tx } = useSiteCopy()
 import { populateDentalPhysicianIdentity, replaceDentalText } from '@/data/dentalPhysicianSource'
 import DentalPhysicianDocumentContent from './DentalPhysicianDocumentContent.vue'
 import profileModel from '../../../docs/figma-source/dental-revision-2026-10-28/profile/dialog-model-2026-10-28.json'
@@ -17,6 +19,10 @@ const props=withDefaults(defineProps<{doctor?:{id:number;name:string};initialTab
 const emit=defineEmits<{close:[]}>()
 const active=ref(props.initialTab),dialog=ref<HTMLDialogElement|null>(null),clip=ref<HTMLElement|null>(null)
 const width=ref(window.innerWidth),height=ref(window.innerHeight)
+const mobile=computed(()=>width.value<=700&&!props.institution)
+const mobileDoctor=computed(()=>props.doctor?dentalPhysicianById(props.doctor.id):undefined)
+const mobileText=(id:string)=>dentalNode(id)?.text?.trim()||''
+const mobileTabs=['医生简介','治疗流程','案例集','患者评价','在华就诊保障服务']
 const record=computed(()=>{
   const doctor=props.doctor?dentalPhysicianById(props.doctor.id):undefined
   return doctor?.sourceProfile?undefined:doctor
@@ -141,7 +147,22 @@ onBeforeUnmount(()=>{disposed=true;tabRequest++;window.removeEventListener('resi
 <template>
   <Teleport to="body">
     <dialog ref="dialog" class="dental-source-dialog" :data-figma-node="model.frame" :data-dental-dialog="institution?'institution':'doctor'" :data-document-doctor="record?.id" :data-active-tab="active" aria-labelledby="dental-source-dialog-title" @cancel.prevent="emit('close')" @keydown="keydown" @click="outside">
-      <div class="dental-source-dialog__overlay" data-dental-source-overlay :data-figma-node="model.overlay">
+      <div v-if="mobile&&mobileDoctor" class="mobile-dental-overlay" data-dental-source-overlay>
+        <section class="mobile-dental-panel">
+          <button type="button" class="mobile-dental-close" data-dialog-close :aria-label="tx('关闭医生详情')" @click="emit('close')">×</button>
+          <h2 id="dental-source-dialog-title">{{tx('医生详情')}}</h2>
+          <header class="mobile-dental-identity"><img :src="mobileDoctor.portrait" :alt="tx(mobileDoctor.name)" /><div><strong>{{tx(mobileDoctor.name)}}</strong><p>{{tx(mobileDoctor.title)}}</p><p>{{tx(mobileDoctor.hospital)}} · {{tx(mobileDoctor.experience)}}</p></div></header>
+          <nav class="mobile-dental-tabs" role="tablist" :aria-label="tx('医生资料')"><button v-for="(tab,index) in mobileTabs" :key="tab" :id="`dental-source-tab-${index}`" type="button" role="tab" :aria-selected="active===index" @click="changeTab(index)">{{tx(tab)}}</button></nav>
+          <div class="mobile-dental-body" role="tabpanel">
+            <template v-if="active===0"><p>{{tx(mobileDoctor.bio||mobileText('2294:7790'))}}</p><h3>{{tx('专业资质')}}</h3><ul><li v-for="id in ['2294:7799','2294:7805','2294:7811','2294:7817']" :key="id">{{tx(mobileText(id))}}</li></ul></template>
+            <template v-else-if="active===1"><article v-for="item in dentalPhysicianTreatment" :key="item.title"><h3>{{tx(item.time)}} · {{tx(item.title)}}</h3><p>{{tx(item.description)}}</p></article></template>
+            <template v-else-if="active===2"><article v-for="item in dentalPhysicianCases(mobileDoctor)" :key="item.id"><h3>{{tx(item.title)}}</h3><p v-if="item.description">{{tx(item.description)}}</p><img v-for="pic in item.images" :key="pic.src" :src="pic.thumbnail||pic.src" :alt="tx(pic.alt)" /></article></template>
+            <template v-else-if="active===3"><article v-for="row in [['231:1464','231:1465','231:1471'],['231:1479','231:1480','231:1486'],['231:1494','231:1495','231:1501']]" :key="row[0]"><h3>{{tx(mobileText(row[0]!))}}</h3><p>{{tx(mobileText(row[1]!))}}</p><small>{{tx(mobileText(row[2]!))}}</small></article></template>
+            <template v-else><article v-for="item in dentalPhysicianServices" :key="item.title"><h3>{{tx(item.title)}}</h3><p>{{tx(item.description)}}</p></article></template>
+          </div>
+        </section>
+      </div>
+      <div v-else class="dental-source-dialog__overlay" data-dental-source-overlay :data-figma-node="model.overlay">
         <div class="dental-source-dialog__position" :style="{width:`${model.width*scale}px`,height:`${viewportHeight*scale}px`}">
           <div ref="clip" class="dental-source-dialog__clip" :aria-busy="loadingTab" :data-figma-node="model.mask?.id" :style="{width:`${model.width}px`,height:`${viewportHeight}px`,transform:`scale(${scale})`}">
             <div class="dental-source-dialog__canvas" :style="{width:`${model.width}px`,height:`${renderHeight}px`}">
@@ -166,6 +187,7 @@ onBeforeUnmount(()=>{disposed=true;tabRequest++;window.removeEventListener('resi
 .dental-source-dialog__clip{position:absolute;inset:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:none;border-radius:24px;background:white;transform-origin:top left;}
 .dental-source-dialog__canvas{position:relative;}
 .dental-source-dialog :deep(button:focus-visible){outline:2px solid #2563eb;outline-offset:2px;}
+.mobile-dental-overlay{min-height:100%;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}.mobile-dental-panel{position:relative;box-sizing:border-box;width:100%;max-height:calc(100dvh - 32px);overflow:auto;border-radius:20px;background:#fff;padding:24px;color:#1e3a5f}.mobile-dental-panel h2{margin:0 44px 20px 0;font-size:24px}.mobile-dental-close{position:absolute;right:16px;top:14px;width:40px;height:40px;border:0;background:transparent;color:#1e3a5f;font-size:30px}.mobile-dental-identity{display:flex;gap:12px;align-items:center}.mobile-dental-identity img{width:64px;height:64px;object-fit:cover;border-radius:12px}.mobile-dental-identity strong{font-size:18px}.mobile-dental-identity p{margin:4px 0;color:#64748b;font-size:13px}.mobile-dental-tabs{display:flex;gap:18px;margin:20px 0;overflow-x:auto;border-bottom:1px solid #e5e7eb}.mobile-dental-tabs button{flex:none;padding:0 0 10px;border:0;border-bottom:2px solid transparent;background:transparent;color:#64748b;font-size:14px}.mobile-dental-tabs button[aria-selected=true]{border-color:#2563eb;color:#2563eb}.mobile-dental-body{color:#475569;font-size:14px;line-height:1.7;overflow-wrap:anywhere}.mobile-dental-body h3{margin:14px 0 6px;font-size:15px;color:#1e3a5f}.mobile-dental-body p{margin:6px 0}.mobile-dental-body article{margin:12px 0;padding:14px;border-radius:12px;background:#f5f7fa}.mobile-dental-body article img{display:block;max-width:100%;height:auto;margin-top:8px}.mobile-dental-body small{color:#64748b}
 @media (prefers-reduced-motion:no-preference){.dental-source-dialog__position{animation:dental-dialog-in .32s cubic-bezier(.22,1,.36,1) both;}.dental-source-dialog::backdrop{animation:dental-backdrop-in .25s ease both;}}
 @media (prefers-reduced-motion:reduce){.dental-source-dialog :deep(*){animation:none!important;transition:none!important;}}
 @keyframes dental-dialog-in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}

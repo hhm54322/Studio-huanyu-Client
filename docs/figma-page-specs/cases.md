@@ -1,3 +1,7 @@
+## 2026-11-17 手机案例匹配修正（验证进行中）
+
+- 智能匹配弹窗的就医时间问题由重复序号 2 改为 3；390px 内置浏览器已检查弹窗。当前源比对及最终验收仍待完成。
+
 # 患者案例
 
 - Route: `/cases`
@@ -124,3 +128,6 @@ The current official export and live Design node `190:5550` retain the matcher h
 - 完整实际截图及原始指标另存`artifacts/performance-exhaustive-2026-11-01/cases-unmodified-captures/`。用户另行要求的WhatsApp常驻入口不在原始Figma帧内，源码层截图仅对这一固定悬浮入口临时设为不可见；页面内容全部保留。此项为授权新增控件的独立范围，不能将去除它后的指标冒充完整界面逐像素一致。该入口以`whatsapp-contact-qa.cjs`独立验证全13路由、位置与配置。
 - 原始完整截图pixelmatch1.00924%、nMAE1.00702%；仅比较源稿页面层为pixelmatch0.78782%、nMAE0.83875%。两组指标和截图同时保留，源稿图片/源锁没有重写。
 - 原始提取记录的`.fig`路径现存文件SHA与历史SHA不同，未将替代导出当作原始基线。最新完整源变更相等性尚缺该历史导出；本次结论限于锁定参数/图片的真实回归及性能无布局变化，不据此宣称本页全量最新设计已验收。见`artifacts/performance-exhaustive-2026-11-01/additional-source-summary.json`。
+
+### 2026-11-17 手机匹配行为复核（进行中）
+- 390px 实测选择骨科后仅展示现有脊柱案例，选择牙科时显示无匹配结果。为避免误导，年龄及就医时间提示已说明当前不参与案例筛选，五语文案同步；整体设计验收未完成。

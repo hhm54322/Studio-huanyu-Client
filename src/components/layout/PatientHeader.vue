@@ -295,6 +295,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
     </Transition>
     <Transition name="mobile-menu"><div v-if="menuOpen && route.path === '/' && homeSource" class="mobile-source-menu" :class="{ 'mobile-source-menu--expanded': serviceMenuOpen }" :aria-label="tx('移动端导航')">
       <HomeSourceNode :node="homeSource.homeMobileNodes.get(serviceMenuOpen ? '1555:500' : '1555:422')!" root :actions="serviceMenuOpen ? mobileExpandedActions : mobileMenuActions" @activate="onMobileSourceAction" />
+      <div class="mobile-language" :aria-label="tx('选择语言')"><button v-for="language in languages" :key="language.code" type="button" :aria-pressed="locale===language.code" @click="switchLang(language.code)">{{language.label}}</button></div>
     </div></Transition>
     <Transition name="mobile-menu"
       ><div v-if="menuOpen && route.path !== '/'" class="mobile-nav">
@@ -310,6 +311,7 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
         </nav>
         <button class="mobile-consult" type="button" @click="openConsultation">
           <img src="/images/figma/trust/Icon-5.svg" alt="" aria-hidden="true" />{{ tx("问阿宁 ") }}</button>
+        <div class="mobile-language" :aria-label="tx('选择语言')"><button v-for="language in languages" :key="language.code" type="button" :aria-pressed="locale===language.code" @click="switchLang(language.code)">{{language.label}}</button></div>
       </div></Transition
     >
   </header>
@@ -334,10 +336,17 @@ onUnmounted(() => { document.removeEventListener('click', closeOutside); documen
 .home-language-menu { position:absolute; top:calc(100% + 8px); right:max(24px,calc((100vw - 1216px)/2)); pointer-events:auto; }
 .desktop-services-popover { position:absolute; z-index:61; top:72px; left:calc(50% + 110px); pointer-events:auto; }
 .home-desktop-services { position:absolute; z-index:1; width:111px; height:149px; transform-origin:top left; pointer-events:auto; }
-.mobile-source-menu { position:absolute; top:52px; left:50%; z-index:59; width:min(375px,100vw); height:497px; max-height:calc(100dvh - 52px); overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain; transform:translateX(-50%); background:#fff; box-shadow:0 16px 28px rgba(30,58,95,.08); pointer-events:auto; }
-.mobile-source-menu--expanded { height:717px; }
+.mobile-source-menu { position:absolute; top:52px; left:50%; z-index:59; width:min(375px,100vw); height:auto; max-height:calc(100dvh - 52px); overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain; transform:translateX(-50%); background:#fff; box-shadow:0 16px 28px rgba(30,58,95,.08); pointer-events:auto; }
 .mobile-source-menu :deep(.home-source-node--root) { width:100%!important; height:497px!important; overflow:hidden; background:#fff; font-family:'PingFang SC',sans-serif; }
-.mobile-source-menu--expanded :deep(.home-source-node--root) { height:717px!important; }
+.mobile-source-menu--expanded :deep(.home-source-node--root) { height:552px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:516"]),.mobile-source-menu--expanded :deep([data-figma-node="1555:522"]),.mobile-source-menu--expanded :deep([data-figma-node="1555:525"]) { display:none!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:519"]) { top:222px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:528"]) { top:277px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:531"]) { top:332px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:534"]) { top:387px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:537"]) { top:442px!important; }
+.mobile-source-menu--expanded :deep([data-figma-node="1555:540"]) { top:497px!important; }
+.mobile-language{display:flex;flex-wrap:wrap;gap:8px;padding:16px;pointer-events:auto;background:#fff}.mobile-language button{border:1px solid #dbe1e9;border-radius:18px;padding:7px 10px;background:#fff;color:#1e3a5f;font-size:12px}.mobile-language button[aria-pressed=true]{border-color:#2563eb;color:#2563eb;background:#eff6ff}
 .mobile-source-menu :deep([data-figma-node="1555:424"]),
 .mobile-source-menu :deep([data-figma-node="1555:428"]),
 .mobile-source-menu :deep([data-figma-node="1555:431"]),

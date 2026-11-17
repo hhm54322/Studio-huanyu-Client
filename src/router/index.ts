@@ -102,9 +102,9 @@ const router = createRouter({
           path: 'dental/doctors/:slug',
           name: 'patient-dental-doctor',
           beforeEnter: async to => {
-            if (window.innerWidth <= 700) return { path:'/dental', query:{ step:'2' } }
             const { dentalPhysicians } = await import('@/data/dentalPhysicianData')
             if (!dentalPhysicians.some(doctor => doctor.slug === to.params.slug)) return { path:'/dental', query:{ step:'2' } }
+            if (window.innerWidth <= 700) return { path:'/dental', query:{ ...to.query, step:'2', doctor: String(to.params.slug), detail:'1' } }
             const source = await import('@/data/dentalDoctorPageSource')
             await source.loadDentalDoctorPage(source.parseDentalDoctorTab(to.query.tab))
           },
@@ -214,7 +214,13 @@ router.afterEach((_to, _from, failure) => {
 // Resolve the complete target-page copy before committing navigation. A slow
 // or failed pack never exposes untranslated UI or overwrites a newer choice.
 router.beforeEach(async (to) => {
-  if (pendingPatientDesignRoutes.has(to.path)) return false
+  // Unreleased destinations must fail gracefully when a stale bookmark or
+  // external link opens them directly; aborting the first navigation leaves
+  // the shell in its loading-error state.
+  if (pendingPatientDesignRoutes.has(to.path)) {
+    if (to.path === '/visa') return { path: '/steps/toolkit-detail', query: { article: 'visa' }, replace: true }
+    return { path: to.path === '/professional-report' ? '/report' : '/diseases-technologies', replace: true }
+  }
   if (to.meta.side !== 'hospital') {
     const language = resolveLocale(to.query.lang) || resolveLocale(i18n.global.locale.value) || savedLocale()
     if (!await useAppStore().setLocale(language, patientCopyScope(to.path))) {

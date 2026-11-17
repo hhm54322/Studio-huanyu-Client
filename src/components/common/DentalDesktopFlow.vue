@@ -4,6 +4,7 @@ const { tx } = useSiteCopy()
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import DentalSourceCanvas from './DentalSourceCanvas.vue'
+import DentalScanShowcase from './DentalScanShowcase.vue'
 import HomeSourceNode from './HomeSourceNode.vue'
 import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { dentalActions, dentalCompleteSource, dentalDescendants, dentalFilterControls, dentalNode, dentalProjectNodes, dentalSources } from '@/data/dentalFigmaSource'
@@ -12,7 +13,7 @@ import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 type Filters = { city: string; title: string; experience: string; background: string; language: string; price: string }
 const props = defineProps<{
   step: 1 | 2 | 3; width: number; selectedProject: string; expandedProjects: Set<string>
-  projects: { id: string; title: string; suitable: string; detail: string; duration: string; note?: string }[]
+  projects: { id: string; title: string; suitable: string; detail: string; duration: string; price: string; copy: string; note?: string }[]
   filters: Filters; filteredDoctorIds: number[]; sort: string; filtered: boolean
   form: { budget: string; visitTime: string; notes: string }; files: File[]; status: string; error: string; submitted: boolean
 }>()
@@ -34,6 +35,8 @@ const source = computed(() => {
 })
 const detailHeights = ref<Record<string, number>>({})
 let observer: ResizeObserver | undefined
+const scanTop = ref(460)
+let scanObserver: ResizeObserver | undefined
 let measureFrame=0
 const detailElements = new Map<Element, string>()
 function measureDetails() {
@@ -54,8 +57,23 @@ function detailElement(value: unknown, id: string) {
   observer?.observe(value)
   scheduleMeasure()
 }
-onMounted(() => { observer = new ResizeObserver(scheduleMeasure); detailElements.forEach((_, element) => observer!.observe(element)); scheduleMeasure() })
-onBeforeUnmount(() => {observer?.disconnect();if(measureFrame)cancelAnimationFrame(measureFrame)})
+function measureHero() {
+  const heroId = props.step === 1 ? '2294:8243' : props.step === 2 ? '2294:6974' : '2294:8040'
+  const hero = root.value?.querySelector<HTMLElement>(`[data-figma-node="${heroId}"]`)
+  if (hero && scanTop.value !== hero.offsetHeight) scanTop.value = hero.offsetHeight
+  scheduleAction()
+}
+async function observeHero() {
+  await nextTick()
+  scanObserver?.disconnect()
+  const heroId = props.step === 1 ? '2294:8243' : props.step === 2 ? '2294:6974' : '2294:8040'
+  const hero = root.value?.querySelector<HTMLElement>(`[data-figma-node="${heroId}"]`)
+  if (hero) scanObserver?.observe(hero)
+  measureHero()
+}
+onMounted(() => { observer = new ResizeObserver(scheduleMeasure); scanObserver = new ResizeObserver(measureHero); detailElements.forEach((_, element) => observer!.observe(element)); scheduleMeasure(); void observeHero() })
+watch(() => props.step, observeHero, { flush:'post' })
+onBeforeUnmount(() => {observer?.disconnect();scanObserver?.disconnect();if(measureFrame)cancelAnimationFrame(measureFrame)})
 
 // Resting coordinates, padding, and typography come from the locked source.
 const detailTemplate = dentalNode('2294:8297')
@@ -77,7 +95,12 @@ const projectLayout = computed(() => {
   const contentHeight = dentalNode('2294:8250').y + dentalNode('2294:8274').y + buttonTop + action.height + action.bottomGap
   return { gridHeight, rowTops, buttonTop, contentHeight, height: contentHeight + dentalCompleteSource.footer.height }
 })
-const canvasHeight = computed(() => props.step === 1 ? projectLayout.value.height : source.value.height)
+const scanHeight = ref(737)
+const scanNodes = computed(() => props.step === 1
+  ? { root:'2294:8240', body:'2294:8241', main:'2294:8242', section:'2294:8250' }
+  : props.step === 2 ? { root:'2294:6971', body:'2294:6972', main:'2294:6973', section:'2294:6981' }
+  : { root:'2294:8037', body:'2294:8038', main:'2294:8039', section:'2294:8047' })
+const canvasHeight = computed(() => (props.step === 1 ? projectLayout.value.height : source.value.height) + scanHeight.value)
 // Keep the authored action's space in the canvas. Only its rendering floats,
 // so changing its viewport position never moves a project or the footer.
 const floatingAction = computed(() => {
@@ -92,15 +115,17 @@ function measureAction() {
   if (!floatingAction.value || !root.value) return
   const footer = dentalDescendants(source.value).find(node => node.name === 'Footer')
   const footerElement = footer && root.value.querySelector<HTMLElement>(`[data-figma-node="${footer.id}"]`)
-  if (!footerElement) return
+  const contentElement = root.value.querySelector<HTMLElement>(`[data-figma-node="${scanNodes.value.section}"]`)
+  if (!footerElement || !contentElement) return
   const scale = Math.min(1, props.width / source.value.width)
   const bottomGap = dentalCompleteSource.action.bottomGap * scale
   const height = floatingAction.value.height * scale
   const footerTop = footerElement.getBoundingClientRect().top
-  actionPosition.value = { top: Math.min(innerHeight, footerTop) - bottomGap - height, scale, released: footerTop < innerHeight, ready: true }
+  const top = Math.min(innerHeight, footerTop) - bottomGap - height
+  actionPosition.value = { top, scale, released: footerTop < innerHeight, ready: contentElement.getBoundingClientRect().top <= top }
 }
 function scheduleAction() { if (!actionFrame) actionFrame = requestAnimationFrame(measureAction) }
-watch([source, projectLayout, () => props.width], async () => { await nextTick(); scheduleAction() }, { flush: 'post' })
+watch([source, projectLayout, scanHeight, () => props.width], async () => { await nextTick(); scheduleAction() }, { flush: 'post' })
 onMounted(() => {
   window.addEventListener('scroll', scheduleAction, { passive: true })
   window.addEventListener('resize', scheduleAction, { passive: true })
@@ -176,6 +201,20 @@ const styles = computed(() => {
     if (props.form.visitTime) result['2294:8103'] = 'visibility:hidden;'
     if (props.form.notes) result['2294:8113'] = 'visibility:hidden;'
   }
+  // The new illustration sits between the unchanged hero and step content.
+  // Move the content and footer together so the floating action still uses the
+  // real footer position rather than an estimated page height.
+  const nodes = new Map(dentalDescendants(source.value).map(node => [node.id, node]))
+  const ids = scanNodes.value
+  const add = (id: string, value: string) => { result[id] = `${result[id] || ''}${value}` }
+  const originalHeight = props.step === 1 ? projectLayout.value.height : source.value.height
+  const originalMainHeight = props.step === 1 ? projectLayout.value.contentHeight : nodes.get(ids.main)!.height
+  add(ids.root, `height:${originalHeight + scanHeight.value}px;`)
+  add(ids.body, `height:${originalHeight + scanHeight.value}px;`)
+  add(ids.main, `height:${originalMainHeight + scanHeight.value}px;`)
+  add(ids.section, `top:${nodes.get(ids.section)!.y + scanHeight.value}px;`)
+  const footer = dentalDescendants(source.value).find(node => node.name === 'Footer')
+  if (footer) add(footer.id, `top:${(props.step === 1 ? projectLayout.value.contentHeight : footer.y) + scanHeight.value}px;`)
   return result
 })
 const hidden = computed(() => floatingAction.value ? [floatingAction.value.id] : [])
@@ -203,6 +242,7 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
   <div ref="root" class="dental-desktop-flow" :data-dental-step="step">
     <DentalSourceCanvas :key="step" :node="source" :width="width" :height="canvasHeight" :actions="actions" :texts="texts" :attributes="attributes" :styles="styles" :hidden="hidden" @activate="activate">
       <template #after="{ node }">
+        <DentalScanShowcase v-if="node.id === scanNodes.main" class="dental-scan-insertion" :style="{ top:`${scanTop}px`, height:`${scanHeight}px` }" :projects="props.projects" @height="scanHeight = $event" />
         <template v-for="project in projects" :key="project.id">
           <div v-if="!project.detail && node.id === project.content.id" :id="`dental-details-${project.data.id}`" class="dental-live-detail dental-added-detail" :aria-hidden="!project.expanded" :style="{ top: `${project.summaryHeight}px`, height: `${project.expanded ? project.extraHeight : 0}px` }">
             <div :ref="element => detailElement(element, project.id)" :style="detailTemplate.layoutCss">
@@ -232,6 +272,7 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
 </template>
 <style scoped>
 .dental-desktop-flow { width:100%; }
+.dental-scan-insertion { position:absolute;left:0;width:1440px; }
 .dental-floating-action { position:fixed; left:50%; z-index:45; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .dental-floating-action :deep(button:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
 .dental-native-overlay { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:inherit; padding:0; background:transparent; color:transparent; appearance:none; cursor:pointer; }

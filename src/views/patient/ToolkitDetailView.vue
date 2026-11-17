@@ -5,7 +5,7 @@ const { tx, locale } = useSiteCopy()
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import ContentArticleCanvas from '@/components/common/ContentArticleCanvas.vue'
-import { loadToolkitArticle, toolkitArticles } from '@/data/contentFigmaSource'
+import { contentArticleRoot, contentDescendants, loadToolkitArticle, toolkitArticles } from '@/data/contentFigmaSource'
 const route = useRoute()
 const router = useRouter()
 // A query-only article change reuses this route, so its beforeEnter does not
@@ -20,11 +20,11 @@ watch(() => route.query.article, value => {
 }, { immediate: true })
 watch([article, locale], ([key]) => { document.title = `${tx(key ? toolkitArticles[key]!.title : '病历翻译与整理工具')} | ${tx('寰宇云医')}` }, { immediate: true })
 const viewportWidth = ref(typeof window === 'undefined' ? 1440 : window.innerWidth)
-watch([article, viewportWidth], ([key, width]) => {
-  // New content is desktop-only until the user confirms the mobile design.
-  // Never show the translation article under another article's URL.
-  if (key && width <= 900) void router.replace('/trust')
-}, { immediate: true })
+const mobileArticle = computed(() => {
+  if (!article.value) return null
+  const nodes = contentDescendants(contentArticleRoot('toolkit', article.value))
+  return { kicker: nodes.find(node => node.id === '143:3072')?.text || '', body: nodes.find(node => node.id === '143:3077')?.text || '' }
+})
 const updateViewport = () => { viewportWidth.value = window.innerWidth }
 onMounted(() => window.addEventListener('resize', updateViewport, { passive: true }))
 onBeforeUnmount(() => window.removeEventListener('resize', updateViewport))
@@ -92,6 +92,18 @@ const bottomLines = [
 
 <template>
   <ContentArticleCanvas v-if="viewportWidth > 900" :key="article || 'translation'" source="toolkit" :article="article" :width="viewportWidth" />
+  <div v-else-if="article && mobileArticle" class="toolkit-detail-page" data-page="steps-toolkit-detail">
+    <div class="toolkit-detail-shell">
+      <article class="toolkit-detail-article">
+        <RouterLink class="toolkit-detail-back" to="/trust"><span aria-hidden="true">‹</span>{{ tx('返回信任与常见问题') }}</RouterLink>
+        <div class="toolkit-detail-heading-gap" aria-hidden="true" />
+        <span class="toolkit-detail-kicker toolkit-detail-kicker--mobile">{{ tx(mobileArticle.kicker) }}</span>
+        <h1>{{ tx(toolkitArticles[article]!.title) }}</h1>
+        <div class="toolkit-mobile-article-copy">{{ tx(mobileArticle.body) }}</div>
+      </article>
+      <aside class="toolkit-detail-sidebar"><strong>{{ tx('来华就医全流程工具包') }}</strong><nav :aria-label="tx('工具包目录')"><RouterLink v-for="item in Object.values(toolkitArticles)" :key="item.key" :to="{path:'/steps/toolkit-detail',query:{article:item.key}}">{{ tx(item.title) }}</RouterLink></nav></aside>
+    </div>
+  </div>
   <div v-else class="toolkit-detail-page" data-page="steps-toolkit-detail">
     <div class="toolkit-detail-shell">
       <article class="toolkit-detail-article">
@@ -121,8 +133,9 @@ const bottomLines = [
 .toolkit-detail-article h1 { margin:16px 0 40px; color:#1e3a5f; font-family:"PingFang SC","Noto Sans SC",sans-serif; font-size:40px; font-weight:600; line-height:60px; }
 .toolkit-detail-copy { position:relative; color:#4b5563; font-family:"PingFang SC","Noto Sans SC",sans-serif; font-size:16px; font-weight:400; line-height:24px; }.toolkit-detail-copy--top { height:644px; }.toolkit-detail-copy--bottom { height:1004px; }
 .toolkit-detail-line { position:absolute; left:0; top:var(--line-y); width:100%; margin:0; line-height:24px; white-space:nowrap; }.toolkit-detail-line.is-strong { color:#1e3a5f; font-weight:600; }.toolkit-detail-line.is-heading { color:#1e3a5f; font-size:24px; font-weight:600; line-height:36px; }.toolkit-detail-line.is-lead { line-height:32px; }
+.toolkit-mobile-article-copy { color:#4b5563; font-size:16px; line-height:1.75; white-space:pre-wrap; overflow-wrap:anywhere; }
 .toolkit-detail-images { display:grid; width:100%; height:260px; margin:24px 0; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }.toolkit-detail-images img { display:block; width:100%; height:260px; border-radius:8px; object-fit:cover; }
 .toolkit-detail-sidebar { position:sticky; top:88px; box-sizing:border-box; height:465px; padding:24px; border-radius:24px; background:#fff; }.toolkit-detail-sidebar strong { display:block; margin-bottom:18px; color:#1e3a5f; font-size:18px; font-weight:600; line-height:18px; }.toolkit-detail-sidebar nav { display:grid; }.toolkit-detail-sidebar a { display:flex; min-height:47px; box-sizing:border-box; align-items:center; border-top:1px solid #eef0f3; color:#6b7280; font-size:14px; line-height:14px; transition:color .2s ease,padding-left .2s ease; }.toolkit-detail-sidebar a:hover,.toolkit-detail-sidebar a:focus-visible { padding-left:4px; color:#1685c3; }
-@media (max-width:900px) { .toolkit-detail-page { min-height:0; margin-top:-56px; padding:88px 0 72px; }.toolkit-detail-shell { display:block; min-height:0; width:min(calc(100% - 32px),680px); }.toolkit-detail-article { min-height:0; padding:24px; border-radius:18px; }.toolkit-detail-copy--top,.toolkit-detail-copy--bottom { height:auto; }.toolkit-detail-line { position:static; width:auto; margin:0 0 12px; white-space:normal; }.toolkit-detail-sidebar { position:static; height:auto; margin-top:16px; border-radius:18px; }.toolkit-detail-images { height:auto; grid-template-columns:1fr; }.toolkit-detail-images img { height:auto; aspect-ratio:1.573; } }
+@media (max-width:900px) { .toolkit-detail-page { min-height:0; margin-top:-56px; padding:88px 0 72px; }.toolkit-detail-shell { display:block; min-height:0; width:min(calc(100% - 32px),680px); }.toolkit-detail-article { min-height:0; padding:24px; border-radius:18px; }.toolkit-detail-article h1 { font-size:clamp(26px,7vw,34px); line-height:1.35; margin:16px 0 28px; overflow-wrap:anywhere; }.toolkit-detail-kicker--mobile { width:auto; height:auto; min-height:34px; line-height:1.4; padding:8px 16px; }.toolkit-detail-copy--top,.toolkit-detail-copy--bottom { height:auto; }.toolkit-detail-line { position:static; width:auto; margin:0 0 12px; white-space:normal; }.toolkit-detail-sidebar { position:static; height:auto; margin-top:16px; border-radius:18px; }.toolkit-detail-images { height:auto; grid-template-columns:1fr; }.toolkit-detail-images img { height:auto; aspect-ratio:1.573; } }
 @media (prefers-reduced-motion:reduce) { .toolkit-detail-page * { scroll-behavior:auto; transition-duration:.01ms !important; } }
 </style>

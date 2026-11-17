@@ -5,6 +5,7 @@ const { tx } = useSiteCopy()
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { X } from "lucide-vue-next";
 import { trustArticleDialog } from '@/components/common/trustArticleDialog';
+import { loadTrustArticle, trustArticleSource } from '@/data/trustArticleSource';
 import TrustDesktopPage from '@/components/common/TrustDesktopPage.vue';
 
 const desktopArticle = ref(typeof window === 'undefined' || window.innerWidth > 900);
@@ -152,16 +153,22 @@ const activeArticle = ref<TrustArticle>('jci');
 const jciTrigger = ref<HTMLButtonElement | null>(null);
 const jciCloseButton = ref<HTMLButtonElement | null>(null);
 const lastArticleTrigger = ref<HTMLElement | null>(null);
+let articleRequest = 0;
 function setJciTrigger(element: any) {
   jciTrigger.value = element as HTMLButtonElement | null;
 }
-function openJciArticle(article: TrustArticle, event?: Event) {
+async function openJciArticle(article: TrustArticle, event?: Event) {
+  const request = ++articleRequest;
+  const trigger = event?.currentTarget instanceof HTMLElement ? event.currentTarget : null;
+  await loadTrustArticle(article);
+  if (request !== articleRequest) return;
   activeArticle.value = article;
-  if (event?.currentTarget instanceof HTMLElement) lastArticleTrigger.value = event.currentTarget;
+  lastArticleTrigger.value = trigger;
   jciModalOpen.value = true;
   if (!desktopArticle.value) nextTick(() => jciCloseButton.value?.focus());
 }
 function closeJciArticle() {
+  articleRequest++;
   jciModalOpen.value = false;
   nextTick(() => (lastArticleTrigger.value || jciTrigger.value)?.focus({ preventScroll: true }));
 }
@@ -322,7 +329,7 @@ function openConsultation() {
             <h3>{{ tx(item.title) }}</h3>
             <p>{{ tx(item.copy) }}</p>
             <button
-              v-if="item.article && (desktopArticle || item.article === 'jci')"
+              v-if="item.article"
               :ref="item.article === 'jci' ? setJciTrigger : undefined"
               type="button"
               aria-haspopup="dialog"
@@ -362,14 +369,14 @@ function openConsultation() {
             ref="jciCloseButton"
             class="jci-dialog-close"
             type="button"
-            :aria-label="tx('关闭JCI认证真相')"
+            :aria-label="`${tx('关闭')}${tx(activeArticle === 'jci' ? 'JCI认证真相' : trustArticleSource(activeArticle).title)}`"
             @click="closeJciArticle"
           >
             <X :size="16" aria-hidden="true" />
           </button>
-          <h2 id="jci-dialog-title">{{ tx("JCI认证真相") }}</h2>
-          <p class="jci-dialog-lead">{{ tx("137家JCI认证，院内感染率0.5%仅为欧美一半") }}</p>
-          <div class="jci-dialog-copy">
+          <h2 id="jci-dialog-title">{{ tx(activeArticle === 'jci' ? 'JCI认证真相' : trustArticleSource(activeArticle).title) }}</h2>
+          <p class="jci-dialog-lead">{{ tx(activeArticle === 'jci' ? '137家JCI认证，院内感染率0.5%仅为欧美一半' : trustArticleSource(activeArticle).description || '') }}</p>
+          <div v-if="activeArticle === 'jci'" class="jci-dialog-copy">
             <p>{{ tx("很多海外患者规划来华就医时，首要顾虑：中国医院的医疗标准是否和国际接轨，是否得到全球认可。") }}</p>
             <p>{{ tx("JCI（Joint Commission International）是国际公认的医疗质量与安全评审体系，执行全球统一标准，不存在国别专属版本。") }}</p>
             <p>{{ tx("我们合作的医疗机构中，共计137家取得JCI国际认证，在患者安全、诊疗流程、手术质控、院感管理、护理规范上全部对标国际行业要求。") }}</p>
@@ -377,6 +384,7 @@ function openConsultation() {
             <p>{{ tx("从术前评估、手术操作到术后监护，整套诊疗流程完全同步欧美、新加坡等国际医疗规范。对海外患者而言，JCI认证是判断医院正规性、安全性的重要参考依据。") }}</p>
             <p>{{ tx("JCI认证不是宣传噱头，代表医院的医疗安全体系达到国际统一标准，为跨境就医提供基础安全保障。") }}</p>
           </div>
+          <div v-else class="jci-dialog-copy"><p class="trust-mobile-article-body">{{ tx(trustArticleSource(activeArticle).body || '') }}</p></div>
         </section>
       </div>
     </Transition>
@@ -400,9 +408,9 @@ function openConsultation() {
                 <p>{{ tx(item.copy) }}</p>
                 <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="desktopArticle && stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="desktopArticle && stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
               </article>
             </div>
@@ -1206,6 +1214,7 @@ function openConsultation() {
 .jci-dialog-copy { margin-top:22px; color:#4b5563; font-size:13px; line-height:1.85; }
 .jci-dialog-copy p { margin:0 0 10px; }
 .jci-dialog-copy p:last-child { margin-bottom:0; }
+.trust-mobile-article-body { white-space:pre-wrap; overflow-wrap:anywhere; }
 .jci-dialog-close { position:absolute; top:16px; right:16px; display:grid; width:28px; height:28px; place-items:center; border:0; border-radius:50%; background:transparent; color:#1e3a5f; cursor:pointer; transition:background .2s ease,transform .25s ease; }
 .jci-dialog-close:hover { background:#eef4f8; transform:rotate(90deg); }
 .jci-dialog-close:focus-visible { outline:2px solid #2563eb; outline-offset:2px; }

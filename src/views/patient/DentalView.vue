@@ -20,7 +20,7 @@ import {
   Star,
   UploadCloud,
 } from 'lucide-vue-next'
-import { dentalPhysicians as dentalCurrentDoctors, dentalPhysicianTitleMatches } from '@/data/dentalPhysicianData'
+import { dentalPhysicians as dentalCurrentDoctors, dentalPhysicianTitleMatches, dentalPhysicianCases, type DentalPhysician } from '@/data/dentalPhysicianData'
 import { displayDentalExperience } from '@/data/dentalPhysicianPresentation'
 import { createDentalAssessment, getSubmissionErrorMessage } from '@/services/patientSubmissions'
 import { dentalSourceDialog } from '@/components/common/dentalSourceDialog'
@@ -67,24 +67,7 @@ interface DentalProject {
   note?: string
 }
 
-interface DentalDoctor {
-  id: number
-  name: string
-  title: string
-  hospital: string
-  city: string
-  experience: string
-  languages: string[]
-  background: string
-  specialty: string
-  rating: string
-  cases: string
-  portrait: string
-  tags: string[]
-  bio?: string
-  credentials?: string[]
-  startingPrice: number
-}
+type DentalDoctor = DentalPhysician
 
 const projects: DentalProject[] = [
   { id: 'implant', title: '种植牙', price: '¥5,000 起', copy: '单颗/多颗/半口全口，数字化导板种植', image: '/images/equipment/image1.jpeg', icon: '/images/figma/dental-source/icon-implant.svg', detail: '检查评估 - 植入手术 -愈合期 - 牙冠修复', duration: '3-6个月', suitable: '单颗/多颗牙缺失，缺牙时间较长者', note: '需进行口腔检查，排除禁忌症' },
@@ -133,13 +116,6 @@ function detailLeave(element: Element) {
   })
 }
 
-const doctors: DentalDoctor[] = [
-  { id: 4, name: '郑雨容', title: '主任医师/教授', hospital: '上海交通大学医学院附属第九人民医院', city: '上海', experience: '26年经验', languages: ['中文', 'English', 'Русский'], background: '公立三甲 · 种植科', specialty: '擅长复杂种植手术、尤其骨量微弱及即刻种植修复有丰富经验', rating: '5.0', cases: '3,200+', portrait: '/images/figma/expert-shao-zhimin-avatar.png', tags: ['数字化种植', '骨增量'], startingPrice: 28000, bio: '郑雨容，主任医师，种植学科带头人，毕业于上海交通大学医学院，从事口腔种植临床工作26年。擅长复杂种植手术、尤其骨量微弱及即刻种植修复具有丰富经验。', credentials: ['医师执业证书(可查)', '主任医师职称', 'ITI国际口腔种植学会会员', 'DIO种植牙高级教授'] },
-  { id: 3, name: '张俊廷', title: '主任医师/教授', hospital: '北京天坛医院', city: '北京', experience: '26年经验', languages: ['中文', 'English'], background: '公立三甲 · 牙周与种植', specialty: '牙齿周围支持组织（牙龈、牙槽骨）的诊治，擅长洁牙、牙周刮治及手术', rating: '4.9', cases: '2,100+', portrait: '/images/figma/expert-zhang-junting-avatar.png', tags: ['牙周治疗', '复杂种植'], startingPrice: 18000 },
-  { id: 2, name: '李进', title: '主任医师/博导', hospital: '上海复旦医院', city: '上海', experience: '26年经验', languages: ['中文', 'English', 'Русский'], background: '公立三甲 · 口腔修复科', specialty: '缺失牙齿的修复与美学重建，擅长全冠、全口假牙、瓷贴面', rating: '5.0', cases: '2,800+', portrait: '/images/figma/expert-li-jin-avatar.png', tags: ['美学修复', '种植修复'], startingPrice: 22000 },
-  { id: 1, name: '吴一龙', title: '终身首席教授', hospital: '广东省人民医院', city: '广州', experience: '18年经验', languages: ['中文', 'English'], background: '公立三甲 · 国际医疗部', specialty: '牙齿硬组织修复与牙髓治疗，擅长显微根管治疗、补牙', rating: '4.9', cases: '1,200+', portrait: '/images/figma/expert-wu-yilong-avatar.png', tags: ['显微根管', '舒适化治疗'], startingPrice: 12000 },
-]
-
 const activeStep = ref<DentalStep>(route.query.step==='3'?3:route.query.step==='2'?2:savedFlow?.step||1)
 const selectedProjectId = ref(typeof route.query.project==='string'?route.query.project:savedFlow?.project||'whitening')
 useWhatsAppTopic(selectedProjectId)
@@ -175,21 +151,21 @@ watch(() => [quoteDoctorId.value,selectedProjectId.value,...Object.values(form.v
 })
 
 const filteredDoctors = computed(() => {
-  const filtered = (desktopDoctors.value?dentalCurrentDoctors:doctors).filter((doctor) => {
+  const filtered = dentalCurrentDoctors.filter((doctor) => {
     const current = appliedFilters.value
     if (current.city && doctor.city !== current.city) return false
     if (!dentalPhysicianTitleMatches(doctor.title, current.title)) return false
     if (current.experience === '20年以上' && Number(doctor.experience.match(/\d+/)?.[0]||0)<20) return false
     if (current.experience === '10-20年' && (Number(doctor.experience.match(/\d+/)?.[0]||0)<10||Number(doctor.experience.match(/\d+/)?.[0]||0)>20)) return false
     if (current.background && !doctor.background.includes(current.background)) return false
-    if (current.language && !doctor.languages.includes(current.language)) return false
+    if (current.language && !(doctor.languages as string[]).includes(current.language)) return false
     if (current.price === '¥10,000 以下' && doctor.startingPrice > 10000) return false
     if (current.price === '¥10,000-30,000' && (doctor.startingPrice < 10000 || doctor.startingPrice > 30000)) return false
     return true
   })
   return filtered.sort((a, b) => {
     if (sortMode.value === 'experience') return Number(b.experience.match(/\d+/)?.[0] || 0) - Number(a.experience.match(/\d+/)?.[0] || 0)
-    if (sortMode.value === 'cases') return Number(b.cases.replace(/\D/g, '')) - Number(a.cases.replace(/\D/g, ''))
+    if (sortMode.value === 'cases') return desktopDoctors.value ? Number(b.cases.replace(/\D/g, '')) - Number(a.cases.replace(/\D/g, '')) : dentalPhysicianCases(b).length - dentalPhysicianCases(a).length
     if (sortMode.value === 'rating') return Number(b.rating) - Number(a.rating)
     if (sortMode.value === 'price') return a.startingPrice - b.startingPrice
     return 0
@@ -244,9 +220,15 @@ function openDoctor(doctor: DentalDoctor, tab='profile') {
   }
   modalTrigger.value = document.activeElement instanceof HTMLButtonElement ? document.activeElement : null
   selectedDoctor.value = doctor
-  doctorTab.value = 'profile'
-  desktopDoctorTab.value=0
+  doctorTab.value = tab === 'cases' && dentalPhysicianCases(doctor).length ? 'cases' : tab === 'reviews' && doctor.reviews.length ? 'reviews' : 'profile'
+  desktopDoctorTab.value=Math.max(0, ['profile','treatment','cases','reviews','services'].indexOf(tab))
 }
+
+onMounted(() => {
+  if (desktopDoctors.value || route.query.detail !== '1') return
+  const doctor = dentalCurrentDoctors.find(item => item.slug === route.query.doctor)
+  if (doctor) openDoctor(doctor, typeof route.query.tab === 'string' ? route.query.tab : 'profile')
+})
 
 function closeDoctor() {
   selectedDoctor.value = null
@@ -316,6 +298,7 @@ function handleKeydown(event: KeyboardEvent) {
 
 watch(selectedDoctor, async (doctor) => {
   if(desktopDoctors.value)return
+  if(doctor?.sourceProfile)return
   document.body.style.overflow = doctor ? 'hidden' : ''
   if (doctor) {
     window.addEventListener('keydown', handleKeydown)
@@ -380,11 +363,11 @@ onBeforeUnmount(() => {
           <span class="dental-section__counter">{{ tf('共 {count} 位医生',{count:filteredDoctors.length}) }}</span>
         </div>
         <div class="dental-filter-bar" data-reveal>
-          <label><span>{{ tx("城市") }}</span><select v-model="filters.city"><option value="">{{ tx("全部城市") }}</option><option value="上海">{{ tx("上海") }}</option><option value="广州">{{ tx("广州") }}</option><option value="北京">{{ tx("北京") }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("城市") }}</span><select v-model="filters.city"><option value="">{{ tx("全部城市") }}</option><option v-for="city in [...new Set(dentalCurrentDoctors.map(doctor => doctor.city))]" :key="city" :value="city">{{ tx(city) }}</option></select><ChevronDown class="h-4 w-4" /></label>
           <label><span>{{ tx("医生职称") }}</span><select v-model="filters.title"><option value="">{{ tx("全部职称") }}</option><option value="主任医师">{{ tx("主任医师") }}</option><option value="教授">{{ tx("教授") }}</option></select><ChevronDown class="h-4 w-4" /></label>
           <label><span>{{ tx("经验标签") }}</span><select v-model="filters.experience"><option value="">{{ tx("全部经验") }}</option><option value="10-20年">{{ tx("10-20年") }}</option><option value="20年以上">{{ tx("20年以上") }}</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>{{ tx("机构背景") }}</span><select v-model="filters.background"><option value="">{{ tx("全部机构") }}</option><option value="公立三甲">{{ tx("公立三甲") }}</option><option value="口腔修复科">{{ tx("口腔修复科") }}</option></select><ChevronDown class="h-4 w-4" /></label>
-          <label><span>{{ tx("语言能力") }}</span><select v-model="filters.language"><option value="">{{ tx("全部语言") }}</option><option>English</option><option>Русский</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("机构背景") }}</span><select v-model="filters.background"><option value="">{{ tx("全部机构") }}</option><option v-for="background in [...new Set(dentalCurrentDoctors.map(doctor => doctor.background).filter(Boolean))]" :key="background" :value="background">{{ tx(background) }}</option></select><ChevronDown class="h-4 w-4" /></label>
+          <label><span>{{ tx("语言能力") }}</span><select v-model="filters.language"><option value="">{{ tx("全部语言") }}</option><option v-for="language in [...new Set(dentalCurrentDoctors.flatMap(doctor => doctor.languages))]" :key="language" :value="language">{{ tx(language) }}</option></select><ChevronDown class="h-4 w-4" /></label>
           <label><span>{{ tx("价格区间") }}</span><select v-model="filters.price"><option value="">{{ tx("全部价格") }}</option><option value="¥10,000 以下">{{ tx("¥10,000 以下") }}</option><option>¥10,000-30,000</option></select><ChevronDown class="h-4 w-4" /></label>
           <button type="button" class="dental-filter-submit" @click="applyFilters"><Search class="h-4 w-4" />{{ tx("筛选") }}</button>
           <button type="button" :title="tx('重置筛选')" class="dental-reset" @click="resetFilters"><RotateCcw class="h-4 w-4" />{{ tx("重置") }}</button>
@@ -392,9 +375,9 @@ onBeforeUnmount(() => {
         <div class="dental-sort-row" :aria-label="tx('医生排序')"><button type="button" :class="{ active: sortMode === 'recommended' }" @click="sortMode = 'recommended'">{{ tx("综合推荐") }}</button><button type="button" :class="{ active: sortMode === 'experience' }" @click="sortMode = 'experience'">{{ tx("经验优先") }}</button><button type="button" :class="{ active: sortMode === 'cases' }" @click="sortMode = 'cases'">{{ tx("案例最多") }}</button><button type="button" :class="{ active: sortMode === 'rating' }" @click="sortMode = 'rating'">{{ tx("评价最高") }}</button><button type="button" :class="{ active: sortMode === 'price' }" @click="sortMode = 'price'">{{ tx("价格排序") }}</button></div>
         <p class="dental-doctor-count">{{ tf('共 {count} 位医生',{count:filteredDoctors.length}) }}</p>
         <div class="dental-doctor-grid">
-          <article v-for="doctor in filteredDoctors" :key="doctor.id" class="dental-doctor-card" :class="{ selected: doctor.id === 1 }" data-reveal>
-            <div class="dental-doctor-card__top"><div class="dental-doctor-card__portrait"><img :src="doctor.portrait" :alt="tx(doctor.name)" /></div><div><h3>{{ tx(doctor.name) }}</h3><span>{{ tx(doctor.title) }}</span><small><MapPin class="h-3.5 w-3.5" />{{ tx(doctor.hospital) }}</small></div><span class="dental-doctor-card__rating"><Star class="h-3.5 w-3.5" />{{ tx(doctor.rating) }}</span></div>
-            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ tx(displayDentalExperience(doctor.experience)) }}</span><span><Globe2 class="h-4 w-4" />{{ doctor.languages.map(language=>tx(language)).join(' / ') }}</span></div>
+          <article v-for="doctor in filteredDoctors" :key="doctor.id" class="dental-doctor-card" data-reveal>
+            <div class="dental-doctor-card__top"><div class="dental-doctor-card__portrait"><img :src="doctor.portrait" :alt="tx(doctor.name)" /></div><div><h3>{{ tx(doctor.name) }}</h3><span>{{ tx(doctor.title) }}</span><small><MapPin class="h-3.5 w-3.5" />{{ tx(doctor.hospital) }}</small></div><span v-if="doctor.rating" class="dental-doctor-card__rating"><Star class="h-3.5 w-3.5" />{{ tx(doctor.rating) }}</span></div>
+            <div class="dental-doctor-card__meta"><span><Clock3 class="h-4 w-4" />{{ tx(displayDentalExperience(doctor.experience)) }}</span><span v-if="doctor.languages.length"><Globe2 class="h-4 w-4" />{{ doctor.languages.map(language=>tx(language)).join(' / ') }}</span></div>
             <p>{{ tx(doctor.specialty) }}</p>
             <div class="dental-doctor-card__tags"><span v-for="tag in doctor.tags" :key="tag">{{ tx(tag) }}</span></div>
             <button type="button" class="dental-doctor-card__button" @click="openDoctor(doctor)">{{ tx("了解更多 ") }}<ArrowRight class="h-4 w-4" /></button>
@@ -416,20 +399,21 @@ onBeforeUnmount(() => {
 
     <Teleport to="body">
       <Transition name="dental-modal">
-        <div v-if="selectedDoctor&&!desktopDoctors" class="dental-modal-backdrop" @click.self="closeDoctor">
+        <div v-if="selectedDoctor&&!desktopDoctors&&!selectedDoctor.sourceProfile" class="dental-modal-backdrop" @click.self="closeDoctor">
           <section ref="modalPanel" class="dental-doctor-modal" :class="`dental-doctor-modal--${doctorTab}`" role="dialog" aria-modal="true" :aria-label="tx('医生详情')">
             <button ref="modalCloseButton" type="button" class="dental-modal-close" :aria-label="tx('关闭医生详情')" @click="closeDoctor"><img src="/images/figma/doctor-modal-close.svg" alt="" /></button>
             <h2>{{ tx("医生详情") }}</h2>
             <header class="dental-modal-profile"><div class="dental-modal-profile__portrait"><img :src="selectedDoctor.portrait" :alt="tx(selectedDoctor.name)" /></div><div class="dental-modal-profile__details"><div class="dental-modal-profile__identity"><h3>{{ tx(selectedDoctor.name) }}</h3><p>{{ tx(selectedDoctor.title) }}</p></div><span><img src="/images/figma/doctor-modal-hospital.svg" alt="" />{{ tx(selectedDoctor.hospital) }}</span><small><img src="/images/figma/doctor-modal-experience.svg" alt="" />{{ tx(displayDentalExperience(selectedDoctor.experience)) }}</small></div></header>
-            <nav class="dental-modal-tabs"><button v-for="tab in ([['profile', '医生简介'], ['cases', '案例集'], ['reviews', '患者评价']] as const)" :key="tab[0]" type="button" :class="{ active: doctorTab === tab[0] }" @click="doctorTab = tab[0]">{{ tx(tab[1]) }}<template v-if="doctorTab !== 'profile'"><span v-if="tab[0] === 'cases'">（32）</span><span v-if="tab[0] === 'reviews'">（128）</span></template></button></nav>
-            <div v-if="doctorTab === 'profile'" class="dental-modal-panel"><p>{{ tx(selectedDoctor.bio ?? `${selectedDoctor.name}，${selectedDoctor.title}，从事口腔临床工作${selectedDoctor.experience.replace('经验', '')}。擅长复杂种植、数字化修复和跨境患者治疗方案设计，为国际患者提供清晰的治疗路径。`) }}</p><h4>{{ tx("专业资质") }}</h4><ul><li v-for="credential in (selectedDoctor.credentials ?? ['医师执业证书（可查）', '主任医师职称', '国际口腔种植学会会员', '多语种医疗沟通经验'])" :key="credential"><img src="/images/figma/doctor-modal-credential.svg" alt="" />{{ tx(credential) }}</li></ul></div>
-            <div v-else-if="doctorTab === 'cases'" class="dental-modal-list dental-modal-list--cases"><article><b>{{ tx("半口种植 · 数字化导板") }}</b><p>{{ tx("美国患者，半口缺牙多年。采用数字化导板精准种植，2次到诊完成。整体费用较美国节省约65%。") }}</p><small>{{ tx("上海 · 2025.08 · 已匿名授权") }}</small></article><article><b>{{ tx("单颗后牙种植") }}</b><p>{{ tx("新加坡患者，后牙缺失伴骨量不足。完成植骨+种植，全程1次到诊+远程复诊。") }}</p><small>{{ tx("上海 · 2025.05 · 已匿名授权") }}</small></article><article><b>{{ tx("美学区种植修复") }}</b><p>{{ tx("菲律宾患者，上颌半口牙缺失伴重度骨吸收。完成4枚植体半口即刻负重，全程2次到诊+远程复诊。") }}</p><small>{{ tx("上海 · 2025.03 · 已匿名授权") }}</small></article></div>
-            <div v-else class="dental-modal-list dental-modal-list--reviews"><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("美国 · 半口种植") }}</h3><p>{{ tx("从咨询到回国的每一步都有人安排妥当，翻译全程陪同，和医生沟通毫无障碍。种牙过程比想象中轻松太多。") }}</p><small><i>—</i>{{ tx("2025.08 · 已匿名授权 · 来自生活服务平台") }}</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("澳大利亚 · 隐形矫正") }}</h3><p>{{ tx("出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。") }}</p><small><i>—</i>{{ tx("2025.06 · 已匿名授权 · 来自生活服务平台") }}</small></article><article><b><img src="/images/figma/doctor-review-star.svg" alt="" />5.0</b><h3>{{ tx("澳大利亚 · 隐形矫正") }}</h3><p>{{ tx("出发前就拿到了完整的治疗方案和报价单，每一项费用写得清清楚楚。在中国看牙的体验远超我的预期。") }}</p><small><i>—</i>{{ tx("2025.06 · 已匿名授权 · 来自生活服务平台") }}</small></article></div>
+            <nav class="dental-modal-tabs"><button type="button" :class="{ active: doctorTab === 'profile' }" @click="doctorTab = 'profile'">{{ tx('医生简介') }}</button><button v-if="dentalPhysicianCases(selectedDoctor).length" type="button" :class="{ active: doctorTab === 'cases' }" @click="doctorTab = 'cases'">{{ tx('案例集') }}</button><button v-if="selectedDoctor.reviews.length" type="button" :class="{ active: doctorTab === 'reviews' }" @click="doctorTab = 'reviews'">{{ tx('患者评价') }}</button></nav>
+            <div v-if="doctorTab === 'profile'" class="dental-modal-panel"><p>{{ tx(selectedDoctor.bio || selectedDoctor.specialty) }}</p><template v-if="selectedDoctor.credentials.length"><h4>{{ tx('专业资质') }}</h4><ul><li v-for="credential in selectedDoctor.credentials" :key="credential"><img src="/images/figma/doctor-modal-credential.svg" alt="" />{{ tx(credential) }}</li></ul></template></div>
+            <div v-else-if="doctorTab === 'cases'" class="dental-modal-list dental-modal-list--cases"><article v-for="item in dentalPhysicianCases(selectedDoctor)" :key="item.id"><b>{{ tx(item.title) }}</b><p v-if="item.description">{{ tx(item.description) }}</p><img v-for="picture in item.images" :key="picture.src" :src="picture.thumbnail || picture.src" :alt="tx(picture.alt)" style="max-width:100%;height:auto" /></article></div>
+            <div v-else class="dental-modal-list dental-modal-list--reviews"><article v-for="review in selectedDoctor.reviews" :key="review.content"><h3>{{ tx(review.service) }}</h3><p>{{ tx(review.content) }}</p><small>{{ tx(review.source) }}</small></article></div>
           </section>
         </div>
       </Transition>
     </Teleport>
   </div>
+  <component :is="dentalSourceDialog(desktopDoctorTab)" v-if="selectedDoctor&&!desktopDoctors&&selectedDoctor.sourceProfile" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
   <component :is="dentalSourceDialog(0,true)" v-if="institutionOpen&&desktopDoctors" institution :doctor="dentalCurrentDoctors.find(doctor=>doctor.id===institutionDoctorId)" @close="institutionOpen=false" />
   <component :is="dentalSourceDialog(desktopDoctorTab)" v-if="selectedDoctor&&desktopDoctors" :doctor="selectedDoctor" :initial-tab="desktopDoctorTab" @close="closeDoctor" />
 </template>
@@ -781,7 +765,7 @@ onBeforeUnmount(() => {
 .dental-doctor-card__button {
   font-size: 14px;
 }
-@media (hover:hover) {
+@media (hover:hover) and (min-width:901px) {
   .dental-doctor-card,.dental-doctor-card:hover,.dental-doctor-card.selected { box-shadow:none; transform:none; }
   .dental-doctor-card__button { opacity:0; transition:opacity 180ms ease; }
   .dental-doctor-card:hover .dental-doctor-card__button,.dental-doctor-card:focus-within .dental-doctor-card__button { opacity:1; }
@@ -1219,7 +1203,8 @@ onBeforeUnmount(() => {
     margin-top: -64px;
   }
   .dental-hero {
-    height: 560px;
+    height: auto;
+    min-height: 560px;
     padding-top: 64px;
   }
   .dental-hero__backdrop {

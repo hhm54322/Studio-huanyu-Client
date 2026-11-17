@@ -140,12 +140,12 @@ const revenue = () => newPatients() * 80000
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center text-[#1A365D] mb-10">详细功能对比</h2>
         <div class="overflow-x-auto rounded-xl">
-          <table class="w-full text-sm" style="min-width: 480px">
+          <table class="w-full table-fixed text-xs sm:text-sm">
             <thead>
               <tr class="border-b-2 border-[#1A365D]">
-                <th class="text-left py-4 px-4 font-semibold text-[#1A365D] whitespace-nowrap">功能对比</th>
-                <th class="text-center py-4 px-4 font-semibold text-[#1A365D] whitespace-nowrap">Pro版</th>
-                <th class="text-center py-4 px-4 font-semibold text-[#D69E2E] whitespace-nowrap">Enterprise版</th>
+                <th class="text-left py-4 px-2 sm:px-4 font-semibold text-[#1A365D]">功能对比</th>
+                <th class="text-center py-4 px-2 sm:px-4 font-semibold text-[#1A365D]">Pro版</th>
+                <th class="text-center py-4 px-2 sm:px-4 font-semibold text-[#D69E2E] break-words">Enterprise版</th>
               </tr>
             </thead>
             <tbody>
@@ -154,12 +154,12 @@ const revenue = () => newPatients() * 80000
                 :key="i"
                 :class="i % 2 === 0 ? 'bg-[#F7FAFC]' : 'bg-white'"
               >
-                <td class="py-3 px-4 text-gray-700">{{ row.feature }}</td>
-                <td class="text-center py-3 px-4">
+                <td class="py-3 px-2 sm:px-4 text-gray-700 break-words">{{ row.feature }}</td>
+                <td class="text-center py-3 px-2 sm:px-4">
                   <Check v-if="row.pro" class="w-5 h-5 text-emerald-500 mx-auto" />
                   <X v-else class="w-5 h-5 text-gray-300 mx-auto" />
                 </td>
-                <td class="text-center py-3 px-4">
+                <td class="text-center py-3 px-2 sm:px-4">
                   <Check v-if="row.enterprise" class="w-5 h-5 text-[#D69E2E] mx-auto" />
                   <X v-else class="w-5 h-5 text-gray-300 mx-auto" />
                 </td>

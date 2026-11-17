@@ -161,5 +161,23 @@
       "budgetHint": "Semua jumlah dalam USD dan hanya menerangkan bajet anda, bukan sebut harga perubatan.",
       "request": "Permintaan"
     }
+  },
+  "dentalScan": {
+    "label": "IMBASAN PELAN AI · DENTAL SCAN",
+    "choose": "Pilih perkhidmatan pergigian",
+    "duration": "Tempoh",
+    "whiten": "Pratonton pemutihan",
+    "price": "Harga rujukan",
+    "hint": "Tuding pada gigi untuk melihat perkhidmatan dan harga rujukan",
+    "whitenOn": "Pratonton pemutihan · Hidup",
+    "description": {
+      "whitening": "Pemutihan di klinik atau di rumah",
+      "veneer": "Venir porselin · Estetika gigi hadapan",
+      "aligner": "Penjajar lutsinar · Susulan jarak jauh",
+      "periodontal": "Pembersihan ultrasonik · Rawatan gusi",
+      "root-canal": "Rawatan akar mikroskopik · Tampalan hangat",
+      "crown": "Zirkonia · Pemulihan estetik",
+      "implant": "Implan berpandukan digital · Pemulihan segera"
+    }
   }
 }

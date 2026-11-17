@@ -78,7 +78,7 @@ const actions=computed<Record<string,HomeSourceAction>>(()=>{
 })
 const hidden=computed(()=>{
   const ids=[model.value.cta.id,...(stuck.value&&model.value.tabs?[model.value.tabs.id]:[]),...(showFloatingClose.value?[model.value.close.id]:[])]
-  if(!phone.value&&!yaoying.value&&selected.value){
+  if(!yaoying.value&&selected.value){
     // The source accidentally repeats specialty chips inside International
     // Services. Retain the real service list instead of presenting them twice.
     ids.push('1626:347')
@@ -139,8 +139,9 @@ const nodeStyles=computed(()=>{
     const heroImage=m.hero.children[0]!
     const card=hospitalCards[phone.value?'mobile':'desktop'].find(card=>card.name===props.hospitalName)
     const image=card&&descendants(card.photo).find(n=>n.css.includes('url('))
-    const imageUrl=image?.css.match(/url\(([^)]+)\)/)?.[1]||selected.value?.image
+    const imageUrl=image?.css.match(/url\(([^)]+)\)/)?.[1]||(!phone.value?selected.value?.image:undefined)
     if(imageUrl&&selected.value?.id!==1)result[heroImage.id]=`background-image:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.2) 50%,transparent),url(${imageUrl});background-position:center;background-size:cover;`
+    else if(!imageUrl&&selected.value?.id!==1)result[heroImage.id]='background-image:linear-gradient(135deg,#173c66,#4e83a8);'
     const en=allNodes.value.find(n=>n.text==='Shanghai SinoUnited Hospital')!
     result[en.id]='width:calc(100% - 32px);height:auto;white-space:normal;'
   }
@@ -172,7 +173,7 @@ const attributes=computed(()=>{
       result[node.id]={role:'tab','aria-selected':activeTab.value===index,tabindex:activeTab.value===index?0:-1,'aria-controls':'hospital-tab-content'}
     }
   }
-  if(phone.value&&localized.value)for(const tabs of [model.value.tabs,stickyTabNode.value].filter(Boolean) as SourceNode[]) {
+  if(phone.value)for(const tabs of [model.value.tabs,stickyTabNode.value].filter(Boolean) as SourceNode[]) {
     result[tabs.id]={...result[tabs.id],'data-hospital-tabs':true}
     for(const row of descendants(tabs).filter(node=>node.children.some(child=>child.name==='Button'&&tabNames.includes(hospitalText(child)))))
       result[row.id]={...result[row.id],'data-hospital-tab-row':true}

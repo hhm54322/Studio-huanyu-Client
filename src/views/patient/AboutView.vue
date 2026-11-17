@@ -12,10 +12,17 @@ const activeCase = ref(0)
 const complexModalOpen = ref(false)
 const modalCloseButton = ref<HTMLButtonElement | null>(null)
 const complexModal = ref<HTMLElement | null>(null)
+const mobileViewport = ref(typeof window !== 'undefined' && window.innerWidth <= 900)
 const expandedTrustCards = ref<number[]>([])
 let complexTrigger: HTMLElement | null = null
 const specialtyRoots = [null, oncologySource.root, chronicSource.root, dentalSource.root] as (HomeSourceNodeData | null)[]
 const specialtySource = computed(() => specialtyRoots[activeCase.value] ?? null)
+const mobileSpecialtyCards = computed(() => specialtySource.value?.children[0]?.children.map(card=>{
+  const copy:HomeSourceNodeData[]=[]
+  const collect=(node:HomeSourceNodeData)=>{if(node.type==='TEXT'&&node.text.trim())copy.push(node);node.children.forEach(collect)}
+  collect(card)
+  return {id:card.id,title:copy[0]?.text||'',copy:copy.slice(1).map(node=>node.text).join('\n')}
+})||[])
 let previousBodyOverflow = ''
 
 const complexDetail = {
@@ -113,7 +120,6 @@ function openConsultation() {
 
 async function openComplexCase(index: number) {
   activeCase.value = index
-  if (index !== 0 && window.innerWidth <= 900) return
   complexTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
   complexModalOpen.value = true
   await nextTick()
@@ -154,8 +160,10 @@ watch(complexModalOpen, (complexOpen) => {
   } else document.body.style.overflow = previousBodyOverflow
 })
 
-onMounted(() => window.addEventListener('keydown', handleComplexModalKeydown))
+function updateMobileViewport(){mobileViewport.value=window.innerWidth<=900}
+onMounted(() => {window.addEventListener('keydown', handleComplexModalKeydown);window.addEventListener('resize',updateMobileViewport,{passive:true})})
 onUnmounted(() => {
+  window.removeEventListener('resize',updateMobileViewport)
   window.removeEventListener('keydown', handleComplexModalKeydown)
   if (complexModalOpen.value) document.body.style.overflow = previousBodyOverflow
 })
@@ -198,7 +206,7 @@ onUnmounted(() => {
         <div class="complex-grid">
           <article v-for="(item, index) in complexCases" :key="item.title" class="complex-card" :class="{ 'complex-card--active': activeCase === index, 'complex-card--knee': index === 0 }" :aria-current="activeCase === index ? 'true' : undefined" :style="{ '--reveal-delay': `${index * 60}ms`, '--complex-image': `url(${item.background})`, '--complex-desktop-image': `url(${item.desktopBackground})` }" data-reveal role="button" tabindex="0" @click="openComplexCase(index)" @keydown.enter.self.prevent="openComplexCase(index)" @keydown.space.self.prevent="openComplexCase(index)">
             <img class="about-card-icon" :src="item.icon" :data-figma-node="item.nodeId" alt="" aria-hidden="true" /><div class="about-card-body"><h3>{{ tx(item.title) }}</h3><p>{{ tx(item.copy) }}</p>
-            <button v-if="index === 0" class="complex-card__read" type="button" @click.stop="openComplexCase(index)">{{ tx("阅读全文 ") }}<img src="/images/figma/about-revision/node-484-2534.svg" alt="" aria-hidden="true" /></button></div>
+            <span class="complex-card__read">{{ tx("阅读全文 ") }}<img src="/images/figma/about-revision/node-484-2534.svg" alt="" aria-hidden="true" /></span></div>
           </article>
         </div>
       </div>
@@ -243,7 +251,8 @@ onUnmounted(() => {
       <div v-if="complexModalOpen" class="complex-detail-backdrop" role="presentation" @click.self="closeComplexCase">
         <section ref="complexModal" class="complex-detail-modal" :class="{ 'complex-detail-modal--specialty': specialtySource }" role="dialog" aria-modal="true" :aria-labelledby="specialtySource ? undefined : 'complex-detail-title'" :aria-label="tx(specialtySource ? complexCases[activeCase]?.title : undefined)">
           <button ref="modalCloseButton" class="complex-detail-close" type="button" :aria-label="tx('关闭复杂病例详情')" @click="closeComplexCase"><img src="/images/figma/about-complex/icon-close.svg" alt="" aria-hidden="true" /></button>
-          <HomeSourceNode v-if="specialtySource" :node="specialtySource" root />
+          <div v-if="specialtySource&&mobileViewport" class="mobile-specialty-detail"><h2>{{tx(complexCases[activeCase]?.title)}}</h2><p>{{tx(complexCases[activeCase]?.copy)}}</p><article v-for="card in mobileSpecialtyCards" :key="card.id"><h3>{{tx(card.title)}}</h3><p>{{tx(card.copy)}}</p></article></div>
+          <HomeSourceNode v-else-if="specialtySource" :node="specialtySource" root />
           <template v-else>
           <div class="complex-detail-row complex-detail-row--title"><h2 id="complex-detail-title">{{ tx(complexDetail.title) }}</h2></div>
           <section class="complex-detail-row"><h3>{{ tx("1、疾病是什么？") }}</h3><p>{{ tx(complexDetail.disease) }}</p></section>
@@ -261,6 +270,7 @@ onUnmounted(() => {
 
 <style scoped>
 .about-card-icon { display: block; width: 32px; height: 32px; flex: 0 0 32px; position: relative; z-index: 1; }
+.mobile-specialty-detail{display:grid;gap:14px;padding-right:4px;color:#1e3a5f}.mobile-specialty-detail h2{margin:0 38px 0 0;font-size:24px;line-height:1.4;overflow-wrap:anywhere}.mobile-specialty-detail>p,.mobile-specialty-detail article p{margin:0;color:#4b5563;font-size:15px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.mobile-specialty-detail article{padding:18px;border-radius:16px;background:#f5f6f7}.mobile-specialty-detail h3{margin:0 0 8px;font-size:16px;line-height:1.4}
 .about-card-body { width: 100%; min-width: 0; position: relative; z-index: 1; }
 .about-page { -webkit-font-smoothing: antialiased; text-spacing-trim: space-all; }
 .proof-card:not(:first-child) .about-card-body p { letter-spacing: -0.15px; }

@@ -15,6 +15,7 @@ declare module 'vue' {
     DentalDoctorPageContent: typeof import('./src/components/common/DentalDoctorPageContent.vue')['default']
     DentalDoctorSourceDialog: typeof import('./src/components/common/DentalDoctorSourceDialog.vue')['default']
     DentalPhysicianDocumentContent: typeof import('./src/components/common/DentalPhysicianDocumentContent.vue')['default']
+    DentalScanShowcase: typeof import('./src/components/common/DentalScanShowcase.vue')['default']
     DentalSourceCanvas: typeof import('./src/components/common/DentalSourceCanvas.vue')['default']
     HomeExpertDialog: typeof import('./src/components/common/HomeExpertDialog.vue')['default']
     HomeFigmaSection: typeof import('./src/components/common/HomeFigmaSection.vue')['default']

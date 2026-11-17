@@ -22,8 +22,8 @@ const scenarioDetails = [
   {
     sections: [
       { title: '适用人群：', lines: ['已确诊，计划来华做择期治疗（种植、肿瘤、体检等）', '本国费用过高或排队过久', '持高端国际医疗保险'] },
-      { title: '为什么需要单独配置：', lines: ['常规医疗险常将“既往症”与“术后并发症”列为除外', '跨境就医的二次治疗成本更高（往返、住宿）', '可与原保单叠加赔付，互为补充'] },
-      { title: '购买与理赔要点：', lines: ['购买时机：手术前购买，术后投保无效', '等待期：通常无等待期，投保次日生效', '保额建议：覆盖一次往返 + 30天住宿 + 预估治疗费', '理赔：凭术后诊断与原手术记录申请'] },
+      { title: '需要准备：', lines: ['保单首页 + 条款页复印件', '完整医疗报告（中英对照）', '费用明细清单+发票原件'] },
+      { title: '如何操作：', lines: ['保单解读与覆盖判断', '联系保险公司获取预授权', '确认担保信(GoC)申请流程'] },
     ],
     note: '即使保险不覆盖，来华治疗总费用通常仍比欧美低60-72%，且可事前获得书面费用预估，分项报价无隐形消费',
   },
@@ -54,13 +54,9 @@ const pathDetails = [
   { title: '需要准备：', lines: ['保单首页 + 条款页复印件', '完整医疗报告（中英对照）', '费用明细清单+发票原件', '理赔申请表+收款账户信息'], facts: [['3–7天', '入院速度'], ['全额', '垫付金额'], ['任何保险', '适用保险'], ['材料整理', '平台服务']] },
   { title: '服务内容：', lines: ['保单解读与覆盖判断', '材料复核与完整性检查', '拒赔申诉文书撰写', '与保险公司直接沟通协调'], facts: [['视协商', '入院速度'], ['可分期', '垫付金额'], ['任何保险', '适用保险'], ['全程协助', '平台服务']] },
 ]
-const assessmentResult = computed(() => {
-  const direct = !insurer.value || canAdvance.value === '不可以' || insurer.value === 'Allianz' || insurer.value === 'Cigna'
-  return {
-    likelihood: insurer.value && visitTime.value && canAdvance.value ? (direct ? '高' : '待核实') : '高',
-    method: direct ? '直赔' : '先付后赔',
-  }
-})
+// The form does not have access to a policy or insurer authorization, so it
+// cannot infer coverage or direct billing from a company name alone.
+const assessmentResult = computed(() => ({ likelihood: '待核实', method: '待核实' }))
 function toggleScenario(index: number) {
   scenario.value = index
   expandedScenarios.value = expandedScenarios.value.includes(index)

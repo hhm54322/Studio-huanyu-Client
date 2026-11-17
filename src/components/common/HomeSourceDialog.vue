@@ -29,10 +29,13 @@ const photoHoverViewport = ref<HTMLElement | null>(null)
 const photos = props.photoCarousel ? homeStoryDetailPhotoIds.map(id=>homeDesktopNodes.get(id)!) : []
 const { activeIndex:photoIndex, select:selectPhoto, paused:photosPaused, togglePause:togglePhotos } = useAutoplayCarousel(photoViewport, props.photoCarousel ? photos.length : 0, { hoverTarget: photoHoverViewport })
 const photoDots=['1466:859','1466:860','1466:861','1466:862','1466:863']
+const mobilePhotoDots=['1543:55','1543:56','1543:57','1543:58','1543:59']
 const showPhotos=computed(()=>props.photoCarousel&&!mobile.value)
+const showMobilePhotos=computed(()=>props.photoCarousel&&mobile.value)
 const sourceActions=computed(()=>({
   ...props.actions,
   ...(showPhotos.value ? Object.fromEntries(photoDots.map((id,index)=>[id,{action:`photo:${index}`,label:`查看第${index+1}张患者照片`}])) : {}),
+  ...(showMobilePhotos.value ? Object.fromEntries(mobilePhotoDots.map((id,index)=>[id,{action:`photo:${index}`,label:`查看第${index+1}张患者照片`}])) : {}),
 }))
 const photoDotStyles=computed(()=>{
   let left=0
@@ -67,8 +70,12 @@ const nodeStyles = computed(()=>{
     result['1407:28']+='background:#fff;'
     result['1407:30']='border-radius:24px;'
   }
+  if(showMobilePhotos.value) {
+    result['1543:54']='z-index:2;'
+    for(const [index,id] of mobilePhotoDots.entries()) result[id]=`background:${index===photoIndex.value?'#DD6B20':'rgba(255,255,255,.45)'};cursor:pointer;`
+  }
   for(const id of fixedRoots) result[id]='overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;'
-  if(!adaptive.value) return result
+  if(!mobile.value) return result
   function visit(item:HomeSourceNodeData,parent?:HomeSourceNodeData,fixed=false){
     if(fixed) return
     if(fixedRoots.includes(item.id)) {
@@ -78,7 +85,11 @@ const nodeStyles = computed(()=>{
     const horizontal=parent?.layoutCss?.includes('display: flex;')&&!parent?.layoutCss?.includes('flex-direction: column;')
     const absolute=item.layoutCss?.includes('position:absolute;')
     let css='max-width:100%;'
-    if(item.type==='TEXT') css+=/^\d{1,2}$/.test(item.text)?'width:max-content;max-width:none;height:auto;white-space:pre;overflow-wrap:normal;':'height:auto;white-space:pre-wrap;overflow-wrap:anywhere;'
+    if(item.type==='TEXT') {
+      css+=/^\d{1,2}$/.test(item.text)?'width:max-content;max-width:none;height:auto;white-space:pre;overflow-wrap:normal;':'height:auto;white-space:pre-wrap;overflow-wrap:anywhere;'
+      if(item.id===titleId.value) css+='width:100%;text-align:left;line-height:1.4;'
+      else if(item.text.length>70) css+='text-align:left;'
+    }
     else if(!item.svg&&!props.actions[item.id]&&!absolute&&item.width>40) {
       css+=horizontal?'flex:1 1 0;width:0;':'width:100%;'
       css+='height:auto;'
@@ -87,11 +98,17 @@ const nodeStyles = computed(()=>{
     if(item.children.some(child=>child.id===titleId.value)) result[item.id]+='width:calc(100% - 36px);'
     if(props.actions[item.id]?.action?.endsWith(':close')) result[item.id]='left:auto;right:8px;z-index:2;'
     if(item.id==='1543:53') result[item.id]+='aspect-ratio:3/2;height:auto;'
-    if(item.id==='1543:54') result[item.id]='top:auto;bottom:12px;left:50%;right:auto;width:112px;transform:translateX(-50%);'
+    if(item.id==='1543:54') result[item.id]='top:auto;bottom:12px;left:50%;right:auto;width:112px;transform:translateX(-50%);z-index:2;'
     item.children.forEach(child=>visit(child,item))
   }
-  visit(node.value)
-  result[node.value.id]='width:100%;height:auto;'
+  if(adaptive.value) {
+    visit(node.value)
+    result[node.value.id]='width:100%;height:auto;'
+  } else {
+    result[titleId.value]=(result[titleId.value]||'')+'width:100%;height:auto;white-space:normal;text-align:left;line-height:1.4;'
+    const visitText=(item:HomeSourceNodeData)=>{if(item.type==='TEXT'&&item.text.length>70)result[item.id]=(result[item.id]||'')+'text-align:left;';item.children.forEach(visitText)}
+    visitText(node.value)
+  }
   return result
 })
 let originalOverflow=''
@@ -130,8 +147,9 @@ onBeforeUnmount(()=>{
     <dialog ref="dialog" class="home-source-dialog" :class="{'is-mobile':mobile}" aria-labelledby="home-source-dialog-title" @cancel.prevent="emit('close')" @click="closeOutside">
       <div class="home-source-dialog__position" :style="mobile?undefined:{width:`${node.width*scale}px`,height:`${renderHeight*scale}px`}">
         <div class="home-source-dialog__canvas" :style="mobile?undefined:{width:`${node.width}px`,height:`${renderHeight}px`,transform:`scale(${scale})`}">
-          <HomeSourceNode :node="node" root :fluid="adaptive" :fixed-roots="fixedRoots" :actions="sourceActions" :texts="texts" :styles="nodeStyles" :attributes="attributes" :hidden="showPhotos ? ['1407:20','1466:858'] : undefined" @layout="localizedHeight=$event" @activate="activate">
+          <HomeSourceNode :node="node" root :fluid="adaptive" :fixed-roots="fixedRoots" :actions="sourceActions" :texts="texts" :styles="nodeStyles" :attributes="attributes" :hidden="showPhotos ? ['1407:20','1466:858'] : showMobilePhotos ? ['1543:53'] : undefined" @layout="localizedHeight=$event" @activate="activate">
             <template #after="{node:sourceNode}">
+              <div v-if="showMobilePhotos&&sourceNode.id==='1543:52'" ref="photoViewport" class="home-mobile-story-photos" role="region" :aria-label="tx('患者就医照片')" @keydown="photoKey"><div ref="photoHoverViewport" class="home-mobile-story-photos__images"><div v-for="(photo,index) in photos" :key="photo.id" class="home-mobile-story-photos__image" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" role="img" :aria-label="tx(`Michael W. 的第${index+1}张就医照片`)"><HomeSourceNode :node="photo" root /></div></div></div>
               <div v-if="showPhotos && sourceNode.id==='1407:19'" ref="photoViewport" class="home-story-photos" role="region" :aria-roledescription="tx('轮播')" :aria-label="tx('患者就医照片')" :data-story-detail-state="photoIndex+1" @keydown="photoKey">
                 <div ref="photoHoverViewport" class="home-story-photos__images" :aria-label="tx('患者照片')">
                   <div v-for="(photo,index) in photos" :key="photo.id" class="home-story-photos__photo" :class="{'is-active':index===photoIndex}" :aria-hidden="index!==photoIndex" :data-detail-photo="index+1" role="img" :aria-label="tx(`Michael W. 的第${index+1}张就医照片`)"><HomeSourceNode :node="photo" root /></div>
@@ -156,6 +174,8 @@ onBeforeUnmount(()=>{
 .home-source-dialog__canvas { transform-origin:top left; font-family:'PingFang SC',sans-serif; }
 .home-source-dialog.is-mobile { padding:16px 16px 36px; }
 .is-mobile .home-source-dialog__position,.is-mobile .home-source-dialog__canvas { width:100%; }
+.home-mobile-story-photos{position:absolute;inset:0;overflow:hidden;border-radius:24px;z-index:1}.home-mobile-story-photos__images,.home-mobile-story-photos__image{position:absolute;inset:0}.home-mobile-story-photos__image{opacity:0;transition:opacity .5s ease}.home-mobile-story-photos__image.is-active{opacity:1}.home-mobile-story-photos__image :deep(.home-source-node--root){width:100%!important;height:100%!important;background-position:center!important;background-size:cover!important}
+@media (prefers-reduced-motion:reduce){.home-mobile-story-photos__image{transition:none}}
 .home-source-dialog :deep(button:focus-visible),.home-source-dialog :deep([tabindex="0"]:focus-visible) { outline:2px solid #2563eb; outline-offset:2px; }
 .home-story-photos { position:absolute; inset:0; }
 .home-story-photos__images { position:absolute; inset:0; pointer-events:none; }

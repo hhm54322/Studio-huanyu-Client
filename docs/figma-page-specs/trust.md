@@ -179,3 +179,8 @@ The complete one-to-one filename, order, size, and Node ID mapping for all 29 ex
 - 当前桌面主页面、独立FAQ、保障卡、JCI及7篇长文均在开发/生产回归；慢下载切换、关闭重开与焦点/滚动恢复通过。源及截图专项门禁通过，移动设计冻结。
 - 同条件LCP中位2348→2280ms；滚动脚本32.7→16.9ms。长文原本随首屏准备，拆分后首次JCI/费用长文点击约增加0.2秒，缓存重开不重复请求；不宣称所有首次点击提速。
 - 证据：`artifacts/performance-exhaustive-2026-11-01/{final-verification.json,final-source-summary.json,detail-open/qa.json,runtime/final-interleaved.json}`及对应的`artifacts/figma-content-2026-10-22/`静态/交互证据。
+
+### 2026-11-17 手机长文入口复核（进行中）
+- 当前会话 Figma 连接已验证：2026-11-17T03:50:11Z，IAB 3 / tab 2。最新官方导出 `(23).fig`；`artifacts/figma-source-gate/mobile-trust-current-20261117.json` 对比同次检查源 `(22).fig`，主节点 `143:2528` 及文章 `1595:3491/3519/3547/3477/3505/3533/3561` 未变化。历史原始导出曾比对至 2026-11-01 存档的证据在 `performance-trust-articles-final.json`；原始 .fig 同名文件已被覆盖，不能把本次两份近期导出视作原始基线复核。
+- 检查发现桌面已接入的七篇长文及两个工具条目在手机模板被条件隐藏。移动端将沿用每篇已归档的设计正文及原 JCI 流式弹窗，恢复入口；不将未接入内容伪装为已开放。修改后仍须实际核验各篇、五语及屏幕尺寸；本页状态保持进行中。
+- 实际手机复核：8篇文章分别打开、关闭并检查正文及滚动；英语、印尼语、马来语、葡语各8篇正文无中文残留。已在生产预览和公网确认入口。具体结果是移动可用性验证，不替代桌面 Figma 全节点验收。
