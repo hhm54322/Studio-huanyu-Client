@@ -89,7 +89,7 @@ export function articleControls(source: string, article?: string) {
     for (const [key, nodeId] of [['assessment', '143:3087'], ['visa', '143:3091'], ['medication-entry', '143:3099'], ['companions', '143:3103'], ['muslim', '143:3107'], ['steps-flow', '143:3111']]) {
       const entry = toolkitArticles[key!]
       if (!entry || !nodeId || !key) continue
-      actions[nodeId] = { href: `/steps/toolkit-detail?article=${key}`, label: entry.title }
+      actions[nodeId] = { href: `/guides/${key}`, label: entry.title }
       attributes[nodeId] = article === key ? { 'aria-current': 'page' } : {}
     }
     attributes['143:3074'] = { role: 'heading', 'aria-level': 1 }

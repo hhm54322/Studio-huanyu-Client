@@ -2,12 +2,13 @@ import type { Plugin } from 'vite'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+import { guideKeys, guidePath } from '../src/data/guideRoutes'
 
 // The shell is build-generated and contains no patient data. API, report,
 // authentication, expert and administration navigations stay network-only.
 export const publicPatientRoutes = [
   '/', '/why-china', '/trust', '/insurance', '/hospitals', '/doctors',
-  '/cases', '/dental', '/diseases-technologies', '/steps', '/steps/toolkit-detail', '/about',
+  ...guideKeys.map(guidePath), '/cases', '/dental', '/diseases-technologies', '/steps', '/steps/toolkit-detail', '/about',
 ]
 
 export function patientCachePlugin(): Plugin {

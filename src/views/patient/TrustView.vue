@@ -408,9 +408,9 @@ function openConsultation() {
                 <p>{{ tx(item.copy) }}</p>
                 <RouterLink v-if="stageIndex === 0 && itemIndex === 0" to="/steps/toolkit-detail">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="stageIndex === 1 && itemIndex === 0" to="/steps/toolkit-detail?article=visa">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="stageIndex === 1 && itemIndex === 0" to="/guides/visa">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
-                <RouterLink v-else-if="stageIndex === 2 && itemIndex === 0" to="/steps/toolkit-detail?article=steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
+                <RouterLink v-else-if="stageIndex === 2 && itemIndex === 0" to="/guides/steps-flow">{{ tx(" 阅读全文") }}<img class="arrow-icon" :src="trustAsset('Icon-2.svg')" alt="" aria-hidden="true" />
                 </RouterLink>
               </article>
             </div>

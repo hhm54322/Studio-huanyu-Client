@@ -12,7 +12,7 @@ export function patientCopyScope(path: string): string {
   path = path.replace(/\/$/, '') || '/'
   if (path === '/') return 'home'
   if (path.startsWith('/dental/doctors/')) return 'dental-doctor'
-  if (path === '/steps/toolkit-detail') return 'toolkit'
+  if (path === '/steps/toolkit-detail' || path.startsWith('/guides/')) return 'toolkit'
   if (path === '/cost' || path === '/cost-generated') return 'why-china'
   const scope = path.slice(1)
   return Object.prototype.hasOwnProperty.call(patientCopyViews, scope) ? scope : 'common'

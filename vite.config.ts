@@ -11,6 +11,7 @@ import { publicAssetCache } from './scripts/public-asset-cache'
 import { patientCachePlugin } from './scripts/patient-cache-plugin'
 import { patientLocalePlugin } from './scripts/patient-locale-plugin.mjs'
 import { patientCopyViews } from './src/i18n/patientCopyScopes'
+import { guideKeys, guidePath } from './src/data/guideRoutes'
 
 const assetCache = publicAssetCache(fileURLToPath(new URL('./public', import.meta.url)))
 
@@ -77,6 +78,7 @@ const patientEntryPreloadPlugin = (): Plugin => ({
         '/steps/toolkit-detail': 'ToolkitDetailView', '/about': 'AboutView',
       }
       const entries: Record<string, [string, string][]> = {}
+      const mobileEntries: Record<string, [string, string][]> = {}
       const localeChunks: Record<string, Record<string, string>> = {}
       for (const chunk of Object.values(bundle)) {
         if (chunk.type !== 'chunk') continue
@@ -101,11 +103,18 @@ const patientEntryPreloadPlugin = (): Plugin => ({
           const facade = chunk.facadeModuleId || ''
           if (facade.endsWith(`/src/views/patient/${view}.vue`)
             || facade.endsWith('/src/components/layout/PatientLayout.vue')
-            || route === '/dental' && facade.endsWith('/src/components/common/DentalDesktopFlow.vue')
             || Object.keys(chunk.modules).some(id => id.endsWith(`/src/views/patient/${view}.vue`))) visit(chunk.fileName)
         }
         const links = () => [...files].map(file => ['modulepreload', `/${file}`] as [string, string])
           .concat([...styles].map(file => ['preload', `/${file}`] as [string, string]))
+        // Preload only the active home/dental route on mobile. Keep the large
+        // desktop-only dental flow out of the phone's initial network queue.
+        if (route === '/' || route === '/dental') mobileEntries[route] = links()
+        if (route === '/dental') {
+          for (const chunk of Object.values(bundle)) {
+            if (chunk.type === 'chunk' && chunk.facadeModuleId?.endsWith('/src/components/common/DentalDesktopFlow.vue')) visit(chunk.fileName)
+          }
+        }
         entries[route] = links()
         if (route === '/steps/toolkit-detail') {
           for (const chunk of Object.values(bundle)) {
@@ -119,12 +128,13 @@ const patientEntryPreloadPlugin = (): Plugin => ({
           }
         }
       }
+      for (const key of guideKeys) entries[guidePath(key)] = [...entries['/steps/toolkit-detail'] || [], ...entries[`/steps/toolkit-detail?article=${key}`] || []]
       // Run before any blocking stylesheet: an inline script placed after a
       // stylesheet otherwise waits for that CSS before it can start requests.
-      // Only the current desktop route is preloaded, never other page/dialog
-      // dependencies. CSS keeps the same CORS mode as Vite's stylesheet links.
+      // Only the current route is preloaded; phones get a smaller home/dental
+      // set without desktop-only dental code. CSS uses Vite's CORS mode.
       const scopeRoutes = Object.fromEntries(Object.entries(routes).map(([path, view]) => [path, Object.keys(patientCopyViews).find(key => patientCopyViews[key] === view)]))
-      const script = `(function(){const entries=${JSON.stringify(entries)};const locales=${JSON.stringify(localeChunks)};const scopes=${JSON.stringify(scopeRoutes)};const route=location.pathname.replace(/\\/$/,'')||'/';let locale=(new URLSearchParams(location.search).get('lang')||'').toLowerCase().split(/[-_]/)[0];if(!['zh','en','id','ms','pt'].includes(locale)){try{locale=(localStorage.getItem('locale')||'zh').toLowerCase().split(/[-_]/)[0]}catch{locale='zh'}}const scope=route.startsWith('/dental/doctors/')?'dental-doctor':scopes[route];const links=[];for(const key of new Set(['common',scope])){const href=scope&&locales[locale]?.[key];if(href)links.push(['modulepreload','/'+href,'patient-locale'])}if(matchMedia('(min-width: 701px)').matches){const article=route==='/steps/toolkit-detail'?entries[route+'?article='+new URLSearchParams(location.search).get('article')]||[]:[];links.push(...[...entries[route]||[],...article].map(link=>[...link,'patient-entry']))}for(const [rel,href,kind] of links){if([...document.querySelectorAll('link')].some(link=>link.getAttribute('href')===href&&(link.rel===rel||rel==='preload'&&link.rel==='stylesheet')))continue;const link=document.createElement('link');link.rel=rel;link.href=href;link.crossOrigin='anonymous';if(rel==='preload')link.as='style';if(rel==='preload'&&link.as==='style'){link.dataset.huanyuStyleState='loading';link.addEventListener('load',()=>{link.dataset.huanyuStyleState='loaded'},{once:true});link.addEventListener('error',()=>{link.dataset.huanyuStyleState='error'},{once:true})}link.dataset.huanyuPreload=kind;document.head.appendChild(link)}})()`
+      const script = `(function(){const entries=${JSON.stringify(entries)};const mobileEntries=${JSON.stringify(mobileEntries)};const locales=${JSON.stringify(localeChunks)};const scopes=${JSON.stringify(scopeRoutes)};const route=location.pathname.replace(/\\/$/,'')||'/';let locale=(new URLSearchParams(location.search).get('lang')||'').toLowerCase().split(/[-_]/)[0];if(!['zh','en','id','ms','pt'].includes(locale)){try{locale=(localStorage.getItem('locale')||'zh').toLowerCase().split(/[-_]/)[0]}catch{locale='zh'}}const scope=route.startsWith('/dental/doctors/')?'dental-doctor':route.startsWith('/guides/')?'toolkit':scopes[route];const links=[];for(const key of new Set(['common',scope])){const href=scope&&locales[locale]?.[key];if(href)links.push(['modulepreload','/'+href,'patient-locale'])}if(matchMedia('(min-width: 701px)').matches){const article=route==='/steps/toolkit-detail'?entries[route+'?article='+new URLSearchParams(location.search).get('article')]||[]:[];links.push(...[...entries[route]||[],...article].map(link=>[...link,'patient-entry']))}else{links.push(...(mobileEntries[route]||[]).map(link=>[...link,'patient-entry']))}for(const [rel,href,kind] of links){if([...document.querySelectorAll('link')].some(link=>link.getAttribute('href')===href&&(link.rel===rel||rel==='preload'&&link.rel==='stylesheet')))continue;const link=document.createElement('link');link.rel=rel;link.href=href;link.crossOrigin='anonymous';if(rel==='preload')link.as='style';if(rel==='preload'&&link.as==='style'){link.dataset.huanyuStyleState='loading';link.addEventListener('load',()=>{link.dataset.huanyuStyleState='loaded'},{once:true});link.addEventListener('error',()=>{link.dataset.huanyuStyleState='error'},{once:true})}link.dataset.huanyuPreload=kind;document.head.appendChild(link)}})()`
       const recoverySource = readFileSync(fileURLToPath(new URL('./src/bootstrap/patientLoadRecovery.js', import.meta.url)), 'utf8')
       // The coordinator excludes reports/mobile from automatic retry and
       // never reloads any page once it is ready or the visitor has interacted.

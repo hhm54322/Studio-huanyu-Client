@@ -37,14 +37,14 @@ const phaseSections = [
   { id: 'after', no: '03', label: '在华&回国', title: '就诊随访工具', copy: '抵达中国就诊，出院回国后的资料与远程服务持续衔接。' },
 ]
 const travelTools = [
-  { icon: '/images/figma/steps-travel-visa.svg', title: '签证申请清单', copy: '梳理来华医疗签证所需材料、办理流程与时间参考，协助你准备入境就医手续', path: '/steps/toolkit-detail?article=visa', action: true },
+  { icon: '/images/figma/steps-travel-visa.svg', title: '签证申请清单', copy: '梳理来华医疗签证所需材料、办理流程与时间参考，协助你准备入境就医手续', path: '/guides/visa', action: true },
   { icon: '/images/figma/steps-travel-visa-free.svg', title: '免签国家清单', copy: '了解来华就医的现实条件、预算参考与治疗可能性。提供免费初步摸底与深度专家研判两种选择，辅助你理性做就医决策。', path: '', action: false },
   { icon: '/images/figma/steps-travel-medicine.svg', title: '药品入境规定', copy: '清晰了解个人自用药品入境规范、申报要求与禁限带清单，合规携带常用药物来华，避免入境受阻。', path: '', action: false },
   { icon: '/images/figma/steps-travel-family.svg', title: '家属陪同攻略', copy: '完整家属来华陪护指南，包含签证办理、出行住宿、院内陪护规则、双管家全程协助，让家属陪护省心、轻松、无负担。', path: '', action: false },
   { icon: '/images/figma/steps-travel-muslim.svg', title: '穆斯林患者实操手册', copy: '专属穆斯林患者来华就医全套生活、饮食、信仰、就医礼仪指南，尊重宗教习惯，全程适配清真生活方式。', path: '', action: false },
 ]
 const afterTools = [
-  { icon: '/images/figma/steps-aftercare-path.svg', title: '就医步骤与就诊流程', copy: '梳理从评估到完成治疗回国的全流程步骤，帮你清晰规划来华就医的每一个环节', path: '/steps/toolkit-detail?article=steps-flow', action: true },
+  { icon: '/images/figma/steps-aftercare-path.svg', title: '就医步骤与就诊流程', copy: '梳理从评估到完成治疗回国的全流程步骤，帮你清晰规划来华就医的每一个环节', path: '/guides/steps-flow', action: true },
   { icon: '/images/figma/steps-aftercare-followup.svg', title: '国际报告与回国随访', copy: '了解来华就医的现实条件、预算参考与治疗可能性。提供免费初步摸底与深度专家研判两种选择，辅助你理性做就医决策。', path: '', action: false },
 ]
 
@@ -56,8 +56,8 @@ const localizedCardHeights=ref<Record<string,number>>({})
 const sourceBaselineNodes = [...exactNodes.values()].filter(node => node.textLines).map(node => node.id)
 const sourceAttributes = Object.fromEntries(['204:5833', '204:5842', '204:5856', '204:5864', '204:5873', '204:6036', '204:6050'].map(id => [id, { role: 'heading', 'aria-level': 4 }]))
 const sourceActions: Record<string, HomeSourceAction> = {
-  '204:5846': { href: '/steps/toolkit-detail?article=visa' },
-  '204:6040': { href: '/steps/toolkit-detail?article=steps-flow' },
+  '204:5846': { href: '/guides/visa' },
+  '204:6040': { href: '/guides/steps-flow' },
 }
 
 </script>

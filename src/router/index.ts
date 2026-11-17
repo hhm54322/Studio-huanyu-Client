@@ -6,6 +6,7 @@ import { patientCopyScope } from '@/i18n/patientCopyScopes'
 import { resolveLocale, savedLocale } from '@/i18n/languages'
 import { useAppStore } from '@/stores/app'
 import { pendingPatientDesignRoutes } from '@/data/patientEntryAvailability'
+import { guideKeys } from '@/data/guideRoutes'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -138,10 +139,22 @@ const router = createRouter({
         {
           path: 'steps/toolkit-detail',
           name: 'patient-toolkit-detail',
+          beforeEnter: to => {
+            const key = typeof to.query.article === 'string' ? to.query.article : ''
+            if (!guideKeys.includes(key)) return
+            const query = { ...to.query }
+            delete query.article
+            return { path: `/guides/${key}`, query, hash: to.hash, replace: true }
+          },
+          component: () => import('@/views/patient/ToolkitDetailView.vue'),
+          meta: { title: '病历翻译与整理工具' },
+        },
+        {
+          path: 'guides/:article(assessment|companions|medication-entry|muslim|steps-flow|visa)',
+          name: 'patient-guide',
           beforeEnter: async to => {
-            if (typeof to.query.article !== 'string') return
             const { loadToolkitArticle } = await import('@/data/contentFigmaSource')
-            await loadToolkitArticle(to.query.article)
+            await loadToolkitArticle(String(to.params.article))
           },
           component: () => import('@/views/patient/ToolkitDetailView.vue'),
           meta: { title: '病历翻译与整理工具' },
@@ -208,6 +221,13 @@ router.onError((error, to) => {
 })
 
 router.afterEach((_to, _from, failure) => {
+  if (!failure && (_to.name === 'patient-guide' || _to.name === 'patient-toolkit-detail')) {
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel=canonical]')
+    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical) }
+    canonical.href = `https://www.huanyumedical.com${_to.path}`
+  } else if (!failure) {
+    document.querySelector('link[rel=canonical]')?.remove()
+  }
   if (!failure && document.documentElement.dataset.huanyuAppReady === 'true') window.__huanyuPatientLoad?.ready()
 })
 
@@ -218,7 +238,7 @@ router.beforeEach(async (to) => {
   // external link opens them directly; aborting the first navigation leaves
   // the shell in its loading-error state.
   if (pendingPatientDesignRoutes.has(to.path)) {
-    if (to.path === '/visa') return { path: '/steps/toolkit-detail', query: { article: 'visa' }, replace: true }
+    if (to.path === '/visa') return { path: '/guides/visa', replace: true }
     return { path: to.path === '/professional-report' ? '/report' : '/diseases-technologies', replace: true }
   }
   if (to.meta.side !== 'hospital') {

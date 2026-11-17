@@ -5,15 +5,20 @@ const { tx, locale } = useSiteCopy()
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import ContentArticleCanvas from '@/components/common/ContentArticleCanvas.vue'
+import { guidePath } from '@/data/guideRoutes'
 import { contentArticleRoot, contentDescendants, loadToolkitArticle, toolkitArticles } from '@/data/contentFigmaSource'
 const route = useRoute()
 const router = useRouter()
 // A query-only article change reuses this route, so its beforeEnter does not
 // run again. Finish loading before committing the new title/content together.
 onBeforeRouteUpdate(async to => {
-  if (typeof to.query.article === 'string') await loadToolkitArticle(to.query.article)
+  const key = typeof to.params.article === 'string' ? to.params.article : typeof to.query.article === 'string' ? to.query.article : ''
+  if (key) await loadToolkitArticle(key)
 })
-const article = computed(() => typeof route.query.article === 'string' && toolkitArticles[route.query.article] ? route.query.article : undefined)
+const article = computed(() => {
+  const key = typeof route.params.article === 'string' ? route.params.article : typeof route.query.article === 'string' ? route.query.article : ''
+  return toolkitArticles[key] ? key : undefined
+})
 watch(() => route.query.article, value => {
   // Unknown article keys must not silently display an unrelated article.
   if (value && (typeof value !== 'string' || !toolkitArticles[value])) void router.replace({ path: route.path })
@@ -101,7 +106,7 @@ const bottomLines = [
         <h1>{{ tx(toolkitArticles[article]!.title) }}</h1>
         <div class="toolkit-mobile-article-copy">{{ tx(mobileArticle.body) }}</div>
       </article>
-      <aside class="toolkit-detail-sidebar"><strong>{{ tx('来华就医全流程工具包') }}</strong><nav :aria-label="tx('工具包目录')"><RouterLink v-for="item in Object.values(toolkitArticles)" :key="item.key" :to="{path:'/steps/toolkit-detail',query:{article:item.key}}">{{ tx(item.title) }}</RouterLink></nav></aside>
+      <aside class="toolkit-detail-sidebar"><strong>{{ tx('来华就医全流程工具包') }}</strong><nav :aria-label="tx('工具包目录')"><RouterLink v-for="item in Object.values(toolkitArticles)" :key="item.key" :to="guidePath(item.key)">{{ tx(item.title) }}</RouterLink></nav></aside>
     </div>
   </div>
   <div v-else class="toolkit-detail-page" data-page="steps-toolkit-detail">

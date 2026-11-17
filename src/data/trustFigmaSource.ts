@@ -35,8 +35,8 @@ for (const [id, href] of [
   ['143:2941', '/'], ['143:2954', '/diseases-technologies'], ['143:2956', '/cost'], ['143:2958', '/report'],
   ['143:2962', '/steps'], ['143:2968', '/cases'], ['143:2970', '/insurance'], ['143:2972', '/steps'], ['143:2974', '/about'],
   ['143:2980', publicContacts.emailHref], ['143:2986', 'tel:+864008886688'], ['143:2991', publicContacts.whatsappHref],
-  ['204:5660', '/steps/toolkit-detail'], ['204:5846', '/steps/toolkit-detail?article=visa'],
-  ['204:6040', '/steps/toolkit-detail?article=steps-flow'], ['1582:2014', '/report'],
+  ['204:5660', '/steps/toolkit-detail'], ['204:5846', '/guides/visa'],
+  ['204:6040', '/guides/steps-flow'], ['1582:2014', '/report'],
 ]) link(id!, href!)
 action('1582:2010', 'consultation', '免费问阿宁')
 action('1582:2018', 'consultation', '预约专家面诊 $200起')
