@@ -32,6 +32,7 @@ declare module 'vue' {
     HospitalRadar: typeof import('./src/components/common/HospitalRadar.vue')['default']
     HospitalSourceDialog: typeof import('./src/components/common/HospitalSourceDialog.vue')['default']
     MedicalServicesMenu: typeof import('./src/components/layout/MedicalServicesMenu.vue')['default']
+    PatientCaseDialog: typeof import('./src/components/common/PatientCaseDialog.vue')['default']
     PatientDesktopNavigation: typeof import('./src/components/layout/PatientDesktopNavigation.vue')['default']
     PatientFooter: typeof import('./src/components/layout/PatientFooter.vue')['default']
     PatientHeader: typeof import('./src/components/layout/PatientHeader.vue')['default']

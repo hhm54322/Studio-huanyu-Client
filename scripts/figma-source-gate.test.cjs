@@ -27,6 +27,17 @@ test('identical document is unchanged, including all small/hidden nodes', () => 
   assert.equal(report.scopes[0].currentNodes, 3)
 })
 
+test('large integer properties are compared without loss of precision', () => {
+  const source = fixture()
+  source.nodes.get('1:2').largeInteger = 9007199254740993n
+  const same = clone(source)
+  assert.equal(compare(source, same).scopes[0].status, 'unchanged')
+  same.nodes.get('1:2').largeInteger = 9007199254740994n
+  const report = compare(source, same)
+  assert.equal(report.scopes[0].status, 'changed')
+  assert.ok(fields(report).some(field => field.startsWith('1:2/parameters.largeInteger')))
+})
+
 test('editor timestamp changes remain visible as provenance, not design modifications', () => {
   const source = fixture(), current = clone(source)
   current.nodes.get('1:2').editInfo = { lastEditedAt: 100 }

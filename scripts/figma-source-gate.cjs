@@ -55,6 +55,7 @@ function prepareDocument(doc) {
 }
 
 function normalize(value, doc, nodeLevel = false) {
+  if (typeof value === 'bigint') return { $bigint: value.toString() }
   if (ArrayBuffer.isView(value)) return Array.from(value)
   if (Array.isArray(value)) return value.map(item => normalize(item, doc))
   if (!value || typeof value !== 'object') return value

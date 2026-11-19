@@ -1,7 +1,7 @@
-import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, unref, watch, type Ref } from 'vue'
 
 /** Autoplay only while readable; touch swipes leave vertical page scrolling alone. */
-export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number, options: { initialIndex?: number; media?: string; hoverTarget?: Ref<HTMLElement | null>; intervalMs?: number } = {}) {
+export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number | Ref<number>, options: { initialIndex?: number; media?: string; hoverTarget?: Ref<HTMLElement | null>; intervalMs?: number; pauseWhen?: Ref<boolean> } = {}) {
   const activeIndex = ref(options.initialIndex ?? 0)
   const paused = ref(false)
   const enabled = ref(!options.media)
@@ -25,19 +25,21 @@ export function useAutoplayCarousel(root: Ref<HTMLElement | null>, count: number
     return motion?.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }
   function schedule() {
-    if (!visible || hovering || touching || paused.value || document.hidden || reducedMotionActive() || viewport?.matches === false || count < 2) { stop(); return }
+    if (!visible || hovering || touching || paused.value || unref(options.pauseWhen) || document.hidden || reducedMotionActive() || viewport?.matches === false || unref(count) < 2) { stop(); return }
     // A repeated observer or resize callback must not postpone a running
     // countdown. Only a real pause or manual selection starts a new interval.
     if (timer !== undefined) return
     timer = window.setTimeout(() => {
       timer = undefined
       if (reducedMotionActive()) return
-      activeIndex.value = (activeIndex.value + 1) % count
+      activeIndex.value = (activeIndex.value + 1) % unref(count)
       schedule()
     }, options.intervalMs ?? 5000)
   }
-  function select(index: number) { if (count < 1) return; activeIndex.value = ((index % count) + count) % count; stop(); schedule() }
+  function select(index: number) { const total = unref(count); if (total < 1) return; activeIndex.value = ((index % total) + total) % total; stop(); schedule() }
   function togglePause() { paused.value = !paused.value; schedule() }
+  watch(() => unref(count), total => { activeIndex.value = total ? activeIndex.value % total : 0; stop(); schedule() })
+  watch(() => unref(options.pauseWhen), schedule)
 
   onMounted(() => {
     motion = window.matchMedia('(prefers-reduced-motion: reduce)')

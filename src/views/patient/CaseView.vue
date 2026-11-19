@@ -5,70 +5,26 @@ const { tx } = useSiteCopy()
 import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import { Check, Search } from 'lucide-vue-next'
 import CountUpNumber from '@/components/common/CountUpNumber.vue'
+import PatientCaseDialog from '@/components/common/PatientCaseDialog.vue'
+import { patientCases, type PatientCase } from '@/data/patientCases'
 import caseSource from '../../../docs/figma-source/cases/content-2026-09-29.json'
 
-const sourceCards = new Map(caseSource.cards.map((card, index) => [index + 1, card]))
 const sourceIcon = (session: number, node: number) => `/images/figma/case-source/node-${session}-${node}.svg`
-function avatarStyle(id: number) {
-  const t = sourceCards.get(id)!.avatar.paint.transform
-  return { width: `${100 / t.m00}%`, height: `${100 / t.m11}%`, left: `${-100 * t.m02 / t.m00}%`, top: `${-100 * t.m12 / t.m11}%` }
-}
-
-interface StoryCase {
-  id: number
-  name: string
-  region: string
-  specialty: string
-  treatment: string
-  duration: number
-  title: string
-  background: string
-  path: string
-  timingLabel: string
-  timingValue: string
-  image: string
-  objectPosition: string
-  recommended?: boolean
-}
-
-const storyCases: StoryCase[] = [
-  {
-    id: 1,
-    name: 'Maria S.',
-    region: '东南亚',
-    specialty: '消化内科',
-    treatment: '多学科诊疗',
-    duration: 7,
-    title: '消化系统疑难疾病',
-    background: '40+岁，女性，反复腹痛伴消化异常，在当地多次就诊未明确诊断',
-    path: '远程会诊-到院检查-MDT讨论-制定方案',
-    timingLabel: '咨询到首诊：',
-    timingValue: '约 7 天 · 广州',
-    image: caseSource.cards[0]!.avatar.src,
-    objectPosition: '50% 50%',
-  },
-  {
-    id: 2,
-    name: 'James T.',
-    region: '南亚',
-    specialty: '脊柱外科',
-    treatment: '手术治疗',
-    duration: 14,
-    title: '脊柱复杂病变',
-    background: '50+岁，男性，颈椎病变面临神经压迫风险，多地评估手术风险较高',
-    path: '国际转诊-影像评估-手术方案-术后康复',
-    timingLabel: '咨询到手术：',
-    timingValue: '约 14 天 · 广州',
-    image: caseSource.cards[1]!.avatar.src,
-    objectPosition: '50% 50%',
-    recommended: true,
-  },
-]
-
+const cardLayer = (patient: PatientCase, offset:number) => `4342:${Number(patient.cardId.split(':')[1]) + offset}`
+const selectedCase = ref<PatientCase | null>(null)
+const caseMetadata = [
+  { region: '新西兰', specialty: '肿瘤科', treatment: '细胞治疗', stay: null, avatar: '4342-1279' },
+  { region: '印度尼西亚', specialty: '肿瘤科', treatment: '质子治疗', stay: null, avatar: '4342-1301' },
+  { region: '美国', specialty: '肿瘤科', treatment: '靶向治疗', stay: null, avatar: '4342-1325' },
+  { region: '英国', specialty: '骨科', treatment: '手术治疗', stay: 5, avatar: '4342-1349' },
+  { region: '美国', specialty: '骨科', treatment: '手术治疗', stay: 7, avatar: '4342-1373' },
+  { region: '印度尼西亚', specialty: '肿瘤科', treatment: '综合治疗', stay: null, avatar: '4342-1397' },
+] as const
+const storyCases = patientCases.map((patient, index) => ({ ...caseMetadata[index]!, patient }))
 const filterOptions = {
-  specialty: ['消化内科', '脊柱外科'],
-  region: ['东南亚', '南亚'],
-  treatment: ['多学科诊疗', '手术治疗'],
+  specialty: ['肿瘤科', '骨科'],
+  region: ['新西兰', '印度尼西亚', '美国', '英国'],
+  treatment: ['细胞治疗', '质子治疗', '靶向治疗', '手术治疗', '综合治疗'],
   duration: ['7天内', '8-14天'],
 }
 
@@ -83,14 +39,13 @@ let matcherTrigger: HTMLElement | null = null
 const matcher = reactive({ focus: '', age: '', timing: '' })
 
 const filteredCases = computed(() => storyCases.filter((item) => {
-  // Only two existing cases have verifiable specialties. Avoid presenting an
-  // unrelated case as a match when the visitor selected another condition.
-  if (matchApplied.value && !['消化系统','骨科'].includes(matcher.focus)) return false
+  if (matchApplied.value && item.specialty !== matcher.focus) return false
   if (activeFilters.specialty && item.specialty !== activeFilters.specialty) return false
   if (activeFilters.region && item.region !== activeFilters.region) return false
   if (activeFilters.treatment && item.treatment !== activeFilters.treatment) return false
-  if (activeFilters.duration === '7天内' && item.duration > 7) return false
-  if (activeFilters.duration === '8-14天' && (item.duration < 8 || item.duration > 14)) return false
+  if (activeFilters.duration && item.stay === null) return false
+  if (activeFilters.duration === '7天内' && item.stay! > 7) return false
+  if (activeFilters.duration === '8-14天' && (item.stay! < 8 || item.stay! > 14)) return false
   return true
 }))
 
@@ -157,8 +112,7 @@ async function submitMatch() {
   if (!canMatch.value) return
 
   resetFilters()
-  if (matcher.focus === '消化系统') draftFilters.specialty = '消化内科'
-  if (matcher.focus === '骨科') draftFilters.specialty = '脊柱外科'
+  if (matcher.focus === '肿瘤科' || matcher.focus === '骨科') draftFilters.specialty = matcher.focus
   Object.assign(activeFilters, draftFilters)
   matchApplied.value = true
   closeMatcher()
@@ -200,59 +154,59 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="case-page">
+  <div class="case-page" data-figma-node="4342:1210" data-figma-collapsed="4342:1211 4342:1212">
     <div class="case-source-hidden" hidden v-html="caseSource.hiddenHtml" />
-    <section class="case-hero">
+    <section class="case-hero" data-figma-node="4342:1213">
       <div class="case-hero__shape" aria-hidden="true" />
-      <div class="hy-container case-hero__content" data-reveal>
-        <div class="case-hero__copy">
-        <h1>{{ tx("患者真实就医经历") }}</h1>
-        <p>{{ tx("按科室、来源地区、治疗类型筛选了解国际患者从咨询到康复的完整路径") }}</p>
-        <button class="case-match-button" type="button" @click="openMatcher">
-          <img :src="sourceIcon(190, 5324)" alt="" />
-          <span class="button-label">{{ tx("开始智能匹配") }}</span>
+      <div class="hy-container case-hero__content" data-figma-node="4342:1214" data-reveal>
+        <div class="case-hero__copy" data-figma-node="4342:1215">
+        <h1 data-figma-node="4342:1230" data-figma-collapsed="4342:1229">{{ tx("患者真实就医经历") }}</h1>
+        <p data-figma-node="4342:1232" data-figma-collapsed="4342:1231">{{ tx("按科室、来源地区、治疗类型筛选了解国际患者从咨询到康复的完整路径") }}</p>
+        <button class="case-match-button" data-figma-node="4342:1233" type="button" @click="openMatcher">
+          <img :src="sourceIcon(190, 5324)" data-figma-node="4342:1234" data-figma-collapsed="4342:1235 4342:1236" alt="" />
+          <span class="button-label" data-figma-node="4342:1237">{{ tx("开始智能匹配") }}</span>
         </button>
         </div>
       </div>
     </section>
 
-    <section id="case-results" class="case-directory hy-section">
+    <section id="case-results" class="case-directory hy-section" data-figma-node="4342:1238">
       <div class="hy-container">
-        <form class="case-filters" :aria-label="tx('患者案例筛选')" @submit.prevent="applyFilters">
-          <label>
+        <form class="case-filters" data-figma-node="4342:1240" data-figma-collapsed="4342:1239" :aria-label="tx('患者案例筛选')" @submit.prevent="applyFilters">
+          <label data-figma-node="4342:1241">
             <span>{{ tx("科室/病种") }}</span>
             <select v-model="draftFilters.specialty">
-              <option value="">{{ tx("科室/病种") }}</option>
+              <option value="" data-figma-node="4342:1242">{{ tx("科室/病种") }}</option>
               <option v-for="item in filterOptions.specialty" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
-            <span class="filter-arrow"><img :src="sourceIcon(221, 6196)" alt="" /></span>
+            <span class="filter-arrow" data-figma-node="4342:1243"><img :src="sourceIcon(221, 6196)" data-figma-node="4342:1244" data-figma-collapsed="4342:1245" alt="" /></span>
           </label>
-          <label>
+          <label data-figma-node="4342:1246">
             <span>{{ tx("来源地区") }}</span>
             <select v-model="draftFilters.region">
-              <option value="">{{ tx("来源地区") }}</option>
+              <option value="" data-figma-node="4342:1247">{{ tx("来源地区") }}</option>
               <option v-for="item in filterOptions.region" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
-            <span class="filter-arrow"><img :src="sourceIcon(221, 6201)" alt="" /></span>
+            <span class="filter-arrow" data-figma-node="4342:1248"><img :src="sourceIcon(221, 6201)" data-figma-node="4342:1249" data-figma-collapsed="4342:1250" alt="" /></span>
           </label>
-          <label>
+          <label data-figma-node="4342:1251">
             <span>{{ tx("治疗类型") }}</span>
             <select v-model="draftFilters.treatment">
-              <option value="">{{ tx("治疗类型") }}</option>
+              <option value="" data-figma-node="4342:1252">{{ tx("治疗类型") }}</option>
               <option v-for="item in filterOptions.treatment" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
-            <span class="filter-arrow"><img :src="sourceIcon(221, 6206)" alt="" /></span>
+            <span class="filter-arrow" data-figma-node="4342:1253"><img :src="sourceIcon(221, 6206)" data-figma-node="4342:1254" data-figma-collapsed="4342:1255" alt="" /></span>
           </label>
-          <label>
+          <label data-figma-node="4342:1256">
             <span>{{ tx("就诊时长") }}</span>
             <select v-model="draftFilters.duration">
-              <option value="">{{ tx("就诊时长") }}</option>
+              <option value="" data-figma-node="4342:1257">{{ tx("就诊时长") }}</option>
               <option v-for="item in filterOptions.duration" :key="item" :value="item">{{ tx(item) }}</option>
             </select>
-            <span class="filter-arrow"><img :src="sourceIcon(221, 6211)" alt="" /></span>
+            <span class="filter-arrow" data-figma-node="4342:1258"><img :src="sourceIcon(221, 6211)" data-figma-node="4342:1259" data-figma-collapsed="4342:1260" alt="" /></span>
           </label>
-          <button class="case-filter-submit" type="submit"><img :src="sourceIcon(221, 6214)" alt="" /><span class="button-label">{{ tx("筛选") }}</span></button>
-          <button class="case-filter-reset" type="button" @click="resetFilters"><img :src="sourceIcon(221, 6218)" alt="" /><span class="button-label">{{ tx("重置") }}</span></button>
+          <button class="case-filter-submit" data-figma-node="4342:1261" type="submit"><img :src="sourceIcon(221, 6214)" data-figma-node="4342:1262" data-figma-collapsed="4342:1263" alt="" /><span class="button-label" data-figma-node="4342:1264">{{ tx("筛选") }}</span></button>
+          <button class="case-filter-reset" data-figma-node="4342:1265" type="button" @click="resetFilters"><img :src="sourceIcon(221, 6218)" data-figma-node="4342:1266" data-figma-collapsed="4342:1267" alt="" /><span class="button-label" data-figma-node="4342:1268">{{ tx("重置") }}</span></button>
         </form>
 
         <Transition name="match-note">
@@ -263,32 +217,17 @@ onBeforeUnmount(() => {
           </div>
         </Transition>
 
-        <div v-if="filteredCases.length" class="case-grid">
-          <article
-            v-for="(item, index) in filteredCases"
-            :key="item.id"
-            data-reveal
-            :class="{ 'is-visible': filtersChanged }"
-            :data-figma-node="sourceCards.get(item.id)?.nodeId"
-            :style="{ '--reveal-delay': `${index * 90}ms` }"
-          >
-            <header>
-              <div class="case-avatar">
-                <img :src="item.image" :alt="tx(`${item.name} 匿名患者头像`)" :style="avatarStyle(item.id)" />
-              </div>
-              <div class="case-identity">
-                <h2>{{ tx(item.name) }}</h2>
-                <p>{{ tx(item.region) }} · {{ tx(item.specialty) }} · {{ tx(item.treatment) }}</p>
-              </div>
-              <span v-if="item.recommended&&!matchApplied" class="case-recommendation">{{ tx("为您推荐") }}</span>
+        <div v-if="filteredCases.length" class="case-grid" data-figma-node="4342:1275">
+          <article v-for="(item, index) in filteredCases" :key="item.patient.id"
+            data-reveal :class="{ 'is-visible': filtersChanged }" :data-figma-node="item.patient.cardId"
+            :style="{ '--reveal-delay': `${index * 90}ms` }" role="button" tabindex="0"
+            @click="selectedCase = item.patient" @keydown.enter.prevent="selectedCase = item.patient" @keydown.space.prevent="selectedCase = item.patient">
+            <header :data-figma-node="cardLayer(item.patient, 1)">
+              <div class="case-avatar" :class="`case-avatar--${item.patient.id}`" :data-figma-node="cardLayer(item.patient, 2)"><img :data-figma-node="cardLayer(item.patient, 3)" :src="`/images/patient-stories/figma-${item.avatar}.webp`" :alt="tx('患者照片')" /></div>
+              <div class="case-identity" :data-figma-node="cardLayer(item.patient, 4)"><h2 :data-figma-node="item.patient.name.nodeId" :data-figma-collapsed="cardLayer(item.patient, 5)">{{ tx(item.patient.name.text) }}</h2><p :data-figma-node="item.patient.specialty.nodeId" :data-figma-collapsed="cardLayer(item.patient, 7)">{{ tx(item.patient.specialty.text) }}</p></div>
             </header>
-            <div class="case-card__body">
-              <h3>{{ tx(item.title) }}</h3>
-              <dl>
-                <div><dt>{{ tx("患者背景：") }}</dt><dd>{{ tx(item.background) }}</dd></div>
-                <div><dt>{{ tx("诊疗路径：") }}</dt><dd>{{ tx(item.path) }}</dd></div>
-                <div><dt>{{ tx(item.timingLabel) }}</dt><dd>{{ tx(item.timingValue) }}</dd></div>
-              </dl>
+            <div class="case-card__body" :data-figma-node="cardLayer(item.patient, item.patient.id === 1 ? 9 : 11)"><h3 :data-figma-node="item.patient.headline.nodeId" :data-figma-collapsed="cardLayer(item.patient, item.patient.id === 1 ? 10 : 12)">{{ tx(item.patient.headline.text) }}</h3>
+              <dl><div v-for="field in item.patient.cardFields" :key="field.nodeId" :data-figma-node="field.nodeId" :data-figma-collapsed="`4342:${Number(field.nodeId.split(':')[1]) - 1}`"><dd><template v-if="tx(field.text).search(/[：:]/) > 0"><strong>{{ tx(field.text).slice(0, tx(field.text).search(/[：:]/) + 1) }}</strong>{{ tx(field.text).slice(tx(field.text).search(/[：:]/) + 1) }}</template><template v-else>{{ tx(field.text) }}</template></dd></div></dl>
             </div>
           </article>
         </div>
@@ -302,14 +241,16 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section class="case-summary" :aria-label="tx('服务数据')">
-      <div class="hy-container">
-        <div v-for="metric in caseSource.metrics" :key="metric.nodeId" class="summary-metric">
-          <CountUpNumber :value="metric.value" /><span>{{ tx(metric.label) }}</span>
+    <section class="case-summary" data-figma-node="4342:1464" :aria-label="tx('服务数据')">
+      <div class="hy-container" data-figma-node="4342:1466" data-figma-collapsed="4342:1465">
+        <div v-for="(metric, index) in caseSource.metrics" :key="metric.nodeId" class="summary-metric" :data-figma-node="`4342:${1467 + index * 5}`">
+          <CountUpNumber :value="metric.value" :data-figma-node="`4342:${1469 + index * 5}`" :data-figma-collapsed="`4342:${1468 + index * 5}`" /><span :data-figma-node="`4342:${1471 + index * 5}`" :data-figma-collapsed="`4342:${1470 + index * 5}`">{{ tx(metric.label) }}</span>
         </div>
-        <i v-for="index in 3" :key="index" class="summary-divider" aria-hidden="true" />
+        <i v-for="index in 3" :key="index" class="summary-divider" :data-figma-node="`4342:${1486 + index}`" aria-hidden="true" />
       </div>
     </section>
+
+    <PatientCaseDialog :patient="selectedCase" @close="selectedCase = null" />
 
     <Teleport to="body">
       <Transition name="matcher" @after-leave="restoreMatcherFocus">
@@ -1078,5 +1019,36 @@ onBeforeUnmount(() => {
 }
 @media (hover:none), (prefers-reduced-motion:reduce) {
   .case-grid article:hover, .case-match-button:hover, .case-filter-submit:hover { transform: none; }
+}
+/* Patient case revision: the content height follows the authored long cards. */
+@media (min-width: 701px) {
+  .case-directory { height: auto; }
+  .case-grid article { height: auto; min-height: 340px; }
+  .case-grid header { width: auto; }
+  .case-grid header p { white-space: normal; }
+  .case-card__body h3 { height: auto; line-height: 1.35; }
+}
+.case-grid article { cursor:pointer; }
+.case-card__body { margin-top: 48px; }
+.case-card__body h3 { height: auto; padding-bottom: 0; font-size: 20px; line-height: 28px; }
+.case-card__body dl > div { overflow-wrap: anywhere; }
+.case-grid header { width: auto; }
+.case-grid header p { white-space: normal; }
+.case-identity { width:auto; flex:1; min-width:0; }
+.case-card__body dd strong { color:#1e3a5f; font-weight:500; }
+.case-hero { background-image: url('/images/patient-stories/figma-4342-1213.webp'); }
+.case-grid article:focus-visible { outline:3px solid #286ce7; outline-offset:3px; }
+.case-avatar img { position:absolute; max-width:none; object-fit:cover; }
+.case-avatar--1 img { left:-148.142%; top:-68.018%; width:382.701%; height:269.025%; }
+.case-avatar--2 img { left:-288.888%; top:-166.667%; width:583.333%; height:571.667%; }
+.case-avatar--3 img { left:-182.778%; top:-30%; width:285%; height:190%; }
+.case-avatar--4 img { left:-160%; top:-135%; width:388.333%; height:266.667%; }
+.case-avatar--5 img { left:-68.888%; top:-46.667%; width:200%; height:353.333%; }
+.case-avatar--6 img { left:-201.111%; top:-10%; width:491.667%; height:276.667%; }
+@media (min-width:701px) {
+  .case-page:not(:lang(zh)) .case-hero h1 { width:auto; max-width:568px; font-size:48px; line-height:1.15; }
+}
+@media (max-width:700px) {
+  .case-page:not(:lang(zh)) .case-hero h1 { font-size:34px; line-height:1.2; }
 }
 </style>
