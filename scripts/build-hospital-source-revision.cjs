@@ -335,7 +335,7 @@ async function build(set) {
     if (!text?.styleOverrideTable?.length) return undefined
     const table=new Map(text.styleOverrideTable.map(s=>[s.styleID,s])), runs=[]
     for(let i=0;i<text.characters.length;i++) {
-      const styleId=text.characterStyleIDs[i]||0
+      const styleId=text.characterStyleIDs?.[i]||0
       if(runs.at(-1)?.styleId===styleId) runs.at(-1).text+=text.characters[i]
       else runs.push({styleId,text:text.characters[i]})
     }

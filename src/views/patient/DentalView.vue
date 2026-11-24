@@ -28,6 +28,9 @@ import { useWhatsAppTopic } from '@/composables/useWhatsAppContact'
 const route=useRoute(), router=useRouter()
 const savedFlow=getDentalFlowSession()
 const DentalDesktopFlow=defineAsyncComponent(()=>import('@/components/common/DentalDesktopFlow.vue'))
+const loadDentalProjectSelection=()=>import('@/components/common/DentalProjectSelection.vue')
+const DentalProjectSelection=defineAsyncComponent(loadDentalProjectSelection)
+const implantDetailsAvailable = router.hasRoute('patient-dental-implant')
 const desktopDoctors=ref(typeof window!=='undefined'&&window.innerWidth>700)
 const desktopWidth=ref(typeof window!=='undefined'?window.innerWidth:1440)
 let viewportRequest = 0
@@ -48,7 +51,7 @@ onMounted(()=>window.addEventListener('resize',updateDoctorViewport,{passive:tru
 onBeforeUnmount(()=>window.removeEventListener('resize',updateDoctorViewport))
 
 type DentalStep = 1 | 2 | 3
-const dentalStepRails = ['2294:8256', '2294:6987', '2294:8053']
+const dentalStepRails = ['4542:5677', '2294:6987', '2294:8053']
 const loadingStep = ref<DentalStep | null>(null)
 const failedStep = ref<DentalStep | null>(null)
 let stepRequest = 0, disposed = false
@@ -70,14 +73,14 @@ interface DentalProject {
 type DentalDoctor = DentalPhysician
 
 const projects: DentalProject[] = [
-  { id: 'implant', title: '种植牙', price: '¥5,000 起', copy: '单颗/多颗/半口全口，数字化导板种植', image: '/images/equipment/image1.jpeg', icon: '/images/figma/dental-source/icon-implant.svg', detail: '检查评估 - 植入手术 -愈合期 - 牙冠修复', duration: '3-6个月', suitable: '单颗/多颗牙缺失，缺牙时间较长者', note: '需进行口腔检查，排除禁忌症' },
-  { id: 'whitening', title: '牙齿美白', price: '¥1,200 起', copy: '冷光美白 / 家庭美白，单次见效', image: '/images/equipment/image4.jpeg', icon: '/images/figma/dental-source/icon-whitening.svg', detail: '根据牙齿敏感情况选择诊室或家庭美白方案。', duration: '1-2周', suitable: '希望改善外源性色素和轻度黄牙问题' },
-  { id: 'veneer', title: '牙齿贴面', price: '¥2,800/颗', copy: '全瓷贴面/树脂贴面前牙美学修复', image: '/images/happy-patient.jpg', icon: '/images/figma/dental-source/icon-veneer.svg', detail: '通过微创或无创方式改善前牙颜色、形态和轻度排列问题。', duration: '5-10天', suitable: '前牙颜色、形态和轻度间隙问题' },
-  { id: 'aligner', title: '隐形正畸', price: '¥18,000 起', copy: '隐形矫治器/舌侧矫正，远程复诊', image: '/images/doctor-team.jpg', icon: '/images/figma/dental-source/icon-aligner.svg', detail: '根据面型、咬合和牙齿移动目标制定分期矫治方案。', duration: '12-24个月', suitable: '希望改善牙列和咬合、重视美观的成人' },
-  { id: 'crown', title: '全瓷牙冠', price: '¥3,500 /颗', copy: '二氧化锆/玻璃陶瓷，颜色自然', image: '/images/patient-case.jpg', icon: '/images/figma/dental-source/icon-crown.svg', detail: '针对严重龋坏、缺损或旧修复体，提供美学和功能兼顾的修复。', duration: '7-14天', suitable: '牙体缺损、根管治疗后或需要美学修复者' },
-  { id: 'periodontal', title: '洁牙 / 牙周', price: '¥280 起', copy: '超声波洁牙/牙周系统治疗', image: '/images/equipment/image2.jpeg', icon: '/images/figma/dental-source/icon-periodontal.svg', detail: '从基础洁治到牙周系统治疗，帮助控制牙龈出血和牙周炎症。', duration: '1-4次就诊', suitable: '牙龈出血、牙结石或牙周维护需求' },
-  { id: 'root-canal', title: '根管治疗', price: '¥1,200 起', copy: '显微根管/热牙胶充填', image: '/images/equipment/image3.jpeg', icon: '/images/figma/dental-source/icon-root-canal.svg', detail: '以显微视野完成感染清除、根管充填和后续牙体保护。', duration: '1-3次就诊', suitable: '牙髓炎、根尖周炎和复杂根管病例' },
-  { id: 'children', title: '儿童齿科', price: '¥200 起', copy: '涂氟/窝沟封闭/早期矫正', image: '/images/hospital-sh.jpg', icon: '/images/figma/dental-source/icon-children.svg', detail: '围绕儿童龋齿预防、早期咬合干预和舒适化就诊设计。', duration: '按治疗计划', suitable: '儿童口腔保健及早期矫正需求' },
+  { id: 'implant', title: '种植牙', price: '¥5,000 起', copy: '单颗/多颗/半口全口，数字化导板种植', image: '/images/equipment/image1.jpeg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5703.svg', detail: '检查评估 - 植入手术 -愈合期 - 牙冠修复', duration: '3-6个月', suitable: '单颗/多颗牙缺失，缺牙时间较长者', note: '需进行口腔检查，排除禁忌症' },
+  { id: 'whitening', title: '牙齿美白', price: '¥1,200 起', copy: '冷光美白 / 家庭美白，单次见效', image: '/images/equipment/image4.jpeg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5726.svg', detail: '根据牙齿敏感情况选择诊室或家庭美白方案。', duration: '1-2周', suitable: '希望改善外源性色素和轻度黄牙问题' },
+  { id: 'veneer', title: '牙齿贴面', price: '¥2,800/颗', copy: '全瓷贴面/树脂贴面前牙美学修复', image: '/images/happy-patient.jpg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5743.svg', detail: '通过微创或无创方式改善前牙颜色、形态和轻度排列问题。', duration: '5-10天', suitable: '前牙颜色、形态和轻度间隙问题' },
+  { id: 'aligner', title: '隐形正畸', price: '¥18,000 起', copy: '隐形矫治器/舌侧矫正，远程复诊', image: '/images/doctor-team.jpg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5760.svg', detail: '根据面型、咬合和牙齿移动目标制定分期矫治方案。', duration: '12-24个月', suitable: '希望改善牙列和咬合、重视美观的成人' },
+  { id: 'crown', title: '全瓷牙冠', price: '¥3,500 /颗', copy: '二氧化锆/玻璃陶瓷，颜色自然', image: '/images/patient-case.jpg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5777.svg', detail: '针对严重龋坏、缺损或旧修复体，提供美学和功能兼顾的修复。', duration: '7-14天', suitable: '牙体缺损、根管治疗后或需要美学修复者' },
+  { id: 'periodontal', title: '洁牙 / 牙周', price: '¥280 起', copy: '超声波洁牙/牙周系统治疗', image: '/images/equipment/image2.jpeg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5793.svg', detail: '从基础洁治到牙周系统治疗，帮助控制牙龈出血和牙周炎症。', duration: '1-4次就诊', suitable: '牙龈出血、牙结石或牙周维护需求' },
+  { id: 'root-canal', title: '根管治疗', price: '¥1,200 起', copy: '显微根管/热牙胶充填', image: '/images/equipment/image3.jpeg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5811.svg', detail: '以显微视野完成感染清除、根管充填和后续牙体保护。', duration: '1-3次就诊', suitable: '牙髓炎、根尖周炎和复杂根管病例' },
+  { id: 'children', title: '儿童齿科', price: '¥200 起', copy: '涂氟/窝沟封闭/早期矫正', image: '/images/hospital-sh.jpg', icon: '/images/figma/dental-project-2026-11-23/node-4542-5829.svg', detail: '围绕儿童龋齿预防、早期咬合干预和舒适化就诊设计。', duration: '按治疗计划', suitable: '儿童口腔保健及早期矫正需求' },
 ]
 
 // Translate the complete price so languages can put “from” before the amount,
@@ -116,10 +119,11 @@ function detailLeave(element: Element) {
   })
 }
 
-const activeStep = ref<DentalStep>(route.query.step==='3'?3:route.query.step==='2'?2:savedFlow?.step||1)
+const activeStep = ref<DentalStep>(route.query.step==='3'?3:route.query.step==='2'?2:route.query.step==='1'?1:savedFlow?.step||1)
 const selectedProjectId = ref(typeof route.query.project==='string'?route.query.project:savedFlow?.project||'whitening')
 useWhatsAppTopic(selectedProjectId)
-const expandedProjectIds = ref<Set<string>>(new Set(savedFlow?.expanded||['implant']))
+// Disclosure is transient UI state: an earlier visit must not reopen cards.
+const expandedProjectIds = ref<Set<string>>(new Set())
 const filters = ref({ city: '', title: '', experience: '', background: '', language: '', price: '' })
 if(savedFlow)filters.value={...savedFlow.filters}
 const appliedFilters = ref({ ...(savedFlow?.appliedFilters||filters.value) })
@@ -172,14 +176,18 @@ const filteredDoctors = computed(() => {
   })
 })
 
-async function setStep(step: DentalStep) {
+async function setStep(step: DentalStep, scroll: 'rail' | 'top' = 'rail') {
   const request = ++stepRequest
   failedStep.value = null
   loadingStep.value = null
   if (desktopDoctors.value && step !== activeStep.value) {
     loadingStep.value = step
     try {
-      await import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step))
+      if (step === 1) await loadDentalProjectSelection()
+      else await Promise.all([
+        import('@/components/common/DentalDesktopFlow.vue'),
+        import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step)),
+      ])
     } catch {
       if (!disposed && request === stepRequest) failedStep.value = step
       return
@@ -188,9 +196,16 @@ async function setStep(step: DentalStep) {
     }
   }
   if (disposed || request !== stepRequest) return
+  if (step === 1 && activeStep.value !== 1) expandedProjectIds.value = new Set()
   activeStep.value = step
-  nextTick(() => document.querySelector(desktopDoctors.value?`[data-figma-node="${dentalStepRails[step-1]}"]`:'.dental-workspace')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth', block: 'start' }))
+  nextTick(() => {
+    if (scroll === 'top') window.scrollTo({ top: 0, behavior: 'instant' })
+    else document.querySelector(desktopDoctors.value?`[data-figma-node="${dentalStepRails[step-1]}"]`:'.dental-workspace')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth', block: 'start' })
+  })
 }
+function returnToDentalStart() { expandedProjectIds.value = new Set(); void setStep(1, 'top') }
+onMounted(() => window.addEventListener('dental-navigation-home', returnToDentalStart))
+onBeforeUnmount(() => window.removeEventListener('dental-navigation-home', returnToDentalStart))
 
 function chooseProject(project: DentalProject) {
   selectedProjectId.value = project.id
@@ -320,7 +335,9 @@ onBeforeUnmount(() => {
 <template>
   <span v-if="loadingStep" class="dental-step-loading" role="status" aria-live="polite">{{ tx("正在准备下一步…") }}</span>
   <div v-if="failedStep" class="dental-step-error" role="alert">{{ tx("下一步暂时未能加载，请重试。") }}<button type="button" @click="desktopDoctors ? setStep(failedStep) : updateDoctorViewport()">{{ tx("重新加载") }}</button></div>
-  <DentalDesktopFlow v-if="desktopDoctors" :aria-busy="Boolean(loadingStep)" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!,'cases')" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
+  <DentalProjectSelection v-if="desktopDoctors && activeStep === 1" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :busy="Boolean(loadingStep)"
+    @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" />
+  <DentalDesktopFlow v-else-if="desktopDoctors && activeStep !== 1" :aria-busy="Boolean(loadingStep)" :step="activeStep" :width="desktopWidth" :selected-project="selectedProjectId" :expanded-projects="expandedProjectIds" :projects="projects" :filters="filters" :filtered-doctor-ids="filteredDoctors.map(doctor=>doctor.id)" :sort="sortMode" :filtered="Object.values(appliedFilters).some(Boolean)||sortMode!=='recommended'" :form="form" :files="uploadFiles" :status="uploadStatus" :error="submitError" :submitted="submitted" @step="setStep" @project="id=>chooseProject(projects.find(project=>project.id===id)!)" @doctor="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!)" @doctor-cases="id=>openDoctor(dentalCurrentDoctors.find(doctor=>doctor.id===id)!,'cases')" @institution="id=>{institutionDoctorId=id;institutionOpen=true}" @quote="id=>{quoteDoctorId=id;setStep(3)}" @filter="applyFilters" @reset="resetFilters" @sort="value=>sortMode=value" @update-filter="(key,value)=>filters[key]=value" @update-form="(key,value)=>form[key]=value" @files="handleFiles" @submit="submitForm" @retry="retryUpload" @consultation="contactSupport" />
   <div v-else class="dental-page" :class="`dental-page--step-${activeStep}`">
     <section class="dental-hero" :class="`dental-hero--step-${activeStep}`">
       <div class="dental-hero__backdrop" />
@@ -329,6 +346,9 @@ onBeforeUnmount(() => {
         <p>{{ tx("种植牙、牙齿美白、牙齿贴面、正畸、修复一一先了解项目，再自主选择城市与医生，最后获取书面报价") }}</p>
       </div>
     </section>
+
+    <DentalProjectSelection v-if="activeStep === 1" compact :width="desktopWidth" :selected-project="selectedProjectId"
+      :expanded-projects="expandedProjectIds" :projects="projects" :busy="Boolean(loadingStep)" />
 
     <section class="dental-steps" :aria-label="tx('牙科服务流程')">
       <div class="hy-container dental-steps__inner">
@@ -349,10 +369,31 @@ onBeforeUnmount(() => {
           <span class="dental-section__counter">{{ tx(projects.length) }}{{ tx(" 个项目") }}</span>
         </div>
         <div class="dental-project-grid">
-          <button v-for="project in projects" :key="project.id" type="button" class="dental-project-card" :class="{ selected: selectedProjectId === project.id, expanded: isProjectExpanded(project.id) }" :aria-expanded="isProjectExpanded(project.id)" :aria-controls="`dental-project-detail-${project.id}`" @click="chooseProject(project)">
+          <article v-for="project in projects" :key="project.id" class="dental-project-card" :class="{ selected: selectedProjectId === project.id, expanded: isProjectExpanded(project.id) }">
             <img class="dental-project-card__icon" :src="project.icon" alt="" aria-hidden="true" />
-            <div class="dental-project-card__content"><h3>{{ tx(project.title) }}</h3><p class="dental-project-price"><span>{{ tx("参考价格：") }}</span><span>{{ pricePresentation(project.price).before }}</span><strong>{{ pricePresentation(project.price).amount }}</strong><span>{{ pricePresentation(project.price).after }}</span></p><p>{{ tx(project.copy) }}</p><b>{{ tx("查看详情 ") }}<ChevronDown class="h-4 w-4" /></b><Transition name="dental-accordion" @before-enter="detailBeforeEnter" @enter="detailEnter" @after-enter="detailAfterEnter" @before-leave="detailBeforeLeave" @leave="detailLeave"><div v-if="isProjectExpanded(project.id)" class="dental-project-detail-shell"><dl :id="`dental-project-detail-${project.id}`" class="dental-project-detail"><div><dt>{{ tx("适用人群：") }}</dt><dd>{{ tx(project.suitable) }}</dd></div><div><dt>{{ tx("治疗流程：") }}</dt><dd>{{ tx(project.detail) }}</dd></div><div><dt>{{ tx("周期：") }}</dt><dd>{{ tx(project.duration) }}</dd></div><div v-if="project.note"><dt>{{ tx("注意事项：") }}</dt><dd>{{ tx(project.note) }}</dd></div></dl></div></Transition></div>
-          </button>
+            <div class="dental-project-card__content">
+              <div class="dental-project-card__title">
+                <h3>{{ tx(project.title) }}</h3>
+                <RouterLink v-if="implantDetailsAvailable && project.id === 'implant'" class="dental-project-more" to="/dental/implants">{{ tx('更多详情') }}</RouterLink>
+              </div>
+              <p class="dental-project-price"><span>{{ tx("参考价格：") }}</span><span>{{ pricePresentation(project.price).before }}</span><strong>{{ pricePresentation(project.price).amount }}</strong><span>{{ pricePresentation(project.price).after }}</span></p>
+              <p>{{ tx(project.copy) }}</p>
+              <button class="dental-project-summary" type="button" :aria-expanded="isProjectExpanded(project.id)"
+                :aria-controls="isProjectExpanded(project.id) ? `dental-project-detail-${project.id}` : undefined" @click="chooseProject(project)">
+                {{ tx("查看详情 ") }}<ChevronDown class="h-4 w-4" />
+              </button>
+              <Transition name="dental-accordion" @before-enter="detailBeforeEnter" @enter="detailEnter" @after-enter="detailAfterEnter" @before-leave="detailBeforeLeave" @leave="detailLeave">
+                <div v-if="isProjectExpanded(project.id)" class="dental-project-detail-shell">
+                  <dl :id="`dental-project-detail-${project.id}`" class="dental-project-detail">
+                    <div><dt>{{ tx("适用人群：") }}</dt><dd>{{ tx(project.suitable) }}</dd></div>
+                    <div><dt>{{ tx("治疗流程：") }}</dt><dd>{{ tx(project.detail) }}</dd></div>
+                    <div><dt>{{ tx("周期：") }}</dt><dd>{{ tx(project.duration) }}</dd></div>
+                    <div v-if="project.note"><dt>{{ tx("注意事项：") }}</dt><dd>{{ tx(project.note) }}</dd></div>
+                  </dl>
+                </div>
+              </Transition>
+            </div>
+          </article>
         </div>
         <div class="dental-project-next"><button type="button" class="dental-next-button" @click="setStep(2)">{{ tx("下一步 城市与医生匹配 ") }}<ArrowRight class="h-4 w-4" /></button></div>
       </section>
@@ -437,7 +478,7 @@ onBeforeUnmount(() => {
 .dental-steps { position:sticky; top:72px; z-index:20; background:rgba(255,255,255,.94); backdrop-filter:blur(16px); }
 .dental-steps__inner { position:relative; display:grid; grid-template-columns:repeat(3,1fr); width:min(760px,calc(100% - 40px)); padding:54px 0 28px; }
 .dental-steps__inner::before { position:absolute; top:69px; right:15%; left:15%; height:1px; background:#d7e1e8; content:''; }
-.dental-steps button { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:12px; min-height:48px; border:0; padding:0; background:transparent; color:#9aa8b5; cursor:pointer; }.dental-steps button span { display:grid; width:38px; height:38px; place-items:center; border-radius:50%; background:#f2f5f7; color:#9aa8b5; font-size:12px; font-weight:800; }.dental-steps button.active { color:var(--dental-ink); }.dental-steps button.active span { background:var(--dental-ink); color:#fff; }.dental-steps strong { padding-right:12px; background:#fff; font-size:16px; }
+.dental-steps button { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:12px; min-height:48px; border:0; padding:0; background:transparent; color:#9aa8b5; cursor:pointer; }.dental-steps button span { display:grid; width:38px; height:38px; flex:none; place-items:center; border-radius:50%; background:#f2f5f7; color:#9aa8b5; font-size:12px; font-weight:800; }.dental-steps button.active { color:var(--dental-ink); }.dental-steps button.active span { background:var(--dental-ink); color:#fff; }.dental-steps strong { padding-right:12px; background:#fff; font-size:16px; }
 .dental-workspace { min-height:720px; padding:46px 0 110px; background:#fff; scroll-margin-top:130px; }.dental-section__heading { display:none; }
 .dental-project-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }.dental-project-card { position:relative; display:flex; min-height:255px; flex-direction:column; align-items:flex-start; border:1px solid transparent; border-radius:9px; padding:26px; background:#f4f6f8; color:var(--dental-ink); text-align:left; cursor:pointer; transition:border-color .25s ease,box-shadow .35s ease,background .3s ease; }.dental-project-card:hover { background:#f0f3f6; }.dental-project-card.selected { border-color:#1a1a1a; background:#fff; box-shadow:0 3px 0 rgba(0,0,0,.12); }.dental-project-card__icon { width:25px; color:var(--dental-blue); }.dental-project-card__content { display:flex; width:100%; min-height:180px; flex-direction:column; }.dental-project-card h3 { margin:auto 0 10px; font-size:20px; }.dental-project-card p { min-height:0; margin:5px 0 0; color:#687c8e; font-size:11px; line-height:1.65; }.dental-project-card p strong { color:var(--dental-blue); }.dental-project-card b { display:flex; align-items:center; justify-content:space-between; margin-top:13px; color:#9ba6af; font-size:10px; font-weight:500; }.dental-project-card.selected b svg { transform:rotate(180deg); }.dental-project-card dl { display:grid; gap:5px; margin:14px 0 0; border-top:1px solid #e3e8ec; padding-top:12px; }.dental-project-card dl div { display:flex; gap:4px; color:#5f7486; font-size:10px; line-height:1.55; }.dental-project-card dt { flex:none; color:#173b67; font-weight:700; }.dental-project-card dd { margin:0; }.dental-project-next { display:flex; justify-content:center; margin-top:45px; }
 .dental-project-detail { display: grid; grid-template-columns: 52px minmax(0, 1.1fr) minmax(230px, .9fr) auto; gap: 18px; align-items: center; margin-top: 28px; border: 1px solid #dbe8ef; border-radius: 8px; padding: 24px; background: #fff; box-shadow: 0 16px 38px rgba(20,68,102,.07); }.dental-project-detail__icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: #e5f8fb; color: var(--dental-blue); }.dental-project-detail span, .dental-project-detail dt { color: #7c96a7; font-size: 11px; }.dental-project-detail h3 { margin: 3px 0 5px; color: var(--dental-ink); font-size: 21px; }.dental-project-detail p { margin: 0; color: #657f91; font-size: 12px; line-height: 1.65; }.dental-project-detail dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 0; }.dental-project-detail dd { margin: 3px 0 0; color: #264d6b; font-size: 12px; line-height: 1.5; }.dental-project-detail .dental-next-button { white-space: nowrap; }
@@ -589,7 +630,12 @@ onBeforeUnmount(() => {
 }
 .dental-project-card p { margin-top: 8px; }
 .dental-project-card .dental-project-price { margin-top: 16px; }
+.dental-project-card__title { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+.dental-project-card .dental-project-summary { display:flex; justify-content:space-between; align-items:center; min-height:44px; margin-top:2px; border:0; padding:0; background:none; color:#617286; font:inherit; text-align:left; }
+.dental-project-summary[aria-expanded=true] svg { rotate:180deg; }
+.dental-project-more { border:1px solid #2563eb; border-radius:8px; padding:4px 8px; color:#2563eb; font-size:14px; line-height:20px; text-decoration:none; }
 .dental-project-price > span:first-child { color: #1e3a5f; font-weight: 500; }
+.dental-page:not(:lang(zh)) .dental-project-price > span:first-child::after { content: ' '; white-space:pre; }
 .dental-project-price strong { font-weight: 600; }
 .dental-project-card b {
   margin-top: 16px;

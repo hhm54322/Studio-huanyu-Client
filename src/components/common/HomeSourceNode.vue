@@ -44,6 +44,7 @@ const props = defineProps<{
   styles?: Record<string, string>
   hidden?: string[]
   attributes?: Record<string, Record<string, string | number | boolean>>
+  tags?: Record<string, 'h1' | 'h2' | 'h3' | 'h4' | 'section' | 'article' | 'nav'>
   flowRoots?: string[]
   fixedRoots?: string[]
   baselineNodes?: string[]
@@ -91,11 +92,11 @@ const brandMark=props.node.type==='TEXT'&&sourceBrandCopy(props.node.text)
 // current 148×48 Univadoc+ artwork.
 const sourceBrandShell = computed(() => props.node.type === 'FRAME'
   && props.node.name === 'Link'
-  && props.node.width === 111
-  && props.node.height === 32
+  && (props.node.width === 111 && props.node.height === 32 || props.node.id === '1528:118')
   && props.node.children.some(child => child.children.some(text => text.text === '寰宇云医')))
 const sourceBrandImage = computed(() => props.node.type === 'ROUNDED_RECTANGLE'
   && /^未标题-1 [12]$/.test(props.node.name) && props.node.width === 148 && props.node.height === 48)
+const preserveSourceLogo = computed(() => props.node.id === '4542:6619')
 const textOverride = computed(() => {
   const override=props.texts?.[props.node.id] ?? publicContactText(props.node.text)
   const translated=brandMark?props.node.text:tx(override ?? props.node.text)
@@ -113,7 +114,7 @@ const fontRevision=ref(0)
 // Sticky transforms and carousel opacity change during scrolling. They do not
 // change text geometry and must not remeasure an entire source page each frame.
 const localeStyleKey=computed(()=>JSON.stringify(Object.fromEntries(Object.entries(props.styles||{}).flatMap(([id,css])=>{
-  const geometry=css.split(';').filter(rule=>/^\s*(?:left|top|width|height|display|overflow(?:-[xy])?|font(?:-[\w-]+)?|line-height|letter-spacing)\s*:/.test(rule)).join(';')
+  const geometry=css.split(';').filter(rule=>/^\s*(?:left|top|(?:min-|max-)?width|(?:min-|max-)?height|display|overflow(?:-[xy])?|font(?:-[\w-]+)?|line-height|letter-spacing|-webkit-line-clamp)\s*:/.test(rule)).join(';')
   return geometry?[[id,geometry]]:[]
 }))))
 const localeLayout = ownsLocaleLayout ? computed(() => {
@@ -139,7 +140,7 @@ if (desktopNavigationSource) {
   onBeforeUnmount(() => media?.removeEventListener('change', update))
 }
 const fluidLayout = computed(() => !props.fixedRoots?.includes(props.node.id) && (props.fluid || props.flowRoots?.includes(props.node.id)))
-const tag = computed(() => control.value?.href ? control.value.href.startsWith('/') ? RouterLink : 'a' : control.value?.action ? 'button' : props.node.type === 'TEXT' ? 'p' : 'div')
+const tag = computed(() => control.value?.href ? control.value.href.startsWith('/') ? RouterLink : 'a' : control.value?.action ? 'button' : props.tags?.[props.node.id] ?? (props.node.type === 'TEXT' ? 'p' : 'div'))
 const linkAttributes = computed(() => !control.value?.href ? {} : control.value.href.startsWith('/') ? { to:control.value.href } : {
   href:isWhatsApp.value && patientContact ? patientContact.href(`footer-${props.node.id.replace(':', '-')}`) : control.value.href,
   ...(isWhatsApp.value ? { target:'_blank', rel:'noopener noreferrer', 'data-contact-entry':`footer-${props.node.id.replace(':', '-')}` } : {}),
@@ -173,7 +174,8 @@ const style = computed(() => {
   const localization = !localized.value ? '' : fluidLayout.value
     ? props.node.type==='TEXT' ? 'max-width:100%;width:auto;height:auto;white-space:pre-wrap;overflow-wrap:anywhere;flex-shrink:1;' : 'max-width:100%;'
     : localeLayout.value.styles[props.node.id] || ''
-  const authored = `${control.value ? 'font:inherit;text-align:inherit;border:0;background:transparent;' : ''}${fluidLayout.value ? props.node.layoutCss : props.node.css};${control.value ? 'text-decoration:none;cursor:pointer;appearance:none;' : ''}${props.styles?.[props.node.id] || ''};${localization};${sourceBrandShell.value ? `width:148px!important;height:48px!important;top:${props.node.y-8}px!important;` : ''}${sourceBrandImage.value ? 'background:none!important;' : ''}${props.stickyPosition ? `;position:sticky;left:0;top:${props.stickyPosition.top}px;transform:none;pointer-events:auto;` : ''}`
+  const brandGeometry = props.node.id === '1528:118' ? 'width:140px!important;height:40px!important;' : `width:148px!important;height:48px!important;top:${props.node.y-8}px!important;`
+  const authored = `${control.value ? 'font:inherit;text-align:inherit;border:0;background:transparent;' : ''}${fluidLayout.value ? props.node.layoutCss : props.node.css};${control.value ? 'text-decoration:none;cursor:pointer;appearance:none;' : ''}${props.styles?.[props.node.id] || ''};${localization};${sourceBrandShell.value ? brandGeometry : ''}${sourceBrandImage.value && !preserveSourceLogo.value ? 'background:none!important;' : ''}${props.stickyPosition ? `;position:sticky;left:0;top:${props.stickyPosition.top}px;transform:none;pointer-events:auto;` : ''}`
   // Replacing only url() leaves the copied dimensions, gradients, colors and
   // border geometry intact while the section is still outside the preload
   // window. The original CSS is restored as soon as it approaches the view.
@@ -231,13 +233,14 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
 
 <template>
   <div v-if="sticky && node.visible && !unavailableEntry && !hidden?.includes(node.id)" data-source-sticky-track :style="stickyTrackStyle">
-    <HomeSourceNode :node="node" :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :sticky-position="sticky" :sticky-nodes="nestedStickies" :preserve-pending-entries="preservePendingEntries" @activate="(action,event)=>emit('activate',action,event)">
+    <HomeSourceNode :node="node" :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :tags="tags" :hidden="hidden" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :sticky-position="sticky" :sticky-nodes="nestedStickies" :preserve-pending-entries="preservePendingEntries" @activate="(action,event)=>emit('activate',action,event)">
       <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>
     </HomeSourceNode>
   </div>
   <PatientDesktopNavigation v-else-if="patientNavigation && node.visible && !unavailableEntry && !hidden?.includes(node.id)" :source="node" :style="style" :data-figma-node="node.id" :data-figma-name="node.name" />
   <component ref="imageElement" :is="tag" v-else-if="node.visible && !unavailableEntry && !hidden?.includes(node.id)" v-bind="{...linkAttributes,...sourceAttributes}" :data-figma-node="replica ? undefined : node.id" :data-figma-name="replica ? undefined : node.name" :data-preserve-pending-entries="preservePendingEntries || undefined" :data-source-brand="brandMark || undefined" :data-source-locale-height="ownsLocaleLayout && localized ? localeLayout.height : undefined" :data-source-images="root && deferImages || ownsDeferredImages ? imageReady ? 'loaded' : 'deferred' : undefined" :data-source-action="control?.action" :type="tag === 'button' ? 'button' : undefined" :aria-label="controlLabel" :style="style" :class="{ 'home-source-node--root': root, 'home-source-node--text':node.type==='TEXT' }" @click="control?.action && emit('activate', control.action, $event)">
-    <img v-if="sourceBrandShell || sourceBrandImage" class="home-source-brand-logo" src="/images/brand/univadoc-plus.png" alt="Univadoc+" draggable="false" />
+    <div v-if="node.name === 'Footer'" class="source-footer-placeholder" data-source-footer-placeholder aria-hidden="true" />
+    <img v-else-if="sourceBrandShell || sourceBrandImage && !preserveSourceLogo" class="home-source-brand-logo" :class="{ 'home-source-brand-logo--mobile': node.id === '1528:118' }" src="/images/brand/univadoc-2026-11-24-dark.png" alt="Univadoc+" draggable="false" />
     <template v-else>
       <img v-if="node.svg" :src="imageReady ? node.svg : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
       <img v-else-if="node.text === '\uf005'" class="home-source-node__font-awesome-glyph" :src="imageReady ? '/images/figma/doctor-review-star.svg' : undefined" :loading="deferImages ? 'lazy' : 'eager'" alt="" aria-hidden="true" draggable="false" />
@@ -247,7 +250,7 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
       <template v-else-if="node.text">{{ textOverride ?? node.text }}</template>
       <slot v-if="node.chart === 'radar'" name="radar" :node="node" />
       <slot v-if="node.chart === 'cost'" name="cost" :node="node" />
-      <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :sticky-nodes="stickyNodes" :preserve-pending-entries="preservePendingEntries" :replica="replica" :defer-images="deferImages" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action, event) => emit('activate', action, event)">
+      <HomeSourceNode v-for="child in node.children" :key="child.id" :node="child" :fluid="Boolean(fluidLayout)" :flow-roots="flowRoots" :fixed-roots="fixedRoots" :baseline-nodes="baselineNodes" :baseline-scale="baselineScale" :preserve-text-lines="preserveTextLines" :actions="actions" :texts="texts" :styles="styles" :hidden="hidden" :attributes="attributes" :tags="tags" :sticky-nodes="stickyNodes" :preserve-pending-entries="preservePendingEntries" :replica="replica" :defer-images="deferImages" :defer-image-roots="deferImageRoots" :image-preload-margin="imagePreloadMargin" @activate="(action, event) => emit('activate', action, event)">
         <template #radar="slotProps"><slot name="radar" v-bind="slotProps" /></template>
         <template #cost="slotProps"><slot name="cost" v-bind="slotProps" /></template>
         <template #after="slotProps"><slot name="after" v-bind="slotProps" /></template>
@@ -259,10 +262,12 @@ if (tracksBaselines || ownsDeferredImages) onBeforeUnmount(() => { alignmentRun+
 </template>
 
 <style scoped>
+.source-footer-placeholder { width:100%; height:100%; pointer-events:none; }
 [data-figma-node] { font-synthesis:none; }
 img { display:block; width:100%; height:auto; max-width:none; }
 .home-source-node--root { position:relative!important; left:0!important; top:0!important; }
 .home-source-brand-logo { position:absolute!important; left:0!important; top:0!important; display:block!important; width:148px!important; height:48px!important; max-width:none!important; object-fit:contain!important; object-position:left center!important; }
+.home-source-brand-logo--mobile { width:140px!important; height:40px!important; }
 .home-source-node__accessible-text { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:pre; }
 .home-source-node__font-awesome-glyph { width:100%!important; height:100%!important; object-fit:fill; }
 .home-source-node__facebook { display:block; width:max-content; margin:0; padding:0; text-decoration:none; white-space:nowrap; }

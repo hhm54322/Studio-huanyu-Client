@@ -7,7 +7,6 @@ const route=useRoute(), router=useRouter()
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import HospitalFigmaCanvas from '@/components/common/HospitalFigmaCanvas.vue'
-import PatientFooter from '@/components/layout/PatientFooter.vue'
 import HomeSourceNode, { type HomeSourceAction } from '@/components/common/HomeSourceNode.vue'
 import { hospitalActions, hospitalSources, hospitalNode, hospitalCities, hospitalCityNodes, hospitalCards, hospitalRecords, hospitalRecord, descendants, filteredHospitalSource } from '@/data/hospitalFigmaSource'
 import { homeMobileNodes } from '@/data/homeMobileNavigation'
@@ -130,7 +129,7 @@ function keydown(event:KeyboardEvent){
   if(menuOpen.value){menuOpen.value=false;page.value?.querySelector<HTMLElement>('[data-figma-node="1620:589"]')?.focus({preventScroll:true})}
   hospitalMenuOpen.value=false;languageOpen.value=false
 }
-async function changeLanguage(code:Locale){if(await app.setLocale(code)){languageOpen.value=false;await router.replace({query:{...route.query,lang:code}})}}
+async function changeLanguage(code:Locale){if(await app.setLocale(code)){languageOpen.value=false;await router.replace({query:{...route.query,lang:code},hash:route.hash})}}
 function outside(event:MouseEvent){
   if(!(event.target as HTMLElement).closest('.hospital-languages,[data-figma-node="484:1582"]'))languageOpen.value=false
 }
@@ -154,23 +153,9 @@ onBeforeUnmount(()=>{window.removeEventListener('resize',resize);document.remove
           <div class="hospital-phone-content"><h2>{{tx(hospital.name)}}</h2><div class="hospital-phone-tags"><span v-for="tag in hospital.specialties.slice(0,3)" :key="tag">{{tx(tag)}}</span></div><p>{{hospital.established}} · {{hospital.beds}} {{tx('床')}} · {{hospital.departments}} {{tx('科室')}}</p><div class="hospital-phone-actions"><button type="button" @click="selectedName=hospital.name">{{tx('查看详情')}}</button><button type="button" @click="openConsultation">{{tx('预约咨询')}}</button></div></div>
         </article></div>
       </section>
-      <PatientFooter />
     </template>
     <HospitalFigmaCanvas v-else :node="source" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :full-bleed="['144:4710','144:5154']" :hidden="[headerId,'1741:5732']" :defer-image-roots="deferredImageRoots" image-preload-margin="200px 0px" :label="tx('中国医院列表')" @activate="activate" />
-    <header v-if="!phone" class="hospital-source-header">
-      <HospitalFigmaCanvas :node="hospitalNode(headerId)" :width="viewport" :phone="phone" :fluid="fluid" :actions="actions" :styles="nodeStyles" :attributes="attributes" :label="tx('主导航')" @activate="activate" />
-      <Transition name="hospital-dropdown"><div v-if="!phone&&hospitalMenuOpen" class="hospital-nav-dropdown">
-        <div :style="{width:'1440px',transform:`translateX(-50%) scale(${Math.min(1,viewport/1440)})`}">
-          <HomeSourceNode :node="hospitalNode('1741:5732')" :actions="actions" @activate="activate" />
-        </div>
-      </div></Transition>
-      <div v-if="phone&&menuOpen" class="hospital-mobile-menu" :aria-label="tx('移动端导航')" @click="menuOpen=false">
-        <HomeSourceNode :node="homeMobileNodes.get('1555:422')!" root :actions="menuActions" />
-      </div>
-      <div v-if="languageOpen" class="hospital-languages">
-        <button v-for="language in patientLanguages" :key="language.code" type="button" @click="changeLanguage(language.code)">{{language.label}}</button>
-      </div>
-    </header>
+
     <component :is="hospitalSourceDialog(selectedName)" v-if="selectedName" :hospital-name="selectedName" @close="selectedName=null" @consultation="openConsultation" />
   </div>
 </template>

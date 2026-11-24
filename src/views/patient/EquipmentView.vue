@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import AccordionPanel from '@/components/common/AccordionPanel.vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import {
@@ -370,9 +371,8 @@ function statusClass(v: string) {
             </button>
 
             <!-- 展开详情 -->
-            <Transition name="accordion">
+            <AccordionPanel :open="expandedId === item.id">
             <div
-              v-if="expandedId === item.id"
               :id="`equipment-detail-${item.id}`"
               class="equipment-detail accordion-panel mt-4 space-y-5 border-t border-sky-100 pt-5 text-sm"
             >
@@ -503,7 +503,7 @@ function statusClass(v: string) {
                 </ul>
               </div>
             </div>
-            </Transition>
+            </AccordionPanel>
           </div>
         </article>
       </div>

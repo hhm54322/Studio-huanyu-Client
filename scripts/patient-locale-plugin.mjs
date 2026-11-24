@@ -51,6 +51,14 @@ export function patientLocalePlugin(views) {
       if (!packs[key]) throw new Error(`Unknown patient translation scope ${key}`)
       return `export default JSON.parse(${JSON.stringify(JSON.stringify(packs[key]))})`
     },
-    handleHotUpdate() { packs = undefined },
+    handleHotUpdate({ server }) {
+      packs = undefined
+      // These modules are generated from the import graph and JSON catalogs.
+      // Invalidating only our local cache leaves Vite serving stale virtual
+      // modules after Figma copy or locale files change during development.
+      for (const module of server.moduleGraph.idToModuleMap.values()) {
+        if (module.id?.startsWith(`\0${prefix}`)) server.moduleGraph.invalidateModule(module)
+      }
+    },
   }
 }

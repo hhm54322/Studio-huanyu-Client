@@ -6,6 +6,9 @@ const props = defineProps<{
   node: HomeSourceNodeData; width: number; height?: number
   actions?: Record<string, HomeSourceAction>; styles?: Record<string, string>; texts?: Record<string, string>
   attributes?: Record<string, Record<string, string | number | boolean>>; flowRoots?: string[]; hidden?: string[]
+  tags?: Record<string, 'h1' | 'h2' | 'h3' | 'h4' | 'section' | 'article' | 'nav'>
+  deferImages?: boolean
+  animateHeight?: boolean
   nativeSticky?: boolean; stickyNodes?: Record<string, SourceSticky>
 }>()
 const emit = defineEmits<{ activate: [action: string, event: MouseEvent]; layout: [height:number] }>()
@@ -16,9 +19,9 @@ const root = computed(() => ({ ...props.node, css: props.node.css + ';position:r
 const baselines = computed(() => dentalDescendants(props.node).filter(node => node.textLines).map(node => node.id))
 </script>
 <template>
-  <div class="dental-source-canvas" :style="{ height: `${renderHeight * scale}px` }">
+  <div class="dental-source-canvas" :class="{ 'dental-source-canvas--animated': animateHeight }" :style="{ height: `${renderHeight * scale}px` }">
     <div class="dental-source-canvas__inner" :style="{ width: `${node.width}px`, height: `${renderHeight}px`, transform: nativeSticky ? 'translateX(-50%)' : `translateX(-50%) scale(${scale})`, zoom:nativeSticky ? scale : undefined }">
-      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" :baseline-scale="scale" :sticky-nodes="stickyNodes" preserve-text-lines @layout="height=>{localizedHeight=height;emit('layout',height)}" @activate="(action, event) => emit('activate', action, event)">
+      <HomeSourceNode :node="root" root :actions="actions" :styles="styles" :texts="texts" :attributes="attributes" :tags="tags" :hidden="hidden" :flow-roots="flowRoots" :baseline-nodes="baselines" :baseline-scale="scale" :sticky-nodes="stickyNodes" :defer-images="deferImages" preserve-text-lines @layout="height=>{localizedHeight=height;emit('layout',height)}" @activate="(action, event) => emit('activate', action, event)">
         <template #after="data"><slot name="after" v-bind="data" /></template>
       </HomeSourceNode>
     </div>
@@ -26,6 +29,9 @@ const baselines = computed(() => dentalDescendants(props.node).filter(node => no
 </template>
 <style scoped>
 .dental-source-canvas { position:relative; width:100%; }
+.dental-source-canvas--animated { transition:height .38s cubic-bezier(.22,1,.36,1); }
 .dental-source-canvas__inner { position:absolute; top:0; left:50%; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .dental-source-canvas :deep(button:focus-visible), .dental-source-canvas :deep(a:focus-visible), .dental-source-canvas :deep(input:focus-visible), .dental-source-canvas :deep(select:focus-visible), .dental-source-canvas :deep(textarea:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
+@media (prefers-reduced-motion:reduce) { .dental-source-canvas--animated { transition:none; } }
 </style>
+<style src="./dentalStepLayout.css"></style>

@@ -48,7 +48,7 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
     return expression ? Number(expression[1])*base/100+(expression[2]==='+'?1:-1)*Number(expression[3]) : fallback
   }
   function maxWidth(node:HomeSourceNodeData, base:number) {
-    const css=node.css+';'+(node.layoutCss||'')
+    const css=node.css+';'+(node.layoutCss||'')+';'+(options.styles?.[node.id]||'')
     const value=declarations(css,'max-width')
     if(!value)return Number.POSITIVE_INFINITY
     if(/^-?[\d.]+px$/.test(value))return parseFloat(value)
@@ -90,7 +90,11 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
     const css=node.css+';'+(options.styles?.[node.id]||'')
     const size=number(css,'font-size',16), line=number(css,'line-height',size*1.5)
     const font=`${declarations(css,'font-weight')||'400'} ${size}px ${declarations(css,'font-family')||'sans-serif'}`
-    const raw=options.texts?.[node.id]??node.text, text=translate(raw)
+    const raw=options.texts?.[node.id]??node.text
+    // Canvas measureText does not implement CSS text-transform. Measure what
+    // the browser actually paints or uppercase captions will overlap below.
+    const translated=translate(raw), transform=declarations(css,'text-transform')
+    const text=transform==='uppercase'?translated.toLocaleUpperCase():transform==='lowercase'?translated.toLocaleLowerCase():translated
     const spacing=number(css,'letter-spacing',0)
     // CSS adds tracking to each character, including the final character.
     // Dev Mode often places a percentage comment after line-height; parsing
@@ -156,10 +160,18 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
         } else used+=used||!/^\s+$/.test(token)?measured:0
       }
     }
+    const css=node.css+';'+(options.styles?.[node.id]||'')
+    const lineClamp=Number.parseInt(declarations(css,'-webkit-line-clamp') || '',10)
+    if (lineClamp > 0 && /overflow(?:-y)?:\s*(?:hidden|clip)/.test(css)) lines=Math.min(lines,lineClamp)
     return Math.max(box(node).height,Math.ceil(lines*m.line))
   }
   function visit(node:HomeSourceNodeData,assigned:number):Box {
-    const b=box(node), width=Math.max(1,assigned), kids=children(node), mode=direction(node)
+    // Measure wrapped text at the same maximum width the browser renders.
+    // Otherwise CSS constrains the text after this pass and its additional
+    // lines overlap the next source node.
+    const b=box(node), width=Math.max(1,Math.min(assigned,maxWidth(node,b.width))), kids=children(node), mode=direction(node)
+    const table = node.name === 'Table' && kids.every(child => child.name === 'Table Cell' || child.name === 'Header Cell')
+    const definitionGrid = node.name === 'Definition List' && kids.every(child => child.name === 'Definition Term' || child.name === 'Definition Description')
     // Collapsed accordions intentionally keep their descendants mounted.
     // Translation must not turn a zero-height hidden state into an open panel.
     if(b.height<=0&&/overflow(?:-y)?:\s*(?:hidden|clip)/.test(node.css+';'+(options.styles?.[node.id]||'')))return {...b,width,height:0}
@@ -177,6 +189,9 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
       return {...b,width,height}
     }
     if(!kids.length)return {...b,width}
+    // A caller may explicitly clip an authored container to its visible
+    // content. Do not reserve space for its hidden translated descendants.
+    const visibleHeightLimit = number(node.css+';'+(options.styles?.[node.id]||''), 'max-height', Number.POSITIVE_INFINITY)
     const ordered=[...kids].sort((a,b)=>mode==='row'?box(a).x-box(b).x:box(a).y-box(b).y||box(a).x-box(b).x)
     // A centered child's x is its alignment offset, not container padding.
     // Treating it as padding pushed long translations to the right edge.
@@ -210,9 +225,40 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
       const blockers=mode==='free'?ordered.filter(s=>s!==k&&box(s).x>=c.x+c.width-1&&box(s).y<c.y+c.height&&box(s).y+box(s).height>c.y):[]
       const edge=Math.min(width-(overlayLabel?insets.right:right),...blockers.map(s=>box(s).x-Math.max(0,box(s).x-c.x-c.width)))
       const available=Math.max(1,edge-(mode==='column'&&!positioned?left:c.x))
-      sizes.set(k.id,!hasText(k) ? c.width : cardColumn||positioned&&!overlayLabel ? Math.min(c.width,available) : mode==='column'&&k.type==='TEXT' ? available : Math.min(Math.max(c.width,desired(k)),available))
+      // A wide centred content column has a deliberate maximum width in the
+      // source, even when the exported CSS expresses it only through its
+      // geometry. Let translated text wrap inside it instead of expanding the
+      // column towards the viewport edges and shifting the whole page left.
+      const centeredPageColumn = mode==='column' && !positioned && /align-items:\s*center/.test(node.layoutCss||'')
+        && b.width >= 700 && c.width >= 400 && c.width < b.width - 1
+      // Explicit viewport-wide source backgrounds extend beyond the centered
+      // design canvas; clamping their text-bearing children cuts off the right.
+      const fullBleed = c.width > b.width && /(?:^|;)\s*width:\s*[\d.]+px/.test(options.styles?.[k.id]||'')
+      const definitionTerm = definitionGrid && k.name === 'Definition Term'
+      const definitionWidth = definitionTerm ? Math.min(Math.max(c.width, desired(k)), width * .38) : c.width
+      sizes.set(k.id,definitionGrid ? definitionWidth : table || fullBleed || !hasText(k) ? c.width : cardColumn||positioned&&!overlayLabel||centeredPageColumn ? Math.min(c.width,available) : mode==='column'&&k.type==='TEXT' ? available : Math.min(Math.max(c.width,desired(k)),available))
     }
     const laid=ordered.map(k=>({node:k,old:box(k),next:visit(k,sizes.get(k.id)!)}))
+    // Cells are authored as independent absolute layers. Synchronize each
+    // grid row to its tallest translated cell before positioning later rows.
+    if (table || definitionGrid) for (const item of laid) {
+      const row = laid.filter(other => Math.abs(other.old.y-item.old.y)<1)
+      const height = Math.max(...row.map(other => other.next.height))
+      row.forEach(other => { other.next.height = height })
+    }
+    let definitionShift = 0
+    if (definitionGrid) {
+      definitionShift = Math.max(0, ...laid.filter(item => item.node.name === 'Definition Term').map(item => item.next.width - (Math.min(...laid.filter(row => row.node.name === 'Definition Description' && Math.abs(row.old.y-item.old.y)<1).map(row => row.old.x), width) - item.old.x - 24)))
+      for (const item of laid.filter(item => item.node.name === 'Definition Description')) {
+        const target = Math.max(1, item.old.width - definitionShift)
+        item.next = visit(item.node, target)
+      }
+      for (const item of laid) {
+        const row = laid.filter(other => Math.abs(other.old.y-item.old.y)<1)
+        const height = Math.max(...row.map(other => other.next.height))
+        row.forEach(other => { other.next.height = height })
+      }
+    }
     // Keep authored equal-size card rows aligned when one translation needs
     // an extra line. Later rows then move by the tallest card in that row.
     for(const first of laid) {
@@ -237,9 +283,12 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
         const positioned=declarations(item.node.layoutCss||'','position')==='absolute'
         if(mode==='column'&&!positioned&&/align-items:\s*center/.test(node.layoutCss||''))x=left+Math.max(0,usable-item.next.width)/2
         else if(mode==='column'&&!positioned&&/align-items:\s*(?:flex-)?end/.test(node.layoutCss||''))x=width-right-item.next.width
+        if (definitionGrid && item.node.name === 'Definition Description') {
+          x = c.x + definitionShift
+        }
         for(let j=0;j<i;j++) {
           const prev=laid[j]!
-          if(prev.old.y+prev.old.height<=c.y+1&&prev.old.x<c.x+c.width&&prev.old.x+prev.old.width>c.x)
+          if(prev.old.y+prev.old.height<=c.y+1&&(definitionGrid || prev.old.x<c.x+c.width&&prev.old.x+prev.old.width>c.x))
             y=Math.max(y,prev.next.y+prev.next.height+Math.max(0,c.y-prev.old.y-prev.old.height))
         }
       }
@@ -253,7 +302,7 @@ export function sourceLocaleLayout(root:HomeSourceNodeData, translate:(text:stri
       maxBottom=Math.max(maxBottom,clipsChildren&&!hasText(item.node)?Math.min(b.height,y+size.height):y+size.height)
     }
     const oldBottom=Math.max(...kids.map(k=>box(k).y+box(k).height)), padding=Math.max(0,b.height-oldBottom)
-    const height=Math.max(b.height,maxBottom+padding)
+    const height=Math.min(visibleHeightLimit,Math.max(b.height,maxBottom+padding))
     result[node.id]=`width:${width}px;height:${height}px;`
     return {...b,width,height}
   }

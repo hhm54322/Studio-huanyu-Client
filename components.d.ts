@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AccordionPanel: typeof import('./src/components/common/AccordionPanel.vue')['default']
     BrandLogo: typeof import('./src/components/common/BrandLogo.vue')['default']
     ConsultationPanel: typeof import('./src/components/common/ConsultationPanel.vue')['default']
     ContentArticleCanvas: typeof import('./src/components/common/ContentArticleCanvas.vue')['default']
@@ -15,6 +16,7 @@ declare module 'vue' {
     DentalDoctorPageContent: typeof import('./src/components/common/DentalDoctorPageContent.vue')['default']
     DentalDoctorSourceDialog: typeof import('./src/components/common/DentalDoctorSourceDialog.vue')['default']
     DentalPhysicianDocumentContent: typeof import('./src/components/common/DentalPhysicianDocumentContent.vue')['default']
+    DentalProjectSelection: typeof import('./src/components/common/DentalProjectSelection.vue')['default']
     DentalScanShowcase: typeof import('./src/components/common/DentalScanShowcase.vue')['default']
     DentalSourceCanvas: typeof import('./src/components/common/DentalSourceCanvas.vue')['default']
     HomeExpertDialog: typeof import('./src/components/common/HomeExpertDialog.vue')['default']
@@ -31,6 +33,9 @@ declare module 'vue' {
     HospitalLayout: typeof import('./src/components/layout/HospitalLayout.vue')['default']
     HospitalRadar: typeof import('./src/components/common/HospitalRadar.vue')['default']
     HospitalSourceDialog: typeof import('./src/components/common/HospitalSourceDialog.vue')['default']
+    ImplantAnimation: typeof import('./src/components/common/ImplantAnimation.vue')['default']
+    ImplantFaq: typeof import('./src/components/common/ImplantFaq.vue')['default']
+    ImplantFilm: typeof import('./src/components/common/ImplantFilm.vue')['default']
     MedicalServicesMenu: typeof import('./src/components/layout/MedicalServicesMenu.vue')['default']
     PatientCaseDialog: typeof import('./src/components/common/PatientCaseDialog.vue')['default']
     PatientDesktopNavigation: typeof import('./src/components/layout/PatientDesktopNavigation.vue')['default']

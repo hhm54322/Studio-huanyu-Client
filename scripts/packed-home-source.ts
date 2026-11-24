@@ -61,6 +61,7 @@ export function packedHomeSourcePlugin(rewriteAssets: (code: string) => string =
     transform(_code, id) {
       if (!/\/docs\/figma-source\/home\/(?:.+\/)?source-trees?-.*\.json$/.test(id)
         && !/\/docs\/figma-source\/dental-revision-2026-10-28\/.+\/source-tree-.*\.json$/.test(id)
+        && !/\/docs\/figma-source\/november-revision-2026-11-23\/.+\/source-tree-.*\.json$/.test(id)
         && !id.endsWith('/docs/figma-source/dental-complete-2026-10-30/source-extension.json')) return
       // Apply the same release image mapping before encoding the original
       // JSON, so the late transform cannot restore an uncompressed image.

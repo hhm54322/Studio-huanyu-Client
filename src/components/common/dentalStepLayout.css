@@ -1,0 +1,56 @@
+/* Translated step names are longer than the Chinese source. Lay out the
+   original layers in a single wider rail, keeping their full labels readable
+   in at most two lines without overlapping the numbers or connectors. */
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5677"], [data-figma-node="2294:6987"], [data-figma-node="2294:8053"]) {
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:1216px!important;
+  height:66px!important;
+  display:grid!important;
+  grid-template-columns:312px 64px 284px 64px 256px;
+  justify-content:center;
+  align-items:center;
+  column-gap:20px;
+}
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5677"], [data-figma-node="2294:6987"], [data-figma-node="2294:8053"]) > [data-figma-node] {
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+}
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5678"], [data-figma-node="4542:5684"], [data-figma-node="4542:5690"], [data-figma-node="2294:6988"], [data-figma-node="2294:6994"], [data-figma-node="2294:7000"], [data-figma-node="2294:8054"], [data-figma-node="2294:8060"], [data-figma-node="2294:8066"]) {
+  display:flex!important;
+  align-items:center!important;
+  height:48px!important;
+}
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5679"], [data-figma-node="4542:5685"], [data-figma-node="4542:5691"], [data-figma-node="2294:6989"], [data-figma-node="2294:6995"], [data-figma-node="2294:7001"], [data-figma-node="2294:8055"], [data-figma-node="2294:8061"], [data-figma-node="2294:8067"]) {
+  position:relative!important;
+  inset:auto!important;
+  flex:0 0 40px!important;
+}
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5681"], [data-figma-node="4542:5687"], [data-figma-node="4542:5693"], [data-figma-node="2294:6991"], [data-figma-node="2294:6997"], [data-figma-node="2294:7003"], [data-figma-node="2294:8057"], [data-figma-node="2294:8063"], [data-figma-node="2294:8069"]) {
+  position:relative!important;
+  left:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  display:flex!important;
+  flex:1 1 auto!important;
+  align-items:center;
+  min-width:0!important;
+  width:auto!important;
+  height:auto!important;
+  padding:0 0 0 12px!important;
+}
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5682"], [data-figma-node="4542:5688"], [data-figma-node="4542:5694"], [data-figma-node="2294:6992"], [data-figma-node="2294:6998"], [data-figma-node="2294:7004"], [data-figma-node="2294:8058"], [data-figma-node="2294:8064"], [data-figma-node="2294:8070"]) {
+  position:relative!important;
+  left:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}

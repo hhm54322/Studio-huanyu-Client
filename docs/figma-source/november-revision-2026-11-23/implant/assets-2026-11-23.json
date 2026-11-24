@@ -1,0 +1,742 @@
+{
+  "assets": [
+    {
+      "nodeId": "4542:3629",
+      "name": "Image - 牙科植入体的三个组成部分",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3629.svg",
+      "sha256": "d5359b2592210fed9691d8066f5d882df49c9e422a3ceffa04f24d95047ea297",
+      "source": "Selected Figma Dev Mode SVG export from the full cross-section frame"
+    },
+    {
+      "nodeId": "4542:3691",
+      "downloadPath": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/dental-revision-20261123/goal-native/implant/selected-4542-3691.svg",
+      "downloadSHA256": "75b957d65fb8713d87700f2c27cba8b67ae97a8c9e596e1a042ec9766931b9f2",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3691.svg",
+      "note": "Visible complete paths and gradient; restored the final SVG closing tag omitted in Figma Dev Mode display.",
+      "sha256": "75b957d65fb8713d87700f2c27cba8b67ae97a8c9e596e1a042ec9766931b9f2",
+      "source": "Selected Figma SVG export; authored vector/glyph container, not a substitute"
+    },
+    {
+      "nodeId": "4542:3545",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3545.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d5126946571fbd5bcc8c3d1cdfc4c22fabcd095185c438e15be2b5b7367fb024"
+    },
+    {
+      "nodeId": "4542:3546",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3546.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "97f9990ea0b255c892fcdfa9887b5b19be401a19926c8672f800643921923029"
+    },
+    {
+      "nodeId": "4542:3550",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3550.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d5126946571fbd5bcc8c3d1cdfc4c22fabcd095185c438e15be2b5b7367fb024"
+    },
+    {
+      "nodeId": "4542:3551",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3551.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "97f9990ea0b255c892fcdfa9887b5b19be401a19926c8672f800643921923029"
+    },
+    {
+      "nodeId": "4542:3677",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3677.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9d029ea9f11906bb0f80a46ea4fa01d0866706b79431ed92b10de9436491db06"
+    },
+    {
+      "nodeId": "4542:3678",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3678.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "71566bc31470f587843d6c98439790fede5b71b7e7633a15693867cf4d02c335"
+    },
+    {
+      "nodeId": "4542:3679",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3679.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "6a89ecea68b073138df7b6b7703c19c3d613f2bb0e2c5428c9f91477ba90a08f"
+    },
+    {
+      "nodeId": "4542:3681",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3681.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "04990aa0fc3d7816b1f5aa5fec86586a64141497a2546c52f0d5c5898516a94f"
+    },
+    {
+      "nodeId": "4542:3682",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3682.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "cd973ce55a5d87092ff9aa4d1d773c8b293043cf8899b0d3c46501a0d5d8dfeb"
+    },
+    {
+      "nodeId": "4542:3683",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3683.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "cd973ce55a5d87092ff9aa4d1d773c8b293043cf8899b0d3c46501a0d5d8dfeb"
+    },
+    {
+      "nodeId": "4542:3684",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3684.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "5c0a59deb43aa56f5eb1bf96df52bea59e099be5529d9939fb5297a6c8c47590"
+    },
+    {
+      "nodeId": "4542:3685",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3685.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "5c0a59deb43aa56f5eb1bf96df52bea59e099be5529d9939fb5297a6c8c47590"
+    },
+    {
+      "nodeId": "4542:3686",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3686.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2306166ad225196b148a4a7efdd7301ffb7ac0194f1d360c724db6043b99aee9"
+    },
+    {
+      "nodeId": "4542:3687",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3687.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2306166ad225196b148a4a7efdd7301ffb7ac0194f1d360c724db6043b99aee9"
+    },
+    {
+      "nodeId": "4542:3700",
+      "name": "p-abut",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3700.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "7c3d970a07815d52dbfbb3c3605485230f973d59f8ae3e399509843e303fca69"
+    },
+    {
+      "nodeId": "4542:3702",
+      "name": "p-crown",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3702.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2ae9fc1083af8eb846d3b3fdad5ff2d7c98950ed2b46c222325c42b1da888016"
+    },
+    {
+      "nodeId": "4542:3705",
+      "name": "p-done",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3705.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2bac177dc76d9f309e5853a70abe7fc0abbbc8f995d9683bb5f140174f6f2f16"
+    },
+    {
+      "nodeId": "4542:3709",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3709.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "0e32ad3ba044e3ae9daa98d8f7b8303a6cde9740edf9f257cbaba37765fafd85"
+    },
+    {
+      "nodeId": "4542:3710",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3710.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "0e32ad3ba044e3ae9daa98d8f7b8303a6cde9740edf9f257cbaba37765fafd85"
+    },
+    {
+      "nodeId": "4542:3715",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3715.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "0b6e30d5b40f39e7d1f99b988ca39ab11b2ba0441ddcb0ad041e1c48a4fe7e47"
+    },
+    {
+      "nodeId": "4542:3720",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3720.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "b47e506b6ca9c2af8011727e2409e9a42bb17ea5971897a0194674bfba923b8f"
+    },
+    {
+      "nodeId": "4542:3783",
+      "name": "Polygon 1",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-3783.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f092b6b750543a3256bda93ca25935063b9eb980d3681b8c987db777c5b96afc"
+    },
+    {
+      "nodeId": "4542:4084",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4084.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4089",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4089.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4094",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4094.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4099",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4099.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4104",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4104.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4109",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4109.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9f7379731630236aad9bc73efa504625cd9f7f1aa24c2da1745bf5c1da008eaf"
+    },
+    {
+      "nodeId": "4542:4117",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4117.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4121",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4121.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4125",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4125.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4129",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4129.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4133",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4133.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4137",
+      "name": "Vector 10",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4137.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "83626e8c3578f67bc7b06a89dd6fd56059e0112430156c8e2b525960f0c2c58f"
+    },
+    {
+      "nodeId": "4542:4782",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4782.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "afad1e37a389516fbc2308353925e0321660e55627d667d3bff0d5364b353dab"
+    },
+    {
+      "nodeId": "4542:4791",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4791.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e24f7b442895ed5838ef843a5a0aefa1ba2acc1391de9de99968cdd0c01d1e1b"
+    },
+    {
+      "nodeId": "4542:4800",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4800.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "869c1941e94576009443ad8520915e8e82bdb940902f0cb9623e00408ce41a85"
+    },
+    {
+      "nodeId": "4542:4819",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4819.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "5755490c1f9a0a111bdf22476f92efb2b18d68ef2cb025938bfbd5318b540d33"
+    },
+    {
+      "nodeId": "4542:4824",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4824.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2d50f9135dd5925d095637333dac55ec4c845e648d1636f47fb93c3fd0b32637"
+    },
+    {
+      "nodeId": "4542:4871",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4871.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "b63b29ef75786d2b5a44f1d63257f270c310c0506a362ceffbdc57bdead6fa19"
+    },
+    {
+      "nodeId": "4542:4877",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4877.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "17115cfe087de23587d1617852173d680eedb995dd02976ac976e6d77bc71881"
+    },
+    {
+      "nodeId": "4542:4882",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4882.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "62dffee39d41d428dcb4d5f195d1143eee89211069cf1625c0df751d5c40161d"
+    },
+    {
+      "nodeId": "4542:4910",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4910.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d50c63392a6533a532ff72300e509c93644fd329b27046518b75d4684d78e638"
+    },
+    {
+      "nodeId": "4542:4923",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4923.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d4b8b9152bbaa8eb7704cc61c1ba2752adecc909b3d6281f79d2f63776565116"
+    },
+    {
+      "nodeId": "4542:4929",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4929.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d4b8b9152bbaa8eb7704cc61c1ba2752adecc909b3d6281f79d2f63776565116"
+    },
+    {
+      "nodeId": "4542:4938",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-4938.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "a9754ff96504b38a9b728348132c8e11c510a8c4aa29406274d5149db4ca4144"
+    },
+    {
+      "nodeId": "4542:3556",
+      "imageHash": "36c538be5a733f483b0f759ad199d542a080e976",
+      "paintOpacity": 1,
+      "originalSHA256": "1a00ef9f275c50661833df365be37f6d85fe2d666584a76dfb63663b82a7a0d6",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-36c538be5a733f483b0f759ad199d542a080e976.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3616",
+      "imageHash": "1696a1dd89d4d9991bda4d852ccce161ff841b2e",
+      "paintOpacity": 1,
+      "originalSHA256": "d1e011d1830d22f747a9c1c7f0a2998c8f56d0a2128639cf8546d38f35c64ced",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-1696a1dd89d4d9991bda4d852ccce161ff841b2e.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3781",
+      "imageHash": "f37db12d67c999765150a40b6aa768d4b2d99596",
+      "paintOpacity": 1,
+      "originalSHA256": "29915bca9d82158a4bb9f6d991cc070bdb30f47b0ec7f2ff9804da9444cf039a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-f37db12d67c999765150a40b6aa768d4b2d99596.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3788",
+      "imageHash": "720d4261430b2e98f751b55fc2aaf3a264aea03d",
+      "paintOpacity": 1,
+      "originalSHA256": "ba632803c542f5bd0438245a5736082916490508821cfdfee131037bdf2ec322",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-720d4261430b2e98f751b55fc2aaf3a264aea03d.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3801",
+      "imageHash": "b98f32719d66d58146740f0ece594874639ab693",
+      "paintOpacity": 1,
+      "originalSHA256": "8b40b833071efc0732384d9db7cad7d671e1b08a64d4959dd75dd71fb840389f",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-b98f32719d66d58146740f0ece594874639ab693.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3849",
+      "imageHash": "ab9868e5f3632ba38d544195177a707351d924b2",
+      "paintOpacity": 1,
+      "originalSHA256": "d43dbd8815cdc916dc813e415e1360a7dda0197da19c118b3090fd941b895f9f",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-ab9868e5f3632ba38d544195177a707351d924b2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3873",
+      "imageHash": "1643627d272287d701181e5f44aeea5b611eddaa",
+      "paintOpacity": 1,
+      "originalSHA256": "323afd4d25e85d36da70f7921089509562ba62c0575ec4b8b9d5c94ed88c269a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-1643627d272287d701181e5f44aeea5b611eddaa.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3888",
+      "imageHash": "e1aee4336c545f9361ca01cdd15f5548fac8bea8",
+      "paintOpacity": 1,
+      "originalSHA256": "a3780fcd5786a7d85028d0e6f48f2f6e5bcd43db641e432013a2f2d0e8217c68",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-e1aee4336c545f9361ca01cdd15f5548fac8bea8.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3979",
+      "imageHash": "bef524012e34d2eda5aaeabda3f54a382f6b4d64",
+      "paintOpacity": 1,
+      "originalSHA256": "a236e8eac22928bf72a6dcf303260a9b8164799da64c38eed149d44d4bc6ea27",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-bef524012e34d2eda5aaeabda3f54a382f6b4d64.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:3988",
+      "imageHash": "427fff42026c9ecdfb8182aace9a34c5d0fe35b0",
+      "paintOpacity": 1,
+      "originalSHA256": "0b67ebcf8c60e601a2b9594b5c2a0dd95a0ba88e835ec9e860b3eacb566e2015",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-427fff42026c9ecdfb8182aace9a34c5d0fe35b0.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4073",
+      "imageHash": "99e9e01dc4928bfd856c1da60225336fe5dc6950",
+      "paintOpacity": 1,
+      "originalSHA256": "d86a404e4f8cf0907f4f912569a9889960b9fb84eb28b1a59b17e16abc71993a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-99e9e01dc4928bfd856c1da60225336fe5dc6950.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4153",
+      "imageHash": "8115b42ab98ed5d050fa5c41b01cbd45406b5f22",
+      "paintOpacity": 1,
+      "originalSHA256": "0b9b8c052d816f51a5844e58f3a4743698e836385fc2f067e4e24d7b5aead2da",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-8115b42ab98ed5d050fa5c41b01cbd45406b5f22.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4217",
+      "imageHash": "5738bc5a82e128af0bb83c0c10b9bdbef160edc3",
+      "paintOpacity": 1,
+      "originalSHA256": "ea9c84a407acd20ed1801fc9465f1038ee493c510a98e0b911800ff45d3d419d",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-5738bc5a82e128af0bb83c0c10b9bdbef160edc3.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4305",
+      "imageHash": "4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2",
+      "paintOpacity": 1,
+      "originalSHA256": "ff3a5f9870acee796b471bc439398429d1a575ffac03b1c7af6c9456c5e66079",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4339",
+      "imageHash": "4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2",
+      "paintOpacity": 1,
+      "originalSHA256": "ff3a5f9870acee796b471bc439398429d1a575ffac03b1c7af6c9456c5e66079",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4339",
+      "imageHash": "a10a487c888a75378f20ad383455a070c834aab4",
+      "paintOpacity": 1,
+      "originalSHA256": "b71b260b1b2c6e4878718e3a2ac9d3db71079549ccd7397d5d2d610dfea37ed2",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-a10a487c888a75378f20ad383455a070c834aab4.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4373",
+      "imageHash": "4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2",
+      "paintOpacity": 1,
+      "originalSHA256": "ff3a5f9870acee796b471bc439398429d1a575ffac03b1c7af6c9456c5e66079",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-4cae5149143d0a8cc82d3c5f1d679c5f6bd49dc2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4373",
+      "imageHash": "a10a487c888a75378f20ad383455a070c834aab4",
+      "paintOpacity": 1,
+      "originalSHA256": "b71b260b1b2c6e4878718e3a2ac9d3db71079549ccd7397d5d2d610dfea37ed2",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-a10a487c888a75378f20ad383455a070c834aab4.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4373",
+      "imageHash": "765e8c74845dc657fcf65dcbe8b67f4a296133d3",
+      "paintOpacity": 1,
+      "originalSHA256": "664ef1d235211b09411f3c4ba2084303975258c6297012f7f6fcedb5da7e1359",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-765e8c74845dc657fcf65dcbe8b67f4a296133d3.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4412",
+      "imageHash": "fbd363a1c3fc834df7b64006812ad74f440e9824",
+      "paintOpacity": 1,
+      "originalSHA256": "cda086e426e3a20c347e2fedf26eeb090ee003dd1b2c10b49955ac9ff858d05a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-fbd363a1c3fc834df7b64006812ad74f440e9824.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4521",
+      "imageHash": "751abbe06693da1ab6b8ba5d8b8224e244f4abed",
+      "paintOpacity": 1,
+      "originalSHA256": "4567b5295248ce8ac6a12854d409c159c6f8cc11126f9376ee1455cb83fa9b51",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-751abbe06693da1ab6b8ba5d8b8224e244f4abed.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4568",
+      "imageHash": "7d2e4fdecff069771cbf1b748f31ee3ff17a2d38",
+      "paintOpacity": 1,
+      "originalSHA256": "14aeccb0de0b33189d75bef2e599cf6e843d5f15ed287564617e60e5f45be452",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-7d2e4fdecff069771cbf1b748f31ee3ff17a2d38.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4695",
+      "imageHash": "dccb6bafa580ddf40fc1fbba36f727e589a2ec94",
+      "paintOpacity": 1,
+      "originalSHA256": "d9bb2d5755f0361fc12907b61c875b014448acf142c993208dc66392c3ad29f9",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-dccb6bafa580ddf40fc1fbba36f727e589a2ec94.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4773",
+      "imageHash": "c498cd1ef759d55a5ff4e2465a3c041631894cae",
+      "paintOpacity": 1,
+      "originalSHA256": "a161a53838403b86424b9a16b8c89a186292b4c82c6d5cfcd90d0ba4bf382a08",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-c498cd1ef759d55a5ff4e2465a3c041631894cae.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4548:7245",
+      "imageHash": "01ce9238f8efcd8d0b972da2d11cd2201c049dc2",
+      "paintOpacity": 1,
+      "originalSHA256": "c1169cee5c10abfcc818de34bc8a4296186d33bd8a9778a0a80968763b85a86f",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-01ce9238f8efcd8d0b972da2d11cd2201c049dc2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4805",
+      "imageHash": "92f7998682091d280c07e4ae418edf508894282e",
+      "paintOpacity": 1,
+      "originalSHA256": "bd46e3f4f30b6c309a66aabee5c4f4427f51863d6067a0cd518e381114b6ddef",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-92f7998682091d280c07e4ae418edf508894282e.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4835",
+      "imageHash": "720d4261430b2e98f751b55fc2aaf3a264aea03d",
+      "paintOpacity": 1,
+      "originalSHA256": "ba632803c542f5bd0438245a5736082916490508821cfdfee131037bdf2ec322",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-720d4261430b2e98f751b55fc2aaf3a264aea03d.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4556:7500",
+      "imageHash": "022b18859c05f54677ab3660fb2c286a95fbe0de",
+      "paintOpacity": 1,
+      "originalSHA256": "5330cc2c9fb50bf30056a196bb10f07332fe73174c6db556b6d88d767d4b0583",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-022b18859c05f54677ab3660fb2c286a95fbe0de.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:4906",
+      "imageHash": "db2b7822dd673324ce608b02dd62b1f1ca8bdc36",
+      "paintOpacity": 1,
+      "originalSHA256": "511090df67348f7db7132b3333644f249a27fe5428106ce83d57dcdd8bd2aa66",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-db2b7822dd673324ce608b02dd62b1f1ca8bdc36.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:5257",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5257.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "1b8792ea609b05d988e29c4caebe8a1350bd7885d8d31298dee35b814af3671b"
+    },
+    {
+      "nodeId": "4542:5258",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5258.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "468e63bf7d6d2b759eaffe6e0d1d1883a228ff6497af4afe8b8a049a97252c19"
+    },
+    {
+      "nodeId": "4542:5259",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5259.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e3f0ac83d4c3590903cc6ea304b312daa133f198acea8a85fc22f962f0c94876"
+    },
+    {
+      "nodeId": "4542:5261",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5261.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e5c234e2e3d5ad066e18881da5e98f0065a8bbb1397f354b896480f425e2eda5"
+    },
+    {
+      "nodeId": "4542:5263",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5263.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d15806f57f1e6798714baee24939865a223889b5255f7856689221ca60a17dd4"
+    },
+    {
+      "nodeId": "4542:5264",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5264.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "64176ca8a14b9c1efaeb78e3186ed270cd75380e0670da8d47c94913f334e052"
+    },
+    {
+      "nodeId": "4542:5265",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5265.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "ffc98a4309b44ea5182f9fc04ce16a5a473185f7ac4b13daf7d2a44b390ea489"
+    },
+    {
+      "nodeId": "4542:5266",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5266.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "64176ca8a14b9c1efaeb78e3186ed270cd75380e0670da8d47c94913f334e052"
+    },
+    {
+      "nodeId": "4542:5267",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5267.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f74fd08a82ad003d61da36a1b6e5a8c897d5c01614b213e24a22e22c650acbaa"
+    },
+    {
+      "nodeId": "4542:5268",
+      "name": "Group",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5268.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9407f8b038fdf4100f2db30a2f1564942cf78ebfb616a65582e761717bd6139a"
+    },
+    {
+      "nodeId": "4542:5275",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5275.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d102e2dfec4e5ece808116d2a57efc7681a7eca9ecee8ab69d7976c8bfc3874f"
+    },
+    {
+      "nodeId": "4542:5276",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5276.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "cae1d3b555cf9914bb386f468d8fe51f4f6fc21dfc69917a1c88ea8b533218f2"
+    },
+    {
+      "nodeId": "4542:5278",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5278.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "8194c8ac60e575996e3b3e7b4c893869520024cbf6b65f04aeb1c38202b74d27"
+    },
+    {
+      "nodeId": "4542:5281",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5281.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "509bc0932bfc35501c77f3a74561e5aa80b9978bed47b3d6462ea86e4500d6a4"
+    },
+    {
+      "nodeId": "4542:5284",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5284.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "b2bef1b720732447f0f56ae9941efd95b119cc4f870f05dd50fa19c55cddae06"
+    },
+    {
+      "nodeId": "4542:5419",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/node-4542-5419.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "738def515c9ad6140bf90ae6bad8a20eee862b79dbb23c196b448618b9b895c9"
+    },
+    {
+      "nodeId": "4542:5243",
+      "imageHash": "1696a1dd89d4d9991bda4d852ccce161ff841b2e",
+      "paintOpacity": 1,
+      "originalSHA256": "d1e011d1830d22f747a9c1c7f0a2998c8f56d0a2128639cf8546d38f35c64ced",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-1696a1dd89d4d9991bda4d852ccce161ff841b2e.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:5408",
+      "imageHash": "f37db12d67c999765150a40b6aa768d4b2d99596",
+      "paintOpacity": 1,
+      "originalSHA256": "29915bca9d82158a4bb9f6d991cc070bdb30f47b0ec7f2ff9804da9444cf039a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-f37db12d67c999765150a40b6aa768d4b2d99596.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:5415",
+      "imageHash": "720d4261430b2e98f751b55fc2aaf3a264aea03d",
+      "paintOpacity": 1,
+      "originalSHA256": "ba632803c542f5bd0438245a5736082916490508821cfdfee131037bdf2ec322",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-implants-2026-11-23/image-720d4261430b2e98f751b55fc2aaf3a264aea03d.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    }
+  ]
+}

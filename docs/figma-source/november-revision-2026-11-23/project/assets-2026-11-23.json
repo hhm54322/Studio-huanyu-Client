@@ -1,0 +1,555 @@
+{
+  "assets": [
+    {
+      "nodeId": "4542:5568",
+      "downloadPath": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/dental-revision-20261123/goal-native/project/native-4542-5568.svg",
+      "downloadSHA256": "7683e832b7a448cb2c2ade0a57fc594544f5b217a725f19df39a97ce23c8f36e",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5568.svg",
+      "nativeGeometrySha256": "9a275054319caa1dc56b9e4d259859bd6fcdcfa228e1093f149db5ac567b7d20",
+      "nativePaint": "strokePaints",
+      "sha256": "f8399e9e856eacad4dd782b02c990420238da2bf4275f9175882d06d8d24b1be",
+      "source": "Native Figma strokeGeometry; viewBox includes the authored outside stroke"
+    },
+    {
+      "nodeId": "4542:5652",
+      "downloadPath": "/Users/hhm/1024Clients/huanyu/Studio-huanyu-Client/artifacts/dental-revision-20261123/goal-native/project/native-4542-5652.svg",
+      "downloadSHA256": "5b41e9705990c8ea0b4a3b8c524386aab2816181c6134104aaad85d866f93cc0",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5652.svg",
+      "nativeGeometrySha256": "af7c2da188d62316c874162eed54ae07437f71dd4f8917db0028021378bc50ba",
+      "nativePaint": "fillPaints",
+      "sha256": "5b41e9705990c8ea0b4a3b8c524386aab2816181c6134104aaad85d866f93cc0",
+      "source": "Selected Figma SVG export; authored vector/glyph container, not a substitute"
+    },
+    {
+      "nodeId": "4542:5532",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5532.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "5a5628028e27be02423f664ec562126efb98b483c589a0cf5c9050679b17b57d"
+    },
+    {
+      "nodeId": "4542:5536",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5536.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2afb6c71ddc1883afa23e2ae4204011f8bf52936886393ba48eb0b219c15fe06"
+    },
+    {
+      "nodeId": "4542:5539",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5539.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "bd2114f84152b8aeb3637353cfd88c31371c71fec76ac445aebde9ef993e8f9a"
+    },
+    {
+      "nodeId": "4542:5546",
+      "name": "Group 639",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5546.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "95a8b6a4074b95e3af24233d1e566f3bb11f8a251ec785c594b0655bd0c162e6"
+    },
+    {
+      "nodeId": "4542:5569",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5569.svg",
+      "source": "Figma vector with native paint, geometry and optical bounds",
+      "sha256": "e64d9d8a5c89e5200eca23d317d3340d54b0c1e60b035ecd2768d89fb0776fa3"
+    },
+    {
+      "nodeId": "4542:5570",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5570.svg",
+      "source": "Figma vector with native paint, geometry and optical bounds",
+      "sha256": "a01037c24b8bef8854a8e2b674455d2ad166ebb31f59a0b87fe234f6ccd6a6ad"
+    },
+    {
+      "nodeId": "4542:5572",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5572.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "e8a10670209072d4562e391a0cd23a4d6ff6ae891935d055586e0fb353e48c62",
+      "geometrySourceNodeIds": [
+        "4542:5573",
+        "4542:5574"
+      ]
+    },
+    {
+      "nodeId": "4542:5577",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5577.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "ededf1e1457d9619292ae064740bf5f2d857a3f41f2ee9385a4c3bf6d18cc3ee"
+    },
+    {
+      "nodeId": "4542:5578",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5578.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f54970824890524ff165bb2864c684fad140909c4fad9a5af5548ce389c6bab1"
+    },
+    {
+      "nodeId": "4542:5579",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5579.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f54970824890524ff165bb2864c684fad140909c4fad9a5af5548ce389c6bab1"
+    },
+    {
+      "nodeId": "4542:5580",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5580.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e10f01456eca5ef1bd7d37b1057fa1320fa4884bbfb8a77af761c81dfd66fb67"
+    },
+    {
+      "nodeId": "4542:5582",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5582.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "36d254d3d7b7b61b8f846f755cb941b0c5878f25e53849e899ee58dd10e183de",
+      "geometrySourceNodeIds": [
+        "4542:5583",
+        "4542:5584"
+      ]
+    },
+    {
+      "nodeId": "4542:5587",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5587.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e206193b8b4a20ecf5415cc0e9d44bf7ecb8112df03bfcd3d9e8e0516b514096"
+    },
+    {
+      "nodeId": "4542:5588",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5588.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e206193b8b4a20ecf5415cc0e9d44bf7ecb8112df03bfcd3d9e8e0516b514096"
+    },
+    {
+      "nodeId": "4542:5591",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5591.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "96eb7a3c8b47a689b6612f3f6d96bc1141a35242ad74477879766cc912408891"
+    },
+    {
+      "nodeId": "4542:5592",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5592.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "ec1664a8880586fa3840e5d0492b34192f752c00633c351afdda09a46927355e"
+    },
+    {
+      "nodeId": "4542:5594",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5594.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "1e3c74e1b3294a1c5ef3a9f786790f1835267c0f1493be83adb53a753319ef08",
+      "geometrySourceNodeIds": [
+        "4542:5595",
+        "4542:5596",
+        "4542:5597",
+        "4542:5598"
+      ]
+    },
+    {
+      "nodeId": "4542:5600",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5600.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "39d5f361b3eb3b3f0008f9ef0a2f84c5b034fd2c7d234315e5062ca4a2705b8a",
+      "geometrySourceNodeIds": [
+        "4542:5601",
+        "4542:5602"
+      ]
+    },
+    {
+      "nodeId": "4542:5605",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5605.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "287a27fdba615ff4e401e8fddb7f47bbfef555e4132706d29afe29ce931d2359"
+    },
+    {
+      "nodeId": "4542:5606",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5606.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "287a27fdba615ff4e401e8fddb7f47bbfef555e4132706d29afe29ce931d2359"
+    },
+    {
+      "nodeId": "4542:5607",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5607.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "521686bc18b4235c58eff93ce1d58adf7e9433ea25cd6c9c2d280464a567ae3c"
+    },
+    {
+      "nodeId": "4542:5608",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5608.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "521686bc18b4235c58eff93ce1d58adf7e9433ea25cd6c9c2d280464a567ae3c"
+    },
+    {
+      "nodeId": "4542:5611",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5611.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "5bdbc8c403699819c01651dddc5f6a288ca3d2f9a239b82a5e01bfedd7b6e70c"
+    },
+    {
+      "nodeId": "4542:5612",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5612.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "22f0f654041de4cfb69ea1be4d05e0c539ebe8706314f6694e20e7a3090ee45b"
+    },
+    {
+      "nodeId": "4542:5614",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5614.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "1306ee43ff356827c54ca51c0ff145c7b5696fa843dd3b7c5a277ef2da5de17a",
+      "geometrySourceNodeIds": [
+        "4542:5615",
+        "4542:5616"
+      ]
+    },
+    {
+      "nodeId": "4542:5618",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5618.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "84d76ef455ffc00faf5aa41e3d6249e4aa71d56d11e921f1d594e0372707ef0c",
+      "geometrySourceNodeIds": [
+        "4542:5619",
+        "4542:5620"
+      ]
+    },
+    {
+      "nodeId": "4542:5623",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5623.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "dd199c5cb2c3cb1f8c05f34aeecb0b38679239713647df7c81aca40bdd0dadb2"
+    },
+    {
+      "nodeId": "4542:5624",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5624.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "cce98a35fce7f4d0e7346b2d8f1f183df98882ec8e5bd21bc26d394deb041313"
+    },
+    {
+      "nodeId": "4542:5626",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5626.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "26d54878f14fc2a93953e950f596b6243df2ef9a111803cca310095119e7c4b0",
+      "geometrySourceNodeIds": [
+        "4542:5627",
+        "4542:5628"
+      ]
+    },
+    {
+      "nodeId": "4542:5630",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5630.svg",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "sha256": "648704b45631da25b5cc20304ef20c2fe7cb00665dfb189cfa88fa415849fe72",
+      "geometrySourceNodeIds": [
+        "4542:5631",
+        "4542:5632",
+        "4542:5633",
+        "4542:5634"
+      ]
+    },
+    {
+      "nodeId": "4542:5653",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5653.svg",
+      "source": "Figma vector with native paint, geometry and optical bounds",
+      "sha256": "e697037cf30dcdc9280cbf0bc174a9fe039da1da7c75043208d430d9a8ddd8c9"
+    },
+    {
+      "nodeId": "4542:5718",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5718.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "13829af3083053c2b77e9eb793eae2e0a9bf6504407e40359b8ad6b0e0d40634"
+    },
+    {
+      "nodeId": "4542:5741",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5741.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "7b5a547efb475afa3afd02c3c24ef7307003da0a4c6ccb3a27541a0f4ed0febc"
+    },
+    {
+      "nodeId": "4542:5757",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5757.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "bdcffff22d006e852f438160b97770e9b86a0def2ae1312b46b16b964410a064"
+    },
+    {
+      "nodeId": "4542:5775",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5775.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "be7ce5ebe2eece21ee520d27bd4c8cc64030a44221998d7b90286649ddb39d06"
+    },
+    {
+      "nodeId": "4542:5791",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5791.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "7b5a547efb475afa3afd02c3c24ef7307003da0a4c6ccb3a27541a0f4ed0febc"
+    },
+    {
+      "nodeId": "4542:5809",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5809.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f94b9f68caed69d0bc0bf927a252e4cffc2bc680646ab585c157c73d340d1f65"
+    },
+    {
+      "nodeId": "4542:5827",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5827.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "be7ce5ebe2eece21ee520d27bd4c8cc64030a44221998d7b90286649ddb39d06"
+    },
+    {
+      "nodeId": "4542:5843",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5843.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "bdcffff22d006e852f438160b97770e9b86a0def2ae1312b46b16b964410a064"
+    },
+    {
+      "nodeId": "4542:5848",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5848.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "4752f396809bf59a419ec7c6448085fe0a9000addd39c3fc6fc45134018d5f76"
+    },
+    {
+      "nodeId": "4542:5895",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5895.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9972d2108fc3e75df75194eb5275f9ca7926ceec11bc312056e2f1b1ae8804dc"
+    },
+    {
+      "nodeId": "4542:5902",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5902.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "30a209f241a10e8f66995dfddb873a76d8f71f4630130551b5e4cc5f3ea765c1"
+    },
+    {
+      "nodeId": "4542:5907",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5907.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "e927646585e688c0f2acb7bb7086dfadff65392ef86158dc71eebbb5b63cd4bd"
+    },
+    {
+      "nodeId": "4542:5934",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5934.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "a026d1729e2b9eb0971d4508c9f378cd63a685ed8bed0ce520e3ddd234b74b41"
+    },
+    {
+      "nodeId": "4542:5947",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5947.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d4b8b9152bbaa8eb7704cc61c1ba2752adecc909b3d6281f79d2f63776565116"
+    },
+    {
+      "nodeId": "4542:5953",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5953.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d4b8b9152bbaa8eb7704cc61c1ba2752adecc909b3d6281f79d2f63776565116"
+    },
+    {
+      "nodeId": "4542:5962",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5962.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "6058e06891a291c3becefd8392e60cd13d0f7a1d78652842930915244922fd8e"
+    },
+    {
+      "nodeId": "4542:5521",
+      "imageHash": "95a7534f58ff374efc9bc43e522f01d1513d25a0",
+      "paintOpacity": 1,
+      "originalSHA256": "b667c95e045a12c9550f7d169ced2114d3b96f3ac713e37f81adc060f1875d25",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/image-95a7534f58ff374efc9bc43e522f01d1513d25a0.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:5930",
+      "imageHash": "db2b7822dd673324ce608b02dd62b1f1ca8bdc36",
+      "paintOpacity": 1,
+      "originalSHA256": "511090df67348f7db7132b3333644f249a27fe5428106ce83d57dcdd8bd2aa66",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/image-db2b7822dd673324ce608b02dd62b1f1ca8bdc36.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:5636",
+      "geometrySourceNodeIds": [
+        "4542:5637",
+        "4542:5638",
+        "4542:5639",
+        "4542:5640",
+        "4542:5641",
+        "4542:5642",
+        "4542:5643",
+        "4542:5644",
+        "4542:5645",
+        "4542:5646",
+        "4542:5647",
+        "4542:5648",
+        "4542:5649",
+        "4542:5650"
+      ],
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/mask-4542-5636.svg",
+      "source": "Native Figma outline mask; original child fillGeometry and transforms",
+      "sha256": "ed9fd0121c15d27b8f9cf98f25988c033ce1c9641ac0fee2cfd9ed6e34af2391"
+    },
+    {
+      "nodeId": "4542:5576",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5576.svg",
+      "sha256": "3d658c26a5a24be68487cf8b6d20394f1b0e8885100447b1cc7785afb9b25f3b",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5577",
+        "4542:5578",
+        "4542:5579",
+        "4542:5580"
+      ]
+    },
+    {
+      "nodeId": "4542:5586",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5586.svg",
+      "sha256": "2f7be2dacb91ab48b63ae59e8aa2a8b136a4d2fbd24b6f567979f0964467cb39",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5587",
+        "4542:5588"
+      ]
+    },
+    {
+      "nodeId": "4542:5590",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5590.svg",
+      "sha256": "1be6a0c77d3ee138d0bbbd98568b0df6d43ee1fbc3275ab235d660a4a13d5d9f",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5591",
+        "4542:5592"
+      ]
+    },
+    {
+      "nodeId": "4542:5604",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5604.svg",
+      "sha256": "76f697205e0adb6c748a038c6b7b75366e2161470c74a29aa4a835f93c250445",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5605",
+        "4542:5606",
+        "4542:5607",
+        "4542:5608"
+      ]
+    },
+    {
+      "nodeId": "4542:5610",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5610.svg",
+      "sha256": "20fc5660a3511ee5d16e8959a3e17861fe4726a9fd919871a8423f07e5ac1461",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5611",
+        "4542:5612"
+      ]
+    },
+    {
+      "nodeId": "4542:5622",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5622.svg",
+      "sha256": "b0229b854b40eca526b8bae1d5c9947216ec9d459d97bf9a19555de8e7379bfa",
+      "source": "Exact Figma vector geometry, paint and transforms of the tooth, highlights and markers",
+      "geometrySourceNodeIds": [
+        "4542:5623",
+        "4542:5624"
+      ]
+    },
+    {
+      "nodeId": "4542:5703",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5703.svg",
+      "sha256": "8a40d664c0f068e40fd1626ed885418cc5734e470dfd1d19abcf59f81b516cd7",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5726",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5726.svg",
+      "sha256": "80f919860ee7b63c950e4ecd2a8c1f85e9302b965c93340c198831f05c42dc50",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5743",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5743.svg",
+      "sha256": "19a97be1d1bd8f1735354532de1290d9ae504081695524d01586594baf6005d4",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5760",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5760.svg",
+      "sha256": "b734a3e66abbf2ff97251fe8bff3a3b0b4e75ffaeb730baeeaf78ca8123b4722",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5777",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5777.svg",
+      "sha256": "58eb02f888c1eb553261a232cf9f087f4ceb41eafa00196d01179b089be3b446",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5793",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5793.svg",
+      "sha256": "fefffc7a3ae5581dc632bdbdebba095ba5bcd4cafd0936a2e2a6dda84ad3b8c5",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5811",
+      "name": "Frame",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5811.svg",
+      "sha256": "6f481452ab0735064341f97d6296bfbc8811a48318f63a3768cc8a409fd71896",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    },
+    {
+      "nodeId": "4542:5829",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/dental-project-2026-11-23/node-4542-5829.svg",
+      "sha256": "545f2142e32ca9664235038d381eb80ad5ba19cea827b48979179f2d50430087",
+      "source": "Selected Figma Dev Mode SVG export of the complete project icon"
+    }
+  ]
+}

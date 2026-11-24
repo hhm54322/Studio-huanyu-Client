@@ -49,7 +49,7 @@ const styles = computed(() => {
     const expandedHeight = i === 1 ? 350 : 374
     result[id]=`height:${expanded.value.has(i)?expandedHeight:262}px;overflow:hidden;`
   })
-  assuranceDetails.forEach(([id], i) => { result[id]=`visibility:${expanded.value.has(i)?'visible':'hidden'};` })
+  assuranceDetails.forEach(([id], i) => { result[id]=`opacity:${expanded.value.has(i)?1:0};visibility:${expanded.value.has(i)?'visible':'hidden'};transition:opacity .3s ease,visibility 0s ${expanded.value.has(i)?'0s':'.3s'};` })
   let top=67
   trustFaqRows.forEach((id,i) => { const height=78+(expandedFaq.value.has(i)?answerHeight:0); result[id]=`top:${top}px;height:${height}px;`; top+=height })
   result['143:2605']=`height:${expandedFaq.value.has(0)?answerHeight:0}px;overflow:hidden;`
@@ -157,10 +157,7 @@ onBeforeUnmount(()=>{removeEventListener('resize',resize);removeEventListener('s
         </template>
       </HomeSourceNode>
     </div>
-    <header class="trust-desktop-source__header">
-      <div :style="{transform:`translateX(-50%) scale(${scale})`}"><HomeSourceNode :node="sourceAtOrigin(trustNode('484:1463'))" root :actions="trustActions" :baseline-nodes="baselineNodes" @activate="activate" /></div>
-      <div v-if="languageOpen" class="trust-source-languages"><button type="button" @click="languageOpen=false">{{ tx("中文") }}</button></div>
-    </header>
+
     <component :is="trustArticleDialog(article)" v-if="article" :key="article" :article="article" @close="closeArticle" />
   </div>
 </template>

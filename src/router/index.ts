@@ -7,13 +7,15 @@ import { resolveLocale, savedLocale } from '@/i18n/languages'
 import { useAppStore } from '@/stores/app'
 import { pendingPatientDesignRoutes } from '@/data/patientEntryAvailability'
 import { guideKeys } from '@/data/guideRoutes'
+import { onlyLanguageChanged } from './languageScroll'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
     if (to.name === 'patient-dental-doctor' && from.name === to.name && to.params.slug === from.params.slug) return false
     if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    if (onlyLanguageChanged(to, from)) return false
+    if (to.hash) return { el: to.hash, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }
     return { top: 0 }
   },
   routes: [
@@ -93,11 +95,17 @@ const router = createRouter({
           name: 'patient-dental',
           beforeEnter: async to => {
             const { getDentalFlowSession } = await import('@/data/dentalFlowSession')
-            const step = to.query.step === '3' ? 3 : to.query.step === '2' ? 2 : getDentalFlowSession()?.step || 1
+            const step = to.query.step === '3' ? 3 : to.query.step === '2' ? 2 : to.query.step === '1' ? 1 : getDentalFlowSession()?.step || 1
             if (step !== 1) await import('@/data/dentalFigmaDetails').then(source => source.loadDentalStep(step))
           },
           component: () => import('@/views/patient/DentalView.vue'),
           meta: { title: '牙科服务' },
+        },
+        {
+          path: 'dental/implants',
+          name: 'patient-dental-implant',
+          component: () => import('@/views/patient/DentalImplantView.vue'),
+          meta: { title: '种植牙' },
         },
         {
           path: 'dental/doctors/:slug',
@@ -158,6 +166,12 @@ const router = createRouter({
           },
           component: () => import('@/views/patient/ToolkitDetailView.vue'),
           meta: { title: '病历翻译与整理工具' },
+        },
+        {
+          path: 'news',
+          name: 'patient-news',
+          component: () => import('@/views/patient/NewsView.vue'),
+          meta: { title: '新闻与咨询' },
         },
         {
           path: 'about',
@@ -221,7 +235,7 @@ router.onError((error, to) => {
 })
 
 router.afterEach((_to, _from, failure) => {
-  if (!failure && (_to.name === 'patient-guide' || _to.name === 'patient-toolkit-detail')) {
+  if (!failure && ['patient-guide', 'patient-toolkit-detail', 'patient-dental-implant', 'patient-news'].includes(String(_to.name))) {
     let canonical = document.querySelector<HTMLLinkElement>('link[rel=canonical]')
     if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical) }
     canonical.href = `https://www.huanyumedical.com${_to.path}`

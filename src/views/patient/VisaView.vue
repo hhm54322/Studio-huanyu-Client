@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import AccordionPanel from '@/components/common/AccordionPanel.vue'
 import { useI18n } from 'vue-i18n'
 import {
   Globe,
@@ -20,7 +21,7 @@ import {
 import { visaFreeData, materials, timelineSteps, urgentServices, faqData } from '@/data/visa'
 
 const { t } = useI18n()
-const openFaq = ref<number | null>(0)
+const openFaq = ref<number | null>(null)
 
 const toggleFaq = (index: number) => {
   openFaq.value = openFaq.value === index ? null : index
@@ -407,8 +408,8 @@ const mVisaDiffs = [
                 :class="['w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200', openFaq === index ? 'rotate-180' : '']"
               />
             </button>
-            <Transition name="accordion">
-              <div v-if="openFaq === index" :id="`visa-faq-answer-${index}`" class="visa-faq-answer">
+            <AccordionPanel :open="openFaq === index">
+              <div :id="`visa-faq-answer-${index}`" class="visa-faq-answer">
                 <div class="px-5 sm:px-6 pb-5 sm:pb-6 pl-16 sm:pl-[4.5rem]">
                   <div class="rounded-lg p-4 text-sm text-gray-700 leading-relaxed" style="background-color: #F7FBFD">
                     <span class="font-bold mr-2" style="color: #123F67">A:</span>
@@ -416,7 +417,7 @@ const mVisaDiffs = [
                   </div>
                 </div>
               </div>
-            </Transition>
+            </AccordionPanel>
           </div>
         </div>
       </section>

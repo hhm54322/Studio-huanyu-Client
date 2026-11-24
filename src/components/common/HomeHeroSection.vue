@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSiteCopy } from '@/i18n/siteCopy'
-const { tx } = useSiteCopy()
+const { tx, localized } = useSiteCopy()
 
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import HomeFigmaSection from './HomeFigmaSection.vue'
@@ -88,6 +88,30 @@ const styles=computed(()=>{
     const dots=frame.children.find(node=>node.children.some(child=>child.id===selected.value.dots[0]))!
     fullBleed[dots.id]=`left:${dots.x+extra/2}px;`
   }
+  if (localized.value && width.value > 700) {
+    // Long translations must stay on the copy side of the authored hero
+    // artwork; let each source node grow vertically within that column.
+    for (const id of ['143:1196', '143:1197', '143:1202', '143:1203', '143:1204',
+      '143:1228', '143:1230', '143:1237', '143:1238', '143:1239',
+      '143:1256', '143:1257', '143:1258', '143:1266', '143:1273', '143:1280', '143:1287',
+      '1523:47', '1523:53', '1523:54', '1523:55']) {
+      fullBleed[id] = `${fullBleed[id] || ''}max-width:700px;`
+    }
+    // This slide contains four longer assurance points. Keep the full copy in
+    // the original hero height so automatic transitions do not shift the page.
+    fullBleed['143:1258'] += 'font-size:40px;line-height:46px;'
+    fullBleed['143:1259'] = 'width:636px;top:76px;'
+    ;['143:1260', '143:1267', '143:1274', '143:1281'].forEach((id,index) => {
+      fullBleed[id] = `width:636px;top:${index * 66}px;`
+    })
+    for (const id of ['143:1261', '143:1268', '143:1275', '143:1282']) fullBleed[id] = 'width:636px;'
+    for (const id of ['143:1265', '143:1272', '143:1279', '143:1286']) {
+      fullBleed[id] = `${fullBleed[id] || ''}width:608px;font-size:16px;line-height:20px;`
+    }
+    for (const id of ['143:1266', '143:1273', '143:1280', '143:1287']) {
+      fullBleed[id] += 'font-size:16px;line-height:22px;'
+    }
+  }
   return {
   ...fullBleed,
   ...Object.fromEntries(['1528:130','1528:131','1528:132','1528:133'].map((id,index)=>[id,`background:${active.value===mobileOrder[index]?'#DD6B20':'rgba(0,0,0,.10)'};`])),
@@ -134,6 +158,14 @@ onBeforeUnmount(()=>{
 .home-source-hero { position:relative; }
 .home-source-hero__assistant { position:fixed; right:24px; bottom:24px; z-index:55; width:158px; height:44px; pointer-events:none; }
 .home-source-hero__assistant :deep(button) { pointer-events:auto; }
+/* The translated label should grow the pill horizontally, never into a tall
+   three-line control. Keep the original 44px height and authored icon. */
+.home-source-hero__assistant:not(:lang(zh)) { width:max-content; max-width:calc(100vw - 48px); }
+.home-source-hero__assistant:not(:lang(zh)) :deep([data-figma-node="1523:119"]) { position:relative!important; display:flex!important; align-items:center!important; gap:8px!important; width:max-content!important; max-width:100%!important; height:44px!important; padding:0 16px!important; }
+.home-source-hero__assistant:not(:lang(zh)) :deep(:is([data-figma-node="1523:120"],[data-figma-node="1523:122"],[data-figma-node="1523:123"])) { position:relative!important; inset:auto!important; }
+.home-source-hero__assistant:not(:lang(zh)) :deep([data-figma-node="1523:120"]) { flex:0 0 20px!important; }
+.home-source-hero__assistant:not(:lang(zh)) :deep([data-figma-node="1523:122"]) { width:auto!important; height:auto!important; min-width:0!important; }
+.home-source-hero__assistant:not(:lang(zh)) :deep([data-figma-node="1523:123"]) { width:auto!important; height:auto!important; white-space:nowrap!important; }
 .home-hero-fade-enter-active,.home-hero-fade-leave-active { transition:opacity .55s cubic-bezier(.22,1,.36,1); }
 .home-hero-fade-leave-active { position:absolute; inset:0; pointer-events:none; }
 .home-hero-fade-enter-from,.home-hero-fade-leave-to { opacity:0; }

@@ -1,0 +1,337 @@
+{
+  "assets": [
+    {
+      "nodeId": "4542:6024",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6024.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "4c20adf52f9e7527fb72817c6678e0754240bbaaf749f96481d5423a91f1f8f1"
+    },
+    {
+      "nodeId": "4542:6047",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6047.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "ea924bc5e466ea9cf7fab43be592705a66df1d37ab71f392bb4b24b1aa5a6f26"
+    },
+    {
+      "nodeId": "4542:6051",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6051.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "131f4ca2075efe52dd9585f6c1b23384011c4dce54d202c72bd91da233addde7"
+    },
+    {
+      "nodeId": "4542:6131",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6131.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "bdcffff22d006e852f438160b97770e9b86a0def2ae1312b46b16b964410a064"
+    },
+    {
+      "nodeId": "4542:6165",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6165.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6197",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6197.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6229",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6229.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6261",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6261.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6293",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6293.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6325",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6325.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6357",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6357.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6389",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6389.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6418",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6418.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "87cb77d4dc99ff1fdf661591ef8ff6da7b7470604fbb74c0ce1881a2a669d4ee"
+    },
+    {
+      "nodeId": "4542:6425",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6425.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f220df8995b643797d3be56495345a28514ef56a370b6aac8fd243a67ff4c67a"
+    },
+    {
+      "nodeId": "4542:6469",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6469.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "c87442726ef542e219a439d3594c42c392e1a8b1716958168933ac623e759876"
+    },
+    {
+      "nodeId": "4542:6476",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6476.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "f6dd7bb2212ec8984321f50bed1495a187d134711f8675f706cad95f76cbb524"
+    },
+    {
+      "nodeId": "4542:6483",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6483.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "d0b12742975da51ae08726ce5a0b16b2236ab1d3bb2978afe561c45446444921"
+    },
+    {
+      "nodeId": "4542:6526",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6526.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "edfeab9d0f3f365685618f8168322965b08233d667e897577a63a05f1dd54dd1"
+    },
+    {
+      "nodeId": "4542:6531",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6531.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "edfeab9d0f3f365685618f8168322965b08233d667e897577a63a05f1dd54dd1"
+    },
+    {
+      "nodeId": "4542:6536",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6536.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "19f7ef3363470a39eacb367fb7d8291f5a9e0def2914a1f82c3e08b0ef0104f0"
+    },
+    {
+      "nodeId": "4542:6584",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6584.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "0a7923b82d9a6a58bbf3521bec77327819eee3904bac8b6daa49139feb8aaeeb"
+    },
+    {
+      "nodeId": "4542:6590",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6590.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "1c4d0ec8ee66b015cc574cb029b59d2404beb61006232ef7c38c0b0c042e1abf"
+    },
+    {
+      "nodeId": "4542:6595",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6595.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "50b7300401fcf51460a2ee01ee6fea39a53213253b9ae1979beb108750358e1a"
+    },
+    {
+      "nodeId": "4542:6623",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6623.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "1b3b57ac52f2d412283eb2ecd71bc0d582398569acceab6992bf335029a78d3f"
+    },
+    {
+      "nodeId": "4542:6636",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6636.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2facd8301fc67a9e18ef7361016dd1d0a3c02840b618700b3f0992ca58f6e842"
+    },
+    {
+      "nodeId": "4542:6642",
+      "name": "Vector",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6642.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "2facd8301fc67a9e18ef7361016dd1d0a3c02840b618700b3f0992ca58f6e842"
+    },
+    {
+      "nodeId": "4542:6653",
+      "name": "Icon",
+      "projectPath": "/public/images/figma/news-2026-11-23/node-4542-6653.svg",
+      "source": "Selected Figma Dev Mode SVG",
+      "sha256": "9617d79e22d8fffd13574eb151755b78f96ec64b5f04a5e9ebec2c5c660bae6f"
+    },
+    {
+      "nodeId": "4542:6015",
+      "imageHash": "c6a0732de3fdf1648e631c084518b40c736e028f",
+      "paintOpacity": 1,
+      "originalSHA256": "00783e8b373b5a4377c89733226c765e3191e61548640d11e07112bd854b5fec",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-c6a0732de3fdf1648e631c084518b40c736e028f.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6015",
+      "imageHash": "63cc290c0f6b33b798ab87a0dd99f887e4a5c5a2",
+      "paintOpacity": 1,
+      "originalSHA256": "2ebf03aba6171a4994bf9741546c60238c1a152fcc9673efdbef5fc113ccc8dd",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-63cc290c0f6b33b798ab87a0dd99f887e4a5c5a2.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6062",
+      "imageHash": "fa82c6b868aab4eaacf549a3c76f63c5c8296d1d",
+      "paintOpacity": 1,
+      "originalSHA256": "9f778ca80aefbb8002c417a76e6b4368a39327466efb61604ddb41e73607e016",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-fa82c6b868aab4eaacf549a3c76f63c5c8296d1d.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6062",
+      "imageHash": "e96534af5458e6582ef54fb9e708a0c35dec782c",
+      "paintOpacity": 1,
+      "originalSHA256": "09d4fdf9a8093ea2f9c8e0347cac7c8248cd743e0846a23684af662b506afb8d",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-e96534af5458e6582ef54fb9e708a0c35dec782c.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6140",
+      "imageHash": "e96534af5458e6582ef54fb9e708a0c35dec782c",
+      "paintOpacity": 1,
+      "originalSHA256": "09d4fdf9a8093ea2f9c8e0347cac7c8248cd743e0846a23684af662b506afb8d",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-e96534af5458e6582ef54fb9e708a0c35dec782c.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6172",
+      "imageHash": "b0a56fa52164aa93d64aee1fbf8eeb0d6d2a5606",
+      "paintOpacity": 1,
+      "originalSHA256": "414d361c2adce57ce5b6b9215b2a6a20af7e47cc5499697a51093a5d17731a92",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-b0a56fa52164aa93d64aee1fbf8eeb0d6d2a5606.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6204",
+      "imageHash": "e916e58403728179669a37dccb7f96b677fa15c8",
+      "paintOpacity": 1,
+      "originalSHA256": "3b98ee9f97ad5396ea0d6984f7d8887bdf7e8b49eaed74ffaad6f7ce54300df1",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-e916e58403728179669a37dccb7f96b677fa15c8.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6236",
+      "imageHash": "1a1962183ba05de19b3cdfb26f9a2747e77a5a9a",
+      "paintOpacity": 1,
+      "originalSHA256": "63c480624ccb1aad00e282ef9ffd9c3c5f59aee9815b5c2095fa06496ae5f1f2",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-1a1962183ba05de19b3cdfb26f9a2747e77a5a9a.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6268",
+      "imageHash": "96e13799fbe565c673b041436356c32642785c99",
+      "paintOpacity": 1,
+      "originalSHA256": "767bcad5809b3eb7a7a5b38d07e30561addc0732360686d9d1c33c0ad9748b41",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-96e13799fbe565c673b041436356c32642785c99.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6300",
+      "imageHash": "a339399e962dda153ad87d6f21aed2284967b1f5",
+      "paintOpacity": 1,
+      "originalSHA256": "1681a3a1d1d8d53368b07c537da994b103f06a00532f43a50b1deb1473b20d3f",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-a339399e962dda153ad87d6f21aed2284967b1f5.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6332",
+      "imageHash": "1a1962183ba05de19b3cdfb26f9a2747e77a5a9a",
+      "paintOpacity": 1,
+      "originalSHA256": "63c480624ccb1aad00e282ef9ffd9c3c5f59aee9815b5c2095fa06496ae5f1f2",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-1a1962183ba05de19b3cdfb26f9a2747e77a5a9a.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6364",
+      "imageHash": "86cfb0833e551d4d17fa415667e5375010f58299",
+      "paintOpacity": 1,
+      "originalSHA256": "30df62c9408e992a9a59df47eafb8387f820b785fc0a015d888d141ed95f0cd9",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-86cfb0833e551d4d17fa415667e5375010f58299.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6395",
+      "imageHash": "1a1962183ba05de19b3cdfb26f9a2747e77a5a9a",
+      "paintOpacity": 1,
+      "originalSHA256": "63c480624ccb1aad00e282ef9ffd9c3c5f59aee9815b5c2095fa06496ae5f1f2",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-1a1962183ba05de19b3cdfb26f9a2747e77a5a9a.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6465",
+      "imageHash": "505d70b195d98389a9a0291f991c0feb2f0f7c93",
+      "paintOpacity": 1,
+      "originalSHA256": "343a8fb2441a90031b680e7d7a46d0d9a6245b5f8234e9fdc60b09ddf67db4c5",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-505d70b195d98389a9a0291f991c0feb2f0f7c93.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6465",
+      "imageHash": "3cf32064ed2c81fc7a4891b4a7fa1bdfa4ec6532",
+      "paintOpacity": 1,
+      "originalSHA256": "723bac094577a9472c304122a0816cd25020d1070989615e3445a7126579aa7a",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-3cf32064ed2c81fc7a4891b4a7fa1bdfa4ec6532.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    },
+    {
+      "nodeId": "4542:6619",
+      "imageHash": "720d4261430b2e98f751b55fc2aaf3a264aea03d",
+      "paintOpacity": 1,
+      "originalSHA256": "ba632803c542f5bd0438245a5736082916490508821cfdfee131037bdf2ec322",
+      "contentCache": null,
+      "projectPath": "/public/images/figma/news-2026-11-23/image-720d4261430b2e98f751b55fc2aaf3a264aea03d.webp",
+      "source": "SHA1-verified original Figma image; WebP quality 90; 2048px cap; exact native image-fill alpha; Dev Mode crop retained"
+    }
+  ]
+}

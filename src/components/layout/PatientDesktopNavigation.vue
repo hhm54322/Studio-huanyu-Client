@@ -22,8 +22,10 @@ const open = ref<PatientNavigationGroup | 'language' | null>(null)
 const panelStyle = ref<Record<string, string>>({})
 const items = ref<HTMLElement>()
 const availableWidth = ref(853)
+const contentScale = ref(1)
 const localized = computed(() => locale.value !== 'zh')
-const label = (text: string) => t(`conversion.navigation.${patientNavigationTranslationKeys[text]}`)
+const lightLinks = computed(() => props.source?.id === '4542:6620')
+const label = (text: string) => patientNavigationTranslationKeys[text] ? t(`conversion.navigation.${patientNavigationTranslationKeys[text]}`) : tx(text)
 const compactLabel = (text: string) => {
   const key = `conversion.navigationCompact.${patientNavigationTranslationKeys[text]}`
   return te(key) ? t(key) : label(text)
@@ -33,7 +35,7 @@ let closeTimer: ReturnType<typeof setTimeout> | undefined
 let suppressFocus = false
 const languages = patientLanguages
 const currentLanguage = computed(() => languages.find(item => item.code === locale.value) || languages[0]!)
-const itemActive = (path: string) => route.path === path || path === '/dental' && route.name === 'patient-dental-doctor'
+const itemActive = (path: string) => route.path === path || path === '/dental' && route.path.startsWith('/dental/')
 const flatten = (node: HomeSourceNodeData): HomeSourceNodeData[] => [node, ...node.children.flatMap(flatten)]
 function sourceId(label: string) {
   return props.source?.children.find(child => flatten(child).some(node => node.type === 'TEXT' && node.text === label))?.id
@@ -46,23 +48,23 @@ function positionPanel() {
   if (!open.value) return
   const box = trigger(open.value)?.getBoundingClientRect()
   if (!box) return
-  const scale = box.height / 28
+  const canvasScale = (navigation.value?.getBoundingClientRect().height || 28) / 28
   // A translated navigation can occupy two rows. Its menu belongs below the
   // complete row group, otherwise it covers the lower navigation links.
   const bottom = Math.max(box.bottom, items.value?.getBoundingClientRect().bottom || box.bottom)
   const baseWidth = open.value === 'services' ? 111 : open.value === 'hospitals' ? 119 : 168
   const naturalWidth = panel.value ? panel.value.scrollWidth : baseWidth
-  const width = localized.value || open.value === 'language' ? Math.min(Math.max(baseWidth, naturalWidth), (innerWidth - 16) / scale) : baseWidth
-  const left = open.value === 'language' ? box.right - width * scale : box.left - 12 * scale
-  const top = Math.min(bottom + panelGap * scale, innerHeight - 48)
-  const maxHeight = Math.max(44, (innerHeight - top - 8) / scale)
+  const width = localized.value || open.value === 'language' ? Math.min(Math.max(baseWidth, naturalWidth), (innerWidth - 16) / canvasScale) : baseWidth
+  const left = open.value === 'language' ? box.right - width * canvasScale : box.left - 12 * canvasScale
+  const top = Math.min(bottom + panelGap * canvasScale, innerHeight - 48)
+  const maxHeight = Math.max(44, (innerHeight - top - 8) / canvasScale)
   panelStyle.value = {
-    left: `${Math.max(8, Math.min(left, innerWidth - width * scale - 8))}px`,
+    left: `${Math.max(8, Math.min(left, innerWidth - width * canvasScale - 8))}px`,
     top: `${top}px`, width: localized.value ? 'max-content' : `${width}px`,
-    maxWidth:`${(innerWidth - 16) / scale}px`, maxHeight:`${maxHeight}px`,
+    maxWidth:`${(innerWidth - 16) / canvasScale}px`, maxHeight:`${maxHeight}px`,
     overflowY:panel.value && panel.value.scrollHeight > maxHeight ? 'auto' : 'visible',
-    '--patient-menu-gap': `${Math.max(panelGap, (top - box.bottom) / scale)}px`,
-    transform: `scale(${scale})`, transformOrigin: 'top left',
+    '--patient-menu-gap': `${Math.max(panelGap, (top - box.bottom) / canvasScale)}px`,
+    transform: `scale(${canvasScale})`, transformOrigin: 'top left',
   }
 }
 async function show(kind: NonNullable<typeof open.value>) { cancelClose(); open.value = kind; positionPanel(); await nextTick(); positionPanel() }
@@ -71,7 +73,16 @@ function focusTrigger(kind: NonNullable<typeof open.value>) {
   show(kind)
 }
 function consultation() { close(); window.dispatchEvent(new CustomEvent('open-consultation')) }
-async function changeLanguage(code: Locale) { if (!await app.setLocale(code)) return; close(); await router.replace({ query:{ ...route.query, lang:code } }) }
+const navigationTarget = (path: string) => path === '/dental'
+  ? { path, query: { step: '1', ...(typeof route.query.lang === 'string' ? { lang: route.query.lang } : {}) } }
+  : path
+function clickNavigation(path: string, event: MouseEvent) {
+  close()
+  if (path === '/dental' && route.path === '/dental' && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+    window.dispatchEvent(new CustomEvent('dental-navigation-home'))
+  }
+}
+async function changeLanguage(code: Locale) { if (!await app.setLocale(code)) return; close(); await router.replace({ query:{ ...route.query, lang:code }, hash:route.hash }) }
 async function fitNavigation() {
   await nextTick()
   const node = navigation.value
@@ -79,7 +90,11 @@ async function fitNavigation() {
   const box = node.getBoundingClientRect(), scale = box.height / 28
   const header = node.closest('[data-figma-name="Header"],header') || node.parentElement
   const logo = header?.querySelector('a[href="/"]:not(.patient-desktop-navigation__link)')?.getBoundingClientRect()
-  availableWidth.value = logo ? Math.max(300, (box.right - logo.right) / scale - 24) : props.source?.width || 853
+  const available = logo ? Math.max(300, (box.right - logo.right) / scale - 24) : props.source?.width || 853
+  availableWidth.value = available
+  const naturalWidth = items.value?.scrollWidth || available
+  contentScale.value = Math.min(1, available / naturalWidth)
+  if (open.value) await nextTick().then(positionPanel)
 }
 function resize() { close(); void fitNavigation() }
 function focusables() { return [...panel.value?.querySelectorAll<HTMLElement>('a, button:not(:disabled)') || []] }
@@ -116,6 +131,7 @@ function navigationKey(event: KeyboardEvent) {
 }
 watch(() => route.fullPath, close)
 watch(locale, fitNavigation, { flush:'post' })
+watch(() => [groupLabel('services'), groupLabel('hospitals')], fitNavigation, { flush:'post' })
 onMounted(() => {
   document.addEventListener('click', outside); document.addEventListener('keydown', escape)
   window.addEventListener('resize', resize); window.addEventListener('scroll', positionPanel, { passive: true })
@@ -128,9 +144,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <nav ref="navigation" class="patient-desktop-navigation" :class="{ 'patient-desktop-navigation--localized':localized }" :aria-label="t('conversion.navigation.main')"
+  <nav ref="navigation" class="patient-desktop-navigation" :class="{ 'patient-desktop-navigation--localized':localized, 'patient-desktop-navigation--light':lightLinks }" :aria-label="t('conversion.navigation.main')"
     @click.stop @pointerover.stop @mouseover.stop @mouseout.stop @focusin.stop @focusout.stop="leaveFocus" @keydown.stop="navigationKey">
-    <div ref="items" class="patient-desktop-navigation__items" :style="localized ? { width:`${availableWidth}px` } : undefined">
+    <div ref="items" class="patient-desktop-navigation__items" :style="localized ? { transform:`translateY(-50%) scale(${contentScale})`, '--navigation-available-width': `${availableWidth}px` } : undefined">
       <button class="patient-desktop-navigation__consult" type="button" :title="label('问阿宁')" :aria-label="label('问阿宁')" :data-figma-node="sourceId('问阿宁')" @pointerenter="close" @click="consultation">
         <img src="/images/figma/home-revision/node-1523-85.svg" alt="" />{{ compactLabel('问阿宁') }}
       </button>
@@ -143,8 +159,8 @@ onBeforeUnmount(() => {
           @focus="focusTrigger(item.group)" @keydown="triggerKey($event, item.group)" @click="show(item.group)">
           {{ compactLabel(groupLabel(item.group)) }}<span class="patient-desktop-navigation__chevron" aria-hidden="true" />
         </button>
-        <RouterLink v-else :to="item.path" class="patient-desktop-navigation__link" :class="{ 'is-active': itemActive(item.path) }"
-          :title="label(item.label)" :aria-label="label(item.label)" :data-figma-node="sourceId(item.label)" :aria-current="itemActive(item.path) ? 'page' : undefined" @pointerenter="close" @click="close">{{ compactLabel(item.label) }}</RouterLink>
+        <RouterLink v-else :to="navigationTarget(item.path)" class="patient-desktop-navigation__link" :class="{ 'is-active': itemActive(item.path) }"
+          :title="label(item.label)" :aria-label="label(item.label)" :data-figma-node="sourceId(item.label)" :aria-current="itemActive(item.path) ? 'page' : undefined" @pointerenter="close" @click="clickNavigation(item.path, $event)">{{ compactLabel(item.label) }}</RouterLink>
       </template>
       <button type="button" class="patient-desktop-navigation__language" data-navigation-trigger="language" :aria-label="t('conversion.navigation.language')"
         :aria-expanded="open === 'language'" aria-controls="patient-navigation-language" @click="open === 'language' ? close() : show('language')"
@@ -173,6 +189,9 @@ onBeforeUnmount(() => {
 .patient-desktop-navigation__link { display:flex; flex:none; height:28px; align-items:center; gap:2px; padding:6px 10px; margin:0; border:0; border-radius:8px; background:transparent; color:#4B5563; font-size:12px; font-weight:500; line-height:16px; text-decoration:none; white-space:nowrap; cursor:pointer; box-sizing:border-box; }
 .patient-desktop-navigation__link.is-active { color:#2563EB; background:rgba(37,99,235,.1); font-weight:600; }
 .patient-desktop-navigation__link:hover { color:#2563EB; }
+.patient-desktop-navigation--light :is(.patient-desktop-navigation__link,.patient-desktop-navigation__language) { color:#fff; }
+.patient-desktop-navigation--light .patient-desktop-navigation__link:is(.is-active,:hover) { color:#2563eb;background:#fff; }
+.patient-desktop-navigation--light .patient-desktop-navigation__language img { filter:brightness(0) invert(1); }
 .patient-desktop-navigation__trigger { min-width:86px; }
 .patient-desktop-navigation__chevron { width:16px; height:16px; display:block; flex:none; background:currentColor; mask:url('/images/figma/home-revision/node-1523-98.svg') center / 8px 4px no-repeat; }
 .patient-desktop-navigation__consult { display:flex; flex:none; width:80px; height:28px; align-items:center; justify-content:center; gap:6px; margin:0 8px 0 0; padding:6px 12px; border:0; border-radius:10px; color:#fff; background:linear-gradient(90deg,#DD6B20,#3B82F6); box-shadow:0 1px 2px -1px rgba(0,0,0,.1); font:600 12px/16px 'PingFang SC',sans-serif; white-space:nowrap; cursor:pointer; }
@@ -185,7 +204,7 @@ onBeforeUnmount(() => {
 .patient-navigation-menu__item { display:flex; width:84px; flex:none; height:28px; align-items:center; padding:6px 10px; border:0; border-radius:8px; background:transparent; color:#6B7280; font:400 12px/16px 'PingFang SC',sans-serif; text-align:left; text-decoration:none; white-space:nowrap; box-sizing:border-box; cursor:pointer; }
 .patient-navigation-menu--hospitals .patient-navigation-menu__item { width:92px; }
 .patient-navigation-menu--language .patient-navigation-menu__item { width:100%; }
-.patient-desktop-navigation--localized .patient-desktop-navigation__items { top:14px; height:auto; min-height:28px; justify-content:flex-end; flex-wrap:wrap; transform:translateY(-50%); }
+.patient-desktop-navigation--localized .patient-desktop-navigation__items { top:14px; height:28px; flex-wrap:nowrap; transform-origin:right center; }
 .patient-desktop-navigation--localized .patient-desktop-navigation__consult { width:auto; min-width:80px; }
 .patient-desktop-navigation--localized .patient-desktop-navigation__link { padding-inline:8px; }
 .patient-navigation-menu--localized .patient-navigation-menu__item { width:100%; min-width:0; height:auto; min-height:28px; white-space:normal; overflow-wrap:anywhere; }

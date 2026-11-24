@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="Step-by-step animation of how a dental implant is placed" id="anim-svg" role="img" viewBox="0 0 560 300">
+<defs>
+<linearGradient id="aMetal" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#9BB6C2"></stop><stop offset=".5" stop-color="#EAF2F5"></stop><stop offset="1" stop-color="#8FA9B6"></stop></linearGradient>
+<linearGradient id="aCrown" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#E4F0F4"></stop></linearGradient>
+</defs>
+<rect fill="#FFFFFF" height="300" rx="10" width="560" x="0" y="0"></rect>
+<path d="M20 116 Q150 98 280 110 Q410 98 540 116 L540 160 Q410 146 280 156 Q150 146 20 160 Z" fill="#F3E7E6" stroke="#E4C9C7" stroke-width="1.5"></path>
+<path d="M20 160 Q150 146 280 156 Q410 146 540 160 L540 284 Q280 296 20 284 Z" fill="#E9F4F7" stroke="#B9D6DF" stroke-width="1.5"></path>
+<g fill="none" opacity=".65" stroke="#B9D6DF" stroke-width="1"><path d="M45 198 Q280 210 515 198"></path><path d="M40 234 Q280 246 520 234"></path><path d="M40 268 Q280 280 520 268"></path></g>
+<!-- neighbour teeth -->
+<path d="M92 116 Q84 84 110 78 Q136 82 126 116 L122 148 Q108 154 96 148 Z" fill="#FFF" stroke="#B9CBD3" stroke-width="1.8"></path>
+<path d="M96 148 L96 222 Q109 230 122 222 L122 148 Z" fill="#EAF1F4" stroke="#B9CBD3" stroke-width="1.8"></path>
+<path d="M338 116 Q330 84 356 78 Q382 82 370 116 L366 148 Q352 154 340 148 Z" fill="#FFF" stroke="#B9CBD3" stroke-width="1.8"></path>
+<path d="M340 148 L340 222 Q353 230 366 222 L366 148 Z" fill="#EAF1F4" stroke="#B9CBD3" stroke-width="1.8"></path>
+<!-- step 0: gap -->
+<g class="part show" id="p-gap"><rect fill="none" height="170" rx="8" stroke="#1F7A8C" stroke-dasharray="6 5" stroke-width="2" width="64" x="202" y="86"></rect><text fill="#1F7A8C" font-family="Inter,sans-serif" font-size="10" font-weight="700" letter-spacing=".06em" text-anchor="middle" x="234" y="176">GAP</text></g>
+<!-- step 1: fixture -->
+<g class="part" id="p-fix">
+<path d="M206 156 L258 156 L254 252 Q232 262 210 252 Z" fill="url(#aMetal)" stroke="#7D97A4" stroke-width="2"></path>
+<g fill="none" stroke="#7D97A4" stroke-width="1.4"><path d="M208 172 H256"></path><path d="M209 186 H255"></path><path d="M210 200 H254"></path><path d="M211 214 H253"></path><path d="M212 228 H252"></path><path d="M213 242 H251"></path></g>
+</g>
+<!-- step 2: abutment -->
+<g class="part" id="p-abut"><path d="M211 156 L213 126 Q232 119 251 126 L253 156 Z" fill="url(#aMetal)" stroke="#7D97A4" stroke-width="2"></path></g>
+<!-- step 3: crown -->
+<g class="part" id="p-crown"><path d="M206 126 Q200 84 232 78 Q264 84 258 126 Q232 134 206 126 Z" fill="url(#aCrown)" stroke="#9FBBC6" stroke-width="2.2"></path><path d="M213 104 Q232 98 251 104" fill="none" stroke="#D6E5EA" stroke-width="1.6"></path></g>
+<!-- step 4: done highlight -->
+<g class="part" id="p-done"><circle cx="232" cy="168" fill="none" opacity=".8" r="104" stroke="#79BFD0" stroke-dasharray="4 7" stroke-width="2"></circle><circle cx="232" cy="168" fill="#1F7A8C" opacity=".05" r="92"></circle></g>
+<!-- labels -->
+<g class="lbl" id="l-fix"><line stroke="#1F7A8C" stroke-width="1.2" x1="258" x2="348" y1="206" y2="206"></line><circle cx="258" cy="206" fill="#1F7A8C" r="3"></circle><text x="356" y="203">FIXTURE</text><text class="sub" x="356" y="217">titanium root</text></g>
+<g class="lbl" id="l-abut"><line stroke="#1F7A8C" stroke-width="1.2" x1="253" x2="348" y1="142" y2="142"></line><circle cx="253" cy="142" fill="#1F7A8C" r="3"></circle><text x="356" y="139">ABUTMENT</text><text class="sub" x="356" y="153">connector</text></g>
+<g class="lbl" id="l-crown"><line stroke="#1F7A8C" stroke-width="1.2" x1="258" x2="348" y1="100" y2="100"></line><circle cx="258" cy="100" fill="#1F7A8C" r="3"></circle><text x="356" y="97">CROWN</text><text class="sub" x="356" y="111">visible tooth</text></g>
+</svg>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSiteCopy } from '@/i18n/siteCopy'
+import AccordionPanel from '@/components/common/AccordionPanel.vue'
 const { tx, locale, localized } = useSiteCopy()
 
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -24,7 +25,7 @@ const medicalCapabilities = [
   { title:'器官移植重症修复', copy:'规范化移植体系，术后长期管理成熟', icon:'/images/figma/why-china-icons/node-143-1448.svg', detail:'由移植、重症、感染与康复团队共同评估，覆盖围术期治疗和长期随访管理。' },
   { title:'罕见病疑难病联合诊疗', copy:'全国专家协作网，专治全球疑难杂症', icon:'/images/figma/why-china-icons/node-143-1461.svg', detail:'通过全国专家协作网络整合检查与既往病史，为复杂和罕见疾病形成清晰诊疗路径。' },
 ]
-const expandedCapabilities = ref(new Set([0]))
+const expandedCapabilities = ref(new Set<number>())
 function toggleCapability(index: number) {
   const next = new Set(expandedCapabilities.value)
   if (next.has(index)) next.delete(index)
@@ -154,7 +155,7 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
   <div class="why-page">
     <section class="why-hero"><div class="why-hero__visual" /><div class="hy-container" data-reveal><h1><span>{{ tx("为什么全球患者优先选择") }}</span><br /><span>{{ tx('   来华就医？') }}</span></h1><p>{{ tx("对比新马日与欧美，中国重症医疗兼具技术、时效与成本优势") }}</p><div class="hero-actions"><button type="button" @click="openConsultation"><img class="source-icon" src="/images/figma/why-china-icons/node-143-1342.svg" alt="" /><span class="button-label">{{ tx("免费咨询") }}</span></button><RouterLink to="/report"><img class="source-icon" src="/images/figma/why-china-icons/node-143-1346.svg" alt="" /><span class="button-label">{{ tx("AI初诊 3分钟生成就医评估报告") }}</span></RouterLink></div></div></section>
 
-    <section class="capability-section" :class="{ 'capability-section--multi-expanded': expandedCapabilities.size > 1 }"><div class="hy-container capability-layout"><aside data-reveal><h2>{{ tx("中国严肃医疗｜多国对比技术优势") }}</h2><p>{{ tx("在肿瘤、心脑外科、细胞治疗、复杂微创手术等重症领域，中国医院临床体量、手术复杂度、病例积累，全面优于东南亚及部分欧美体系。") }}</p></aside><div class="capability-grid"><article v-for="(item,index) in medicalCapabilities" :key="item.title" data-reveal :class="{ open:expandedCapabilities.has(index) }" :style="{ '--reveal-delay':`${(index%2)*55}ms` }" role="button" tabindex="0" :aria-expanded="expandedCapabilities.has(index)" @click="toggleCapability(index)" @keydown.enter.prevent="toggleCapability(index)" @keydown.space.prevent="toggleCapability(index)"><img class="capability-icon" :src="item.icon" alt="" /><div class="capability-content"><h3>{{ tx(item.title) }}</h3><p class="capability-copy">{{ tx(item.copy) }}</p><span class="capability-detail-row"><span class="capability-detail-label">{{ tx("查看详情") }}</span><img class="capability-chevron" :class="{ rotated:!expandedCapabilities.has(index) }" src="/images/figma/why-china-icons/node-143-1376.svg" alt="" /></span><div v-if="expandedCapabilities.has(index)" class="capability-expanded"><small>{{ tx(item.detail) }}</small></div></div></article></div></div></section>
+    <section class="capability-section" :class="{ 'capability-section--multi-expanded': expandedCapabilities.size > 1 }"><div class="hy-container capability-layout"><aside data-reveal><h2>{{ tx("中国严肃医疗｜多国对比技术优势") }}</h2><p>{{ tx("在肿瘤、心脑外科、细胞治疗、复杂微创手术等重症领域，中国医院临床体量、手术复杂度、病例积累，全面优于东南亚及部分欧美体系。") }}</p></aside><div class="capability-grid"><article v-for="(item,index) in medicalCapabilities" :key="item.title" data-reveal :class="{ open:expandedCapabilities.has(index) }" :style="{ '--reveal-delay':`${(index%2)*55}ms` }" role="button" tabindex="0" :aria-expanded="expandedCapabilities.has(index)" @click="toggleCapability(index)" @keydown.enter.prevent="toggleCapability(index)" @keydown.space.prevent="toggleCapability(index)"><img class="capability-icon" :src="item.icon" alt="" /><div class="capability-content"><h3>{{ tx(item.title) }}</h3><p class="capability-copy">{{ tx(item.copy) }}</p><span class="capability-detail-row"><span class="capability-detail-label">{{ tx("查看详情") }}</span><img class="capability-chevron" :class="{ rotated:!expandedCapabilities.has(index) }" src="/images/figma/why-china-icons/node-143-1376.svg" alt="" /></span><AccordionPanel :open="expandedCapabilities.has(index)"><div class="capability-expanded"><small>{{ tx(item.detail) }}</small></div></AccordionPanel></div></article></div></div></section>
 
     <section id="cost-comparison" class="cost-section" :class="{ 'cost-section--expanded': costDetailsExpanded }"><div class="hy-container"><header class="section-title" data-reveal><h2>{{ tx("同等医疗质量，中国就医成本全球最优") }}</h2><p>{{ tx("对标新、马、日、欧美，同质医疗效果下，中国整体治疗费用大幅更低") }}</p></header><div class="comparison-content"><div class="comparison-chart-scroll" data-reveal><div ref="costChartEl" class="comparison-chart" role="img" :aria-label="tx('九类治疗费用在美国、英国、德国、中国、新加坡和日本的对比柱状图')" /></div><div class="saving-tags"><span>{{ tx("心脏搭桥节省69%") }}</span><span>{{ tx("CAR-T细胞免疫治疗节省55%") }}</span><span>{{ tx("PET-CT全身影像筛查节省85%") }}</span><span>{{ tx("质子重离子肿瘤放疗节省53%") }}</span><span>{{ tx("膝关节置换手术节省57%") }}</span></div></div><div class="cost-actions"><button type="button" :aria-expanded="costDetailsExpanded" aria-controls="why-cost-details" @click="costDetailsExpanded = !costDetailsExpanded"><span class="button-label">{{ tx("查看更多病种费用对比详情") }}</span><img class="source-icon cost-action-chevron" :class="{ 'is-open': costDetailsExpanded }" src="/images/figma/why-china-icons/node-143-1757.svg" alt="" /></button><RouterLink to="/report"><span class="button-label">{{ tx("提交病历，获取AI个性化精准预算与来华方案") }}</span><img class="source-icon" src="/images/figma/why-china-icons/node-143-1761.svg" alt="" /></RouterLink></div><small class="disclaimer">{{ tx("中国是唯一同时具备：顶级重症技术、超快就诊时效、亲民治疗成本的跨境医疗目的地。") }}</small><Transition name="cost-details"><div v-show="costDetailsExpanded" id="why-cost-details" class="cost-detail-grid" :aria-label="tx('病种费用对比详情')"><article v-for="item in costDetailCards" :key="item.title" class="cost-detail-card"><img :src="item.icon" alt="" /><div><h3>{{ tx(item.title) }}</h3><p class="cost-detail-metric"><span>{{ tx(item.first[0]) }}</span><strong>{{ tx(item.first[1]) }}</strong></p><p class="cost-detail-metric"><span>{{ tx(item.second[0]) }}</span><strong>{{ tx(item.second[1]) }}</strong></p><p class="cost-detail-copy">{{ tx(item.copy) }}</p></div></article></div></Transition></div></section>
 
@@ -193,12 +194,12 @@ function openConsultation(){ window.dispatchEvent(new CustomEvent('open-consulta
 .section-title { height:80px; text-align:center; }
 .section-title h2 { margin:0; color:#1e3a5f; font-family:"PingFang SC",sans-serif; font-size:40px; font-weight:600; line-height:40px; }
 .section-title p { margin:0; padding-top:16px; color:#6b7280; font-size:16px; line-height:24px; }
-.capability-section { height:1416px; padding:96px 0; background:#fff; }
-.capability-layout { display:grid; height:1224px; grid-template-columns:389.33px 802.67px; column-gap:24px; }
+.capability-section { height:auto; padding:96px 0; background:#fff; }
+.capability-layout { display:grid; height:auto; grid-template-columns:389.33px 802.67px; column-gap:24px; }
 .capability-layout aside { position:sticky; top:96px; align-self:start; padding-top:20px; }
 .capability-layout aside h2 { margin:0; color:#1e3a5f; font-size:40px; font-weight:600; line-height:60px; }
 .capability-layout aside p { margin:16px 0 0; color:#6b7280; font-size:16px; line-height:24px; }
-.capability-grid { display:grid; width:802.67px; height:1224px; grid-template-columns:repeat(2,389.33px); grid-auto-rows:min-content; align-content:start; column-gap:24px; row-gap:24px; }
+.capability-grid { display:grid; width:802.67px; height:auto; grid-template-columns:repeat(2,389.33px); grid-auto-rows:min-content; align-content:start; column-gap:24px; row-gap:24px; }
 .capability-grid article { position:relative; display:flex; width:389.33px; height:254px; flex-direction:column; align-items:flex-start; align-self:start; border-radius:24px; padding:24px; background:#f5f6f7; cursor:pointer; transition:height .52s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease; }
 .capability-grid article.open { height:390px; }
 .capability-section--multi-expanded,

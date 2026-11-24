@@ -74,6 +74,7 @@ const patientEntryPreloadPlugin = (): Plugin => ({
         '/': 'HomeView', '/why-china': 'WhyChinaView', '/trust': 'TrustView',
         '/insurance': 'InsuranceView', '/hospitals': 'HospitalView', '/doctors': 'PhysicianView',
         '/report': 'ReportView', '/cases': 'CaseView', '/dental': 'DentalView',
+        '/dental/implants': 'DentalImplantView', '/news': 'NewsView',
         '/diseases-technologies': 'DiseaseTechnologyView', '/steps': 'StepView',
         '/steps/toolkit-detail': 'ToolkitDetailView', '/about': 'AboutView',
       }
@@ -144,7 +145,9 @@ const patientEntryPreloadPlugin = (): Plugin => ({
       // Only this route's image is requested; phone/tablet loading is unchanged.
       const heroImages: Record<string,string> = {
         '/why-china': '/images/figma/why-china-hero-source.png',
-        '/dental': '/images/figma/dental-revision/image-95a7534f58ff374efc9bc43e522f01d1513d25a0.webp', // 2294:8243
+        '/dental': '/images/figma/dental-project-2026-11-23/image-95a7534f58ff374efc9bc43e522f01d1513d25a0.webp', // 4542:5521
+        '/dental/implants': '/images/figma/dental-implants-2026-11-23/image-36c538be5a733f483b0f759ad199d542a080e976.webp', // 4542:3556
+        '/news': '/images/figma/news-2026-11-23/image-63cc290c0f6b33b798ab87a0dd99f887e4a5c5a2.webp', // 4542:6015
         '/hospitals': '/images/figma/hospital-revision/image-85535e98733878855d82c5395b98a077a05309e9.webp', // 144:4710
         '/cases': '/images/figma/case-source/node-190-5303.webp',
         '/insurance': '/images/figma/insurance/hero.png',

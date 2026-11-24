@@ -56,6 +56,15 @@ const expertCards = ['1412:6419','1414:7095','1414:7128','1414:7161']
 // Apply the motion to the authored summary wrappers, not their text child,
 // so the copy and the hidden CTA move together as one Figma layer.
 const expertSummaries = ['1412:6442','1414:7119','1414:7152','1414:7185']
+const expertSummaryTexts = ['1412:6443','1414:7120','1414:7153','1414:7186']
+// The visible summaries are limited to three lines. Feed that constraint to
+// source reflow as well, so hidden translated copy does not inflate the row.
+const expertSummaryStyles = computed(() => locale.value === 'zh' ? {} : {
+  ...Object.fromEntries(['1412:6425','1414:7102','1414:7135','1414:7168'].map(id => [id,'height:148px;max-height:148px;overflow:visible;'])),
+  ...Object.fromEntries(expertSummaries.map(id => [id,'top:76px;height:72px;'])),
+  '1412:6443':'top:0px;height:72px;overflow:hidden;-webkit-line-clamp:3;',
+  ...Object.fromEntries(expertSummaryTexts.slice(1).map(id => [id,'height:72px;overflow:hidden;-webkit-line-clamp:3;'])),
+})
 const expertCardAttributes = Object.fromEntries([
   ...expertCards.map(id => [id, { 'data-home-expert-card': true }]),
   ...expertSummaries.map((id,index) => [id, { 'data-home-expert-summary': index === 0 ? 'hover-source' : 'rest-source' }]),
@@ -499,7 +508,7 @@ onBeforeUnmount(() => {
       </template>
     </HomeFigmaSection>
     <HomeFigmaSection desktop-id="1412:6313" defer-render mobile-id="1528:621" :label="tx('权威合作医院')" :actions="homeFigmaActions" :baseline-nodes="['1528:632','1528:639','1528:646','1528:653']" @activate="activateFigmaAction" />
-    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" :attributes="expertCardAttributes" :hidden="['1412:6444']" @activate="activateFigmaAction">
+    <HomeFigmaSection desktop-id="1412:6350" defer-render mobile-id="1528:656" :label="tx('权威专家团队')" :actions="homeFigmaActions" :styles="expertSummaryStyles" :attributes="expertCardAttributes" :hidden="['1412:6444']" @activate="activateFigmaAction">
       <template #after="{ node }"><SourceLearnMore v-if="expertCards.includes(node.id)" class="home-expert-learn-more" icon="/images/figma/home-revision/node-1412-6447.svg" /></template>
     </HomeFigmaSection>
     <HomeStrengthSection />
@@ -531,6 +540,16 @@ onBeforeUnmount(() => {
 @media (prefers-reduced-motion:reduce) { .home-source-faq-answer { transition:none; } }
 .home-source-journey { position:relative; background:#f5f6f7; }
 .journey-desktop { position:relative; }
+.journey-desktop:not(:lang(zh)) :deep([data-figma-node="1401:293"]) { width:100%!important; }
+/* Foreign-language questions may use the full row before wrapping, leaving
+   the source chevron its own fixed space at the far edge. */
+.journey-desktop:not(:lang(zh)) :deep(:is([data-figma-node="1401:297"],[data-figma-node="1401:307"],[data-figma-node="1401:314"],[data-figma-node="1401:321"],[data-figma-node="1401:328"],[data-figma-node="1401:335"],[data-figma-node="1401:342"],[data-figma-node="1401:349"]) > :first-child) { flex:1 1 auto!important; width:auto!important; min-width:0!important; padding-right:24px!important; }
+.journey-desktop:not(:lang(zh)) :deep(:is([data-figma-node="1401:297"],[data-figma-node="1401:307"],[data-figma-node="1401:314"],[data-figma-node="1401:321"],[data-figma-node="1401:328"],[data-figma-node="1401:335"],[data-figma-node="1401:342"],[data-figma-node="1401:349"]) > :last-child) { flex:none!important; }
+/* Keep both stage-four buttons and their arrows on one line. */
+.journey-desktop:not(:lang(zh)) :deep([data-figma-node="1401:268"]) { display:flex!important; flex-wrap:wrap; padding-top:48px!important; align-items:flex-start!important; gap:16px!important; }
+.journey-desktop:not(:lang(zh)) :deep(:is([data-figma-node="1401:269"],[data-figma-node="1401:274"])) { position:relative!important; inset:auto!important; display:inline-flex!important; width:max-content!important; height:52px!important; padding:0 24px!important; gap:8px!important; align-items:center!important; }
+.journey-desktop:not(:lang(zh)) :deep(:is([data-figma-node="1401:270"],[data-figma-node="1401:275"],[data-figma-node="1401:271"],[data-figma-node="1401:276"])) { position:relative!important; inset:auto!important; flex:none!important; }
+.journey-desktop:not(:lang(zh)) :deep(:is([data-figma-node="1401:270"],[data-figma-node="1401:275"])) { width:auto!important; height:auto!important; white-space:nowrap!important; }
 .journey-desktop :deep([data-home-why-copy]) { transition:transform .3s cubic-bezier(.22,1,.36,1); }
 .journey-desktop :deep([data-home-why-copy="0"]) { transform:translateY(32px)!important; }
 .journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more { opacity:0; transition:opacity .3s cubic-bezier(.22,1,.36,1); }
@@ -541,18 +560,35 @@ onBeforeUnmount(() => {
 .journey-desktop :deep([data-home-why-card]:hover .home-why-card__more),.journey-desktop :deep([data-home-why-card]:focus-visible .home-why-card__more) { opacity:1; }
 .journey-desktop :deep([data-home-why-card]:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
 .home-figma-section :deep([data-home-expert-card]) { box-shadow:none!important; }
-.home-figma-section :deep([data-home-expert-summary]) { top:124px!important; height:72px!important; transform:translate3d(0,0,0);will-change:transform;transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.home-figma-section :deep([data-home-expert-summary]) { height:72px!important; transform:translate3d(0,0,0);will-change:transform;transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.home-figma-section:lang(zh) :deep([data-home-expert-summary="hover-source"]) { top:124px!important; }
+.home-figma-section:lang(zh) :deep([data-home-expert-summary="rest-source"]) { top:124px!important; }
+.home-figma-section:not(:lang(zh)) :deep([data-home-expert-summary] > .home-source-node--text) { text-align:left!important; }
 .home-figma-section :deep([data-home-expert-summary] > .home-source-node--text) { top:0!important; height:72px!important; max-height:72px!important; overflow:hidden!important; display:-webkit-box!important; -webkit-line-clamp:3; -webkit-box-orient:vertical; }
 .home-figma-section :deep([data-home-expert-summary="hover-source"]) { transform:translate3d(0,0,0)!important; }
 .home-expert-learn-more { position:absolute; left:24px; bottom:24px; opacity:0; transition:opacity .18s ease; }
 .home-figma-section :deep([data-home-expert-card]:hover [data-home-expert-summary="hover-source"]),.home-figma-section :deep([data-home-expert-card]:focus-visible [data-home-expert-summary="hover-source"]) { transform:translate3d(0,-32px,0)!important; }
 .home-figma-section :deep([data-home-expert-card]:hover [data-home-expert-summary="rest-source"]),.home-figma-section :deep([data-home-expert-card]:focus-visible [data-home-expert-summary="rest-source"]) { transform:translate3d(0,-32px,0)!important; }
+/* The translated cards need only 24px to reveal the CTA. Leaving 8px of
+   breathing room above the summary also keeps longer credentials separate. */
+.home-figma-section:not(:lang(zh)) :deep([data-home-expert-card]:is(:hover,:focus-visible) [data-home-expert-summary]) { transform:translate3d(0,-24px,0)!important; }
 .home-figma-section :deep([data-home-expert-card]:hover .home-expert-learn-more),.home-figma-section :deep([data-home-expert-card]:focus-visible .home-expert-learn-more) { opacity:1; }
-@media (hover:none) { .home-expert-learn-more { opacity:1; } }
+@media (hover:none) {
+  .home-expert-learn-more { opacity:1; }
+  .home-figma-section :deep([data-home-expert-summary]) { transform:translate3d(0,-32px,0)!important; }
+  .home-figma-section:not(:lang(zh)) :deep([data-home-expert-summary]) { transform:translate3d(0,-24px,0)!important; }
+}
 @media (prefers-reduced-motion:reduce) { .journey-desktop :deep([data-home-why-copy]),.journey-desktop :deep([data-figma-node="1412:5804"]),.home-why-card__more,.home-expert-learn-more,.home-figma-section :deep([data-home-expert-summary]) { transition:none; } }
 .journey-desktop__rail-lane { position:absolute; z-index:2; top:calc(279px * var(--journey-scale)); bottom:calc(279px * var(--journey-scale)); left:calc(50% - 588px * var(--journey-scale)); width:calc(220px * var(--journey-scale)); pointer-events:none; }
 .journey-desktop__rail { position:sticky; top:88px; height:calc(650px * var(--journey-scale)); }
 .journey-desktop__rail > :deep([data-figma-node]) { transform:scale(var(--journey-scale))!important; transform-origin:top left!important; }
+/* The stage number is a fixed, single-line graphic in every language. The
+   source reflow must not turn a 120px circle into a multi-line pill. */
+.journey-desktop__rail :deep(:is([data-figma-node="1412:5785"],[data-figma-node="1401:31"],[data-figma-node="1401:287"],[data-figma-node="1401:55"])) { top:265px!important; width:120px!important; height:120px!important; }
+.journey-desktop__rail :deep(:is([data-figma-node="1412:5786"],[data-figma-node="1401:32"],[data-figma-node="1401:288"],[data-figma-node="1401:56"])) { left:50%!important; width:max-content!important; height:120px!important; white-space:nowrap!important; transform:translateX(-50%)!important; }
+.journey-desktop__rail :deep(:is([data-figma-node="1412:5784"],[data-figma-node="1401:30"],[data-figma-node="1401:286"],[data-figma-node="1401:54"])) { top:650px!important; }
+.journey-desktop__rail:not(:lang(zh)) :deep(:is([data-figma-node="1412:5781"],[data-figma-node="1401:27"],[data-figma-node="1401:283"],[data-figma-node="1401:51"])) { width:145px!important; height:48px!important; }
+.journey-desktop__rail:not(:lang(zh)) :deep(:is([data-figma-node="1412:5782"],[data-figma-node="1401:28"],[data-figma-node="1401:284"],[data-figma-node="1401:52"])) { width:145px!important; height:auto!important; white-space:normal!important; overflow-wrap:normal!important; word-break:normal!important; font-size:24px!important; line-height:1.25!important; }
 @media (min-width:701px) and (max-width:1199px) { .journey-desktop__tail { grid-template-columns:minmax(160px,220px) minmax(0,1fr); gap:24px; } }
 .home-source-partners :deep([data-figma-node="1528:766"]) { overflow:hidden!important; }
 @media (max-width:700px) { .home-page { margin-top:0!important; } }

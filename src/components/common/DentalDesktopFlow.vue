@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSiteCopy } from '@/i18n/siteCopy'
-const { tx } = useSiteCopy()
+const { tx, localized } = useSiteCopy()
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import DentalSourceCanvas from './DentalSourceCanvas.vue'
@@ -25,7 +25,35 @@ const emit = defineEmits<{
 const root = ref<HTMLElement | null>(null)
 const matching = computed(() => createDentalPhysicianMatching(props.filteredDoctorIds))
 const source = computed(() => {
-  if (props.step === 2) return matching.value.root
+  if (props.step === 2) {
+    if (!localized.value) return matching.value.root
+    // The card was authored for a short Chinese name and title on one line.
+    // Latin names and job titles need the full identity column independently.
+    const tree = structuredClone(matching.value.root)
+    const nodes = new Map(dentalDescendants(tree).map(node => [node.id, node]))
+    for (const doctorId of props.filteredDoctorIds) {
+      const at = (id:string) => nodes.get(`${id}::dental-physician-${doctorId}`)
+      const set = (id:string, values:{x?:number;y?:number;width?:number;height?:number}, extra = '') => {
+        const item=at(id); if (!item) return
+        Object.assign(item,values)
+        const css=Object.entries(values).map(([key,value])=>`${key==='x'?'left':key==='y'?'top':key}:${value}px;`).join('')
+        item.css+=`;${css}${extra}`
+        item.layoutCss=`${item.layoutCss || ''};${css}${extra}`
+      }
+      set('2294:7066',{width:173,height:38},'display:flex;flex-direction:column;gap:4px;')
+      set('2294:7067',{x:0,y:0,width:173})
+      set('2294:7068',{x:0,y:0,width:173})
+      set('2294:7069',{x:0,y:22,width:173})
+      set('2294:7070',{x:0,y:0,width:173})
+      set('2294:7071',{y:46})
+      set('2294:7076',{y:74})
+      set('2294:7087',{height:72},'display:-webkit-box;overflow:hidden;-webkit-line-clamp:3;-webkit-box-orient:vertical;text-align:left;')
+      set('2294:7098',{height:66})
+      set('2294:7099',{height:66})
+      set('2294:7101',{height:66})
+    }
+    return tree
+  }
   if (props.step === 3) return dentalSources.upload!.root
   const tree = structuredClone(dentalSources.project!.root)
   const nodes = new Map(dentalDescendants(tree).map(node => [node.id, node]))
@@ -165,6 +193,7 @@ const paint = (id: string) => dentalNode(id).css.split('position:absolute;')[0]!
 const styles = computed(() => {
   const backgrounds = dentalDescendants(source.value).filter(node => node.width === 1440 && (node.name === 'Footer' || node.name === 'Section' && node.y === 0 && node.css.includes('url(')))
   const result: Record<string, string> = figmaFullBleedStyles(source.value, props.width, backgrounds.map(node => node.id))
+  if (localized.value && props.step !== 1) result[props.step === 2 ? '2294:6987' : '2294:8053'] = 'height:66px;max-height:66px;'
   if (props.step === 1) {
     for (const id of ['2294:8240', '2294:8241']) result[id] = `height:${projectLayout.value.height}px;`
     result['2294:8242'] = `height:${projectLayout.value.contentHeight}px;`
@@ -188,6 +217,13 @@ const styles = computed(() => {
     })
   }
   if (props.step === 2) {
+    if (localized.value) {
+      // Render translated select values in their native select rather than in
+      // the fixed-width Chinese label underneath it.
+      dentalFilterControls.forEach(control => { result[control.text] = 'visibility:hidden;' })
+      result['2294:7037'] = 'visibility:hidden;'
+      result['2294:7039'] = 'visibility:hidden;'
+    }
     sortNodes.forEach((id, index) => {
       const active = props.sort === sorts[index]
       if (active !== (index === 0)) {
@@ -243,6 +279,7 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
     <DentalSourceCanvas :key="step" :node="source" :width="width" :height="canvasHeight" :actions="actions" :texts="texts" :attributes="attributes" :styles="styles" :hidden="hidden" @activate="activate">
       <template #after="{ node }">
         <DentalScanShowcase v-if="node.id === scanNodes.main" class="dental-scan-insertion" :style="{ top:`${scanTop}px`, height:`${scanHeight}px` }" :projects="props.projects" @height="scanHeight = $event" />
+        <span v-if="localized && step === 2 && node.id === '2294:7036'" class="dental-localized-filter-label">{{ tx('筛选') }}</span>
         <template v-for="project in projects" :key="project.id">
           <div v-if="!project.detail && node.id === project.content.id" :id="`dental-details-${project.data.id}`" class="dental-live-detail dental-added-detail" :aria-hidden="!project.expanded" :style="{ top: `${project.summaryHeight}px`, height: `${project.expanded ? project.extraHeight : 0}px` }">
             <div :ref="element => detailElement(element, project.id)" :style="detailTemplate.layoutCss">
@@ -251,7 +288,7 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
           </div>
         </template>
         <template v-for="control in dentalFilterControls" :key="control.node">
-          <select v-if="node.id === control.node" class="dental-native-overlay" :aria-label="tx(control.label)" :value="filters[control.key]" @change="filterChanged(control.key, $event)"><option value="">{{ tx(control.label) }}</option><option :value="option" v-for="option in control.options" :key="option">{{ tx(option) }}</option></select>
+          <select v-if="node.id === control.node" class="dental-native-overlay" :class="{'is-localized':localized}" :aria-label="tx(control.label)" :value="filters[control.key]" @change="filterChanged(control.key, $event)"><option value="">{{ tx(control.label) }}</option><option :value="option" v-for="option in control.options" :key="option">{{ tx(option) }}</option></select>
         </template>
         <p v-if="node.id === '2294:7060' && filtered && !filteredDoctorIds.length" class="dental-empty-results" role="status" :style="typography('2294:7059')">{{ tx("暂无符合条件的医生，请调整筛选条件。") }}</p>
         <label v-if="node.id === '2294:8078'" class="dental-native-overlay dental-file-picker" :aria-label="tx('上传牙片或口腔照片')"><input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple :disabled="status === 'submitting' || submitted" :aria-label="tx('上传牙片或口腔照片')" @change="emit('files', $event)" /></label>
@@ -272,10 +309,18 @@ const feedback = computed(() => props.error || (props.status === 'submitting' ? 
 </template>
 <style scoped>
 .dental-desktop-flow { width:100%; }
+.dental-desktop-flow :deep(:is([data-figma-node="2294:6989"],[data-figma-node="2294:6995"],[data-figma-node="2294:7001"],[data-figma-node="2294:8055"],[data-figma-node="2294:8061"],[data-figma-node="2294:8067"])) { width:40px!important; height:40px!important; min-width:40px!important; max-width:40px!important; flex:none!important; border-radius:50%!important; }
+.dental-desktop-flow :deep(:is([data-figma-node="2294:6990"],[data-figma-node="2294:6996"],[data-figma-node="2294:7002"],[data-figma-node="2294:8056"],[data-figma-node="2294:8062"],[data-figma-node="2294:8068"])) { left:50%!important; transform:translateX(-50%)!important; }
 .dental-scan-insertion { position:absolute;left:0;width:1440px; }
 .dental-floating-action { position:fixed; left:50%; z-index:45; transform-origin:top center; font-family:'PingFang SC',sans-serif; -webkit-font-smoothing:antialiased; }
 .dental-floating-action :deep(button:focus-visible) { outline:2px solid #2563eb; outline-offset:3px; }
 .dental-native-overlay { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:inherit; padding:0; background:transparent; color:transparent; appearance:none; cursor:pointer; }
+select.dental-native-overlay.is-localized { padding:0 30px 0 14px; color:#4b5563; font:400 14px/20px 'PingFang SC',sans-serif; text-overflow:ellipsis; }
+.dental-localized-filter-label { position:absolute; inset:0; display:grid; place-items:center; color:#fff; font:500 14px/20px 'PingFang SC',sans-serif; white-space:nowrap; pointer-events:none; }
+.dental-desktop-flow:not(:lang(zh)) :deep([data-figma-source-node="2323:8430"]),
+.dental-desktop-flow:not(:lang(zh)) :deep([data-figma-source-node="2323:8432"]) { display:flex!important; height:66px!important; align-items:center!important; justify-content:center!important; }
+.dental-desktop-flow:not(:lang(zh)) :deep([data-figma-source-node="2323:8430"] .home-source-node--text),
+.dental-desktop-flow:not(:lang(zh)) :deep([data-figma-source-node="2323:8432"] .home-source-node--text) { position:static!important; width:auto!important; max-width:calc(100% - 20px)!important; height:auto!important; text-align:center!important; }
 select.dental-native-overlay option { color:#1e3a5f; background:#fff; }
 .dental-file-picker input { display:block; width:100%; height:100%; opacity:0; cursor:pointer; }
 .dental-editable-control { position:absolute!important; width:100%!important; height:100%!important; margin:0; border:0; box-sizing:border-box; caret-color:#1e3a5f; cursor:text; resize:none; }

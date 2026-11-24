@@ -53,6 +53,14 @@ export function publicFiles(seeds) {
       queue.push(path.join(root,'docs/figma-source/home/experts/dialog-sources-2026-10-19.json'))
       return
     }
+    // The homepage entry is built as a virtual module, so the normal import
+    // graph cannot see the three noninitial carousel frames. Their actual
+    // public copy must be extracted and shipped in the homepage locale pack.
+    if(reference === 'virtual:huanyu-home-entry') {
+      for(const frame of ['hero-01','hero-02','hero-03'])
+        queue.push(path.join(root,`docs/figma-source/home/${frame}/source-tree-2026-10-19.json`))
+      return
+    }
     if (!reference.startsWith('.') && !reference.startsWith('@/')) return
     const brace=reference.match(/\{([^{}]+)\}/)
     if(brace) {

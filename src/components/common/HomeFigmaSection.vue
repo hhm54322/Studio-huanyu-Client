@@ -33,7 +33,9 @@ const isMobile = computed(() => width.value <= 700 && props.mobileId)
 const node = computed(() => (isMobile.value ? mobile.get(props.mobileId!) : desktop.get(props.desktopId))!)
 const scale = computed(() => isMobile.value ? 1 : Math.min(1, width.value / 1440))
 const contentHeight = computed(() => node.value.height + contentDelta.value)
-const renderHeight = computed(() => Math.max(contentHeight.value,localizedHeight.value))
+// The FAQ is an actual flow layout measured by ResizeObserver; the source
+// reflow predicts the same text again and must not add a second empty tail.
+const renderHeight = computed(() => props.contentHeightId ? contentHeight.value : Math.max(contentHeight.value,localizedHeight.value))
 watch([canvas, () => props.contentHeightId, node], async () => {
   heightObserver?.disconnect()
   contentDelta.value = 0
@@ -119,6 +121,18 @@ const sectionStyle = computed(() => ({
 .home-figma-section--mobile :deep([data-figma-node="1528:625"]) { width:calc(100% + 32px)!important; max-width:none; }
 .home-figma-section--mobile :deep([data-figma-node="1528:627"]) { top:-1px!important; height:238px!important; }
 .home-figma-section--mobile :deep([data-figma-node="1528:662"]) { top:-.09961px!important; }
+/* The translated expert cards are taller than the Chinese source mask. Let
+   the horizontal track grow with its cards instead of clipping their tops,
+   biographies and detail links in a fixed 262px window. */
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:660"]) { height:auto!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:662"]) { top:0!important; width:max-content!important; max-width:none!important; height:auto!important; align-items:stretch!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:663"],[data-figma-node="1528:695"])) { height:auto!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep([data-figma-node="1528:667"]) { flex:1 1 auto!important; width:auto!important; min-width:0!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:676"],[data-figma-node="1528:685"],[data-figma-node="1528:708"],[data-figma-node="1528:717"])) { flex:1 1 auto!important; width:auto!important; min-width:0!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:670"],[data-figma-node="1528:702"])) { flex:1 1 auto!important; gap:24px!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:687"],[data-figma-node="1528:719"])) { margin-top:auto!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:688"],[data-figma-node="1528:720"])) { display:-webkit-box!important; -webkit-box-orient:vertical; -webkit-line-clamp:3; height:auto!important; max-height:66px!important; overflow:hidden!important; text-align:left!important; }
+.home-figma-section--mobile:not(:lang(zh)) :deep(:is([data-figma-node="1528:690"],[data-figma-node="1528:722"])) { width:auto!important; }
 .home-figma-section--mobile :deep([data-figma-node="1528:193"] > *),
 .home-figma-section--mobile :deep([data-figma-node="1528:325"] > *),
 .home-figma-section--mobile :deep([data-figma-node="1528:397"] > *),

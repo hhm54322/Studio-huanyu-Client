@@ -7,6 +7,7 @@ import { X } from "lucide-vue-next";
 import { trustArticleDialog } from '@/components/common/trustArticleDialog';
 import { loadTrustArticle, trustArticleSource } from '@/data/trustArticleSource';
 import TrustDesktopPage from '@/components/common/TrustDesktopPage.vue';
+import AccordionPanel from '@/components/common/AccordionPanel.vue';
 
 const desktopArticle = ref(typeof window === 'undefined' || window.innerWidth > 900);
 function updateArticleViewport() {
@@ -42,15 +43,25 @@ const assurances = [
     icon: trustAsset("Frame-4.svg"),
   },
 ];
-const expandedAssurances = ref(new Set([0]));
-const desktopExpandedFaq = ref(new Set([0]));
+const expandedAssurances = ref(new Set<number>());
+const desktopExpandedFaq = ref(new Set<number>());
+const assuranceDetails = ref<(HTMLElement | null)[]>([])
+function setAssuranceDetail(element: unknown, index: number) {
+  assuranceDetails.value[index] = element instanceof HTMLElement ? element : null
+}
+function assuranceHeight(index: number) {
+  const content = assuranceDetails.value[index]
+  if (!content) return 373
+  const card = content.closest('article')
+  return Math.max(373, card ? content.getBoundingClientRect().bottom - card.getBoundingClientRect().top + 24 : 373)
+}
 function toggleAssurance(index: number) {
   const next = new Set(expandedAssurances.value);
   if (next.has(index)) next.delete(index);
   else next.add(index);
   expandedAssurances.value = next;
 }
-const activeFaq = ref(0);
+const activeFaq = ref(-1);
 function faqBeforeEnter(element: Element) {
   const panel = element as HTMLElement;
   panel.style.height = '0px';
@@ -243,6 +254,7 @@ function openConsultation() {
             role="button"
             tabindex="0"
             :aria-expanded="expandedAssurances.has(index)"
+            :style="expandedAssurances.has(index) ? { height:`${assuranceHeight(index)}px` } : undefined"
             @click="toggleAssurance(index)"
             @keydown.enter.prevent="toggleAssurance(index)"
             @keydown.space.prevent="toggleAssurance(index)"
@@ -256,7 +268,7 @@ function openConsultation() {
                 alt=""
                 aria-hidden="true"
             /></span>
-            <p>{{ tx(item.copy) }}</p>
+            <AccordionPanel :open="expandedAssurances.has(index)"><p :ref="element => setAssuranceDetail(element, index)">{{ tx(item.copy) }}</p></AccordionPanel>
           </article>
         </div>
       </div>
@@ -540,7 +552,6 @@ function openConsultation() {
   color: inherit;
 }
 .assurance-grid p {
-  display: none;
   margin: 10px 0 0;
   color: #6f8190;
   font-size: 10px;
@@ -548,9 +559,6 @@ function openConsultation() {
 }
 .assurance-grid article.expanded {
   min-height: 380px;
-}
-.assurance-grid article.expanded p {
-  display: block;
 }
 .assurance-grid article.expanded h2 {
   margin-top: auto;
@@ -1022,7 +1030,6 @@ function openConsultation() {
   transform: rotate(180deg);
 }
 .assurance-grid p {
-  display: none;
   margin: 16px 0 0;
   color: #4b5563;
   font-size: 16px;
@@ -1030,9 +1037,6 @@ function openConsultation() {
 }
 .assurance-grid article:nth-child(2) {
   box-shadow: 0 1px 20px rgba(237, 247, 254, 0.5);
-}
-.assurance-grid article.expanded p {
-  display: block;
 }
 .faq-section {
   height: 650.04px;

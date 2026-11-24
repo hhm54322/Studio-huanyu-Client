@@ -5,6 +5,7 @@ const { tx, tf } = useSiteCopy()
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { HomeSourceNodeData as SourceNode } from './HomeSourceNode.vue'
 import { dentalPhysicianCases, type DentalPhysician } from '@/data/dentalPhysicianData'
+import AccordionPanel from './AccordionPanel.vue'
 import caseSource from '../../../docs/figma-source/dental-pages-2026-11-03/case-detail/source-tree-2026-11-03.json'
 
 const props = defineProps<{ doctor: DentalPhysician; mode: 'profile' | 'cases' | 'reviews'; source: SourceNode }>()
@@ -52,7 +53,7 @@ onBeforeUnmount(() => observer?.disconnect())
           <h3 :style="style(caseTitle)" data-figma-source-node="3423:6061">{{ tx(item.title) }}</h3>
           <button v-if="item.description" type="button" :aria-label="tf(expanded.has(item.id) ? '收起：{title}' : '展开：{title}',{title:tx(item.title)})" :aria-expanded="expanded.has(item.id)" :aria-controls="`dental-case-copy-${item.id}`" @click="toggle(item.id)"><img :src="arrow" alt="" :class="{ 'is-open': expanded.has(item.id) }" /></button>
         </div>
-        <p v-if="item.description && expanded.has(item.id)" :id="`dental-case-copy-${item.id}`" :style="style(caseCopy)" class="dental-doctor-case__copy" data-figma-source-node="3423:5965">{{ tx(item.description) }}</p>
+        <AccordionPanel v-if="item.description" :id="`dental-case-copy-${item.id}`" :open="expanded.has(item.id)"><p :style="style(caseCopy)" class="dental-doctor-case__copy" data-figma-source-node="3423:5965">{{ tx(item.description) }}</p></AccordionPanel>
         <div class="dental-doctor-case__images" data-figma-source-node="3423:6066">
           <button v-for="image in item.images" :key="image.src" type="button" :aria-label="tx(`放大${image.alt || item.title}`)" @click="emit('image', image)"><img :src="image.thumbnail || image.src" :alt="tx(image.alt || item.title)" width="80" height="80" :style="`${caseImage.layoutCss};position:relative;left:0;top:0;background:none;object-fit:cover;`" loading="lazy" data-figma-source-node="3423:6067" /></button>
         </div>
@@ -82,12 +83,14 @@ onBeforeUnmount(() => observer?.disconnect())
 .dental-doctor-case__heading h3 { flex:1; min-width:0; }
 .dental-doctor-case__heading button { flex:none; width:24px; height:24px; padding:0; border:0; background:none; cursor:pointer; }
 .dental-doctor-case__heading img { display:block; width:24px; height:24px; }
+.dental-doctor-case__heading img { transition:transform .3s ease; }
 .dental-doctor-case__heading img.is-open { transform:rotate(180deg); }
 .dental-doctor-case__copy { margin-top:8px!important; }
 .dental-doctor-case__images { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 .dental-doctor-case__images button { display:block; padding:0; border:0; background:transparent; cursor:zoom-in; }
 .dental-doctor-case__images img { display:block; }
 .dental-doctor-case :focus-visible { outline:2px solid #2563eb; outline-offset:4px; }
+@media (prefers-reduced-motion:reduce) { .dental-doctor-case__heading img { transition:none; } }
 .dental-doctor-review { padding:24px; border-radius:24px; background:#f3f4f6; }
 .dental-doctor-review + .dental-doctor-review { margin-top:16px; }
 .dental-doctor-review small { display:block; }

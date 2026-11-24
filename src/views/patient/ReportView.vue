@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSiteCopy } from '@/i18n/siteCopy'
+import AccordionPanel from '@/components/common/AccordionPanel.vue'
 const { tx, tf } = useSiteCopy()
 
 import { publicContacts } from '@/data/publicContacts'
@@ -1712,8 +1713,8 @@ const resetWizard = () => {
                 </div>
               </button>
 
-              <Transition name="report-accordion">
-              <div v-if="expandedHospital === hospital.key" :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-4 pb-4 pt-4">
+              <AccordionPanel :open="expandedHospital === hospital.key">
+              <div :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-4 pb-4 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -1726,7 +1727,7 @@ const resetWizard = () => {
                   </div>
                 </div>
               </div>
-              </Transition>
+              </AccordionPanel>
             </article>
           </div>
 
@@ -2333,8 +2334,8 @@ const resetWizard = () => {
                 </div>
                 <component :is="expandedCountry === c.name ? ChevronUp : ChevronDown" class="h-5 w-5 text-gray-400" />
               </button>
-              <Transition name="report-accordion">
-              <div v-if="expandedCountry === c.name" :id="`report-country-detail-${c.name}`" class="report-accordion-panel px-5 pb-5 grid md:grid-cols-2 gap-3 text-sm">
+              <AccordionPanel :open="expandedCountry === c.name">
+              <div :id="`report-country-detail-${c.name}`" class="report-accordion-panel px-5 pb-5 grid md:grid-cols-2 gap-3 text-sm">
                 <div class="flex items-start gap-2">
                   <DollarSign class="h-4 w-4 text-[#1685C3] mt-0.5" />
                   <div><span class="font-medium text-gray-700">{{ t('report.totalCost') }}：</span>{{ c.fee }}</div>
@@ -2360,7 +2361,7 @@ const resetWizard = () => {
                   <div><span class="font-medium text-gray-700">{{ t('report.followup') }}：</span>{{ c.follow }}</div>
                 </div>
               </div>
-              </Transition>
+              </AccordionPanel>
             </div>
           </div>
         </section>
@@ -2456,8 +2457,8 @@ const resetWizard = () => {
                   <component :is="expandedHospital === hospital.key ? ChevronUp : ChevronDown" class="h-4 w-4 text-slate-400" />
                 </div>
               </button>
-              <Transition name="report-accordion">
-              <div v-if="expandedHospital === hospital.key" :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-5 pb-5 pt-4">
+              <AccordionPanel :open="expandedHospital === hospital.key">
+              <div :id="`report-hospital-detail-${hospital.key}`" class="report-accordion-panel border-t border-sky-100 bg-white px-5 pb-5 pt-4">
                 <p class="text-sm leading-6 text-slate-600">{{ hospital.reason }}</p>
                 <div v-if="hospital.detailItems.length" class="mt-4 grid gap-3">
                   <div
@@ -2470,7 +2471,7 @@ const resetWizard = () => {
                   </div>
                 </div>
               </div>
-              </Transition>
+              </AccordionPanel>
             </article>
           </div>
 
@@ -3278,7 +3279,7 @@ const resetWizard = () => {
     <footer class="pro-report-footer">
       <div class="pro-report-footer__inner">
         <div>
-          <strong>{{ tx("寰宇云医") }}</strong>
+          <router-link to="/" class="pro-report-footer__logo" aria-label="Univadoc+" />
           <p>{{ tx("全球患者来华就医首选平台") }}</p>
           <span>{{ tx("蚂蚁集团技术保障 × 好大夫94万医生") }}</span>
         </div>
@@ -3298,12 +3299,13 @@ const resetWizard = () => {
         </div>
         <div>
           <strong>{{ tx("联系") }}</strong>
-          <a :href="publicContacts.emailHref">{{ tx(publicContacts.email) }}</a>
-          <a href="tel:+864008886688">+86 400-888-6688</a>
+          <a :href="publicContacts.emailHref">{{ publicContacts.email }}</a>
+          <a :href="publicContacts.phoneHref">{{ publicContacts.phone }}</a>
+          <a :href="publicContacts.instagramHref" class="pro-report-footer__instagram" target="_blank" rel="noopener noreferrer">Instagram: {{ publicContacts.instagram }}</a>
           <div class="pro-report-footer__social">
-            <a :href="whatsappHref" data-contact-entry="footer-report" target="_blank" rel="noopener noreferrer">{{ tx("WhatsApp · 24小时客服") }}</a>
             <a :href="publicContacts.facebookHref" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
+          <a :href="whatsappHref" class="pro-report-footer__whatsapp" data-contact-entry="footer-report" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
       <p class="pro-report-footer__copyright">{{ tx("Copyright 2026 寰宇云医. All rights reserved.") }}</p>
@@ -4040,6 +4042,10 @@ const resetWizard = () => {
 }
 
 .pro-report-footer__social { display:flex; flex-wrap:wrap; gap:8px 16px; }
+.pro-report-footer__logo { display:block; width:148px; height:48px; background:url('/images/brand/univadoc-2026-11-24-light.png') left center / contain no-repeat; }
+.pro-report-footer__instagram { overflow-wrap:anywhere; }
+.pro-report-footer__whatsapp { align-self:flex-start; display:inline-flex; align-items:center; justify-content:center; min-height:36px; border:1px solid rgba(255,255,255,.8); border-radius:6px; padding:7px 14px; background:#fff; color:#9a3412; font-weight:600; }
+.pro-report-footer__inner .pro-report-footer__whatsapp:hover { color:#7c2d12; }
 
 .pro-report-footer__copyright {
   max-width: 1216px;

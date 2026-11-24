@@ -25,6 +25,9 @@ node_modules/
 !/docs/figma-source/cases/content-2026-09-29.json
 !/docs/figma-source/content-revision/toolkit/source-tree-2026-10-21.json
 !/docs/figma-source/dental-complete-2026-10-30/source-extension.json
+!/docs/figma-source/november-revision-2026-11-23/*/source-tree-2026-11-23.json
+!/docs/figma-source/november-revision-2026-11-23/*/node-to-code-2026-11-23.json
+!/docs/figma-source/november-revision-2026-11-23/*/assets-2026-11-23.json
 !/docs/figma-source/dental-revision-2026-11-03/profile-frame-name.json
 !/docs/figma-source/dental-pages-2026-11-03/profile/source-tree-2026-11-03.json
 !/docs/figma-source/dental-pages-2026-11-03/profile/text-layout-2026-11-03.json

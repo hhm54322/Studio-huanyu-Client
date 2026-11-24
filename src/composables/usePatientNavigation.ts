@@ -16,6 +16,7 @@ export const patientNavigationItems = [
   { label: '中国医院', group: 'hospitals' },
   { label: '患者案例', path: '/cases' },
   { label: '保险指南', path: '/insurance' },
+  { label: '新闻与咨询', path: '/news' },
   { label: '关于我们', path: '/about' },
 ] as const
 

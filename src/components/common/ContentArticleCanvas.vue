@@ -22,7 +22,7 @@ function updateSidebar() {
   const layoutElement=container.value.querySelector<HTMLElement>(`[data-figma-node="${layout.id}"]`)
   const sidebarElement=container.value.querySelector<HTMLElement>(`[data-figma-node="${sidebar.id}"]`)
   if(!layoutElement||!sidebarElement)return
-  const desired = (24-layoutElement.getBoundingClientRect().top)/scale
+  const desired = (88-layoutElement.getBoundingClientRect().top)/scale
   const available=parseFloat(getComputedStyle(layoutElement).height)-parseFloat(getComputedStyle(sidebarElement).height)
   sidebarOffset.value = Math.max(0, Math.min(available, desired))
 }

@@ -48,6 +48,12 @@ test('translated authored line breaks reflow within the same column',()=>{
  const result=sourceLocaleLayout(root,()=> 'A long heading that wraps\nwith a second line')
  assert.ok(px(result,'title','height')>=40)
 })
+test('uppercase captions measure the painted text when computing wrapped height',()=>{
+ const label=node('label',{width:88,height:20,text:'标题',css:'text-transform:uppercase;'})
+ const root=node('root',{width:88,height:20,children:[label]})
+ const result=sourceLocaleLayout(root,()=> 'a long caption')
+ assert.ok(px(result,'label','height')>20)
+})
 test('card widths and gaps stay fixed; rows move below their tallest translated card',()=>{
  const card=(id,x,y,text)=>node(id,{x,y,width:300,height:100,children:[node(`${id}-copy`,{width:300,height:20,text})]})
  const root=node('grid',{width:624,height:224,children:[card('a',0,0,'长文'),card('b',324,0,'短文'),card('c',0,124,'短文')]})
@@ -62,12 +68,77 @@ test('the final percentage width overrides an old exported pixel width',()=>{
  const result=sourceLocaleLayout(root,()=> 'Full width translated copy')
  assert.equal(px(result,'copy','width'),300)
 })
+test('runtime max-width is measured before translated sibling positioning',()=>{
+ const title=node('title',{width:600,height:20,text:'标题'})
+ const subtitle=node('subtitle',{y:32,width:600,height:20,text:'说明'})
+ const root=node('root',{width:600,height:52,layout:'display:flex;flex-direction:column;',children:[title,subtitle]})
+ const result=sourceLocaleLayout(root,text=>text==='标题'?'A much longer translated heading that needs several lines':'Description',
+   {styles:{title:'max-width:160px;'}})
+ assert.equal(px(result,'title','width'),160)
+ assert.ok(px(result,'title','height')>20)
+ assert.ok(px(result,'subtitle','top')>=px(result,'title','height')+12)
+})
+test('a deliberately clamped card summary does not reserve every translated line',()=>{
+ const summary=node('summary',{width:200,height:60,text:'简介',css:'overflow:hidden;-webkit-line-clamp:3;'})
+ const next=node('next',{y:72,width:200,height:20,text:'详情'})
+ const root=node('card',{width:200,height:92,layout:'display:flex;flex-direction:column;',children:[summary,next]})
+ const result=sourceLocaleLayout(root,text=>text==='简介'?'An extended medical biography '.repeat(30):'Details')
+ assert.equal(px(result,'summary','height'),60)
+ assert.equal(px(result,'next','top'),72)
+})
+test('runtime line clamp and maximum container height bound the space reserved for a long translated biography',()=>{
+ const summary=node('summary',{width:200,height:60,text:'简介'})
+ const details=node('details',{width:200,height:100,children:[summary]})
+ const next=node('next',{y:112,width:200,height:20,text:'详情'})
+ const root=node('card',{width:200,height:132,layout:'display:flex;flex-direction:column;',children:[details,next]})
+ const result=sourceLocaleLayout(root,text=>text==='简介'?'An extended medical biography '.repeat(30):'Details',
+   {styles:{summary:'overflow:hidden;-webkit-line-clamp:3;',details:'max-height:100px;'}})
+ assert.equal(px(result,'summary','height'),60)
+ assert.equal(px(result,'details','height'),100)
+ assert.equal(px(result,'next','top'),112)
+})
+test('an explicit container height limit prevents descendants from inflating later rows',()=>{
+ const details=node('details',{width:200,height:100,children:[node('summary',{width:200,height:60,text:'简介'})]})
+ const next=node('next',{y:112,width:200,height:20,text:'详情'})
+ const root=node('card',{width:200,height:132,layout:'display:flex;flex-direction:column;',children:[details,next]})
+ const translate=text=>text==='简介'?'An extended medical biography '.repeat(30):'Details'
+ const unlimited=sourceLocaleLayout(root,translate)
+ const limited=sourceLocaleLayout(root,translate,{styles:{details:'max-height:100px;'}})
+ assert.ok(px(unlimited,'details','height')>100)
+ assert.equal(px(limited,'details','height'),100)
+ assert.equal(px(limited,'next','top'),112)
+})
 test('wide background images keep their full-bleed dimensions',()=>{
  const background=node('image',{x:-240,width:1920,height:500,css:'background:url(/test.webp) center/cover;'})
  const root=node('root',{width:1440,height:500,children:[background]})
  const result=sourceLocaleLayout(root,text=>text)
  assert.equal(px(result,'image','width'),1920)
  assert.equal(px(result,'image','left'),-240)
+})
+test('viewport-wide content backgrounds are not clamped by the centered canvas',()=>{
+ const content=node('content',{width:1440,height:500,children:[node('copy',{x:112,width:500,height:20,text:'标题'})]})
+ const root=node('root',{width:1440,height:500,children:[content]})
+ const result=sourceLocaleLayout(root,()=> 'Translated heading',{styles:{content:'left:-120px;width:1680px;'}})
+ assert.equal(px(result,'content','left'),-120)
+ assert.equal(px(result,'content','width'),1680)
+})
+test('translated table cells share row heights and later rows remain aligned',()=>{
+ const cell=(id,x,y,content)=>{const n=node(id,{x,y,width:200,height:60,children:[node(id+'-text',{x:16,y:16,width:168,height:20,text:content})]});n.name='Table Cell';return n}
+ const table=node('table',{width:400,height:120,children:[cell('a',0,0,'长'),cell('b',200,0,'短'),cell('c',0,60,'短'),cell('d',200,60,'短')]});table.name='Table'
+ const r=sourceLocaleLayout(table,v=>v==='长'?'A much longer translated text that wraps onto additional lines here':'Short')
+ assert.ok(px(r,'a','height')>60)
+ assert.equal(px(r,'a','height'),px(r,'b','height'))
+ assert.equal(px(r,'c','top'),px(r,'d','top'))
+ assert.equal(px(r,'c','top'),px(r,'a','height'))
+})
+test('definition terms and values keep matching rows with a shared wider label column',()=>{
+ const item=(id,name,x,y,w,text)=>{const n=node(id,{x,y,width:w,height:20,children:[node(id+'-text',{width:w,height:20,text})]});n.name=name;return n}
+ const root=node('definitions',{width:400,height:84,children:[item('a','Definition Term',0,0,50,'标签'),item('b','Definition Description',74,0,326,'说明'),item('c','Definition Term',0,32,50,'名称'),item('d','Definition Description',74,32,326,'介绍')]});root.name='Definition List'
+ const r=sourceLocaleLayout(root,text=>({'标签':'A long translated label','说明':'First description','名称':'Term','介绍':'Another description'})[text])
+ assert.equal(px(r,'b','left'),px(r,'d','left'))
+ assert.equal(px(r,'a','top'),px(r,'b','top'))
+ assert.equal(px(r,'c','top'),px(r,'d','top'))
+ assert.ok(px(r,'b','left')>=px(r,'a','width')+24)
 })
 test('an oversize hero wrapper keeps its photo crop but constrains translated copy to the viewport',()=>{
  const image=node('image',{width:1600,height:500,css:'background:url(/hero.webp) center/cover;'})

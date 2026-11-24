@@ -100,7 +100,12 @@ if (previous) {
   if (inventory.length !== previousIds.size || mismatch.length) throw new Error(`Layers/native mismatch: ${JSON.stringify(mismatch.slice(0, 4))}`)
 }
 fs.mkdirSync(destination, { recursive: true })
-function save(name, value) { fs.writeFileSync(path.join(destination, name), JSON.stringify(value, (_, val) => ArrayBuffer.isView(val) ? Array.from(val) : val, 2) + '\n') }
+function save(name, value) {
+  fs.writeFileSync(path.join(destination, name), JSON.stringify(value, (_, val) => {
+    if (typeof val === 'bigint') return { $bigint: val.toString() }
+    return ArrayBuffer.isView(val) ? Array.from(val) : val
+  }, 2) + '\n')
+}
 const metadata = {
   extractionDate,
   sourceFrame: frameId,

@@ -26,16 +26,19 @@ const localeLoads = new Map<string, Promise<void>>()
 // message and | as a plural separator, so escape these only in its key tree.
 // siteCopy itself stays literal for tx(), including email addresses and prices.
 const messageLiteral = (value:string) => value.replace(/[@|]/g, character => `{'${character}'}`)
-function translatedMessages(source:Record<string,unknown>, copy:Record<string,string>, existing:Record<string,unknown>):Record<string,unknown> {
+function translatedMessages(source:Record<string,unknown>, copy:Record<string,string>, existing:Record<string,unknown>, path:string[] = []):Record<string,unknown> {
   const result: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(source)) {
+    // Compact navigation labels are curated separately from full copy. The
+    // same Chinese string can occur in both trees with different lengths.
+    if (path.length === 1 && path[0] === 'conversion' && key === 'navigationCompact') continue
     if (typeof value === 'string') {
       const translated = copy[siteCopyKey(value.trim())]
       if (translated) result[key] = messageLiteral(translated)
       continue
     }
     if (value && typeof value === 'object' && !Array.isArray(value)) {
-      const child = translatedMessages(value as Record<string,unknown>, copy, existing[key] as Record<string,unknown> || {})
+      const child = translatedMessages(value as Record<string,unknown>, copy, existing[key] as Record<string,unknown> || {}, [...path,key])
       if (Object.keys(child).length) result[key] = child
     }
   }

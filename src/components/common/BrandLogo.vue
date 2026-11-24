@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(defineProps<{ light?: boolean; compact?: boolean }>(), { light: false, compact: false })
 </script>
-<template><span class="brand-logo" :class="{ 'brand-logo--light': light, 'brand-logo--compact': compact }"><template v-if="light"><span class="brand-logo__mark" aria-hidden="true">寰</span><span class="brand-logo__copy"><strong>寰宇云医</strong><small>HUANYU HEALTH</small></span></template><img v-else class="brand-logo__image" src="/images/brand/univadoc-plus.png" alt="Univadoc+" /></span></template>
+<template><span class="brand-logo" :class="{ 'brand-logo--light': light, 'brand-logo--compact': compact }"><img class="brand-logo__image" :src="light ? '/images/brand/univadoc-2026-11-24-light.png' : '/images/brand/univadoc-2026-11-24-dark.png'" alt="Univadoc+" /></span></template>
 <style scoped>
 .brand-logo { display:inline-flex; align-items:center; width:148px; height:48px; white-space:nowrap; }
 .brand-logo__image { display:block; width:148px; height:48px; object-fit:contain; object-position:left center; }
