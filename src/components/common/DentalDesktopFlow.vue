@@ -10,6 +10,7 @@ import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
 import { dentalActions, dentalCompleteSource, dentalDescendants, dentalFilterControls, dentalNode, dentalProjectNodes, dentalSources } from '@/data/dentalFigmaSource'
 import { createDentalPhysicianMatching } from '@/data/dentalPhysicianSource'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
+import { useDentalStepConnectors } from '@/composables/useDentalStepConnectors'
 type Filters = { city: string; title: string; experience: string; background: string; language: string; price: string }
 const props = defineProps<{
   step: 1 | 2 | 3; width: number; selectedProject: string; expandedProjects: Set<string>
@@ -23,6 +24,7 @@ const emit = defineEmits<{
   files: [event: Event]; submit: []; retry: []; consultation: []; institution: [id: number]; 'doctor-cases':[id:number]; quote:[id:number]
 }>()
 const root = ref<HTMLElement | null>(null)
+useDentalStepConnectors(root, localized, () => [props.step, props.width])
 const matching = computed(() => createDentalPhysicianMatching(props.filteredDoctorIds))
 const source = computed(() => {
   if (props.step === 2) {

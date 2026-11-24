@@ -17,6 +17,9 @@
   inset:auto!important;
   width:100%!important;
 }
+:is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5683"], [data-figma-node="4542:5689"], [data-figma-node="2294:6993"], [data-figma-node="2294:6999"], [data-figma-node="2294:8059"], [data-figma-node="2294:8065"]) {
+  transform:translateX(var(--dental-line-shift, 0px))!important;
+}
 :is(.dental-project-source, .dental-desktop-flow):not(:lang(zh)) :is([data-figma-node="4542:5678"], [data-figma-node="4542:5684"], [data-figma-node="4542:5690"], [data-figma-node="2294:6988"], [data-figma-node="2294:6994"], [data-figma-node="2294:7000"], [data-figma-node="2294:8054"], [data-figma-node="2294:8060"], [data-figma-node="2294:8066"]) {
   display:flex!important;
   align-items:center!important;

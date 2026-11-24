@@ -10,6 +10,7 @@ import { useSiteCopy } from '@/i18n/siteCopy'
 import { publicContacts, sourceContactEmail } from '@/data/publicContacts'
 import { figmaFullBleedStyles } from '@/utils/figmaFullBleed'
 import { sourceAtOrigin } from '@/utils/sourceAtOrigin'
+import { useDentalStepConnectors } from '@/composables/useDentalStepConnectors'
 
 const props = defineProps<{
   width: number
@@ -130,6 +131,7 @@ const activeTooth = computed(() => hovered.value ?? focused.value ?? suggested.v
 const toothProject = (index: number) => props.projects.find(project => project.id === toothProjects[index % 7])
 const activeProject = computed(() => activeTooth.value === undefined ? undefined : toothProject(activeTooth.value))
 const dentalRoot = ref<HTMLElement>()
+useDentalStepConnectors(dentalRoot, localized, () => props.width)
 const scanActive = ref(false)
 const reduced = ref(false)
 let suggestions: ReturnType<typeof setInterval> | undefined
